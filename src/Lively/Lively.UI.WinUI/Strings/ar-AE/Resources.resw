@@ -1216,7 +1216,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>بعض الوظائف قد لا تكون متاحة عند التشغيل كمدير</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>يجب تحميل ملفات أضافية لهذه المِيزة</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
     <value>التنزيل مطلوب</value>

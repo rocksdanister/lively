@@ -1212,7 +1212,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
     <value>Einige Funktionen sind möglicherweise nicht verfügbar, wenn sie als Administrator ausgeführt werden</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Zusätzliche Dateien müssen für diese Funktion heruntergeladen werden</value>
+    <value>Für diese Funktion müssen zusätzliche Dateien heruntergeladen werden</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
     <value>Download erforderlich</value>

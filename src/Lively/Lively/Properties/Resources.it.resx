@@ -1187,10 +1187,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Avanzato</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Aprrosimando la profondità..</value>
+    <value>Approssimando la profondità..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Usando l'IA trasforma fotografie in 3D</value>
+    <value>Trasforma fotografie in 3D utilizzando l'IA</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
     <value>Continua</value>
@@ -1199,10 +1199,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Crea uno sfondo semplice</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>Sfondo Profondità IA</value>
+    <value>Sfondo con profondità IA</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Sfondo Profondità</value>
+    <value>Sfondo con profondità</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
     <value>Sfondo con profondità generata da IA</value>
@@ -1214,10 +1214,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Alcune funzionalità potrebbero non essere disponibili quando viene eseguito come amministratore</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Per questa funzionalità è necessario scaricare file aggiuntivi</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Download Richiesto</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Scarica</value>
