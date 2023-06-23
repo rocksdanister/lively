@@ -122,13 +122,17 @@ namespace Lively.UI.WinUI.ViewModels
                 await Task.Run(async() =>
                 {
                     using var inputImage = new MagickImage(inputImagePath);
-                    if (inputImage.Width > 3840)
+                    inputImage.Strip(); //Remove metadata
+                    //Resize input for performance and memory
+                    if (inputImage.Width > 3840 || inputImage.Height > 3840)
                     {
-                        //Resize input for performance and memory
+                        //Fit the image within aspect ratio, if width > height = 3840x.. else ..x3840
+                        //ref: https://legacy.imagemagick.org/Usage/resize/
                         inputImage.Resize(new MagickGeometry()
                         {
                             Width = 3840,
-                            IgnoreAspectRatio = false
+                            Height = 3840,
+                            IgnoreAspectRatio = false,
                         });
                     }
 
@@ -144,13 +148,14 @@ namespace Lively.UI.WinUI.ViewModels
                     await inputImage.WriteAsync(inputImageCopyPath);
                     await depthImage.WriteAsync(depthImagePath);
                     //Generate wallpaper metadata
-                    inputImage.Resize(new MagickGeometry()
+                    inputImage.Thumbnail(new MagickGeometry()
                     {
                         Width = 480,
                         Height = 270,
                         IgnoreAspectRatio = false,
-                        FillArea = false
+                        FillArea = true
                     });
+                    inputImage.Extent(480, 270, Gravity.Center);
                     await inputImage.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
                     JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
                     {
