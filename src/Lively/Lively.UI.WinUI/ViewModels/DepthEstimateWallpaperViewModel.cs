@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using ImageMagick;
 using Lively.Common;
 using Lively.Common.Helpers;
+using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Network;
 using Lively.Common.Helpers.Storage;
@@ -27,7 +28,10 @@ namespace Lively.UI.WinUI.ViewModels
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public ILibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
+
         private readonly ResourceLoader i18n;
+        private readonly string modelPath = Path.Combine(Constants.MachineLearning.MiDaSDir, "model.onnx");
+        private readonly string templateDir = Path.Combine(Constants.MachineLearning.MiDaSDir, "Templates", "0");
 
         private readonly IDepthEstimate depthEstimate;
         private readonly IDownloadHelper downloader;
@@ -104,7 +108,6 @@ namespace Lively.UI.WinUI.ViewModels
 
         private async Task CreateDepthWallpaper()
         {
-            var templateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WallpaperTemplates", "depthmap");
             var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
             var depthImagePath = Path.Combine(destDir, "media", "depth.jpg");
             var inputImageCopyPath = Path.Combine(destDir, "media", "image.jpg");
@@ -136,8 +139,8 @@ namespace Lively.UI.WinUI.ViewModels
                         });
                     }
 
-                    if (!Constants.MachineLearning.MiDaSPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
-                        depthEstimate.LoadModel(Constants.MachineLearning.MiDaSPath);
+                    if (!modelPath.Equals(depthEstimate.ModelPath, StringComparison.Ordinal))
+                        depthEstimate.LoadModel(modelPath);
                     var depthOutput = depthEstimate.Run(inputImagePath);
                     //Resize depth to same size as input
                     using var depthImage = ImageUtil.FloatArrayToMagickImage(depthOutput.Depth, depthOutput.Width, depthOutput.Height);
@@ -224,7 +227,7 @@ namespace Lively.UI.WinUI.ViewModels
                     {
                         if (success)
                         {
-                            await FileOperations.CopyFileAsync(tempPath, Constants.MachineLearning.MiDaSPath);
+                            await Task.Run(() => ZipExtract.ZipExtractFile(tempPath, Constants.MachineLearning.MiDaSDir, false));
                             IsModelExists = CheckModel();
                             BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
 
@@ -267,13 +270,12 @@ namespace Lively.UI.WinUI.ViewModels
             var repositoryName = "lively-ml-models";
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
 
-            var gitUrl = await GithubUtil.GetAssetUrl("midas_model_small_v2100.onnx",
-                gitRelease, repositoryName, userName);
+            var gitUrl = await GithubUtil.GetAssetUrl("midas_small.zip", gitRelease, repositoryName, userName);
             var uri = new Uri(gitUrl);
 
             return uri;
         }
 
-        private static bool CheckModel() => File.Exists(Constants.MachineLearning.MiDaSPath);
+        private bool CheckModel() => File.Exists(modelPath);
     }
 }
