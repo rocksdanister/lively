@@ -318,13 +318,4 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WallpaperTemplates\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="WallpaperTemplates\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>
