@@ -6,8 +6,6 @@
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winex="using:WinUIEx"
-    Width="450"
-    Height="800"
     IsMaximizable="False"
     IsMinimizable="False"
     IsResizable="True"
