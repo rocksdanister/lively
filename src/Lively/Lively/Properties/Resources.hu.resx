@@ -1214,10 +1214,10 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Néhány funkció előfordulhat, hogy nem működik, ha renszergazdaként van futtatva</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Kiegészítő fájlok letöltése szükséges a funkció működéséhez</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Letötlés szükséges</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Letöltés</value>

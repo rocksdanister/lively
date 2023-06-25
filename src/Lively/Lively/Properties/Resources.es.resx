@@ -1212,7 +1212,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Fondo de pantalla de profundidad generado por IA</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Crear fondo de pantalla</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
     <value>Algunas funcionalidades pueden no estar disponibles cuando se ejecutan como administrador</value>

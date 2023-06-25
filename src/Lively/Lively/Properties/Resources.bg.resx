@@ -1172,7 +1172,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Това е всичко за сега..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Разработката на функция е паузирана</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Плъгини</value>
