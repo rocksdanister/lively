@@ -55,6 +55,7 @@
     <None Remove="Assets\icons8-depth-effect-96.png" />
     <None Remove="Assets\icons8-github-96.png" />
     <None Remove="Assets\icons8-google-96.png" />
+    <None Remove="Assets\icons8-landscape-64.png" />
     <None Remove="Assets\icons8-mail-96.png" />
     <None Remove="Assets\icons8-panorama-96.png" />
     <None Remove="Assets\icons8-reddit-96.png" />
@@ -192,6 +193,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\icons8-landscape-64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icons8-depth-effect-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
