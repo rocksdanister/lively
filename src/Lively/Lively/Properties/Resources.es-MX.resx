@@ -1216,10 +1216,10 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Es posible que algunas funcionalidades no estén disponibles cuando se ejecutan como administrador/a</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Es necesario descargar archivos adicionales para esta función</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Descarga necesaria</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Descargar</value>

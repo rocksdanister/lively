@@ -172,24 +172,24 @@ Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personali
     <value>Czy na pewno chcesz usunąć tę tapetę z Biblioteki?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Po prostu przeciągnij i upuść tutaj pliki</value>
+    <value>Po prostu przeciągnij i upuść pliki tutaj</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Otwierasz zewnętrzną aplikację jako tapetę.
-Złośliwe aplikacje mogą zawierać malware,wirusy... niebezpieczne dla twojego systemu.
-Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
+Złośliwe aplikacje mogą zawierać malware, wirusy... niebezpieczne dla twojego systemu.
+Kontynuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Jestem w zasobniku systemowym, kliknij prawym lively po więcej opcji.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Uruchom ponownie Lively aby zastosować ustawienia</value>
+    <value>Uruchom ponownie Lively, aby zastosować ustawienia</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Zatrzymaj się proszę zanim przejdziesz dalej.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Naciśnij aby rozpocząć nagrywanie.</value>
+    <value>Naciśnij, aby rozpocząć nagrywanie</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Przywracanie poprzedniej tapety..</value>
@@ -213,7 +213,7 @@ Kontunuuj, tylko jeśli aplikacja pochodzi z zaufanego źródła.</value>
     <value>Okaż wsparcie deweloperowi, kupując mu kawę</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Masz zamiar zmienić wersję Lively do wersji beta (deweloperskiej)
+    <value>Masz zamiar zmienić wersję Lively do wersji beta (deweloperskiej).
 Aktualizacje będą częste i mogą zawierać błędy!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
@@ -226,10 +226,10 @@ Aktualizacje będą częste i mogą zawierać błędy!</value>
     <value>Lively uruchomi się ponownie, aby zastosować nowy język</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Wybór języka</value>
+    <value>Język</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Aktualizacja zakończona niepowodzeniem.Spróbuj pobrać instalator z</value>
+    <value>Aktualizacja zakończona niepowodzeniem. Spróbuj pobrać instalator z: https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
     <value>Uszkodzony plik tapety, spróbuj pobrać ponownie</value>
@@ -1184,43 +1184,43 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Wtyczki</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Stwórz dynamiczną tapetę</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Zaawansowane</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Przybliżanie głębokości..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Używając AI przekształć zdjęcia w 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Kontynuuj</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Stwórz prostą tapetę</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>Tapeta z Głębokością AI</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Tapeta z Głębokością</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Tapeta głębokości wygenerowana przez AI</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Stwórz tapetę</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Niektóre funkcje mogą nie być dostępne po uruchomieniu jako administrator</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Dodatkowe pliki muszą być pobrane dla tej funkcji</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Wymagane pobranie</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Pobierz</value>
