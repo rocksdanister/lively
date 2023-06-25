@@ -44,7 +44,7 @@ namespace Lively.UI.WinUI.ViewModels
                 Description =  i18n.GetString("DescriptionDepthWallpaperItem/Content"),
                 CreateType = WallpaperCreateType.depthmap,
                 TypeSupported = WallpaperType.picture,
-                Icon = "ms-appx:///Assets/icons8-artificial-intelligence-100.png"
+                Icon = "ms-appx:///Assets/icons8-landscape-64.png"
             });
             //WallpaperCategories.Add(new AddWallpaperCreateModel()
             //{
