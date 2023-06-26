@@ -25,12 +25,15 @@
       border-radius: 5px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
+
     h2 {
       font-weight: 700;
     }
+
     h3 {
       font-weight: 600;
     }
+
     a {
       color: #77cbf9;
     }
@@ -43,6 +46,7 @@
       position: relative;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
+
     .video {
       position: relative;
       width: 825px;
@@ -60,7 +64,7 @@
 
     <h3 id="ai-depth-wallpapers">AI Depth Wallpapers</h3>
     <div class="video-border">
-      <video class="video" loop muted autoplay>
+      <video id="promo-depth-wallpapers" class="video" loop muted>
         <source src="assets/promo_depthwallpaper.mp4" type="video/mp4" />
       </video>
     </div>
@@ -78,7 +82,7 @@
 
     <h3 id="new-wallpapers">New "Living Room" Wallpaper</h3>
     <div class="video-border">
-      <video class="video" loop muted autoplay>
+      <video id="promo-new-wallpaper" class="video" loop muted>
         <source src="assets/promo_livingroom.mp4" type="video/mp4" />
       </video>
     </div>
@@ -86,10 +90,10 @@
 
     <h3 id="color-picker">Fancy ColorPicker</h3>
     <div class="video-border">
-        <video class="video" loop muted autoplay>
-          <source src="assets/promo_colorpicker.mp4" type="video/mp4" />
-        </video>
-      </div>
+      <video id="promo-color-picker" class="video" loop muted>
+        <source src="assets/promo_colorpicker.mp4" type="video/mp4" />
+      </video>
+    </div>
     <p>A brand new feature packed ColorPicker control, best part? works with all existing wallpapers!</p>
     <h3 id="ui-ux">UI/UX</h3>
     <ul>
@@ -127,4 +131,28 @@
       <li>Updated WindowsAppSDK v1.3.2</li>
     </ul>
   </body>
+  <script>
+    let videos = document.getElementsByClassName("video");
+    function callbackFunc(entries, observer) {
+      entries.forEach((entry) => {
+        for (let i = 0; i < videos.length; i++) {
+          if (entry.target.id != videos[i].id) continue;
+
+          //If more than half of video visible, play
+          if (entry.intersectionRatio >= 0.5) videos[i].play();
+          else videos[i].pause();
+        }
+      });
+    }
+
+    let observer = new IntersectionObserver(
+      callbackFunc,
+      (options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: [0.25, 0.5, 0.75],
+      })
+    );
+    [...videos].forEach((x) => observer.observe(x));
+  </script>
 </html>
