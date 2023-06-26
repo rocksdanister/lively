@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <title>Lively Wallpaper Changelog</title>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <style>
+    html {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    body {
+      font-size: 15px;
+      color: white;
+      background-color: #1c1c1c;
+      font-family: "Noto Sans", sans-serif;
+    }
+
+    .hero {
+      width: 825px;
+      height: 459px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    h2 {
+      font-weight: 700;
+    }
+    h3 {
+      font-weight: 600;
+    }
+    a {
+      color: #77cbf9;
+    }
+
+    .video-border {
+      width: 825px;
+      height: 459px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .video {
+      position: relative;
+      width: 825px;
+      left: 0;
+      top: 0;
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <h1>A New Smarter Lively</h1>
+    <img class="hero" src="assets/hero_art.jpg" />
+    <p>Lively just got smarter with AI.. introducing first of many to come AI feature "Depth Wallpapers"</p>
+
+    <h2 id="what-s-changed-in-lively-v2-0-7-0">What&#39;s new in Lively v2.0.7</h2>
+
+    <h3 id="ai-depth-wallpapers">AI Depth Wallpapers</h3>
+    <div class="video-border">
+      <video class="video" loop muted autoplay>
+        <source src="assets/promo_depthwallpaper.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>
+      Using Machine Learning to predict distance of objects from the camera and then use GPU shaders to create 3D image!
+    </p>
+    <p>
+      For those who are privacy minded - no data is uploaded to the internet, everything is run 100% on the system
+      itself.
+    </p>
+    <p>
+      In my testing works best with scenery, dont be afraid to try different things out and share with the community
+      what you find! You can find some stock images here: <a href="https://www.pexels.com">https://www.pexels.com</a>
+    </p>
+
+    <h3 id="new-wallpapers">New "Living Room" Wallpaper</h3>
+    <div class="video-border">
+      <video class="video" loop muted autoplay>
+        <source src="assets/promo_livingroom.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Stylish Isometric room showing currently playing music, dynamic lighting that reacts to music bass and more!</p>
+
+    <h3 id="color-picker">Fancy ColorPicker</h3>
+    <div class="video-border">
+        <video class="video" loop muted autoplay>
+          <source src="assets/promo_colorpicker.mp4" type="video/mp4" />
+        </video>
+      </div>
+    <p>A brand new feature packed ColorPicker control, best part? works with all existing wallpapers!</p>
+    <h3 id="ui-ux">UI/UX</h3>
+    <ul>
+      <li>Tray customize menu now takes display scaling into account.</li>
+      <li>Refactoring and improvements should yield better performance and consistency.</li>
+    </ul>
+    <h3 id="enhancements">Enhancements</h3>
+    <ul>
+      <li>Added .JFIF image support.</li>
+      <li>LivelyProperties now support tooltips, display helpful information about the setting on hover.</li>
+      Learn more:
+      <a href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction"
+        >https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction</a
+      >
+    </ul>
+    <h3 id="fixes">Fixes</h3>
+    <ul>
+      <li>Fixed wallpaper FileDialog not opening when the program is Run as administrator.</li>
+      <li>Fixed media not changing in music wallpapers when the new track is from the same artist.</li>
+    </ul>
+    <h3 id="translation">Translation</h3>
+    <ul>
+      <li>Updated translations.</li>
+      <li>
+        The new features may not be translated to all the languages on first release due to the nature of community
+        translations.
+      </li>
+      You can help translating, learn more:
+      <a href="https://crowdin.com/project/lively-wallpaper">https://crowdin.com/project/lively-wallpaper</a>
+    </ul>
+    <h3 id="updates">Updates</h3>
+    <ul>
+      <li>Updated dependencies.</li>
+      <li>Updated .NET Desktop Runtime v7.0.7</li>
+      <li>Updated WindowsAppSDK v1.3.2</li>
+    </ul>
+  </body>
+</html>

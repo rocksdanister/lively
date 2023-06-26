@@ -129,6 +129,13 @@ async function setVisible(element) {
   }
 }
 
+function setPallete() {
+  document.body.style.setProperty("--color1", "#415074");
+  document.body.style.setProperty("--color2", "#6072A1");
+  document.body.style.setProperty("--color3", "#57658F");
+}
+//setPallete();
+
 function hasClass(element, className) {
   return (" " + element.className + " ").indexOf(" " + className + " ") > -1;
 }

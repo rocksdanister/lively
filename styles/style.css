@@ -1,3 +1,9 @@
+:root {
+  --color1: #5e42a6;
+  --color2: #a425a0;
+  --color3: #493382;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -99,7 +105,7 @@ label {
 /* https://stackoverflow.com/questions/35681829/transformscale-breaking-my-z-index-order */
 #page-features {
   transform: translate3d(0, 0, 0);
-  background-color: #5e42a6;
+  background-color: var(--color1);
   padding: 50px;
   min-height: 500px;
   text-align: center;
@@ -108,7 +114,7 @@ label {
 
 #page-gallery {
   transform: translate3d(0, 0, 0);
-  background-color: #a425a0;
+  background-color: var(--color2);
   padding: 50px;
   min-height: 600px;
   text-align: center;
@@ -116,7 +122,7 @@ label {
 
 #page-download {
   transform: translate3d(0, 0, 0);
-  background-color: #5e42a6;
+  background-color: var(--color1);
   padding: 50px;
   min-height: 300px;
   text-align: center;
@@ -124,7 +130,7 @@ label {
 
 #footer {
   transform: translate3d(0, 0, 0);
-  background-color: #493382;
+  background-color: var(--color3);
   padding: 25px;
   min-height: 100px;
 }
@@ -339,7 +345,7 @@ li.card {
   width: 368px;
   height: 207px;
   border-radius: 10px;
-  background-color: #a425a0;
+  background-color: var(--color2);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
   transition: 0.5s ease;
 }
@@ -589,7 +595,7 @@ li.card p {
 }
 
 .indeterminate-progress-bar__progress {
-  background-color: #5e42a6;
+  background-color: var(--color1);
   position: absolute;
   bottom: 0;
   top: 0;
