@@ -160,22 +160,12 @@ namespace Lively.UI.WinUI.ViewModels
                     });
                     inputImage.Extent(480, 270, Gravity.Center);
                     await inputImage.WriteAsync(Path.Combine(destDir, "thumbnail.jpg"));
-                    JsonStorage<ILivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), new LivelyInfoModel()
-                    {
-                        Title = Path.GetFileNameWithoutExtension(inputImagePath),
-                        Desc = i18n.GetString("DescriptionDepthWallpaperTemplate/Content"),
-                        Type = WallpaperType.web,
-                        IsAbsolutePath = false,
-                        FileName = "index.html",
-                        Contact = "https://github.com/rocksdanister/depthmap-wallpaper",
-                        License = "See License.txt",
-                        Author = "rocksdanister",
-                        AppVersion = desktopCore.AssemblyVersion.ToString(),
-                        Preview = "preview.gif",
-                        Thumbnail = "thumbnail.jpg",
-                        Tags = new() { "depth", "depthmap" },
-                        Arguments = string.Empty,
-                    });
+                    //LivelyInfo.json update
+                    var infoModel = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(destDir, "LivelyInfo.json"));
+                    infoModel.Title = Path.GetFileNameWithoutExtension(inputImagePath);
+                    infoModel.Desc = i18n.GetString("DescriptionDepthWallpaperTemplate/Content");
+                    infoModel.AppVersion = desktopCore.AssemblyVersion.ToString();
+                    JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(destDir, "LivelyInfo.json"), infoModel);
                 });
 
                 //Preview output to user
