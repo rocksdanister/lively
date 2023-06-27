@@ -212,7 +212,7 @@ namespace Lively.UI.WinUI.ViewModels
 
                 var uri = await GetModelUrl();
                 Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
-                var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName());
+                var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".zip");
                 downloader.DownloadProgressChanged += (s, e) =>
                 {
                     _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
@@ -252,11 +252,11 @@ namespace Lively.UI.WinUI.ViewModels
                 Logger.Error(ex);
                 ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
             }
-            finally
-            {
-                _canDownloadModelCommand = true;
-                DownloadModelCommand.NotifyCanExecuteChanged();
-            }
+            //finally
+            //{
+            //    _canDownloadModelCommand = true;
+            //    DownloadModelCommand.NotifyCanExecuteChanged();
+            //}
         }
 
         private void CancelOperations()
