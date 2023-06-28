@@ -19,6 +19,11 @@
       font-family: "Noto Sans", sans-serif;
     }
 
+    .footer {
+      text-align: center;
+      padding: 25px;
+    }
+
     .hero {
       width: 825px;
       height: 459px;
@@ -48,6 +53,7 @@
     }
 
     .video {
+      transition: 0.5s;
       position: relative;
       width: 825px;
       left: 0;
@@ -72,10 +78,13 @@
       Using Machine Learning to predict distance of objects from the camera and then use GPU shaders to create 3D image!
     </p>
     <p>
-      When it comes to privacy, everything is run 100% local. No network required to run the model, no data sent to the cloud.
+      When it comes to privacy, everything is run 100% local. No network required to run the model, no data sent to the
+      cloud.
     </p>
     <p>
-      In my testing works best with scenery, dont be afraid to try different things out and share with the community what you find. You can get some stock images to try here: <a href="https://www.pexels.com">https://www.pexels.com</a>
+      In my testing works best with scenery, dont be afraid to try different things out and share with the community
+      what you find. You can get some stock images to try here:
+      <a href="https://www.pexels.com">https://www.pexels.com</a>
     </p>
 
     <h3 id="new-wallpapers">New "Living Room" Wallpaper</h3>
@@ -130,6 +139,9 @@
       <li>Updated WindowsAppSDK v1.3.2</li>
     </ul>
   </body>
+  <div class="footer">
+    <a href="https://rocksdanister.com/lively" title="https://rocksdanister.com/lively">Home</a>
+  </div>
   <script>
     let videos = document.getElementsByClassName("video");
     function callbackFunc(entries, observer) {
@@ -138,8 +150,13 @@
           if (entry.target.id != videos[i].id) continue;
 
           //If more than half of video visible, play
-          if (entry.intersectionRatio >= 0.5) videos[i].play();
-          else videos[i].pause();
+          if (entry.intersectionRatio >= 0.75) {
+            videos[i].play();
+            videos[i].style.filter = "";
+          } else {
+            videos[i].pause();
+            videos[i].style.filter = "brightness(50%)";
+          }
         }
       });
     }
