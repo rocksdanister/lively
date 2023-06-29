@@ -21,11 +21,7 @@
 ## About
 <img src="/resources/main_preview.gif" width="600" height="338"/>
 
-Lively is the only animated desktop wallpaper application that you will need.
-
-<img src="/resources/main_dragdrop.gif" width="600" height="338"/>
-
-Its super easy.. barely an inconvenience, just drag & drop the files or webpages to set as wallpaper.
+Animated desktop wallpapers, bring your desktop to life!
 
 #### Join Discussions:
 * <a href="https://www.reddit.com/r/LivelyWallpaper/">Reddit</a>
@@ -36,30 +32,22 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 #### Videos / GIFs
 <img src="/resources/wallpaper_video.gif" width="600" height="338"/>
 
-<a href="https://visualdon.uk/project/eternal-light/">Eternal Light</a> by VISUALDON
+<a href="https://www.pexels.com/video/sea-water-blue-ocean-7513671/">Video</a> by Rostislav Uzunov
 * Powered by mpv / vlc player.
 * Customize videos with filters.
-* Hardware Acceleration supported.
-* Supports integer scaler for sharp image.
+* Hardware accelerated rendering.
+* Integer scaling for sharp pixel art.
 #### Webpages
 <img src="/resources/wallpaper_html.gif" width="600" height="338"/>
 
 <a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
 * Load HTML file or web address as wallpaper.
-* Runs webgl, javascript.. basically anything that works on chrome.
-* Audio Reactive Wallpaper support.
-#### Shaders
-<img src="/resources/wallpaper_shadertoy.gif" width="600" height="338"/>
-
-<a href="https://www.shadertoy.com/view/ltffzl">Heartfelt </a> by BigWIngs
-* Run GLSL shaders in browser.
-* Custom shader renderer (coming soon.)
-* Shadertoy.com urls are supported as wallpaper.
+* Run WebGL, Javascript.. same as any chromium browser.
 #### Games & Applications
 <img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
 
-* Support Unity, Godot games as wallpaper.
-* Limited support for gui applications as wallpaper.
+* Run Unity or Godot games as wallpaper.
+* GUI applications are also supported with limited support.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Application-Wallpaper)
 #### Screensavers
 <img src="/resources/screen_saver.gif" width="600" height="338"/>
@@ -68,24 +56,28 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 * Any wallpaper can be used as screensaver.
 * Multiple monitor supported.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Screen-Saver)
+#### Machine Learning
+<img src="/resources/wallpaper_depth.gif" width="600" height="338"/>
+
+* Leverage Machine Learning inference to create dynamic wallpapers.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Machine-Learning)
 #### Automation
-<img src="/resources/cmd_rm.gif" width="600" height="338"/>
+<img src="/resources/rotary_demo.gif" width="600" height="338"/>
 
 * Lively can be controlled with command line arguments from terminal.
-* Can be paired with third party scripting software like AutoHotkey.
+* Integrate with other languages like Python or scripting software AutoHotKey.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Command-Line-Controls)
 #### Lively API
 <img src="/resources/music_api.gif" width="600" height="338"/>
 
 * Powerful set of API for developers to create interactive wallpapers.
-* Get system information, audio graph, music information..
+* Get hardware readings, audio graph, music information..
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
-#### & more
-- Easy to use; Just drag'n'drop media files & webpages into lively window to set it as wallpaper.
-- Hardware accelerated video playback, powered by mpv player.
-- Interactive webgl wallpapers, powered by lightweight chromium engine Cef.
-- Windows 11 fluent design language.
-- Efficient, Lively is a native .net core application.
+#### More Features
+- Shadertoy.com urls are supported as wallpaper.
+- Easy to use; Just drag'n'drop media or webpages into lively to set as wallpaper.
+- Latest Windows 11 design using WinUI 3 + WindowsAppSDK framework.
+- Efficient, Lively is native application designed for Windows.
 - Fully opensource & free; no blackmagic, no features behind paywall.
 #### Performance
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
@@ -99,7 +91,7 @@ Its super easy.. barely an inconvenience, just drag & drop the files or webpages
 - Duplicate same wallpaper across all screens.
 - HiDPI and Ultrawide resolutions supported.
 
-**_I'm not officially affiliated with Unity technologies, godot, shadertoy;_**
+**_Lively is not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
 ##### Microsoft Store (Windows 10 1809 or above)
 
