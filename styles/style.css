@@ -31,8 +31,12 @@ body {
   opacity: 0; /*set to 1 after sceneLoaded event*/
 }
 
-/*drop-down controls.css*/
 button {
+  font-family: var(--font1);
+}
+
+/*drop-down controls.css*/
+.dropbtn {
   font-family: var(--font2);
 }
 
@@ -185,10 +189,6 @@ label {
   user-select: none;
 }
 
-#ui-app-customise-label {
-  font-family: var(--font1);
-}
-
 #ui-app-titlebar {
   position: absolute;
   display: block;
@@ -238,10 +238,11 @@ label {
 
 #ui-app-customize-heading {
   position: absolute;
-  top: -175px;
+  top: -150px;
   left: 15px;
   opacity: 0;
   pointer-events: none;
+  font-family: var(--font1);
 }
 
 #ui-app-customise-controls {
