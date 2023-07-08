@@ -33,7 +33,7 @@ body {
 
 /*drop-down controls.css*/
 button {
-  font-family: var(--font1);
+  font-family: var(--font2);
 }
 
 h1 {
@@ -173,6 +173,7 @@ label {
 
 /* app ui */
 .ui-app {
+  font-family: var(--font2);
   animation: zoom-in 1.5s ease;
   position: fixed;
   width: 798px;
@@ -182,6 +183,10 @@ label {
   margin-top: 100px;
   margin-left: -399px; /* Negative half of width. */
   user-select: none;
+}
+
+#ui-app-customise-label {
+  font-family: var(--font1);
 }
 
 #ui-app-titlebar {
