@@ -419,6 +419,7 @@ li.card p {
   background-size: cover;
   background-repeat: none;
   transition: flex 0.8s ease;
+  transition-delay: 0.25s;
 }
 
 .item:hover {
@@ -427,7 +428,7 @@ li.card p {
 
 .item:hover p {
   display: block;
-  animation: fade-in 1s ease;
+  animation: fade-in 2.5s ease;
 }
 
 .item p {
