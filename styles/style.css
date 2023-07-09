@@ -423,7 +423,7 @@ li.card p {
 }
 
 .item:hover {
-  flex: 7;
+  flex: 14;
 }
 
 .item:hover p {
@@ -807,9 +807,9 @@ li.card p {
     margin: 0px;
   }
 
-  .item:hover {
+  /* .item:hover {
     flex: 14;
-  }
+  } */
 
   /*home font*/
   .heading {
