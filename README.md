@@ -29,26 +29,12 @@ Animated desktop wallpapers, bring your desktop to life!
 
 ## Features
 *Wait a sec, preview gif clips take some time to load.*
-#### Videos / GIFs
-<img src="/resources/wallpaper_video.gif" width="600" height="338"/>
-
-<a href="https://www.pexels.com/video/sea-water-blue-ocean-7513671/">Video</a> by Rostislav Uzunov
-* Powered by mpv / vlc player.
-* Customize videos with filters.
-* Hardware accelerated rendering.
-* Integer scaling for sharp pixel art.
-#### Webpages
-<img src="/resources/wallpaper_html.gif" width="600" height="338"/>
-
-<a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle
-* Load HTML file or web address as wallpaper.
-* Run WebGL, Javascript.. same as any chromium browser.
-#### Games & Applications
-<img src="/resources/wallpaper_emulator.gif" width="600" height="338"/>
-
-* Run Unity or Godot games as wallpaper.
-* GUI applications are also supported with limited support.
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/Application-Wallpaper)
+#### Types Of Wallpapers
+| Wallpaper | Example |  Interactive | Resolution | Performance |
+|--|--|--|--|--|
+| Video/GIF | <img src="/resources/wallpaper_video.gif" width="256" height="144"/><br><a href="https://www.pexels.com/video/blue-texture-abstract-leaves-7710243/">Video</a> by Rostislav Uzunov | No| Fixed | Fixed |
+| Webpage | <img src="/resources/wallpaper_html.gif" width="256" height="144"/><br><a href="http://louie.co.nz/25th_hour/"> 25th Hour</a> by Loius Coyle  | Yes| Variable | Variable |
+| Application/Games | <img src="/resources/wallpaper_emulator.gif" width="256" height="144"/><br>Run Unity or Godot games as wallpaper | Yes | Variable | Variable |
 #### Screensavers
 <img src="/resources/screen_saver.gif" width="600" height="338"/>
 
@@ -56,11 +42,6 @@ Animated desktop wallpapers, bring your desktop to life!
 * Any wallpaper can be used as screensaver.
 * Multiple monitor supported.
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/Screen-Saver)
-#### Machine Learning
-<img src="/resources/wallpaper_depth.gif" width="600" height="338"/>
-
-* Leverage Machine Learning inference to create dynamic wallpapers.
-* [Learn more..](https://github.com/rocksdanister/lively/wiki/Machine-Learning)
 #### Automation
 <img src="/resources/rotary_demo.gif" width="600" height="338"/>
 
@@ -73,23 +54,24 @@ Animated desktop wallpapers, bring your desktop to life!
 * Powerful set of API for developers to create interactive wallpapers.
 * Get hardware readings, audio graph, music information..
 * [Learn more..](https://github.com/rocksdanister/lively/wiki/API)
+#### Machine Learning
+<img src="/resources/wallpaper_depth.gif" width="600" height="338"/>
+
+* Leverage Machine Learning inference to create dynamic wallpapers.
+* [Learn more..](https://github.com/rocksdanister/lively/wiki/Machine-Learning)
 #### More Features
-- Shadertoy.com urls are supported as wallpaper.
+- Minimal webpage renderer powered by chromium.
+- Hardware accelerated video playback using mpv/vlc player with customizable video filters.
 - Easy to use; Just drag'n'drop media or webpages into lively to set as wallpaper.
 - Latest Windows 11 design using WinUI 3 + WindowsAppSDK framework.
 - Efficient, Lively is native application designed for Windows.
 - Fully opensource & free; no blackmagic, no features behind paywall.
+- Shadertoy.com urls are supported as wallpaper.
 #### Performance
  * Wallpaper playback pauses when fullscreen application/games run on the machine (~0% cpu, gpu usage). 
  * Set wallpaper playback rules based on running foreground application.
  * Can be set to pause wallpaper when running on battery power (laptops.)
  * Wallpaper automatically pauses when running remote desktop session.
-#### Multiple displays
-- Supports any number of monitors.
-- Wallpaper adjusts automatically to monitor settings change.
-- Span single wallpaper across all screens.
-- Duplicate same wallpaper across all screens.
-- HiDPI and Ultrawide resolutions supported.
 
 **_Lively is not officially affiliated with Unity technologies, godot, shadertoy;_**
 ## Download
