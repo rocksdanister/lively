@@ -430,9 +430,9 @@ namespace Lively.UI.WinUI
 
             _ = new ContentDialog()
             {
-                Title = "Shuffle settings",
+                Title = i18n.GetString("Shuffle/Label"),
                 Content = new ShuffleView(),
-                PrimaryButtonText = "OK",
+                PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             }.ShowAsyncQueue();

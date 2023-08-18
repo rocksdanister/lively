@@ -13,11 +13,10 @@
         <StackPanel Orientation="Vertical">
             <CheckBox
                 x:Uid="EnableShuffle"
-                Content="Enable random wallpaper change"
                 IsChecked="{Binding EnableShuffle, Mode=TwoWay}"
             />
 
-            <controls:SettingsCard x:Uid="TimeShuffle" Header="Time Intervall (in minutes)">
+            <controls:SettingsCard x:Uid="TimeShuffle">
                 <controls:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xE916;" />
                 </controls:SettingsCard.HeaderIcon>

@@ -1220,4 +1220,13 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="EnableShuffle.Content" xml:space="preserve">
+    <value>Enable automatic wallpaper change</value>
+  </data>
+  <data name="Shuffle.Label" xml:space="preserve">
+    <value>Shuffle settings</value>
+  </data>
+  <data name="TimeShuffle.Header" xml:space="preserve">
+    <value>Time Intervall (in minutes)</value>
+  </data>
 </root>
