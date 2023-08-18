@@ -24,6 +24,7 @@ namespace Lively.Core
         void SendMessageWallpaper(string info_path, IpcMessage msg);
         void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg);
         void SetWallpaper(ILibraryModel wallpaper, IDisplayMonitor display);
+        void SetRandomWallpaper();
 
         /// <summary>
         /// Wallpaper set/removed.

@@ -254,6 +254,8 @@ namespace Lively.Grpc.Client
                 ApplicationThemeBackground = (Common.Proto.Settings.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
+                DoRandomWallpaper = settings.DoRandomWallpaper,
+                TimeToChangeWallpaper = settings.TimeToChangeWallpaper,
             };
         }
 
@@ -330,6 +332,8 @@ namespace Lively.Grpc.Client
                 ApplicationThemeBackground = (Lively.Common.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
+                DoRandomWallpaper = settings.DoRandomWallpaper,
+                TimeToChangeWallpaper = settings.TimeToChangeWallpaper,
             };
         }
 

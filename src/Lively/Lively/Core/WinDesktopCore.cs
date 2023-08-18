@@ -17,6 +17,7 @@ using Lively.ViewModels;
 using Lively.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
+using NLog.Layouts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -787,6 +788,48 @@ namespace Lively.Core
             }
         }
 
+        private ILibraryModel GetRandomWallpaper()
+        {
+
+            var dir = new List<string>();
+            string[] folderPaths = {
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
+            };
+            for (int i = 0; i < folderPaths.Count(); i++)
+            {
+                try
+                {
+                    dir.AddRange(Directory.GetDirectories(folderPaths[i], "*", SearchOption.TopDirectoryOnly));
+                }
+                catch { /* TODO */ }
+            }
+
+            List<ILibraryModel> libList = new List<ILibraryModel>();
+
+            for (int i = 0; i < dir.Count; i++)
+            {
+                try
+                {
+                    libList.Add(WallpaperUtil.ScanWallpaperFolder(dir[i]));
+                }
+                catch { }
+            }
+
+            return libList[new Random().Next(libList.Count())];
+        }
+
+        public void SetRandomWallpaper()
+        {
+
+            foreach(var screen in displayManager.DisplayMonitors.AsEnumerable())
+            {
+                var libraryItem = GetRandomWallpaper();
+                SetWallpaper(libraryItem, screen);
+            }
+
+        }
+
         private void RestoreWallpaper(List<IWallpaperLayoutModel> wallpaperLayout)
         {
             foreach (var layout in wallpaperLayout)
@@ -846,6 +889,11 @@ namespace Lively.Core
             catch (Exception e)
             {
                 Logger.Error($"Failed to restore wallpaper: {e}");
+            }
+            if (userSettings.Settings.DoRandomWallpaper == true)
+            {
+                var task = new TimerService(TimeSpan.FromSeconds(userSettings.Settings.TimeToChangeWallpaper), displayManager, this);
+                task.Start();
             }
         }
 

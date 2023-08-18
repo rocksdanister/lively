@@ -70,5 +70,7 @@ namespace Lively.Models
         string ApplicationThemeBackgroundPath { get; set; }
         AppThemeBackground ApplicationThemeBackground { get; set; }
         int ThemeBundleVersion { get; set; }
+        bool DoRandomWallpaper { get; set; }
+        int TimeToChangeWallpaper { get; set; }
     }
 }

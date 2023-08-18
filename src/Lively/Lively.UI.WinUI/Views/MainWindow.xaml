@@ -225,6 +225,17 @@
                     <AppBarSeparator />
 
                     <AppBarButton
+                        Name="shuffleBtn"
+                        MaxWidth="50"
+                        LabelPosition="Collapsed"
+                        Click="ToogleShuffleButton_Click">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE8B1;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarSeparator />
+
+                    <AppBarButton
                         Name="authorizedBtn"
                         MaxWidth="50"
                         Padding="0"

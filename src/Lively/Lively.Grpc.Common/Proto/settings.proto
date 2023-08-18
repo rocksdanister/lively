@@ -72,6 +72,8 @@ message SettingsDataModel {
     AppThemeBackground application_theme_background = 60;
     string application_theme_background_path = 61;
     int32 theme_bundle_version = 62;
+    bool do_random_wallpaper = 63;
+    int32 time_to_change_wallpaper = 64;
 }
 
 message AppRulesSettings {

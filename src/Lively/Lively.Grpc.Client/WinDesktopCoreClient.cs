@@ -279,6 +279,16 @@ namespace Lively.Grpc.Client
             }
         }
 
+        public async Task SetWallpaperLoop(bool state, int intervall)
+        {
+            var request = new SetWallpaperLoopRequest
+            {
+                State = state,
+                Intervall = intervall,
+            };
+            _ = await client.SetWallpaperLoopAsync(request);
+        }
+
         #region dispose
 
         protected virtual void Dispose(bool disposing)
