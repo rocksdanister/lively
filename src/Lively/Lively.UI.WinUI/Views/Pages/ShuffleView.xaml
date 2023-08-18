@@ -11,13 +11,12 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            
             <CheckBox
                 x:Uid="EnableShuffle"
                 Content="Enable random wallpaper change"
                 IsChecked="{Binding EnableShuffle, Mode=TwoWay}"
             />
-            
+
             <controls:SettingsCard x:Uid="TimeShuffle" Header="Time Intervall (in minutes)">
                 <controls:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xE916;" />
@@ -26,13 +25,6 @@
                 <NumberBox
                     Value="{Binding TimeToChangeWallpaper, Mode=TwoWay}" />
             </controls:SettingsCard>
-            <!--
-            <TextBox
-                x:Uid="DebugBox"
-                Text="{Binding DebugBoxText, Mode=TwoWay}"
-            />
-            -->
-            
         </StackPanel>
     </Grid>
 </Page>

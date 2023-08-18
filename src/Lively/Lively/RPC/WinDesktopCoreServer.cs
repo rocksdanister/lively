@@ -359,11 +359,9 @@ namespace Lively.RPC
 
             if (timerService != null)
             {
-                Logger.Info("timerService is not null !");
                 try
                 {
                     _ = timerService.Stop();
-                    Logger.Info("timer service stopped !");
                 }
                 catch(Exception e)
                 {
@@ -372,17 +370,14 @@ namespace Lively.RPC
             }
             else
             {
-                Logger.Info("timerService is null ...");
                 timerService = new TimerService(TimeSpan.FromSeconds(request.Intervall), displayManager, desktopCore);
             }
 
             if(request.State == true)
             {
-                Logger.Info("!!! DoRandomWallpaper is " + request.State.ToString());
                 timerService.ChangeTimerIntervall(TimeSpan.FromSeconds(request.Intervall));
                 timerService.Start();
             }
-            Logger.Info("DoRandomWallpaper is "+ request.State.ToString());
 
             return Task.FromResult(new Empty());
         }

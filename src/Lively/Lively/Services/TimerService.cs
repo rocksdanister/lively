@@ -43,7 +43,7 @@ namespace Lively.Services
         {
             try
             {
-                Logger.Info("Succesfully launched the random wallpaper cycle !"+timer.ToString());
+                Logger.Info("Succesfully launched the random wallpaper cycle !");
                 while (await timer.WaitForNextTickAsync(cts.Token))
                 {
                     // set wallpaper here

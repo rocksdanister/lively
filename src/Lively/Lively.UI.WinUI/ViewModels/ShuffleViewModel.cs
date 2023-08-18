@@ -31,23 +31,8 @@ namespace Lively.UI.WinUI.ViewModels
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
-            //DebugBoxText = userSettings.Settings.DoRandomWallpaper.ToString();
             EnableShuffle = userSettings.Settings.DoRandomWallpaper;
             TimeToChangeWallpaper = userSettings.Settings.TimeToChangeWallpaper.ToString();
-            
-
-            /*try
-            {
-                this.EnableShuffle = userSettings.Settings.DoRandomWallpaper;
-            }
-            catch(Exception e)
-            {
-                this.EnableShuffle = true;
-                DebugBoxText = e.ToString();
-            }*/
-
-
-
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
         }
 
