@@ -892,7 +892,7 @@ namespace Lively.Core
             }
             if (userSettings.Settings.DoRandomWallpaper == true)
             {
-                var task = new TimerService(TimeSpan.FromSeconds(userSettings.Settings.TimeToChangeWallpaper), displayManager, this);
+                var task = new TimerService(TimeSpan.FromMinutes(userSettings.Settings.TimeToChangeWallpaper), displayManager, this);
                 task.Start();
             }
         }

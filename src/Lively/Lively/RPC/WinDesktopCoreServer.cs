@@ -370,12 +370,12 @@ namespace Lively.RPC
             }
             else
             {
-                timerService = new TimerService(TimeSpan.FromSeconds(request.Intervall), displayManager, desktopCore);
+                timerService = new TimerService(TimeSpan.FromMinutes(request.Intervall), displayManager, desktopCore);
             }
 
             if(request.State == true)
             {
-                timerService.ChangeTimerIntervall(TimeSpan.FromSeconds(request.Intervall));
+                timerService.ChangeTimerIntervall(TimeSpan.FromMinutes(request.Intervall));
                 timerService.Start();
             }
 
