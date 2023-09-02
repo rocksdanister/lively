@@ -1,0 +1,14 @@
+{
+"AppVersion": "0.9.6.0",
+"Title": "Doom",
+"Thumbnail": "lively_t.jpg",
+"Preview": "lively_p.gif",
+"Desc": "--",
+"Author": "--",
+"License": null,
+"Contact": null,
+"Type": 0,
+"FileName": "DOOM.exe",
+"Arguments": null,
+"IsAbsolutePath": false
+}
