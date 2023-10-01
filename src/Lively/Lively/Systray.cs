@@ -89,7 +89,7 @@ namespace Lively
             //Random Wallpaper
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
             //Reload Wallpapers
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextReloadWallpaper, null).Click += (s, e) => desktopCore.ResetWallpaper();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextReloadWallpaper, null).Click += (s, e) => desktopCore.ReloadWallpaper();
             //Customise wallpaper
             customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {

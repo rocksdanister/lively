@@ -17,6 +17,7 @@ namespace Lively.Core
         void CloseWallpaper(ILibraryModel wp, bool terminate = false);
         void CloseWallpaper(IDisplayMonitor display, bool terminate = false);
         void CloseWallpaper(WallpaperType type, bool terminate = false);
+        void ReloadWallpaper();
         void ResetWallpaper();
         void RestoreWallpaper();
         void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type);

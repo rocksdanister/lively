@@ -591,6 +591,21 @@ namespace Lively.Core
             //WallpaperReset?.Invoke(this, EventArgs.Empty);
         }
 
+        public void ReloadWallpaper()
+        {
+            if (Wallpapers.Count > 0)
+            {
+                var curWallpapers = Wallpapers.ToList();
+                CloseAllWallpapers();
+                foreach (var item in curWallpapers)
+                {
+                    SetWallpaper(item.Model, item.Screen);
+                    if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                        break;
+                }
+            }
+        }
+
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             SaveWallpaperLayout();
