@@ -1220,4 +1220,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="TextReloadWallpaper" xml:space="preserve">
+    <value>Reload Wallpapers</value>
+  </data>
 </root>
