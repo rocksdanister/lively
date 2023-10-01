@@ -75,7 +75,7 @@ namespace Lively
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
             //Show UI
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.appicon_96).Click += (s, e) => runner.ShowUI();
             //Close wallpaper
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
