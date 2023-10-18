@@ -5,6 +5,7 @@
     /// </summary>
     public interface IWatchdogService
     {
+        public bool IsRunning { get; }
         /// <summary>
         /// Add program to monitor.
         /// </summary>

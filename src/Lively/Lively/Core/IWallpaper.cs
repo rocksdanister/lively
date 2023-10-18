@@ -10,6 +10,10 @@ namespace Lively.Core
     public interface IWallpaper
     {
         /// <summary>
+        /// Wallpaper exit event fired
+        /// </summary>
+        bool IsExited { get; }
+        /// <summary>
         /// Wallpaper loading complete status (includes LivelyProperties restoration.)
         /// </summary>
         /// <returns></returns>

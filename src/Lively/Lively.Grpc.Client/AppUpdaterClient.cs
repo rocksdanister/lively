@@ -33,7 +33,7 @@ namespace Lively.Grpc.Client
 
             Task.Run(async () =>
             {
-                await UpdateStatusRefresh();
+                await UpdateStatusRefresh().ConfigureAwait(false);
             }).Wait();
 
             cancellationTokenUpdateChecked = new CancellationTokenSource();

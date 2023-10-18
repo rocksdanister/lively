@@ -39,6 +39,8 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
+        public bool IsExited { get; private set; }
+
         public WebWebView2(string path,
             ILibraryModel model,
             IDisplayMonitor display,
@@ -173,6 +175,7 @@ namespace Lively.Core.Wallpapers
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
             Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
+            IsExited = true;
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)

@@ -32,6 +32,8 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
+        public bool IsExited { get; private set; }
+
         public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
         private Task processWaitTask;
@@ -199,6 +201,7 @@ namespace Lively.Core.Wallpapers
         {
             Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
+            IsExited = true;
         }
 
         #region process task
