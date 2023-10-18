@@ -11,8 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
-    <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="NPSMLib" Version="0.9.14" />
   </ItemGroup>
 
