@@ -149,7 +149,7 @@
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
 
-Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ha sido comprobado y no puede ser garantizado.
+Para pantallas OLED, Plasma o CRT que son susceptibles al quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que se supone que puede mitigar este efecto, pero este método no ha sido comprobado y no se puede garantizar su eficacia.
 
 El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo!</value>
   </data>
@@ -175,9 +175,9 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Simplemente arrastra y suelta los archivos aquí</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Estás abriendo una aplicación externa como fondo de pantalla.
-Las aplicaciones maliciosas pueden dañar tu computadora con malware y virus.
-Continúa solo si confías en la fuente de la aplicación.</value>
+    <value>Estás abriendo una aplicación externa como fondo de pantalla. 
+Las aplicaciones maliciosas pueden contener malwares, virus... y dañar tu sistema. 
+Continúa únicamente si esta aplicación proviene de una fuente confiable.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively se minimiza en la bandeja del sistema, haz clic derecho en el icono de lively para continuar.</value>
@@ -186,7 +186,7 @@ Continúa solo si confías en la fuente de la aplicación.</value>
     <value>Por favor reinicie Lively para que las configuraciones tengan efecto</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Deténgase antes de continuar</value>
+    <value>Por favor pare antes de continuar</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Presione para empezar a grabar</value>
@@ -195,7 +195,7 @@ Continúa solo si confías en la fuente de la aplicación.</value>
     <value>Restaurando fondo(s) de pantalla anterior(es), por favor espere...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Elegir Pantalla</value>
+    <value>Seleccionar Pantalla</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>¡Una nueva versión del programa está disponible!</value>
@@ -204,10 +204,10 @@ Continúa solo si confías en la fuente de la aplicación.</value>
     <value>Ingresa el enlace de un sitio web para cargarlo, puedes utilizar enlaces de shadertoy.com</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Este asistente te ayudará a comenzar a configurar Lively.</value>
+    <value>Este asistente te guiará para configurar Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Tu versión de Windows N/KN requiere la descarga de códecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
+    <value>Tu versión de Windows N/KN requiere la descarga de codecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Muestra tu apoyo comprándole un café al desarrollador</value>

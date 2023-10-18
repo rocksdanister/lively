@@ -1178,13 +1178,13 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Lo sviluppo di questa funzione è in attesa</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plug-in</value>
+    <value>Componenti aggiuntivi</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
     <value>Crea uno sfondo dinamico</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Avanzato</value>
+    <value>Avanzate</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
     <value>Approssimando la profondità..</value>
@@ -1202,10 +1202,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Sfondo con profondità IA</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Sfondo con profondità</value>
+    <value>Profondità Sfondo</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>Sfondo con profondità generata da IA</value>
+    <value>Sfondo con profondità generata dall'IA</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
     <value>Crea Sfondo</value>

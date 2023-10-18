@@ -186,7 +186,7 @@ OLED, प्लाज्मा या CRT डिस्प्ले के लि
     <value>सेटिंग्स को प्रभावी बनाने के लिए पुनर्प्रारंभ  करें.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>आगे जाने से पहले रुकिए</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>रिकॉर्डिंग शुरू करने के लिए दबाएं।</value>
@@ -1185,22 +1185,22 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>प्लगइन्स</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>गतिशील वालपेपर बनाए</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
     <value>Advanced</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>गहराई का अनुमान लगाया जा रहा है. .</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
     <value>Using AI transform photographs into 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>आगे</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>एक साधारण वालपेपर बनाए</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
     <value>AI Depth Wallpaper</value>
@@ -1212,7 +1212,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>AI generated depth wallpaper</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>वालपेपर बनाए</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
     <value>Some functionalities may not be available when run as administrator</value>
@@ -1221,7 +1221,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Additional files need to be downloaded for this feature</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>डाउनलोड कि आवश्यकता है</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>डाउनलोड</value>
