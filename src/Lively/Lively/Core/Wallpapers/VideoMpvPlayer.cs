@@ -64,6 +64,8 @@ namespace Lively.Core.Wallpapers
 
         public IDisplayMonitor Screen { get; set; }
 
+        public bool IsExited { get; private set; }
+
         public VideoMpvPlayer(string path,
             ILibraryModel model,
             IDisplayMonitor display,
@@ -99,7 +101,7 @@ namespace Lively.Core.Wallpapers
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
             var configDir = GetConfigDir();
 
-            StringBuilder cmdArgs = new StringBuilder();
+            var cmdArgs = new StringBuilder();
             //startup volume will be 0
             cmdArgs.Append("--volume=0 ");
             //disable window decorations
@@ -116,6 +118,8 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append("--no-window-dragging ");
             //don't hide cursor after sometime.
             cmdArgs.Append("--cursor-autohide=no ");
+            //start without focused
+            cmdArgs.Append("--window-minimized=yes ");
             //allow windows screensaver
             cmdArgs.Append("--stop-screensaver=no ");
             //disable mpv default (built-in) key bindings
@@ -415,6 +419,7 @@ namespace Lively.Core.Wallpapers
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
             Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
+            IsExited = true;
         }
 
         #region process task

@@ -47,6 +47,7 @@
     <PackageReference Include="NLog" Version="5.2.0" />
     <PackageReference Include="RawInput.Sharp" Version="0.1.1" />
     <PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
+    <PackageReference Include="WinEventHook" Version="0.3.6" />
   </ItemGroup>
 
   <ItemGroup>

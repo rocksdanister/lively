@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using WinEventHook;
 using static Lively.Common.Errors;
 
 namespace Lively.Core
@@ -38,9 +40,8 @@ namespace Lively.Core
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly List<IWallpaper> wallpapers = new List<IWallpaper>(2);
         public ReadOnlyCollection<IWallpaper> Wallpapers => wallpapers.AsReadOnly();
-        private IntPtr progman, workerw;
+        private IntPtr workerw;
         public IntPtr DesktopWorkerW => workerw;
-        private bool _isInitialized = false;
         private bool disposedValue;
         private readonly List<IWallpaper> wallpapersPending = new List<IWallpaper>(2);
         private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new List<IWallpaperLayoutModel>();
@@ -57,7 +58,8 @@ namespace Lively.Core
         private readonly IDisplayManager displayManager;
         private readonly IRunnerService runner;
         //private readonly IScreensaverService screenSaver;
-        //private readonly LibraryViewModel libraryVm;
+
+        private WindowEventHook workerWHook;
 
         public WinDesktopCore(IUserSettingsService userSettings,
             IDisplayManager displayManager,
@@ -72,8 +74,10 @@ namespace Lively.Core
             this.watchdog = watchdog;
             this.runner = runner;
             //this.screenSaver = screenSaver;
-            //this.libraryVm = libraryVm;
             this.wallpaperFactory = wallpaperFactory;
+
+            if (SystemParameters.HighContrast)
+                Logger.Warn("Highcontrast mode detected, some functionalities may not work properly.");
 
             this.displayManager.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
@@ -82,13 +86,37 @@ namespace Lively.Core
                 if (e.Reason == SessionSwitchReason.SessionUnlock)
                 {
                     //Issue: https://github.com/rocksdanister/lively/issues/802
-                    if (!(IntPtr.Equals(DesktopWorkerW, IntPtr.Zero) || NativeMethods.IsWindow(DesktopWorkerW)))
+                    if (!(DesktopWorkerW == IntPtr.Zero || NativeMethods.IsWindow(DesktopWorkerW)))
                     {
                         Logger.Info("WorkerW invalid after unlock, resetting..");
                         ResetWallpaper();
                     }
+                    else
+                    {
+                        if (Wallpapers.Any(x => x.IsExited))
+                        {
+                            Logger.Info("Wallpaper crashed after unlock, resetting..");
+                            ResetWallpaper();
+                        }
+                    }
                 }
             };
+
+            // Initialize WorkerW
+            UpdateWorkerW();
+
+            try
+            {
+                Logger.Info("Hooking WorkerW events..");
+                var dwThreadId = NativeMethods.GetWindowThreadProcessId(workerw, out int dwProcessId);
+                workerWHook = new WindowEventHook(WindowEvent.EVENT_OBJECT_DESTROY);
+                workerWHook.HookToThread(dwThreadId);
+                workerWHook.EventReceived += WorkerWHook_EventReceived;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"WorkerW hook failed: {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -97,75 +125,17 @@ namespace Lively.Core
         public void SetWallpaper(ILibraryModel wallpaper, IDisplayMonitor display)
         {
             Logger.Info($"Setting wallpaper: {wallpaper.Title} | {wallpaper.FilePath}");
-            if (!_isInitialized)
+
+            if (workerw == IntPtr.Zero)
             {
-                if (SystemParameters.HighContrast)
-                {
-                    Logger.Warn("Highcontrast mode detected, some functionalities may not work properly!");
-                }
-
-                // Fetch the Progman window
-                progman = NativeMethods.FindWindow("Progman", null);
-
-                IntPtr result = IntPtr.Zero;
-
-                // Send 0x052C to Progman. This message directs Progman to spawn a 
-                // WorkerW behind the desktop icons. If it is already there, nothing 
-                // happens.
-                NativeMethods.SendMessageTimeout(progman,
-                                       0x052C,
-                                       new IntPtr(0xD),
-                                       new IntPtr(0x1),
-                                       NativeMethods.SendMessageTimeoutFlags.SMTO_NORMAL,
-                                       1000,
-                                       out result);
-                // Spy++ output
-                // .....
-                // 0x00010190 "" WorkerW
-                //   ...
-                //   0x000100EE "" SHELLDLL_DefView
-                //     0x000100F0 "FolderView" SysListView32
-                // 0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
-                // 0x000100EC "Program Manager" Progman
-                workerw = IntPtr.Zero;
-
-                // We enumerate all Windows, until we find one, that has the SHELLDLL_DefView 
-                // as a child. 
-                // If we found that window, we take its next sibling and assign it to workerw.
-                NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
-                {
-                    IntPtr p = NativeMethods.FindWindowEx(tophandle,
-                                                IntPtr.Zero,
-                                                "SHELLDLL_DefView",
-                                                IntPtr.Zero);
-
-                    if (p != IntPtr.Zero)
-                    {
-                        // Gets the WorkerW Window after the current one.
-                        workerw = NativeMethods.FindWindowEx(IntPtr.Zero,
-                                                       tophandle,
-                                                       "WorkerW",
-                                                       IntPtr.Zero);
-                    }
-
-                    return true;
-                }), IntPtr.Zero);
-
-                if (IntPtr.Equals(workerw, IntPtr.Zero))
-                {
-                    Logger.Error("Failed to setup core, WorkerW handle not found..");
-                    WallpaperError?.Invoke(this, new WorkerWException(Properties.Resources.LivelyExceptionWorkerWSetupFail));
-                    WallpaperChanged?.Invoke(this, EventArgs.Empty);
-                    return;
-                }
-                else
-                {
-                    Logger.Info("Core initialized..");
-                    _isInitialized = true;
-                    WallpaperReset?.Invoke(this, EventArgs.Empty);
-                    watchdog.Start();
-                }
+                Logger.Error("Failed to setup core, WorkerW handle not found..");
+                WallpaperError?.Invoke(this, new WorkerWException(Properties.Resources.LivelyExceptionWorkerWSetupFail));
+                WallpaperChanged?.Invoke(this, EventArgs.Empty);
+                return;
             }
+
+            if (!watchdog.IsRunning)
+                watchdog.Start();
 
             if (!displayManager.ScreenExists(display))
             {
@@ -208,6 +178,22 @@ namespace Lively.Core
                     //Deleting from core because incase UI client not running.
                     _ = FileOperations.DeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
                 }
+            }
+        }
+
+        private void UpdateWorkerW()
+        {
+            Logger.Info("WorkerW initializing..");
+            workerw = CreateWorkerW();
+            WallpaperReset?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void WorkerWHook_EventReceived(object sender, WinEventHookEventArgs e)
+        {
+            if (e.WindowHandle == workerw && e.EventType == WindowEvent.EVENT_OBJECT_DESTROY)
+            {
+                Logger.Error("WorkerW destroyed.");
+                ResetWallpaper();
             }
         }
 
@@ -576,19 +562,17 @@ namespace Lively.Core
         public void ResetWallpaper()
         {
             Logger.Info("Restarting wallpaper service..");
-            _isInitialized = false;
-            if (Wallpapers.Count > 0)
+            // Copy existing wallpapers
+            var originalWallpapers = Wallpapers.ToList();
+            CloseAllWallpapers(true);
+            // Restart workerw
+            UpdateWorkerW();
+            foreach (var item in originalWallpapers)
             {
-                var originalWallpapers = Wallpapers.ToList();
-                CloseAllWallpapers(true);
-                foreach (var item in originalWallpapers)
-                {
-                    SetWallpaper(item.Model, item.Screen);
-                    if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
-                        break;
-                }
+                SetWallpaper(item.Model, item.Screen);
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    break;
             }
-            //WallpaperReset?.Invoke(this, EventArgs.Empty);
         }
 
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
@@ -596,10 +580,10 @@ namespace Lively.Core
             SaveWallpaperLayout();
         }
 
-        readonly object _layoutWriteLock = new object();
+        readonly object layoutWriteLock = new object();
         private void SaveWallpaperLayout()
         {
-            lock (_layoutWriteLock)
+            lock (layoutWriteLock)
             {
                 userSettings.WallpaperLayout.Clear();
                 wallpapers.ForEach(wallpaper =>
@@ -627,10 +611,10 @@ namespace Lively.Core
             }
         }
 
-        readonly object _displaySettingsChangedLock = new object();
+        readonly object displaySettingsChangedLock = new object();
         private void DisplaySettingsChanged_Hwnd(object sender, EventArgs e)
         {
-            lock (_displaySettingsChangedLock)
+            lock (displaySettingsChangedLock)
             {
                 Logger.Info("Display settings changed, screen(s):");
                 displayManager.DisplayMonitors.ToList().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
@@ -1019,12 +1003,12 @@ namespace Lively.Core
             {
                 if (disposing)
                 {
-                    //ScreenHelper.DisplayUpdated -= DisplaySettingsChanged_Hwnd;
                     WallpaperChanged -= SetupDesktop_WallpaperChanged;
-                    if (_isInitialized)
+                    if (workerw != IntPtr.Zero)
                     {
                         try
                         {
+                            workerWHook?.Dispose();
                             CloseAllWallpapers(false, true);
                             DesktopUtil.RefreshDesktop();
 
@@ -1060,6 +1044,58 @@ namespace Lively.Core
 
         #region helpers
 
+        private static IntPtr CreateWorkerW()
+        {
+            // Fetch the Progman window
+            var progman = NativeMethods.FindWindow("Progman", null);
+
+            IntPtr result = IntPtr.Zero;
+
+            // Send 0x052C to Progman. This message directs Progman to spawn a 
+            // WorkerW behind the desktop icons. If it is already there, nothing 
+            // happens.
+            NativeMethods.SendMessageTimeout(progman,
+                                   0x052C,
+                                   new IntPtr(0xD),
+                                   new IntPtr(0x1),
+                                   NativeMethods.SendMessageTimeoutFlags.SMTO_NORMAL,
+                                   1000,
+                                   out result);
+            // Spy++ output
+            // .....
+            // 0x00010190 "" WorkerW
+            //   ...
+            //   0x000100EE "" SHELLDLL_DefView
+            //     0x000100F0 "FolderView" SysListView32
+            // 0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
+            // 0x000100EC "Program Manager" Progman
+            var workerw = IntPtr.Zero;
+
+            // We enumerate all Windows, until we find one, that has the SHELLDLL_DefView 
+            // as a child. 
+            // If we found that window, we take its next sibling and assign it to workerw.
+            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
+            {
+                IntPtr p = NativeMethods.FindWindowEx(tophandle,
+                                            IntPtr.Zero,
+                                            "SHELLDLL_DefView",
+                                            IntPtr.Zero);
+
+                if (p != IntPtr.Zero)
+                {
+                    // Gets the WorkerW Window after the current one.
+                    workerw = NativeMethods.FindWindowEx(IntPtr.Zero,
+                                                   tophandle,
+                                                   "WorkerW",
+                                                   IntPtr.Zero);
+                }
+
+                return true;
+            }), IntPtr.Zero);
+
+            return workerw;
+        }
+
         /// <summary>
         /// Adds the wp as child of spawned desktop-workerw window.
         /// </summary>
@@ -1069,6 +1105,7 @@ namespace Lively.Core
             //Legacy, Windows 7
             if (Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1)
             {
+                var progman = NativeMethods.FindWindow("Progman", null);
                 if (!workerw.Equals(progman)) //this should fix the win7 wallpaper disappearing issue.
                     NativeMethods.ShowWindow(workerw, (uint)0);
 

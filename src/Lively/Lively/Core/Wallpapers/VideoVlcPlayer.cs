@@ -41,6 +41,8 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath => null;
 
+        public bool IsExited { get; private set; }
+
         public VideoVlcPlayer(string path, ILibraryModel model, IDisplayMonitor display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
         {
             var scalerArg = scaler switch
@@ -203,6 +205,7 @@ namespace Lively.Core.Wallpapers
         {
             Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
+            IsExited = true;
         }
 
         #region process task

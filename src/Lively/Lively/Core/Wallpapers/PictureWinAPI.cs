@@ -34,6 +34,8 @@ namespace Lively.Core.Wallpapers
         private readonly IDesktopWallpaper desktop;
         private readonly List<WinWallpaper> wallpapersToRestore;
 
+        public bool IsExited { get; private set; }
+
         public bool IsLoaded => true;
 
         public WallpaperType Category => WallpaperType.picture;
@@ -150,11 +152,13 @@ namespace Lively.Core.Wallpapers
         public void Close()
         {
             RestoreWallpaper();
+            IsExited = true;
         }
 
         public void Terminate()
         {
             RestoreWallpaper();
+            IsExited = true;
         }
 
         //restore original wallpaper (if possible.)

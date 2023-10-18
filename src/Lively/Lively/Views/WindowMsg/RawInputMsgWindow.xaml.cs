@@ -75,10 +75,11 @@ namespace Lively.Views.WindowMsg
 
             InitializeComponent();
             this.InputMode = InputForwardMode.mousekeyboard;
-            desktopCore.WallpaperReset += (s, e) => FindDesktopHandles();
+            UpdateDesktopHandles();
+            desktopCore.WallpaperReset += (s, e) => UpdateDesktopHandles();
         }
 
-        private void FindDesktopHandles()
+        private void UpdateDesktopHandles()
         {
             //resetting
             workerWOrig = IntPtr.Zero;
@@ -95,6 +96,7 @@ namespace Lively.Views.WindowMsg
                     folderView = NativeMethods.FindWindowEx(workerWOrig, IntPtr.Zero, "SHELLDLL_DefView", null);
                 } while (folderView == IntPtr.Zero && workerWOrig != IntPtr.Zero);
             }
+            Logger.Info("Desktop handles updated.");
         }
 
         private void Window_SourceInitialized(object sender, EventArgs e)

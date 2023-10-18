@@ -74,10 +74,11 @@ namespace Lively.Core.Suspend
             this.screenSaver = screenSaver;
 
             Initialize();
-            desktopCore.WallpaperReset += (s, e) => FindDesktopHandles();
+            UpdateDesktopHandles();
+            desktopCore.WallpaperReset += (s, e) => UpdateDesktopHandles();
         }
 
-        private void FindDesktopHandles()
+        private void UpdateDesktopHandles()
         {
             //resetting
             workerWOrig = IntPtr.Zero;
@@ -94,6 +95,7 @@ namespace Lively.Core.Suspend
                     folderView = NativeMethods.FindWindowEx(workerWOrig, IntPtr.Zero, "SHELLDLL_DefView", null);
                 } while (folderView == IntPtr.Zero && workerWOrig != IntPtr.Zero);
             }
+            Logger.Info("Desktop handles updated.");
         }
 
         private void Initialize()
