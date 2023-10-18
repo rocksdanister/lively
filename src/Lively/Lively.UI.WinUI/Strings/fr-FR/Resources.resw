@@ -147,11 +147,11 @@ Windows Explorer a redémarré deux fois dans les 30 dernières secondes ! Cela 
     <value>Site officiel de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>La plupart des écrans modernes LCD et LED ne subissent pas de brûlures internes et donc n'importe quel fond d'écran peut être utilisé comme écran de veille.
+    <value>La plupart des écrans modernes LCD et LED ne souffres pas de brûlures internes et donc n'importe quel fond d'écran peut être utilisé comme écran de veille.
 
-Pour les écrans OLED, Plasma ou CRT qui sont susceptibles aux brûlures internes il est conseillé d'utiliser un fond d'écran avec un mouvement régulier et un thème globalement sombre censé atténuer les brûlures internes mais cette fonctionnalité n'est pas testé et son efficacité ne peut pas être garantie.
+Pour les écrans OLED, Plasma ou CRT qui sont susceptibles aux brûlures internes, il est conseillé d'utiliser un fond d'écran avec un mouvement régulier et le thème sombre ce qui permet d'atténuer les brûlures internes, cependant son efficacité ne peut pas être garantie.
 
-La principale utilité des économisateurs d'écran de Lively est d'ajouter une couche supplémentaire de personnalisation à votre ordinateur, utilisez les écran de veille comme protection contre les brûlures internes d'écrans à vos risques et périls !</value>
+La principale utilité des écrans de veille de Lively est d'ajouter une couche supplémentaire de personnalisation à votre ordinateur, utilisez les écrans de veilles comme protection contre les brûlures internes d'écrans à vos risques et périls!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Signaler un problème avec le logiciel</value>

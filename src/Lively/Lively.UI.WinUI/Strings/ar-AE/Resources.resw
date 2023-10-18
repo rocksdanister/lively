@@ -243,8 +243,8 @@ https://github.com/rocksdanister/lively/releasases</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>لا يمكن للايفلي أن يعمل بصورة صحيحة في حين أن وضع التباين العالي للويندوز مُمَكّن!
-عطّل وضع التباين العالي &amp; حاول مرة أخرى.</value>
+    <value>لا يمكن للتطبيق أن يعمل بصورة صحيحة في حين أن وضع التباين العالي لويندزر مُمَكّن!
+عطّل وضع التباين العالي و حاول مرة أخرى</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>تشغيل الوسائط فشل :(
@@ -255,28 +255,27 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>لا يوجد ملف خلفية حية.</value>
+    <value>هذا ليس مِلَفّ ليفلي</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>نسخة جديدة متوفرة!</value>
+    <value>لم يتم إغلاق التطبيق بشكل صحيح, هل تود استعادة الخلفيات السابقة؟</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>يبدو أنه يجب ضبط بعد الإعدادات لجعل لايفلي يعمل:-  
-1. من سطح المكتب
-2. أنقر على زر البحث
-3. إبحث عن الأداء (أو Performance(
-4. أنقر على أول خيار
-5. ستظهر لوحة تحكم
-6. يجب أن يكون أول خيار مفعّل (علامة اختيار) &amp; تطبيق.
+    <value>يبدو أن بعض الإعدادات تحتاج إلى تعيين لجعل الحياة تعمل:  
+1. اضغط على مفاتيح Win + R لفتح Run, 
+2. اكتب نظام PropertiesPerformance. xe إلى تشغيل، انقر على "موافق" لفتح خيارات الأداء.
+3. تمكين/تحقق من "عناصر التحكم المتحركة والعناصر داخل النوافذ" (إذا تم تحديدها مسبقاً، ثم قم بإلغاء التحديد والتحقق) و التطبيق.
+4. انقر فوق "تطبيق" ثم اضغط على "موافق" لإغلاق النافذة.
 
-إذا تم تعيين ويندوز 7 - يُعدل إلى ضبط لأفضل مظهر &amp; تطبيق.
-إذا كان لا يزال لا يعمل, أغلق &amp; شغِّل لايفلي مجدداً/ أعِد تشغيل ويندوز.</value>
+إذا تم تعيين Windows 7 للتو - ضبط للحصول على أفضل مظهر &amp; Apply.
+إذا لم تعمل بعد، قم بإغلاق وبدء تشغيل النوافذ مرة أخرى/إعادة تشغيلها.
+(لا تعمل في بعض النوافذ الداخلية 10 بنايات)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>يحتاج Lively للتشغيل في الخلفية لتشغيل الخلفية.</value>
+    <value>سيعمل التطبيق في الخلفية لعرض الوسائط</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>البدء مع ويندوز:</value>
+    <value>فتح التطبيق تِلقائياً عند تشغيل الحاسوب</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>أضف</value>
@@ -288,10 +287,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>التطبيق</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>الإسناد:</value>
+    <value>المساهمة</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>المؤلف:</value>
+    <value>المصمم</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>رجوع</value>
@@ -309,7 +308,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>اغلاق</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>إغلاق الخلفية</value>
+    <value>إغلاق</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>تم!</value>

@@ -157,7 +157,7 @@ Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir ö
     <value>Uygulamada sorun bildir</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Bir resim seçin</value>
+    <value>Bir dosya seçin</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Duvar kağıdı davranışı çalışan uygulamaya göre belirlendi.</value>
@@ -175,8 +175,8 @@ Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir ö
     <value>Dosyaları buraya sürükleyin ve bırakın</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Başka bir duvar kağıdı uygulaması açıyorsunuz.
-Şüpheli uygulamalar kötü amaçlı yazılımlar ve virüs içerebilir ve sisteminize ciddi zararlar verebilir.
+    <value>Duvar kağıdı olarak dışarıdan bir uygulama açıyorsunuz.
+Kötü amaçlı uygulamalar kötü amaçlı yazılımlar ve virüs içerebilir ve sisteminize ciddi zararlar verebilir.
 Sadece uygulama güvenilir bir kaynaktan geliyorsa devam edin.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
@@ -229,11 +229,11 @@ Beta sürümünde hatalar olabilir ve sık sık güncelleme gelebilir.</value>
     <value>Dil</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Güncelleme başarısız; Kur dosyasını adresten indirmeyi deneyin:
+    <value>Güncelleme başarısız oldu; Kurulum dosyasını şu adresten indirmeyi deneyin:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Hasarlı duvar kağıdı dosyası. Yeniden indirmeyi deneyin.</value>
+    <value>Duvar kağıdı dosyası hasarlı. Dosyayı yeniden indirmeyi deneyin.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Görünüşe göre bir şeyler yanlış.
@@ -242,8 +242,8 @@ Günlük dosyasını paylaşma hakkında detaylı bilgi:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windows yüksek kontrast modu açıkken Lively düzhün çalışamıyor.
-Yüksek kontrast modunu kapatın be tekrar deneyin.</value>
+    <value>Windows yüksek kontrast modu açıkken Lively düzgün çalışamaz.
+Yüksek kontrast modunu kapatın ve tekrar deneyin.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Medya oynatması başarısız :(
@@ -262,9 +262,9 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Görünüşe göre Lively çalışmak için bazı ayarlara ihtiyaç duyuyor:  
-1. Win + R tuşlarına birlikte basarak Çalıştır'ı açın
+1. Win + R tuşlarına aynı anda basarak Çalıştır'ı açın,
 2. SystemPropertiesPerformance.exe yazın ve çalıştırın.
-3. "Denetim ve öğe animasyonlarını pencere içinde göster" yazılı düğmeyi işaretleyin &amp; Tamam.
+3. "Denetim ve öğe animasyonlarını pencere içinde göster" yazılı butonu işaretleyin (Zaten işaretlenmişse işareti kaldırıp tekrar işartetleyin)
 4. Uygula ve Tamam diyerek pencereyi kapatın.</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
@@ -286,7 +286,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>İlişkilendirmeler</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>Yazar</value>
+    <value>Yapımcı</value>
   </data>
   <data name="TextBack" xml:space="preserve">
     <value>Geri</value>
@@ -325,7 +325,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Duvar kağıdını özelleştir</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Duvar kağıdını sil</value>
+    <value>Sil</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
     <value>Açıklama</value>
@@ -349,10 +349,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Çıkış</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>zip olarak dışa aktar</value>
+    <value>Dışa aktar</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Bazı özellikler Lively'nin şu anki sürümünde mevcut değil.</value>
+    <value>Bazı özellikler Lively'nin bu sürümünde mevcut değil.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Dosya bulunamadı</value>
@@ -490,7 +490,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Destek</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Beta sürümüne geç (Geliştirici)</value>
+    <value>Beta sürümüne geç</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>Kararlı sürümü kullan</value>
@@ -499,10 +499,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Etiketler</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Bulanık</value>
+    <value>Bulanıklık</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Temiz</value>
+    <value>Saydam</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Renk</value>
@@ -538,7 +538,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Orta</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Dosya formatı desteklenmiyor</value>
+    <value>Dosya biçimi desteklenmiyor.</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Güncelleştirme mevcut!</value>
@@ -1044,7 +1044,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Merhaba</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>Hesabınızda geçen kaydettiğiniz koleksiyon geri yükleme kullanabilirsin.</value>
+    <value>Hesabınızda bu duvar kağıtlarını bulduk.</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
     <value>Şimdi Yükle</value>
@@ -1092,10 +1092,10 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Gönder</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Hesabını silmek istediğinden emin misin? GERİ ALINAMAZ</value>
+    <value>Hesabını silmek istediğinden emin misin? BU İŞLEM GERİ ALINAMAZ</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Hesabını silinemedi, lütfen daha sonra tekrar deneyin</value>
+    <value>Hesabınız silinemedi, lütfen daha sonra tekrar deneyin</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
     <value>İptal etmek istiyor musunuz?</value>
@@ -1152,7 +1152,7 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Sistem Varsayılanı Kullan</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Walpaper'a uyum sağlamak</value>
+    <value>Duvar kağıdına uyum sağla</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
     <value>Varsayılan</value>
@@ -1197,10 +1197,10 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Basit bir duvar kağıdı oluşturun</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>Duvar Kağıdı Derinliği</value>
+    <value>YZ Derin Duvar Kağıdı</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Duvar Kağıdı Derinliği</value>
+    <value>Derin Duvar Kağıdı</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
     <value>YZ tarafından oluşturulan derinlik duvar kağıdı</value>

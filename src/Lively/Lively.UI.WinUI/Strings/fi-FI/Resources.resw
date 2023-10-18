@@ -1173,49 +1173,49 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Siinä kaikki tältä erää.</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Tämän ominaisuuden kehittäminen on tauolla</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Lisäosat</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Luo elävä taustakuva</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Lisäasetukset</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Arvioitu syvyys..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Tekoälyn luoma kuva 3D kuvaksi</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Jatka</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Luo yksinkertainen taustakuva</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>Tekoälyn luoma syvyystaustakuva</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Syvyystaustakuva</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Tekoälyn luoma animoitu taustakuva</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Luo taustakuva</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Jotkin toiminnot eivät ole käytössä, jos käynnistetty järjestelmänvalvojana</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Lisätiedostoja ladataan tätä ominaisuutta varten</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Lataus Vaaditaan</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Lataa</value>

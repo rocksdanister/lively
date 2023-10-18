@@ -189,7 +189,7 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
     <value>请先停止，然后再继续。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以开始录影</value>
+    <value>按下开始录制</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>正在恢复以前的壁纸，请稍候...</value>
@@ -217,13 +217,13 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
 更新会很频繁，可能会有BUG!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>开启或关闭 Lively 图标系统托盘显示，关闭后 Lively 将在图标隐藏下继续运行</value>
+    <value>系统托盘图标可见性 关闭该选项时 Lively 将在隐藏图标的情况下继续运行</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>系统托盘图标</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively 将重启以应用新语言</value>
+    <value>重启 Lively 以应用新的语言。</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>语言设置</value>
@@ -242,8 +242,8 @@ https://github.com/rocksdanister/lively/releases</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>启用Windows高对比度模式后，Lively无法正常工作!
-请禁用高对比度模式并重新尝试</value>
+    <value>Lively 无法在 Windows 高对比度 (Windows High Contrast) 模式下正常工作！
+请禁用高对比度模式，然后重试。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>媒体播放失败 :(
