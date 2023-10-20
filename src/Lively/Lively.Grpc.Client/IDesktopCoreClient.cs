@@ -24,6 +24,7 @@ namespace Lively.Grpc.Client
         void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg);
         Task PreviewWallpaper(string livelyInfoPath);
         Task TakeScreenshot(string monitorId, string savePath);
+        Task SetWallpaperLoop(bool state, int intervall);
 
         event EventHandler WallpaperChanged;
         event EventHandler<Exception> WallpaperError;

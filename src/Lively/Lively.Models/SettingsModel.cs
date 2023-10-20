@@ -119,6 +119,8 @@ namespace Lively.Models
         public string ApplicationThemeBackgroundPath { get; set; }
         public AppThemeBackground ApplicationThemeBackground { get; set; }
         public int ThemeBundleVersion { get; set; }
+        public bool DoRandomWallpaper { get; set; }
+        public int TimeToChangeWallpaper { get; set; }
 
         public SettingsModel()
         {
@@ -191,6 +193,8 @@ namespace Lively.Models
             IsUpdated = false;
             ApplicationThemeBackgroundPath = null;
             ApplicationThemeBackground = AppThemeBackground.default_mica;
+            DoRandomWallpaper = false;
+            TimeToChangeWallpaper = 20;
 
             try
             {

@@ -16,6 +16,7 @@ service DesktopService {
   rpc SendMessageWallpaper(WallpaperMessageRequest) returns (google.protobuf.Empty);
   rpc GetCoreStats (google.protobuf.Empty) returns (GetCoreStatsResponse);
   rpc TakeScreenshot(WallpaperScreenshotRequest) returns (google.protobuf.Empty);
+  rpc SetWallpaperLoop (SetWallpaperLoopRequest) returns (google.protobuf.Empty);
 }
 
 message SetWallpaperRequest {
@@ -109,6 +110,11 @@ message WallpaperScreenshotRequest {
 message WallpaperErrorResponse {
 	ErrorCategory error = 1;
 	string error_msg = 2;
+}
+
+message SetWallpaperLoopRequest {
+	bool state = 1;
+	int32 intervall = 2;
 }
 
 enum ErrorCategory {

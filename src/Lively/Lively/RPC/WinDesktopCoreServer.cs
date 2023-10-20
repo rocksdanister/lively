@@ -352,5 +352,35 @@ namespace Lively.RPC
             }
             return await Task.FromResult(new Empty());
         }
+
+        public override Task<Empty> SetWallpaperLoop(SetWallpaperLoopRequest request, ServerCallContext context)
+        {
+            TimerService timerService = TimerService.Instance;
+
+            if (timerService != null)
+            {
+                try
+                {
+                    _ = timerService.Stop();
+                }
+                catch(Exception e)
+                {
+                    Logger.Error(e);
+                }
+            }
+            else
+            {
+                timerService = new TimerService(TimeSpan.FromMinutes(request.Intervall), displayManager, desktopCore);
+            }
+
+            if(request.State == true)
+            {
+                timerService.ChangeTimerIntervall(TimeSpan.FromMinutes(request.Intervall));
+                timerService.Start();
+            }
+
+            return Task.FromResult(new Empty());
+        }
+
     }
 }

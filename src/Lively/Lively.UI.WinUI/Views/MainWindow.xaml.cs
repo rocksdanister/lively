@@ -425,6 +425,20 @@ namespace Lively.UI.WinUI
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
             LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
 
+        private void ToogleShuffleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            _ = new ContentDialog()
+            {
+                Title = i18n.GetString("Shuffle/Label"),
+                Content = new ShuffleView(),
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = this.Content.XamlRoot,
+            }.ShowAsyncQueue();
+
+        }
+
         private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialog();
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)

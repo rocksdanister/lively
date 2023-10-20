@@ -82,6 +82,7 @@
     <None Remove="Views\Pages\Gallery\RestoreWallpaperView.xaml" />
     <None Remove="Views\Pages\Gallery\ShareWallpaperView.xaml" />
     <None Remove="Views\Pages\HelpView.xaml" />
+    <None Remove="Views\Pages\ShuffleView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\LoginView.xaml" />
     <None Remove="Views\Pages\ScreensaverLayoutView.xaml" />
@@ -144,6 +145,9 @@
   <ItemGroup>
     <Page Update="Views\Pages\ControlPanel\ControlPanelView.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Pages\ShuffleView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
   <ItemGroup>
