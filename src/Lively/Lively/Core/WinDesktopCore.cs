@@ -184,7 +184,23 @@ namespace Lively.Core
         private void UpdateWorkerW()
         {
             Logger.Info("WorkerW initializing..");
-            workerw = CreateWorkerW();
+            var retries = 5;
+            while(true)
+            {
+                workerw = CreateWorkerW();
+                if (workerw != IntPtr.Zero) {
+                    break;
+                }
+                else
+                {
+                    retries--;
+                    if (retries == 0)
+                        break;
+
+                    Logger.Error($"Failed to create WorkerW, retrying ({retries})..");
+                }
+            }
+            Logger.Info($"WorkerW initialized {workerw}");
             WallpaperReset?.Invoke(this, EventArgs.Empty);
         }
 
