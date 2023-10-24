@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Lively.Common.Extensions;
 
 namespace Lively.Core.Wallpapers
 {
@@ -38,9 +39,8 @@ namespace Lively.Core.Wallpapers
         }
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
-        private readonly CancellationTokenSource ctsProcessWait = new CancellationTokenSource();
-        private Task processWaitTask;
+        private readonly CancellationTokenSource ctsProcessWait = new();
+        private Task<IntPtr> processWaitTask;
         private readonly int timeOut;
         private readonly string ipcServerName;
         private bool _isVideoStopped;
@@ -179,11 +179,9 @@ namespace Lively.Core.Wallpapers
 
         public async void Close()
         {
-            TaskProcessWaitCancel();
-            while (!IsProcessWaitDone())
-            {
+            ctsProcessWait.TaskWaitCancel();
+            while (!processWaitTask.IsTaskWaitCompleted())
                 await Task.Delay(1);
-            }
 
             //Not reliable, app may refuse to close(open dialogue window.. etc)
             //Proc.CloseMainWindow();
@@ -335,74 +333,42 @@ namespace Lively.Core.Wallpapers
             }
         }
 
-        public async void Show()
+        public async Task ShowAsync()
         {
-            if (Proc != null)
+            if (Proc is null)
+                return;
+
+            try
             {
-                try
-                {
-                    Proc.Exited += Proc_Exited;
-                    Proc.OutputDataReceived += Proc_OutputDataReceived;
-                    Proc.Start();
-                    Proc.BeginOutputReadLine();
-                    processWaitTask = Task.Run((Func<IntPtr>)(() => this.Handle = WaitForProcesWindow().Result), ctsProcessWait.Token);
-                    await processWaitTask;
-                    if (Handle.Equals(IntPtr.Zero))
-                    {
-                        WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                        {
-                            Success = false,
-                            Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
-                            Msg = "Process window handle is zero."
-                        });
-                    }
-                    else
-                    {
-                        WindowOperations.BorderlessWinStyle(Handle);
-                        WindowOperations.RemoveWindowFromTaskbar(Handle);
-                        //Program ready!
-                        WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                        {
-                            Success = true,
-                            Error = null,
-                            Msg = null
-                        });
-                        //Restore livelyproperties.json settings
-                        SetPlaybackProperties(livelyPropertiesData);
-                        //Wait a bit for properties to apply.
-                        //Todo: check ipc mgs and do this properly.
-                        await Task.Delay(69);
-                        IsLoaded = true;
-                    }
+                Proc.Exited += Proc_Exited;
+                Proc.OutputDataReceived += Proc_OutputDataReceived;
+                Proc.Start();
+                Proc.BeginOutputReadLine();
+                processWaitTask = Proc.WaitForProcesWindow(timeOut, ctsProcessWait.Token, true);
+                this.Handle = await processWaitTask;
+                if (Handle.Equals(IntPtr.Zero)) {
+                    throw new InvalidOperationException(Properties.Resources.LivelyExceptionGeneral);
                 }
-                catch (OperationCanceledException e1)
+                else
                 {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                    {
-                        Success = false,
-                        Error = e1,
-                        Msg = "Program wallpaper terminated early/user cancel."
-                    });
+                    //Program ready!
+                    //TaskView crash fix
+                    WindowOperations.BorderlessWinStyle(Handle);
+                    WindowOperations.RemoveWindowFromTaskbar(Handle);
+
+                    //Restore livelyproperties.json settings
+                    SetPlaybackProperties(livelyPropertiesData);
+                    //Wait a bit for properties to apply.
+                    //Todo: check ipc mgs and do this properly.
+                    await Task.Delay(69);
+                    IsLoaded = true;
                 }
-                catch (InvalidOperationException e2)
-                {
-                    //No GUI, program failed to enter idle state.
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                    {
-                        Success = false,
-                        Error = e2,
-                        Msg = "Program wallpaper crashed/closed already!"
-                    });
-                }
-                catch (Exception e3)
-                {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                    {
-                        Success = false,
-                        Error = e3,
-                        Msg = ":("
-                    });
-                }
+            }
+            catch (Exception)
+            {
+                Terminate();
+
+                throw;
             }
         }
 
@@ -421,116 +387,6 @@ namespace Lively.Core.Wallpapers
             DesktopUtil.RefreshDesktop();
             IsExited = true;
         }
-
-        #region process task
-
-        /// <summary>
-        /// Function to search for window of spawned program.
-        /// </summary>
-        private async Task<IntPtr> WaitForProcesWindow()
-        {
-            if (Proc == null)
-            {
-                return IntPtr.Zero;
-            }
-
-            Proc.Refresh();
-            //waiting for program messageloop to be ready (GUI is not guaranteed to be ready.)
-            while (Proc.WaitForInputIdle(-1) != true)
-            {
-                ctsProcessWait.Token.ThrowIfCancellationRequested();
-            }
-
-            IntPtr wHWND = IntPtr.Zero;
-            //Find process window.
-            for (int i = 0; i < timeOut && Proc.HasExited == false; i++)
-            {
-                ctsProcessWait.Token.ThrowIfCancellationRequested();
-                if (!IntPtr.Equals((wHWND = GetProcessWindow(Proc, true)), IntPtr.Zero))
-                    break;
-                await Task.Delay(1);
-            }
-            return wHWND;
-        }
-
-        /// <summary>
-        /// Retrieve window handle of process.
-        /// </summary>
-        /// <param name="proc">Process to search for.</param>
-        /// <param name="win32Search">Use win32 method to find window.</param>
-        /// <returns></returns>
-        private IntPtr GetProcessWindow(Process proc, bool win32Search = false)
-        {
-            if (Proc == null)
-                return IntPtr.Zero;
-
-            if (win32Search)
-            {
-                return FindWindowByProcessId(proc.Id);
-            }
-            else
-            {
-                proc.Refresh();
-                //Issue(.net core) MainWindowHandle zero: https://github.com/dotnet/runtime/issues/32690
-                return proc.MainWindowHandle;
-            }
-        }
-
-        private IntPtr FindWindowByProcessId(int pid)
-        {
-            IntPtr HWND = IntPtr.Zero;
-            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
-            {
-                _ = NativeMethods.GetWindowThreadProcessId(tophandle, out int cur_pid);
-                if (cur_pid == pid)
-                {
-                    if (NativeMethods.IsWindowVisible(tophandle))
-                    {
-                        HWND = tophandle;
-                        return false;
-                    }
-                }
-
-                return true;
-            }), IntPtr.Zero);
-
-            return HWND;
-        }
-
-        /// <summary>
-        /// Cancel waiting for pgm wp window to be ready.
-        /// </summary>
-        private void TaskProcessWaitCancel()
-        {
-            if (ctsProcessWait == null)
-                return;
-
-            ctsProcessWait.Cancel();
-            ctsProcessWait.Dispose();
-        }
-
-        /// <summary>
-        /// Check if started pgm ready(GUI window started).
-        /// </summary>
-        /// <returns>true: process ready/halted, false: process still starting.</returns>
-        private bool IsProcessWaitDone()
-        {
-            var task = processWaitTask;
-            if (task != null)
-            {
-                if ((task.IsCompleted == false
-                || task.Status == TaskStatus.Running
-                || task.Status == TaskStatus.WaitingToRun
-                || task.Status == TaskStatus.WaitingForActivation))
-                {
-                    return false;
-                }
-                return true;
-            }
-            return true;
-        }
-
-        #endregion process task
 
         public void Terminate()
         {

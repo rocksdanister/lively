@@ -29,7 +29,6 @@ namespace Lively.Core.Wallpapers
             public string FilePath { get; set; }
         }
 
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly DesktopWallpaperPosition desktopScaler;
         private readonly IDesktopWallpaper desktop;
         private readonly List<WinWallpaper> wallpapersToRestore;
@@ -129,19 +128,13 @@ namespace Lively.Core.Wallpapers
             //nothing
         }
 
-        public void Show()
+        public async Task ShowAsync()
         {
             //desktop.Enable();
             desktop.SetPosition(arrangement == WallpaperArrangement.span ? DesktopWallpaperPosition.Span : desktopScaler);
             desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : Screen.DeviceId, filePath);
 
             //Nothing to setup..
-            WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-            {
-                Success = true,
-                Error = null,
-                Msg = null
-            });
         }
 
         public void Stop()

@@ -27,6 +27,7 @@ namespace Lively.Grpc.Client
         public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
         public string BaseDirectory { get; private set; }
         public Version AssemblyVersion { get; private set; }
+        public bool IsCoreInitialized { get; private set; }
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
@@ -38,13 +39,13 @@ namespace Lively.Grpc.Client
         {
             client = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
 
-            //TODO: Wait timeout
             Task.Run(async () =>
             {
                 wallpapers.AddRange(await GetWallpapers().ConfigureAwait(false));
                 var status = (await GetCoreStats().ConfigureAwait(false));
                 BaseDirectory = status.BaseDirectory;
                 AssemblyVersion = new Version(status.AssemblyVersion);
+                IsCoreInitialized = status.IsCoreInitialized;
             }).Wait();
 
             cancellationTokenWallpaperChanged = new CancellationTokenSource();
@@ -236,7 +237,7 @@ namespace Lively.Grpc.Client
                         ErrorCategory.WallpaperPluginFail => new WallpaperPluginException(response.ErrorMsg),
                         ErrorCategory.WallpaperPluginMediaCodecMissing => new WallpaperPluginMediaCodecException(response.ErrorMsg),
                         ErrorCategory.ScreenNotFound => new ScreenNotFoundException(response.ErrorMsg),
-                        _ => new Exception("Unhandled Error"),
+                        _ => new Exception(response.ErrorMsg),
                     };
                     WallpaperError?.Invoke(this, exp);
                 }

@@ -50,24 +50,25 @@ namespace Lively.RPC
             {
                 BaseDirectory = AppDomain.CurrentDomain.BaseDirectory,
                 AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                IsCoreInitialized = desktopCore.DesktopWorkerW != IntPtr.Zero,
             });
         }
 
-        public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
+        public override async Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
             try
             {
                 var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
                 lm.DataType = (LibraryItemType)(int)request.Type;
                 var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
-                desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
+                await desktopCore.SetWallpaperAsync(lm, display ?? displayManager.PrimaryDisplayMonitor);
             }
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
             }
 
-            return Task.FromResult(new Empty());
+            return await Task.FromResult(new Empty());
         }
 
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
