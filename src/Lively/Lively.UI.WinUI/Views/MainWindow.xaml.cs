@@ -40,6 +40,7 @@ using WinRT.Interop;
 using WinUIEx;
 using WinUICommunity;
 using Lively.Common.Helpers.Files;
+using static Lively.Common.Errors;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -108,9 +109,7 @@ namespace Lively.UI.WinUI
             NavViewNavigate(NavPages.library);
 
             if (!userSettings.Settings.IsFirstRun)
-            {
                 CompactLabels();
-            }
 
             //ref: https://learn.microsoft.com/en-us/windows/apps/develop/title-bar?tabs=wasdk
             if (AppWindowTitleBar.IsCustomizationSupported())
@@ -130,6 +129,9 @@ namespace Lively.UI.WinUI
                 AppTitleBar.Visibility = Visibility.Collapsed;
                 this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
             }
+
+            if (!desktopCore.IsCoreInitialized)
+                ShowError(new WorkerWException(i18n.GetString("LivelyExceptionWorkerWSetupFail")));
 
             //Gallery
             InitializeGallery();
@@ -171,16 +173,21 @@ namespace Lively.UI.WinUI
         {
             _ = this.DispatcherQueue.TryEnqueue(() =>
             {
-                infoBar.IsOpen = true;
-                infoBar.ActionButton = new HyperlinkButton
-                {
-                    Content = i18n.GetString("Help/Label"),
-                    NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
-                };
-                infoBar.Title = i18n.GetString("TextError");
-                infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
-                infoBar.Severity = InfoBarSeverity.Error;
+                ShowError(e);
             });
+        }
+
+        private void ShowError(Exception e)
+        {
+            infoBar.IsOpen = true;
+            infoBar.ActionButton = new HyperlinkButton
+            {
+                Content = i18n.GetString("Help/Label"),
+                NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
+            };
+            infoBar.Title = i18n.GetString("TextError");
+            infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
+            infoBar.Severity = InfoBarSeverity.Error;
         }
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)
@@ -220,7 +227,7 @@ namespace Lively.UI.WinUI
                         userSettings.Settings.ControlPanelOpened = true;
                         userSettings.Save<ISettingsModel>();
                     }
-                    NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
+                    //NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
                     //If its duplicate mode fire the animation more than once.
                     if (userSettings.Settings.WallpaperArrangement != WallpaperArrangement.duplicate || desktopCore.Wallpapers.Count < 2)
                     {

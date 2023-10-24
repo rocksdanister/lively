@@ -3,6 +3,7 @@ using Lively.Common.API;
 using Lively.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Lively.Core
 {
@@ -17,13 +18,13 @@ namespace Lively.Core
         void CloseWallpaper(ILibraryModel wp, bool terminate = false);
         void CloseWallpaper(IDisplayMonitor display, bool terminate = false);
         void CloseWallpaper(WallpaperType type, bool terminate = false);
-        void ResetWallpaper();
+        Task ResetWallpaperAsync();
         void RestoreWallpaper();
         void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type);
         void SeekWallpaper(IDisplayMonitor display, float seek, PlaybackPosType type);
         void SendMessageWallpaper(string info_path, IpcMessage msg);
         void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg);
-        void SetWallpaper(ILibraryModel wallpaper, IDisplayMonitor display);
+        Task SetWallpaperAsync(ILibraryModel wallpaper, IDisplayMonitor display);
 
         /// <summary>
         /// Wallpaper set/removed.

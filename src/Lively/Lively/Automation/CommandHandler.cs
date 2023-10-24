@@ -159,9 +159,7 @@ namespace Lively.Automation
                         {
                             var libraryItem = WallpaperUtil.ScanWallpaperFolder(opts.File);
                             if (screen != null)
-                            {
-                                desktopCore.SetWallpaper(libraryItem, screen);
-                            }
+                                _ = desktopCore.SetWallpaperAsync(libraryItem, screen);
                         }
                     }
                     catch { /* TODO */ }
@@ -183,9 +181,7 @@ namespace Lively.Automation
                     if (screen != null)
                     {
                         if (libraryItem != null)
-                        {
-                            desktopCore.SetWallpaper(libraryItem, screen);
-                        }
+                            _ = desktopCore.SetWallpaperAsync(libraryItem, screen);
                         /*
                         else
                         {

@@ -13,6 +13,7 @@ namespace Lively.Grpc.Client
         ReadOnlyCollection<WallpaperData> Wallpapers { get; }
         string BaseDirectory { get; }
         Version AssemblyVersion { get; }
+        bool IsCoreInitialized { get; }
 
         Task CloseAllWallpapers(bool terminate = false);
         Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false);

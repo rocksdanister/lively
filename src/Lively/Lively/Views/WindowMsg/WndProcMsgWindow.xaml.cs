@@ -50,7 +50,8 @@ namespace Lively.Views.WindowMsg
                     Logger.Info($"Explorer crashed, pid mismatch: {prevExplorerPid} != {newExplorerPid}");
                     if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
                     {
-                        desktopCore.ResetWallpaper();
+                        // Create WorkerW and restart wallpaper(s)
+                        _ = desktopCore.ResetWallpaperAsync();
                     }
                     else
                     {
@@ -59,7 +60,7 @@ namespace Lively.Views.WindowMsg
                                 $"{Properties.Resources.TitleAppName} - {Properties.Resources.TextError}",
                                 MessageBoxButton.OK, MessageBoxImage.Error));
                         desktopCore.CloseAllWallpapers(true);
-                        desktopCore.ResetWallpaper();
+                        desktopCore.ResetWallpaperAsync();
                     }
                     prevCrashTime = DateTime.Now;
                     prevExplorerPid = newExplorerPid;

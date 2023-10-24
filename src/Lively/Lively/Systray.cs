@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -87,7 +88,7 @@ namespace Lively
             };
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
             //Random Wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += async(s, e) => await SetRandomWallpapers();
             //Customise wallpaper
             customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
@@ -240,7 +241,7 @@ namespace Lively
         /// <summary>
         /// Sets random library item as wallpaper.
         /// </summary>
-        private void SetRandomWallpapers()
+        private async Task SetRandomWallpapers()
         {
             switch (userSettings.Settings.WallpaperArrangement)
             {
@@ -253,7 +254,7 @@ namespace Lively
                         {
                             for (int i = 0; i < screenCount; i++)
                             {
-                                desktopCore.SetWallpaper(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                                await desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
                             }
                         }
                     }
@@ -263,7 +264,7 @@ namespace Lively
                     {
                         try
                         {
-                            desktopCore.SetWallpaper(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                            await desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
                         }
                         catch (InvalidOperationException)
                         {
