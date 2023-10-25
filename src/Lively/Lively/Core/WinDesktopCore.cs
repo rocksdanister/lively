@@ -247,7 +247,7 @@ namespace Lively.Core
                     {
                         WallpaperUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.remove, Info = wallpaper.LivelyInfo, InfoPath = wallpaper.LivelyInfoFolderPath });
                         //Deleting from core because incase UI client not running.
-                        _ = FileOperations.DeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
+                        await FileOperations.TryDeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
                     }
                 }
                 catch (Win32Exception ex2)
@@ -399,12 +399,21 @@ namespace Lively.Core
 
             if (cancelled)
             {
-                //user cancelled/fail!
+                //User cancelled/fail!
                 wallpaper.Terminate();
                 DesktopUtil.RefreshDesktop();
-                //Deleting from core because incase UI client not running.
-                _ = FileOperations.DeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
-                _ = FileOperations.DeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).ToString(), 0, 1000);
+
+                try
+                {
+                    //Deleting here incase UI client is not running
+                    await FileOperations.TryDeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
+                    if (wallpaper.LivelyPropertyCopyPath != null)
+                        await FileOperations.TryDeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).FullName, 0, 1000);
+                }
+                catch (Exception ie)
+                {
+                    Logger.Error(ie);
+                }
             }
 
             return !cancelled;
