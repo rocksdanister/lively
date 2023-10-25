@@ -275,7 +275,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //close if running.
                 await desktopCore.CloseWallpaper(obj, true);
                 //delete wp folder.      
-                var success = await FileOperations.DeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
+                var success = await FileOperations.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
 
                 if (success)
                 {
@@ -298,7 +298,7 @@ namespace Lively.UI.WinUI.ViewModels
                                 var item = new DirectoryInfo(wpdataDir[i]).Name;
                                 if (wpFolderName.Equals(item, StringComparison.Ordinal))
                                 {
-                                    _ = FileOperations.DeleteDirectoryAsync(wpdataDir[i], 100, 1000);
+                                    _ = FileOperations.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
                                     break;
                                 }
                             }
@@ -367,7 +367,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileOperations.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else if (libraryItem.LivelyInfo.IsAbsolutePath)
@@ -420,7 +420,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileOperations.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else

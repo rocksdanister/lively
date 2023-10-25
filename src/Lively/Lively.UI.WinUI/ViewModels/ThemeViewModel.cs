@@ -147,7 +147,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     SelectedItem = SelectedItem != obj ? SelectedItem : Themes[0];
                     Themes.Remove(obj);
-                    await FileOperations.DeleteDirectoryAsync(Directory.GetParent(obj.File).FullName);
+                    await FileOperations.TryDeleteDirectoryAsync(Directory.GetParent(obj.File).FullName, 1000, 4000);
                 }
             });
 

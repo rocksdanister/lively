@@ -183,7 +183,7 @@ namespace Lively.UI.WinUI.ViewModels
                 ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
                 PreviewText = string.Empty;
 
-                await FileOperations.DeleteDirectoryAsync(destDir, 0, 1000);
+                await FileOperations.TryDeleteDirectoryAsync(destDir, 0, 1000);
             }
             finally
             {

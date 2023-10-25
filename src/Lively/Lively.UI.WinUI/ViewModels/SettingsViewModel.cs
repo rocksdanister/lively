@@ -1220,9 +1220,9 @@ namespace Lively.UI.WinUI.ViewModels
             if (!isDestEmptyDir)
             {
                 //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
-                var result1 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallDir), 1000, 3000);
-                var result2 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir), 0, 1000);
-                var result3 = await FileOperations.DeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir), 0, 1000);
+                var result1 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallDir), 1000, 3000);
+                var result2 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir), 0, 1000);
+                var result3 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir), 0, 1000);
                 if (!(result1 && result2 && result3))
                 {
                     //TODO: Dialogue
