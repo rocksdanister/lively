@@ -27,7 +27,7 @@ namespace Lively.Core
         /// Get wallpaper metadata.
         /// </summary>
         /// <returns></returns>
-        ILibraryModel Model { get; }
+        LibraryModel Model { get; }
         /// <summary>
         /// Get window handle.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Lively.Core
         /// Get display device in which wallpaper is currently running.
         /// </summary>
         /// <returns></returns>
-        IDisplayMonitor Screen { get; set; }
+        DisplayMonitor Screen { get; set; }
         /// <summary>
         /// Send ipc message to program wallpaper.
         /// </summary>

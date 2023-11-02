@@ -3,7 +3,7 @@ using Lively.Models;
 
 namespace Lively.Models
 {
-    public class ScreenLayoutModel : ObservableObject, IScreenLayoutModel
+    public class ScreenLayoutModel : ObservableObject
     {
         public ScreenLayoutModel(DisplayMonitor screen, string screenImagePath, string livelypropertyFilePath, string screenTitle)
         {

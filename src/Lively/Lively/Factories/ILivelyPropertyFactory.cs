@@ -6,6 +6,6 @@ namespace Lively.Factories
 {
     public interface ILivelyPropertyFactory
     {
-        string CreateLivelyPropertyFolder(ILibraryModel model, IDisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings);
+        string CreateLivelyPropertyFolder(LibraryModel model, DisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings);
     }
 }

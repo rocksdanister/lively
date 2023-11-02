@@ -21,7 +21,7 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly GalleryClient galleryClient;
         private readonly LibraryViewModel libraryVm;
 
-        public ShareWallpaperViewModel(ILibraryModel obj)
+        public ShareWallpaperViewModel(LibraryModel obj)
         {
             this.Model = obj;
             galleryClient = App.Services.GetRequiredService<GalleryClient>();
@@ -36,7 +36,7 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         [ObservableProperty]
-        private ILibraryModel model;
+        private LibraryModel model;
 
         private bool canExportFile = true;
         private RelayCommand _exportFileCommand;

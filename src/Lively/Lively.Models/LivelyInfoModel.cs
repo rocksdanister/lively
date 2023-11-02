@@ -8,7 +8,7 @@ namespace Lively.Models
     /// livelyinfo.json wallpaper metadata file structure.
     /// </summary>
     [Serializable]
-    public class LivelyInfoModel : ILivelyInfoModel
+    public class LivelyInfoModel
     {
         public string AppVersion { get; set; }
         public string Title { get; set; }

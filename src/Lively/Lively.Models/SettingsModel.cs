@@ -7,7 +7,7 @@ namespace Lively.Models
 {
 
     [Serializable]
-    public class SettingsModel : ISettingsModel
+    public class SettingsModel
     {
         public string AppVersion { get; set; }
         public string Language { get; set; }

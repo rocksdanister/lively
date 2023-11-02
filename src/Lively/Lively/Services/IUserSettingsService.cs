@@ -7,10 +7,10 @@ namespace Lively.Services
 {
     public interface IUserSettingsService
     {
-        ISettingsModel Settings { get; }
+        SettingsModel Settings { get; }
         //IWeatherModel WeatherSettings { get; }
-        List<IApplicationRulesModel> AppRules { get; }
-        List<IWallpaperLayoutModel> WallpaperLayout { get; }
+        List<ApplicationRulesModel> AppRules { get; }
+        List<WallpaperLayoutModel> WallpaperLayout { get; }
         void Save<T>();
         void Load<T>();
     }

@@ -11,7 +11,7 @@ namespace Lively.Models
     /// Wallpaper arragement on display.
     /// </summary>
     [Serializable]
-    public class WallpaperLayoutModel : IWallpaperLayoutModel
+    public class WallpaperLayoutModel
     {
         [JsonProperty(PropertyName = "LivelyScreen")] //backward compatibility < v1.9
         public DisplayMonitor Display { get; set; }

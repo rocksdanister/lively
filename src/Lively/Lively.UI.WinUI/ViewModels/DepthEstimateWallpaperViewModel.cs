@@ -26,7 +26,7 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class DepthEstimateWallpaperViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public ILibraryModel NewWallpaper { get; private set; }
+        public LibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
 
         private readonly ResourceLoader i18n;

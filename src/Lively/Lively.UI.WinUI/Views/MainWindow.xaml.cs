@@ -225,7 +225,7 @@ namespace Lively.UI.WinUI
                     {
                         toggleTeachingTipControlPanel.IsOpen = true;
                         userSettings.Settings.ControlPanelOpened = true;
-                        userSettings.Save<ISettingsModel>();
+                        userSettings.Save<SettingsModel>();
                     }
                     //NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
                     //If its duplicate mode fire the animation more than once.
@@ -352,9 +352,9 @@ namespace Lively.UI.WinUI
             }
         }
 
-        public async Task<ILibraryModel> AddWallpaper(string filePath)
+        public async Task<LibraryModel> AddWallpaper(string filePath)
         {
-            ILibraryModel result = null;
+            LibraryModel result = null;
             try
             {
                 if (Path.GetExtension(filePath) == ".zip" && FileOperations.IsFileGreater(filePath, 10485760))
@@ -538,7 +538,7 @@ namespace Lively.UI.WinUI
                 };
                 await dlg.ShowAsyncQueue();
                 userSettings.Settings.IsFirstRun = false;
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
                 this.Close();
             }
 
@@ -546,7 +546,7 @@ namespace Lively.UI.WinUI
             {
                 args.Handled = true;
                 userSettings.Settings.IsUpdated = false;
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
                 this.Close();
             }
 

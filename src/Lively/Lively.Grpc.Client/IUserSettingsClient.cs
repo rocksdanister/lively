@@ -6,8 +6,8 @@ namespace Lively.Grpc.Client
 {
     public interface IUserSettingsClient
     {
-        ISettingsModel Settings { get; }
-        List<IApplicationRulesModel> AppRules { get; }
+        SettingsModel Settings { get; }
+        List<ApplicationRulesModel> AppRules { get; }
         Task SaveAsync<T>();
         void Save<T>();
         Task LoadAsync<T>();

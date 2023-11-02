@@ -145,7 +145,7 @@ namespace Lively
                 Logger.Error($"Wallpaper directory setup failed: {ex.Message}, falling back to default.");
                 userSettings.Settings.WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
                 CreateWallpaperDir(userSettings.Settings.WallpaperDir);
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             }
 
             Services.GetRequiredService<WndProcMsgWindow>().Show();
@@ -168,7 +168,7 @@ namespace Lively
                 {
                     userSettings.Settings.WallpaperBundleVersion = maxWallpaper;
                     userSettings.Settings.ThemeBundleVersion = maxTheme;
-                    userSettings.Save<ISettingsModel>();
+                    userSettings.Save<SettingsModel>();
                 }
                 spl?.Close();
             }

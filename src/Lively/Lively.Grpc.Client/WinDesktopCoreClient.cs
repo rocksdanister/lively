@@ -69,7 +69,7 @@ namespace Lively.Grpc.Client
             _ = await client.SetWallpaperAsync(request);
         }
 
-        public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display)
+        public async Task SetWallpaper(LibraryModel item, DisplayMonitor display)
         {
             var request = new SetWallpaperRequest
             {
@@ -144,7 +144,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public async Task CloseWallpaper(ILibraryModel item, bool terminate = false)
+        public async Task CloseWallpaper(LibraryModel item, bool terminate = false)
         {
             await client.CloseWallpaperLibraryAsync(new CloseWallpaperLibraryRequest()
             {
@@ -153,7 +153,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public async Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false)
+        public async Task CloseWallpaper(DisplayMonitor monitor, bool terminate = false)
         {
             await client.CloseWallpaperMonitorAsync(new CloseWallpaperMonitorRequest()
             {
@@ -162,7 +162,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg)
+        public void SendMessageWallpaper(LibraryModel obj, IpcMessage msg)
         {
             client.SendMessageWallpaper(new WallpaperMessageRequest()
             {
@@ -172,7 +172,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg)
+        public void SendMessageWallpaper(DisplayMonitor display, LibraryModel obj, IpcMessage msg)
         {
             client.SendMessageWallpaper(new WallpaperMessageRequest()
             {

@@ -6,6 +6,6 @@ namespace Lively.Factories
 {
     public interface IWallpaperFactory
     {
-        IWallpaper CreateWallpaper(ILibraryModel model, IDisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false);
+        IWallpaper CreateWallpaper(LibraryModel model, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false);
     }
 }

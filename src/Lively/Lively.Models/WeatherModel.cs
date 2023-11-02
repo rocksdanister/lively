@@ -5,7 +5,7 @@ using System.Text;
 namespace Lively.Models
 {
     [Serializable]
-    public class WeatherModel : IWeatherModel
+    public class WeatherModel
     {
         public string Location { get; set; }
         public string City { get; set; }
@@ -13,5 +13,11 @@ namespace Lively.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public WeatherUnit Units { get; set; }
+    }
+
+    public enum WeatherUnit
+    {
+        metric,
+        imperial
     }
 }

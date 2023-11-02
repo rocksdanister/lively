@@ -103,14 +103,14 @@ namespace Lively.UI.WinUI.ViewModels
             SelectedLanguageItem = SupportedLanguages.GetLanguage(userSettings.Settings.Language);
 
             //Only pause action is shown to user, rest is for internal use by editing the json file manually..
-            AppRules = new ObservableCollection<IApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
+            AppRules = new ObservableCollection<ApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
         }
 
         public void UpdateSettingsConfigFile()
         {
             _ = dispatcherQueue.TryEnqueue(() =>
             {
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             });
         }
 
@@ -118,7 +118,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             _ = dispatcherQueue.TryEnqueue(() =>
             {
-                userSettings.Save<List<IApplicationRulesModel>>();
+                userSettings.Save<List<ApplicationRulesModel>>();
             });
         }
 
@@ -433,12 +433,12 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region apprules
 
-        private ObservableCollection<IApplicationRulesModel> _appRules;
-        public ObservableCollection<IApplicationRulesModel> AppRules
+        private ObservableCollection<ApplicationRulesModel> _appRules;
+        public ObservableCollection<ApplicationRulesModel> AppRules
         {
             get
             {
-                return _appRules ?? new ObservableCollection<IApplicationRulesModel>();
+                return _appRules ?? new ObservableCollection<ApplicationRulesModel>();
             }
             set
             {
@@ -447,8 +447,8 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private IApplicationRulesModel _selectedAppRuleItem;
-        public IApplicationRulesModel SelectedAppRuleItem
+        private ApplicationRulesModel _selectedAppRuleItem;
+        public ApplicationRulesModel SelectedAppRuleItem
         {
             get { return _selectedAppRuleItem; }
             set

@@ -6,7 +6,7 @@ using System;
 namespace Lively.Models
 {
     [Serializable]
-    public class ApplicationRulesModel : ObservableObject, IApplicationRulesModel
+    public class ApplicationRulesModel : ObservableObject
     {
         public ApplicationRulesModel(string appName, AppRulesEnum rule)
         {

@@ -19,7 +19,7 @@ namespace Lively.Models
     }
 
     [Serializable]
-    public class LibraryModel : ObservableObject, ILibraryModel
+    public class LibraryModel : ObservableObject
     {
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryItemType tileType = LibraryItemType.ready, bool preferPreviewGif = false)
         {

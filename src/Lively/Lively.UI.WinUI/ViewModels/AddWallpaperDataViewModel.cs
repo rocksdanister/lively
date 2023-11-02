@@ -17,9 +17,9 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public class AddWallpaperDataViewModel : ObservableObject
     {
-        private readonly ILibraryModel libData;
+        private readonly LibraryModel libData;
 
-        public AddWallpaperDataViewModel(ILibraryModel obj)
+        public AddWallpaperDataViewModel(LibraryModel obj)
         {
             this.libData = obj;
 

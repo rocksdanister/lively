@@ -10,7 +10,7 @@ namespace Lively.Helpers
 {
     public static class WallpaperUtil
     {
-        public static ILibraryModel ScanWallpaperFolder(string folderPath)
+        public static LibraryModel ScanWallpaperFolder(string folderPath)
         {
             if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
             {

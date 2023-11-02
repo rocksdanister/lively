@@ -37,7 +37,7 @@ namespace Lively.UI.WinUI.Views.Pages
     public sealed partial class LibraryView : Page
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private ILibraryModel selectedTile;
+        private LibraryModel selectedTile;
 
         private readonly ResourceLoader i18n;
         private readonly IUserSettingsClient userSettings;
@@ -168,7 +168,7 @@ namespace Lively.UI.WinUI.Views.Pages
             try
             {
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
-                selectedTile = (ILibraryModel)a;
+                selectedTile = (LibraryModel)a;
                 if (selectedTile.DataType == LibraryItemType.ready)
                 {
                     GridView gridView = (GridView)sender;
@@ -188,7 +188,7 @@ namespace Lively.UI.WinUI.Views.Pages
             try
             {
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
-                selectedTile = (ILibraryModel)a;
+                selectedTile = (LibraryModel)a;
                 if (selectedTile.DataType == LibraryItemType.ready)
                 {
                     customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;

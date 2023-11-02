@@ -6,7 +6,7 @@ namespace Lively.UI.WinUI.Services
 {
     public interface IDialogService
     {
-        Task<IDisplayMonitor> ShowDisplayChooseDialog();
+        Task<DisplayMonitor> ShowDisplayChooseDialog();
         Task<ApplicationModel> ShowApplicationPickerDialog();
         Task ShowDialog(string message, string title, string primaryBtnText);
         Task<DialogResult> ShowDialog(object content,
@@ -16,7 +16,7 @@ namespace Lively.UI.WinUI.Services
             bool isDefaultPrimary = true);
         Task<string> ShowTextInputDialog(string title);
         Task ShowThemeDialog();
-        Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath);
+        Task<LibraryModel> ShowDepthWallpaperDialog(string imagePath);
         Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath);
         Task<WallpaperCreateType?> ShowWallpaperCreateDialog();
         public enum DialogResult

@@ -39,7 +39,7 @@ namespace Lively.Core.Wallpapers
 
         public WallpaperType Category => WallpaperType.picture;
 
-        public ILibraryModel Model { get; }
+        public LibraryModel Model { get; }
 
         public IntPtr Handle => IntPtr.Zero;
 
@@ -47,7 +47,7 @@ namespace Lively.Core.Wallpapers
 
         public Process Proc => null;
 
-        public IDisplayMonitor Screen { get; set; }
+        public DisplayMonitor Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
@@ -55,8 +55,8 @@ namespace Lively.Core.Wallpapers
         private readonly string filePath;
 
         public PictureWinApi(string filePath,
-            ILibraryModel model,
-            IDisplayMonitor display,
+            LibraryModel model,
+            DisplayMonitor display,
             WallpaperArrangement arrangement,
             WallpaperScaler scaler = WallpaperScaler.fill)
         {
@@ -113,7 +113,7 @@ namespace Lively.Core.Wallpapers
             //nothing
         }
 
-        public void SetScreen(IDisplayMonitor display)
+        public void SetScreen(DisplayMonitor display)
         {
             this.Screen = display;
         }
