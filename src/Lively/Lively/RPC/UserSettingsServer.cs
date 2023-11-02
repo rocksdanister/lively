@@ -72,7 +72,7 @@ namespace Lively.RPC
             {
                 lock (appRulesWriteLock)
                 {
-                    userSettings.Save<List<IApplicationRulesModel>>();
+                    userSettings.Save<List<ApplicationRulesModel>>();
                 }
             }
         }
@@ -183,7 +183,7 @@ namespace Lively.RPC
             {
                 lock (settingsWriteLock)
                 {
-                    userSettings.Save<ISettingsModel>();
+                    userSettings.Save<SettingsModel>();
                     if (restartRequired)
                     {
                         runner.RestartUI();

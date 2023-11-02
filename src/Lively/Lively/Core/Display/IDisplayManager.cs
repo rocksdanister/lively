@@ -23,6 +23,6 @@ namespace Lively.Core.Display
         bool IsMultiScreen();
         uint OnHwndCreated(IntPtr hWnd, out bool register);
         IntPtr OnWndProc(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
-        bool ScreenExists(IDisplayMonitor display);
+        bool ScreenExists(DisplayMonitor display);
     }
 }

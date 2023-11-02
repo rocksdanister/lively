@@ -29,7 +29,7 @@ namespace Lively.Core.Wallpapers
 
         public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model { get; }
+        public LibraryModel Model { get; }
 
         public IntPtr Handle { get; private set; }
 
@@ -37,13 +37,13 @@ namespace Lively.Core.Wallpapers
 
         public Process Proc { get; }
 
-        public IDisplayMonitor Screen { get; set; }
+        public DisplayMonitor Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
         public bool IsExited { get; private set; }
 
-        public VideoVlcPlayer(string path, ILibraryModel model, IDisplayMonitor display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
+        public VideoVlcPlayer(string path, LibraryModel model, DisplayMonitor display, WallpaperScaler scaler = WallpaperScaler.fill, bool hwAccel = true)
         {
             var scalerArg = scaler switch
             {

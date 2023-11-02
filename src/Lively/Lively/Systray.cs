@@ -277,7 +277,7 @@ namespace Lively
 
         #region helpers
 
-        private IEnumerable<ILibraryModel> GetRandomWallpaper()
+        private IEnumerable<LibraryModel> GetRandomWallpaper()
         {
             var dir = new List<string>();
             string[] folderPaths = {
@@ -306,7 +306,7 @@ namespace Lively
 
             for (int i = 0; i < dir.Count; i++)
             {
-                ILibraryModel libItem = null;
+                LibraryModel libItem = null;
                 try
                 {
                     libItem = WallpaperUtil.ScanWallpaperFolder(dir[i]);

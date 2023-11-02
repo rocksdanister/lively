@@ -21,14 +21,14 @@ namespace Lively.Views
     public partial class WallpaperPreview : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly ILibraryModel wallpaperData;
+        private readonly LibraryModel wallpaperData;
         private IWallpaper wallpaper;
         private bool isInitialized = false;
 
         private readonly IWallpaperFactory wallpaperFactory;
         private readonly IUserSettingsService userSettings;
 
-        public WallpaperPreview(ILibraryModel model)
+        public WallpaperPreview(LibraryModel model)
         {
             userSettings = App.Services.GetRequiredService<IUserSettingsService>();
             wallpaperFactory = App.Services.GetRequiredService<IWallpaperFactory>();
@@ -43,7 +43,7 @@ namespace Lively.Views
             _ = LoadWallpaper(wallpaperData);
         }
 
-        private async Task LoadWallpaper(ILibraryModel model)
+        private async Task LoadWallpaper(LibraryModel model)
         {
             try
             {

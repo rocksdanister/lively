@@ -19,7 +19,7 @@ namespace Lively.Factories
             this.lpFactory = lpFactory;
         }
 
-        public IWallpaper CreateWallpaper(ILibraryModel obj, IDisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
+        public IWallpaper CreateWallpaper(LibraryModel obj, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
         {
             switch (obj.LivelyInfo.Type)
             {

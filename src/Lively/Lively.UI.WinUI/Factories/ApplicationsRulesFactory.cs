@@ -9,7 +9,7 @@ namespace Lively.UI.WinUI.Factories
 {
     public class ApplicationsRulesFactory : IApplicationsRulesFactory
     {
-        public IApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule)
+        public ApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule)
         {
             var fileName = Path.GetFileNameWithoutExtension(appPath);
             return new ApplicationRulesModel(fileName, rule);

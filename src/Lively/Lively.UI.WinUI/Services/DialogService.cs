@@ -25,7 +25,7 @@ namespace Lively.UI.WinUI.Services
             i18n = ResourceLoader.GetForViewIndependentUse();
         }
 
-        public async Task<IDisplayMonitor> ShowDisplayChooseDialog()
+        public async Task<DisplayMonitor> ShowDisplayChooseDialog()
         {
             var vm = App.Services.GetRequiredService<ChooseDisplayViewModel>();
             var dialog = new ContentDialog()
@@ -115,7 +115,7 @@ namespace Lively.UI.WinUI.Services
             }.ShowAsyncQueue();
         }
 
-        public async Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath)
+        public async Task<LibraryModel> ShowDepthWallpaperDialog(string imagePath)
         {
             var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
             vm.SelectedImage = imagePath;

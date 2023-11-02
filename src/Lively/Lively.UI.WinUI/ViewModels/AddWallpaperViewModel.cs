@@ -41,7 +41,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             });
         }
 

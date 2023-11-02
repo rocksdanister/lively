@@ -30,8 +30,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private string livelyPropertyCopyPath;
-        private ILibraryModel libraryItem;
-        private IDisplayMonitor screen;
+        private LibraryModel libraryItem;
+        private DisplayMonitor screen;
         private JObject livelyPropertyCopyData;
 
         //UI
@@ -53,15 +53,15 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
         }
 
-        public LivelyPropertiesView(ILibraryModel model) : this()
+        public LivelyPropertiesView(LibraryModel model) : this()
         {
             CreateUI(model);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) =>
-            CreateUI((ILibraryModel)e.Parameter);
+            CreateUI((LibraryModel)e.Parameter);
 
-        private void CreateUI(ILibraryModel model)
+        private void CreateUI(LibraryModel model)
         {
             libraryItem = model;
             try
@@ -684,7 +684,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         /// <param name="wallpaperData">Wallpaper info.</param>
         /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
         /// <returns></returns>
-        public static bool RestoreOriginalPropertyFile(ILibraryModel wallpaperData, string livelyPropertyCopyPath)
+        public static bool RestoreOriginalPropertyFile(LibraryModel wallpaperData, string livelyPropertyCopyPath)
         {
             bool status = false;
             try
@@ -704,7 +704,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         /// </summary>
         /// <param name="obj">LibraryModel object</param>
         /// <returns></returns>
-        public Tuple<string, IDisplayMonitor> GetLivelyPropertyDetails(ILibraryModel obj, WallpaperArrangement arrangement, IDisplayMonitor selectedScreen)
+        public Tuple<string, DisplayMonitor> GetLivelyPropertyDetails(LibraryModel obj, WallpaperArrangement arrangement, DisplayMonitor selectedScreen)
         {
             if (obj.LivelyPropertyPath == null)
             {
@@ -712,7 +712,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
 
             string livelyPropertyCopy = string.Empty;
-            IDisplayMonitor screen = null;
+            DisplayMonitor screen = null;
             var items = desktopCore.Wallpapers.ToList().FindAll(x => x.LivelyInfoFolderPath == obj.LivelyInfoFolderPath);
             if (items.Count == 0)
             {
@@ -783,7 +783,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         break;
                 }
             }
-            return new Tuple<string, IDisplayMonitor>(livelyPropertyCopy, screen);
+            return new Tuple<string, DisplayMonitor>(livelyPropertyCopy, screen);
         }
 
         #endregion //helpers

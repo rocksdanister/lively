@@ -7,7 +7,7 @@ namespace Lively.UI.WinUI.ViewModels
 {
     internal class LibraryAboutViewModel
     {
-        public LibraryAboutViewModel(ILibraryModel obj)
+        public LibraryAboutViewModel(LibraryModel obj)
         {
             Title = obj.Title;
             Desc = obj.Desc;

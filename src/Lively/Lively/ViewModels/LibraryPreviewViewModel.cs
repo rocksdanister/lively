@@ -21,9 +21,9 @@ namespace Lively.ViewModels
         public event EventHandler<WallpaperUpdateArgs> DetailsUpdated;
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly ILibraryModel libData;
+        private readonly LibraryModel libData;
         private readonly ILibraryPreview Winstance;
-        private readonly ILivelyInfoModel livelyInfoCopy;
+        private readonly LivelyInfoModel livelyInfoCopy;
         private readonly string thumbnailOriginalPath;
 
         private readonly IUserSettingsService userSettings;

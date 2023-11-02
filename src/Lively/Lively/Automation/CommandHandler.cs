@@ -137,7 +137,7 @@ namespace Lively.Automation
                     "duplicate" => WallpaperArrangement.duplicate,
                     _ => WallpaperArrangement.per,
                 };
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             }
 
             return 0;
@@ -168,7 +168,7 @@ namespace Lively.Automation
                 {
                     var screen = opts.Monitor != null ?
                         displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
-                    ILibraryModel libraryItem = null;
+                    LibraryModel libraryItem = null;
                     foreach (var x in GetWallpapers())
                     {
                         if (x.FilePath != null && x.FilePath.Equals(opts.File, StringComparison.OrdinalIgnoreCase))
@@ -282,7 +282,7 @@ namespace Lively.Automation
             return 0;
         }
 
-        private void SeekWallpaper(float seek, Core.PlaybackPosType type, IDisplayMonitor screen, ILibraryModel wp)
+        private void SeekWallpaper(float seek, Core.PlaybackPosType type, DisplayMonitor screen, LibraryModel wp)
         {
             switch (userSettings.Settings.WallpaperArrangement)
             {
@@ -493,7 +493,7 @@ namespace Lively.Automation
             return value;
         }
 
-        private IEnumerable<ILibraryModel> GetWallpapers()
+        private IEnumerable<LibraryModel> GetWallpapers()
         {
             var dir = new List<string[]>();
             string[] folderPaths = {
@@ -513,7 +513,7 @@ namespace Lively.Automation
             {
                 for (int j = 0; j < dir[i].Length; j++)
                 {
-                    ILibraryModel libItem = null;
+                    LibraryModel libItem = null;
                     try
                     {
                         libItem = WallpaperUtil.ScanWallpaperFolder(dir[i][j]);
@@ -534,7 +534,7 @@ namespace Lively.Automation
         /// <param name="wallpaperData">Wallpaper info.</param>
         /// <param name="livelyPropertyCopyPath">Modified LivelyProperties.json path.</param>
         /// <returns></returns>
-        public static bool RestoreOriginalPropertyFile(ILibraryModel wallpaperData, string livelyPropertyCopyPath)
+        public static bool RestoreOriginalPropertyFile(LibraryModel wallpaperData, string livelyPropertyCopyPath)
         {
             bool status = false;
             try

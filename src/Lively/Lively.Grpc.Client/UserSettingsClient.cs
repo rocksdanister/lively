@@ -14,8 +14,8 @@ namespace Lively.Grpc.Client
 {
     public class UserSettingsClient : IUserSettingsClient
     {
-        public ISettingsModel Settings { get; private set; }
-        public List<IApplicationRulesModel> AppRules { get; private set; }
+        public SettingsModel Settings { get; private set; }
+        public List<ApplicationRulesModel> AppRules { get; private set; }
 
         private readonly SettingsService.SettingsServiceClient client;
 
@@ -25,8 +25,8 @@ namespace Lively.Grpc.Client
 
             Task.Run(async () =>
             {
-                await LoadAsync<ISettingsModel>().ConfigureAwait(false);
-                await LoadAsync<List<IApplicationRulesModel>>().ConfigureAwait(false);
+                await LoadAsync<SettingsModel>().ConfigureAwait(false);
+                await LoadAsync<List<ApplicationRulesModel>>().ConfigureAwait(false);
             }).Wait();
         }
 
@@ -40,21 +40,21 @@ namespace Lively.Grpc.Client
             _ = await client.SetSettingsAsync(CreateGrpcSettings(Settings));
         }
 
-        private ISettingsModel GetSettings()
+        private SettingsModel GetSettings()
         {
             var resp = client.GetSettings(new Empty());
             return CreateSettingsFromGrpc(resp);
         }
 
-        private async Task<ISettingsModel> GetSettingsAsync()
+        private async Task<SettingsModel> GetSettingsAsync()
         {
             var resp = await client.GetSettingsAsync(new Empty());
             return CreateSettingsFromGrpc(resp);
         }
 
-        private List<IApplicationRulesModel> GetAppRulesSettings()
+        private List<ApplicationRulesModel> GetAppRulesSettings()
         {
-            var appRules = new List<IApplicationRulesModel>();
+            var appRules = new List<ApplicationRulesModel>();
             var resp = client.GetAppRulesSettings(new Empty());
             foreach (var item in resp.AppRules)
             {
@@ -63,9 +63,9 @@ namespace Lively.Grpc.Client
             return appRules;
         }
 
-        private async Task<List<IApplicationRulesModel>> GetAppRulesSettingsAsync()
+        private async Task<List<ApplicationRulesModel>> GetAppRulesSettingsAsync()
         {
-            var appRules = new List<IApplicationRulesModel>();
+            var appRules = new List<ApplicationRulesModel>();
             var resp = await client.GetAppRulesSettingsAsync(new Empty());
             foreach (var item in resp.AppRules)
             {
@@ -104,11 +104,11 @@ namespace Lively.Grpc.Client
 
         public void Save<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
                 SetSettings();
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
                 SetAppRulesSettings();
             }
@@ -120,11 +120,11 @@ namespace Lively.Grpc.Client
 
         public async Task SaveAsync<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
                 await SetSettingsAsync().ConfigureAwait(false);
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
                 await SetAppRulesSettingsAsync().ConfigureAwait(false);
             }
@@ -136,11 +136,11 @@ namespace Lively.Grpc.Client
 
         public void Load<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
                 Settings = GetSettings();
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
                 AppRules = GetAppRulesSettings();
             }
@@ -152,11 +152,11 @@ namespace Lively.Grpc.Client
 
         public async Task LoadAsync<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
                 Settings = await GetSettingsAsync().ConfigureAwait(false);
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
                 AppRules = await GetAppRulesSettingsAsync().ConfigureAwait(false);
             }
@@ -168,7 +168,7 @@ namespace Lively.Grpc.Client
 
         #region helpers
 
-        private SettingsDataModel CreateGrpcSettings(ISettingsModel settings)
+        private SettingsDataModel CreateGrpcSettings(SettingsModel settings)
         {
             return new SettingsDataModel()
             {
@@ -257,7 +257,7 @@ namespace Lively.Grpc.Client
             };
         }
 
-        private ISettingsModel CreateSettingsFromGrpc(SettingsDataModel settings)
+        private SettingsModel CreateSettingsFromGrpc(SettingsDataModel settings)
         {
             return new SettingsModel()
             {

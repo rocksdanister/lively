@@ -21,7 +21,7 @@ namespace Lively.Core.Wallpapers
 
         public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model { get; }
+        public LibraryModel Model { get; }
 
         public IntPtr Handle { get; private set; }
 
@@ -29,7 +29,7 @@ namespace Lively.Core.Wallpapers
 
         public Process Proc { get; }
 
-        public IDisplayMonitor Screen { get; set; }
+        public DisplayMonitor Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
@@ -46,7 +46,7 @@ namespace Lively.Core.Wallpapers
         /// <param name="model">Wallpaper data</param>
         /// <param name="display">Screen metadata</param>
         /// <param name="timeOut">Time to wait for program to be ready(in milliseconds)</param>
-        public ExtPrograms(string path, ILibraryModel model, IDisplayMonitor display, int timeOut = 20000)
+        public ExtPrograms(string path, LibraryModel model, DisplayMonitor display, int timeOut = 20000)
         {
             // Unity flags
             //-popupwindow removes from taskbar

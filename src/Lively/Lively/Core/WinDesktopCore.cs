@@ -45,7 +45,7 @@ namespace Lively.Core
         private IntPtr workerw;
         public IntPtr DesktopWorkerW => workerw;
         private bool disposedValue;
-        private readonly List<IWallpaperLayoutModel> wallpapersDisconnected = new();
+        private readonly List<WallpaperLayoutModel> wallpapersDisconnected = new();
 
         public event EventHandler<WallpaperUpdateArgs> WallpaperUpdated;
         public event EventHandler<Exception> WallpaperError;
@@ -129,7 +129,7 @@ namespace Lively.Core
         /// <summary>
         /// Sets the given wallpaper based on layout usersettings.
         /// </summary>
-        public async Task SetWallpaperAsync(ILibraryModel wallpaper, IDisplayMonitor display)
+        public async Task SetWallpaperAsync(LibraryModel wallpaper, DisplayMonitor display)
         {
             await semaphoreSlimWallpaperLoadingLock.WaitAsync();
 
@@ -512,7 +512,7 @@ namespace Lively.Core
         /// </summary>
         /// <param name="handle">window handle of process to add as wallpaper</param>
         /// <param name="display">displaystring of display to sent wp to.</param>
-        private bool TrySetWallpaperPerScreen(IntPtr handle, IDisplayMonitor targetDisplay)
+        private bool TrySetWallpaperPerScreen(IntPtr handle, DisplayMonitor targetDisplay)
         {
             NativeMethods.RECT prct = new NativeMethods.RECT();
             Logger.Info($"Sending wallpaper(Screen): {targetDisplay.DeviceName} | {targetDisplay.Bounds}");
@@ -615,7 +615,7 @@ namespace Lively.Core
                 */
                 try
                 {
-                    userSettings.Save<List<IWallpaperLayoutModel>>();
+                    userSettings.Save<List<WallpaperLayoutModel>>();
                 }
                 catch (Exception e)
                 {
@@ -658,7 +658,7 @@ namespace Lively.Core
                 userSettings.Settings.SelectedDisplay =
                     allScreens.Find(x => userSettings.Settings.SelectedDisplay.Equals(x)) ??
                     displayManager.PrimaryDisplayMonitor;
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
 
                 switch (userSettings.Settings.WallpaperArrangement)
                 {
@@ -791,11 +791,11 @@ namespace Lively.Core
             }
         }
 
-        private void RestoreWallpaper(List<IWallpaperLayoutModel> wallpaperLayout)
+        private void RestoreWallpaper(List<WallpaperLayoutModel> wallpaperLayout)
         {
             foreach (var layout in wallpaperLayout)
             {
-                ILibraryModel libraryItem = null;
+                LibraryModel libraryItem = null;
                 try
                 {
                     libraryItem = WallpaperUtil.ScanWallpaperFolder(layout.LivelyInfoPath);
@@ -880,12 +880,12 @@ namespace Lively.Core
             }
         }
 
-        public void CloseWallpaper(IDisplayMonitor display, bool terminate = false)
+        public void CloseWallpaper(DisplayMonitor display, bool terminate = false)
         {
             CloseWallpaper(display: display, fireEvent: true, terminate: terminate);
         }
 
-        private void CloseWallpaper(IDisplayMonitor display, bool fireEvent, bool terminate)
+        private void CloseWallpaper(DisplayMonitor display, bool fireEvent, bool terminate)
         {
             var tmp = wallpapers.FindAll(x => x.Screen.Equals(display));
             if (tmp.Count > 0)
@@ -941,12 +941,12 @@ namespace Lively.Core
             }
         }
 
-        public void CloseWallpaper(ILibraryModel wp, bool terminate = false)
+        public void CloseWallpaper(LibraryModel wp, bool terminate = false)
         {
             CloseWallpaper(wp: wp, fireEvent: true, terminate: terminate);
         }
 
-        private void CloseWallpaper(ILibraryModel wp, bool fireEvent, bool terminate)
+        private void CloseWallpaper(LibraryModel wp, bool fireEvent, bool terminate)
         {
             //NOTE: To maintain compatibility with existing code ILibraryModel is still used.
             var tmp = wallpapers.FindAll(x => x.Model.LivelyInfoFolderPath == wp.LivelyInfoFolderPath);
@@ -988,7 +988,7 @@ namespace Lively.Core
             });
         }
 
-        public void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg)
+        public void SendMessageWallpaper(DisplayMonitor display, string info_path, IpcMessage msg)
         {
             wallpapers.ForEach(x =>
             {
@@ -997,7 +997,7 @@ namespace Lively.Core
             });
         }
 
-        public void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type)
+        public void SeekWallpaper(LibraryModel wp, float seek, PlaybackPosType type)
         {
             wallpapers.ForEach(x =>
             {
@@ -1008,7 +1008,7 @@ namespace Lively.Core
             });
         }
 
-        public void SeekWallpaper(IDisplayMonitor display, float seek, PlaybackPosType type)
+        public void SeekWallpaper(DisplayMonitor display, float seek, PlaybackPosType type)
         {
             wallpapers.ForEach(x =>
             {

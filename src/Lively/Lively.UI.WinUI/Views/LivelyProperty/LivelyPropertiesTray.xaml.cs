@@ -15,7 +15,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
     /// </summary>
     public sealed partial class LivelyPropertiesTray : WindowEx
     {
-        public LivelyPropertiesTray(ILibraryModel model)
+        public LivelyPropertiesTray(LibraryModel model)
         {
             this.InitializeComponent();
             this.Title = model.Title;

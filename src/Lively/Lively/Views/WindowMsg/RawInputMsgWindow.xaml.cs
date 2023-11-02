@@ -342,7 +342,7 @@ namespace Lively.Views.WindowMsg
         /// <param name="y">Cursor pos y</param>
         /// <param name="display">Target display device</param>
         /// <returns>Localised cursor value</returns>
-        private Point CalculateMousePos(int x, int y, IDisplayMonitor display, WallpaperArrangement arrangement)
+        private Point CalculateMousePos(int x, int y, DisplayMonitor display, WallpaperArrangement arrangement)
         {
             if (displayManager.IsMultiScreen())
             {

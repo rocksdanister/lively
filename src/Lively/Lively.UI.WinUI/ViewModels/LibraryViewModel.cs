@@ -188,9 +188,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         #endregion //collections
 
-        private RelayCommand<ILibraryModel> _cancelDownloadCommand;
-        public RelayCommand<ILibraryModel> CancelDownloadCommand =>
-            _cancelDownloadCommand ??= new RelayCommand<ILibraryModel>((obj) => CancelDownload(obj.LivelyInfo.Id));
+        private RelayCommand<LibraryModel> _cancelDownloadCommand;
+        public RelayCommand<LibraryModel> CancelDownloadCommand =>
+            _cancelDownloadCommand ??= new RelayCommand<LibraryModel>((obj) => CancelDownload(obj.LivelyInfo.Id));
 
         private bool _isBusy;
         public bool IsBusy
@@ -262,7 +262,7 @@ namespace Lively.UI.WinUI.ViewModels
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public async Task WallpaperDelete(ILibraryModel obj, bool unsubscribe = true)
+        public async Task WallpaperDelete(LibraryModel obj, bool unsubscribe = true)
         {
             try
             {
@@ -284,7 +284,7 @@ namespace Lively.UI.WinUI.ViewModels
                         SelectedItem = null;
                     }
                     //remove from library.
-                    LibraryItems.Remove((LibraryModel)obj);
+                    LibraryItems.Remove(obj);
                     WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
                     try
                     {
@@ -326,7 +326,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public async Task WallpaperExport(ILibraryModel libraryItem, string saveFile)
+        public async Task WallpaperExport(LibraryModel libraryItem, string saveFile)
         {
             await Task.Run(() =>
             {
@@ -431,7 +431,7 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
-        public async Task WallpaperShowOnDisk(ILibraryModel libraryItem)
+        public async Task WallpaperShowOnDisk(LibraryModel libraryItem)
         {
             string folderPath =
                 libraryItem.LivelyInfo.Type == WallpaperType.url || libraryItem.LivelyInfo.Type == WallpaperType.videostream
@@ -533,7 +533,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private async Task<ILibraryModel> AddWallpaperFileGallery(string filePath, string id)
+        private async Task<LibraryModel> AddWallpaperFileGallery(string filePath, string id)
         {
             if (ZipExtract.IsLivelyZip(filePath))
             {
@@ -568,7 +568,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public async Task<ILibraryModel> AddWallpaperFile(string filePath)
+        public async Task<LibraryModel> AddWallpaperFile(string filePath)
         {
             WallpaperType type;
             if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
@@ -628,7 +628,7 @@ namespace Lively.UI.WinUI.ViewModels
             throw new InvalidOperationException($"{ResourceLoader.GetForViewIndependentUse().GetString("TextUnsupportedFile")} ({Path.GetExtension(filePath)})");
         }
 
-        public ILibraryModel AddWallpaperLink(string url)
+        public LibraryModel AddWallpaperLink(string url)
         {
             var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
             Directory.CreateDirectory(dir);
@@ -649,7 +649,7 @@ namespace Lively.UI.WinUI.ViewModels
             return AddWallpaper(dir, true);
         }
 
-        public ILibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
+        public LibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
 
         public async Task AddWallpapers(List<string> files, CancellationToken cancellationToken, IProgress<int> progress)
         {
@@ -689,7 +689,7 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged -= WallpaperChanged;
         }
 
-        public ILibraryModel AddWallpaperFolder(string folder)
+        public LibraryModel AddWallpaperFolder(string folder)
         {
             return AddWallpaper(folder, false);
         }
@@ -698,7 +698,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region helpers
 
-        private ILibraryModel AddWallpaper(string folderPath, bool processing = false)
+        private LibraryModel AddWallpaper(string folderPath, bool processing = false)
         {
             try
             {

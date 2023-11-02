@@ -16,13 +16,13 @@ namespace Lively.Grpc.Client
         bool IsCoreInitialized { get; }
 
         Task CloseAllWallpapers(bool terminate = false);
-        Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false);
-        Task CloseWallpaper(ILibraryModel item, bool terminate = false);
+        Task CloseWallpaper(DisplayMonitor monitor, bool terminate = false);
+        Task CloseWallpaper(LibraryModel item, bool terminate = false);
         Task CloseWallpaper(WallpaperType type, bool terminate = false);
-        Task SetWallpaper(ILibraryModel item, IDisplayMonitor display);
+        Task SetWallpaper(LibraryModel item, DisplayMonitor display);
         Task SetWallpaper(string livelyInfoPath, string monitorId);
-        void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg);
-        void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg);
+        void SendMessageWallpaper(LibraryModel obj, IpcMessage msg);
+        void SendMessageWallpaper(DisplayMonitor display, LibraryModel obj, IpcMessage msg);
         Task PreviewWallpaper(string livelyInfoPath);
         Task TakeScreenshot(string monitorId, string savePath);
 
@@ -37,13 +37,13 @@ namespace Lively.Grpc.Client
         public string LivelyPropertyCopyPath { get; set; }
         public string ThumbnailPath { get; set; }
         public string PreviewPath { get; set; }
-        public IDisplayMonitor Display { get; set; }
+        public DisplayMonitor Display { get; set; }
         public WallpaperType Category { get; set; }
     }
 
     public class WallpaperUpdatedData
     {
-        public ILivelyInfoModel Info { get; set; }
+        public LivelyInfoModel Info { get; set; }
         public UpdateWallpaperType Category { get; set; }
         public string InfoPath { get; set; }
     }

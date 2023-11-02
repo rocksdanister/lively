@@ -354,7 +354,7 @@ namespace Lively.Core.Suspend
                     else
                     {
                         //multiscreen wp pause algorithm, for per-monitor pause rule.
-                        IDisplayMonitor focusedScreen;
+                        DisplayMonitor focusedScreen;
                         if ((focusedScreen = MapWindowToMonitor(fHandle)) != null)
                         {
                             //unpausing the rest of wallpapers.
@@ -468,7 +468,7 @@ namespace Lively.Core.Suspend
             }
         }
 
-        private void PauseWallpaper(IDisplayMonitor display)
+        private void PauseWallpaper(DisplayMonitor display)
         {
             foreach (var x in desktopCore.Wallpapers)
             {
@@ -479,7 +479,7 @@ namespace Lively.Core.Suspend
             }
         }
 
-        private void PlayWallpaper(IDisplayMonitor display)
+        private void PlayWallpaper(DisplayMonitor display)
         {
             foreach (var x in desktopCore.Wallpapers)
             {
@@ -498,7 +498,7 @@ namespace Lively.Core.Suspend
             }
         }
 
-        private void SetWallpaperVolume(int volume, IDisplayMonitor display)
+        private void SetWallpaperVolume(int volume, DisplayMonitor display)
         {
             foreach (var x in desktopCore.Wallpapers)
             {
@@ -543,7 +543,7 @@ namespace Lively.Core.Suspend
         /// </summary>
         /// <param name="handle"></param>
         /// <returns></returns>
-        private IDisplayMonitor MapWindowToMonitor(IntPtr handle)
+        private DisplayMonitor MapWindowToMonitor(IntPtr handle)
         {
             try
             {

@@ -275,7 +275,7 @@ namespace Lively.Core.Display
                 rc.Right - rc.Left, rc.Bottom - rc.Top);
         }
 
-        public bool ScreenExists(IDisplayMonitor display)
+        public bool ScreenExists(DisplayMonitor display)
         {
             return DisplayMonitors.Any(x => display.Equals(x));
         }

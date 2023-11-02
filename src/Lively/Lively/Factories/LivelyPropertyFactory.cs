@@ -10,7 +10,7 @@ namespace Lively.Factories
 {
     public class LivelyPropertyFactory : ILivelyPropertyFactory
     {
-        public string CreateLivelyPropertyFolder(ILibraryModel model, IDisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings)
+        public string CreateLivelyPropertyFolder(LibraryModel model, DisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings)
         {
             string propertyPath = null;
             if (model.LivelyPropertyPath != null)

@@ -5,6 +5,6 @@ namespace Lively.Factories
 {
     public interface IApplicationsRulesFactory
     {
-        IApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule);
+        ApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule);
     }
 }

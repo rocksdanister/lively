@@ -164,7 +164,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             _ = dispatcherQueue.TryEnqueue(() =>
             {
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             });
         }
 
