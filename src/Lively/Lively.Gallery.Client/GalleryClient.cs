@@ -100,7 +100,7 @@ namespace Lively.Gallery.Client
             }
             _server.Start();
 
-            LinkHandler.OpenBrowser(
+            LinkUtil.OpenBrowser(
                 provider switch
                 {
                     "GOOGLE" => _authLink,

@@ -1,4 +1,4 @@
-﻿using Lively.Common.Helpers.MVVM;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class ChooseDisplayViewModel : ObservableObject
+    public partial class ChooseDisplayViewModel : ObservableObject
     {
         public event EventHandler OnRequestClose;
 
@@ -36,19 +36,8 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
-        private ObservableCollection<ScreenLayoutModel> _screenItems;
-        public ObservableCollection<ScreenLayoutModel> ScreenItems
-        {
-            get =>_screenItems;
-            set
-            {
-                if (value != _screenItems)
-                {
-                    _screenItems = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        [ObservableProperty]
+        private ObservableCollection<ScreenLayoutModel> screenItems;
 
         private ScreenLayoutModel _selectedItem;
         public ScreenLayoutModel SelectedItem
@@ -56,8 +45,7 @@ namespace Lively.UI.WinUI.ViewModels
             get => _selectedItem;
             set
             {
-                _selectedItem = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedItem, value);
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -79,7 +67,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                 }
                 unsortedScreenItems.Add(
-                    new ScreenLayoutModel((DisplayMonitor)item, imgPath, livelyPropertyFilePath, item.Index.ToString()));
+                    new ScreenLayoutModel(item, imgPath, livelyPropertyFilePath, item.Index.ToString()));
             }
 
             foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())

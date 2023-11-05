@@ -53,6 +53,6 @@ namespace Lively.Views
         }
 
         private void Get_Help_Click(object sender, RoutedEventArgs e) =>
-            LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
+            LinkUtil.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
     }
 }

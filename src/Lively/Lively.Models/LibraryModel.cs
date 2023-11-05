@@ -19,7 +19,7 @@ namespace Lively.Models
 
             try
             {
-                SrcWebsite = LinkHandler.SanitizeUrl(data.Contact);
+                SrcWebsite = LinkUtil.SanitizeUrl(data.Contact);
             }
             catch
             {

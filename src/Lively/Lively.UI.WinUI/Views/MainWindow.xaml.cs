@@ -430,7 +430,7 @@ namespace Lively.UI.WinUI
         }
 
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
-            LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
+            LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
 
         private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialog();
 

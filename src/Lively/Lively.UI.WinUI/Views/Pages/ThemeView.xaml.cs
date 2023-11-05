@@ -33,6 +33,6 @@ namespace Lively.UI.WinUI.Views.Pages
         }
 
         //NavigateUri not working, Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5630
-        private void Color_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("ms-settings:colors");
+        private void Color_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("ms-settings:colors");
     }
 }

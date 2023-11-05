@@ -29,14 +29,14 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
         }
 
-        private void WebsiteCard_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://www.rocksdanister.com/lively/");
+        private void WebsiteCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://www.rocksdanister.com/lively/");
 
-        private void DocumentationCard_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki");
+        private void DocumentationCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/rocksdanister/lively/wiki");
 
-        private void CommunityCard_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://www.reddit.com/r/LivelyWallpaper/");
+        private void CommunityCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://www.reddit.com/r/LivelyWallpaper/");
 
-        private void SoureCodeCard_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively");
+        private void SoureCodeCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/rocksdanister/lively");
 
-        private void ReportBugCard_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
+        private void ReportBugCard_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/rocksdanister/lively/wiki/Common-Problems");
     }
 }

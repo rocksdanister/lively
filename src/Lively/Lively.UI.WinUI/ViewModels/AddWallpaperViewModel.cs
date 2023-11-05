@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Google.Protobuf.WellKnownTypes;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
@@ -62,15 +63,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         private void WebBrowseAction()
         {
-            Uri uri;
-            try
-            {
-                uri = LinkHandler.SanitizeUrl(WebUrlText);
-            }
-            catch
-            {
+            if (!LinkUtil.TrySanitizeUrl(WebUrlText, out Uri uri))
                 return;
-            }
 
             WebUrlText = uri.OriginalString;
             userSettings.Settings.SavedURL = WebUrlText;

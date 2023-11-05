@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lively.Common
 {
-    public static class LinkHandler
+    public static class LinkUtil
     {
         public static void OpenBrowser(Uri uri)
         {
@@ -53,6 +53,20 @@ namespace Lively.Common
                 }.Uri;
             }
             return uri;
+        }
+
+        public static bool TrySanitizeUrl(string address, out Uri uri)
+        {
+            uri = null;
+            try
+            {
+                uri = SanitizeUrl(address);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
         public static string GetLastSegmentUrl(string url)
