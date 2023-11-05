@@ -5,8 +5,6 @@ using System.IO;
 
 namespace Lively.Models
 {
-
-    [Serializable]
     public class SettingsModel
     {
         public string AppVersion { get; set; }

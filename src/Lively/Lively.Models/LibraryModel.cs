@@ -1,25 +1,13 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers.MVVM;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Lively.Common;
 using System;
 using System.ComponentModel;
 using System.IO;
+using Lively.Common.Extensions;
 
 namespace Lively.Models
 {
-    public enum LibraryItemType
-    {
-        [Description("Importing..")]
-        processing,
-        [Description("Import complete.")]
-        ready,
-        cmdImport,
-        multiImport,
-        edit,
-        gallery,
-    }
-
-    [Serializable]
-    public class LibraryModel : ObservableObject
+    public partial class LibraryModel : ObservableObject
     {
         public LibraryModel(LivelyInfoModel data, string folderPath, LibraryItemType tileType = LibraryItemType.ready, bool preferPreviewGif = false)
         {
@@ -150,191 +138,98 @@ namespace Lively.Models
             //IsSubscribed = !string.IsNullOrEmpty(data.Id);
         }
 
-        private bool _isSubscribed;
-        public bool IsSubscribed
-        {
-            get => _isSubscribed;
-            set { _isSubscribed = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isSubscribed;
 
-        private bool _isDownloading;
-        public bool IsDownloading
-        {
-            get { return _isDownloading; }
-            set { _isDownloading = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isDownloading;
 
-        private float _downloadingProgress;
+        [ObservableProperty]
+        private float downloadingProgress;
 
-        public float DownloadingProgress
-        {
-            get { return _downloadingProgress; }
-            set { _downloadingProgress = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string downloadingProgressText = "-/- MB";
 
-        private string _downloadingProgressText = "-/- MB";
-        public string DownloadingProgressText
-        {
-            get => _downloadingProgressText;
-            set
-            {
-                _downloadingProgressText = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private LivelyInfoModel livelyInfo;
 
-        private LivelyInfoModel _livelyInfo;
-        public LivelyInfoModel LivelyInfo
-        {
-            get
-            {
-                return _livelyInfo;
-            }
-            set
-            {
-                _livelyInfo = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private LibraryItemType _dataType;
-        public LibraryItemType DataType
-        {
-            get { return _dataType; }
-            set
-            {
-                _dataType = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private LibraryItemType dataType;
 
         private string _filePath;
         public string FilePath
         {
-            get { return _filePath; }
+            get => _filePath;
             set
             {
-                if (LivelyInfo.Type == WallpaperType.url
-                || LivelyInfo.Type == WallpaperType.videostream)
-                {
-                    _filePath = value;
-                }
-                else
-                {
-                    _filePath = File.Exists(value) ? value : null;
-                }
-                OnPropertyChanged();
+                value = LivelyInfo.Type.IsOnlineWallpaper() || File.Exists(value) ? value : null;
+                SetProperty(ref _filePath, value);
             }
         }
 
-        private string _livelyInfoFolderPath;
-        public string LivelyInfoFolderPath
-        {
-            get { return _livelyInfoFolderPath; }
-            set
-            {
-                _livelyInfoFolderPath = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string livelyInfoFolderPath;
 
         private string _title;
         public string Title
         {
-            get
-            {
-                return _title;
-            }
+            get => _title;
             set
             {
-                _title = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
-                OnPropertyChanged();
+                value = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
+                SetProperty(ref _title, value);
             }
         }
 
         private string _author;
         public string Author
         {
-            get
-            {
-                return _author;
-            }
+            get => _author;
             set
             {
-                _author = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
-                OnPropertyChanged();
+                value = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 100 ? value.Substring(0, 100) : value);
+                SetProperty(ref _author, value);
             }
         }
 
         private string _desc;
         public string Desc
         {
-            get
-            {
-                return _desc;
-            }
+            get => _desc;
             set
             {
-                _desc = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 5000 ? value.Substring(0, 5000) : value);
-                OnPropertyChanged();
+                value = string.IsNullOrWhiteSpace(value) ? "---" : (value.Length > 5000 ? value.Substring(0, 5000) : value);
+                SetProperty(ref _desc, value);
             }
         }
 
-        private string _imagePath;
-        public string ImagePath
-        {
-            get
-            {
-                return _imagePath;
-            }
-            set
-            {
-                _imagePath = value;
-                OnPropertyChanged();
-            }
-        }
-
+        [ObservableProperty]
+        private string imagePath;
+        
         private string _previewClipPath;
         public string PreviewClipPath
         {
-            get
-            {
-                return _previewClipPath;
-            }
+            get => _previewClipPath;
             set
             {
-                _previewClipPath = File.Exists(value) ? value : null;
-                OnPropertyChanged();
+                value = File.Exists(value) ? value : null;
+                SetProperty(ref _previewClipPath, value);
             }
         }
 
         private string _thumbnailPath;
         public string ThumbnailPath
         {
-            get
-            {
-                return _thumbnailPath;
-            }
+            get => _thumbnailPath;
             set
             {
-                _thumbnailPath = File.Exists(value) ? value : null;
-                OnPropertyChanged();
+                value = File.Exists(value) ? value : null;
+                SetProperty(ref _thumbnailPath, value);
             }
         }
 
-        private Uri _srcWebsite;
-        public Uri SrcWebsite
-        {
-            get
-            {
-                return _srcWebsite;
-            }
-            set
-            {
-                _srcWebsite = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private Uri srcWebsite;
 
         private string _livelyPropertyPath;
         /// <summary>
@@ -342,23 +237,27 @@ namespace Lively.Models
         /// </summary>
         public string LivelyPropertyPath
         {
-            get { return _livelyPropertyPath; }
+            get => _livelyPropertyPath;
             set
             {
-                _livelyPropertyPath = File.Exists(value) ? value : null;
-                OnPropertyChanged();
+                value = File.Exists(value) ? value : null;
+                SetProperty(ref _livelyPropertyPath, value);
             }
         }
 
-        private bool _itemStartup;
-        public bool ItemStartup
-        {
-            get { return _itemStartup; }
-            set
-            {
-                _itemStartup = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool itemStartup;
+    }
+
+    public enum LibraryItemType
+    {
+        [Description("Importing..")]
+        processing,
+        [Description("Import complete.")]
+        ready,
+        cmdImport,
+        multiImport,
+        edit,
+        gallery,
     }
 }

@@ -1,12 +1,11 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers.MVVM;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Lively.Common;
 using Newtonsoft.Json;
 using System;
 
 namespace Lively.Models
 {
-    [Serializable]
-    public class ApplicationRulesModel : ObservableObject
+    public partial class ApplicationRulesModel : ObservableObject
     {
         public ApplicationRulesModel(string appName, AppRulesEnum rule)
         {
@@ -14,32 +13,10 @@ namespace Lively.Models
             Rule = rule;
         }
 
-        private string _appName;
-        public string AppName
-        {
-            get
-            {
-                return _appName;
-            }
-            set
-            {
-                _appName = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string appName;
 
-        private AppRulesEnum _rule;
-        public AppRulesEnum Rule
-        {
-            get
-            {
-                return _rule;
-            }
-            set
-            {
-                _rule = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private AppRulesEnum rule;
     }
 }
