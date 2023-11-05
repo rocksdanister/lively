@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using Lively.Common.API;
-using Lively.Common.Services;
-using Lively.PlayerWebView2;
 using MathNet.Numerics.IntegralTransforms;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 using NAudio.Wave;
 
-namespace Services
+namespace Lively.Common.Services.Audio
 {
     //Ref: https://github.com/Quozul/Audio-Visualizer
     //MIT License Copyright (c) 2019 Erwan Le Gloannec.
-    public class AudioVisualizerService : IAudioVisualizerService, IMMNotificationClient
+    public class NAudioAudioVisualizerService : IAudioVisualizerService, IMMNotificationClient
     {
         public event EventHandler<double[]> AudioDataAvailable;
 
@@ -25,28 +23,20 @@ namespace Services
         private readonly static int horizontal_smoothness = 1;
         private readonly MMDeviceEnumerator deviceEnum = new();
 
-        public AudioVisualizerService()
+        public NAudioAudioVisualizerService()
         {
             try
             {
                 var HRESULT = deviceEnum.RegisterEndpointNotificationCallback(this);
                 if (HRESULT != 0)
                 {
-                    App.WriteToParent(new LivelyMessageConsole()
-                    {
-                        Category = ConsoleMessageType.error,
-                        Message = $"Failed to register audio device notifications.",
-                    });
+                    Debug.WriteLine("Failed to register audio device notifications.");
                 }
                 capture = CreateWasapiLoopbackCapture();
             }
             catch (Exception e)
             {
-                App.WriteToParent(new LivelyMessageConsole()
-                {
-                    Category = ConsoleMessageType.error,
-                    Message = $"Failed to initialize audio visualizer: {e.Message}",
-                });
+                Debug.WriteLine($"Failed to initialize audio visualizer: {e.Message}");
             }
         }
 
@@ -93,11 +83,7 @@ namespace Services
             }
             catch (Exception ex)
             {
-                App.WriteToParent(new LivelyMessageConsole()
-                {
-                    Category = ConsoleMessageType.error,
-                    Message = $"Failed to process audio data: {ex.Message}",
-                });
+                Debug.WriteLine($"Failed to process audio data: {ex.Message}");
             }
         }
 
@@ -135,11 +121,7 @@ namespace Services
                 }
                 catch (Exception e)
                 {
-                    App.WriteToParent(new LivelyMessageConsole()
-                    {
-                        Category = ConsoleMessageType.error,
-                        Message = $"Failed to update WasapiLoopbackCapture device: {e.Message}",
-                    });
+                    Debug.WriteLine($"Failed to update WasapiLoopbackCapture device: {e.Message}");
                 }
             }
         }

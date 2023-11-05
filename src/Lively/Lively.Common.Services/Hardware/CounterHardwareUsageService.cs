@@ -6,9 +6,9 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Services.Hardware
 {
-    public class PerfCounterUsageService : IHardwareUsageService
+    public class CounterHardwareUsageService : IHardwareUsageService
     {
         public event EventHandler<HardwareUsageEventArgs> HWMonitor = delegate { };
         private readonly HardwareUsageEventArgs perfData = new HardwareUsageEventArgs();
@@ -20,7 +20,7 @@ namespace Lively.Common.Services
         private PerformanceCounter netDownCounter = null;
         private PerformanceCounter netUpCounter = null;
 
-        public PerfCounterUsageService()
+        public CounterHardwareUsageService()
         {
             InitializePerfCounters();
         }

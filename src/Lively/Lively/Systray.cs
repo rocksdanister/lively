@@ -1,6 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.Models;
-using Lively.Common.Services;
+using Lively.Common.Services.Update;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;

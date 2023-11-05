@@ -1,5 +1,4 @@
 ﻿using Lively.Common.Models;
-using Lively.Common.Services;
 using NPSMLib;
 using System;
 using System.Collections.Generic;
@@ -9,11 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage.Streams;
 using System.Diagnostics;
 using System.Threading;
+using Lively.Common.Services.Audio;
 
-namespace Lively.PlayerWebView2.Services
+namespace Lively.Common.Services.Audio
 {
     public class NpsmNowPlayingService : INowPlayingService
     {

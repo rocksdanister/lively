@@ -32,8 +32,8 @@ using Lively.Common.Helpers;
 using Lively.Helpers.Theme;
 using Microsoft.Win32;
 using System.Reflection;
-using Lively.Common.Services;
 using Lively.Common.Models;
+using Lively.Common.Services.Update;
 
 namespace Lively
 {

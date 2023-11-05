@@ -4,11 +4,11 @@ using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Services;
-using Lively.PlayerWebView2.Services;
+using Lively.Common.Services.Audio;
+using Lively.Common.Services.Hardware;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -189,7 +189,7 @@ namespace Lively.PlayerWebView2
 
                 if (startArgs.SysInfo)
                 {
-                    hardwareUsageService = new PerfCounterUsageService();
+                    hardwareUsageService = new CounterHardwareUsageService();
                     hardwareUsageService.HWMonitor += (s, e) => {
                         try
                         {
@@ -209,7 +209,7 @@ namespace Lively.PlayerWebView2
 
                 if (startArgs.AudioVisualizer)
                 {
-                    visualizerService = new AudioVisualizerService();
+                    visualizerService = new NAudioAudioVisualizerService();
                     visualizerService.AudioDataAvailable += (s, e) => {
                         try
                         {
