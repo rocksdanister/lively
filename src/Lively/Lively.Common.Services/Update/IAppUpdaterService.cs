@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Services.Update
 {
     public interface IAppUpdaterService
     {

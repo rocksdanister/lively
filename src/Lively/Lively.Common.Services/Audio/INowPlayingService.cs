@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Services.Audio
 {
     public interface INowPlayingService
     {

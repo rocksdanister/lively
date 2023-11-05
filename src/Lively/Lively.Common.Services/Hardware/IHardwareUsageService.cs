@@ -1,7 +1,7 @@
 ﻿using Lively.Common.Models;
 using System;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Services.Hardware
 {
     public interface IHardwareUsageService
     {

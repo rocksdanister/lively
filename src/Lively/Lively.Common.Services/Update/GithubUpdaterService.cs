@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
 
-namespace Lively.Common.Services
+namespace Lively.Common.Services.Update
 {
     public sealed class GithubUpdaterService : IAppUpdaterService
     {
