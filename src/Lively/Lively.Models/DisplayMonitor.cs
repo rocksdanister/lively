@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Lively.Models
 {
-    public class DisplayMonitor : ObservableObject, IEquatable<DisplayMonitor>
+    public sealed class DisplayMonitor : ObservableObject, IEquatable<DisplayMonitor>
     {
         public bool isStale;
 

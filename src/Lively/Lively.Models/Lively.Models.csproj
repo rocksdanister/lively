@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Weather\" />
+  </ItemGroup>
+
 </Project>

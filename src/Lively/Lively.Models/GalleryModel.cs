@@ -1,9 +1,9 @@
-﻿using Lively.Common.Helpers.MVVM;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Lively.Models.Gallery.API;
 
 namespace Lively.Models
 {
-    public class GalleryModel : ObservableObject
+    public partial class GalleryModel : ObservableObject
     {
         public GalleryModel(WallpaperDto data, bool isInstalled)
         {
@@ -28,75 +28,25 @@ namespace Lively.Models
             this.IsInstalled = isInstalled;
         }
 
-        private LivelyInfoModel _livelyInfo;
-        public LivelyInfoModel LivelyInfo
-        {
-            get
-            {
-                return _livelyInfo;
-            }
-            set
-            {
-                _livelyInfo = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private LivelyInfoModel livelyInfo;
 
-        private string _image;
-        public string Image
-        {
-            get
-            {
-                return _image;
-            }
-            set
-            {
-                _image = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string image;
 
-        private bool _isDownloading;
-        public bool IsDownloading
-        {
-            get { return _isDownloading; }
-            set { _isDownloading = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isDownloading;
 
-        private float _downloadingProgress;
-        public float DownloadingProgress
-        {
-            get { return _downloadingProgress; }
-            set { _downloadingProgress = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private float downloadingProgress;
 
-        private string _downloadingProgressText = "-/- MB";
-        public string DownloadingProgressText
-        {
-            get => _downloadingProgressText;
-            set
-            {
-                _downloadingProgressText = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string downloadingProgressText = "-/- MB";
 
-        private bool _isInstalled;
-        public bool IsInstalled
-        {
-            get => _isInstalled;
-            set { _isInstalled = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isInstalled;
 
-        private bool _isSelected;
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set
-            {
-                _isSelected = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool isSelected;
     }
 }
