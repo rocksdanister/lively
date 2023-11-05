@@ -110,18 +110,10 @@ namespace Lively.Common.Helpers
         public static bool TryParseShadertoy(string url, ref string html)
         {
             if (!url.Contains("shadertoy.com/view"))
-            {
                 return false;
-            }
 
-            try
-            {
-                _ = LinkHandler.SanitizeUrl(url);
-            }
-            catch
-            {
+            if (!LinkUtil.TrySanitizeUrl(url, out _))
                 return false;
-            }
 
             url = url.Replace("view/", "embed/");
             html = @"<!DOCTYPE html><html lang=""en"" dir=""ltr""> <head> <meta charset=""utf - 8""> 

@@ -48,6 +48,6 @@ namespace Lively.UI.WinUI.Views.Pages.Settings
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
 
-        private void Language_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/translation/");
+        private void Language_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/translation/");
     }
 }

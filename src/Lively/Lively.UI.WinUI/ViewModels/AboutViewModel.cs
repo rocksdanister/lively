@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Helpers.MVVM;
 using Lively.Common.Models;
 using Lively.Grpc.Client;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,13 +12,13 @@ using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class AboutViewModel : ObservableObject
+    public partial class AboutViewModel : ObservableObject
     {
         private bool updateAvailable;
         private readonly IAppUpdaterClient appUpdater;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IHttpClientFactory httpClientFactory;
-        ResourceLoader languageResource;
+        private readonly ResourceLoader languageResource;
 
         public AboutViewModel(IAppUpdaterClient appUpdater, IDesktopCoreClient desktopCore, IHttpClientFactory httpClientFactory)
         {
@@ -45,46 +45,17 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private string _updateStatusText;
-        public string UpdateStatusText
-        {
-            get { return _updateStatusText; }
-            set
-            {
-                _updateStatusText = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string updateStatusText;
 
-        private string _updateStatusSeverity = "Warning";
-        public string UpdateStatusSeverity
-        {
-            get { return _updateStatusSeverity; }
-            set { _updateStatusSeverity = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string updateStatusSeverity = "Warning";
 
+        [ObservableProperty]
+        private string updateDateText;
 
-        private string _updateDateText;
-        public string UpdateDateText
-        {
-            get { return _updateDateText; }
-            set
-            {
-                _updateDateText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _updateCommandText;
-        public string UpdateCommandText
-        {
-            get { return _updateCommandText; }
-            set
-            {
-                _updateCommandText = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string updateCommandText;
 
         private bool canUpdateAppCommand = true;
         private RelayCommand _updateAppCommand;
@@ -158,16 +129,8 @@ namespace Lively.UI.WinUI.ViewModels
             UpdateCommandText = updateAvailable ? languageResource.GetString("TextDownload") : languageResource.GetString("TextUpdateCheck");
         }
 
-        public string _patreonMembers;
-        public string PatreonMembers
-        {
-            get => _patreonMembers;
-            set
-            {
-                _patreonMembers = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string patreonMembers;
 
         private async Task<string> GetPatreonMembers()
         {

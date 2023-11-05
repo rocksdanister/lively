@@ -121,7 +121,7 @@ namespace Lively.PlayerWebView2
                 if (e.IsUserInitiated) //avoid popups
                 {
                     e.Handled = true;
-                    LinkHandler.OpenBrowser(e.Uri);
+                    LinkUtil.OpenBrowser(e.Uri);
                 }
             };
 

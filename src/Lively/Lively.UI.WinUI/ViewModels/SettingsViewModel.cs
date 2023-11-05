@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Localization;
-using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
@@ -28,7 +28,7 @@ using Windows.Storage.Pickers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class SettingsViewModel : ObservableObject
+    public partial class SettingsViewModel : ObservableObject
     {
         public event EventHandler<string> WallpaperDirChanged;
         private readonly DispatcherQueue dispatcherQueue;
@@ -129,73 +129,48 @@ namespace Lively.UI.WinUI.ViewModels
         private bool _isStartup;
         public bool IsStartup
         {
-            get
-            {
-                return _isStartup;
-            }
+            get => _isStartup;
             set
             {
-                _isStartup = value;
-                if (userSettings.Settings.Startup != _isStartup)
+                if (userSettings.Settings.Startup != value)
                 {
-                    userSettings.Settings.Startup = _isStartup;
+                    userSettings.Settings.Startup = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _isStartup, value);
             }
         }
 
-        private ObservableCollection<LanguagesModel> _languageItems;
-        public ObservableCollection<LanguagesModel> LanguageItems
-        {
-            get
-            {
-                return _languageItems;
-            }
-            set
-            {
-
-                _languageItems = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private ObservableCollection<LanguagesModel> languageItems;
 
         private LanguagesModel _selectedLanguageItem;
         public LanguagesModel SelectedLanguageItem
         {
-            get
-            {
-                return _selectedLanguageItem;
-            }
+            get => _selectedLanguageItem;
             set
             {
-                _selectedLanguageItem = value;
-                OnPropertyChanged();
-                if (_selectedLanguageItem.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
+                if (value.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
                 {
-                    userSettings.Settings.Language = _selectedLanguageItem.Codes[0];
+                    userSettings.Settings.Language = value.Codes[0];
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedLanguageItem, value);
             }
         }
 
         private int _selectedTileSizeIndex;
         public int SelectedTileSizeIndex
         {
-            get
-            {
-                return _selectedTileSizeIndex;
-            }
+            get => _selectedTileSizeIndex;
             set
             {
-                _selectedTileSizeIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.TileSize != _selectedTileSizeIndex)
+                if (userSettings.Settings.TileSize != value)
                 {
-                    userSettings.Settings.TileSize = _selectedTileSizeIndex;
+                    userSettings.Settings.TileSize = value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedTileSizeIndex, value);
             }
         }
 
@@ -209,9 +184,6 @@ namespace Lively.UI.WinUI.ViewModels
             }
             set
             {
-                _selectedLivelyUIModeIndex = value;
-                OnPropertyChanged();
-
                 if (userSettings.Settings.UIMode != (LivelyGUIState)value)
                 {
                     userSettings.Settings.UIMode = (LivelyGUIState)value;
@@ -219,30 +191,15 @@ namespace Lively.UI.WinUI.ViewModels
 
                     UIStateChanged?.Invoke(this, (LivelyGUIState)value);
                 }
+                SetProperty(ref _selectedLivelyUIModeIndex, value);
             }
         }
 
-        private string _wallpaperDirectory;
-        public string WallpaperDirectory
-        {
-            get { return _wallpaperDirectory; }
-            set
-            {
-                _wallpaperDirectory = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private string wallpaperDirectory;
 
-        private bool _wallpaperDirectoryChangeOngoing;
-        public bool WallpaperDirectoryChangeOngoing
-        {
-            get => _wallpaperDirectoryChangeOngoing;
-            set
-            {
-                _wallpaperDirectoryChangeOngoing = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool wallpaperDirectoryChangeOngoing;
 
         private RelayCommand _wallpaperDirectoryChangeCommand;
         public RelayCommand WallpaperDirectoryChangeCommand => _wallpaperDirectoryChangeCommand
@@ -251,17 +208,15 @@ namespace Lively.UI.WinUI.ViewModels
         private bool _moveExistingWallpaperNewDir;
         public bool MoveExistingWallpaperNewDir
         {
-            get { return _moveExistingWallpaperNewDir; }
+            get => _moveExistingWallpaperNewDir;
             set
             {
-                _moveExistingWallpaperNewDir = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir != _moveExistingWallpaperNewDir)
+                if (userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir != value)
                 {
-                    userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = _moveExistingWallpaperNewDir;
+                    userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir = value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _moveExistingWallpaperNewDir, value);
             }
         }
 
@@ -294,168 +249,121 @@ namespace Lively.UI.WinUI.ViewModels
         private int _selectedAppFullScreenIndex;
         public int SelectedAppFullScreenIndex
         {
-            get
-            {
-                return _selectedAppFullScreenIndex;
-            }
+            get => _selectedAppFullScreenIndex;
             set
             {
-                _selectedAppFullScreenIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.AppFullscreenPause != (AppRulesEnum)_selectedAppFullScreenIndex)
+                if (userSettings.Settings.AppFullscreenPause != (AppRulesEnum)value)
                 {
-                    userSettings.Settings.AppFullscreenPause = (AppRulesEnum)_selectedAppFullScreenIndex;
+                    userSettings.Settings.AppFullscreenPause = (AppRulesEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedAppFullScreenIndex, value);
             }
         }
 
         private int _selectedAppFocusIndex;
         public int SelectedAppFocusIndex
         {
-            get
-            {
-                return _selectedAppFocusIndex;
-            }
+            get => _selectedAppFocusIndex;
             set
             {
-                _selectedAppFocusIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.AppFocusPause != (AppRulesEnum)_selectedAppFocusIndex)
+                if (userSettings.Settings.AppFocusPause != (AppRulesEnum)value)
                 {
-                    userSettings.Settings.AppFocusPause = (AppRulesEnum)_selectedAppFocusIndex;
+                    userSettings.Settings.AppFocusPause = (AppRulesEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedAppFocusIndex, value);
             }
         }
 
         private int _selectedBatteryPowerIndex;
         public int SelectedBatteryPowerIndex
         {
-            get
-            {
-                return _selectedBatteryPowerIndex;
-            }
+            get => _selectedBatteryPowerIndex;
             set
             {
-                _selectedBatteryPowerIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.BatteryPause != (AppRulesEnum)_selectedBatteryPowerIndex)
+                if (userSettings.Settings.BatteryPause != (AppRulesEnum)value)
                 {
-                    userSettings.Settings.BatteryPause = (AppRulesEnum)_selectedBatteryPowerIndex;
+                    userSettings.Settings.BatteryPause = (AppRulesEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedBatteryPowerIndex, value);
             }
         }
 
         private int _selectedPowerSaveModeIndex;
         public int SelectedPowerSaveModeIndex
         {
-            get
-            {
-                return _selectedPowerSaveModeIndex;
-            }
+            get => _selectedPowerSaveModeIndex;
             set
             {
-                _selectedPowerSaveModeIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.PowerSaveModePause != (AppRulesEnum)_selectedPowerSaveModeIndex)
+                if (userSettings.Settings.PowerSaveModePause != (AppRulesEnum)value)
                 {
-                    userSettings.Settings.PowerSaveModePause = (AppRulesEnum)_selectedPowerSaveModeIndex;
+                    userSettings.Settings.PowerSaveModePause = (AppRulesEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedPowerSaveModeIndex, value);
             }
         }
 
         private int _selectedRemoteDestopPowerIndex;
         public int SelectedRemoteDestopPowerIndex
         {
-            get
-            {
-                return _selectedRemoteDestopPowerIndex;
-            }
+            get => _selectedRemoteDestopPowerIndex;
             set
             {
-                _selectedRemoteDestopPowerIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.RemoteDesktopPause != (AppRulesEnum)_selectedRemoteDestopPowerIndex)
+                if (userSettings.Settings.RemoteDesktopPause != (AppRulesEnum)value)
                 {
-                    userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)_selectedRemoteDestopPowerIndex;
+                    userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedRemoteDestopPowerIndex, value);
             }
         }
 
         private int _selectedDisplayPauseRuleIndex;
         public int SelectedDisplayPauseRuleIndex
         {
-            get
-            {
-                return _selectedDisplayPauseRuleIndex;
-            }
+            get => _selectedDisplayPauseRuleIndex;
             set
             {
-                _selectedDisplayPauseRuleIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.DisplayPauseSettings != (DisplayPauseEnum)_selectedDisplayPauseRuleIndex)
+                if (userSettings.Settings.DisplayPauseSettings != (DisplayPauseEnum)value)
                 {
-                    userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)_selectedDisplayPauseRuleIndex;
+                    userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedDisplayPauseRuleIndex, value);
             }
         }
 
         private int _selectedPauseAlgorithmIndex;
         public int SelectedPauseAlgorithmIndex
         {
-            get
-            {
-                return _selectedPauseAlgorithmIndex;
-            }
+            get => _selectedPauseAlgorithmIndex;
             set
             {
-                _selectedPauseAlgorithmIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex)
+                if (userSettings.Settings.ProcessMonitorAlgorithm != (ProcessMonitorAlgorithm)value)
                 {
-                    userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)_selectedPauseAlgorithmIndex;
+                    userSettings.Settings.ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _selectedPauseAlgorithmIndex, value);
             }
         }
 
         #region apprules
 
-        private ObservableCollection<ApplicationRulesModel> _appRules;
-        public ObservableCollection<ApplicationRulesModel> AppRules
-        {
-            get
-            {
-                return _appRules ?? new ObservableCollection<ApplicationRulesModel>();
-            }
-            set
-            {
-                _appRules = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private ObservableCollection<ApplicationRulesModel> appRules = new();
 
         private ApplicationRulesModel _selectedAppRuleItem;
         public ApplicationRulesModel SelectedAppRuleItem
         {
-            get { return _selectedAppRuleItem; }
+            get => _selectedAppRuleItem;
             set
             {
-                _selectedAppRuleItem = value;
                 RemoveAppRuleCommand.NotifyCanExecuteChanged();
-                OnPropertyChanged();
+                SetProperty(ref _selectedAppRuleItem, value);
             }
         }
 
@@ -506,33 +414,28 @@ namespace Lively.UI.WinUI.ViewModels
         private int _selectedWallpaperScalingIndex;
         public int SelectedWallpaperScalingIndex
         {
-            get { return _selectedWallpaperScalingIndex; }
+            get => _selectedWallpaperScalingIndex;
             set
             {
-                _selectedWallpaperScalingIndex = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.WallpaperScaling != (WallpaperScaler)_selectedWallpaperScalingIndex)
+                if (userSettings.Settings.WallpaperScaling != (WallpaperScaler)value)
                 {
-                    userSettings.Settings.WallpaperScaling = (WallpaperScaler)_selectedWallpaperScalingIndex;
+                    userSettings.Settings.WallpaperScaling = (WallpaperScaler)value;
                     UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream, WallpaperType.gif });
                 }
+                SetProperty(ref  _selectedWallpaperScalingIndex, value);
             }
         }
 
         private int _selectedWallpaperInputMode;
         public int SelectedWallpaperInputMode
         {
-            get { return _selectedWallpaperInputMode; }
+            get => _selectedWallpaperInputMode;
             set
             {
-                _selectedWallpaperInputMode = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.InputForward != (InputForwardMode)_selectedWallpaperInputMode)
+                if (userSettings.Settings.InputForward != (InputForwardMode)value)
                 {
-                    userSettings.Settings.InputForward = (InputForwardMode)_selectedWallpaperInputMode;
+                    userSettings.Settings.InputForward = (InputForwardMode)value;
                     UpdateSettingsConfigFile();
                 }
 
@@ -546,175 +449,132 @@ namespace Lively.UI.WinUI.ViewModels
                     DesktopUtil.SetDesktopIconVisibility(DesktopUtil.DesktopIconVisibilityDefault);
                     IsDesktopIconsHidden = false;
                 }
+                SetProperty(ref _selectedWallpaperInputMode, value);
             }
         }
 
-        private bool _isDesktopIconsHidden;
-        public bool IsDesktopIconsHidden
-        {
-            get => _isDesktopIconsHidden;
-            set
-            {
-                _isDesktopIconsHidden = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool isDesktopIconsHidden;
 
         private bool _mouseMoveOnDesktop;
         public bool MouseMoveOnDesktop
         {
-            get { return _mouseMoveOnDesktop; }
+            get => _mouseMoveOnDesktop;
             set
             {
-                _mouseMoveOnDesktop = value;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.MouseInputMovAlways != _mouseMoveOnDesktop)
+                if (userSettings.Settings.MouseInputMovAlways != value)
                 {
-                    userSettings.Settings.MouseInputMovAlways = _mouseMoveOnDesktop;
+                    userSettings.Settings.MouseInputMovAlways = value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _mouseMoveOnDesktop, value);
             }
         }
 
-        private bool _isSelectedVideoPlayerAvailable;
-        public bool IsSelectedVideoPlayerAvailable
-        {
-            get { return _isSelectedVideoPlayerAvailable; }
-            set { _isSelectedVideoPlayerAvailable = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isSelectedVideoPlayerAvailable;
 
         private int _selectedVideoPlayerIndex;
         public int SelectedVideoPlayerIndex
         {
-            get
-            {
-                return _selectedVideoPlayerIndex;
-            }
+            get => _selectedVideoPlayerIndex;
             set
             {
-                _selectedVideoPlayerIndex = value;
                 IsSelectedVideoPlayerAvailable = IsVideoPlayerAvailable((LivelyMediaPlayer)value);
-                //_selectedVideoPlayerIndex = IsVideoPlayerAvailable((LivelyMediaPlayer)value) ? value : (int)LivelyMediaPlayer.mpv;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)_selectedVideoPlayerIndex && IsSelectedVideoPlayerAvailable)
+                if (userSettings.Settings.VideoPlayer != (LivelyMediaPlayer)value && IsSelectedVideoPlayerAvailable)
                 {
-                    userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)_selectedVideoPlayerIndex;
+                    userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)value;
                     UpdateSettingsConfigFile();
-                    //VideoPlayerSwitch((LivelyMediaPlayer)_selectedVideoPlayerIndex);
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.picture, WallpaperType.videostream });
                 }
+                SetProperty(ref _selectedVideoPlayerIndex, value);
             }
         }
 
         private bool _videoPlayerHWDecode;
         public bool VideoPlayerHWDecode
         {
-            get { return _videoPlayerHWDecode; }
+            get => _videoPlayerHWDecode;
             set
             {
-                _videoPlayerHWDecode = value;
-                OnPropertyChanged();
-                if (userSettings.Settings.VideoPlayerHwAccel != _videoPlayerHWDecode)
+                if (userSettings.Settings.VideoPlayerHwAccel != value)
                 {
-                    userSettings.Settings.VideoPlayerHwAccel = _videoPlayerHWDecode;
+                    userSettings.Settings.VideoPlayerHwAccel = value;
                     UpdateSettingsConfigFile();
                     //if mpv player is also set as gif player..
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.video, WallpaperType.videostream, WallpaperType.gif });
                 }
+                SetProperty(ref _videoPlayerHWDecode, value);
             }
         }
 
-        private bool _isSelectedGifPlayerAvailable;
-        public bool IsSelectedGifPlayerAvailable
-        {
-            get { return _isSelectedGifPlayerAvailable; }
-            set { _isSelectedGifPlayerAvailable = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isSelectedGifPlayerAvailable;
 
         private int _selectedGifPlayerIndex;
         public int SelectedGifPlayerIndex
         {
-            get
-            {
-                return _selectedGifPlayerIndex;
-            }
+            get => _selectedGifPlayerIndex;
             set
             {
-                _selectedGifPlayerIndex = value;
                 IsSelectedGifPlayerAvailable = IsGifPlayerAvailable((LivelyGifPlayer)value);
-                //_selectedGifPlayerIndex = IsGifPlayerAvailable((LivelyGifPlayer)value) ? value : (int)LivelyGifPlayer.mpv;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)_selectedGifPlayerIndex && IsSelectedGifPlayerAvailable)
+                if (userSettings.Settings.GifPlayer != (LivelyGifPlayer)value && IsSelectedGifPlayerAvailable)
                 {
-                    userSettings.Settings.GifPlayer = (LivelyGifPlayer)_selectedGifPlayerIndex;
+                    userSettings.Settings.GifPlayer = (LivelyGifPlayer)value;
                     UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.gif, WallpaperType.picture });
                 }
+                SetProperty(ref _selectedGifPlayerIndex, value);
             }
         }
 
-        private bool _isSelectedWebBrowserAvailable;
-        public bool IsSelectedWebBrowserAvailable
-        {
-            get { return _isSelectedWebBrowserAvailable; }
-            set { _isSelectedWebBrowserAvailable = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private bool isSelectedWebBrowserAvailable;
 
         private int _selectedWebBrowserIndex;
         public int SelectedWebBrowserIndex
         {
-            get
-            {
-                return _selectedWebBrowserIndex;
-            }
+            get => _selectedWebBrowserIndex;
             set
             {
-                _selectedWebBrowserIndex = value;
                 IsSelectedWebBrowserAvailable = IsWebPlayerAvailable((LivelyWebBrowser)value);
-                //_selectedWebBrowserIndex = IsWebPlayerAvailable((LivelyWebBrowser)value) ? value : (int)LivelyWebBrowser.cef;
-                OnPropertyChanged();
-
-                if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)_selectedWebBrowserIndex && IsSelectedWebBrowserAvailable)
+                if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)value && IsSelectedWebBrowserAvailable)
                 {
-                    userSettings.Settings.WebBrowser = (LivelyWebBrowser)_selectedWebBrowserIndex;
+                    userSettings.Settings.WebBrowser = (LivelyWebBrowser)value;
                     UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream });
                 }
+                SetProperty(ref _selectedWebBrowserIndex, value);
             }
         }
 
         private string _webDebuggingPort;
         public string WebDebuggingPort
         {
-            get { return _webDebuggingPort; }
+            get => _webDebuggingPort;
             set
             {
-                _webDebuggingPort = value;
-                if (userSettings.Settings.WebDebugPort != _webDebuggingPort)
+                if (userSettings.Settings.WebDebugPort != value)
                 {
-                    userSettings.Settings.WebDebugPort = _webDebuggingPort;
+                    userSettings.Settings.WebDebugPort = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _webDebuggingPort, value);
             }
         }
 
         private bool _cefDiskCache;
         public bool CefDiskCache
         {
-            get { return _cefDiskCache; }
+            get => _cefDiskCache;
             set
             {
-                _cefDiskCache = value;
-                if (userSettings.Settings.CefDiskCache != _cefDiskCache)
+                if (userSettings.Settings.CefDiskCache != value)
                 {
-                    userSettings.Settings.CefDiskCache = _cefDiskCache;
+                    userSettings.Settings.CefDiskCache = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _cefDiskCache, value);
             }
         }
 
@@ -736,33 +596,31 @@ namespace Lively.UI.WinUI.ViewModels
         private int _selectedWallpaperStreamQualityIndex;
         public int SelectedWallpaperStreamQualityIndex
         {
-            get { return _selectedWallpaperStreamQualityIndex; }
+            get => _selectedWallpaperStreamQualityIndex;
             set
             {
-                _selectedWallpaperStreamQualityIndex = value;
-                OnPropertyChanged();
-                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex)
+                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)value)
                 {
-                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)_selectedWallpaperStreamQualityIndex;
+                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)value;
                     UpdateSettingsConfigFile();
                     _ = WallpaperRestart(new WallpaperType[] { WallpaperType.videostream });
                 }
+                SetProperty(ref _selectedWallpaperStreamQualityIndex, value);
             }
         }
 
         private bool _detectStreamWallpaper;
         public bool DetectStreamWallpaper
         {
-            get { return _detectStreamWallpaper; }
+            get => _detectStreamWallpaper;
             set
             {
-                _detectStreamWallpaper = value;
-                if (userSettings.Settings.AutoDetectOnlineStreams != _detectStreamWallpaper)
+                if (userSettings.Settings.AutoDetectOnlineStreams != value)
                 {
-                    userSettings.Settings.AutoDetectOnlineStreams = _detectStreamWallpaper;
+                    userSettings.Settings.AutoDetectOnlineStreams = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _detectStreamWallpaper, value);
             }
         }
 
@@ -773,35 +631,30 @@ namespace Lively.UI.WinUI.ViewModels
         private int _globalWallpaperVolume;
         public int GlobalWallpaperVolume
         {
-            get { return _globalWallpaperVolume; }
+            get => _globalWallpaperVolume;
             set
             {
-                _globalWallpaperVolume = value;
-                if (userSettings.Settings.AudioVolumeGlobal != _globalWallpaperVolume)
+                if (userSettings.Settings.AudioVolumeGlobal != value)
                 {
-                    userSettings.Settings.AudioVolumeGlobal = _globalWallpaperVolume;
+                    userSettings.Settings.AudioVolumeGlobal = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _globalWallpaperVolume, value);
             }
         }
 
         private bool _isAudioOnlyOnDesktop;
         public bool IsAudioOnlyOnDesktop
         {
-            get
-            {
-                return _isAudioOnlyOnDesktop;
-            }
+            get => _isAudioOnlyOnDesktop;
             set
             {
-                _isAudioOnlyOnDesktop = value;
-                if (userSettings.Settings.AudioOnlyOnDesktop != _isAudioOnlyOnDesktop)
+                if (userSettings.Settings.AudioOnlyOnDesktop != value)
                 {
-                    userSettings.Settings.AudioOnlyOnDesktop = _isAudioOnlyOnDesktop;
+                    userSettings.Settings.AudioOnlyOnDesktop = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _isAudioOnlyOnDesktop, value);
             }
         }
 
@@ -809,63 +662,49 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region system
 
-        /*
-        private bool _isLockScreenAutoWallpaper;
-        public bool IsLockScreenAutoWallpaper
-        {
-            get
-            {
-                return _isLockScreenAutoWallpaper;
-            }
-            set
-            {
-                _isLockScreenAutoWallpaper = value;
-                if (Settings.LockScreenAutoWallpaper != _isLockScreenAutoWallpaper)
-                {
-                    Settings.LockScreenAutoWallpaper = _isLockScreenAutoWallpaper;
-                    UpdateConfigFile();
-                }
-                OnPropertyChanged();
-            }
-        }
-        */
+
+        //private bool _isLockScreenAutoWallpaper;
+        //public bool IsLockScreenAutoWallpaper
+        //{
+        //    get => _isLockScreenAutoWallpaper;
+        //    set
+        //    {
+        //        if (userSettings.Settings.LockScreenAutoWallpaper != value)
+        //        {
+        //            userSettings.Settings.LockScreenAutoWallpaper = value;
+        //            UpdateSettingsConfigFile();
+        //        }
+        //        SetProperty(ref _isLockScreenAutoWallpaper, value);
+        //    }
+        //}
 
         private bool _isDesktopAutoWallpaper;
         public bool IsDesktopAutoWallpaper
         {
-            get
-            {
-                return _isDesktopAutoWallpaper;
-            }
+            get => _isDesktopAutoWallpaper;
             set
             {
-                _isDesktopAutoWallpaper = value;
-                if (userSettings.Settings.DesktopAutoWallpaper != _isDesktopAutoWallpaper)
+                if (userSettings.Settings.DesktopAutoWallpaper != value)
                 {
-                    userSettings.Settings.DesktopAutoWallpaper = _isDesktopAutoWallpaper;
+                    userSettings.Settings.DesktopAutoWallpaper = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _isDesktopAutoWallpaper, value);
             }
         }
 
         private int _selectedTaskbarThemeIndex;
         public int SelectedTaskbarThemeIndex
         {
-            get
-            {
-                return _selectedTaskbarThemeIndex;
-            }
+            get => _selectedTaskbarThemeIndex;
             set
             {
-                _selectedTaskbarThemeIndex = value;
-                //save the data..
-                if (userSettings.Settings.SystemTaskbarTheme != (TaskbarTheme)_selectedTaskbarThemeIndex)
+                if (userSettings.Settings.SystemTaskbarTheme != (TaskbarTheme)value)
                 {
-                    userSettings.Settings.SystemTaskbarTheme = (TaskbarTheme)_selectedTaskbarThemeIndex;
+                    userSettings.Settings.SystemTaskbarTheme = (TaskbarTheme)value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _selectedTaskbarThemeIndex, value);
             }
         }
 
@@ -924,19 +763,15 @@ namespace Lively.UI.WinUI.ViewModels
         //private bool _isScreensaverLockOnResume;
         //public bool IsScreensaverLockOnResume
         //{
-        //    get
-        //    {
-        //        return _isScreensaverLockOnResume;
-        //    }
+        //    get => _isScreensaverLockOnResume;
         //    set
         //    {
-        //        _isScreensaverLockOnResume = value;
-        //        if (userSettings.Settings.ScreensaverLockOnResume != _isScreensaverLockOnResume)
+        //        if (userSettings.Settings.ScreensaverLockOnResume != value)
         //        {
-        //            userSettings.Settings.ScreensaverLockOnResume = _isScreensaverLockOnResume;
+        //            userSettings.Settings.ScreensaverLockOnResume = value;
         //            UpdateSettingsConfigFile();
         //        }
-        //        OnPropertyChanged();
+        //        SetProperty(ref _isScreensaverLockOnResume, value);
         //    }
         //}
 
@@ -947,59 +782,31 @@ namespace Lively.UI.WinUI.ViewModels
         private bool _isSysTrayIconVisible;
         public bool IsSysTrayIconVisible
         {
-            get
-            {
-                return _isSysTrayIconVisible;
-            }
+            get => _isSysTrayIconVisible;
             set
             {
-                _isSysTrayIconVisible = value;
-                if (userSettings.Settings.SysTrayIcon != _isSysTrayIconVisible)
+                if (userSettings.Settings.SysTrayIcon != value)
                 {
                     //_ = commands.AutomationCommandAsync(new string[] { "--showTray", JsonUtil.Serialize(value) });
-                    userSettings.Settings.SysTrayIcon = _isSysTrayIconVisible;
+                    userSettings.Settings.SysTrayIcon = value;
                     UpdateSettingsConfigFile();
                 }
-                OnPropertyChanged();
+                SetProperty(ref _isSysTrayIconVisible, value);
             }
         }
-
-        /*
-        public event EventHandler<bool> DebugMenuVisibilityChange;
-        private bool _isDebugMenuVisible;
-        public bool IsDebugMenuVisible
-        {
-            get { return _isDebugMenuVisible; }
-            set
-            {
-                _isDebugMenuVisible = value;
-                OnPropertyChanged();
-                if (userSettings.Settings.DebugMenu != _isDebugMenuVisible)
-                {
-                    DebugMenuVisibilityChange?.Invoke(null, _isDebugMenuVisible);
-                    userSettings.Settings.DebugMenu = _isDebugMenuVisible;
-                    UpdateConfigFile();
-                }
-            }
-        }
-        */
 
         private bool _isKeepUIAwake;
         public bool IsKeepUIAwake
         {
-            get
-            {
-                return _isKeepUIAwake;
-            }
+            get => _isKeepUIAwake;
             set
             {
-                _isKeepUIAwake = value;
-                OnPropertyChanged();
-                if (userSettings.Settings.KeepAwakeUI != _isKeepUIAwake)
+                if (userSettings.Settings.KeepAwakeUI != value)
                 {
-                    userSettings.Settings.KeepAwakeUI = _isKeepUIAwake;
+                    userSettings.Settings.KeepAwakeUI = value;
                     UpdateSettingsConfigFile();
                 }
+                SetProperty(ref _isKeepUIAwake, value);
             }
         }
 
