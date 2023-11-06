@@ -2,6 +2,7 @@
 using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,6 +50,9 @@ namespace Lively.UI.WinUI.ViewModels
                 OnRequestClose?.Invoke(this, EventArgs.Empty);
             }
         }
+
+        public void OnWindowClosing(object sender, RoutedEventArgs e)
+            => desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
 
         private void UpdateLayout()
         {

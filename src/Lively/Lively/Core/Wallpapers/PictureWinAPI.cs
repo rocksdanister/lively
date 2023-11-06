@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.API;
+using Lively.Common.Com;
 using Lively.Core;
 using Lively.Models;
 using System;
