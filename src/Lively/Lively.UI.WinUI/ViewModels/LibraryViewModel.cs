@@ -79,12 +79,15 @@ namespace Lively.UI.WinUI.ViewModels
             //Select already running item when UI program is started again..
             UpdateSelectedWallpaper();
 
-            settingsVm.UIStateChanged += (s, e) =>
+            settingsVm.PropertyChanged += (s, e) =>
             {
-                foreach (var item in LibraryItems)
+                switch(e.PropertyName)
                 {
-                    item.ImagePath = e == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
-                }
+                    case "IsReducedMotion":
+                        foreach (var item in LibraryItems)
+                            item.ImagePath = userSettings.Settings.UIMode == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
+                        break;
+                };
             };
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;

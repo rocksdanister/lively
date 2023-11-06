@@ -79,10 +79,10 @@ namespace Lively.UI.WinUI.ViewModels
             VideoPlayerHWDecode = userSettings.Settings.VideoPlayerHwAccel;
             SelectedGifPlayerIndex = (int)userSettings.Settings.GifPlayer;
             SelectedWallpaperStreamQualityIndex = (int)userSettings.Settings.StreamQuality;
-            SelectedLivelyUIModeIndex = (int)userSettings.Settings.UIMode;
             SelectedWallpaperInputMode = (int)userSettings.Settings.InputForward;
             MouseMoveOnDesktop = userSettings.Settings.MouseInputMovAlways;
             IsSysTrayIconVisible = userSettings.Settings.SysTrayIcon;
+            IsReducedMotion = userSettings.Settings.UIMode != LivelyGUIState.normal;
             WebDebuggingPort = userSettings.Settings.WebDebugPort;
             DetectStreamWallpaper = userSettings.Settings.AutoDetectOnlineStreams;
             WallpaperDirectory = userSettings.Settings.WallpaperDir;
@@ -171,27 +171,6 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedTileSizeIndex, value);
-            }
-        }
-
-        public event EventHandler<LivelyGUIState> UIStateChanged;
-        private int _selectedLivelyUIModeIndex;
-        public int SelectedLivelyUIModeIndex
-        {
-            get
-            {
-                return _selectedLivelyUIModeIndex;
-            }
-            set
-            {
-                if (userSettings.Settings.UIMode != (LivelyGUIState)value)
-                {
-                    userSettings.Settings.UIMode = (LivelyGUIState)value;
-                    UpdateSettingsConfigFile();
-
-                    UIStateChanged?.Invoke(this, (LivelyGUIState)value);
-                }
-                SetProperty(ref _selectedLivelyUIModeIndex, value);
             }
         }
 
@@ -792,6 +771,22 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _isSysTrayIconVisible, value);
+            }
+        }
+
+        private bool _isReducedMotion;
+        public bool IsReducedMotion
+        {
+            get => _isReducedMotion;
+            set
+            {
+                var currentValue = userSettings.Settings.UIMode != LivelyGUIState.normal;
+                if (currentValue != value)
+                {
+                    userSettings.Settings.UIMode = value ? LivelyGUIState.lite : LivelyGUIState.normal;
+                    UpdateSettingsConfigFile();
+                }
+                SetProperty(ref _isReducedMotion, value);
             }
         }
 
