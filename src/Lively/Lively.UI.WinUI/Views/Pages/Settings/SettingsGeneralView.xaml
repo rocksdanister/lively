@@ -4,10 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:controls="using:WinUICommunity"
+    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+    </Page.Resources>
 
     <Grid>
         <ScrollViewer>
@@ -40,11 +45,7 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE8AB;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedLivelyUIModeIndex, Mode=TwoWay}">
-                            <ComboBoxItem x:Uid="UIModeNormal" />
-                            <ComboBoxItem x:Uid="UIModeLite" />
-                            <ComboBoxItem Visibility="Collapsed">Headless</ComboBoxItem>
-                        </ComboBox>
+                        <ToggleSwitch IsOn="{Binding IsReducedMotion, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />
                     </controls:SettingsCard>
 
                     <controls:SettingsCard
