@@ -6,19 +6,22 @@ namespace Lively.UI.WinUI.Services
 {
     public interface IDialogService
     {
-        Task<DisplayMonitor> ShowDisplayChooseDialog();
-        Task<ApplicationModel> ShowApplicationPickerDialog();
-        Task ShowDialog(string message, string title, string primaryBtnText);
-        Task<DialogResult> ShowDialog(object content,
+        Task ShowHelpDialogAsync();
+        Task ShowControlPanelDialogAsync();
+        Task ShowAboutDialogAsync();
+        Task<DisplayMonitor> ShowDisplayChooseDialogAsync();
+        Task<ApplicationModel> ShowApplicationPickerDialogAsync();
+        Task ShowDialogAsync(string message, string title, string primaryBtnText);
+        Task<DialogResult> ShowDialogAsync(object content,
             string title,
             string primaryBtnText,
             string secondaryBtnText,
             bool isDefaultPrimary = true);
-        Task<string> ShowTextInputDialog(string title);
-        Task ShowThemeDialog();
-        Task<LibraryModel> ShowDepthWallpaperDialog(string imagePath);
-        Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath);
-        Task<WallpaperCreateType?> ShowWallpaperCreateDialog();
+        Task<string> ShowTextInputDialogAsync(string title);
+        Task ShowThemeDialogAsync();
+        Task<LibraryModel> ShowDepthWallpaperDialogAsync(string imagePath);
+        Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync(string filePath);
+        Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync();
         public enum DialogResult
         {
             none,

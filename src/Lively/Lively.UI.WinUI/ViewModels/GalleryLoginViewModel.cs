@@ -95,7 +95,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             if (exception != null)
             {
-                await dialogService.ShowDialog(exception.ToString(), i18n.GetString("TextError"), i18n.GetString("TextClose"));
+                await dialogService.ShowDialogAsync(exception.ToString(), i18n.GetString("TextError"), i18n.GetString("TextClose"));
                 IsProcessing = false;
             }
             else
@@ -131,7 +131,7 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     vm.Wallpapers.Add(new GalleryModel(item, false) { IsSelected = true });
                 }
-                var result = await dialogService.ShowDialog(
+                var result = await dialogService.ShowDialogAsync(
                     new Views.Pages.Gallery.RestoreWallpaperView(vm),
                     i18n.GetString("TitleWelcomeback/Text"),
                     i18n.GetString("TextDownloadNow/Content"),

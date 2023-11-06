@@ -28,22 +28,19 @@ namespace Lively.UI.WinUI.Views.Pages
     /// </summary>
     public sealed partial class AboutView : Page
     {
-        public AboutView()
+        public AboutView(AboutViewModel vm)
         {
             this.InitializeComponent();
-            var vm = App.Services.GetRequiredService<AboutViewModel>();
             this.DataContext = vm;
             markDownPatreon.Loaded += vm.OnPatreonLoaded;
+            //Unreliable, issue: https://github.com/microsoft/microsoft-ui-xaml/issues/1900
+            //this.Unloaded += vm.OnWindowClosing;
         }
-
-        #region socials
 
         private void GithubButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://github.com/rocksdanister");
         private void TwitterButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://twitter.com/rocksdanister");
         private void RedditButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://reddit.com/u/rocksdanister");
         private void YoutubeButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ");
         private void EmailButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("mailto:awoo.git@gmail.com");
-
-        #endregion //socials
     }
 }

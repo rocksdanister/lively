@@ -149,7 +149,7 @@ namespace Lively.UI.WinUI.ViewModels
                 return;
 
             var monitor = displayManager.DisplayMonitors.Count == 1 || userSettings.Settings.WallpaperArrangement != WallpaperArrangement.per ?
-                displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialog();
+                displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialogAsync();
             if (monitor is not null)
                 await desktopCore.SetWallpaper(wp, monitor);
         });
