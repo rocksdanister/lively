@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Lively.Common
+namespace Lively.Common.Com
 {
     //Ref:
     //https://bitbucket.org/ciniml/desktopwallpaper/

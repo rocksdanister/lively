@@ -145,8 +145,6 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        #region commands
-
         private RelayCommand _closeWallpaperCommand;
         public RelayCommand CloseWallpaperCommand => _closeWallpaperCommand ??=
             new RelayCommand(() => CloseWallpaper(SelectedItem), CanCloseWallpaper);
@@ -221,10 +219,6 @@ namespace Lively.UI.WinUI.ViewModels
 
         public RelayCommand NavigateBackWallpaperCommand =>
             new RelayCommand(() => NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "wallpaper", Arg = null }));
-
-        #endregion //commands
-
-        #region helpers
 
         public void OnWindowClosing(object sender, RoutedEventArgs e) 
             => desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
@@ -326,7 +320,5 @@ namespace Lively.UI.WinUI.ViewModels
                 UpdateLayout();
             }
         }
-
-        #endregion //helpers
     }
 }

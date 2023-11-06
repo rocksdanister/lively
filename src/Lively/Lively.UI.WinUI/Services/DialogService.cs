@@ -40,7 +40,7 @@ namespace Lively.UI.WinUI.Services
             };
             vm.OnRequestClose += (_, _) => dialog.Hide();
             await dialog.ShowAsyncQueue();
-
+            vm.OnWindowClosing(this, new RoutedEventArgs());
             return vm.SelectedItem?.Screen;
         }
 
@@ -196,28 +196,29 @@ namespace Lively.UI.WinUI.Services
         public async Task ShowAboutDialogAsync()
         {
             var vm = App.Services.GetRequiredService<AboutViewModel>();
-            var dlg = new ContentDialog()
+            await new ContentDialog()
             {
                 Title = i18n.GetString("About/Label"),
                 Content = new AboutView(vm),
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            };
-            await dlg.ShowAsyncQueue();
+            }.ShowAsyncQueue();
             vm.OnWindowClosing(this, new RoutedEventArgs());
         }
 
         public async Task ShowControlPanelDialogAsync()
         {
+            var vm = App.Services.GetRequiredService<ControlPanelViewModel>();
             await new ContentDialog()
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ControlPanelView(),
+                Content = new ControlPanelView(vm),
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
+            vm.OnWindowClosing(this, new RoutedEventArgs());
         }
 
         public async Task ShowHelpDialogAsync()
