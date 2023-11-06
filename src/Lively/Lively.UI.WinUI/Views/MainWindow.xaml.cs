@@ -204,7 +204,7 @@ namespace Lively.UI.WinUI
                     btn.Click += (_, _) =>
                     {
                         infoBar.IsOpen = false;
-                        ShowAboutDialog();
+                        _ = dialogService.ShowAboutDialogAsync();
                     };
                     infoBar.ActionButton = btn;
                     infoBar.Title = i18n.GetString("TextUpdateAvailable");
@@ -325,7 +325,7 @@ namespace Lively.UI.WinUI
 
         public async Task CreateWallpaper(string filePath)
         {
-            var creationType = await dialogService.ShowWallpaperCreateDialog(filePath);
+            var creationType = await dialogService.ShowWallpaperCreateDialogAsync(filePath);
             if (creationType is null)
                 return;
 
@@ -343,7 +343,7 @@ namespace Lively.UI.WinUI
                         filePath ??= await FilePickerUtil.PickSingleFile(WallpaperType.picture);
                         if (filePath is not null)
                         {
-                            var result = await dialogService.ShowDepthWallpaperDialog(filePath);
+                            var result = await dialogService.ShowDepthWallpaperDialogAsync(filePath);
                             if (result is not null)
                                 await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
                         }
@@ -415,52 +415,21 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => ShowControlPanelDialog();
-
-        private void ShowControlPanelDialog()
-        {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ControlPanelView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
-        }
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => _ = dialogService.ShowControlPanelDialogAsync();
 
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
             LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
 
-        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialog();
+        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialogAsync();
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("Help/Label"),
-                Content = new HelpView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
+            _ = dialogService.ShowHelpDialogAsync();
         }
 
         private void AppBarAboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowAboutDialog();
-        }
-
-        private void ShowAboutDialog()
-        {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("About/Label"),
-                Content = new AboutView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
+            _ = dialogService.ShowAboutDialogAsync();
         }
 
         private void SliderAudio_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -563,7 +532,7 @@ namespace Lively.UI.WinUI
                 args.Handled = true;
 
                 //Option 1: Show user prompt with choice to cancel.
-                var result = await dialogService.ShowDialog(i18n.GetString("TextConfirmCancel/Text"),
+                var result = await dialogService.ShowDialogAsync(i18n.GetString("TextConfirmCancel/Text"),
                                                             i18n.GetString("TitleDownloadProgress/Text"),
                                                             i18n.GetString("TextYes"),
                                                             i18n.GetString("TextWait/Text"),
@@ -627,7 +596,7 @@ namespace Lively.UI.WinUI
                                 }
                                 else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    ShowControlPanelDialog();
+                                    _ = dialogService.ShowControlPanelDialogAsync();
                                 }
                             }
                         });

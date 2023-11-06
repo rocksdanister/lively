@@ -270,7 +270,7 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var creationType = await dialogService.ShowWallpaperCreateDialog(item);
+                        var creationType = await dialogService.ShowWallpaperCreateDialogAsync(item);
                         if (creationType is null)
                             return;
 
@@ -285,7 +285,7 @@ namespace Lively.UI.WinUI.Views.Pages
                                 break;
                             case WallpaperCreateType.depthmap:
                                 {
-                                    var result = await dialogService.ShowDepthWallpaperDialog(item);
+                                    var result = await dialogService.ShowDepthWallpaperDialogAsync(item);
                                     if (result is not null)
                                         await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
                                 }

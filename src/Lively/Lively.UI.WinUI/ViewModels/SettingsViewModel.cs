@@ -225,7 +225,7 @@ namespace Lively.UI.WinUI.ViewModels
             _openWallpaperDirectory ??= new RelayCommand(async () => await DesktopBridgeUtil.OpenFolder(userSettings.Settings.WallpaperDir));
 
         private RelayCommand _themeBackgroundCommand;
-        public RelayCommand ThemeBackgroundCommand => _themeBackgroundCommand ??= new RelayCommand(async () => await dialogService.ShowThemeDialog());
+        public RelayCommand ThemeBackgroundCommand => _themeBackgroundCommand ??= new RelayCommand(async () => await dialogService.ShowThemeDialogAsync());
 
         #endregion general
 
@@ -376,7 +376,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private async Task AppRuleAddProgram()
         {
-            var result = await dialogService.ShowApplicationPickerDialog();
+            var result = await dialogService.ShowApplicationPickerDialogAsync();
             if (result != null)
             {
                 try
@@ -831,7 +831,7 @@ namespace Lively.UI.WinUI.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await dialogService.ShowDialog(ex.Message, "Error", "OK");
+                    await dialogService.ShowDialogAsync(ex.Message, "Error", "OK");
                 }
             }
         }
