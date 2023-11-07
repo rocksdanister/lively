@@ -353,8 +353,8 @@ namespace Lively.Core.Wallpapers
                 {
                     //Program ready!
                     //TaskView crash fix
-                    WindowOperations.BorderlessWinStyle(Handle);
-                    WindowOperations.RemoveWindowFromTaskbar(Handle);
+                    WindowUtil.BorderlessWinStyle(Handle);
+                    WindowUtil.RemoveWindowFromTaskbar(Handle);
 
                     //Restore livelyproperties.json settings
                     SetPlaybackProperties(livelyPropertiesData);

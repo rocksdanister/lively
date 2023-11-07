@@ -48,7 +48,6 @@ namespace Lively.Views
             try
             {
                 wallpaper = wallpaperFactory.CreateWallpaper(model, userSettings.Settings.SelectedDisplay, userSettings, true);
-                model.ItemStartup = true;
                 await wallpaper.ShowAsync();
 
                 isInitialized = true;
@@ -95,7 +94,7 @@ namespace Lively.Views
                 return;
 
             //Detach wallpaper window from this dialogue.
-            WindowOperations.SetParentSafe(wallpaper.Handle, IntPtr.Zero);
+            WindowUtil.SetParentSafe(wallpaper.Handle, IntPtr.Zero);
             try
             {
                 var proc = wallpaper.Proc;

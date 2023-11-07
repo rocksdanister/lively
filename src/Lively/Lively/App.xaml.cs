@@ -21,7 +21,6 @@ using Lively.Grpc.Common.Proto.Commands;
 using System.Linq;
 using Lively.Automation;
 using Lively.Views.WindowMsg;
-using Lively.Common.Helpers.Network;
 using System.Windows.Threading;
 using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
@@ -35,6 +34,7 @@ using System.Reflection;
 using Lively.Common.Models;
 using Lively.Common.Services.Update;
 using Lively.Helpers;
+using Lively.Common.Services.Downloader;
 
 namespace Lively
 {
@@ -100,8 +100,8 @@ namespace Lively
             try
             {
                 //clear temp files from previous run if any..
-                FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
-                FileOperations.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
+                FileUtil.EmptyDirectory(Constants.CommonPaths.TempDir);
+                FileUtil.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
             }
             catch { /* TODO */ }
 
@@ -245,7 +245,7 @@ namespace Lively
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()
-                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
+                .AddTransient<IDownloadService, MultiDownloadService>()
                 //.AddTransient<SetupView>()
                 /*
                 .AddLogging(loggingBuilder =>

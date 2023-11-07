@@ -194,7 +194,7 @@ namespace Lively.Core.Wallpapers
                             }
 
                             //TaskView crash fix
-                            WindowOperations.RemoveWindowFromTaskbar(Handle);
+                            WindowUtil.RemoveWindowFromTaskbar(Handle);
                         }
                         catch (Exception ie)
                         {

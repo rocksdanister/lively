@@ -22,6 +22,7 @@ using CommunityToolkit.Mvvm.Input;
 using Windows.ApplicationModel.Resources;
 using CommunityToolkit.WinUI.UI;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Lively.Helpers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -40,18 +41,21 @@ namespace Lively.UI.WinUI.ViewModels
 
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
         private readonly IDialogService dialogService;
         private readonly GalleryClient galleryClient;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore,
+        public LibraryViewModel(IWallpaperLibraryFactory wallpaperLibraryFactory, 
+            IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             IDialogService dialogService,
             GalleryClient galleryClient)
         {
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.settingsVm = settingsVm;
@@ -238,7 +242,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //close if running.
                 await desktopCore.CloseWallpaper(obj, true);
                 //delete wp folder.      
-                var success = await FileOperations.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
+                var success = await FileUtil.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
 
                 if (success)
                 {
@@ -261,7 +265,7 @@ namespace Lively.UI.WinUI.ViewModels
                                 var item = new DirectoryInfo(wpdataDir[i]).Name;
                                 if (wpFolderName.Equals(item, StringComparison.Ordinal))
                                 {
-                                    _ = FileOperations.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
+                                    _ = FileUtil.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
                                     break;
                                 }
                             }
@@ -330,7 +334,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileUtil.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else if (libraryItem.LivelyInfo.IsAbsolutePath)
@@ -383,7 +387,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileUtil.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else
@@ -423,7 +427,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         public async Task AddWallpaperGallery(GalleryModel obj)
         {
-            var libItem = new LibraryModel(obj.LivelyInfo) { ImagePath = obj.Image };
+            var libItem = wallpaperLibraryFactory.CreateFromMetadata(obj.LivelyInfo);
+            libItem.ImagePath = obj.Image;
             var downloadFile = Path.Combine(Constants.CommonPaths.TempDir, Path.ChangeExtension(libItem.LivelyInfo.Id, ".zip"));
             var cts = new CancellationTokenSource();
             var downloadItem = (libItem.LivelyInfo.Id, cts);
@@ -666,12 +671,13 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                var libItem = ScanWallpaperFolder(folderPath);
+                var item = wallpaperLibraryFactory.CreateFromDirectory(folderPath);
+                item.ImagePath = userSettings.Settings.UIMode != LivelyGUIState.lite ? item.ImagePath : item.ThumbnailPath;
                 //var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
-                libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
+                item.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
                 //LibraryItems.Insert(index, libItem);
-                LibraryItems.Add(libItem);
-                return libItem;
+                LibraryItems.Add(item);
+                return item;
             }
             catch (Exception e)
             {
@@ -705,35 +711,24 @@ namespace Lively.UI.WinUI.ViewModels
                 for (int j = 0; j < dir[i].Length; j++)
                 {
                     var currDir = dir[i][j];
-                    LibraryModel libItem = null;
+                    LibraryModel item = null;
                     try
                     {
-                        libItem = ScanWallpaperFolder(currDir);
-                        Logger.Info($"Loaded wallpaper: {libItem.FilePath}");
+                        item = wallpaperLibraryFactory.CreateFromDirectory(currDir);
+                        item.ImagePath = userSettings.Settings.UIMode != LivelyGUIState.lite ? item.ImagePath : item.ThumbnailPath;
+                        Logger.Info($"Loaded wallpaper: {item.FilePath}");
                     }
                     catch (Exception e)
                     {
                         Logger.Error(e);
                     }
 
-                    if (libItem != null)
+                    if (item != null)
                     {
-                        yield return libItem;
+                        yield return item;
                     }
                 }
             }
-        }
-
-        private LibraryModel ScanWallpaperFolder(string folderPath)
-        {
-            if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
-            {
-                LivelyInfoModel info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
-                return info != null ?
-                    new LibraryModel(info, folderPath, LibraryItemType.ready, userSettings.Settings.UIMode != LivelyGUIState.lite) :
-                    throw new Exception("Corrupted wallpaper metadata");
-            }
-            throw new Exception("Wallpaper not found.");
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

@@ -357,7 +357,7 @@ namespace Lively.UI.WinUI
             LibraryModel result = null;
             try
             {
-                if (Path.GetExtension(filePath) == ".zip" && FileOperations.IsFileGreater(filePath, 10485760))
+                if (Path.GetExtension(filePath) == ".zip" && FileUtil.IsFileGreater(filePath, 10485760))
                 {
                     importBar.IsOpen = true;
                     importBar.Message = Path.GetFileName(filePath);

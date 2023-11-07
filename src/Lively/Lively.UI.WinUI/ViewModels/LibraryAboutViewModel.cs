@@ -12,16 +12,19 @@ namespace Lively.UI.WinUI.ViewModels
             Title = obj.Title;
             Desc = obj.Desc;
             Author = obj.Author;
-            SrcWebsite = obj.SrcWebsite;
+            SrcWebsite = LinkUtil.TrySanitizeUrl(obj.LivelyInfo.Contact, out Uri uri) ? uri : null;
             Type = obj.LivelyInfo.Type;
             Contact = obj.LivelyInfo.Contact;
             IsInstalled = !obj.LivelyInfo.IsAbsolutePath;
 
             try
             {
-                DirectorySize = FileOperations.SizeSuffix(FileOperations.GetDirectorySize(obj.LivelyInfoFolderPath), 2);
+                DirectorySize = FileUtil.SizeSuffix(FileUtil.GetDirectorySize(obj.LivelyInfoFolderPath), 2);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                DirectorySize = ex.Message;
+            }
         }
 
         public string Title { get; }
@@ -31,6 +34,6 @@ namespace Lively.UI.WinUI.ViewModels
         public WallpaperType Type { get; }
         public string Contact { get; }
         public bool IsInstalled { get; }
-        public string DirectorySize { get; } = "--";
+        public string DirectorySize { get; }
     }
 }

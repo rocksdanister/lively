@@ -458,7 +458,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                                 }
                                 else
                                 {
-                                    destFile = FileOperations.NextAvailableFilename(destFile);
+                                    destFile = FileUtil.NextAvailableFilename(destFile);
                                     File.Copy(srcFile.Path, destFile);
                                 }
                                 destFiles.Add(Path.GetFileName(destFile));

@@ -1,5 +1,5 @@
 ﻿using Lively.Common;
-using Lively.Common.Helpers.Network;
+using Lively.Common.Services.Downloader;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Lively.Views
     public partial class AppUpdater : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private IDownloadHelper download;
+        private IDownloadService download;
         private readonly Uri fileUrl;
         private bool _forceClose = false;
         private bool downloadComplete = false;
@@ -118,7 +118,7 @@ namespace Lively.Views
                 */
                 try
                 {
-                    download = App.Services.GetRequiredService<IDownloadHelper>();
+                    download = App.Services.GetRequiredService<IDownloadService>();
                     savePath = Path.Combine(Constants.CommonPaths.TempDir, suggestedFileName);
                     download.DownloadFile(fileUrl, savePath);
                     download.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;

@@ -14,5 +14,11 @@ namespace Lively.Common.Extensions
 
         public static bool IsVideoWallpaper(this WallpaperType type) =>
             type == WallpaperType.video || type == WallpaperType.videostream;
+
+        /// <summary>
+        /// Picture, gif and other non dynamic format
+        /// </summary>
+        public static bool IsMediaWallpaper(this WallpaperType type) => 
+            IsVideoWallpaper(type) || type == WallpaperType.gif || type == WallpaperType.picture;
     }
 }

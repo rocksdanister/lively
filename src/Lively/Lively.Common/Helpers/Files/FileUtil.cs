@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace Lively.Common.Helpers.Files
 {
-    public static class FileOperations
+    public static class FileUtil
     {
         /// <summary>
         /// Opens the folder in file explorer; If file path is given, file is selected.<br>

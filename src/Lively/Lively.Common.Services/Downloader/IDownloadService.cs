@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Lively.Common.Helpers.Network
+namespace Lively.Common.Services.Downloader
 {
     public class DownloadProgressEventArgs : EventArgs
     {
@@ -31,7 +31,7 @@ namespace Lively.Common.Helpers.Network
         public string FileName { get; set; }
     }
 
-    public interface IDownloadHelper
+    public interface IDownloadService
     {
         event EventHandler<bool> DownloadFileCompleted;
         event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;

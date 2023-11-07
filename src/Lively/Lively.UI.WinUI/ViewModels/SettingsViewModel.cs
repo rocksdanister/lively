@@ -342,8 +342,8 @@ namespace Lively.UI.WinUI.ViewModels
             get => _selectedAppRuleItem;
             set
             {
-                RemoveAppRuleCommand.NotifyCanExecuteChanged();
                 SetProperty(ref _selectedAppRuleItem, value);
+                RemoveAppRuleCommand.NotifyCanExecuteChanged();
             }
         }
 
@@ -987,11 +987,11 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     await Task.Run(() =>
                     {
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallDir),
+                        FileUtil.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallDir),
                             Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir), true);
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir),
+                        FileUtil.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir),
                             Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir), true);
-                        FileOperations.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir),
+                        FileUtil.DirectoryCopy(Path.Combine(WallpaperDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir),
                             Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperSettingsDir), true);
                     });
                 }
@@ -1023,9 +1023,9 @@ namespace Lively.UI.WinUI.ViewModels
             if (!isDestEmptyDir)
             {
                 //not deleting the root folder, what if the user selects a folder that is not used by Lively alone!
-                var result1 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallDir), 1000, 3000);
-                var result2 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir), 0, 1000);
-                var result3 = await FileOperations.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir), 0, 1000);
+                var result1 = await FileUtil.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallDir), 1000, 3000);
+                var result2 = await FileUtil.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperInstallTempDir), 0, 1000);
+                var result3 = await FileUtil.TryDeleteDirectoryAsync(Path.Combine(previousDirectory, Constants.CommonPartialPaths.WallpaperSettingsDir), 0, 1000);
                 if (!(result1 && result2 && result3))
                 {
                     //TODO: Dialogue

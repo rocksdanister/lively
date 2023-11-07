@@ -75,8 +75,10 @@ namespace Lively.UI.WinUI.ViewModels
                 if (value is null)
                     return;
 
+                SetProperty(ref _selectedItem, value);
                 CustomiseWallpaperCommand.NotifyCanExecuteChanged();
                 CloseWallpaperCommand.NotifyCanExecuteChanged();
+
                 if (!userSettings.Settings.SelectedDisplay.Equals(value.Screen))
                 {
                     userSettings.Settings.SelectedDisplay = value.Screen;
@@ -84,7 +86,6 @@ namespace Lively.UI.WinUI.ViewModels
                     //Updating library selected item.
                     libraryVm.UpdateSelectedWallpaper();
                 }
-                SetProperty(ref _selectedItem, value);
             }
         }
 

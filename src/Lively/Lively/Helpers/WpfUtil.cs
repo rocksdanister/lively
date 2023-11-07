@@ -31,7 +31,7 @@ namespace Lively.Helpers
 
             //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
             NativeMethods.MapWindowPoints(pgmHandle, previewHwnd, ref prct, 2);
-            WindowOperations.SetParentSafe(pgmHandle, previewHwnd);
+            WindowUtil.SetParentSafe(pgmHandle, previewHwnd);
 
             //Position the wp window relative to the new parent window(workerw).
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, prct.Left, prct.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
