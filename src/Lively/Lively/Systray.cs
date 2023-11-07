@@ -37,6 +37,7 @@ namespace Lively
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
 
@@ -45,13 +46,15 @@ namespace Lively
             IDesktopCore desktopCore,
             IAppUpdaterService appUpdater,
             IDisplayManager displayManager,
-            IPlayback playbackMonitor)
+            IPlayback playbackMonitor,
+            IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.runner = runner;
             this.desktopCore = desktopCore;
             this.userSettings = userSettings;
             this.displayManager = displayManager;
             this.playbackMonitor = playbackMonitor;
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             //Error: "The root Visual of a VisualTarget cannot have a parent.."
@@ -309,7 +312,7 @@ namespace Lively
                 LibraryModel libItem = null;
                 try
                 {
-                    libItem = WallpaperUtil.ScanWallpaperFolder(dir[i]);
+                    libItem = wallpaperLibraryFactory.CreateFromDirectory(dir[i]);
                 }
                 catch { }
 

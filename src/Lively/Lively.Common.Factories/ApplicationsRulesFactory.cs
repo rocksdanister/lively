@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Lively.UI.WinUI.Factories
+namespace Lively.Common.Factories
 {
     public class ApplicationsRulesFactory : IApplicationsRulesFactory
     {

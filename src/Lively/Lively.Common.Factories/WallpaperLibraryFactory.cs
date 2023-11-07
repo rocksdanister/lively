@@ -8,16 +8,16 @@ using System.Text;
 
 namespace Lively.Helpers
 {
-    public static class WallpaperUtil
+    public class WallpaperLibraryFactory : IWallpaperLibraryFactory
     {
-        public static LibraryModel ScanWallpaperFolder(string folderPath)
+        public LibraryModel CreateFromDirectory(string folderPath)
         {
             if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
             {
                 LivelyInfoModel info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
                 return info != null ? new LibraryModel(info, folderPath, LibraryItemType.ready, false) : throw new Exception("Corrupted wallpaper metadata");
             }
-            throw new Exception("Wallpaper not found.");
+            throw new FileNotFoundException("Wallpaper not found.");
         }
     }
 }

@@ -34,6 +34,7 @@ using Microsoft.Win32;
 using System.Reflection;
 using Lively.Common.Models;
 using Lively.Common.Services.Update;
+using Lively.Helpers;
 
 namespace Lively
 {
@@ -239,7 +240,8 @@ namespace Lively
                 .AddSingleton<AppUpdateServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
-                .AddTransient<IWallpaperFactory, WallpaperFactory>()
+                .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
+                .AddTransient<IWallpaperPluginFactory, WallpaperPluginFactory>()
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()

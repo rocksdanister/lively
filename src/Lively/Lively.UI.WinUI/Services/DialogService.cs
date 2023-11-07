@@ -110,7 +110,7 @@ namespace Lively.UI.WinUI.Services
             await new ContentDialog()
             {
                 Title = i18n.GetString("AppTheme/Header"),
-                Content = new ThemeView(),
+                Content = new AppThemeView(),
                 PrimaryButtonText = i18n.GetString("TextOk"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,

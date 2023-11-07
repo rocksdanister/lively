@@ -25,13 +25,13 @@ namespace Lively.Views
         private IWallpaper wallpaper;
         private bool isInitialized = false;
 
-        private readonly IWallpaperFactory wallpaperFactory;
+        private readonly IWallpaperPluginFactory wallpaperFactory;
         private readonly IUserSettingsService userSettings;
 
         public WallpaperPreview(LibraryModel model)
         {
             userSettings = App.Services.GetRequiredService<IUserSettingsService>();
-            wallpaperFactory = App.Services.GetRequiredService<IWallpaperFactory>();
+            wallpaperFactory = App.Services.GetRequiredService<IWallpaperPluginFactory>();
             this.wallpaperData = model;
             this.Title = model.Title;
 

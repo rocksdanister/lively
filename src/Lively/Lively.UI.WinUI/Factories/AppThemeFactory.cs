@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Lively.UI.WinUI.Factories
 {
-    public class ThemeFactory : IThemeFactory
+    public class AppThemeFactory : IAppThemeFactory
     {
-        public ThemeModel CreateTheme(string filePath, string name, string description)
+        public ThemeModel CreateFromFile(string filePath, string name, string description)
         {
             var themeDir = Path.Combine(Constants.CommonPaths.ThemeDir, Path.GetRandomFileName());
             Directory.CreateDirectory(themeDir);
@@ -32,7 +32,7 @@ namespace Lively.UI.WinUI.Factories
             return theme;
         }
 
-        public ThemeModel CreateTheme(string themeDir)
+        public ThemeModel CreateFromDirectory(string themeDir)
         {
             var metadata = Path.Combine(themeDir, "theme.json");
             if (!File.Exists(metadata))

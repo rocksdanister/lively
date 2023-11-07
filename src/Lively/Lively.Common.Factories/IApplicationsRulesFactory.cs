@@ -1,7 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Models;
 
-namespace Lively.Factories
+namespace Lively.Common.Factories
 {
     public interface IApplicationsRulesFactory
     {

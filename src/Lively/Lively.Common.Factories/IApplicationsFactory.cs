@@ -1,7 +1,7 @@
 ﻿using Lively.Models;
 using System.Diagnostics;
 
-namespace Lively.UI.WinUI.Factories
+namespace Lively.Common.Factories
 {
     public interface IApplicationsFactory
     {

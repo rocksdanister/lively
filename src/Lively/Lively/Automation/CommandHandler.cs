@@ -28,6 +28,7 @@ namespace Lively.Automation
     public class CommandHandler : ICommandHandler
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
@@ -36,7 +37,8 @@ namespace Lively.Automation
         private readonly IRunnerService runner;
         private readonly ISystray systray;
 
-        public CommandHandler(IUserSettingsService userSettings, 
+        public CommandHandler(IWallpaperLibraryFactory wallpaperLibraryFactory,
+            IUserSettingsService userSettings, 
             IDesktopCore desktopCore, 
             IDisplayManager displayManager,
             IScreensaverService screenSaver,
@@ -44,6 +46,7 @@ namespace Lively.Automation
             IRunnerService runner,
             ISystray systray)
         {
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
@@ -157,7 +160,7 @@ namespace Lively.Automation
                         var di = new DirectoryInfo(opts.File); //Verify path is wallpaper install location.
                         if (di.Parent.FullName.Contains(userSettings.Settings.WallpaperDir, StringComparison.OrdinalIgnoreCase))
                         {
-                            var libraryItem = WallpaperUtil.ScanWallpaperFolder(opts.File);
+                            var libraryItem = wallpaperLibraryFactory.CreateFromDirectory(opts.File);
                             if (screen != null)
                                 _ = desktopCore.SetWallpaperAsync(libraryItem, screen);
                         }
@@ -516,7 +519,7 @@ namespace Lively.Automation
                     LibraryModel libItem = null;
                     try
                     {
-                        libItem = WallpaperUtil.ScanWallpaperFolder(dir[i][j]);
+                        libItem = wallpaperLibraryFactory.CreateFromDirectory(dir[i][j]);
                     }
                     catch { }
 

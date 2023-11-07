@@ -22,15 +22,15 @@ using Windows.ApplicationModel.Resources;
 namespace Lively.UI.WinUI.ViewModels
 {
     //TODO: https://github.com/microsoft/microsoft-ui-xaml/issues/6394 (accent color.)
-    public partial class ThemeViewModel : ObservableObject
+    public partial class AppThemeViewModel : ObservableObject
     {
         private readonly ResourceLoader i18n;
         private readonly DispatcherQueue dispatcherQueue;
         private readonly IUserSettingsClient userSettings;
-        private readonly IThemeFactory themeFactory;
+        private readonly IAppThemeFactory themeFactory;
         private readonly MainViewModel mainVm;
 
-        public ThemeViewModel(IUserSettingsClient userSettings, IThemeFactory themeFactory, MainViewModel mainVm)
+        public AppThemeViewModel(IUserSettingsClient userSettings, IAppThemeFactory themeFactory, MainViewModel mainVm)
         {
             this.userSettings = userSettings;
             this.themeFactory = themeFactory;
@@ -47,7 +47,7 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 try
                 {
-                    var theme = themeFactory.CreateTheme(item.FullName);
+                    var theme = themeFactory.CreateFromDirectory(item.FullName);
                     Themes.Add(theme);
                 }
                 catch { }
@@ -133,7 +133,7 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 try
                 {
-                    Themes.Add(themeFactory.CreateTheme(file.Path, file.DisplayName, file.DisplayType));
+                    Themes.Add(themeFactory.CreateFromFile(file.Path, file.DisplayName, file.DisplayType));
                     SelectedItem = Themes.Last();
                 }
                 catch { }
