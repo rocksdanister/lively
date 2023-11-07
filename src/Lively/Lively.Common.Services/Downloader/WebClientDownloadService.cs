@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Lively.Common.Helpers.Network
+namespace Lively.Common.Services.Downloader
 {
     [Obsolete("Cannot cancel in-progress download: https://github.com/dotnet/runtime/issues/31479")]
-    public class WebClientDownloadHelper : IDownloadHelper
+    public class WebClientDownloadService : IDownloadService
     {
         private WebClient webClient;
         public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;

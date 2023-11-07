@@ -15,7 +15,7 @@ namespace Lively.UI.WinUI.Helpers
         {
             if (!Constants.ApplicationType.IsMSIX)
             {
-                FileOperations.OpenFolder(path);
+                FileUtil.OpenFolder(path);
                 return;
             }
 

@@ -76,8 +76,6 @@ namespace Lively.UI.WinUI.ViewModels
             set
             {
                 libData.LivelyInfo.Contact = value;
-                libData.SrcWebsite = LinkUtil.TrySanitizeUrl(value, out Uri uri) ? uri : null;
-
                 SetProperty(ref _url, value);
             }
         }

@@ -5,9 +5,9 @@ using System.Text;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace Lively.Common.Helpers.Network
+namespace Lively.Common.Services.Downloader
 {
-    public class MultiDownloadHelper : IDownloadHelper
+    public class MultiDownloadService : IDownloadService
     {
         public event EventHandler<bool> DownloadFileCompleted;
         public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
@@ -16,7 +16,7 @@ namespace Lively.Common.Helpers.Network
         private double previousDownloadedSize = -1;
         private readonly DownloadService downloader;
 
-        public MultiDownloadHelper()
+        public MultiDownloadService()
         {
             //CPU can get toasty.. should rate limit to 100MB/s ?
             var downloadOpt = new DownloadConfiguration()

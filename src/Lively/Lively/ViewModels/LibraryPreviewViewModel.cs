@@ -183,7 +183,6 @@ namespace Lively.ViewModels
             get => _url;
             set
             {
-                libData.SrcWebsite = LinkUtil.TrySanitizeUrl(value, out Uri uri) ? uri : null;
                 libData.LivelyInfo.Contact = value;
                 SetProperty(ref _url, value);
                 DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });

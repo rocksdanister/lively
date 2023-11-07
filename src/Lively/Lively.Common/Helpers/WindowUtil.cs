@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace Lively.Common.Helpers
 {
-    public static class WindowOperations
+    public static class WindowUtil
     {
         public static void SetParentSafe(IntPtr child, IntPtr parent)
         {

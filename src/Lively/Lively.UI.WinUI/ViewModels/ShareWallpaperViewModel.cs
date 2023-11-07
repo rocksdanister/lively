@@ -68,7 +68,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (file != null)
                 {
                     await libraryVm.WallpaperExport(Model, file.Path);
-                    FileOperations.OpenFolder(file.Path);
+                    FileUtil.OpenFolder(file.Path);
                 }
             }
             catch (Exception)

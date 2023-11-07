@@ -1,7 +1,6 @@
 ﻿using CommandLine;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
-using Lively.Common.Helpers.Network;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
@@ -28,6 +27,8 @@ using Windows.Globalization;
 using WinUIEx;
 using Lively.Common.Factories;
 using static Lively.Common.Constants;
+using Lively.Common.Services.Downloader;
+using Lively.Helpers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -165,8 +166,9 @@ namespace Lively.UI.WinUI
                 .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
+                .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
                 .AddTransient<IAppThemeFactory, AppThemeFactory>()
-                .AddTransient<IDownloadHelper, SimpleDownloadHelper>()
+                .AddTransient<IDownloadService, SimpleDownloadService>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 .BuildServiceProvider();

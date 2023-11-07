@@ -70,7 +70,7 @@ namespace Lively.PlayerWmf
         {
             IntPtr handle = new WindowInteropHelper(this).Handle;
             //ShowInTaskbar = false : causing issue with windows10 Taskview.
-            WindowOperations.RemoveWindowFromTaskbar(handle);
+            WindowUtil.RemoveWindowFromTaskbar(handle);
             //this hides the window from taskbar and also fixes crash when win10 taskview is launched. 
             this.ShowInTaskbar = false;
             this.ShowInTaskbar = true;

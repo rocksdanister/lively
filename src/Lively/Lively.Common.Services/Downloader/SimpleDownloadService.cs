@@ -6,10 +6,10 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Lively.Common.Helpers.Network
+namespace Lively.Common.Services.Downloader
 {
     //ref: https://github.com/dotnet/runtime/issues/31479
-    public class SimpleDownloadHelper : IDownloadHelper
+    public class SimpleDownloadService : IDownloadService
     {
         public event EventHandler<bool> DownloadFileCompleted;
         public event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
@@ -20,7 +20,7 @@ namespace Lively.Common.Helpers.Network
 
         private CancellationTokenSource cts;
 
-        public SimpleDownloadHelper(IHttpClientFactory httpClientFactory)
+        public SimpleDownloadService(IHttpClientFactory httpClientFactory)
         {
             this.httpClientFactory = httpClientFactory;
         }

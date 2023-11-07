@@ -142,7 +142,9 @@ namespace Lively.Core
                 Logger.Info($"Setting wallpaper: {wallpaper.Title} | {wallpaper.FilePath}");
 
                 // Verify file exists if outside wallpaper install folder
-                if (!(wallpaper.LivelyInfo.IsAbsolutePath ? wallpaper.LivelyInfo.Type.IsOnlineWallpaper() || File.Exists(wallpaper.FilePath) : wallpaper.FilePath != null))
+                var fileExists = !wallpaper.LivelyInfo.IsAbsolutePath ? 
+                    File.Exists(wallpaper.FilePath) : wallpaper.LivelyInfo.Type.IsOnlineWallpaper() || File.Exists(wallpaper.FilePath);
+                if (!fileExists)
                 {
                     Logger.Info($"Skipping wallpaper, file {wallpaper.LivelyInfo.FileName} not found.");
                     WallpaperError?.Invoke(this, new WallpaperNotFoundException($"{Properties.Resources.TextFileNotFound}\n{wallpaper.LivelyInfo.FileName}"));
@@ -251,7 +253,7 @@ namespace Lively.Core
                     {
                         WallpaperUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.remove, Info = wallpaper.LivelyInfo, InfoPath = wallpaper.LivelyInfoFolderPath });
                         //Deleting from core because incase UI client not running.
-                        await FileOperations.TryDeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
+                        await FileUtil.TryDeleteDirectoryAsync(wallpaper.LivelyInfoFolderPath, 0, 1000);
                     }
                 }
                 catch (Win32Exception ex2)
@@ -410,9 +412,9 @@ namespace Lively.Core
                 try
                 {
                     //Deleting here incase UI client is not running
-                    await FileOperations.TryDeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
+                    await FileUtil.TryDeleteDirectoryAsync(wallpaper.Model.LivelyInfoFolderPath, 0, 1000);
                     if (wallpaper.LivelyPropertyCopyPath != null)
-                        await FileOperations.TryDeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).FullName, 0, 1000);
+                        await FileUtil.TryDeleteDirectoryAsync(Directory.GetParent(Path.GetDirectoryName(wallpaper.LivelyPropertyCopyPath)).FullName, 0, 1000);
                 }
                 catch (Exception ie)
                 {
