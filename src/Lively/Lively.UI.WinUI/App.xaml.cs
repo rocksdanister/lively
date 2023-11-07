@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
 using WinUIEx;
+using Lively.Common.Factories;
 using static Lively.Common.Constants;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -155,7 +156,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<ControlPanelViewModel>()
                 .AddTransient<ChooseDisplayViewModel>()
                 .AddTransient<FindMoreAppsViewModel>()
-                .AddTransient<ThemeViewModel>()
+                .AddTransient<AppThemeViewModel>()
                 .AddTransient<GalleryLoginViewModel>()
                 .AddTransient<ManageAccountViewModel>()
                 .AddTransient<RestoreWallpaperViewModel>()
@@ -164,7 +165,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
-                .AddTransient<IThemeFactory, ThemeFactory>()
+                .AddTransient<IAppThemeFactory, AppThemeFactory>()
                 .AddTransient<IDownloadHelper, SimpleDownloadHelper>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()

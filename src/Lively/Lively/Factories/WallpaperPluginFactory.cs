@@ -10,11 +10,11 @@ using System.Text;
 
 namespace Lively.Factories
 {
-    public class WallpaperFactory : IWallpaperFactory
+    public class WallpaperPluginFactory : IWallpaperPluginFactory
     {
         private readonly ILivelyPropertyFactory lpFactory;
 
-        public WallpaperFactory(ILivelyPropertyFactory lpFactory)
+        public WallpaperPluginFactory(ILivelyPropertyFactory lpFactory)
         {
             this.lpFactory = lpFactory;
         }

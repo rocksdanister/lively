@@ -54,7 +54,8 @@ namespace Lively.Core
         public event EventHandler WallpaperReset;
 
         private readonly IUserSettingsService userSettings;
-        private readonly IWallpaperFactory wallpaperFactory;
+        private readonly IWallpaperPluginFactory wallpaperFactory;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly ITransparentTbService ttbService;
         private readonly IWatchdogService watchdog;
         private readonly IDisplayManager displayManager;
@@ -67,7 +68,8 @@ namespace Lively.Core
             ITransparentTbService ttbService,
             IWatchdogService watchdog,
             IRunnerService runner,
-            IWallpaperFactory wallpaperFactory)
+            IWallpaperPluginFactory wallpaperFactory,
+            IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.userSettings = userSettings;
             this.displayManager = displayManager;
@@ -76,6 +78,7 @@ namespace Lively.Core
             this.runner = runner;
             //this.screenSaver = screenSaver;
             this.wallpaperFactory = wallpaperFactory;
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
             if (SystemParameters.HighContrast)
                 Logger.Warn("Highcontrast mode detected, some functionalities may not work properly.");
@@ -238,7 +241,7 @@ namespace Lively.Core
                     }
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 }
-                catch (WallpaperFactory.MsixNotAllowedException ex1)
+                catch (WallpaperPluginFactory.MsixNotAllowedException ex1)
                 {
                     Logger.Error(ex1);
                     WallpaperError?.Invoke(this, new WallpaperPluginNotFoundException(ex1.Message));
@@ -799,7 +802,7 @@ namespace Lively.Core
                 LibraryModel libraryItem = null;
                 try
                 {
-                    libraryItem = WallpaperUtil.ScanWallpaperFolder(layout.LivelyInfoPath);
+                    libraryItem = wallpaperLibraryFactory.CreateFromDirectory(layout.LivelyInfoPath);
                 }
                 catch (Exception e)
                 {
@@ -839,7 +842,7 @@ namespace Lively.Core
                 {
                     if (wallpaperLayout.Count != 0)
                     {
-                        var libraryItem = WallpaperUtil.ScanWallpaperFolder(wallpaperLayout[0].LivelyInfoPath);
+                        var libraryItem = wallpaperLibraryFactory.CreateFromDirectory(wallpaperLayout[0].LivelyInfoPath);
                         SetWallpaperAsync(libraryItem, displayManager.PrimaryDisplayMonitor);
                     }
                 }

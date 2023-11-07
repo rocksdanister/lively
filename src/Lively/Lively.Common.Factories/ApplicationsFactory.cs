@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lively.UI.WinUI.Factories
+namespace Lively.Common.Factories
 {
     public class ApplicationsFactory : IApplicationsFactory
     {
