@@ -55,7 +55,7 @@ namespace Lively.Services
 
         public void Start()
         {
-            if (IsRunning)
+            if (IsRunning || desktopCore.Wallpapers.Count == 0)
                 return;
 
             //moving cursor outside screen..
@@ -112,61 +112,6 @@ namespace Lively.Services
             {
                 Logger.Info("Stopping screensaver idle wait..");
                 idleTimer.Stop();
-            }
-        }
-
-        /// <summary>
-        /// Attaches screensaver preview to preview region. <br>
-        /// (To be run in UI thread.)</br>
-        /// </summary>
-        /// <param name="hwnd"></param>
-        public void CreatePreview(IntPtr hwnd)
-        {
-            //Issue: Multiple display setup with diff dpi - making the window child affects DisplayMonitor offset values.
-            if (IsRunning || displayManager.IsMultiScreen())
-                return;
-
-            //Verify if the hwnd is screensaver demo area.
-            const int maxChars = 256;
-            StringBuilder className = new StringBuilder(maxChars);
-            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
-            {
-                string cName = className.ToString();
-                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
-                {
-                    Logger.Info("Skipping ss preview, wrong hwnd class {0}.", cName);
-                    return;
-                }
-            }
-            else
-            {
-                Logger.Info("Skipping ss preview, failed to get hwnd class.");
-                return;
-            }
-
-            Logger.Info("Showing ss preview..");
-            var preview = new ScreenSaverPreview
-            {
-                ShowActivated = false,
-                ResizeMode = ResizeMode.NoResize,
-                WindowStyle = WindowStyle.None,
-                WindowStartupLocation = WindowStartupLocation.Manual,
-                Left = -9999,
-            };
-            preview.Show();
-            var previewHandle = new WindowInteropHelper(preview).Handle;
-            //Set child of target.
-            WindowUtil.SetParentSafe(previewHandle, hwnd);
-            //Make this a child window so it will close when the parent dialog closes.
-            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
-                (int)NativeMethods.GWL.GWL_STYLE,
-                new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
-            //Get size of target.
-            NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
-            //Update preview size and position.
-            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
-            {
-                //TODO
             }
         }
 
@@ -233,6 +178,61 @@ namespace Lively.Services
             {
                 Logger.Error(ex.ToString());
                 //StopIdleTimer();
+            }
+        }
+
+        /// <summary>
+        /// Attaches screensaver preview to preview region. <br>
+        /// (To be run in UI thread.)</br>
+        /// </summary>
+        /// <param name="hwnd"></param>
+        public void CreatePreview(IntPtr hwnd)
+        {
+            //Issue: Multiple display setup with diff dpi - making the window child affects DisplayMonitor offset values.
+            if (IsRunning || displayManager.IsMultiScreen())
+                return;
+
+            //Verify if the hwnd is screensaver demo area.
+            const int maxChars = 256;
+            StringBuilder className = new StringBuilder(maxChars);
+            if (NativeMethods.GetClassName(hwnd, className, maxChars) > 0)
+            {
+                string cName = className.ToString();
+                if (!string.Equals(cName, "SSDemoParent", StringComparison.OrdinalIgnoreCase))
+                {
+                    Logger.Info("Skipping ss preview, wrong hwnd class {0}.", cName);
+                    return;
+                }
+            }
+            else
+            {
+                Logger.Info("Skipping ss preview, failed to get hwnd class.");
+                return;
+            }
+
+            Logger.Info("Showing ss preview..");
+            var preview = new ScreenSaverPreview
+            {
+                ShowActivated = false,
+                ResizeMode = ResizeMode.NoResize,
+                WindowStyle = WindowStyle.None,
+                WindowStartupLocation = WindowStartupLocation.Manual,
+                Left = -9999,
+            };
+            preview.Show();
+            var previewHandle = new WindowInteropHelper(preview).Handle;
+            //Set child of target.
+            WindowUtil.SetParentSafe(previewHandle, hwnd);
+            //Make this a child window so it will close when the parent dialog closes.
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, previewHandle),
+                (int)NativeMethods.GWL.GWL_STYLE,
+                new IntPtr(NativeMethods.GetWindowLong(previewHandle, (int)NativeMethods.GWL.GWL_STYLE) | NativeMethods.WindowStyles.WS_CHILD));
+            //Get size of target.
+            NativeMethods.GetClientRect(hwnd, out NativeMethods.RECT prct);
+            //Update preview size and position.
+            if (!NativeMethods.SetWindowPos(previewHandle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
+            {
+                //TODO
             }
         }
 
