@@ -10,6 +10,7 @@ namespace Lively.Common.Helpers.Pinvoke
         private bool disposedValue;
         private readonly IntPtr src, dest;
         private IntPtr thumbnail;
+
         public DwmThumbnailWrapper(IntPtr src, IntPtr dest)
         {
             this.src = src;
