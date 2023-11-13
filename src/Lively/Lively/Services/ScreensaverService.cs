@@ -20,77 +20,74 @@ using Lively.Common.Helpers.Shell;
 using Lively.Views.WindowMsg;
 using Lively.Views;
 using Lively.Core.Display;
+using System.Drawing;
 
 namespace Lively.Services
 {
     public class ScreensaverService : IScreensaverService
     {
-        #region init
-
         private uint idleWaitTime = 300000;
         private readonly Timer idleTimer = new Timer();
         public bool IsRunning { get; private set; } = false;
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly List<Blank> blankWindows = new List<Blank>();
+        //private readonly List<Blank> blankWindows = new List<Blank>();
+        private DwmThumbnailWindow dwmThumbnailWindow;
 
         private readonly IUserSettingsService userSettings;
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
-        private readonly RawInputMsgWindow rawInput;
+        //private readonly RawInputMsgWindow rawInput;
 
         public ScreensaverService(IUserSettingsService userSettings,
             IDesktopCore desktopCore,
-            IDisplayManager displayManager,
-            RawInputMsgWindow rawInput)
+            //RawInputMsgWindow rawInput
+            IDisplayManager displayManager)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
-            this.rawInput = rawInput;
+            //this.rawInput = rawInput;
 
+            displayManager.DisplayUpdated += DisplayManager_DisplayUpdated;
             idleTimer.Elapsed += IdleCheckTimer;
             idleTimer.Interval = 30000;
         }
 
-        #endregion //init
-
-        #region public
-
         public void Start()
         {
-            if (!IsRunning)
-            {
-                //moving cursor outside screen..
-                _ = NativeMethods.SetCursorPos(int.MaxValue, 0);
-                Logger.Info("Starting screensaver..");
-                IsRunning = true;
-                ShowScreensavers();
-                //ShowBlankScreensavers();
-                StartInputListener();
-            }
+            if (IsRunning)
+                return;
+
+            //moving cursor outside screen..
+            _ = NativeMethods.SetCursorPos(int.MaxValue, 0);
+            Logger.Info("Starting screensaver..");
+            IsRunning = true;
+            ShowScreensavers();
+            //ShowBlankScreensavers();
+            //StartInputListener();
         }
 
         public void Stop()
         {
-            if (IsRunning)
-            {
-                Logger.Info("Stopping screensaver..");
-                IsRunning = false;
-                StopInputListener();
-                HideScreensavers();
-                //CloseBlankScreensavers();
+            if (!IsRunning)
+                return;
 
-                if (userSettings.Settings.ScreensaverLockOnResume)
+            Logger.Info("Stopping screensaver..");
+            IsRunning = false;
+            //StopInputListener();
+            HideScreensavers();
+            //CloseBlankScreensavers();
+
+            if (userSettings.Settings.ScreensaverLockOnResume)
+            {
+                try
                 {
-                    try
-                    {
-                        //async..
-                        LockWorkStationSafe();
-                    }
-                    catch (Win32Exception e)
-                    {
-                        Logger.Error("Failed to lock pc: " + e.Message);
-                    }
+                    //async..
+                    LockWorkStationSafe();
+                }
+                catch (Win32Exception e)
+                {
+                    Logger.Error("Failed to lock pc: " + e.Message);
                 }
             }
         }
@@ -127,9 +124,7 @@ namespace Lively.Services
         {
             //Issue: Multiple display setup with diff dpi - making the window child affects DisplayMonitor offset values.
             if (IsRunning || displayManager.IsMultiScreen())
-            {
                 return;
-            }
 
             //Verify if the hwnd is screensaver demo area.
             const int maxChars = 256;
@@ -175,32 +170,38 @@ namespace Lively.Services
             }
         }
 
-        #endregion //public
-
-        #region screensavers
+        private void DisplayManager_DisplayUpdated(object sender, EventArgs e)
+        {
+            HideScreensavers();
+        }
 
         /// <summary>
         /// Detaches wallpapers from desktop workerw.
         /// </summary>
         private void ShowScreensavers()
         {
-            foreach (var item in desktopCore.Wallpapers)
+            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                //detach wallpaper.
-                WindowUtil.SetParentSafe(item.Handle, IntPtr.Zero);
-                //show on the currently running screen, not changing size.
-                if (!NativeMethods.SetWindowPos(
-                    item.Handle,
-                    -1, //topmost
-                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Left : 0,
-                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Top : 0,
-                    item.Screen.Bounds.Width,
-                    item.Screen.Bounds.Height,
-                    userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? 0x0040 : 0x0001)) //ignore WxH if span
+                var workerw = desktopCore.DesktopWorkerW;
+                _ = NativeMethods.GetWindowRect(workerw, out NativeMethods.RECT prct);
+                int width = prct.Right - prct.Left,
+                    height = prct.Bottom - prct.Top;
+                
+                dwmThumbnailWindow = new(workerw, new Rectangle(0, 0, width, height), new Rectangle(prct.Left, prct.Top, width, height))
                 {
-                    Logger.Error(LogUtil.GetWin32Error("Screensaver show fail"));
-                }
-            }
+                    ResizeMode = ResizeMode.NoResize,
+                    WindowStyle = WindowStyle.None,
+                    Topmost = true,
+                    AutoSizeDwmWindow = true
+                };
+                dwmThumbnailWindow.InputReceived += DwmThumbnailWindow_InputReceived;
+                dwmThumbnailWindow.Show();
+            }));
+        }
+
+        private void DwmThumbnailWindow_InputReceived(object sender, EventArgs e)
+        {
+            Stop();
         }
 
         /// <summary>
@@ -208,88 +209,16 @@ namespace Lively.Services
         /// </summary>
         private void HideScreensavers()
         {
-            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
+            if (dwmThumbnailWindow is not null)
             {
-                if (desktopCore.Wallpapers.Count > 0)
+                _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
                 {
-                    //get spawned workerw rectangle data.
-                    NativeMethods.GetWindowRect(desktopCore.DesktopWorkerW, out NativeMethods.RECT prct);
-                    WindowUtil.SetParentSafe(desktopCore.Wallpapers[0].Handle, desktopCore.DesktopWorkerW);
-                    //fill wp into the whole workerw area.
-                    if (!NativeMethods.SetWindowPos(desktopCore.Wallpapers[0].Handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
-                    {
-                        Logger.Error(LogUtil.GetWin32Error("Screensaver hide fail"));
-                    }
-                }
+                    dwmThumbnailWindow.InputReceived -= DwmThumbnailWindow_InputReceived;
+                    dwmThumbnailWindow.Close();
+                    dwmThumbnailWindow = null;
+                }));
             }
-            else
-            {
-                foreach (var item in desktopCore.Wallpapers)
-                {
-                    //update position & size incase window is moved.
-                    if (!NativeMethods.SetWindowPos(item.Handle, 1, item.Screen.Bounds.Left, item.Screen.Bounds.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
-                    {
-                        //LogUtil.LogWin32Error("Failed to hide screensaver(2)");
-                    }
-                    //re-calcuate position on desktop workerw.
-                    NativeMethods.RECT prct = new NativeMethods.RECT();
-                    NativeMethods.MapWindowPoints(item.Handle, desktopCore.DesktopWorkerW, ref prct, 2);
-                    //re-attach wallpaper to desktop.
-                    WindowUtil.SetParentSafe(item.Handle, desktopCore.DesktopWorkerW);
-                    //update position & size on desktop workerw.
-                    if (!NativeMethods.SetWindowPos(item.Handle, 1, prct.Left, prct.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
-                    {
-                        //LogUtil.LogWin32Error("Failed to hide screensaver(3)");
-                    }
-                }
-            }
-            DesktopUtil.RefreshDesktop();
         }
-
-        private void ShowBlankScreensavers()
-        {
-            if (!userSettings.Settings.ScreensaverEmptyScreenShowBlack ||
-                (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0))
-            {
-                return;
-            }
-
-            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
-              {
-                  var freeScreens = displayManager.DisplayMonitors.ToList().FindAll(
-                      x => !desktopCore.Wallpapers.Any(y => y.Screen.Equals(x)));
-                  foreach (var item in freeScreens)
-                  {
-                      var blankWindow = new Blank
-                      {
-                          Left = item.Bounds.Left,
-                          Top = item.Bounds.Top,
-                          Width = item.Bounds.Width,
-                          Height = item.Bounds.Height,
-                          //WindowStartupLocation = WindowStartupLocation.Manual,
-                          //WindowState = WindowState.Maximized,
-                          WindowStyle = WindowStyle.None,
-                          Topmost = true,
-                      };
-                      //blankWindow.Loaded += (s, e) => { blankWindow.WindowState = WindowState.Maximized; };
-                      blankWindow.Show();
-                      blankWindows.Add(blankWindow);
-                  }
-              }));
-        }
-
-        private void CloseBlankScreensavers()
-        {
-            _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
-              {
-                  blankWindows.ForEach(x => x.Close());
-                  blankWindows.Clear();
-              }));
-        }
-
-        #endregion //screensavers
-
-        #region input checks
 
         private void IdleCheckTimer(object sender, ElapsedEventArgs e)
         {
@@ -307,36 +236,136 @@ namespace Lively.Services
             }
         }
 
-        private void StartInputListener()
-        {
-            rawInput.MouseMoveRaw += RawInputHook_MouseMoveRaw;
-            rawInput.MouseDownRaw += RawInputHook_MouseDownRaw;
-            rawInput.KeyboardClickRaw += RawInputHook_KeyboardClickRaw;
-        }
+        //private void ShowScreensavers()
+        //{
+        //    foreach (var item in desktopCore.Wallpapers)
+        //    {
+        //        //detach wallpaper.
+        //        WindowUtil.SetParentSafe(item.Handle, IntPtr.Zero);
+        //        //show on the currently running screen, not changing size.
+        //        if (!NativeMethods.SetWindowPos(
+        //            item.Handle,
+        //            -1, //topmost
+        //            userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Left : 0,
+        //            userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? item.Screen.Bounds.Top : 0,
+        //            item.Screen.Bounds.Width,
+        //            item.Screen.Bounds.Height,
+        //            userSettings.Settings.WallpaperArrangement != WallpaperArrangement.span ? 0x0040 : 0x0001)) //ignore WxH if span
+        //        {
+        //            Logger.Error(LogUtil.GetWin32Error("Screensaver show fail"));
+        //        }
+        //    }
+        //}
 
-        private void StopInputListener()
-        {
-            rawInput.MouseMoveRaw -= RawInputHook_MouseMoveRaw;
-            rawInput.MouseDownRaw -= RawInputHook_MouseDownRaw;
-            rawInput.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
-        }
+        //private void HideScreensavers()
+        //{
+        //    if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span)
+        //    {
+        //        if (desktopCore.Wallpapers.Count > 0)
+        //        {
+        //            //get spawned workerw rectangle data.
+        //            NativeMethods.GetWindowRect(desktopCore.DesktopWorkerW, out NativeMethods.RECT prct);
+        //            WindowUtil.SetParentSafe(desktopCore.Wallpapers[0].Handle, desktopCore.DesktopWorkerW);
+        //            //fill wp into the whole workerw area.
+        //            if (!NativeMethods.SetWindowPos(desktopCore.Wallpapers[0].Handle, 1, 0, 0, prct.Right - prct.Left, prct.Bottom - prct.Top, 0x0010))
+        //            {
+        //                Logger.Error(LogUtil.GetWin32Error("Screensaver hide fail"));
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        foreach (var item in desktopCore.Wallpapers)
+        //        {
+        //            //update position & size incase window is moved.
+        //            if (!NativeMethods.SetWindowPos(item.Handle, 1, item.Screen.Bounds.Left, item.Screen.Bounds.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
+        //            {
+        //                //LogUtil.LogWin32Error("Failed to hide screensaver(2)");
+        //            }
+        //            //re-calcuate position on desktop workerw.
+        //            NativeMethods.RECT prct = new NativeMethods.RECT();
+        //            NativeMethods.MapWindowPoints(item.Handle, desktopCore.DesktopWorkerW, ref prct, 2);
+        //            //re-attach wallpaper to desktop.
+        //            WindowUtil.SetParentSafe(item.Handle, desktopCore.DesktopWorkerW);
+        //            //update position & size on desktop workerw.
+        //            if (!NativeMethods.SetWindowPos(item.Handle, 1, prct.Left, prct.Top, item.Screen.Bounds.Width, item.Screen.Bounds.Height, 0x0010))
+        //            {
+        //                //LogUtil.LogWin32Error("Failed to hide screensaver(3)");
+        //            }
+        //        }
+        //    }
+        //    DesktopUtil.RefreshDesktop();
+        //}
 
-        private void RawInputHook_KeyboardClickRaw(object sender, KeyboardClickRawArgs e)
-        {
-            Stop();
-        }
+        //private void ShowBlankScreensavers()
+        //{
+        //    if (!userSettings.Settings.ScreensaverEmptyScreenShowBlack ||
+        //        (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.span && desktopCore.Wallpapers.Count > 0))
+        //    {
+        //        return;
+        //    }
 
-        private void RawInputHook_MouseDownRaw(object sender, MouseClickRawArgs e)
-        {
-            Stop();
-        }
+        //    _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+        //      {
+        //          var freeScreens = displayManager.DisplayMonitors.ToList().FindAll(
+        //              x => !desktopCore.Wallpapers.Any(y => y.Screen.Equals(x)));
+        //          foreach (var item in freeScreens)
+        //          {
+        //              var blankWindow = new Blank
+        //              {
+        //                  Left = item.Bounds.Left,
+        //                  Top = item.Bounds.Top,
+        //                  Width = item.Bounds.Width,
+        //                  Height = item.Bounds.Height,
+        //                  //WindowStartupLocation = WindowStartupLocation.Manual,
+        //                  //WindowState = WindowState.Maximized,
+        //                  WindowStyle = WindowStyle.None,
+        //                  Topmost = true,
+        //              };
+        //              //blankWindow.Loaded += (s, e) => { blankWindow.WindowState = WindowState.Maximized; };
+        //              blankWindow.Show();
+        //              blankWindows.Add(blankWindow);
+        //          }
+        //      }));
+        //}
 
-        private void RawInputHook_MouseMoveRaw(object sender, MouseRawArgs e)
-        {
-            Stop();
-        }
+        //private void CloseBlankScreensavers()
+        //{
+        //    _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
+        //      {
+        //          blankWindows.ForEach(x => x.Close());
+        //          blankWindows.Clear();
+        //      }));
+        //}
 
-        #endregion //input checks
+        //private void StartInputListener()
+        //{
+        //    rawInput.MouseMoveRaw += RawInputHook_MouseMoveRaw;
+        //    rawInput.MouseDownRaw += RawInputHook_MouseDownRaw;
+        //    rawInput.KeyboardClickRaw += RawInputHook_KeyboardClickRaw;
+        //}
+
+        //private void StopInputListener()
+        //{
+        //    rawInput.MouseMoveRaw -= RawInputHook_MouseMoveRaw;
+        //    rawInput.MouseDownRaw -= RawInputHook_MouseDownRaw;
+        //    rawInput.KeyboardClickRaw -= RawInputHook_KeyboardClickRaw;
+        //}
+
+        //private void RawInputHook_KeyboardClickRaw(object sender, KeyboardClickRawArgs e)
+        //{
+        //    Stop();
+        //}
+
+        //private void RawInputHook_MouseDownRaw(object sender, MouseClickRawArgs e)
+        //{
+        //    Stop();
+        //}
+
+        //private void RawInputHook_MouseMoveRaw(object sender, MouseRawArgs e)
+        //{
+        //    Stop();
+        //}
 
         #region helpers
 

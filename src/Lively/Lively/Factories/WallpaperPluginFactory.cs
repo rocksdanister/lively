@@ -19,9 +19,14 @@ namespace Lively.Factories
             this.lpFactory = lpFactory;
         }
 
-        public IWallpaper CreateWallpaper(LibraryModel obj, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
+        public IWallpaper CreateDwmThumbnailWallpaper(LibraryModel model, IntPtr thumbnailSrc, DisplayMonitor display)
         {
-            switch (obj.LivelyInfo.Type)
+            throw new NotImplementedException();
+        }
+
+        public IWallpaper CreateWallpaper(LibraryModel model, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
+        {
+            switch (model.LivelyInfo.Type)
             {
                 case WallpaperType.web:
                 case WallpaperType.webaudio:
@@ -29,18 +34,18 @@ namespace Lively.Factories
                     switch (userSettings.Settings.WebBrowser)
                     {
                         case LivelyWebBrowser.cef:
-                            return new WebCefSharpProcess(obj.FilePath,
-                                obj,
+                            return new WebCefSharpProcess(model.FilePath,
+                                model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                                 userSettings.Settings.WebDebugPort,
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);
                         case LivelyWebBrowser.webview2:
-                            return new WebWebView2(obj.FilePath,
-                                obj,
+                            return new WebWebView2(model.FilePath,
+                                model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings));
+                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings));
                     }
                     break;
                 case WallpaperType.video:
@@ -48,7 +53,7 @@ namespace Lively.Factories
                     switch (userSettings.Settings.VideoPlayer)
                     {
                         case LivelyMediaPlayer.wmf:
-                            return new VideoWmfProcess(obj.FilePath, obj,
+                            return new VideoWmfProcess(model.FilePath, model,
                                 display, 0, userSettings.Settings.WallpaperScaling);
                         case LivelyMediaPlayer.libvlc:
                             //depreciated
@@ -69,16 +74,16 @@ namespace Lively.Factories
                                 userSettings.Settings.WallpaperScaling);
                             */
                         case LivelyMediaPlayer.mpv:
-                            return new VideoMpvPlayer(obj.FilePath,
-                                obj,
+                            return new VideoMpvPlayer(model.FilePath,
+                                model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                                 userSettings.Settings.WallpaperScaling,
                                 userSettings.Settings.VideoPlayerHwAccel,
                                 isPreview);
                         case LivelyMediaPlayer.vlc:
-                            return new VideoVlcPlayer(obj.FilePath, 
-                                obj, 
+                            return new VideoVlcPlayer(model.FilePath, 
+                                model, 
                                 display,
                                 userSettings.Settings.WallpaperScaling, 
                                 userSettings.Settings.VideoPlayerHwAccel);
@@ -92,10 +97,10 @@ namespace Lively.Factories
                         case LivelyGifPlayer.libmpvExt:
                             throw new NotImplementedException();
                         case LivelyGifPlayer.mpv:
-                            return new VideoMpvPlayer(obj.FilePath,
-                                           obj,
+                            return new VideoMpvPlayer(model.FilePath,
+                                           model,
                                            display,
-                                           lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                           lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                                            userSettings.Settings.WallpaperScaling,
                                            userSettings.Settings.VideoPlayerHwAccel,
                                            isPreview);
@@ -107,17 +112,17 @@ namespace Lively.Factories
                         case LivelyPicturePlayer.picture:
                             throw new PluginNotFoundException("xaml island gif player not available.");
                         case LivelyPicturePlayer.winApi:
-                        return new PictureWinApi(obj.FilePath, obj, display, userSettings.Settings.WallpaperArrangement, userSettings.Settings.WallpaperScaling);
+                        return new PictureWinApi(model.FilePath, model, display, userSettings.Settings.WallpaperArrangement, userSettings.Settings.WallpaperScaling);
                         case LivelyPicturePlayer.mpv:
-                            return new VideoMpvPlayer(obj.FilePath,
-                                              obj,
+                            return new VideoMpvPlayer(model.FilePath,
+                                              model,
                                               display,
-                                              lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                              lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                                               userSettings.Settings.WallpaperScaling,
                                               userSettings.Settings.VideoPlayerHwAccel,
                                               isPreview);
                         case LivelyPicturePlayer.wmf:
-                            return new VideoWmfProcess(obj.FilePath, obj, display, 0, userSettings.Settings.WallpaperScaling);
+                            return new VideoWmfProcess(model.FilePath, model, display, 0, userSettings.Settings.WallpaperScaling);
                     }
                     break;
                 case WallpaperType.app:
@@ -131,25 +136,25 @@ namespace Lively.Factories
                     }
                     else
                     {
-                        return new ExtPrograms(obj.FilePath, obj, display,
+                        return new ExtPrograms(model.FilePath, model, display,
                           userSettings.Settings.WallpaperWaitTime);
                     }
                 case WallpaperType.videostream:
                     if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
                     {
-                        return new VideoMpvPlayer(obj.FilePath,
-                            obj,
+                        return new VideoMpvPlayer(model.FilePath,
+                            model,
                             display,
-                            lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                            lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                             userSettings.Settings.WallpaperScaling, userSettings.Settings.VideoPlayerHwAccel,
                             isPreview, userSettings.Settings.StreamQuality);
                     }
                     else
                     {
-                        return new WebCefSharpProcess(obj.FilePath,
-                                obj,
+                        return new WebCefSharpProcess(model.FilePath,
+                                model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
                                 userSettings.Settings.WebDebugPort,
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);

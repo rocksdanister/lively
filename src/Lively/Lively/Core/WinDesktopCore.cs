@@ -60,7 +60,6 @@ namespace Lively.Core
         private readonly IWatchdogService watchdog;
         private readonly IDisplayManager displayManager;
         private readonly IRunnerService runner;
-        //private readonly IScreensaverService screenSaver;
         private readonly WindowEventHook workerWHook;
 
         public WinDesktopCore(IUserSettingsService userSettings,
@@ -76,7 +75,6 @@ namespace Lively.Core
             this.ttbService = ttbService;
             this.watchdog = watchdog;
             this.runner = runner;
-            //this.screenSaver = screenSaver;
             this.wallpaperFactory = wallpaperFactory;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
@@ -640,7 +638,6 @@ namespace Lively.Core
             {
                 Logger.Info("Display settings changed, screen(s):");
                 displayManager.DisplayMonitors.ToList().ForEach(x => Logger.Info(x.DeviceName + " " + x.Bounds));
-                App.Services.GetRequiredService<IScreensaverService>().Stop();
                 RefreshWallpaper();
                 RestoreDisconnectedWallpapers();
             }

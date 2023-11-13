@@ -238,6 +238,7 @@ namespace Lively
                 .AddSingleton<UserSettingsServer>()
                 .AddSingleton<CommandsServer>()
                 .AddSingleton<AppUpdateServer>()
+                .AddSingleton<WallpaperPlaylistServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
@@ -270,6 +271,7 @@ namespace Lively
             DisplayService.BindService(server.ServiceBinder, Services.GetRequiredService<DisplayManagerServer>());
             CommandsService.BindService(server.ServiceBinder, Services.GetRequiredService<CommandsServer>());
             UpdateService.BindService(server.ServiceBinder, Services.GetRequiredService<AppUpdateServer>());
+            PlaylistService.BindService(server.ServiceBinder, Services.GetRequiredService<WallpaperPlaylistServer>());
             server.Start();
 
             return server;
