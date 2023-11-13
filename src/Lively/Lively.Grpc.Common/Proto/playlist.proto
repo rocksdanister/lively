@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+package Lively.Grpc.Common.Proto.Commands;
+import "google/protobuf/empty.proto";
+
+service PlaylistService {
+  rpc Start (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc Stop (google.protobuf.Empty) returns (google.protobuf.Empty);
+}

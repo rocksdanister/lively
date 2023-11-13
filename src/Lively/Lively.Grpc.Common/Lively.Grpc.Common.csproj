@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,6 +7,7 @@
   <ItemGroup>
     <None Remove="Proto\commands.proto" />
     <None Remove="Proto\display.proto" />
+    <None Remove="Proto\playlist.proto" />
     <None Remove="Proto\settings.proto" />
     <None Remove="Proto\update.proto" />
     <None Remove="Proto\wallpaper.proto" />
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Proto\playlist.proto" />
     <Protobuf Include="Proto\commands.proto" />
     <Protobuf Include="Proto\display.proto" />
     <Protobuf Include="Proto\settings.proto" />
