@@ -127,12 +127,12 @@ namespace Lively.Services
         {
             _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                var workerw = desktopCore.DesktopWorkerW;
-                _ = NativeMethods.GetWindowRect(workerw, out NativeMethods.RECT prct);
+                var progman = NativeMethods.FindWindow("Progman", null);
+                _ = NativeMethods.GetWindowRect(progman, out NativeMethods.RECT prct);
                 int width = prct.Right - prct.Left,
                     height = prct.Bottom - prct.Top;
                 
-                dwmThumbnailWindow = new(workerw, new Rectangle(0, 0, width, height), new Rectangle(prct.Left, prct.Top, width, height))
+                dwmThumbnailWindow = new(progman, new Rectangle(0, 0, width, height), new Rectangle(prct.Left, prct.Top, width, height))
                 {
                     ResizeMode = ResizeMode.NoResize,
                     WindowStyle = WindowStyle.None,

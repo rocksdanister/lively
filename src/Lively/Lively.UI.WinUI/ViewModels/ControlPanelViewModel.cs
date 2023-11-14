@@ -152,14 +152,11 @@ namespace Lively.UI.WinUI.ViewModels
 
         private void CloseWallpaper(ScreenLayoutModel selection)
         {
-            if(userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
-            {
+            if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.per)
                 desktopCore.CloseWallpaper(selection.Screen);
-            }
             else
-            {
                 desktopCore.CloseAllWallpapers();
-            }
+
             selection.ScreenImagePath = null;
             selection.LivelyPropertyPath = null;
             CustomiseWallpaperCommand.NotifyCanExecuteChanged();
@@ -168,17 +165,24 @@ namespace Lively.UI.WinUI.ViewModels
 
         private bool CanCloseWallpaper()
         {
-            if (SelectedItem != null)
+            if (SelectedItem == null)
+                return false;
+
+            switch (userSettings.Settings.WallpaperArrangement)
             {
-                foreach (var x in desktopCore.Wallpapers)
-                {
-                    if (SelectedItem.Screen.Equals(x.Display))
+                case WallpaperArrangement.per:
+                    foreach (var x in desktopCore.Wallpapers)
                     {
-                        return true;
+                        if (SelectedItem.Screen.Equals(x.Display))
+                            return true;
                     }
-                }
+                    return false;
+                case WallpaperArrangement.span:
+                case WallpaperArrangement.duplicate:
+                    return desktopCore.Wallpapers.Count != 0;
+                default:
+                    return true;
             }
-            return false;
         }
 
         private RelayCommand _customiseWallpaperCommand;
@@ -210,9 +214,7 @@ namespace Lively.UI.WinUI.ViewModels
                 }
 
                 if (obj != null)
-                {
                     NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = obj });
-                }
             }
         }
 
