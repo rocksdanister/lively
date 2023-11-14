@@ -5,6 +5,7 @@ using Lively.Models;
 using Lively.Services;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 
@@ -19,9 +20,9 @@ namespace Lively.Factories
             this.lpFactory = lpFactory;
         }
 
-        public IWallpaper CreateDwmThumbnailWallpaper(LibraryModel model, IntPtr thumbnailSrc, DisplayMonitor display)
+        public IWallpaper CreateDwmThumbnailWallpaper(LibraryModel model, IntPtr thumbnailSrc, Rectangle targetRect, DisplayMonitor display)
         {
-            throw new NotImplementedException();
+            return new DwmThumbnailPlayer(thumbnailSrc, model, display, targetRect);
         }
 
         public IWallpaper CreateWallpaper(LibraryModel model, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
