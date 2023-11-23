@@ -223,18 +223,21 @@ namespace Lively.Core
 
                                     await SetDesktopPictureOrLockscreen(instance);
 
-                                    if (!item.IsPrimary)
-                                    {
-                                        Logger.Info($"Disabling audio track on screen {item.DeviceName} (duplicate.)");
-                                        instance.SetMute(true);
-                                        if (instance.Category.IsVideoWallpaper())
-                                            instance.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
-                                    }
-
                                     if (instance.Proc != null)
                                         watchdog.Add(instance.Proc.Id);
 
                                     wallpapers.Add(instance);
+                                }
+
+                                // Synchronizing position and audio
+                                foreach (var item in wallpapers)
+                                {
+                                    if (item.Category.IsVideoWallpaper() && !item.Screen.IsPrimary)
+                                    {
+                                        Logger.Info($"Disabling audio track on screen {item.Screen.DeviceName} (duplicate.)");
+                                        item.SetMute(true);
+                                    }
+                                    item.SetPlaybackPos(0, PlaybackPosType.absolutePercent);
                                 }
                             }
                             break;
