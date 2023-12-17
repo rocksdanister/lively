@@ -17,8 +17,8 @@ namespace Lively.Core.Wallpapers
     public class VideoWmfProcess : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private bool _initialized;
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
+        private readonly TaskCompletionSource<Exception> tcsProcessWait = new();
+        private bool isInitialized;
         private static int globalCount;
         private readonly int uniqueId;
 
@@ -26,7 +26,7 @@ namespace Lively.Core.Wallpapers
 
         public WallpaperType Category => Model.LivelyInfo.Type;
 
-        public ILibraryModel Model { get; }
+        public LibraryModel Model { get; }
 
         public IntPtr Handle { get; private set; }
 
@@ -34,13 +34,15 @@ namespace Lively.Core.Wallpapers
 
         public Process Proc { get; }
 
-        public IDisplayMonitor Screen { get; set; }
+        public DisplayMonitor Screen { get; set; }
 
         public string LivelyPropertyCopyPath { get; }
 
+        public bool IsExited { get; private set; }
+
         public VideoWmfProcess(string path,
-            ILibraryModel model,
-            IDisplayMonitor display,
+            LibraryModel model,
+            DisplayMonitor display,
             int volume,
             WallpaperScaler scaler = WallpaperScaler.fill)
         {
@@ -87,40 +89,41 @@ namespace Lively.Core.Wallpapers
             SendMessage(new LivelyResumeCmd());
         }
 
-        public void Show()
+        public async Task ShowAsync()
         {
-            if (Proc != null)
+            if (Proc is null)
+                return;
+
+            try
             {
-                try
-                {
-                    Proc.Exited += Proc_Exited;
-                    Proc.OutputDataReceived += Proc_OutputDataReceived;
-                    Proc.Start();
-                    Proc.BeginOutputReadLine();
-                }
-                catch (Exception e)
-                {
-                    WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = false, Error = e, Msg = "Failed to start process." });
-                    Close();
-                }
+                Proc.Exited += Proc_Exited;
+                Proc.OutputDataReceived += Proc_OutputDataReceived;
+                Proc.Start();
+                Proc.BeginOutputReadLine();
+
+                await tcsProcessWait.Task;
+                if (tcsProcessWait.Task.Result is not null)
+                    throw tcsProcessWait.Task.Result;
+            }
+            catch (Exception)
+            {
+                Terminate();
+
+                throw;
             }
         }
 
         private void Proc_Exited(object sender, EventArgs e)
         {
-            if (!_initialized)
+            if (!isInitialized)
             {
                 //Exited with no error and without even firing OutputDataReceived; probably some external factor.
-                WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-                {
-                    Success = false,
-                    Error = new Exception(Properties.Resources.LivelyExceptionGeneral),
-                    Msg = "Process exited before giving HWND."
-                });
+                tcsProcessWait.TrySetResult(new InvalidOperationException(Properties.Resources.LivelyExceptionGeneral));
             }
             Proc.OutputDataReceived -= Proc_OutputDataReceived;
             Proc?.Dispose();
             DesktopUtil.RefreshDesktop();
+            IsExited = true;
         }
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -129,7 +132,7 @@ namespace Lively.Core.Wallpapers
             if (!string.IsNullOrEmpty(e.Data))
             {
                 Logger.Info($"Wmf{uniqueId}: {e.Data}");
-                if (!_initialized || !IsLoaded)
+                if (!isInitialized || !IsLoaded)
                 {
                     IpcMessage obj;
                     try
@@ -144,23 +147,19 @@ namespace Lively.Core.Wallpapers
 
                     if (obj.Type == MessageType.msg_hwnd)
                     {
-                        bool status = true;
                         Exception error = null;
-                        string msg = null;
                         try
                         {
-                            msg = e.Data;
                             Handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
                         }
                         catch (Exception ie)
                         {
-                            status = false;
                             error = ie;
                         }
                         finally
                         {
-                            _initialized = true;
-                            WindowInitialized?.Invoke(this, new WindowInitializedArgs() { Success = status, Error = error, Msg = msg });
+                            isInitialized = true;
+                            tcsProcessWait.TrySetResult(error);
                         }
                     }
                     else if (obj.Type == MessageType.msg_wploaded)
@@ -173,7 +172,7 @@ namespace Lively.Core.Wallpapers
 
         public void Stop()
         {
-            //throw new NotImplementedException();
+            Pause();
         }
 
         private void SendMessage(string msg)

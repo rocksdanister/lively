@@ -71,6 +71,7 @@
     <None Remove="Views\Pages\AddWallpaperCreateView.xaml" />
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
+    <None Remove="Views\Pages\AppThemeView.xaml" />
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
     <None Remove="Views\Pages\DepthEstimateWallpaperView.xaml" />
@@ -90,7 +91,6 @@
     <None Remove="Views\Pages\SettingsSystemView.xaml" />
     <None Remove="Views\Pages\SettingsWallpaperView.xaml" />
     <None Remove="Views\Pages\Settings\FindMoreAppsView.xaml" />
-    <None Remove="Views\Pages\ThemeView.xaml" />
     <None Remove="Views\Pages\TrayMenuHelp.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutCustomiseView.xaml" />
     <None Remove="Views\Pages\WallpaperLayoutView.xaml" />
@@ -118,13 +118,13 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Media" Version="7.1.2" />
     <PackageReference Include="H.Hooks" Version="1.6.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230602002" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
-    <PackageReference Include="NLog" Version="5.2.0" />
+    <PackageReference Include="NLog" Version="5.2.5" />
     <PackageReference Include="WinUICommunity.Common" Version="4.1.0" />
     <PackageReference Include="WinUICommunity.SettingsUI" Version="4.0.7" />
-    <PackageReference Include="WinUIEx" Version="2.2.0" />
+    <PackageReference Include="WinUIEx" Version="2.3.2" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
@@ -135,6 +135,8 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lively.Common.Factories\Lively.Common.Factories.csproj" />
+    <ProjectReference Include="..\Lively.Common.Services\Lively.Common.Services.csproj" />
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Client\Lively.Grpc.Client.csproj" />
     <ProjectReference Include="..\Lively.ML\Lively.ML.csproj" />
@@ -211,7 +213,7 @@
     <Content Update="Assets\icons8-application-window-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Page Update="Views\Pages\ThemeView.xaml">
+    <Page Update="Views\Pages\AppThemeView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\Settings\FindMoreAppsView.xaml">

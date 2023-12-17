@@ -6,7 +6,7 @@ using System.Windows;
 namespace Lively.Views
 {
     /// <summary>
-    /// Interaction logic for ScreensaverBlank.xaml
+    /// Blank window
     /// </summary>
     public partial class Blank : Window
     {

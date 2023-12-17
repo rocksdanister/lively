@@ -37,7 +37,7 @@ namespace Lively.UI.WinUI.Views.Pages
     public sealed partial class LibraryView : Page
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private ILibraryModel selectedTile;
+        private LibraryModel selectedTile;
 
         private readonly ResourceLoader i18n;
         private readonly IUserSettingsClient userSettings;
@@ -168,7 +168,7 @@ namespace Lively.UI.WinUI.Views.Pages
             try
             {
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
-                selectedTile = (ILibraryModel)a;
+                selectedTile = (LibraryModel)a;
                 if (selectedTile.DataType == LibraryItemType.ready)
                 {
                     GridView gridView = (GridView)sender;
@@ -188,7 +188,7 @@ namespace Lively.UI.WinUI.Views.Pages
             try
             {
                 var a = ((FrameworkElement)e.OriginalSource).DataContext;
-                selectedTile = (ILibraryModel)a;
+                selectedTile = (LibraryModel)a;
                 if (selectedTile.DataType == LibraryItemType.ready)
                 {
                     customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
@@ -270,7 +270,7 @@ namespace Lively.UI.WinUI.Views.Pages
 
                     try
                     {
-                        var creationType = await dialogService.ShowWallpaperCreateDialog(item);
+                        var creationType = await dialogService.ShowWallpaperCreateDialogAsync(item);
                         if (creationType is null)
                             return;
 
@@ -285,7 +285,7 @@ namespace Lively.UI.WinUI.Views.Pages
                                 break;
                             case WallpaperCreateType.depthmap:
                                 {
-                                    var result = await dialogService.ShowDepthWallpaperDialog(item);
+                                    var result = await dialogService.ShowDepthWallpaperDialogAsync(item);
                                     if (result is not null)
                                         await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
                                 }

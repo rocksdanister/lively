@@ -43,10 +43,9 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
         }
         private readonly Localization I18n = new Localization();
 
-        public ControlPanelView()
+        public ControlPanelView(ControlPanelViewModel vm)
         {
             this.InitializeComponent();
-            var vm = App.Services.GetRequiredService<ControlPanelViewModel>();
             this.DataContext = vm;
             vm.NavigatePage += Vm_NavigatePage;
 

@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.API;
+using Lively.Common.Com;
 using Lively.Core;
 using Lively.Models;
 using System;
@@ -29,16 +30,17 @@ namespace Lively.Core.Wallpapers
             public string FilePath { get; set; }
         }
 
-        public event EventHandler<WindowInitializedArgs> WindowInitialized;
         private readonly DesktopWallpaperPosition desktopScaler;
         private readonly IDesktopWallpaper desktop;
         private readonly List<WinWallpaper> wallpapersToRestore;
+
+        public bool IsExited { get; private set; }
 
         public bool IsLoaded => true;
 
         public WallpaperType Category => WallpaperType.picture;
 
-        public ILibraryModel Model { get; }
+        public LibraryModel Model { get; }
 
         public IntPtr Handle => IntPtr.Zero;
 
@@ -46,7 +48,7 @@ namespace Lively.Core.Wallpapers
 
         public Process Proc => null;
 
-        public IDisplayMonitor Screen { get; set; }
+        public DisplayMonitor Screen { get; set; }
 
         public string LivelyPropertyCopyPath => null;
 
@@ -54,8 +56,8 @@ namespace Lively.Core.Wallpapers
         private readonly string filePath;
 
         public PictureWinApi(string filePath,
-            ILibraryModel model,
-            IDisplayMonitor display,
+            LibraryModel model,
+            DisplayMonitor display,
             WallpaperArrangement arrangement,
             WallpaperScaler scaler = WallpaperScaler.fill)
         {
@@ -112,7 +114,7 @@ namespace Lively.Core.Wallpapers
             //nothing
         }
 
-        public void SetScreen(IDisplayMonitor display)
+        public void SetScreen(DisplayMonitor display)
         {
             this.Screen = display;
         }
@@ -127,19 +129,13 @@ namespace Lively.Core.Wallpapers
             //nothing
         }
 
-        public void Show()
+        public async Task ShowAsync()
         {
             //desktop.Enable();
             desktop.SetPosition(arrangement == WallpaperArrangement.span ? DesktopWallpaperPosition.Span : desktopScaler);
             desktop.SetWallpaper(arrangement == WallpaperArrangement.span ? null : Screen.DeviceId, filePath);
 
             //Nothing to setup..
-            WindowInitialized?.Invoke(this, new WindowInitializedArgs()
-            {
-                Success = true,
-                Error = null,
-                Msg = null
-            });
         }
 
         public void Stop()
@@ -150,11 +146,13 @@ namespace Lively.Core.Wallpapers
         public void Close()
         {
             RestoreWallpaper();
+            IsExited = true;
         }
 
         public void Terminate()
         {
             RestoreWallpaper();
+            IsExited = true;
         }
 
         //restore original wallpaper (if possible.)

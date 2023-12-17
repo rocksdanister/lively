@@ -2,8 +2,7 @@
 
 namespace Lively.Common.Helpers.Localization
 {
-    [Serializable]
-    public class LanguagesModel : ILanguagesModel
+    public class LanguagesModel
     {
         public string Language { get; set; }
         public string[] Codes { get; set; }

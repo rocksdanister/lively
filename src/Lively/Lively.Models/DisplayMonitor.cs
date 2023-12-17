@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Lively.Models
 {
-    public class DisplayMonitor : ObservableObject, IDisplayMonitor
+    public sealed class DisplayMonitor : ObservableObject, IEquatable<DisplayMonitor>
     {
         public bool isStale;
 
@@ -87,7 +87,7 @@ namespace Lively.Models
 
         public DisplayMonitor() { }
 
-        public bool Equals(IDisplayMonitor other)
+        public bool Equals(DisplayMonitor other)
         {
             return other.DeviceId == this.DeviceId;
         }

@@ -48,6 +48,7 @@ message UpdateWallpaperResponse {
 message GetCoreStatsResponse {
 	string base_directory = 1;
 	string assembly_version = 2;
+	bool is_core_initialized = 3;
 }
 
 message PreviewWallpaperRequest {

@@ -27,6 +27,7 @@ namespace Lively.Grpc.Client
         public ReadOnlyCollection<WallpaperData> Wallpapers => wallpapers.AsReadOnly();
         public string BaseDirectory { get; private set; }
         public Version AssemblyVersion { get; private set; }
+        public bool IsCoreInitialized { get; private set; }
 
         private readonly DesktopService.DesktopServiceClient client;
         private readonly SemaphoreSlim wallpaperChangedLock = new SemaphoreSlim(1, 1);
@@ -38,13 +39,13 @@ namespace Lively.Grpc.Client
         {
             client = new DesktopService.DesktopServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
 
-            //TODO: Wait timeout
             Task.Run(async () =>
             {
                 wallpapers.AddRange(await GetWallpapers().ConfigureAwait(false));
                 var status = (await GetCoreStats().ConfigureAwait(false));
                 BaseDirectory = status.BaseDirectory;
                 AssemblyVersion = new Version(status.AssemblyVersion);
+                IsCoreInitialized = status.IsCoreInitialized;
             }).Wait();
 
             cancellationTokenWallpaperChanged = new CancellationTokenSource();
@@ -68,7 +69,7 @@ namespace Lively.Grpc.Client
             _ = await client.SetWallpaperAsync(request);
         }
 
-        public async Task SetWallpaper(ILibraryModel item, IDisplayMonitor display)
+        public async Task SetWallpaper(LibraryModel item, DisplayMonitor display)
         {
             var request = new SetWallpaperRequest
             {
@@ -143,7 +144,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public async Task CloseWallpaper(ILibraryModel item, bool terminate = false)
+        public async Task CloseWallpaper(LibraryModel item, bool terminate = false)
         {
             await client.CloseWallpaperLibraryAsync(new CloseWallpaperLibraryRequest()
             {
@@ -152,7 +153,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public async Task CloseWallpaper(IDisplayMonitor monitor, bool terminate = false)
+        public async Task CloseWallpaper(DisplayMonitor monitor, bool terminate = false)
         {
             await client.CloseWallpaperMonitorAsync(new CloseWallpaperMonitorRequest()
             {
@@ -161,7 +162,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public void SendMessageWallpaper(ILibraryModel obj, IpcMessage msg)
+        public void SendMessageWallpaper(LibraryModel obj, IpcMessage msg)
         {
             client.SendMessageWallpaper(new WallpaperMessageRequest()
             {
@@ -171,7 +172,7 @@ namespace Lively.Grpc.Client
             });
         }
 
-        public void SendMessageWallpaper(IDisplayMonitor display, ILibraryModel obj, IpcMessage msg)
+        public void SendMessageWallpaper(DisplayMonitor display, LibraryModel obj, IpcMessage msg)
         {
             client.SendMessageWallpaper(new WallpaperMessageRequest()
             {
@@ -236,7 +237,7 @@ namespace Lively.Grpc.Client
                         ErrorCategory.WallpaperPluginFail => new WallpaperPluginException(response.ErrorMsg),
                         ErrorCategory.WallpaperPluginMediaCodecMissing => new WallpaperPluginMediaCodecException(response.ErrorMsg),
                         ErrorCategory.ScreenNotFound => new ScreenNotFoundException(response.ErrorMsg),
-                        _ => new Exception("Unhandled Error"),
+                        _ => new Exception(response.ErrorMsg),
                     };
                     WallpaperError?.Invoke(this, exp);
                 }

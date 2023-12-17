@@ -20,9 +20,9 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDisplayManagerClient displayManager;
-        private readonly IThemeFactory themeFactory;
+        private readonly IAppThemeFactory themeFactory;
 
-        public MainViewModel(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IThemeFactory themeFactory)
+        public MainViewModel(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore, IDisplayManagerClient displayManager, IAppThemeFactory themeFactory)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
@@ -79,7 +79,7 @@ namespace Lively.UI.WinUI.ViewModels
                                     var themeFile = string.Empty;
                                     try
                                     {
-                                        themeFile = themeFactory.CreateTheme(userThemeDir).File;
+                                        themeFile = themeFactory.CreateFromDirectory(userThemeDir).File;
                                     }
                                     catch { }
                                     AppThemeBackground = themeFile;
@@ -109,7 +109,7 @@ namespace Lively.UI.WinUI.ViewModels
                             var themeFile = string.Empty;
                             try
                             {
-                                var theme = themeFactory.CreateTheme(userSettings.Settings.ApplicationThemeBackgroundPath);
+                                var theme = themeFactory.CreateFromDirectory(userSettings.Settings.ApplicationThemeBackgroundPath);
                                 themeFile = theme.Type == ThemeType.picture ? theme.File : string.Empty;
                             }
                             catch { }

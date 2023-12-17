@@ -1211,10 +1211,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Някои функции може да не са налични, когато е пуснато като администратор</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Допълнителни файлове трябва да бъдат инсталирани за тази функция</value>
+    <value>Допълнителни файлове трябва да бъдат изтеглени за тази функция</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Изисква Инсталиране</value>
+    <value>Нужно е изтегляне</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Изтегли</value>

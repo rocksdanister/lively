@@ -8,6 +8,7 @@ using System.Text;
 namespace Lively.Common.Helpers.MVVM
 {
     //ref: https://rachel53461.wordpress.com/2011/05/08/simplemvvmexample/
+    [Obsolete("Use CommunityToolkit source generator instead.")]
     public abstract class ObservableObject : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Members

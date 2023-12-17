@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
-using Lively.Common.Helpers.MVVM;
 using Lively.Models;
 using Lively.Common;
 using Lively.Common.Helpers.Files;
@@ -22,10 +21,12 @@ using Lively.Gallery.Client;
 using CommunityToolkit.Mvvm.Input;
 using Windows.ApplicationModel.Resources;
 using CommunityToolkit.WinUI.UI;
+using CommunityToolkit.Mvvm.ComponentModel;
+using Lively.Helpers;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class LibraryViewModel : ObservableObject
+    public partial class LibraryViewModel : ObservableObject
     {
         public bool IsWorking => downloading.Count != 0;
         public EventHandler<string> WallpaperDeleted;
@@ -40,18 +41,21 @@ namespace Lively.UI.WinUI.ViewModels
 
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
         private readonly IDialogService dialogService;
         private readonly GalleryClient galleryClient;
 
-        public LibraryViewModel(IDesktopCoreClient desktopCore,
+        public LibraryViewModel(IWallpaperLibraryFactory wallpaperLibraryFactory, 
+            IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             IUserSettingsClient userSettings,
             SettingsViewModel settingsVm,
             IDialogService dialogService,
             GalleryClient galleryClient)
         {
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.settingsVm = settingsVm;
@@ -79,12 +83,15 @@ namespace Lively.UI.WinUI.ViewModels
             //Select already running item when UI program is started again..
             UpdateSelectedWallpaper();
 
-            settingsVm.UIStateChanged += (s, e) =>
+            settingsVm.PropertyChanged += (s, e) =>
             {
-                foreach (var item in LibraryItems)
+                switch(e.PropertyName)
                 {
-                    item.ImagePath = e == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
-                }
+                    case "IsReducedMotion":
+                        foreach (var item in LibraryItems)
+                            item.ImagePath = userSettings.Settings.UIMode == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
+                        break;
+                };
             };
 
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
@@ -94,31 +101,11 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region collections
 
-        private AdvancedCollectionView _libraryItemsFiltered;
-        public AdvancedCollectionView LibraryItemsFiltered
-        {
-            get => _libraryItemsFiltered;
-            set
-            {
-                _libraryItemsFiltered = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private AdvancedCollectionView libraryItemsFiltered;
 
-
-        private ObservableCollection<LibraryModel> _libraryItems = new ObservableCollection<LibraryModel>();
-        public ObservableCollection<LibraryModel> LibraryItems
-        {
-            get { return _libraryItems; }
-            set
-            {
-                if (value != _libraryItems)
-                {
-                    _libraryItems = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        [ObservableProperty]
+        private ObservableCollection<LibraryModel> libraryItems = new();
 
         private LibraryModel _selectedItem;
         public LibraryModel SelectedItem
@@ -132,7 +119,7 @@ namespace Lively.UI.WinUI.ViewModels
                 if (value != null && value.DataType == LibraryItemType.ready)
                 {
                     var wallpapers = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath.Equals(value.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
-                    if (wallpapers.Count() > 0)
+                    if (wallpapers.Any())
                     {
                         switch (userSettings.Settings.WallpaperArrangement)
                         {
@@ -155,53 +142,33 @@ namespace Lively.UI.WinUI.ViewModels
                         desktopCore.SetWallpaper(value, userSettings.Settings.SelectedDisplay);
                     }
                 }
-                _selectedItem = value;
-                OnPropertyChanged();
+                SetProperty(ref _selectedItem, value);
             }
         }
 
-        private string _librarySelectionMode = "Single";
-        public string LibrarySelectionMode
-        {
-            get => _librarySelectionMode;
-            set
-            {
-                _librarySelectionMode = value;
-                OnPropertyChanged();
-            }
-
-        }
+        [ObservableProperty]
+        private string librarySelectionMode = "Single";
 
         private RelayCommand<LibraryModel> _libraryClickCommand;
         public RelayCommand<LibraryModel> LibraryClickCommand => _libraryClickCommand ??= new RelayCommand<LibraryModel>(async (wp) =>
         {
-            if (userSettings.Settings.RememberSelectedScreen || wp.DataType != LibraryItemType.ready)
+            if (wp is null || userSettings.Settings.RememberSelectedScreen || wp.DataType != LibraryItemType.ready)
                 return;
 
             var monitor = displayManager.DisplayMonitors.Count == 1 || userSettings.Settings.WallpaperArrangement != WallpaperArrangement.per ?
-                displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialog();
-            if (monitor != null && wp != null)
-            {
+                displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialogAsync();
+            if (monitor is not null)
                 await desktopCore.SetWallpaper(wp, monitor);
-            }
         });
 
         #endregion //collections
 
-        private RelayCommand<ILibraryModel> _cancelDownloadCommand;
-        public RelayCommand<ILibraryModel> CancelDownloadCommand =>
-            _cancelDownloadCommand ??= new RelayCommand<ILibraryModel>((obj) => CancelDownload(obj.LivelyInfo.Id));
+        private RelayCommand<LibraryModel> _cancelDownloadCommand;
+        public RelayCommand<LibraryModel> CancelDownloadCommand =>
+            _cancelDownloadCommand ??= new RelayCommand<LibraryModel>((obj) => CancelDownload(obj.LivelyInfo.Id));
 
-        private bool _isBusy;
-        public bool IsBusy
-        {
-            get => _isBusy;
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool isBusy;
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
@@ -262,7 +229,7 @@ namespace Lively.UI.WinUI.ViewModels
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public async Task WallpaperDelete(ILibraryModel obj, bool unsubscribe = true)
+        public async Task WallpaperDelete(LibraryModel obj, bool unsubscribe = true)
         {
             try
             {
@@ -275,7 +242,7 @@ namespace Lively.UI.WinUI.ViewModels
                 //close if running.
                 await desktopCore.CloseWallpaper(obj, true);
                 //delete wp folder.      
-                var success = await FileOperations.DeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
+                var success = await FileUtil.TryDeleteDirectoryAsync(obj.LivelyInfoFolderPath, 1000, 4000);
 
                 if (success)
                 {
@@ -284,7 +251,7 @@ namespace Lively.UI.WinUI.ViewModels
                         SelectedItem = null;
                     }
                     //remove from library.
-                    LibraryItems.Remove((LibraryModel)obj);
+                    LibraryItems.Remove(obj);
                     WallpaperDeleted?.Invoke(this, obj.LivelyInfo.Id);
                     try
                     {
@@ -298,7 +265,7 @@ namespace Lively.UI.WinUI.ViewModels
                                 var item = new DirectoryInfo(wpdataDir[i]).Name;
                                 if (wpFolderName.Equals(item, StringComparison.Ordinal))
                                 {
-                                    _ = FileOperations.DeleteDirectoryAsync(wpdataDir[i], 100, 1000);
+                                    _ = FileUtil.TryDeleteDirectoryAsync(wpdataDir[i], 100, 1000);
                                     break;
                                 }
                             }
@@ -326,7 +293,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public async Task WallpaperExport(ILibraryModel libraryItem, string saveFile)
+        public async Task WallpaperExport(LibraryModel libraryItem, string saveFile)
         {
             await Task.Run(() =>
             {
@@ -367,7 +334,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileUtil.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else if (libraryItem.LivelyInfo.IsAbsolutePath)
@@ -420,7 +387,7 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     finally
                     {
-                        _ = FileOperations.DeleteDirectoryAsync(tmpDir, 1000, 2000);
+                        _ = FileUtil.TryDeleteDirectoryAsync(tmpDir, 1000, 2000);
                     }
                 }
                 else
@@ -431,7 +398,7 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
-        public async Task WallpaperShowOnDisk(ILibraryModel libraryItem)
+        public async Task WallpaperShowOnDisk(LibraryModel libraryItem)
         {
             string folderPath =
                 libraryItem.LivelyInfo.Type == WallpaperType.url || libraryItem.LivelyInfo.Type == WallpaperType.videostream
@@ -460,7 +427,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         public async Task AddWallpaperGallery(GalleryModel obj)
         {
-            var libItem = new LibraryModel(obj.LivelyInfo) { ImagePath = obj.Image };
+            var libItem = wallpaperLibraryFactory.CreateFromMetadata(obj.LivelyInfo);
+            libItem.ImagePath = obj.Image;
             var downloadFile = Path.Combine(Constants.CommonPaths.TempDir, Path.ChangeExtension(libItem.LivelyInfo.Id, ".zip"));
             var cts = new CancellationTokenSource();
             var downloadItem = (libItem.LivelyInfo.Id, cts);
@@ -480,7 +448,8 @@ namespace Lively.UI.WinUI.ViewModels
                 libItem.IsDownloading = true;
                 Logger.Info($"Download Wallpaper -> Title: {libItem.Title} Id: {libItem.LivelyInfo.Id}");
                 LibraryItems.Insert(0, libItem);
-                await galleryClient.DownloadWallpaperAsync(libItem.LivelyInfo.Id, downloadFile, cts.Token, (progress, downloaded, totalSize) => { 
+                await galleryClient.DownloadWallpaperAsync(libItem.LivelyInfo.Id, downloadFile, cts.Token, (progress, downloaded, totalSize) =>
+                {
                     downloaded /= 1024 * 1024;
                     totalSize /= 1024 * 1024;
 
@@ -533,7 +502,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private async Task<ILibraryModel> AddWallpaperFileGallery(string filePath, string id)
+        private async Task<LibraryModel> AddWallpaperFileGallery(string filePath, string id)
         {
             if (ZipExtract.IsLivelyZip(filePath))
             {
@@ -568,7 +537,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public async Task<ILibraryModel> AddWallpaperFile(string filePath)
+        public async Task<LibraryModel> AddWallpaperFile(string filePath)
         {
             WallpaperType type;
             if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
@@ -628,13 +597,13 @@ namespace Lively.UI.WinUI.ViewModels
             throw new InvalidOperationException($"{ResourceLoader.GetForViewIndependentUse().GetString("TextUnsupportedFile")} ({Path.GetExtension(filePath)})");
         }
 
-        public ILibraryModel AddWallpaperLink(string url)
+        public LibraryModel AddWallpaperLink(string url)
         {
             var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
             Directory.CreateDirectory(dir);
             var data = new LivelyInfoModel()
             {
-                Title = LinkHandler.GetLastSegmentUrl(url),
+                Title = LinkUtil.GetLastSegmentUrl(url),
                 Type = (userSettings.Settings.AutoDetectOnlineStreams && StreamUtil.IsSupportedStream(url)) ? WallpaperType.videostream : WallpaperType.url,
                 IsAbsolutePath = true,
                 FileName = url,
@@ -649,7 +618,7 @@ namespace Lively.UI.WinUI.ViewModels
             return AddWallpaper(dir, true);
         }
 
-        public ILibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
+        public LibraryModel AddWallpaperLink(Uri uri) => AddWallpaperLink(uri.OriginalString);
 
         public async Task AddWallpapers(List<string> files, CancellationToken cancellationToken, IProgress<int> progress)
         {
@@ -689,7 +658,7 @@ namespace Lively.UI.WinUI.ViewModels
             desktopCore.WallpaperChanged -= WallpaperChanged;
         }
 
-        public ILibraryModel AddWallpaperFolder(string folder)
+        public LibraryModel AddWallpaperFolder(string folder)
         {
             return AddWallpaper(folder, false);
         }
@@ -698,16 +667,17 @@ namespace Lively.UI.WinUI.ViewModels
 
         #region helpers
 
-        private ILibraryModel AddWallpaper(string folderPath, bool processing = false)
+        private LibraryModel AddWallpaper(string folderPath, bool processing = false)
         {
             try
             {
-                var libItem = ScanWallpaperFolder(folderPath);
+                var item = wallpaperLibraryFactory.CreateFromDirectory(folderPath);
+                item.ImagePath = userSettings.Settings.UIMode != LivelyGUIState.lite ? item.ImagePath : item.ThumbnailPath;
                 //var index = processing ? 0 : BinarySearch(LibraryItems, libItem.Title);
-                libItem.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
+                item.DataType = processing ? LibraryItemType.processing : LibraryItemType.ready;
                 //LibraryItems.Insert(index, libItem);
-                LibraryItems.Add(libItem);
-                return libItem;
+                LibraryItems.Add(item);
+                return item;
             }
             catch (Exception e)
             {
@@ -741,35 +711,24 @@ namespace Lively.UI.WinUI.ViewModels
                 for (int j = 0; j < dir[i].Length; j++)
                 {
                     var currDir = dir[i][j];
-                    LibraryModel libItem = null;
+                    LibraryModel item = null;
                     try
                     {
-                        libItem = ScanWallpaperFolder(currDir);
-                        Logger.Info($"Loaded wallpaper: {libItem.FilePath}");
+                        item = wallpaperLibraryFactory.CreateFromDirectory(currDir);
+                        item.ImagePath = userSettings.Settings.UIMode != LivelyGUIState.lite ? item.ImagePath : item.ThumbnailPath;
+                        Logger.Info($"Loaded wallpaper: {item.FilePath}");
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Logger.Error(e);
                     }
 
-                    if (libItem != null)
+                    if (item != null)
                     {
-                        yield return libItem;
+                        yield return item;
                     }
                 }
             }
-        }
-
-        private LibraryModel ScanWallpaperFolder(string folderPath)
-        {
-            if (File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
-            {
-                LivelyInfoModel info = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json"));
-                return info != null ? 
-                    new LibraryModel(info, folderPath, LibraryItemType.ready, userSettings.Settings.UIMode != LivelyGUIState.lite) : 
-                    throw new Exception("Corrupted wallpaper metadata");
-            }
-            throw new Exception("Wallpaper not found.");
         }
 
         private int BinarySearch(ObservableCollection<LibraryModel> item, string x)

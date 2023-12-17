@@ -40,6 +40,7 @@ using WinRT.Interop;
 using WinUIEx;
 using WinUICommunity;
 using Lively.Common.Helpers.Files;
+using static Lively.Common.Errors;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -108,9 +109,7 @@ namespace Lively.UI.WinUI
             NavViewNavigate(NavPages.library);
 
             if (!userSettings.Settings.IsFirstRun)
-            {
                 CompactLabels();
-            }
 
             //ref: https://learn.microsoft.com/en-us/windows/apps/develop/title-bar?tabs=wasdk
             if (AppWindowTitleBar.IsCustomizationSupported())
@@ -130,6 +129,9 @@ namespace Lively.UI.WinUI
                 AppTitleBar.Visibility = Visibility.Collapsed;
                 this.UseImmersiveDarkModeEx(userSettings.Settings.ApplicationTheme == AppTheme.Dark);
             }
+
+            if (!desktopCore.IsCoreInitialized)
+                ShowError(new WorkerWException(i18n.GetString("LivelyExceptionWorkerWSetupFail")));
 
             //Gallery
             InitializeGallery();
@@ -171,16 +173,21 @@ namespace Lively.UI.WinUI
         {
             _ = this.DispatcherQueue.TryEnqueue(() =>
             {
-                infoBar.IsOpen = true;
-                infoBar.ActionButton = new HyperlinkButton
-                {
-                    Content = i18n.GetString("Help/Label"),
-                    NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
-                };
-                infoBar.Title = i18n.GetString("TextError");
-                infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
-                infoBar.Severity = InfoBarSeverity.Error;
+                ShowError(e);
             });
+        }
+
+        private void ShowError(Exception e)
+        {
+            infoBar.IsOpen = true;
+            infoBar.ActionButton = new HyperlinkButton
+            {
+                Content = i18n.GetString("Help/Label"),
+                NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
+            };
+            infoBar.Title = i18n.GetString("TextError");
+            infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
+            infoBar.Severity = InfoBarSeverity.Error;
         }
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)
@@ -197,7 +204,7 @@ namespace Lively.UI.WinUI
                     btn.Click += (_, _) =>
                     {
                         infoBar.IsOpen = false;
-                        ShowAboutDialog();
+                        _ = dialogService.ShowAboutDialogAsync();
                     };
                     infoBar.ActionButton = btn;
                     infoBar.Title = i18n.GetString("TextUpdateAvailable");
@@ -218,9 +225,9 @@ namespace Lively.UI.WinUI
                     {
                         toggleTeachingTipControlPanel.IsOpen = true;
                         userSettings.Settings.ControlPanelOpened = true;
-                        userSettings.Save<ISettingsModel>();
+                        userSettings.Save<SettingsModel>();
                     }
-                    NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
+                    //NativeMethods.SetForegroundWindow(this.GetWindowHandleEx());
                     //If its duplicate mode fire the animation more than once.
                     if (userSettings.Settings.WallpaperArrangement != WallpaperArrangement.duplicate || desktopCore.Wallpapers.Count < 2)
                     {
@@ -318,7 +325,7 @@ namespace Lively.UI.WinUI
 
         public async Task CreateWallpaper(string filePath)
         {
-            var creationType = await dialogService.ShowWallpaperCreateDialog(filePath);
+            var creationType = await dialogService.ShowWallpaperCreateDialogAsync(filePath);
             if (creationType is null)
                 return;
 
@@ -336,7 +343,7 @@ namespace Lively.UI.WinUI
                         filePath ??= await FilePickerUtil.PickSingleFile(WallpaperType.picture);
                         if (filePath is not null)
                         {
-                            var result = await dialogService.ShowDepthWallpaperDialog(filePath);
+                            var result = await dialogService.ShowDepthWallpaperDialogAsync(filePath);
                             if (result is not null)
                                 await desktopCore.SetWallpaper(result, userSettings.Settings.SelectedDisplay);
                         }
@@ -345,12 +352,12 @@ namespace Lively.UI.WinUI
             }
         }
 
-        public async Task<ILibraryModel> AddWallpaper(string filePath)
+        public async Task<LibraryModel> AddWallpaper(string filePath)
         {
-            ILibraryModel result = null;
+            LibraryModel result = null;
             try
             {
-                if (Path.GetExtension(filePath) == ".zip" && FileOperations.IsFileGreater(filePath, 10485760))
+                if (Path.GetExtension(filePath) == ".zip" && FileUtil.IsFileGreater(filePath, 10485760))
                 {
                     importBar.IsOpen = true;
                     importBar.Message = Path.GetFileName(filePath);
@@ -408,52 +415,21 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => ShowControlPanelDialog();
-
-        private void ShowControlPanelDialog()
-        {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("DescriptionScreenLayout"),
-                Content = new ControlPanelView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
-        }
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => _ = dialogService.ShowControlPanelDialogAsync();
 
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
-            LinkHandler.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
+            LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
 
-        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialog();
+        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialogAsync();
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
         {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("Help/Label"),
-                Content = new HelpView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
+            _ = dialogService.ShowHelpDialogAsync();
         }
 
         private void AppBarAboutButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowAboutDialog();
-        }
-
-        private void ShowAboutDialog()
-        {
-            _ = new ContentDialog()
-            {
-                Title = i18n.GetString("About/Label"),
-                Content = new AboutView(),
-                PrimaryButtonText = i18n.GetString("TextOK"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = this.Content.XamlRoot,
-            }.ShowAsyncQueue();
+            _ = dialogService.ShowAboutDialogAsync();
         }
 
         private void SliderAudio_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
@@ -531,7 +507,7 @@ namespace Lively.UI.WinUI
                 };
                 await dlg.ShowAsyncQueue();
                 userSettings.Settings.IsFirstRun = false;
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
                 this.Close();
             }
 
@@ -539,7 +515,7 @@ namespace Lively.UI.WinUI
             {
                 args.Handled = true;
                 userSettings.Settings.IsUpdated = false;
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
                 this.Close();
             }
 
@@ -556,7 +532,7 @@ namespace Lively.UI.WinUI
                 args.Handled = true;
 
                 //Option 1: Show user prompt with choice to cancel.
-                var result = await dialogService.ShowDialog(i18n.GetString("TextConfirmCancel/Text"),
+                var result = await dialogService.ShowDialogAsync(i18n.GetString("TextConfirmCancel/Text"),
                                                             i18n.GetString("TitleDownloadProgress/Text"),
                                                             i18n.GetString("TextYes"),
                                                             i18n.GetString("TextWait/Text"),
@@ -620,7 +596,7 @@ namespace Lively.UI.WinUI
                                 }
                                 else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    ShowControlPanelDialog();
+                                    _ = dialogService.ShowControlPanelDialogAsync();
                                 }
                             }
                         });

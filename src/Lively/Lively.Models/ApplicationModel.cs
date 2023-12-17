@@ -1,31 +1,19 @@
-﻿using Lively.Common.Helpers.MVVM;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Lively.Models
 {
-    public class ApplicationModel : ObservableObject
+    public partial class ApplicationModel : ObservableObject
     {
-        private string _appName;
-        public string AppName
-        {
-            get { return _appName; }
-            set { _appName = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string appName;
 
-        private string _appPath;
-        public string AppPath
-        {
-            get { return _appPath; }
-            set { _appPath = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string appPath;
 
-        private string _appIcon;
-        public string AppIcon
-        {
-            get { return _appIcon; }
-            set { _appIcon = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string appIcon;
     }
 }

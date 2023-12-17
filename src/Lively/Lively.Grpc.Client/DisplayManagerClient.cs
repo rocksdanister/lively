@@ -18,9 +18,9 @@ namespace Lively.Grpc.Client
     {
         public event EventHandler DisplayChanged;
 
-        private readonly List<IDisplayMonitor> displayMonitors = new List<IDisplayMonitor>(2);
-        public ReadOnlyCollection<IDisplayMonitor> DisplayMonitors => displayMonitors.AsReadOnly();
-        public IDisplayMonitor PrimaryMonitor { get; private set; }
+        private readonly List<DisplayMonitor> displayMonitors = new List<DisplayMonitor>(2);
+        public ReadOnlyCollection<DisplayMonitor> DisplayMonitors => displayMonitors.AsReadOnly();
+        public DisplayMonitor PrimaryMonitor { get; private set; }
         public System.Drawing.Rectangle VirtulScreenBounds { get; private set; }
 
         private readonly DisplayService.DisplayServiceClient client;
@@ -44,10 +44,10 @@ namespace Lively.Grpc.Client
             displayChangedTask = Task.Run(() => SubscribeDisplayChangedStream(cancellationTokeneDisplayChanged.Token));
         }
 
-        private async Task<List<IDisplayMonitor>> GetScreens()
+        private async Task<List<DisplayMonitor>> GetScreens()
         {
             var resp = await client.GetScreensAsync(new Empty());
-            var monitors = new List<IDisplayMonitor>();
+            var monitors = new List<DisplayMonitor>();
             foreach (var screen in resp.Screens)
             {
                 monitors.Add(new DisplayMonitor()

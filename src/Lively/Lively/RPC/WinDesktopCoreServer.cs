@@ -36,12 +36,17 @@ namespace Lively.RPC
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
-        public WinDesktopCoreServer(IDesktopCore desktopCore, IDisplayManager displayManager, IUserSettingsService userSettings)
+        public WinDesktopCoreServer(IDesktopCore desktopCore,
+            IDisplayManager displayManager,
+            IUserSettingsService userSettings,
+            IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
             this.userSettings = userSettings;
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
         }
 
         public override Task<GetCoreStatsResponse> GetCoreStats(Empty _, ServerCallContext context)
@@ -50,24 +55,25 @@ namespace Lively.RPC
             {
                 BaseDirectory = AppDomain.CurrentDomain.BaseDirectory,
                 AssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(),
+                IsCoreInitialized = desktopCore.DesktopWorkerW != IntPtr.Zero,
             });
         }
 
-        public override Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
+        public override async Task<Empty> SetWallpaper(SetWallpaperRequest request, ServerCallContext context)
         {
             try
             {
-                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                var lm = wallpaperLibraryFactory.CreateFromDirectory(request.LivelyInfoPath);
                 lm.DataType = (LibraryItemType)(int)request.Type;
                 var display = displayManager.DisplayMonitors.FirstOrDefault(x => x.DeviceId == request.MonitorId);
-                desktopCore.SetWallpaper(lm, display ?? displayManager.PrimaryDisplayMonitor);
+                await desktopCore.SetWallpaperAsync(lm, display ?? displayManager.PrimaryDisplayMonitor);
             }
             catch (Exception e)
             {
                 Logger.Error(e.ToString());
             }
 
-            return Task.FromResult(new Empty());
+            return await Task.FromResult(new Empty());
         }
 
         public override async Task GetWallpapers(Empty _, IServerStreamWriter<GetWallpapersResponse> responseStream, ServerCallContext context)
@@ -120,7 +126,7 @@ namespace Lively.RPC
         {
             try
             {
-                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                var lm = wallpaperLibraryFactory.CreateFromDirectory(request.LivelyInfoPath);
                 _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
                   {
                       new WallpaperPreview(lm)
@@ -157,7 +163,7 @@ namespace Lively.RPC
         {
             try
             {
-                var lm = WallpaperUtil.ScanWallpaperFolder(request.LivelyInfoPath);
+                var lm = wallpaperLibraryFactory.CreateFromDirectory(request.LivelyInfoPath);
                 desktopCore.CloseWallpaper(lm, request.Terminate);
             }
             catch (Exception e)

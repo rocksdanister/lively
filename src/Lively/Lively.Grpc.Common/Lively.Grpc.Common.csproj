@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -7,17 +7,18 @@
   <ItemGroup>
     <None Remove="Proto\commands.proto" />
     <None Remove="Proto\display.proto" />
+    <None Remove="Proto\playlist.proto" />
     <None Remove="Proto\settings.proto" />
     <None Remove="Proto\update.proto" />
     <None Remove="Proto\wallpaper.proto" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.23.3" />
+    <PackageReference Include="Google.Protobuf" Version="3.24.4" />
     <PackageReference Include="Grpc" Version="2.46.6" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.54.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.54.0">
+    <PackageReference Include="Grpc.Core.Api" Version="2.57.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.59.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Proto\playlist.proto" />
     <Protobuf Include="Proto\commands.proto" />
     <Protobuf Include="Proto\display.proto" />
     <Protobuf Include="Proto\settings.proto" />

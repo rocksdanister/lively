@@ -3,7 +3,9 @@ using Lively.Common.Helpers.Files;
 using Lively.Models;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
+using Lively.UI.WinUI.Views.Pages.ControlPanel;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,7 @@ namespace Lively.UI.WinUI.Services
             i18n = ResourceLoader.GetForViewIndependentUse();
         }
 
-        public async Task<IDisplayMonitor> ShowDisplayChooseDialog()
+        public async Task<DisplayMonitor> ShowDisplayChooseDialogAsync()
         {
             var vm = App.Services.GetRequiredService<ChooseDisplayViewModel>();
             var dialog = new ContentDialog()
@@ -38,21 +40,21 @@ namespace Lively.UI.WinUI.Services
             };
             vm.OnRequestClose += (_, _) => dialog.Hide();
             await dialog.ShowAsyncQueue();
-
+            vm.OnWindowClosing(this, new RoutedEventArgs());
             return vm.SelectedItem?.Screen;
         }
 
-        public async Task<ApplicationModel> ShowApplicationPickerDialog()
+        public async Task<ApplicationModel> ShowApplicationPickerDialogAsync()
         {
             var vm = App.Services.GetRequiredService<FindMoreAppsViewModel>();
-            var result = await ShowDialog(new Views.Pages.Settings.FindMoreAppsView() { DataContext = vm },
+            var result = await ShowDialogAsync(new Views.Pages.Settings.FindMoreAppsView() { DataContext = vm },
                                           i18n.GetString("TitleChooseApplication/Text"),
                                           i18n.GetString("TextAdd"),
                                           i18n.GetString("Cancel/Content"));
             return result == DialogResult.primary ? vm.SelectedItem : null;
         }
 
-        public async Task ShowDialog(string message, string title, string primaryBtnText)
+        public async Task ShowDialogAsync(string message, string title, string primaryBtnText)
         {
             await new ContentDialog()
             {
@@ -64,7 +66,7 @@ namespace Lively.UI.WinUI.Services
             }.ShowAsyncQueue();
         }
 
-        public async Task<DialogResult> ShowDialog(object content,
+        public async Task<DialogResult> ShowDialogAsync(object content,
             string title,
             string primaryBtnText,
             string secondaryBtnText,
@@ -89,7 +91,7 @@ namespace Lively.UI.WinUI.Services
             };
         }
 
-        public async Task<string> ShowTextInputDialog(string title)
+        public async Task<string> ShowTextInputDialogAsync(string title)
         {
             var tb = new TextBox();
             var dialog = new ContentDialog
@@ -103,19 +105,19 @@ namespace Lively.UI.WinUI.Services
             return tb.Text;
         }
 
-        public async Task ShowThemeDialog()
+        public async Task ShowThemeDialogAsync()
         {
             await new ContentDialog()
             {
                 Title = i18n.GetString("AppTheme/Header"),
-                Content = new ThemeView(),
+                Content = new AppThemeView(),
                 PrimaryButtonText = i18n.GetString("TextOk"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
         }
 
-        public async Task<ILibraryModel> ShowDepthWallpaperDialog(string imagePath)
+        public async Task<LibraryModel> ShowDepthWallpaperDialogAsync(string imagePath)
         {
             var vm = App.Services.GetRequiredService<DepthEstimateWallpaperViewModel>();
             vm.SelectedImage = imagePath;
@@ -150,7 +152,7 @@ namespace Lively.UI.WinUI.Services
             return vm.NewWallpaper;
         }
 
-        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog(string filePath)
+        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync(string filePath)
         {
             if (filePath is null)
                 return await InnerShowWallpaperCreateDialog(null);
@@ -163,7 +165,7 @@ namespace Lively.UI.WinUI.Services
             return await InnerShowWallpaperCreateDialog(filter);
         }
 
-        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialog()
+        public async Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync()
         {
             return await InnerShowWallpaperCreateDialog(null);
         }
@@ -189,6 +191,46 @@ namespace Lively.UI.WinUI.Services
                     dlg.Hide();
             };
             return await dlg.ShowAsyncQueue()  != ContentDialogResult.Secondary ? vm.SelectedItem.CreateType : null;
+        }
+
+        public async Task ShowAboutDialogAsync()
+        {
+            var vm = App.Services.GetRequiredService<AboutViewModel>();
+            await new ContentDialog()
+            {
+                Title = i18n.GetString("About/Label"),
+                Content = new AboutView(vm),
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            }.ShowAsyncQueue();
+            vm.OnWindowClosing(this, new RoutedEventArgs());
+        }
+
+        public async Task ShowControlPanelDialogAsync()
+        {
+            var vm = App.Services.GetRequiredService<ControlPanelViewModel>();
+            await new ContentDialog()
+            {
+                Title = i18n.GetString("DescriptionScreenLayout"),
+                Content = new ControlPanelView(vm),
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            }.ShowAsyncQueue();
+            vm.OnWindowClosing(this, new RoutedEventArgs());
+        }
+
+        public async Task ShowHelpDialogAsync()
+        {
+            await new ContentDialog()
+            {
+                Title = i18n.GetString("Help/Label"),
+                Content = new HelpView(),
+                PrimaryButtonText = i18n.GetString("TextOK"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            }.ShowAsyncQueue();
         }
     }
 }

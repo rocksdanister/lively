@@ -10,6 +10,10 @@ namespace Lively.Core
     public interface IWallpaper
     {
         /// <summary>
+        /// Wallpaper exit event fired
+        /// </summary>
+        bool IsExited { get; }
+        /// <summary>
         /// Wallpaper loading complete status (includes LivelyProperties restoration.)
         /// </summary>
         /// <returns></returns>
@@ -23,7 +27,7 @@ namespace Lively.Core
         /// Get wallpaper metadata.
         /// </summary>
         /// <returns></returns>
-        ILibraryModel Model { get; }
+        LibraryModel Model { get; }
         /// <summary>
         /// Get window handle.
         /// </summary>
@@ -42,7 +46,7 @@ namespace Lively.Core
         /// <summary>
         /// Start wallpaper.
         /// </summary>
-        void Show();
+        Task ShowAsync();
         /// <summary>
         /// Pause wallpaper playback.
         /// </summary>
@@ -52,7 +56,7 @@ namespace Lively.Core
         /// </summary>
         void Play();
         /// <summary>
-        /// Stop wallpaper plabyack.
+        /// Stop wallpaper playback.
         /// </summary>
         void Stop();
         /// <summary>
@@ -68,7 +72,7 @@ namespace Lively.Core
         /// Get display device in which wallpaper is currently running.
         /// </summary>
         /// <returns></returns>
-        IDisplayMonitor Screen { get; set; }
+        DisplayMonitor Screen { get; set; }
         /// <summary>
         /// Send ipc message to program wallpaper.
         /// </summary>
@@ -102,34 +106,11 @@ namespace Lively.Core
         /// <param name="filePath"></param>
         /// <returns></returns>
         Task ScreenCapture(string filePath);
-        /// <summary>
-        /// Fires after Show() method is called.
-        /// Check success status to check if wallpaper ready/failed.
-        /// </summary>
-        event EventHandler<WindowInitializedArgs> WindowInitialized;
     }
 
     public enum PlaybackPosType
     {
         absolutePercent, 
         relativePercent
-    }
-
-    public class WindowInitializedArgs : EventArgs
-    {
-        /// <summary>
-        /// True if wallpaper window is ready.
-        /// </summary>
-        public bool Success { get; set; }
-        /// <summary>
-        /// Error if any.
-        /// Null if no error.
-        /// </summary>
-        public Exception Error { get; set; }
-        /// <summary>
-        /// Custom message.
-        /// Null if no message.
-        /// </summary>
-        public string Msg { get; set; }
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Lively.Common.Helpers.MVVM;
 using Lively.Common;
 using Microsoft.UI.Xaml;
 using Lively.Common.Helpers.Storage;
@@ -12,14 +11,15 @@ using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Lively.UI.WinUI.Helpers;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Lively.UI.WinUI.ViewModels
 {
-    public class AddWallpaperDataViewModel : ObservableObject
+    public partial class AddWallpaperDataViewModel : ObservableObject
     {
-        private readonly ILibraryModel libData;
+        private readonly LibraryModel libData;
 
-        public AddWallpaperDataViewModel(ILibraryModel obj)
+        public AddWallpaperDataViewModel(LibraryModel obj)
         {
             this.libData = obj;
 
@@ -30,90 +30,61 @@ namespace Lively.UI.WinUI.ViewModels
             Author = libData.LivelyInfo.Author;
         }
 
-        #region data
-
         private string _title;
         public string Title
         {
-            get { return _title; }
+            get => _title;
             set
             {
-                _title = (value?.Length > 100 ? value.Substring(0, 100) : value);
-                libData.Title = _title;
-                libData.LivelyInfo.Title = _title;
-                OnPropertyChanged();
+                value = (value?.Length > 100 ? value.Substring(0, 100) : value);
+                libData.Title = value;
+                libData.LivelyInfo.Title = value;
+                SetProperty(ref _title, value);
             }
         }
 
         private string _desc;
         public string Desc
         {
-            get { return _desc; }
+            get => _desc;
             set
             {
-                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
-                libData.Desc = _desc;
-                libData.LivelyInfo.Desc = _desc;
-                OnPropertyChanged();
+                value = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
+                libData.Desc = value;
+                libData.LivelyInfo.Desc = value;
+                SetProperty(ref _desc, value);
             }
         }
 
         private string _author;
         public string Author
         {
-            get { return _author; }
+            get => _author;
             set
             {
-                _author = (value?.Length > 100 ? value.Substring(0, 100) : value);
-                libData.Author = _author;
-                libData.LivelyInfo.Author = _author;
-                OnPropertyChanged();
+                value = (value?.Length > 100 ? value.Substring(0, 100) : value);
+                libData.Author = value;
+                libData.LivelyInfo.Author = value;
+                SetProperty(ref _author, value);
             }
         }
 
         private string _url;
         public string Url
         {
-            get { return _url; }
+            get => _url;
             set
             {
-                _url = value;
-                try
-                {
-                    libData.SrcWebsite = LinkHandler.SanitizeUrl(_url);
-                }
-                catch
-                {
-                    libData.SrcWebsite = null;
-                }
-                libData.LivelyInfo.Contact = _url;
-                OnPropertyChanged();
+                libData.LivelyInfo.Contact = value;
+                SetProperty(ref _url, value);
             }
         }
 
-        #endregion //data
+        [ObservableProperty]
+        private bool isUserEditable = true;
 
-        private bool _isUserEditable = true;
-        public bool IsUserEditable
-        {
-            get { return _isUserEditable; }
-            set
-            {
-                _isUserEditable = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private double _currentProgress;
-        public double CurrentProgress
-        {
-            get { return _currentProgress; }
-            set
-            {
-                _currentProgress = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private double currentProgress;
 
         private RelayCommand _cancelCommand;
         public RelayCommand CancelCommand => _cancelCommand ??=

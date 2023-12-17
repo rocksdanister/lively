@@ -1,47 +1,27 @@
 ﻿using Lively.Common;
-using Lively.Common.Helpers.MVVM;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Lively.Models
 {
-    public class AddWallpaperCreateModel : ObservableObject
+    public partial class AddWallpaperCreateModel : ObservableObject
     {
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string title;
 
-        private string _description;
-        public string Description
-        {
-            get { return _description; }
-            set { _description = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string description;
 
-        private string _icon;
-        public string Icon
-        {
-            get { return _icon; }
-            set { _icon = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private string icon;
 
-        private WallpaperType _typeSupported;
-        public WallpaperType TypeSupported
-        {
-            get { return _typeSupported; }
-            set { _typeSupported = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private WallpaperType typeSupported;
 
-        private WallpaperCreateType _createType;
-        public WallpaperCreateType CreateType
-        {
-            get { return _createType; }
-            set { _createType = value; OnPropertyChanged(); }
-        }
+        [ObservableProperty]
+        private WallpaperCreateType createType;
     }
 
     public enum WallpaperCreateType

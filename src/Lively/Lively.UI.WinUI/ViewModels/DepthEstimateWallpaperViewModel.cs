@@ -5,8 +5,8 @@ using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
-using Lively.Common.Helpers.Network;
 using Lively.Common.Helpers.Storage;
+using Lively.Common.Services.Downloader;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
@@ -26,7 +26,7 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class DepthEstimateWallpaperViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        public ILibraryModel NewWallpaper { get; private set; }
+        public LibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
 
         private readonly ResourceLoader i18n;
@@ -34,13 +34,13 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly string templateDir = Path.Combine(Constants.MachineLearning.MiDaSDir, "Templates", "0");
 
         private readonly IDepthEstimate depthEstimate;
-        private readonly IDownloadHelper downloader;
+        private readonly IDownloadService downloader;
         private readonly LibraryViewModel libraryVm;
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
 
         public DepthEstimateWallpaperViewModel(IDepthEstimate depthEstimate,
-            IDownloadHelper downloader,
+            IDownloadService downloader,
             LibraryViewModel libraryVm,
             IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore)
@@ -147,7 +147,7 @@ namespace Lively.UI.WinUI.ViewModels
                     depthImage.Resize(new MagickGeometry(inputImage.Width, inputImage.Height) { IgnoreAspectRatio = true });
 
                     //Create wallpaper from template
-                    FileOperations.DirectoryCopy(templateDir, destDir, true);
+                    FileUtil.DirectoryCopy(templateDir, destDir, true);
                     await inputImage.WriteAsync(inputImageCopyPath);
                     await depthImage.WriteAsync(depthImagePath);
                     //Generate wallpaper metadata
@@ -183,7 +183,7 @@ namespace Lively.UI.WinUI.ViewModels
                 ErrorText = $"{i18n.GetString("TextError")}: {ex.Message}";
                 PreviewText = string.Empty;
 
-                await FileOperations.DeleteDirectoryAsync(destDir, 0, 1000);
+                await FileUtil.TryDeleteDirectoryAsync(destDir, 0, 1000);
             }
             finally
             {

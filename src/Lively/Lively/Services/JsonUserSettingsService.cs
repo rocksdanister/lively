@@ -24,10 +24,10 @@ namespace Lively.Services
 
         public JsonUserSettingsService(IDisplayManager displayManager, ITransparentTbService ttbService)
         {
-            Load<ISettingsModel>();
+            Load<SettingsModel>();
             //Load<IWeatherModel>();
-            Load<List<IApplicationRulesModel>>();
-            Load<List<IWallpaperLayoutModel>>();
+            Load<List<ApplicationRulesModel>>();
+            Load<List<WallpaperLayoutModel>>();
 
             Settings.SelectedDisplay = Settings.SelectedDisplay != null ?
                 displayManager.DisplayMonitors.FirstOrDefault(x => x.Equals(Settings.SelectedDisplay)) ?? displayManager.PrimaryDisplayMonitor :
@@ -69,24 +69,24 @@ namespace Lively.Services
             }
         }
 
-        public ISettingsModel Settings { get; private set; }
+        public SettingsModel Settings { get; private set; }
         //public IWeatherModel WeatherSettings { get; private set; }
-        public List<IApplicationRulesModel> AppRules { get; private set; }
-        public List<IWallpaperLayoutModel> WallpaperLayout { get; private set; }
+        public List<ApplicationRulesModel> AppRules { get; private set; }
+        public List<WallpaperLayoutModel> WallpaperLayout { get; private set; }
 
         public void Save<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
-                JsonStorage<ISettingsModel>.StoreData(settingsPath, Settings);
+                JsonStorage<SettingsModel>.StoreData(settingsPath, Settings);
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
-                JsonStorage<List<IApplicationRulesModel>>.StoreData(appRulesPath, AppRules);
+                JsonStorage<List<ApplicationRulesModel>>.StoreData(appRulesPath, AppRules);
             }
-            else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
+            else if (typeof(T) == typeof(List<WallpaperLayoutModel>))
             {
-                JsonStorage<List<IWallpaperLayoutModel>>.StoreData(wallpaperLayoutPath, WallpaperLayout);
+                JsonStorage<List<WallpaperLayoutModel>>.StoreData(wallpaperLayoutPath, WallpaperLayout);
             }
             /*
             else if (typeof(T) == typeof(IWeatherModel))
@@ -102,7 +102,7 @@ namespace Lively.Services
 
         public void Load<T>()
         {
-            if (typeof(T) == typeof(ISettingsModel))
+            if (typeof(T) == typeof(SettingsModel))
             {
                 try
                 {
@@ -112,38 +112,38 @@ namespace Lively.Services
                 {
                     Logger.Error(e);
                     Settings = new SettingsModel();
-                    Save<ISettingsModel>();
+                    Save<SettingsModel>();
                 }
 
             }
-            else if (typeof(T) == typeof(List<IApplicationRulesModel>))
+            else if (typeof(T) == typeof(List<ApplicationRulesModel>))
             {
                 try
                 {
-                    AppRules = new List<IApplicationRulesModel>(JsonStorage<List<ApplicationRulesModel>>.LoadData(appRulesPath));
+                    AppRules = new List<ApplicationRulesModel>(JsonStorage<List<ApplicationRulesModel>>.LoadData(appRulesPath));
                 }
                 catch (Exception e)
                 {
                     Logger.Error(e.ToString());
-                    AppRules = new List<IApplicationRulesModel>
+                    AppRules = new List<ApplicationRulesModel>
                     {
                         //defaults.
                         new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
                     };
-                    Save<List<IApplicationRulesModel>>();
+                    Save<List<ApplicationRulesModel>>();
                 }
             }
-            else if (typeof(T) == typeof(List<IWallpaperLayoutModel>))
+            else if (typeof(T) == typeof(List<WallpaperLayoutModel>))
             {
                 try
                 {
-                    WallpaperLayout = new List<IWallpaperLayoutModel>(JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath));
+                    WallpaperLayout = new List<WallpaperLayoutModel>(JsonStorage<List<WallpaperLayoutModel>>.LoadData(wallpaperLayoutPath));
                 }
                 catch (Exception e)
                 {
                     Logger.Error(e.ToString());
-                    WallpaperLayout = new List<IWallpaperLayoutModel>();
-                    Save<List<IWallpaperLayoutModel>>();
+                    WallpaperLayout = new List<WallpaperLayoutModel>();
+                    Save<List<WallpaperLayoutModel>>();
                 }
             }
             /*

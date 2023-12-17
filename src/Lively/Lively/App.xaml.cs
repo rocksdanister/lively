@@ -21,7 +21,6 @@ using Lively.Grpc.Common.Proto.Commands;
 using System.Linq;
 using Lively.Automation;
 using Lively.Views.WindowMsg;
-using Lively.Common.Helpers.Network;
 using System.Windows.Threading;
 using Lively.Views;
 using Lively.Grpc.Common.Proto.Update;
@@ -32,8 +31,10 @@ using Lively.Common.Helpers;
 using Lively.Helpers.Theme;
 using Microsoft.Win32;
 using System.Reflection;
-using Lively.Common.Services;
 using Lively.Common.Models;
+using Lively.Common.Services.Update;
+using Lively.Helpers;
+using Lively.Common.Services.Downloader;
 
 namespace Lively
 {
@@ -99,8 +100,8 @@ namespace Lively
             try
             {
                 //clear temp files from previous run if any..
-                FileOperations.EmptyDirectory(Constants.CommonPaths.TempDir);
-                FileOperations.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
+                FileUtil.EmptyDirectory(Constants.CommonPaths.TempDir);
+                FileUtil.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
             }
             catch { /* TODO */ }
 
@@ -145,7 +146,7 @@ namespace Lively
                 Logger.Error($"Wallpaper directory setup failed: {ex.Message}, falling back to default.");
                 userSettings.Settings.WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
                 CreateWallpaperDir(userSettings.Settings.WallpaperDir);
-                userSettings.Save<ISettingsModel>();
+                userSettings.Save<SettingsModel>();
             }
 
             Services.GetRequiredService<WndProcMsgWindow>().Show();
@@ -168,7 +169,7 @@ namespace Lively
                 {
                     userSettings.Settings.WallpaperBundleVersion = maxWallpaper;
                     userSettings.Settings.ThemeBundleVersion = maxTheme;
-                    userSettings.Save<ISettingsModel>();
+                    userSettings.Save<SettingsModel>();
                 }
                 spl?.Close();
             }
@@ -237,13 +238,15 @@ namespace Lively
                 .AddSingleton<UserSettingsServer>()
                 .AddSingleton<CommandsServer>()
                 .AddSingleton<AppUpdateServer>()
+                .AddSingleton<WallpaperPlaylistServer>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
-                .AddTransient<IWallpaperFactory, WallpaperFactory>()
+                .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
+                .AddTransient<IWallpaperPluginFactory, WallpaperPluginFactory>()
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()
-                .AddTransient<IDownloadHelper, MultiDownloadHelper>()
+                .AddTransient<IDownloadService, MultiDownloadService>()
                 //.AddTransient<SetupView>()
                 /*
                 .AddLogging(loggingBuilder =>
@@ -268,6 +271,7 @@ namespace Lively
             DisplayService.BindService(server.ServiceBinder, Services.GetRequiredService<DisplayManagerServer>());
             CommandsService.BindService(server.ServiceBinder, Services.GetRequiredService<CommandsServer>());
             UpdateService.BindService(server.ServiceBinder, Services.GetRequiredService<AppUpdateServer>());
+            PlaylistService.BindService(server.ServiceBinder, Services.GetRequiredService<WallpaperPlaylistServer>());
             server.Start();
 
             return server;

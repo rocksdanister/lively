@@ -10,12 +10,12 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public partial class ReportWallpaperViewModel : ObservableObject
     {
-        public ReportWallpaperViewModel(ILibraryModel obj)
+        public ReportWallpaperViewModel(LibraryModel obj)
         {
             this.Model = obj;
         }
 
         [ObservableProperty]
-        private ILibraryModel model;
+        private LibraryModel model;
     }
 }

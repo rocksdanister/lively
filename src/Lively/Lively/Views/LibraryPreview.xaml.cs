@@ -106,7 +106,7 @@ namespace Lively.Views
             catch { }
 
             //detach wallpaper window from this dialogue.
-            WindowOperations.SetParentSafe(wallpaperHwnd, IntPtr.Zero);
+            WindowUtil.SetParentSafe(wallpaperHwnd, IntPtr.Zero);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

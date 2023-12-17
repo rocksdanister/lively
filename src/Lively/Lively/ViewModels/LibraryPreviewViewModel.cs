@@ -1,6 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Helpers.MVVM;
 using Lively.Common.Helpers.Storage;
 using Lively.Core;
 using Lively.Models;
@@ -16,14 +16,14 @@ using System.Threading.Tasks;
 
 namespace Lively.ViewModels
 {
-    public class LibraryPreviewViewModel : ObservableObject
+    public partial class LibraryPreviewViewModel : ObservableObject
     {
         public event EventHandler<WallpaperUpdateArgs> DetailsUpdated;
 
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly ILibraryModel libData;
+        private readonly LibraryModel libData;
         private readonly ILibraryPreview Winstance;
-        private readonly ILivelyInfoModel livelyInfoCopy;
+        private readonly LivelyInfoModel livelyInfoCopy;
         private readonly string thumbnailOriginalPath;
 
         private readonly IUserSettingsService userSettings;
@@ -64,7 +64,7 @@ namespace Lively.ViewModels
                 if (libData.LivelyInfo.Type == WallpaperType.videostream)
                 {
                     Url = libData.FilePath;
-                    Title = LinkHandler.GetLastSegmentUrl(libData.FilePath);
+                    Title = LinkUtil.GetLastSegmentUrl(libData.FilePath);
                     if (userSettings.Settings.ExtractStreamMetaData)
                     {
                         //_ = SetYtMetadata(libData.FilePath);
@@ -77,7 +77,7 @@ namespace Lively.ViewModels
                     if (libData.LivelyInfo.Type == WallpaperType.url)
                         Url = libData.FilePath;
 
-                    Title = LinkHandler.GetLastSegmentUrl(libData.FilePath);
+                    Title = LinkUtil.GetLastSegmentUrl(libData.FilePath);
                 }
                 else
                 {
@@ -138,13 +138,13 @@ namespace Lively.ViewModels
         private string _title;
         public string Title
         {
-            get { return _title; }
+            get => _title;
             set
             {
-                _title = (value?.Length > 100 ? value.Substring(0, 100) : value);
-                libData.Title = _title;
-                libData.LivelyInfo.Title = _title;
-                OnPropertyChanged();
+                value = (value?.Length > 100 ? value.Substring(0, 100) : value);
+                libData.Title = value;
+                libData.LivelyInfo.Title = value;
+                SetProperty(ref _title, value);
                 DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
             }
         }
@@ -152,13 +152,13 @@ namespace Lively.ViewModels
         private string _desc;
         public string Desc
         {
-            get { return _desc; }
+            get => _desc;
             set
             {
-                _desc = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
-                libData.Desc = _desc;
-                libData.LivelyInfo.Desc = _desc;
-                OnPropertyChanged();
+                value = (value?.Length > 5000 ? value.Substring(0, 5000) : value);
+                libData.Desc = value;
+                libData.LivelyInfo.Desc = value;
+                SetProperty(ref _desc, value);
                 DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
             }
         }
@@ -166,13 +166,13 @@ namespace Lively.ViewModels
         private string _author;
         public string Author
         {
-            get { return _author; }
+            get => _author;
             set
             {
-                _author = (value?.Length > 100 ? value.Substring(0, 100) : value);
-                libData.Author = _author;
-                libData.LivelyInfo.Author = _author;
-                OnPropertyChanged();
+                value = (value?.Length > 100 ? value.Substring(0, 100) : value);
+                libData.Author = value;
+                libData.LivelyInfo.Author = value;
+                SetProperty(ref _author, value);
                 DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
             }
         }
@@ -180,20 +180,11 @@ namespace Lively.ViewModels
         private string _url;
         public string Url
         {
-            get { return _url; }
+            get => _url;
             set
             {
-                _url = value;
-                try
-                {
-                    libData.SrcWebsite = LinkHandler.SanitizeUrl(_url);
-                }
-                catch
-                {
-                    libData.SrcWebsite = null;
-                }
-                libData.LivelyInfo.Contact = _url;
-                OnPropertyChanged();
+                libData.LivelyInfo.Contact = value;
+                SetProperty(ref _url, value);
                 DetailsUpdated?.Invoke(this, new WallpaperUpdateArgs() { Category = UpdateWallpaperType.changed, Info = libData.LivelyInfo, InfoPath = libData.LivelyInfoFolderPath });
             }
         }
@@ -202,27 +193,11 @@ namespace Lively.ViewModels
 
         #region ui 
 
-        private bool _isUserEditable = true;
-        public bool IsUserEditable
-        {
-            get { return _isUserEditable; }
-            set
-            {
-                _isUserEditable = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private bool isUserEditable = true;
 
-        private double _currentProgress;
-        public double CurrentProgress
-        {
-            get { return _currentProgress; }
-            set
-            {
-                _currentProgress = value;
-                OnPropertyChanged();
-            }
-        }
+        [ObservableProperty]
+        private double currentProgress;
 
         public void OnWindowClosed(object sender, EventArgs e)
         {

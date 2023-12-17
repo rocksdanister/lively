@@ -7,7 +7,7 @@
     <StartupObject></StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyVersion>2.0.7.0</AssemblyVersion>
+    <AssemblyVersion>2.0.7.4</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -40,16 +40,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GrpcDotNetNamedPipes" Version="2.0.0" />
-    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.1.3" />
-    <PackageReference Include="MdXaml" Version="1.19.2" />
+    <PackageReference Include="GrpcDotNetNamedPipes" Version="2.1.0" />
+    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="13.3.0" />
+    <PackageReference Include="MdXaml" Version="1.21.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="NLog" Version="5.2.0" />
+    <PackageReference Include="NLog" Version="5.2.5" />
     <PackageReference Include="RawInput.Sharp" Version="0.1.1" />
     <PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
+    <PackageReference Include="WinEventHook" Version="0.3.6" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lively.Common.Factories\Lively.Common.Factories.csproj" />
     <ProjectReference Include="..\Lively.Common.Services\Lively.Common.Services.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Common\Lively.Grpc.Common.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
