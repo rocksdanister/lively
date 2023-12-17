@@ -3,6 +3,7 @@ using Lively.Common.API;
 using Lively.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Lively.Core
 {
@@ -14,17 +15,16 @@ namespace Lively.Core
         /// </summary>
         ReadOnlyCollection<IWallpaper> Wallpapers { get; }
         void CloseAllWallpapers(bool terminate = false);
-        void CloseWallpaper(ILibraryModel wp, bool terminate = false);
-        void CloseWallpaper(IDisplayMonitor display, bool terminate = false);
+        void CloseWallpaper(LibraryModel wp, bool terminate = false);
+        void CloseWallpaper(DisplayMonitor display, bool terminate = false);
         void CloseWallpaper(WallpaperType type, bool terminate = false);
-        void ReloadWallpaper();
-        void ResetWallpaper();
+        Task ResetWallpaperAsync();
         void RestoreWallpaper();
-        void SeekWallpaper(ILibraryModel wp, float seek, PlaybackPosType type);
-        void SeekWallpaper(IDisplayMonitor display, float seek, PlaybackPosType type);
+        void SeekWallpaper(LibraryModel wp, float seek, PlaybackPosType type);
+        void SeekWallpaper(DisplayMonitor display, float seek, PlaybackPosType type);
         void SendMessageWallpaper(string info_path, IpcMessage msg);
-        void SendMessageWallpaper(IDisplayMonitor display, string info_path, IpcMessage msg);
-        void SetWallpaper(ILibraryModel wallpaper, IDisplayMonitor display);
+        void SendMessageWallpaper(DisplayMonitor display, string info_path, IpcMessage msg);
+        Task SetWallpaperAsync(LibraryModel wallpaper, DisplayMonitor display);
 
         /// <summary>
         /// Wallpaper set/removed.
@@ -47,7 +47,7 @@ namespace Lively.Core
     public class WallpaperUpdateArgs : EventArgs
     {
         public UpdateWallpaperType Category { get; set; }
-        public ILivelyInfoModel Info { get; set; }
+        public LivelyInfoModel Info { get; set; }
         public string InfoPath { get; set; }
     }
 }

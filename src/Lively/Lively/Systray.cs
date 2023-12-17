@@ -1,6 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.Models;
-using Lively.Common.Services;
+using Lively.Common.Services.Update;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
@@ -16,6 +16,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -36,6 +37,7 @@ namespace Lively
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
+        private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
 
@@ -44,13 +46,15 @@ namespace Lively
             IDesktopCore desktopCore,
             IAppUpdaterService appUpdater,
             IDisplayManager displayManager,
-            IPlayback playbackMonitor)
+            IPlayback playbackMonitor,
+            IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.runner = runner;
             this.desktopCore = desktopCore;
             this.userSettings = userSettings;
             this.displayManager = displayManager;
             this.playbackMonitor = playbackMonitor;
+            this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
             //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             //Error: "The root Visual of a VisualTarget cannot have a parent.."
@@ -87,7 +91,7 @@ namespace Lively
             };
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
             //Random Wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += (s, e) => SetRandomWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += async (s, e) => await SetRandomWallpapers();
             //Reload Wallpapers
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextReloadWallpaper, null).Click += (s, e) => desktopCore.ReloadWallpaper();
             //Customise wallpaper
@@ -242,7 +246,7 @@ namespace Lively
         /// <summary>
         /// Sets random library item as wallpaper.
         /// </summary>
-        private void SetRandomWallpapers()
+        private async Task SetRandomWallpapers()
         {
             switch (userSettings.Settings.WallpaperArrangement)
             {
@@ -255,7 +259,7 @@ namespace Lively
                         {
                             for (int i = 0; i < screenCount; i++)
                             {
-                                desktopCore.SetWallpaper(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                                await desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
                             }
                         }
                     }
@@ -265,7 +269,7 @@ namespace Lively
                     {
                         try
                         {
-                            desktopCore.SetWallpaper(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                            await desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
                         }
                         catch (InvalidOperationException)
                         {
@@ -278,7 +282,7 @@ namespace Lively
 
         #region helpers
 
-        private IEnumerable<ILibraryModel> GetRandomWallpaper()
+        private IEnumerable<LibraryModel> GetRandomWallpaper()
         {
             var dir = new List<string>();
             string[] folderPaths = {
@@ -307,10 +311,10 @@ namespace Lively
 
             for (int i = 0; i < dir.Count; i++)
             {
-                ILibraryModel libItem = null;
+                LibraryModel libItem = null;
                 try
                 {
-                    libItem = WallpaperUtil.ScanWallpaperFolder(dir[i]);
+                    libItem = wallpaperLibraryFactory.CreateFromDirectory(dir[i]);
                 }
                 catch { }
 

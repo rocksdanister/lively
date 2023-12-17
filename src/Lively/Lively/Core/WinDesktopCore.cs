@@ -78,7 +78,8 @@ namespace Lively.Core
             this.displayManager.DisplayUpdated += DisplaySettingsChanged_Hwnd;
             WallpaperChanged += SetupDesktop_WallpaperChanged;
 
-            SystemEvents.SessionSwitch += (s, e) => {
+            SystemEvents.SessionSwitch += (s, e) =>
+            {
                 if (e.Reason == SessionSwitchReason.SessionUnlock)
                 {
                     //Issue: https://github.com/rocksdanister/lively/issues/802
@@ -230,7 +231,7 @@ namespace Lively.Core
                         case LibraryItemType.edit:
                         case LibraryItemType.processing:
                         case LibraryItemType.multiImport:
-                        //case LibraryItemType.cmdImport:
+                            //case LibraryItemType.cmdImport:
                             try
                             {
                                 runner.SetBusyUI(true);
