@@ -1077,55 +1077,52 @@ namespace Lively.Core
                                    NativeMethods.SendMessageTimeoutFlags.SMTO_NORMAL,
                                    1000,
                                    out result);
-
+            // Spy++ output
+            // .....
+            // 0x00010190 "" WorkerW
+            //   ...
+            //   0x000100EE "" SHELLDLL_DefView
+            //     0x000100F0 "FolderView" SysListView32
+            // 0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
+            // 0x000100EC "Program Manager" Progman
             var workerw = IntPtr.Zero;
 
-            if (Environment.OSVersion.Version.Build >= 26002)
+            // We enumerate all Windows, until we find one, that has the SHELLDLL_DefView 
+            // as a child. 
+            // If we found that window, we take its next sibling and assign it to workerw.
+            NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
             {
-                // Spy++ output for Windows 11 Build 26002 and later
-                // 0x000100EC "Program Manager" Progman
-                //   0x000100EE "" SHELLDLL_DefView
-                //     0x000100F0 "FolderView" SysListView32
-                //   0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
+                IntPtr p = NativeMethods.FindWindowEx(tophandle,
+                                            IntPtr.Zero,
+                                            "SHELLDLL_DefView",
+                                            IntPtr.Zero);
+
+                if (p != IntPtr.Zero)
+                {
+                    // Gets the WorkerW Window after the current one.
+                    workerw = NativeMethods.FindWindowEx(IntPtr.Zero,
+                                                    tophandle,
+                                                    "WorkerW",
+                                                    IntPtr.Zero);
+                }
+
+                return true;
+            }), IntPtr.Zero);
+
+            // Some Windows 11 builds have a different Progman window layout.
+            // If the above code failed to find WorkerW, we should try this.
+            // Spy++ output
+            // 0x000100EC "Program Manager" Progman
+            //   0x000100EE "" SHELLDLL_DefView
+            //     0x000100F0 "FolderView" SysListView32
+            //   0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
+            if (workerw == IntPtr.Zero)
+            {
                 workerw = NativeMethods.FindWindowEx(progman,
                                                 IntPtr.Zero,
                                                 "WorkerW",
                                                 IntPtr.Zero);
             }
-            else
-            {
-                // Spy++ output
-                // .....
-                // 0x00010190 "" WorkerW
-                //   ...
-                //   0x000100EE "" SHELLDLL_DefView
-                //     0x000100F0 "FolderView" SysListView32
-                // 0x00100B8A "" WorkerW       <-- This is the WorkerW instance we are after!
-                // 0x000100EC "Program Manager" Progman
-
-                // We enumerate all Windows, until we find one, that has the SHELLDLL_DefView 
-                // as a child. 
-                // If we found that window, we take its next sibling and assign it to workerw.
-                NativeMethods.EnumWindows(new NativeMethods.EnumWindowsProc((tophandle, topparamhandle) =>
-                {
-                    IntPtr p = NativeMethods.FindWindowEx(tophandle,
-                                                IntPtr.Zero,
-                                                "SHELLDLL_DefView",
-                                                IntPtr.Zero);
-
-                    if (p != IntPtr.Zero)
-                    {
-                        // Gets the WorkerW Window after the current one.
-                        workerw = NativeMethods.FindWindowEx(IntPtr.Zero,
-                                                       tophandle,
-                                                       "WorkerW",
-                                                       IntPtr.Zero);
-                    }
-
-                    return true;
-                }), IntPtr.Zero);
-            }
-
             return workerw;
         }
 
