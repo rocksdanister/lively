@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GrpcDotNetNamedPipes" Version="2.1.0" />
+    <PackageReference Include="GrpcDotNetNamedPipes" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
