@@ -117,6 +117,10 @@ namespace Lively.Models
         public string ApplicationThemeBackgroundPath { get; set; }
         public AppThemeBackground ApplicationThemeBackground { get; set; }
         public int ThemeBundleVersion { get; set; }
+        /// <summary>
+        /// Time in seconds between taskbar restart (hinting system instability) to stop Lively.
+        /// </summary>
+        public int TaskbarCrashTimeOutDelay { get; set; }
 
         public SettingsModel()
         {
@@ -189,6 +193,7 @@ namespace Lively.Models
             IsUpdated = false;
             ApplicationThemeBackgroundPath = null;
             ApplicationThemeBackground = AppThemeBackground.default_mica;
+            TaskbarCrashTimeOutDelay = 30;
 
             try
             {

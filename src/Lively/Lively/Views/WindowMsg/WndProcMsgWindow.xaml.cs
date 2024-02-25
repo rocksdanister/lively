@@ -2,6 +2,7 @@
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Core.Display;
+using Lively.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,11 +22,13 @@ namespace Lively.Views.WindowMsg
 
         private readonly IDisplayManager displayManager;
         private readonly IDesktopCore desktopCore;
+        private readonly IUserSettingsService userSettings;
 
-        public WndProcMsgWindow(IDesktopCore desktopCore, IDisplayManager displayManager)
+        public WndProcMsgWindow(IDesktopCore desktopCore, IDisplayManager displayManager, IUserSettingsService userSettings)
         {
             this.displayManager = displayManager;
             this.desktopCore = desktopCore;
+            this.userSettings = userSettings;
 
             InitializeComponent();
         }
@@ -48,7 +51,7 @@ namespace Lively.Views.WindowMsg
                 {
                     //Explorer crash detection, dpi change also sends WM_TASKBARCREATED..
                     Logger.Info($"Explorer crashed, pid mismatch: {prevExplorerPid} != {newExplorerPid}");
-                    if ((DateTime.Now - prevCrashTime).TotalSeconds > 30)
+                    if ((DateTime.Now - prevCrashTime).TotalSeconds > userSettings.Settings.TaskbarCrashTimeOutDelay)
                     {
                         // Create WorkerW and restart wallpaper(s)
                         _ = desktopCore.ResetWallpaperAsync();
