@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.18362</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject></StartupObject>
     <ApplicationIcon>appicon.ico</ApplicationIcon>

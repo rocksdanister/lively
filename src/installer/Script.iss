@@ -100,7 +100,7 @@ Source: "VC\VC_redist.x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "Release\Lively.exe"; DestDir: "{app}"; Flags: ignoreversion;
 Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs;
-Source: "dotnetcore\windowsdesktop-runtime-7.0.12-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
+Source: "dotnetcore\windowsdesktop-runtime-8.0.2-win-x86.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 Source: "dotnetcore\netcorecheck.exe"; DestDir: {tmp}; Flags: deleteafterinstall
 
 [Icons]
@@ -112,7 +112,7 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 ;skipifsilent
 Filename: "{tmp}\VC_redist.x86.exe"; Parameters: /install /quiet /norestart; Check: VCRedistNeedsInstall; StatusMsg: Installing Visual C++ Redistributable...
 ;Filename: "{tmp}\WindowsAppRuntimeInstall_x86.exe"; Parameters: --quiet; Check: DependencyInstall; Flags: runhidden; StatusMsg: Installing Windows App SDK...
-Filename: "{tmp}\windowsdesktop-runtime-7.0.12-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('7.0.12');  StatusMsg: Installing .Net Core 7.0.12...
+Filename: "{tmp}\windowsdesktop-runtime-8.0.2-win-x86.exe"; Parameters: /install /quiet /norestart; Check: NetCoreNeedsInstall('8.0.2');  StatusMsg: Installing .Net Core 8.0.2...
 
 [Code]
 var
