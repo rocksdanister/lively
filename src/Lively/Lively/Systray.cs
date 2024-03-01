@@ -91,7 +91,9 @@ namespace Lively
             };
             _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
             //Random Wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += async(s, e) => await SetRandomWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += async (s, e) => await SetRandomWallpapers();
+            //Reload Wallpapers
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextReloadWallpaper, null).Click += async (s, e) => await desktopCore.ResetWallpaperAsync(true);
             //Customise wallpaper
             customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
             {
@@ -113,7 +115,7 @@ namespace Lively
             }
             //Report bug
             _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) =>
             {
                 if (diagnosticMenu is null)
                 {

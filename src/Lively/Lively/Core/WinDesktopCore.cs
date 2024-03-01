@@ -563,24 +563,27 @@ namespace Lively.Core
         /// <summary>
         /// Reset workerw.
         /// </summary>
-        public async Task ResetWallpaperAsync()
+        public async Task ResetWallpaperAsync(bool reloadOnly = false)
         {
             await semaphoreSlimWallpaperLoadingLock.WaitAsync();
 
             try
             {
-                Logger.Info("Restarting wallpaper service..");
                 // Copy existing wallpapers
                 var originalWallpapers = Wallpapers.ToList();
-                CloseAllWallpapers(true);
-                // Restart workerw
-                UpdateWorkerW();
-                if (workerw == IntPtr.Zero)
+                CloseAllWallpapers(!reloadOnly);
+                if (!reloadOnly)
                 {
-                    // Final attempt
-                    Logger.Info("Retry creating WorkerW after delay..");
-                    await Task.Delay(500);
+                    Logger.Info("Restarting wallpaper service..");
+                    // Restart workerw
                     UpdateWorkerW();
+                    if (workerw == IntPtr.Zero)
+                    {
+                        // Final attempt
+                        Logger.Info("Retry creating WorkerW after delay..");
+                        await Task.Delay(500);
+                        UpdateWorkerW();
+                    }
                 }
                 foreach (var item in originalWallpapers)
                 {
