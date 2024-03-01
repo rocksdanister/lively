@@ -9,7 +9,7 @@
     <Platforms>x86;x64;arm64</Platforms>
     <!-- Crash with portable(?) otherwise RIDs, ref: https://learn.microsoft.com/en-us/dotnet/core/compatibility/sdk/8.0/rid-graph-->
     <UseRidGraph>true</UseRidGraph>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <ApplicationIcon>appicon.ico</ApplicationIcon>
@@ -30,7 +30,7 @@
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <!-- Create Properties/PublishProfiles for each release, Example: win10-x86.pubxml-->
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <!-- Temporary cert-->
     <!--
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
