@@ -64,16 +64,16 @@ namespace Lively.Screensaver
 
         static bool TryGetInstalledAppPath(string appId, out string installPath)
         {
-            string uninstallKeyPath32Bit = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            string uninstallKeyPath64Bit = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
+            var uninstallKeyPath32Bit = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            var uninstallKeyPath64Bit = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
 
             // Try accessing the 32-bit registry first
-            RegistryKey baseKey32Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath32Bit);
+            using var baseKey32Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath32Bit);
             installPath = GerInnoInstallPathInRegistry(baseKey32Bit, appId);
             if (installPath is null)
             {
                 // If not found in the 32-bit registry, try the 64-bit registry
-                RegistryKey baseKey64Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath64Bit);
+                using var baseKey64Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath64Bit);
                 installPath = GerInnoInstallPathInRegistry(baseKey64Bit, appId);
             }
             return installPath is not null;
@@ -85,19 +85,19 @@ namespace Lively.Screensaver
         //ref: https://stackoverflow.com/questions/68990713/how-to-access-the-path-of-inno-setup-installed-program-from-outside-of-inno-setu
         static string GerInnoInstallPathInRegistry(RegistryKey baseKey, string appId)
         {
-            string subKeySuffix = "_is1";
-            string appPathValueName = "Inno Setup: App Path";
+            var subKeySuffix = "_is1";
+            var appPathValueName = "Inno Setup: App Path";
 
             if (baseKey != null)
             {
-                foreach (string subKeyName in baseKey.GetSubKeyNames())
+                foreach (var subKeyName in baseKey.GetSubKeyNames())
                 {
                     if (subKeyName.EndsWith(subKeySuffix, StringComparison.OrdinalIgnoreCase) && subKeyName.StartsWith(appId, StringComparison.OrdinalIgnoreCase))
                     {
-                        RegistryKey subKey = baseKey.OpenSubKey(subKeyName);
+                        using var subKey = baseKey.OpenSubKey(subKeyName);
                         if (subKey != null)
                         {
-                            string installPath = subKey.GetValue(appPathValueName) as string;
+                            var installPath = subKey.GetValue(appPathValueName) as string;
                             if (!string.IsNullOrEmpty(installPath))
                             {
                                 return installPath;
