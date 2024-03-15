@@ -44,7 +44,7 @@ let shaders = [
       u_depth: { value: 1.0, type: "f" },
       u_width: { value: 0.3, type: "f" },
       u_speed: { value: 0.6, type: "f" },
-      u_layers: { value: 25, type: "i" },
+      u_layers: { value: 32, type: "i" },
       u_blur: { value: false, type: "b" },
       u_brightness: { value: 0.75, type: "f" },
       u_post_processing: { value: true, type: "b" },
@@ -414,7 +414,7 @@ function setMouse() {
 //   this.onmousedown = this.onmousemove = this.onmouseup = null;
 // }
 
-async function showTransition() {
+function showTransition() {
   if (material == null) return;
 
   renderer.render(scene, camera); //WebGLRenderer.preserveDrawingBuffer is false.
@@ -424,14 +424,27 @@ async function showTransition() {
   quad.material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 1.0 });
   scene.add(quad);
 
-  for (let val = 1; val >= 0; val -= 0.1) {
+  let duration = 1000;
+  let startTime = null;
+
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = timestamp - startTime;
+    const val = 1 - Math.min(progress / duration, 1);
+
     quad.material.opacity = val;
-    await new Promise((r) => setTimeout(r, 75));
+    renderer.render(scene, camera);
+
+    if (progress < duration) {
+      requestAnimationFrame(animate);
+    } else {
+      texture.dispose();
+      scene.remove(quad);
+      URL.revokeObjectURL(screenShot);
+    }
   }
 
-  texture.dispose();
-  scene.remove(quad);
-  URL.revokeObjectURL(screenShot);
+  animate(0);
 }
 
 function resize() {
