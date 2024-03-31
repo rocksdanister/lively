@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lively.Helpers.Theme
+namespace Lively.Helpers
 {
     public static class ThemeUtil
     {

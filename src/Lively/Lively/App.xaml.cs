@@ -28,7 +28,6 @@ using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Archive;
 using Lively.Models;
 using Lively.Common.Helpers;
-using Lively.Helpers.Theme;
 using Microsoft.Win32;
 using System.Reflection;
 using Lively.Common.Models;
@@ -280,14 +279,13 @@ namespace Lively
         /// <summary>
         /// Actual apptheme, no Auto allowed.
         /// </summary>
-        private static Common.AppTheme _currentTheme = Common.AppTheme.Dark;
+        private static Common.AppTheme currentTheme = Common.AppTheme.Dark;
         public static void ChangeTheme(Common.AppTheme theme)
         {
             theme = theme == Common.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
-            if (_currentTheme == theme)
+            if (currentTheme == theme)
                 return;
 
-            _currentTheme = theme;
             Uri uri = theme switch
             {
                 Common.AppTheme.Light => new Uri("Themes/Light.xaml", UriKind.Relative),
@@ -297,15 +295,19 @@ namespace Lively
 
             try
             {
+                // WPF theme
                 ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
                 Application.Current.Resources.MergedDictionaries.Clear();
                 Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+                // Tray theme
+                Services.GetRequiredService<ISystray>().SetTheme(theme);
             }
             catch (Exception e)
             {
                 Logger.Error(e);
             }
             Logger.Info($"Theme changed: {theme}");
+            currentTheme = theme;
         }
 
         //number of times to notify user about update.

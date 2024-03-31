@@ -110,7 +110,10 @@ namespace Lively.RPC
 
             if ((Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme)
             {
-                App.ChangeTheme((Common.AppTheme)req.ApplicationTheme);
+                _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    App.ChangeTheme((Common.AppTheme)req.ApplicationTheme);
+                }));
             }
 
             userSettings.Settings.SavedURL = req.SavedUrl;

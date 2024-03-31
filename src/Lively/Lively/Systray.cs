@@ -5,9 +5,9 @@ using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Helpers;
-using Lively.Helpers.Theme;
 using Lively.Models;
 using Lively.Services;
+using Lively.Themes;
 using Lively.Views;
 using System;
 using System.Collections.Generic;
@@ -40,6 +40,7 @@ namespace Lively
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
+        private Common.AppTheme? currentTheme = null;
 
         public Systray(IRunnerService runner,
             IUserSettingsService userSettings,
@@ -68,20 +69,20 @@ namespace Lively
             _notifyIcon.Icon = Properties.Icons.appicon;
             _notifyIcon.Text = "Lively Wallpaper";
             _notifyIcon.Visible = userSettings.Settings.SysTrayIcon;
+            var toolStripColor = Color.FromArgb(55, 55, 55);
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip
             {
-                ForeColor = Color.AliceBlue,
                 Padding = new Padding(0),
                 Margin = new Padding(0),
                 //Font = new System.Drawing.Font("Segoe UI", 10F),
             };
-            _notifyIcon.ContextMenuStrip.Renderer = new ContextMenuTheme.RendererDark();
+            SetTheme(userSettings.Settings.ApplicationTheme);
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
             //Show UI
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
             //Close wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
             //Wallpaper playback
             pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, null);
@@ -103,7 +104,7 @@ namespace Lively
             //Update check
             if (!Constants.ApplicationType.IsMSIX)
             {
-                _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+                _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
                 updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
                 {
                     Enabled = false
@@ -112,7 +113,7 @@ namespace Lively
                 _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
             //Report bug
-            _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
             {
                 if (diagnosticMenu is null)
@@ -123,7 +124,7 @@ namespace Lively
                 }
             };
             //Exit app
-            _notifyIcon.ContextMenuStrip.Items.Add(new ContextMenuTheme.StripSeparatorCustom().stripSeparator);
+            _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
             _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();
 
             //Change events
@@ -136,6 +137,37 @@ namespace Lively
         {
             _notifyIcon.Visible = visible;
         }
+
+        public void ShowBalloonNotification(int timeout, string title, string msg)
+        {
+            _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
+        }
+
+        public void SetTheme(Common.AppTheme theme)
+        {
+            theme = theme == Common.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
+            if (currentTheme != null && currentTheme == theme)
+                return;
+
+            switch (theme)
+            {
+                case AppTheme.Auto: // not applicable
+                case AppTheme.Dark:
+                    {
+                        _notifyIcon.ContextMenuStrip.ForeColor = Color.AliceBlue;
+                        ToolStripManager.Renderer = new ToolStripRendererDark();
+                    }
+                    break;
+                case AppTheme.Light:
+                    {
+                        _notifyIcon.ContextMenuStrip.ForeColor = Color.Black;
+                        ToolStripManager.Renderer = new ToolStripRendererLight();
+                    }
+                    break;
+            }
+            currentTheme = theme;
+        }
+
 
         /// <summary>
         /// Fix for traymenu opening to the nearest screen instead of the screen in which cursor is located.
@@ -182,11 +214,6 @@ namespace Lively
             {
                 menuStrip.Show(Cursor.Position, ToolStripDropDownDirection.AboveLeft);
             }
-        }
-
-        public void ShowBalloonNotification(int timeout, string title, string msg)
-        {
-            _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
         }
 
         private void Playback_PlaybackStateChanged(object sender, PlaybackState e)
@@ -321,6 +348,20 @@ namespace Lively
                     yield return libItem;
                 }
             }
+        }
+
+        private static ToolStripSeparator CreateToolStripSeparator(Color color)
+        {
+            ToolStripSeparator separator = new ToolStripSeparator();
+            separator.Paint += (s, e) =>
+            {
+                ToolStripSeparator stripSeparator = s as ToolStripSeparator;
+                ContextMenuStrip menuStrip = stripSeparator.Owner as ContextMenuStrip;
+                e.Graphics.FillRectangle(new SolidBrush(Color.Transparent), new Rectangle(0, 0, stripSeparator.Width, stripSeparator.Height));
+                using var pen = new Pen(color, 1);
+                e.Graphics.DrawLine(pen, new System.Drawing.Point(23, stripSeparator.Height / 2), new System.Drawing.Point(menuStrip.Width, stripSeparator.Height / 2));
+            };
+            return separator;
         }
 
         #endregion //helpers
