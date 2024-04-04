@@ -29,14 +29,6 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
         public WallpaperLayoutView()
         {
             this.InitializeComponent();
-            //this.DataContext = App.Services.GetRequiredService<ScreenLayoutViewModel>();
-            //this.Unloaded += vm.OnWindowClosing;
-            this.Unloaded += ScreenLayoutView_Unloaded;
-        }
-
-        private void ScreenLayoutView_Unloaded(object sender, RoutedEventArgs e)
-        {
-            //Debug.WriteLine("Unloaded screenlayoutview");
         }
     }
 }

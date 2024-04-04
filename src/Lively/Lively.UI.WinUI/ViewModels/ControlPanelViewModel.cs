@@ -39,32 +39,15 @@ namespace Lively.UI.WinUI.ViewModels
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
 
-            SelectedWallpaperLayout = (int)userSettings.Settings.WallpaperArrangement;
+            SelectedWallpaperLayoutIndex = (int)userSettings.Settings.WallpaperArrangement;
             IsRememberSelectedScreen = userSettings.Settings.RememberSelectedScreen;
-            ScreenItems = new ObservableCollection<ScreenLayoutModel>();
             UpdateLayout();
 
             desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
         }
 
-        public void UpdateSettingsConfigFile()
-        {
-            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
-            {
-                userSettings.Save<SettingsModel>();
-            });
-        }
-
-        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
-        {
-            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
-            {
-                UpdateLayout();
-            });
-        }
-
         [ObservableProperty]
-        private ObservableCollection<ScreenLayoutModel> screenItems;
+        private ObservableCollection<ScreenLayoutModel> screenItems = [];
 
         private ScreenLayoutModel _selectedItem;
         public ScreenLayoutModel SelectedItem
@@ -89,10 +72,13 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private int _selectedWallpaperLayout;
-        public int SelectedWallpaperLayout
+        [ObservableProperty]
+        private WallpaperArrangement selectedWallpaperLayout;
+
+        private int _selectedWallpaperLayoutIndex;
+        public int SelectedWallpaperLayoutIndex
         {
-            get => _selectedWallpaperLayout;
+            get => _selectedWallpaperLayoutIndex;
             set
             {
                 if (userSettings.Settings.WallpaperArrangement != (WallpaperArrangement)value && value != -1)
@@ -102,7 +88,8 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateSettingsConfigFile();
                     _ = UpdateWallpaper(prevArrangement, userSettings.Settings.WallpaperArrangement);
                 }
-                SetProperty(ref _selectedWallpaperLayout, value);
+                SetProperty(ref _selectedWallpaperLayoutIndex, value);
+                SelectedWallpaperLayout = (WallpaperArrangement)value;
             }
         }
 
@@ -229,71 +216,38 @@ namespace Lively.UI.WinUI.ViewModels
         private void UpdateLayout()
         {
             ScreenItems.Clear();
-            switch (userSettings.Settings.WallpaperArrangement)
+            foreach (var item in displayManager.DisplayMonitors)
             {
-                case WallpaperArrangement.per:
-                    {
-                        var unsortedScreenItems = new List<ScreenLayoutModel>();
-                        foreach (var item in displayManager.DisplayMonitors)
-                        {
-                            string imgPath = null;
-                            string livelyPropertyFilePath = null;
-                            foreach (var x in desktopCore.Wallpapers)
-                            {
-                                if (item.Equals(x.Display))
-                                {
-                                    imgPath = string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath;
-                                    livelyPropertyFilePath = x.LivelyPropertyCopyPath;
-                                }
-                            }
-                            unsortedScreenItems.Add(
-                                new ScreenLayoutModel((DisplayMonitor)item, imgPath, livelyPropertyFilePath, item.Index.ToString()));
-                        }
-
-                        foreach (var item in unsortedScreenItems.OrderBy(x => x.Screen.Bounds.X).ToList())
-                        {
-                            ScreenItems.Add(item);
-                        }
-                    }
-                    break;
-                case WallpaperArrangement.span:
-                    {
-                        if (desktopCore.Wallpapers.Count == 0)
-                        {
-                            ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay, null, null, "---"));
-                        }
-                        else
-                        {
-                            var x = desktopCore.Wallpapers[0];
-                            ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay,
-                                string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath, x.LivelyPropertyCopyPath, "---"));
-                        }
-                    }
-                    break;
-                case WallpaperArrangement.duplicate:
-                    {
-                        if (desktopCore.Wallpapers.Count == 0)
-                        {
-                            ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay, null, null, "\""));
-                        }
-                        else
-                        {
-                            var x = desktopCore.Wallpapers[0];
-                            ScreenItems.Add(new ScreenLayoutModel(userSettings.Settings.SelectedDisplay,
-                                string.IsNullOrEmpty(x.PreviewPath) ? x.ThumbnailPath : x.PreviewPath, x.LivelyPropertyCopyPath, "\""));
-                        }
-                    }
-                    break;
-            }
-
-            foreach (var item in ScreenItems)
-            {
-                if (item.Screen.Equals(userSettings.Settings.SelectedDisplay))
+                var wallpaper = userSettings.Settings.WallpaperArrangement switch
                 {
-                    SelectedItem = item;
-                    break;
-                }
+                    WallpaperArrangement.per => desktopCore.Wallpapers.FirstOrDefault(x => item.Equals(x.Display)),
+                    WallpaperArrangement.span => desktopCore.Wallpapers.FirstOrDefault(),
+                    WallpaperArrangement.duplicate => desktopCore.Wallpapers.FirstOrDefault(),
+                    _ => throw new NotImplementedException(),
+                };
+                ScreenItems.Add(new ScreenLayoutModel(item,
+                    string.IsNullOrEmpty(wallpaper?.PreviewPath) ? wallpaper?.ThumbnailPath : wallpaper.PreviewPath,
+                    wallpaper?.LivelyPropertyCopyPath,
+                    item.Index.ToString()));
             }
+
+            SelectedItem = ScreenItems.FirstOrDefault(x => x.Screen.Equals(userSettings.Settings.SelectedDisplay));
+        }
+
+        private void UpdateSettingsConfigFile()
+        {
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                userSettings.Save<SettingsModel>();
+            });
+        }
+
+        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        {
+            _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
+            {
+                UpdateLayout();
+            });
         }
 
         private async Task UpdateWallpaper(WallpaperArrangement prev, WallpaperArrangement curr)

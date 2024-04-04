@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:WinUICommunity"
     xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:customControls="using:Lively.UI.WinUI.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -12,6 +13,7 @@
 
     <Page.Resources>
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <converters:StringFormatConverter x:Key="StringFormatConverter" />
     </Page.Resources>
 
     <Grid>
@@ -31,38 +33,11 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <GridView
+            <customControls:DisplaySelector
                 Grid.Row="0"
-                Margin="5"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                ItemsSource="{Binding ScreenItems}"
-                SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
-                            Width="144"
-                            Height="81"
-                            Background="{ThemeResource SystemBaseLowColor}">
-                            <Image
-                                Opacity="0.50"
-                                Source="{Binding ScreenImagePath}"
-                                Stretch="UniformToFill" />
-                            <Viewbox Width="144" Height="81">
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding ScreenTitle}" />
-                            </Viewbox>
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
+                Displays="{Binding ScreenItems, Mode=OneWay}"
+                Layout="{Binding SelectedWallpaperLayout, Mode=OneWay}"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
 
             <CommandBar
                 Grid.Row="1"
@@ -98,11 +73,22 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <RadioButtons SelectedIndex="{Binding SelectedWallpaperLayout, Mode=TwoWay}">
-                        <RadioButton x:Uid="WallpaperLayoutPerScreen" />
-                        <RadioButton x:Uid="WallpaperLayoutSpan" />
-                        <RadioButton x:Uid="WallpaperLayoutDuplicate" />
-                    </RadioButtons>
+                    <Grid CornerRadius="5">
+                        <!--  Temp, replace with Segmented control(WCTK) and icons.  -->
+                        <ListBox SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
+                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">
+                                <Run Text="Screen" />
+                                <Run Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                            </TextBlock>
+                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Span</TextBlock>
+                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Duplicate</TextBlock>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox x:Uid="WallpaperLayoutScreenPicker" IsChecked="{Binding IsRememberSelectedScreen, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />

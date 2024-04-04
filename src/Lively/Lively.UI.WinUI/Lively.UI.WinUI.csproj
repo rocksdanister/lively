@@ -66,6 +66,7 @@
     <None Remove="Assets\icons8-youtube-96.png" />
     <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Nlog.config" />
+    <None Remove="UserControls\DisplaySelector.xaml" />
     <None Remove="Views\LivelyProperty\ColorEyeDropWindow.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesTray.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
@@ -325,5 +326,11 @@
     <Page Update="Views\LivelyProperty\LivelyPropertiesView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="UserControls\DisplaySelector.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Remove="UserControls\DisplaySelector.xaml" />
   </ItemGroup>
 </Project>
