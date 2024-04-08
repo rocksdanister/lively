@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Data;
 
-namespace Lively.Helpers
+namespace Lively.Converters
 {
     public class TaskbarProgressConverter : IValueConverter
     {

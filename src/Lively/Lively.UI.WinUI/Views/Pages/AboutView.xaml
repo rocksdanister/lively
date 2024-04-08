@@ -63,7 +63,7 @@
                     </AppBarButton>
                 </CommandBar>
 
-                <controls:SettingsCard Margin="0,5,0,0" Header="{Binding AppVersionText}">
+                <!--<controls:SettingsCard Margin="0,5,0,0" Header="{Binding AppVersionText}">
                     <controls:SettingsCard.HeaderIcon>
                         <FontIcon Glyph="&#xE117;" />
                     </controls:SettingsCard.HeaderIcon>
@@ -93,7 +93,7 @@
                     IsClosable="False"
                     IsOpen="True"
                     Severity="{Binding UpdateStatusSeverity, Converter={StaticResource InfoBarSeverityConverter}, Mode=OneWay}"
-                    Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
+                    Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />-->
 
                 <controls:SettingsExpander Header="Patreon" IsExpanded="False">
                     <controls:SettingsExpander.HeaderIcon>

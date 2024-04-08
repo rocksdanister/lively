@@ -7,7 +7,6 @@ namespace Lively.Common.Services.Update
 {
     public interface IAppUpdaterService
     {
-        string LastCheckChangelog { get; }
         DateTime LastCheckTime { get; }
         Uri LastCheckUri { get; }
         Version LastCheckVersion { get; }
@@ -15,8 +14,8 @@ namespace Lively.Common.Services.Update
 
         event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
-        Task<AppUpdateStatus> CheckUpdate(int fetchDelay = 45000);
-        Task<(Uri, Version, string)> GetLatestRelease(bool isBeta);
+        Task<AppUpdateStatus> CheckUpdate(int fetchDelay);
+        Task<(Uri, Version)> GetLatestRelease(bool isBeta);
         void Start();
         void Stop();
     }

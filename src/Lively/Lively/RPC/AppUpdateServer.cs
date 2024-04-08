@@ -1,11 +1,16 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Lively.Common;
 using Lively.Common.Models;
 using Lively.Common.Services.Update;
 using Lively.Grpc.Common.Proto.Update;
+using Lively.Services;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -19,10 +24,12 @@ namespace Lively.RPC
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IAppUpdaterService updater;
+        private readonly IDialogService dialogService;
 
-        public AppUpdateServer(IAppUpdaterService updater)
+        public AppUpdateServer(IAppUpdaterService updater, IDialogService dialogService)
         {
             this.updater = updater;
+            this.dialogService = dialogService;
         }
 
         public override async Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
@@ -35,10 +42,32 @@ namespace Lively.RPC
         {
             if (updater.Status == AppUpdateStatus.available)
             {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                try
                 {
-                    App.AppUpdateDialog(updater.LastCheckUri, updater.LastCheckChangelog);
-                }));
+                    try
+                    {
+                        // Main user interface downloads the setup.
+                        var filePath = Path.Combine(Constants.CommonPaths.TempDir, updater.LastCheckUri.Segments.Last());
+                        if (File.Exists(filePath))
+                            throw new FileNotFoundException(filePath);
+
+                        // Run setup in silent mode.
+                        Process.Start(filePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
+                        // Inno installer will auto retry, waiting for application exit.
+                        App.ShutDown();
+                    }
+                    catch (Exception ex)
+                    {
+                        Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                        {
+                            dialogService.ShowErrorDialog(Properties.Resources.TextError, $"{Properties.Resources.LivelyExceptionAppUpdateFail}\nException:\n{ex}");
+                        }));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex);
+                }
             }
             return Task.FromResult(new Empty());
         }
@@ -48,7 +77,7 @@ namespace Lively.RPC
             return Task.FromResult(new UpdateResponse()
             {
                 Status = (UpdateStatus)((int)updater.Status),
-                Changelog = updater.LastCheckChangelog ?? string.Empty,
+                Changelog = string.Empty,
                 Url = updater.LastCheckUri?.OriginalString ?? string.Empty,
                 Version = updater.LastCheckVersion?.ToString() ?? string.Empty,
                 Time = Timestamp.FromDateTime(updater.LastCheckTime.ToUniversalTime()),

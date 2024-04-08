@@ -32,6 +32,9 @@ namespace Lively.Common.Services.Downloader
 
             try
             {
+                var startArgs = new DownloadEventArgs() { TotalSize = 0, FileName = Path.GetFileName(filePath) };
+                DownloadStarted?.Invoke(this, startArgs);
+
                 using var stream = File.Create(filePath);
                 await DownloadFileAsync(url, stream, cts.Token, (d, t) =>
                 {
@@ -39,7 +42,7 @@ namespace Lively.Common.Services.Downloader
                     if (downloadedSize == previousDownloadedSize)
                         return;
 
-                    DownloadProgressEventArgs args = new DownloadProgressEventArgs()
+                    var args = new DownloadProgressEventArgs()
                     {
                         TotalSize = Math.Truncate(ByteToMegabyte(t)),
                         DownloadedSize = Math.Truncate(ByteToMegabyte(d)),

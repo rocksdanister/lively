@@ -59,7 +59,7 @@ namespace Lively.Common.Services.Update
             }
         }
 
-        public async Task<AppUpdateStatus> CheckUpdate(int fetchDelay = 45 * 1000)
+        public async Task<AppUpdateStatus> CheckUpdate(int fetchDelay)
         {
             if (Constants.ApplicationType.IsMSIX)
             {
@@ -70,7 +70,7 @@ namespace Lively.Common.Services.Update
             try
             {
                 await Task.Delay(fetchDelay);
-                (Uri, Version, string) data = await GetLatestRelease(Constants.ApplicationType.IsTestBuild);
+                (Uri, Version) data = await GetLatestRelease(Constants.ApplicationType.IsTestBuild);
                 int verCompare = GithubUtil.CompareAssemblyVersion(data.Item2);
                 if (verCompare > 0)
                 {
@@ -89,7 +89,6 @@ namespace Lively.Common.Services.Update
                 }
                 LastCheckUri = data.Item1;
                 LastCheckVersion = data.Item2;
-                LastCheckChangelog = data.Item3;
             }
             catch (Exception e)
             {
@@ -98,11 +97,11 @@ namespace Lively.Common.Services.Update
             }
             LastCheckTime = DateTime.Now;
 
-            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri, LastCheckChangelog));
+            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri));
             return Status;
         }
 
-        public async Task<(Uri, Version, string)> GetLatestRelease(bool isBeta)
+        public async Task<(Uri, Version)> GetLatestRelease(bool isBeta)
         {
             var userName = "rocksdanister";
             var repositoryName = isBeta ? "lively-beta" : "lively";
@@ -114,9 +113,9 @@ namespace Lively.Common.Services.Update
                 gitRelease, repositoryName, userName);
             Uri uri = new Uri(gitUrl);
 
-            string changelog = gitRelease.Body;
+            //string changelog = gitRelease.Body;
 
-            return (uri, version, changelog);
+            return (uri, version);
         }
     }
 }

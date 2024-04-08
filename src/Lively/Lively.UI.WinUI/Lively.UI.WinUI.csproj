@@ -64,6 +64,10 @@
     <None Remove="Assets\icons8-twitter-96.png" />
     <None Remove="Assets\icons8-wallpaper-96.png" />
     <None Remove="Assets\icons8-youtube-96.png" />
+    <None Remove="Assets\Icons\icons8-error.svg" />
+    <None Remove="Assets\Icons\icons8-info.svg" />
+    <None Remove="Assets\Icons\icons8-ok.svg" />
+    <None Remove="Assets\Icons\icons8-warn.svg" />
     <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Nlog.config" />
     <None Remove="UserControls\DisplaySelector.xaml" />
@@ -75,6 +79,7 @@
     <None Remove="Views\Pages\AddWallpaperDataView.xaml" />
     <None Remove="Views\Pages\AddWallpaperView.xaml" />
     <None Remove="Views\Pages\AppThemeView.xaml" />
+    <None Remove="Views\Pages\AppUpdateView.xaml" />
     <None Remove="Views\Pages\ChooseDisplayView.xaml" />
     <None Remove="Views\Pages\ControlPanelView.xaml" />
     <None Remove="Views\Pages\DepthEstimateWallpaperView.xaml" />
@@ -190,6 +195,15 @@
     <Content Update="Assets\icons8-youtube-96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\Icons\icons8-error.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Icons\icons8-info.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Icons\icons8-ok.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\tray-tutorial.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -198,6 +212,12 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\Icons\icons8-warn.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Page Update="Views\Pages\AppUpdateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Content Update="Assets\icons8-landscape-64.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

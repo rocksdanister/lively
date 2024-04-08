@@ -25,12 +25,8 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Threading;
@@ -41,6 +37,7 @@ using WinUIEx;
 using WinUICommunity;
 using Lively.Common.Helpers.Files;
 using static Lively.Common.Errors;
+using Lively.Common.Extensions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -53,21 +50,24 @@ namespace Lively.UI.WinUI
     public sealed partial class MainWindow : WindowEx
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly List<(Type Page, NavPages NavPage)> _pages = new List<(Type Page, NavPages NavPage)>
-        {
+        private readonly List<(Type Page, NavPages NavPage)> _pages =
+        [
             (typeof(LibraryView), NavPages.library),
             (typeof(GalleryView), NavPages.gallery),
+            (typeof(AppUpdateView), NavPages.appUpdate),
             (typeof(SettingsGeneralView), NavPages.settingsGeneral),
             (typeof(SettingsPerformanceView), NavPages.settingsPerformance),
             (typeof(SettingsWallpaperView), NavPages.settingsWallpaper),
             (typeof(SettingsSystemView), NavPages.settingsSystem),
-        };
+        ];
 
         private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
         private readonly GalleryClient galleryClient;
+        private readonly IAppUpdaterClient appUpdater;
+        private readonly AppUpdateViewModel appUpdateVm;
         private readonly IDialogService dialogService;
         private readonly ICommandsClient commands;
         private readonly ResourceLoader i18n;
@@ -80,6 +80,7 @@ namespace Lively.UI.WinUI
             SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
             IAppUpdaterClient appUpdater,
+            AppUpdateViewModel appUpdateVm,
             GalleryClient galleryClient)
         {
             this.settingsVm = settingsVm;
@@ -89,6 +90,8 @@ namespace Lively.UI.WinUI
             this.userSettings = userSettings;
             this.dialogService = dialogService;
             this.commands = commands;
+            this.appUpdater = appUpdater;
+            this.appUpdateVm = appUpdateVm;
 
             this.InitializeComponent();
             this.SystemBackdrop = new MicaBackdrop();
@@ -192,26 +195,14 @@ namespace Lively.UI.WinUI
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            if (e.UpdateStatus == AppUpdateStatus.available)
+            _ = this.DispatcherQueue.TryEnqueue(() =>
             {
-                _ = this.DispatcherQueue.TryEnqueue(() =>
-                {
-                    infoBar.IsOpen = true;
-                    var btn = new Button()
-                    {
-                        Content = i18n.GetString("TextLearnMore/Text"),
-                    };
-                    btn.Click += (_, _) =>
-                    {
-                        infoBar.IsOpen = false;
-                        _ = dialogService.ShowAboutDialogAsync();
-                    };
-                    infoBar.ActionButton = btn;
-                    infoBar.Title = i18n.GetString("TextUpdateAvailable");
-                    infoBar.Message = $"{i18n.GetString("DescriptionUpdateAvailable")} (v{e.UpdateVersion})";
-                    infoBar.Severity = InfoBarSeverity.Success;
-                });
-            }
+                // If in settings page
+                if (navView.MenuItems.FirstOrDefault(x => ((NavigationViewItem)x).Tag.ToString() == NavPages.appUpdate.GetAttrValue()) is not NavigationViewItem navViewItem)
+                    return;
+
+                navViewItem.InfoBadge.Opacity = e.UpdateStatus == AppUpdateStatus.available ? 1 : 0;
+            });
         }
 
         private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
@@ -255,14 +246,14 @@ namespace Lively.UI.WinUI
 
         public void NavViewNavigate(NavPages item)
         {
-            var tag = GetEnumMemberAttrValue(item);
+            var tag = item.GetAttrValue();
             navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
             NavigatePage(tag);
         }
 
         private void NavigatePage(string navItemTag)
         {
-            var item = _pages.FirstOrDefault(p => GetEnumMemberAttrValue(p.NavPage).Equals(navItemTag));
+            var item = _pages.FirstOrDefault(p => p.NavPage.GetAttrValue().Equals(navItemTag));
             Type _page = item.Page;
             // Get the page type before navigation so you can prevent duplicate entries in the backstack.
             var preNavPageType = contentFrame.CurrentSourcePageType;
@@ -415,12 +406,26 @@ namespace Lively.UI.WinUI
             }
         }
 
-        private void ControlPanelButton_Click(object sender, RoutedEventArgs e) => _ = dialogService.ShowControlPanelDialogAsync();
+        private void ControlPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _ = dialogService.ShowControlPanelDialogAsync();
+        }
 
-        private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e) =>
+        private void UpdatedButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavViewNavigate(NavPages.appUpdate);
+        }
+
+        private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e)
+        {
             LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
+        }
+         
 
-        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e) => dialogService.ShowThemeDialogAsync();
+        private void AppBarThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            dialogService.ShowThemeDialogAsync();
+        }
 
         private void AppBarHelpButton_Click(object sender, RoutedEventArgs e)
         {
@@ -440,16 +445,17 @@ namespace Lively.UI.WinUI
 
         private void CreateMainMenu()
         {
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), "library", "\uE8A9"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGallery"), "gallery", "\uE719"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), NavPages.library.GetAttrValue(), "\uE8A9"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGallery"), NavPages.gallery.GetAttrValue(), "\uE719"));
+            navView.MenuItems.Add(CreateMenu("Update", NavPages.appUpdate.GetAttrValue(), "\uE777", new InfoBadge() { Value = 1, Opacity = appUpdater.Status == AppUpdateStatus.available ? 1 : 0 }));
         }
 
         private void CreateSettingsMenu()
         {
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), "settings_general"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), "settings_performance"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), "settings_wallpaper"));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), "settings_system"));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), NavPages.settingsGeneral.GetAttrValue()));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), NavPages.settingsPerformance.GetAttrValue()));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), NavPages.settingsWallpaper.GetAttrValue()));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), NavPages.settingsSystem.GetAttrValue()));
         }
 
         //When items change selection not showing, ref: https://github.com/microsoft/microsoft-ui-xaml/issues/7216
@@ -527,7 +533,7 @@ namespace Lively.UI.WinUI
                 NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
             }
             */
-            if (libraryVm.IsWorking)
+            if (libraryVm.IsWorking || appUpdateVm.IsDownloading)
             {
                 args.Handled = true;
 
@@ -539,6 +545,7 @@ namespace Lively.UI.WinUI
                                                             false);
                 if (result == IDialogService.DialogResult.primary)
                 {
+                    appUpdateVm.CancelDownload();
                     libraryVm.CancelAllDownloads();
                     libraryVm.IsBusy = true;
                     await Task.Delay(1500);
@@ -597,6 +604,10 @@ namespace Lively.UI.WinUI
                                 else if (args[1].Equals("SHOWCUSTOMISEPANEL", StringComparison.OrdinalIgnoreCase))
                                 {
                                     _ = dialogService.ShowControlPanelDialogAsync();
+                                }
+                                else if (args[1].Equals("SHOWAPPUPDATEPAGE", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    NavViewNavigate(NavPages.appUpdate);
                                 }
                             }
                         });
@@ -846,6 +857,8 @@ namespace Lively.UI.WinUI
             library,
             [EnumMember(Value = "gallery")]
             gallery,
+            [EnumMember(Value = "appUpdate")]
+            appUpdate,
             [EnumMember(Value = "settings_general")]
             settingsGeneral,
             [EnumMember(Value = "settings_performance")]
@@ -854,14 +867,6 @@ namespace Lively.UI.WinUI
             settingsWallpaper,
             [EnumMember(Value = "settings_system")]
             settingsSystem,
-        }
-
-        public static string GetEnumMemberAttrValue<T>(T enumVal) where T : Enum
-        {
-            var enumType = typeof(T);
-            var memInfo = enumType.GetMember(enumVal.ToString());
-            var attr = memInfo.FirstOrDefault()?.GetCustomAttributes(false).OfType<EnumMemberAttribute>().FirstOrDefault();
-            return attr?.Value;
         }
 
         private readonly FontIcon[] audioIcons =
@@ -883,13 +888,14 @@ namespace Lively.UI.WinUI
             "\uE905",
         };
 
-        private static NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "")
+        private static NavigationViewItem CreateMenu(string menuName, string tag, string glyph = "", InfoBadge badge = null)
         {
             var item = new NavigationViewItem
             {
                 Name = menuName,
                 Content = menuName,
                 Tag = tag,
+                InfoBadge = badge
             };
             if (!string.IsNullOrEmpty(glyph))
             {

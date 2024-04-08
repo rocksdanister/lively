@@ -366,7 +366,7 @@
                     Margin="7.5,-2.5,0,0"
                     VerticalAlignment="Center">
                     <TextBlock x:Uid="UpdateCompleted" FontWeight="SemiBold" />
-                    <HyperlinkButton NavigateUri="https://rocksdanister.com/lively/changelog">
+                    <HyperlinkButton Click="UpdatedButton_Click">
                         <TextBlock x:Uid="UpdateWhatsNew" />
                     </HyperlinkButton>
                 </StackPanel>

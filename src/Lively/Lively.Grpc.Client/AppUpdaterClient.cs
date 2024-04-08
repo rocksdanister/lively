@@ -76,7 +76,7 @@ namespace Lively.Grpc.Client
                     {
                         var resp = call.ResponseStream.Current;
                         await UpdateStatusRefresh();
-                        UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri, LastCheckChangelog));
+                        UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri));
                     }
                     finally
                     {

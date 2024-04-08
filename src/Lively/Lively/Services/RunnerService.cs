@@ -47,11 +47,32 @@ namespace Lively.Services
 
         public void ShowUI()
         {
-            if (processUI != null)
+            ShowUI(null, "WM SHOW");
+        }
+
+        public void ShowAppUpdatePage()
+        {
+            ShowUI("--appUpdate true", "WM SHOW");
+        }
+
+        public void ShowCustomisWallpaperePanel()
+        {
+            // We want a simpler impl here since this has only one specific use.
+            if (processUI is null)
             {
                 try
                 {
-                    processUI.StandardInput.WriteLine("WM SHOW");
+                    var proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = fileName,
+                            UseShellExecute = false,
+                            Arguments = "--trayWidget true",
+                            WorkingDirectory = workingDirectory,
+                        },
+                    };
+                    proc.Start();
                 }
                 catch (Exception e)
                 {
@@ -60,50 +81,7 @@ namespace Lively.Services
             }
             else
             {
-                try
-                {
-                    processUI = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = fileName,
-                            RedirectStandardInput = true,
-                            RedirectStandardOutput = false,
-                            RedirectStandardError = false,
-                            UseShellExecute = false,
-                            WorkingDirectory = workingDirectory,
-                        },
-                        EnableRaisingEvents = true
-                    };
-                    processUI.Exited += Proc_UI_Exited;
-                    processUI.OutputDataReceived += Proc_OutputDataReceived;
-                    processUI.Start();
-                    //winui writing debug information into output stream :/
-                    //processUI.BeginOutputReadLine();
-                    //processUI.BeginErrorReadLine();
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e);
-                    processUI = null;
-                    _ = MessageBox.Show($"{Properties.Resources.LivelyExceptionGeneral}\nEXCEPTION:\n{e.Message}",
-                        Properties.Resources.TextError,
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
-                }
-
-                if (!_isFirstRun)
-                {
-                    try
-                    {
-                        SetWindowRect(processUI, prevWindowRect);
-                    }
-                    catch (Exception ie)
-                    {
-                        Logger.Error($"Failed to restore windowrect: {ie.Message}");
-                    }
-                }
-                _isFirstRun = false;
+                processUI?.StandardInput.WriteLine("LM SHOWCUSTOMISEPANEL");
             }
         }
 
@@ -161,23 +139,20 @@ namespace Lively.Services
             NativeMethods.GetWindowRect(processUI.MainWindowHandle, out prevWindowRect);
         }
 
-        public void ShowCustomisWallpaperePanel()
+        public void SetBusyUI(bool isBusy) => processUI?.StandardInput.WriteLine(isBusy ? "LM SHOWBUSY" : "LM HIDEBUSY");
+
+        public IntPtr HwndUI => processUI?.MainWindowHandle ?? IntPtr.Zero;
+
+        public bool IsVisibleUI =>
+            processUI != null && NativeMethods.IsWindowVisible(processUI.MainWindowHandle);
+
+        private void ShowUI(string startArgs, string wmArgs)
         {
-            if (processUI is null)
+            if (processUI != null)
             {
                 try
                 {
-                    var proc = new Process
-                    {
-                        StartInfo = new ProcessStartInfo
-                        {
-                            FileName = fileName,
-                            UseShellExecute = false,
-                            Arguments ="--trayWidget true",
-                            WorkingDirectory = workingDirectory,
-                        },
-                    };
-                    proc.Start();
+                    processUI.StandardInput.WriteLine(wmArgs);
                 }
                 catch (Exception e)
                 {
@@ -186,16 +161,53 @@ namespace Lively.Services
             }
             else
             {
-                processUI?.StandardInput.WriteLine("LM SHOWCUSTOMISEPANEL");
+                try
+                {
+                    processUI = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = fileName,
+                            RedirectStandardInput = true,
+                            RedirectStandardOutput = false,
+                            RedirectStandardError = false,
+                            UseShellExecute = false,
+                            Arguments = startArgs ?? string.Empty,
+                            WorkingDirectory = workingDirectory,
+                        },
+                        EnableRaisingEvents = true
+                    };
+                    processUI.Exited += Proc_UI_Exited;
+                    processUI.OutputDataReceived += Proc_OutputDataReceived;
+                    processUI.Start();
+                    //winui writing debug information into output stream :/
+                    //processUI.BeginOutputReadLine();
+                    //processUI.BeginErrorReadLine();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e);
+                    processUI = null;
+                    _ = MessageBox.Show($"{Properties.Resources.LivelyExceptionGeneral}\nEXCEPTION:\n{e.Message}",
+                        Properties.Resources.TextError,
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+
+                if (!_isFirstRun)
+                {
+                    try
+                    {
+                        SetWindowRect(processUI, prevWindowRect);
+                    }
+                    catch (Exception ie)
+                    {
+                        Logger.Error($"Failed to restore windowrect: {ie.Message}");
+                    }
+                }
+                _isFirstRun = false;
             }
         }
-
-        public void SetBusyUI(bool isBusy) => processUI?.StandardInput.WriteLine(isBusy ? "LM SHOWBUSY" : "LM HIDEBUSY");
-
-        public IntPtr HwndUI => processUI?.MainWindowHandle ?? IntPtr.Zero;
-
-        public bool IsVisibleUI =>
-            processUI != null && NativeMethods.IsWindowVisible(processUI.MainWindowHandle);
 
         private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {

@@ -37,6 +37,7 @@ namespace Lively
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
+        private readonly IDialogService dialogService;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
@@ -48,6 +49,7 @@ namespace Lively
             IAppUpdaterService appUpdater,
             IDisplayManager displayManager,
             IPlayback playbackMonitor,
+            IDialogService dialogService,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.runner = runner;
@@ -109,7 +111,7 @@ namespace Lively
                 {
                     Enabled = false
                 };
-                updateTrayBtn.Click += (s, e) => App.AppUpdateDialog(appUpdater.LastCheckUri, appUpdater.LastCheckChangelog);
+                updateTrayBtn.Click += (s, e) => runner.ShowAppUpdatePage();
                 _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
             }
             //Report bug

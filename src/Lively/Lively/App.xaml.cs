@@ -34,6 +34,7 @@ using Lively.Common.Models;
 using Lively.Common.Services.Update;
 using Lively.Helpers;
 using Lively.Common.Services.Downloader;
+using Lively.ViewModels;
 
 namespace Lively
 {
@@ -45,6 +46,7 @@ namespace Lively
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
         private readonly NamedPipeServer grpcServer;
+        private int updateNotifyAmt = 1;
 
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
@@ -206,10 +208,10 @@ namespace Lively
                 }
             };
 
-#if DEBUG != true
+#if !DEBUG
             var appUpdater = Services.GetRequiredService<IAppUpdaterService>();
             appUpdater.UpdateChecked += AppUpdateChecked;
-            _ = appUpdater.CheckUpdate();
+            _ = appUpdater.CheckUpdate(30 * 1000);
             appUpdater.Start();
 #endif
             Debug.WriteLine("App Update checking disabled in DEBUG mode.");
@@ -238,6 +240,7 @@ namespace Lively
                 .AddSingleton<CommandsServer>()
                 .AddSingleton<AppUpdateServer>()
                 .AddSingleton<WallpaperPlaylistServer>()
+                .AddSingleton<IDialogService, DialogService>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
@@ -245,7 +248,9 @@ namespace Lively
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()
-                .AddTransient<IDownloadService, MultiDownloadService>()
+                .AddTransient<IDownloadService, SimpleDownloadService>()
+                //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+                .AddHttpClient()
                 //.AddTransient<SetupView>()
                 /*
                 .AddLogging(loggingBuilder =>
@@ -310,48 +315,23 @@ namespace Lively
             currentTheme = theme;
         }
 
-        //number of times to notify user about update.
-        private static int updateNotifyAmt = 1;
-        private static bool updateNotify = false;
         private void AppUpdateChecked(object sender, AppUpdaterEventArgs e)
         {
-            var sysTray = Services.GetRequiredService<ISystray>();
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                if (e.UpdateStatus == AppUpdateStatus.available)
-                {
-                    if (updateNotifyAmt > 0)
-                    {
-                        updateNotifyAmt--;
-                        updateNotify = true;
-                        sysTray?.ShowBalloonNotification(4000,
-                            "Lively Wallpaper",
-                            Lively.Properties.Resources.TextUpdateAvailable);
-                    }
-
-                    //If UI program already running then notification is displayed withing the it.
-                    if (!Services.GetRequiredService<IRunnerService>().IsVisibleUI && updateNotify)
-                    {
-                        AppUpdateDialog(e.UpdateUri, e.ChangeLog);
-                    }
-                }
                 Logger.Info($"AppUpdate status: {e.UpdateStatus}");
-            }));
-        }
+                if (e.UpdateStatus != AppUpdateStatus.available || updateNotifyAmt <= 0)
+                    return;
 
-        private static AppUpdater updateWindow;
-        public static void AppUpdateDialog(Uri uri, string changelog)
-        {
-            updateNotify = false;
-            if (updateWindow == null)
-            {
-                updateWindow = new AppUpdater(uri, changelog)
+                updateNotifyAmt--;
+                // If interface is visible then skip (shown in-app instead.)
+                if (!Services.GetRequiredService<IRunnerService>().IsVisibleUI)
                 {
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen
-                };
-                updateWindow.Closed += (s, e) => { updateWindow = null; };
-                updateWindow.Show();
-            }
+                    Services.GetRequiredService<ISystray>().ShowBalloonNotification(4000,
+                        "Lively Wallpaper",
+                        Lively.Properties.Resources.TextUpdateAvailable);
+                }
+            }));
         }
 
         private void CreateWallpaperDir(string baseDirectory)
