@@ -1,33 +1,43 @@
-﻿using Lively.Common;
+using Lively.Common;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Web.WebView2.Core;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Lively.UI.WinUI.Views.Pages
 {
-    public sealed partial class AppUpdateView : Page
+    public sealed partial class PatreonSupportersView : Page
     {
-        private readonly AppUpdateViewModel viewModel;
+        private readonly PatreonSupportersViewModel viewModel;
 
-        public AppUpdateView()
+        public PatreonSupportersView()
         {
             this.InitializeComponent();
-            this.viewModel = App.Services.GetRequiredService<AppUpdateViewModel>();
-            this.DataContext = this.viewModel;
+            this.viewModel = App.Services.GetRequiredService<PatreonSupportersViewModel>();
+            this.DataContext = viewModel;
         }
 
-        // ref: https://github.com/MicrosoftEdge/WebView2Samples
-        private async void WebView_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
+        private void WebView_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
         {
             if (args.Exception != null)
             {
-                viewModel.UpdateChangelogError = args.Exception.ToString();
+                viewModel.SupportersFetchError = args.Exception.ToString();
             }
             else
             {
@@ -55,11 +65,6 @@ namespace Lively.UI.WinUI.Views.Pages
             // Stay in page
             if (args.IsRedirected)
                 args.Cancel = true;
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            BackgroundGridShadow.Receivers.Add(BackgroundGrid);
         }
     }
 }

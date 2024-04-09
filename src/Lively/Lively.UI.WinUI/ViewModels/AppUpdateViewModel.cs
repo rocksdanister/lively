@@ -34,11 +34,15 @@ namespace Lively.UI.WinUI.ViewModels
 
             languageResource = ResourceLoader.GetForViewIndependentUse();
 
-            MenuUpdate(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
+            UpdateState(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
 
             downloader.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
             downloader.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
+
+            // This is only run once if the main interface is opened before the initial fetchDelay in Core for update check.
+            if (appUpdater.Status == AppUpdateStatus.notchecked)
+                _ = CheckUpdate();
         }
 
         public bool IsWinStore => Constants.ApplicationType.IsMSIX;
@@ -82,6 +86,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private string updateStatusSeverity = "Warning";
+
+        [ObservableProperty]
+        private AppUpdateStatus updateStatus;
 
         [RelayCommand]
         private async Task CheckUpdate()
@@ -130,7 +137,7 @@ namespace Lively.UI.WinUI.ViewModels
         {
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {
-                MenuUpdate(e.UpdateStatus, e.UpdateDate, e.UpdateVersion);
+                UpdateState(e.UpdateStatus, e.UpdateDate, e.UpdateVersion);
             });
         }
 
@@ -150,7 +157,7 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private void MenuUpdate(AppUpdateStatus status, DateTime date, Version version)
+        private void UpdateState(AppUpdateStatus status, DateTime date, Version version)
         {
             switch (status)
             {
@@ -162,7 +169,7 @@ namespace Lively.UI.WinUI.ViewModels
                 case AppUpdateStatus.available:
                     IsUpdateAvailable = true;
                     UpdateStatusSeverity = "Success";
-                    UpdateStatusText = $"{languageResource.GetString("DescriptionUpdateAvailable")} (v{version})";
+                    UpdateStatusText = languageResource.GetString("DescriptionUpdateAvailable");
                     break;
                 case AppUpdateStatus.invalid:
                     IsUpdateAvailable = false;
@@ -180,6 +187,7 @@ namespace Lively.UI.WinUI.ViewModels
                     UpdateStatusText = languageResource.GetString("TextupdateCheckFail");
                     break;
             }
+            UpdateStatus = status;
             UpdateDateText = status == AppUpdateStatus.notchecked ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
             UpdateCommandText = IsUpdateAvailable ? languageResource.GetString("TextInstall") : languageResource.GetString("TextUpdateCheck");
         }

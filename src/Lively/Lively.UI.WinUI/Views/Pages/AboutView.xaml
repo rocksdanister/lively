@@ -27,7 +27,6 @@
                         x:Uid="AboutMe"
                         Width="375"
                         Margin="5,25,5,5"
-                        FontSize="12"
                         Style="{ThemeResource BodyTextBlockStyle}"
                         TextWrapping="WrapWholeWords" />
                     <PersonPicture
@@ -35,87 +34,33 @@
                         VerticalAlignment="Center"
                         ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
                 </StackPanel>
-                <CommandBar HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
-                    <AppBarButton Click="GithubButton_Click" ToolTipService.ToolTip="https://github.com/rocksdanister">
+                <CommandBar HorizontalAlignment="Center" OverflowButtonVisibility="Collapsed">
+                    <AppBarButton Command="{Binding OpenGithubCommand}" ToolTipService.ToolTip="https://github.com/rocksdanister">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE907;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarButton Click="TwitterButton_Click" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
+                    <AppBarButton Command="{Binding OpenTwitterCommand}" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE909;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
+                    <!--<AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE908;" />
                         </AppBarButton.Icon>
-                    </AppBarButton>
-                    <AppBarButton Click="YoutubeButton_Click" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
+                    </AppBarButton>-->
+                    <AppBarButton Command="{Binding OpenYoutubeCommand}" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90a;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <AppBarButton Click="EmailButton_Click" ToolTipService.ToolTip="awoo.git@gmail.com">
+                    <AppBarButton Command="{Binding OpenEmailCommand}" ToolTipService.ToolTip="awoo.git@gmail.com">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE906;" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </CommandBar>
-
-                <!--<controls:SettingsCard Margin="0,5,0,0" Header="{Binding AppVersionText}">
-                    <controls:SettingsCard.HeaderIcon>
-                        <FontIcon Glyph="&#xE117;" />
-                    </controls:SettingsCard.HeaderIcon>
-                    <controls:SettingsCard.Description>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Style="{StaticResource SecondaryTextStyle}">
-                                <Run Text="{Binding UpdateDateText}" />
-                            </TextBlock>
-                            <HyperlinkButton
-                                Margin="0,2,0,0"
-                                Content="Release notes"
-                                NavigateUri="https://github.com/rocksdanister/lively/releases" />
-                        </StackPanel>
-                    </controls:SettingsCard.Description>
-                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                        <Button
-                            HorizontalAlignment="Right"
-                            Command="{Binding UpdateAppCommand}"
-                            Content="{Binding UpdateCommandText}"
-                            Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />
-                    </StackPanel>
-                </controls:SettingsCard>
-                <InfoBar
-                    Name="infoBar"
-                    Title="{Binding UpdateStatusText}"
-                    Margin="0,-1.5,0,0"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Severity="{Binding UpdateStatusSeverity, Converter={StaticResource InfoBarSeverityConverter}, Mode=OneWay}"
-                    Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}" />-->
-
-                <controls:SettingsExpander Header="Patreon" IsExpanded="False">
-                    <controls:SettingsExpander.HeaderIcon>
-                        <FontIcon Glyph="&#xEB51;" />
-                    </controls:SettingsExpander.HeaderIcon>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <ScrollViewer
-                                Height="250"
-                                MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                MaxHeight="250"
-                                Padding="10"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Auto">
-                                <wctc:MarkdownTextBlock
-                                    x:Name="markDownPatreon"
-                                    Background="Transparent"
-                                    Text="{Binding PatreonMembers}" />
-                            </ScrollViewer>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
 
                 <StackPanel
                     x:Name="contributorPanel"
@@ -144,6 +89,9 @@
                         </HyperlinkButton>
                         <HyperlinkButton NavigateUri="https://github.com/GireeshChandran" ToolTipService.ToolTip="Gireesh Chandran">
                             <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/GireeshChandran" />
+                        </HyperlinkButton>
+                        <HyperlinkButton NavigateUri="https://github.com/everything411" ToolTipService.ToolTip="everything411 ">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/everything411" />
                         </HyperlinkButton>
                     </StackPanel>
                 </StackPanel>

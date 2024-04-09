@@ -93,6 +93,7 @@
     <None Remove="Views\Pages\HelpView.xaml" />
     <None Remove="Views\Pages\LibraryAboutView.xaml" />
     <None Remove="Views\Pages\LoginView.xaml" />
+    <None Remove="Views\Pages\PatreonSupportersView.xaml" />
     <None Remove="Views\Pages\ScreensaverLayoutView.xaml" />
     <None Remove="Views\Pages\SettingsGeneralView.xaml" />
     <None Remove="Views\Pages\SettingsPerformanceView.xaml" />
@@ -212,6 +213,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\Pages\PatreonSupportersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Content Update="Assets\Icons\icons8-warn.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

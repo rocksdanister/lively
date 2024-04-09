@@ -195,16 +195,27 @@ namespace Lively.UI.WinUI.Services
 
         public async Task ShowAboutDialogAsync()
         {
-            var vm = App.Services.GetRequiredService<AboutViewModel>();
             await new ContentDialog()
             {
                 Title = i18n.GetString("About/Label"),
-                Content = new AboutView(vm),
+                Content = new AboutView(),
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
-            vm.OnWindowClosing(this, new RoutedEventArgs());
+        }
+
+        public async Task ShowPatreonSupportersDialogAsync()
+        {
+            await new ContentDialog()
+            {
+                Title = "Patreon Supporters",
+                Content = new PatreonSupportersView(),
+                PrimaryButtonText = "Become a Patreon supporter",
+                SecondaryButtonText = "Cancel",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            }.ShowAsyncQueue();
         }
 
         public async Task ShowControlPanelDialogAsync()

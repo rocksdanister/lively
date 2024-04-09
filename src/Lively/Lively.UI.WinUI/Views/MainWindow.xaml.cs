@@ -418,7 +418,7 @@ namespace Lively.UI.WinUI
 
         private void AppBarCoffeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
+            _ = dialogService.ShowPatreonSupportersDialogAsync();
         }
          
 

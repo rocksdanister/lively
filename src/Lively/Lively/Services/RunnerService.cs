@@ -52,7 +52,7 @@ namespace Lively.Services
 
         public void ShowAppUpdatePage()
         {
-            ShowUI("--appUpdate true", "WM SHOW");
+            ShowUI("--appUpdate true", "LM SHOWAPPUPDATEPAGE");
         }
 
         public void ShowCustomisWallpaperePanel()

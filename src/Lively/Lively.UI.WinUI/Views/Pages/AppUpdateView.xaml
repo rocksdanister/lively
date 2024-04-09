@@ -24,7 +24,6 @@
             x:Name="WebView"
             CoreWebView2Initialized="WebView_CoreWebView2Initialized"
             DefaultBackgroundColor="Black"
-            NavigationCompleted="WebView_NavigationCompleted"
             NavigationStarting="WebView_NavigationStarting"
             Source="https://www.rocksdanister.com/lively/changelog/"
             Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
@@ -63,7 +62,7 @@
         <Grid x:Name="BackgroundGrid" />
         <!--  Update controls  -->
         <Grid
-            Width="525"
+            Width="550"
             Margin="0,0,0,10"
             VerticalAlignment="Bottom"
             Shadow="{StaticResource BackgroundGridShadow}"
@@ -79,9 +78,9 @@
                 </controls:SettingsCard.HeaderIcon>
                 <controls:SettingsCard.Description>
                     <StackPanel Orientation="Vertical" Visibility="{Binding IsWinStore, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
-                        <TextBlock Text="{Binding UpdateStatusText}" />
+                        <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding UpdateStatusText}" />
                         <TextBlock
-                            Opacity="0.5"
+                            Opacity="0.75"
                             Style="{StaticResource SecondaryTextStyle}"
                             Text="{Binding UpdateDateText}" />
                         <!--<HyperlinkButton
