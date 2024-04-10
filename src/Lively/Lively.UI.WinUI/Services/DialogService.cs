@@ -207,7 +207,7 @@ namespace Lively.UI.WinUI.Services
 
         public async Task ShowPatreonSupportersDialogAsync()
         {
-            await new ContentDialog()
+            var dlg = new ContentDialog()
             {
                 Title = i18n.GetString("TitlePatreon/Text"),
                 Content = new PatreonSupportersView(),
@@ -215,7 +215,11 @@ namespace Lively.UI.WinUI.Services
                 SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            }.ShowAsyncQueue();
+            };
+            dlg.Resources["ContentDialogMinWidth"] = 640;
+
+            if (await dlg.ShowAsyncQueue() == ContentDialogResult.Primary)
+                LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/coffee/");
         }
 
         public async Task ShowControlPanelDialogAsync()
