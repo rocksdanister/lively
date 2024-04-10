@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Redați audio numai când desktopul este selectat</value>
+    <value>Redă audio numai când desktopul este focalizat</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volumul tuturor fundalurilor.</value>
@@ -172,7 +172,7 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
     <value>Sigur ștergi acest fundal din Bibliotecă?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Trage fișiere în Bibliotecă</value>
+    <value>Pur și simplu tragi și plasezi fișierele aici</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Deschizi o aplicație externă ca fundal.
@@ -183,10 +183,10 @@ Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</
     <value>Lively este minimizat în bara de sistem, fă clic dreapta pe pictograma lively pentru a continua.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Repornește Lively pentru ca setările să aibă efect.</value>
+    <value>Te rog repornește Lively pentru ca setările să aibă efect</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Oprește înainte de a proceda.</value>
+    <value>Te rog oprește înainte să procedezi</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Apasă pentru a începe înregistrarea</value>
@@ -204,17 +204,17 @@ Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</
     <value>Introdu linkul site-ului pentru a încărca, linkurile shadertoy.com sunt acceptate</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Acest expert te va ajuta să configuri Lively.</value>
+    <value>Acest asistent o să te ajute să configurezi Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Versiunea ta Windows N/KN va necesita descărcarea de codecuri suplimentare pentru a suporta redarea video în imagini de fundal.</value>
+    <value>Versiunea ta Windows N/KN va necesita descărcarea de codec uri suplimentare pentru a suporta redarea video în imagini de fundal</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Arată sprijin cumpărând cafea dezvoltatorului</value>
+    <value>Arată suportul cu o cafea pentru dezvoltator</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Ești pe cale să treci la versiunea beta (dezvoltator) a Lively.
-Actualizările vor fi frecvente și pot conține erori!</value>
+Actualizările vor fi frecvente și poate să nu meargă stabil!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Vizibilitatea iconiței, Lively va continua să meargă cu iconița ascunsă</value>
@@ -223,7 +223,7 @@ Actualizările vor fi frecvente și pot conține erori!</value>
     <value>Iconiță din bară</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively va reporni pentru a aplica noua limbă.</value>
+    <value>Lively va reporni pentru a aplica o nouă limbă</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Limbă</value>
@@ -233,11 +233,11 @@ Actualizările vor fi frecvente și pot conține erori!</value>
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Fișier de fundal deteriorat, încearcă să redescarci.</value>
+    <value>Fișier de fundal corupt, încearcă să îl redescarci</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Hopa... Se pare că ceva nu a mers bine :(
-Pentru a înțelege mai bine această eroare și a remedia problema, trimite fișierul  "log" cu dezvoltatorul.
+    <value>Ups... Se pare că ceva nu funcționează perfect :(
+Pentru a înțelege mai bine această eroare și de a remedia problema, trimite fișierul  "log" cu dezvoltatorul.
 Instrucțiuni pentru partajarea fișierului "log":
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
@@ -297,7 +297,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Caută</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Anulare</value>
+    <value>Anulează</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
     <value>Schimbă fundaluri</value>
@@ -338,8 +338,8 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per ecran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Descarcă</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Descărcare</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Editează</value>
@@ -348,22 +348,22 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Eroare</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Ieșire</value>
+    <value>Ieșiți</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Exportează lively .zip</value>
+    <value>Salvează ca fișier</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>Unele funcții nu sunt disponibile în această versiune de Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Fișier negăsit</value>
+    <value>Fișierul nu a fost găsit</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>GIF animat</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>Arată puțină dragoste aruncând o stea</value>
+    <value>Arată niște susținere aruncând o stea</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Mergi</value>
@@ -372,9 +372,9 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Ajută să traduci</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>ore</value>
+    <value>Oră(e)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalare</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -390,7 +390,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Licență</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minute</value>
+    <value>minut(e)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Informație</value>
@@ -474,7 +474,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Setează ca fundal</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Deschide locație fișier</value>
+    <value>Deschide locația fișierului</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Sursă</value>
@@ -540,13 +540,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Formatul de fișier nu este acceptat</value>
+    <value>Formatul fișierului nu suportă</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Actualizare disponibilă!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Caută actualizări</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Căutați actualizări</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Nu s-a putut verifica actualizarea software-ului</value>
@@ -558,7 +558,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Software-ul este la zi!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>Video</value>
+    <value>Videoclip</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
     <value>Introdu argumente opționale în linia de comandă</value>
@@ -570,7 +570,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Nimic</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniform</value>
+    <value>Uniformă</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Umplere uniformă</value>
@@ -1179,45 +1179,54 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Extensii</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Creează o imagine de fundal dinamică</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Avansat</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Aproximare adâncime..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Folosind AI, transforma fotografiile în 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Continuă</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Creează o imagine de fundal simplă</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>Fundal Adâncime cu Inteligență Artificială</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Fundal de adâncime</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Fundal generată cu Fundal de adâncime</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Creează un fundal</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Câteva funcții nu sunt disponibile când este pornit ca administrator</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Fișiere suplimentare trebuie să fie descărcate ca să folosești această funcție</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Necesită descărcarea</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Descarcă</value>
+    <value>Descărcare</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

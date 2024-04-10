@@ -186,7 +186,7 @@ OLED, प्लाज्मा या CRT डिस्प्ले के लि
     <value>सेटिंग्स को प्रभावी बनाने के लिए पुनर्प्रारंभ  करें.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>आगे जाने से पहले रुकिए</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>रिकॉर्डिंग शुरू करने के लिए दबाएं।</value>
@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>प्रति स्क्रीन</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>डाउनलोड</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>इंस्टॉल</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -549,7 +549,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>उपलब्ध अद्यतन!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>अपडेट के लिए खोजें</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1185,45 +1185,54 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>प्लगइन्स</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>गतिशील वालपेपर बनाए</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Coding</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>गहराई का अनुमान लगाया जा रहा है. .</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>AI का उपयोग करके तस्वीरों को 3D में बदलें</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>आगे</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>एक साधारण वालपेपर बनाए</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>एआई गहराई वॉलपेपर</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>वालपेपर बनाए</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value/>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>वालपेपर बनाए</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value/>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
     <value>Additional files need to be downloaded for this feature</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>डाउनलोड कि आवश्यकता है</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>डाउनलोड</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

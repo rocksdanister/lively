@@ -130,7 +130,7 @@
     <value>Звук</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Онлайн дискусійний форум</value>
+    <value>Онлайн обговорення</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
     <value>Документація API та допомога</value>
@@ -141,10 +141,10 @@
 Провідник Windows перезавантажився двічі за останні 30 секунд! Це може бути пов'язано з конфліктом між Lively та іншою програмою кастомізації системи. Для уникнення подальших проблем всі шпалери вимкнено.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Знайдена несумісна програма, тематизація панелі завдань вимкнена.</value>
+    <value>Знайдена несумісна програма, тема панелі завдань вимкнена</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Офіційна веб-сторінка Lively Wallpaper</value>
+    <value>Офіційна вебсторінка Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Більшість сучасних рідкокристалічних та світлодіодних дисплеїв не страждають від вигорання, і тому будь-які шпалери можна використовувати як заставку.
@@ -157,7 +157,7 @@
     <value>Повідомити про проблему з програмним забезпеченням</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Виберіть файл або вкажіть URL-адресу веб-сайту, який потрібно встановити як шпалери.</value>
+    <value>Оберіть файл</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Встановіть поведінку відтворення шпалер на основі запущеної програми</value>
@@ -166,13 +166,13 @@
     <value>Ви впевнені, що хочете скасувати?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Ви справді бажаєте остаточно видалити шпалери з диску?</value>
+    <value>Ви справді бажаєте остаточно видалити шпалери з файлової системи?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Ви впевнені, що хочете видалити ці шпалери з бібліотеки?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Просто перетягніть файли в бібліотеку</value>
+    <value>Просто перетягніть файли сюди</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Ви відкриваєте зовнішню програму як шпалери.
@@ -180,22 +180,22 @@
 Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively згорнено до системного трею, натисніть правою кнопкою миші на значок Lively для додаткових опцій.</value>
+    <value>Lively згорнено до системного лотка, натисніть правою кнопкою миші на значок Lively для додаткових опцій.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Будь ласка, перезапустіть Lively, щоб налаштування набрали чинності.</value>
+    <value>Будь ласка, перезапустіть Lively, щоб налаштування набули чинності</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Будь ласка, зупиніться, перш ніж продовжити.</value>
+    <value>Будь ласка, зупиніться, перш ніж продовжити</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Натисніть, щоб розпочати запис.</value>
+    <value>Натисніть для початку запису</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Відновлення попередніх шпалер.</value>
+    <value>Наразі відбувається відновлення попередніх шпалер, будь ласка, зачекайте...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Виберіть монітор</value>
+    <value>Виберіть дисплей</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Доступна нова версія!</value>
@@ -204,10 +204,10 @@
     <value>Введіть посилання на сторінку, підтримуються посилання Shadertoy.com</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Цей майстер допоможе вам розпочати налаштування Lively.</value>
+    <value>Цей майстер допоможе вам розпочати налаштування Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ваша версія Windows N/KN вимагає завантаження додаткових кодексів для підтримки відтворення відео в шпалерах.</value>
+    <value>Ваша версія Windows N/KN потребуватиме завантаження додаткових кодеків для підтримки відтворення відео у шпалерах</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Проявіть підтримку, купивши каву для розробників</value>
@@ -220,29 +220,30 @@
     <value>Видимість значка системного лотка, Lively продовжуватиме працювати з прихованим значком</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Іконка на панелі задач</value>
+    <value>Значок системного трею</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Потрібен перезапуск Lively для зміни мови</value>
+    <value>Lively перезапуститься для зміни мови</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Мова</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Помилка оновлення. Спробуйте завантажити інсталятор з</value>
+    <value>Помилка оновлення. Спробуйте завантажити інсталятор з:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Файл шпалер пошкоджено, спробуйте завантажити заново.</value>
+    <value>Файл шпалер пошкоджено, спробуйте завантажити заново</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Упс... Схоже, щось не так :(
+    <value>Упс... Схоже, щось пішло не так :(
 Щоб краще зрозуміти цю помилку та виправити проблему, надайте файл журналу розробнику.
 Інструкції щодо надсилання файлу журналу:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively не може працювати з Windows в режимі високої контрастності!
-Вимкніть режим високої контрастності і спробуйте знову.</value>
+    <value>Lively не може працювати з увімкненим режимом високої контрастності Windows!
+Вимкніть режим високої контрастності та спробуйте знову</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Помилка відтворення медіа :(
@@ -253,10 +254,11 @@ https://github.com/rocksdanister/lively/wiki</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Непідтримуваний файл шпалер.</value>
+    <value>Це не файл шпалер Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Доступна нова версія!</value>
+    <value>Lively was не було закрито належним чином, запуск в безпечному режимі.
+Бажаєте відновити раніше запущені шпалери?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Здається, потрібно змінити деякі налаштування, щоб Lively запрацював:-  
@@ -340,7 +342,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Певний екран</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Завантажити</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +378,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>години(-а)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Встановити</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +549,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Доступне оновлення!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Перевірити оновлення</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1223,5 +1225,14 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Завантажити</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

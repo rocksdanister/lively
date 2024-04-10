@@ -339,7 +339,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Display</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Scarica</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -375,7 +375,7 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
   <data name="TextHours" xml:space="preserve">
     <value>ore</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installa</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -546,8 +546,8 @@ Se non funziona ancora, chiudi &amp; riavvia Lively / riavvia Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Aggiornamenti Disponibili!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Controlla per aggiornamenti</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Verifica aggiornamenti</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Impossibile controllare l'aggiornamento del software</value>
@@ -1178,13 +1178,13 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Lo sviluppo di questa funzione è in attesa</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plug-in</value>
+    <value>Componenti aggiuntivi</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
     <value>Crea uno sfondo dinamico</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Avanzato</value>
+    <value>Avanzate</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
     <value>Approssimando la profondità..</value>
@@ -1202,10 +1202,10 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Sfondo con profondità IA</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Sfondo con profondità</value>
+    <value>Profondità Sfondo</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>Sfondo con profondità generata da IA</value>
+    <value>Sfondo con profondità generata dall'IA</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
     <value>Crea Sfondo</value>
@@ -1221,5 +1221,14 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Scarica</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

@@ -183,7 +183,7 @@ Pokračujte pouze, pokud tato aplikace pochází z důvěryhodného zdroje.</val
     <value>Lively je minimalizován na systémovou lištu, pravým tlačítkem myši na ikonu pokračovat.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Pro použití změněných nastavení restartujte prosím aplikaci</value>
+    <value>Prosím restartujte Live, aby se nastavení projevilo</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Před pokračováním prosím zastavte</value>
@@ -195,7 +195,7 @@ Pokračujte pouze, pokud tato aplikace pochází z důvěryhodného zdroje.</val
     <value>Currently restoring previous wallpaper(s), please wait...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Vybrat zobrazení</value>
+    <value>Vybrat displej a zobrazení</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Je dostupná nová verze softwaru!</value>
@@ -226,11 +226,11 @@ Aktualizace budou časté a mohou obsahovat chyby!</value>
     <value>Pro použití nového jazyka se restartuje</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Jazyk Slavakia</value>
+    <value>Jazyky</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Aktualizace se nezdařila; zkuste stáhnout instalační program z:
-https://github.com/rocksdanister/lively/releasases</value>
+    <value>Failed to update; try downloading the installer from:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
     <value>Poškozený soubor tapety, zkuste stáhnout znovu</value>
@@ -340,8 +340,8 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Na obrazovku</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Stáhnout</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Cc</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Upravit</value>
@@ -376,7 +376,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="TextHours" xml:space="preserve">
     <value>hodin(y)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Nainstalovat</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -494,7 +494,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Podpora</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Přepnout na stabilní (výchozí kanál)</value>
+    <value>Přepnout na beta (vývojový kanál)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>Přepnout na stabilní (výchozí kanál)</value>
@@ -547,7 +547,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>K dispozici je aktualizace!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Zkontrolovat aktualizaci</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -659,9 +659,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Změnit přehrávání při spuštění relace vzdálené plochy</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>73 / 5 000
-Výsledky překladu
-Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapetu</value>
+    <value>Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapetu</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Pokud je zjištěn podporovaný odkaz video streamu, použijte video přehrávač namísto načítání webové stránky</value>
@@ -932,10 +930,10 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>Systémové</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Nastavení barevy okna</value>
+    <value>Nastavení barvy Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Notebooky</value>
+    <value>Laptops</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
     <value>Vývojář</value>
@@ -1085,7 +1083,7 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>Další poznámky</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Zpráva</value>
+    <value>Report</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
     <value>Nahlásit tapetu</value>
@@ -1220,6 +1218,15 @@ Po uplynutí doby nečinnosti použijte jako spořič obrazovky aktuální tapet
     <value>Vyžadováno stažení</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Stáhnout</value>
+    <value>Cc</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

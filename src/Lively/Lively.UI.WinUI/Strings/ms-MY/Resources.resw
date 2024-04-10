@@ -339,8 +339,8 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Skrin</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Muat Turun</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Muat turun</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Ubahsuai</value>
@@ -375,7 +375,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
   <data name="TextHours" xml:space="preserve">
     <value>jam</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Pasang</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -546,8 +546,8 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Kemaskini terkini sedia ada!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Cari kemaskini terkini</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Semak kemaskini</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Carian kemaskini terkini gagal</value>
@@ -1222,5 +1222,14 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Muat-turun</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

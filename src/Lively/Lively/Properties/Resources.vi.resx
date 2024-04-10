@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Chỉ phát âm thanh khi đang ở màn hình desktop</value>
+    <value>Chỉ phát âm thanh khi đang ở màn hình chính</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Mức âm lượng của tất cả các hình nền.</value>
+    <value>Âm lượng của tất cả các hình nền</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Âm lượng</value>
@@ -136,7 +136,7 @@
     <value>Tư liệu API và hỗ trợ</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively đã có sự cố nghiêm trọng. 
+    <value>Lively đã gặp sự cố nghiêm trọng. 
 
 Windows Explorer đã khởi động lại 2 lần trong 30 giây! Đây có thể là do Lively và những ứng dụng chỉnh hình nền khác chạy cùng một lúc gây ra lỗi. Để tránh trường hợp bị lỗi nặng hơn, tất cả hình nền của bạn sẽ bị tắt.</value>
   </data>
@@ -175,9 +175,9 @@ Mục đích chính của Lively là để làm cho màn hình desktop của b�
     <value>Kéo và thả tập tin vào đây</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Bạn đang mở một ứng dụng khác để làm hình nền.
+    <value>Bạn đang sử dụng phần mềm thứ 3 để làm hình nền.
 Phần mềm không được kiểm duyệt có thể chứa phần mềm gián điệp, virus.. và làm hại đến máy tính của bạn.
-Chỉ tiếp tục nếu phần mềm này được tin tưởng.</value>
+Chỉ tiếp tục nếu phần mềm này nếu bạn tin tưởng nó.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively đã được thu nhỏ vào khay hệ thống, click vào biểu tượng Lively để tiếp tục.</value>
@@ -192,19 +192,19 @@ Chỉ tiếp tục nếu phần mềm này được tin tưởng.</value>
     <value>Bấm để bắt đầu quay màn hình</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Đang phục hồi các hình nền trước đây, xin đợi trong giây lát...</value>
+    <value>Đang phục hồi các hình nền trước đây, xin vui lòng đợi trong giây lát...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Chọn màn hình</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Một phiên bản mới hơn (của phần mềm) đã có thể sử dụng!</value>
+    <value>Lively đã có một phiên bản mới hơn!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Nhập url trang web để tải, có hỗ trợ link cho shader trên shadertoy.com</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Trình cài đặt này sẽ giúp bạn cài đặt Lively.</value>
+    <value>Trình cài đặt này sẽ giúp bạn cài đặt Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Phiên bản Windows N/KN sẽ cần phải tải thêm một số codecs khác để hỗ trợ chạy video dưới dạng hình nền</value>
@@ -217,7 +217,7 @@ Chỉ tiếp tục nếu phần mềm này được tin tưởng.</value>
 Lively sẽ được cập nhật thường xuyên hơn và sẽ bị lỗi nhiều hơn!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Ẩn hiện tray icon của hệ thống, Lively sẽ tiếp tục chạy dù icon đã bị ẩn</value>
+    <value>Ẩn hiện khay icon của hệ thống, Lively sẽ tiếp tục chạy dù icon đã bị ẩn</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Biểu tượng trên khay hệ thống</value>
@@ -340,8 +340,8 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Từng màn hình</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Tải xuống</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Tải về</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Chỉnh sửa</value>
@@ -376,7 +376,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextHours" xml:space="preserve">
     <value>giờ</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Cài đặt</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Đã có bản cập nhật mới!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Kiểm tra phiên bản mới</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -846,7 +846,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Chiếu trực tiếp</value>
+    <value>Phát trực tuyến</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
     <value>Phát hiện Stream</value>
@@ -1161,7 +1161,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đa dạng</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>Chủ đề</value>
+    <value>Giao diện</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
     <value>Để tránh việc chọn nhầm tất cả desktop icons đã bị ẩn</value>
@@ -1179,45 +1179,54 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Tính năng bổ sung</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Tạo hình nền động</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Tùy Chọn</value>
+    <value>Nâng cao</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Ước lượng độ sâu..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Sử dụng AI để biến bức ảnh thành 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Tiếp tục</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Tạo một hình nền đơn giãn</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
     <value>AI Depth Wallpaper</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Hình nền 3D</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Hình nền 3D bằng AI</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Tạo hình nền</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Một số chức năng sẽ không thể sử dụng được khi chạy dưới dạng administrator</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Cần phải tải thêm một số dữ liệu nữa để sử dụng chức năng này</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Cần tải xuống</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Tải xuống</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

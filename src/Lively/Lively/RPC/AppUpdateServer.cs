@@ -48,7 +48,7 @@ namespace Lively.RPC
                     {
                         // Main user interface downloads the setup.
                         var filePath = Path.Combine(Constants.CommonPaths.TempDir, updater.LastCheckUri.Segments.Last());
-                        if (File.Exists(filePath))
+                        if (!File.Exists(filePath))
                             throw new FileNotFoundException(filePath);
 
                         // Run setup in silent mode.
@@ -60,7 +60,7 @@ namespace Lively.RPC
                     {
                         Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                         {
-                            dialogService.ShowErrorDialog(Properties.Resources.TextError, $"{Properties.Resources.LivelyExceptionAppUpdateFail}\nException:\n{ex}");
+                            dialogService.ShowErrorDialog(Properties.Resources.TextError, $"{Properties.Resources.LivelyExceptionAppUpdateFail}\n\nException:\n{ex}");
                         }));
                     }
                 }

@@ -326,7 +326,7 @@
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>По екрану</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Преузми</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -362,7 +362,7 @@
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Инсталирај</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -533,7 +533,7 @@
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Надоградња доступна!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Провери за надогрању</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1162,13 +1162,13 @@
     <value>This feature development is on hold</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Додаци</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Направи динамичну позадину</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Напредно</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
     <value>Approximating depth..</value>
@@ -1177,10 +1177,10 @@
     <value>Using AI transform photographs into 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Настави</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Направи једноставну позадину</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
     <value>AI Depth Wallpaper</value>
@@ -1192,18 +1192,27 @@
     <value>AI generated depth wallpaper</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Направи позадину</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Неке функције можда неће бити доступне када се покрене као администратор</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Додатни фајлови треба да се преузму за ову опцију</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Преузимање неопходно</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Преузми</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

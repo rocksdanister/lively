@@ -340,8 +340,8 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>1画面当たり</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>ダウンロード</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>ダウンロードする</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>編集</value>
@@ -376,7 +376,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="TextHours" xml:space="preserve">
     <value>時間</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>インストール</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,8 +547,8 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>アップデートが利用可能です！</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>アップデートを確認</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>更新プログラムを確認する</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>アップデートの確認に失敗しました</value>
@@ -1220,6 +1220,15 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
     <value>ダウンロードが必要</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>ダウンロード</value>
+    <value>ダウンロードする</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

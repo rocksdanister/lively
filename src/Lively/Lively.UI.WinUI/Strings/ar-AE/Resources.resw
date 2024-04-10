@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت عندما يكون سطح المكتب مركّزًا فقط</value>
+    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مركز الاهتمام</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>مستوى الصوت لجميع الخلفيات</value>
@@ -261,15 +261,15 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لم يتم إغلاق التطبيق بشكل صحيح, هل تود استعادة الخلفيات السابقة؟</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>يبدو أن بعض الإعدادات تحتاج إلى تعيين لجعل الحياة تعمل:  
-1. اضغط على مفاتيح Win + R لفتح Run, 
-2. اكتب نظام PropertiesPerformance. xe إلى تشغيل، انقر على "موافق" لفتح خيارات الأداء.
-3. تمكين/تحقق من "عناصر التحكم المتحركة والعناصر داخل النوافذ" (إذا تم تحديدها مسبقاً، ثم قم بإلغاء التحديد والتحقق) و التطبيق.
-4. انقر فوق "تطبيق" ثم اضغط على "موافق" لإغلاق النافذة.
+    <value>يبدو أنه يجب تعديل بعض الإعدادات لتشغيل Lively بشكل صحيح:
+1. اضغط مفتاحي Win + R معًا لفتح التشغيل،  
+2. اكتب SystemPropertiesPerformance.exe في التشغيل ثم انقر فوق "موافق" لفتح خيارات الأداء.
+3. قم بتفعيل/تحديد "تحريك عناصر النوافذ والتحكمات" (إذا كان مفعلًا مسبقًا فقم بإلغاء تحديده ثم تحديده مرة أخرى) وتطبيق التغييرات. 
+4. انقر فوق "تطبيق" ثم على "موافق" لإغلاق النافذة.
 
-إذا تم تعيين Windows 7 للتو - ضبط للحصول على أفضل مظهر &amp; Apply.
-إذا لم تعمل بعد، قم بإغلاق وبدء تشغيل النوافذ مرة أخرى/إعادة تشغيلها.
-(لا تعمل في بعض النوافذ الداخلية 10 بنايات)</value>
+في حالة ويندوز 7 قم بـ - ضبطه لأقصى جودة مظهر وتطبيق التغييرات.
+إذا لم يعمل بعدها، اغلق Lively ثم اعد فتحه/إعادة تشغيل ويندوز.
+(قد لا يعمل في بعض بناءات ويندوز 10 إنسايدر)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>سيعمل التطبيق في الخلفية لعرض الوسائط</value>
@@ -317,7 +317,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>انقر هنا لإدارة خلفيات.</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>تحويل إلى فيديو</value>
+    <value>التحويل إلى فيديو</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>إنشاء معاينة</value>
@@ -340,20 +340,20 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>لكل شاشة</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>تنزيل</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>تحرير</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>لايفلي: خطأ</value>
+    <value>خطأ</value>
   </data>
   <data name="TextExit" xml:space="preserve">
     <value>إغلاق</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>تصدير كـ lively .zip</value>
+    <value>احفظه كملف</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>بعض الميزات غير متوفرة في هذا الإصدار من البرنامج</value>
@@ -365,7 +365,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>GIF المتحركة</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>أظهر بعض الحب بإسقاط نجمة</value>
+    <value>أظهر بعض الحب بإعطائنا نجمة</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>اذهب</value>
@@ -374,9 +374,9 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>مساعدة في ترجمة البرنامج.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>ساعة(ات)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>تثبيت</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -392,19 +392,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>الترخيص</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>دقيقة(دقائق)</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>المعلومات</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>المزيد من الخلفيات...</value>
+    <value>المزيد من الخلفيات</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
     <value>الماوس</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>تفاعل الماوس عند التركيز على التطبيق</value>
+    <value>تفاعل الفأرة عند التركيز على التطبيق</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>التالي</value>
@@ -413,7 +413,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لا</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>ايقاف</value>
+    <value>إطفاء</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>حسنا</value>
@@ -428,19 +428,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تشغيل لايفلي</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>جميع العمليات (تجريبي)</value>
+    <value>جميع العمليات</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>Direct3D</value>
+    <value>ثلاثي الأبعاد</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>معالجة المقدمة</value>
+    <value>المعالجة الأمامية</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
     <value>ايقاف مؤقت للخلفيات</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>انهي</value>
+    <value>إنهاء</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>لاشئ</value>
@@ -542,13 +542,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>عادي</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>تنسيق الملف غير معتمد</value>
+    <value>تنسيق المِلَفّ غير معتمد</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>تحديث متوفر!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>تحقق من التحديث</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>البحث عن تحديثات</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>خطأ في التحقق من التحديث</value>
@@ -658,22 +658,22 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تغيير التشغيل عند تمكين وضع توفير الطاقة للويندوز</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تشغيل جلسة سطح المكتب البعيد</value>
+    <value>تغيير التشغيل عند تشغيل جِلسة سطح المكتب عن بعد</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>After the selected inactivity period use the current wallpaper as your screensaver.</value>
+    <value>بعد مدّة عدم النشاط، استخدم خلفية الشاشة الحالية كشاشة توقف على جهازك</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>إذا تم اكتشاف رابط دفق الفيديو المدعوم ، استخدم مشغل الفيديو بدلا من تحميل صفحة الويب.</value>
+    <value>إذا تم اكتشاف رابط دفق الفيديو المدعوم استخدم مشغل الفيديو بدلا من تحميل صفحة الويب</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
     <value>حدد جودة الفيديو المطلوبة للتدفقات عبر الإنترنت.</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>تغيير البرنامَج تتلق منا لبيتا إلى المستقر أو العكس</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>تغيير مظهر شريط مهام النظام.</value>
+    <value>تغيير مظهر شريط مهام النظام</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>حجم البلاط ورق الجدران في المكتبة.</value>
@@ -1131,7 +1131,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>إغلاق الخلفية</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>اختر تطبيق</value>
+    <value>اختيار التطبيق</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>الحجم</value>
@@ -1146,7 +1146,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>اكتمل التحديث</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>تحقق من الجديد</value>
+    <value>تفقد ما هوى جديد</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
     <value>اللون</value>
@@ -1173,10 +1173,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>ايقونة سطح المكتب</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>That's all for now..</value>
+    <value>هذا كل شيء حتى الآن..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>تطوير هذه الميزة قيد الانتظار</value>
+    <value>تطوير هذه المِيزة قيد الانتظار</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>الإضافات</value>
@@ -1222,5 +1222,14 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>تنزيل</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

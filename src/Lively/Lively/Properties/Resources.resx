@@ -340,7 +340,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per screen</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextHours" xml:space="preserve">
     <value>hour(s)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Install</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update available!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Check for update</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1219,5 +1219,14 @@ If still not working, close &amp; start Lively again/restart windows.
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Download</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

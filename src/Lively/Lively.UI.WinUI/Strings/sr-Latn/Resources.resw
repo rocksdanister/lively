@@ -333,7 +333,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Po ekranu</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Preuzmi</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -369,7 +369,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instaliraj</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -540,7 +540,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Nadogradnja dostupna!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Proveri za nadogradnju</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -607,7 +607,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Postavi rada aplikacije kada je bilo koja druga aplikacija u fokusu</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Podesite šta treba da se dogodi kada je pokrenuta igra/aplikacija preko celog ekrana</value>
+    <value>Postavi šta da radi aplikacija kada je igirca ili aplikacija u fullscreenu.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
     <value>Zaustavi pozadinu kada je neka od navedenih aplikacija pokrenuta</value>
@@ -1213,5 +1213,14 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Preuzmi</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

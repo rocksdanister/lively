@@ -210,7 +210,7 @@ Jatka vain, jos luotat tähän sovellukseen.</value>
     <value>Windows N / KN versiosi vaatii ladata ylimääräisiä koodekkeja tukemaan videon toistoa taustakuvilla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Näytä tukesi ostamalla kehittäjälle kahvia</value>
+    <value>Näytä tukesi lahjoittamalla kehittäjälle kupillinen kahvia</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Olet vaihtamassa Livelyn beta versioon.
@@ -340,7 +340,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per näyttö</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Lataa</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="TextHours" xml:space="preserve">
     <value>tuntia</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Asenna</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -494,7 +494,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Tuki</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Vaihda betan tilaan (kehittäjätila)</value>
+    <value>Vaihda beta-tilaan (kehittäjätila)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
     <value>Vaihda pois beta-tilasta</value>
@@ -547,7 +547,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Päivitys saatavilla!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Tarkista päivitykset</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -611,19 +611,19 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Aseta verkkosivun URL, jonka annoit, taustakuvaksi</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Määritä mitä tehdä, kun jokin sovellus on tarkennuksessa</value>
+    <value>Määritä mitä tehdä, kun jokin sovellus on kohdistettuna</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
     <value>Aseta mitä tehdä, kun koko näytön pelit/sovellukset ovat käynnissä</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Keskeytä taustakuva kun näitä sovelluksia käytetään</value>
+    <value>Keskeytä taustakuva, kun näitä sovelluksia käytetään</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
     <value>Lively mukautuu järjestelmän teeman asetuksiin, muuttaaksesi ulkoasua, mene</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>Vaihda toistoa, kun vaihtovirtavirta katkaistaan</value>
+    <value>Kun ei ole latauksessa</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
     <value>Syötä portti vianetsintää varten; kun valmista, navigoi osoitteeseen http://localhost:portnumber päästäksesi käsiksi kehittäjän konsoliin</value>
@@ -638,10 +638,10 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Keskeytä taustakuva kaikilla näytöillä tai vain näytöllä, johon sovellus on keskittynyt</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Luo lokiraportti tiedosto</value>
+    <value>Luo lokitiedostoraportti</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Valitse soittaja, jota käytetään Gif taustakuville</value>
+    <value>Valitse soitin, jota käytetään Gif-taustakuville</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Viimeistele asetukset jatkaaksesi</value>
@@ -653,7 +653,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Taustakuvan tauko algoritmi</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Vaihda toistoa, kun Windows Virransäästötila on käytössä</value>
+    <value>Vaihda toistoa, kun Windowsin virransäästötila on käytössä</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
     <value>Vaihda toistoa kun käytät etätyöpöytäistuntoa</value>
@@ -683,7 +683,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Käytä laitteistokiihdytystä kun mahdollista</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Valitse soittaja, jota käytetään videotaustakuville</value>
+    <value>Valitse soitin, jota käytetään videotaustakuville</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
     <value>Polku jota käytetään taustakuvatiedostojen tallentamiseen</value>
@@ -704,7 +704,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Tallenna väliaikaisia tiedostoja levylle muistin sijasta</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>Valitse soittaja, jota käytetään HTML taustakuville</value>
+    <value>Valitse soitin, jota käytetään html-taustakuville</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>Tietoa</value>
@@ -713,7 +713,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Lisää Taustakuva</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Kohdistettuja sovelluksia</value>
+    <value>Kohdistettut sovellukset</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
     <value>Koko näytön sovellukset</value>
@@ -731,7 +731,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Toista ääntä näytöllä</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Virransäästötilassa</value>
+    <value>Akkuvirralla</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Selaa videon, gifin, verkkosivun... tiedoston asettamiseksi taustakuvaksi</value>
@@ -797,7 +797,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Mykistä</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Tauko algoritmi</value>
+    <value>Kekseytysalgoritmi</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Suorituskyky</value>
@@ -1219,5 +1219,14 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Lataa</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

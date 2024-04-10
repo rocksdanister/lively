@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>單一螢幕</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>下載</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>小時</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>安裝</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>有更新可用！</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>檢查更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1219,5 +1219,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>下載</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

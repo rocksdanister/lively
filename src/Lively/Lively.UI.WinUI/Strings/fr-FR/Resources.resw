@@ -340,7 +340,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Par écran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Télécharger</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextHours" xml:space="preserve">
     <value>heure(s)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Mise à jour disponible !</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Vérifier les mises à jour</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1225,5 +1225,14 @@ Edge est la vue Web intégrée de Windows 10.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Télécharger</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

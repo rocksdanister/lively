@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>每个屏幕</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>下载</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -365,7 +365,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>动态 GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>通过投下一颗星来表达爱意</value>
+    <value>通过点星来表示喜爱</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -376,7 +376,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>小时</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>安装</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>发现新版本！</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -739,7 +739,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>当处于电池供电模式时</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>浏览视频、GIF、网页......文件以设置为壁纸</value>
+    <value>选择视频、GIF、网页等文件以设置为壁纸</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>调试端口</value>
@@ -775,7 +775,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>通用</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif播放器</value>
+    <value>GIF播放器</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>帮助</value>
@@ -793,7 +793,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>地点</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>锁屏图片</value>
+    <value>锁屏壁纸</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>杂项</value>
@@ -1224,5 +1224,14 @@ Edge 是 Windows 10 内置的浏览器。</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>下载</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

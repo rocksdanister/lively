@@ -341,7 +341,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Jeden ekran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Pobierz</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -377,7 +377,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextHours" xml:space="preserve">
     <value>godziny</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Zainstaluj</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -548,8 +548,8 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Aktualizacja dostępna!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Sprawdź dostępność aktualizacji</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Sprawdź aktualizacje</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Błąd podczas szukania aktualizacji</value>
@@ -1223,5 +1223,14 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Pobierz</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

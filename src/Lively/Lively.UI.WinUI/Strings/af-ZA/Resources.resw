@@ -340,8 +340,8 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per skerm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Aflaai</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Laai af</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Wysig</value>
@@ -376,7 +376,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextHours" xml:space="preserve">
     <value>uur/ure</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installeer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Opdatering beskikbaar!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Kyk vir opdatering</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1218,6 +1218,15 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Aflaai vereis</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Aflaai</value>
+    <value>Laai af</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

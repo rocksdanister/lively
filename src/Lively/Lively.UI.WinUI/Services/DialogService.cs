@@ -209,10 +209,10 @@ namespace Lively.UI.WinUI.Services
         {
             await new ContentDialog()
             {
-                Title = "Patreon Supporters",
+                Title = i18n.GetString("TitlePatreon/Text"),
                 Content = new PatreonSupportersView(),
-                PrimaryButtonText = "Become a Patreon supporter",
-                SecondaryButtonText = "Cancel",
+                PrimaryButtonText = i18n.GetString("TextBecomePatreonMember/Content"),
+                SecondaryButtonText = i18n.GetString("Cancel/Content"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();

@@ -340,8 +340,8 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per skerm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Aflaai</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Laai af</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Wysig</value>
@@ -376,7 +376,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextHours" xml:space="preserve">
     <value>uur/ure</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installeer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Opdatering beskikbaar!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Kyk vir opdatering</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -755,52 +755,52 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Desktop prentjie</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display pause rule</value>
+    <value>Wys pousereël</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Dokumentasie</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Enter URL</value>
+    <value>Voer URL in</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log File</value>
+    <value>Log lêer</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>General</value>
+    <value>Algemeen</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif player</value>
+    <value>Gif-speler</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Help</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Interaction</value>
+    <value>Interaksie</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
     <value>Biblioteek</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Setup</value>
+    <value>Lewendige opstelling</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Location</value>
+    <value>Ligging</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Lockscreen picture</value>
+    <value>Sluitskerm prentjie</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Misc</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Mute</value>
+    <value>Demp</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Pause algorithm</value>
+    <value>Pouse algoritme</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Optrede</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
     <value>Snitlys</value>
@@ -809,10 +809,10 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Wag asseblief</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>When on Battery Saver</value>
+    <value>Wanneer op Battery Saver</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>When on Remote Desktop</value>
+    <value>Wanneer op Remote Desktop</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
     <value>Rapporteer fout</value>
@@ -824,13 +824,13 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Beheer paneel</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Skermbeveiliging</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>On resume, display logon screen</value>
+    <value>Op hervat, vertoon aanmeldskerm</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Select File</value>
+    <value>Kies Lêer</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
     <value>Instellings</value>
@@ -930,16 +930,16 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Stelsel</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows color settings</value>
+    <value>Windows-kleurinstellings</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Skootrekenaars</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>Developer</value>
+    <value>Ontwikkelaar</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
-    <value>Appearance &amp; behavior</value>
+    <value>Voorkoms en gedrag</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
     <value>Aktiewe muurpapier(e)</value>
@@ -954,13 +954,13 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Sagteware lisensie</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Derdeparty sagteware kennisgewing</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Data-insamelingsbeleid</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Voeg muurpapier by</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
     <value>Kom binnekort</value>
@@ -978,7 +978,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Stoor</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>User interface effects and animations</value>
+    <value>Gebruikerskoppelvlak-effekte en animasies</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
     <value>Gebruikerskoppelvlak</value>
@@ -993,16 +993,16 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Hoe skermbewaarder toegepas word op gekoppelde aan vertoontoestelle</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Type of screensaver</value>
+    <value>Tipe skermbewaarder</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+    <value>Afsonderlik gekonfigureer</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
     <value>Dieselfde as lopende plakpapier</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin required</value>
+    <value>Inprop vereis</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
     <value>Eenmalige opstelling is nodig om skermbewaarder te laat loop</value>
@@ -1173,51 +1173,60 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Dit is al vir nou..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Hierdie funksie-ontwikkeling word opgehou</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Inproppe</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Skep 'n dinamiese muurpapier</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Gevorderd</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Diepte benader..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Met behulp van KI verander foto's in 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Aanhou</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Skep 'n eenvoudige plakpapier</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>AI Diepte Wallpaper</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Diepte Wallpaper</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>AI gegenereer diepte plakpapier</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Skep muurpapier</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Sommige funksies is dalk nie beskikbaar wanneer dit as administrateur uitgevoer word nie</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Bykomende lêers moet vir hierdie kenmerk afgelaai word</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Aflaai vereis</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Aflaai</value>
+    <value>Laai af</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

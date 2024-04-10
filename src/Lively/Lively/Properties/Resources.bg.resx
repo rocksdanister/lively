@@ -339,7 +339,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>На екран</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Изтегли</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -375,7 +375,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>час(а)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Инсталирай</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -546,8 +546,8 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Налични актуализации!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Проверка за актуализация</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Провери за нова версия</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Неуспешна проверка за ъпдейти</value>
@@ -1211,12 +1211,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Някои функции може да не са налични, когато е пуснато като администратор</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Допълнителни файлове трябва да бъдат инсталирани за тази функция</value>
+    <value>Допълнителни файлове трябва да бъдат изтеглени за тази функция</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Изисква Инсталиране</value>
+    <value>Нужно е изтегляне</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Изтегли</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

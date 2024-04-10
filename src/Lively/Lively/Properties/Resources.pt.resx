@@ -194,7 +194,7 @@ Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
     <value>A restaurar o(s) fundos anteriores, por favor aguarde...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Escolher tela</value>
+    <value>Escolher Ecrã</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Uma nova versão da aplicação está disponível!</value>
@@ -340,8 +340,8 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Por Ecrã</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Descarregar</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Transferir</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Editar</value>
@@ -376,7 +376,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalar</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,8 +547,8 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Atualização Disponível!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Procurar atualizações</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Procurar por atualizações</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Erro ao Procurar Atualização</value>
@@ -578,7 +578,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Preenchimento uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicar o memsmo fundo</value>
+    <value>Duplicar o mesmo fundo</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Apenas o ecrã seleccionado</value>
@@ -1183,45 +1183,54 @@ Edge é o webview integrado do windows 10.</value>
     <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Criar um papel de parede dinâmico</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Avançado</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Aproximando profundezas</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Usando a IA transforma as fotos em 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Prosseguir</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Crie um papel de parede simples</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>Fundo de parede com IA</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Fundo de parede</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Gerador de fundos de parede com IA</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Criar papel de parede</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Algumas funcionalidades não estarão disponíveis quando forem executadas como administrador</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Os arquivos adicionais precisam ser baixados para este recurso</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Download Necessário</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Descarregar</value>
+    <value>Transferir</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

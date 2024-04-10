@@ -338,8 +338,8 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per ecran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Descarcă</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Descărcare</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Editează</value>
@@ -374,7 +374,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextHours" xml:space="preserve">
     <value>Oră(e)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalare</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -545,8 +545,8 @@ Dacă tot nu funcționează, repornește Lively/Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Actualizare disponibilă!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Verificați pentru actualizări</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Căutați actualizări</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Nu s-a putut verifica actualizarea software-ului</value>
@@ -1218,6 +1218,15 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Necesită descărcarea</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Descarcă</value>
+    <value>Descărcare</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

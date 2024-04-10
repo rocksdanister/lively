@@ -121,10 +121,10 @@
     <value>僅在桌面為焦點時播放音訊</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>桌布音量等級</value>
+    <value>全部桌布的音量等級</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>主音量</value>
+    <value>音量</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>音訊</value>
@@ -166,13 +166,13 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
     <value>確定要取消嗎？</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>確定要從磁碟上永久刪除桌布嗎？</value>
+    <value>確定要從磁碟上永久刪除此桌布嗎？</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>確定要從資料庫刪除此桌布嗎？</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>簡單拖放檔案到此處</value>
+    <value>簡單地將拖放檔案到此處</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>你正在開啟一個外部應用程式作為桌布。
@@ -180,7 +180,7 @@ Lively 動態桌布的螢幕保護程式主要用於為您的電腦新增另一�
 請僅在你信任此應用程式的來源時繼續。</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively 已最小化至系統匣，右鍵點選 Lively 動態桌布的圖示以存取更多選項。</value>
+    <value>Lively 動態桌布已最小化至系統匣，右鍵點選 Lively 動態桌布的圖示以存取更多選項。</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>請重新啟動 Lively 動態桌布以使設定生效</value>
@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>單一螢幕</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>下載</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -371,12 +371,12 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>開始</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>幫助翻譯</value>
+    <value>協助翻譯</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>小時</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>安裝</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>有更新可用！</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>檢查更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1212,12 +1212,21 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>當以管理員權限運作時，部分功能不一定可用</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>使用此功能需要下載附加檔案</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>需要進行下載</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>下載</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

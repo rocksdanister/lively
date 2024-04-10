@@ -194,7 +194,7 @@ Apenas prossiga se a aplicação é proveniente de uma fonte confiável.</value>
     <value>A restaurar o(s) fundos anteriores, por favor aguarde...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Escolher tela</value>
+    <value>Escolher Ecrã</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>Uma nova versão da aplicação está disponível!</value>
@@ -340,8 +340,8 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Por Ecrã</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Descarregar</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Transferir</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Editar</value>
@@ -376,7 +376,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalar</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,8 +547,8 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Atualização Disponível!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Procurar atualizações</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Procurar por atualizações</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Erro ao Procurar Atualização</value>
@@ -578,7 +578,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Preenchimento uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicar o memsmo fundo</value>
+    <value>Duplicar o mesmo fundo</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Apenas o ecrã seleccionado</value>
@@ -1222,6 +1222,15 @@ Edge é o webview integrado do windows 10.</value>
     <value>Download Necessário</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Descarregar</value>
+    <value>Transferir</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

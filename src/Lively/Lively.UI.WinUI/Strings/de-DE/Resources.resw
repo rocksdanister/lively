@@ -121,7 +121,7 @@
     <value>Audio nur dann wiedergeben, wenn der Desktop im Vordergrund ist</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Lautstärke aller aktiven Hintergründe</value>
+    <value>Lautstärke aller Hintergründe</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Lautstärke</value>
@@ -266,7 +266,7 @@ Möchten Sie die zuvor ausgeführten Hintergründe wiederherstellen?</value>
 3. Aktivieren/Prüfen Sie "Steuerelemente und Elemente innerhalb von Fenstern animieren" &amp; klicken Sie auf Übernehmen.
 4. Klicken Sie auf "OK" um das Fenster zu schließen.
 
-Wenn Sie Windows 7 benutzten - einfach auf "Für optimale Darstellung anpassen" auswählen &amp; auf "Übernehmen" klicken.
+Wenn Sie Windows 7 benutzen - einfach auf "Für optimale Darstellung anpassen" auswählen &amp; auf "Übernehmen" klicken.
 Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively oder Windows neu.
 (Funktioniert nicht in den Insider Builds von Windows 10)</value>
   </data>
@@ -339,7 +339,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Pro Bildschirm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Herunterladen</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -375,7 +375,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="TextHours" xml:space="preserve">
     <value>Stunde(n)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installieren</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -546,7 +546,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update verfügbar!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Nach Updates suchen</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -941,8 +941,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
     <value>Aussehen und Verhalten</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Wallpaper aktiv
-</value>
+    <value>Aktive Hintergründe</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Galerie</value>
@@ -984,7 +983,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
     <value>Benutzeroberfläche</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Vereinfacht</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normal</value>
@@ -1219,5 +1218,14 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Herunterladen</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

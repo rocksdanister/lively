@@ -5,6 +5,7 @@ using Lively.Common.Helpers.Files;
 using Lively.Common.Models;
 using Lively.Common.Services.Downloader;
 using Lively.Grpc.Client;
+using Lively.UI.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,18 @@ namespace Lively.UI.WinUI.ViewModels
 {
     public partial class AppUpdateViewModel : ObservableObject
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IAppUpdaterClient appUpdater;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDownloadService downloader;
+        private readonly IDialogService dialogService;
 
         private readonly ResourceLoader languageResource;
 
-        public AppUpdateViewModel(IAppUpdaterClient appUpdater, IDesktopCoreClient desktopCore, IDownloadService downloader)
+        public AppUpdateViewModel(IAppUpdaterClient appUpdater,
+            IDesktopCoreClient desktopCore,
+            IDownloadService downloader,
+            IDialogService dialogService)
         {
             this.appUpdater = appUpdater;
             this.desktopCore = desktopCore;
@@ -42,7 +48,14 @@ namespace Lively.UI.WinUI.ViewModels
 
             // This is only run once if the main interface is opened before the initial fetchDelay in Core for update check.
             if (appUpdater.Status == AppUpdateStatus.notchecked)
+            {
                 _ = CheckUpdate();
+            }
+            else if (appUpdater.Status == AppUpdateStatus.available)
+            {
+                var filePath = Path.Combine(Constants.CommonPaths.TempDir, appUpdater.LastCheckUri.Segments.Last());
+                IsUpdateDownloaded = File.Exists(filePath);
+            }
         }
 
         public bool IsWinStore => Constants.ApplicationType.IsMSIX;
@@ -64,13 +77,16 @@ namespace Lively.UI.WinUI.ViewModels
         private double currentProgress;
 
         [ObservableProperty]
-        private bool isDownloading;
-
-        [ObservableProperty]
-        private bool isCheckingUpdate;
+        private bool isUpdateChecking;
 
         [ObservableProperty]
         private bool isUpdateAvailable;
+
+        [ObservableProperty]
+        private bool isUpdateDownloading;
+
+        [ObservableProperty]
+        private bool isUpdateDownloaded;
 
         [ObservableProperty]
         private string updateChangelogError;
@@ -80,9 +96,6 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private string updateDateText;
-
-        [ObservableProperty]
-        private string updateCommandText;
 
         [ObservableProperty]
         private string updateStatusSeverity = "Warning";
@@ -95,20 +108,43 @@ namespace Lively.UI.WinUI.ViewModels
         {
             try
             {
-                IsCheckingUpdate = true;
+                IsUpdateChecking = true;
                 await appUpdater.CheckUpdate();
             }
             finally
             {
-                IsCheckingUpdate = false;
+                IsUpdateChecking = false;
+            }
+        }
+
+        [RelayCommand]
+        private async Task DownloadUpdate()
+        {
+            try
+            {
+                IsUpdateDownloading = true;
+
+                var fileName = appUpdater.LastCheckUri.Segments.Last();
+                var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
+                await downloader.DownloadFile(appUpdater.LastCheckUri, filePath);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                await dialogService.ShowDialogAsync($"{languageResource.GetString("LivelyExceptionAppUpdateFail")}\n\nException:\n{ex}",
+                    languageResource.GetString("TextError"),
+                    languageResource.GetString("TextOK"));
+            }
+            finally
+            {
+                IsUpdateDownloading = false;
             }
         }
 
         [RelayCommand]
         private async Task InstallUpdate()
         {
-            await Download();
-            // Start() in UpdateDownload_DownloadFileCompleted event.
+            await appUpdater.StartUpdate();
         }
 
         public void CancelDownload()
@@ -129,7 +165,7 @@ namespace Lively.UI.WinUI.ViewModels
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(async () =>
             {
                 if (success)
-                    await appUpdater.StartUpdate();
+                    IsUpdateDownloaded = true;
             });
         }
 
@@ -139,22 +175,6 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 UpdateState(e.UpdateStatus, e.UpdateDate, e.UpdateVersion);
             });
-        }
-
-        private async Task Download()
-        {
-            try
-            {
-                IsDownloading = true;
-
-                var fileName = appUpdater.LastCheckUri.Segments.Last();
-                var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
-                await downloader.DownloadFile(appUpdater.LastCheckUri, filePath);
-            }
-            finally
-            {
-                IsDownloading = false;
-            }
         }
 
         private void UpdateState(AppUpdateStatus status, DateTime date, Version version)
@@ -189,7 +209,6 @@ namespace Lively.UI.WinUI.ViewModels
             }
             UpdateStatus = status;
             UpdateDateText = status == AppUpdateStatus.notchecked ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
-            UpdateCommandText = IsUpdateAvailable ? languageResource.GetString("TextInstall") : languageResource.GetString("TextUpdateCheck");
         }
     }
 }

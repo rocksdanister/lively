@@ -121,7 +121,7 @@
     <value>Reprodukcija zvuka samo kada je radna površina fokusirana</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Jačina zvuka pozadina.</value>
+    <value>Jačina zvuka svih pozadina</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Jačina zvuka</value>
@@ -157,13 +157,13 @@ Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem raču
     <value>Prijavi problem sa softverom</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Izaberi fajl ili napiši adresu sajta od pozadine.</value>
+    <value>Odaberite datoteku</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Pozadinsko plej-bek ponašanje bazirano od aplikacije.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Da li si siguran da zeliš otkazati?</value>
+    <value>Da li ste sigurni da želite da otkažete?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>Da li si siguran da zeliš da zauvek izbrišeš ovu pozadinu sa diska?</value>
@@ -175,19 +175,19 @@ Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem raču
     <value>Jednostavno prevuci i pusti fajl u biblioteku.</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Otvaraš spoljašnu aplikaciju kao pozadinu.Zlonamerne aplikacije mogu da ubace viruse... i oštete vaš računar.Jedino prihvatajte ako aplikacija dolazi od proverenog izvora.</value>
+    <value>Otvaraš spoljašnu aplikaciju kao pozadinu. Zlonamerne aplikacije mogu da ubace viruse... i oštete vaš računar. Jedino prihvatajte ako aplikacija dolazi od proverenog izvora.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively je minimiziran u računaru, desnim klikom na lively ikonicu kako bi nastavio.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Molim vas pokrenite ponovo Lively kako bi promene dobile efekat.</value>
+    <value>Molim vas ponovo pokrenite Lively program kako bi se promenila podešavanja</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>Molim vas da stopirate pre nastavljanja</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Stisni da započneš snimanje.</value>
+    <value>Pritisni da započneš snimanje</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Trenutno vraćam prethodne pozadine, molim vas sačekajte...</value>
@@ -202,55 +202,61 @@ Glavni cilj Lively-a je dodavanje još jednog sloja prilagođavanja vašem raču
     <value>Unesi link vebsajta za učitavanje, shadertoy.com linkovi su podržani.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Ovo će vam pomoći da započnete sa Lively.</value>
+    <value>Ovaj program će vam pomoći da započnete Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Vaša Windows N/KN verzija će zahtevati skidanje dodatnih kodeksa kako bi podržala reprodukciju video zapisa u pozadinama</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Pokaži podršku kupovinom kafe za developera</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Spremate se da pređete na beta (programersku) verziju Liveli-a.
+    <value>Spremate se da pređete na beta (programersku) verziju Lively-a.
 Ažuriranja će biti česta i mogu sadržati greške!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Vidljivost ikonice sistemske trake. Lively će nastaviti da radi sa skrivenom ikonicom</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Ikona u pozadini sistema</value>
+    <value>Ikonica u sistеmskoj traci</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Livley će se restartovati kako bi promene jezika dobila efekat.</value>
+    <value>Lively program će se restartovati radi promene jezika</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Jezik</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Neuspešna nadogradnja; pokusaj da skines instaler sa:https://github.com/rocksdanister/lively/releases</value>
+    <value>Neuspešna nadogradnja; pokušaj da skineš instaler sa:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Oštećen pozadinski fajl, pokušaj da ponovo preuzmeš.</value>
+    <value>Oštećen pozadinski fajl, pokušaj da ponovo preuzmeš</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Ups... Izgleda da je nešto napravilo grešku :(Da bi bolje razumeo ovu grešku i da rešiš problem, podeli evidenciju aplikacije(log) sa razvijačem aplikacije.Uputstva za podelu evidencije:https://github.com/rocksdanister/lively/wiki</value>
+    <value>Ups... Izgleda da je nešto pošlo naopako :(
+Da bi bolje razumeo ovu grešku i da rešiš problem, podeli evidenciju aplikacije(log) sa razvijačem aplikacije. 
+Uputstva za podelu evidencije:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively ne može da radi normlano sa Windows Visok Kontrast režimom!Iskljuci Visok Kontrast režim i pokušaj ponovo</value>
+    <value>Lively ne može da radi normalno sa Windows režimom Visokog kontrasta!
+Isključi Visok Kontrast režim i pokušaj ponovo</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Medijski plej-bek neuspešan :(Pokušaj da promeniš video-plejer u Lively podešavanjima.Da bi bolje razumeo problem i mogao da rešiš grešku podeli evidenciju(log) fajl i pošalji programeru.Instrukcije za deljenje evidencije:https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Nije Lively pozadinski fajl.</value>
+    <value>Nije Lively pozadinski fajl</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively nije ugašen normalno, pali se u sigurnom režimu.Da li želiš da povratiš prethodnu pozadinu?</value>
+    <value>Lively nije ugašen normalno, započinje se pokretanje u sigurnom režimu. 
+Da li želiš da povratiš prethodnu pozadinu?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Izgleda da neka podešavanja moraju da se promene da bi Lively radio:
 1. Pritisni Windows dugme + R da bi otvorio Run,
-2. Ukukucaj SystemPropertiesPerfomance.exe u Run, stisni "OK" da otvoris Podešavanja Performansa.
+2. Ukucaj SystemPropertiesPerfomance.exe u Run, stisni "OK" da otvoris Podešavanja Performansa.
 3. Dozvoli/Proveri "Animate controls and elements inside windows" (Ako je već štiklirano, pritisni opet da onemogućiš i opet štikliraj) i pristisni "Apply".
 4. Klikni "Apply" i onda pritisni "OK" da zatvoriš prozor.
 
@@ -301,7 +307,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Završeno!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Klikni ovde da upravljaš pozadinama</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Prebaci u video</value>
@@ -319,15 +325,15 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Izbriši pozadinu</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Deskripcija</value>
+    <value>Opis</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Svi Ekrani</value>
+    <value>Svi ekrani</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Po ekranu</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Preuzmi</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -340,10 +346,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Izađi</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Pretvori lively u .zip</value>
+    <value>Sačuvaj u datoteke</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Some features are not available in this version of Lively.</value>
+    <value>Neke funkcije nisu dostupne u ovoj verziji Lively programa</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Datoteka nije pronađena</value>
@@ -352,7 +358,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Animirani GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>Pokažite ljubav</value>
+    <value>Pokažite ljubav ostavljajući zvezdu</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Kreni</value>
@@ -363,14 +369,14 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instaliraj</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Tastatura</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Poslednji Proverio</value>
+    <value>Poslednja provera</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Saznajte više</value>
@@ -379,13 +385,13 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Licenca</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>minut/i</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
     <value>Informacije</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Vise pozadina</value>
+    <value>Više pozadina</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
     <value>Miš</value>
@@ -409,7 +415,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Upaljeno</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Povezan</value>
+    <value>Na mreži</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
     <value>Otvori Lively</value>
@@ -424,13 +430,13 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Pozadinski procesi</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Pauziraj pozadinu</value>
+    <value>Pauziraj pozadine</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>Stopiraj</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Nista</value>
+    <value>Ništa</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Pauziraj</value>
@@ -445,7 +451,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Politika privatnosti</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Procesovanje</value>
+    <value>Obrađivanje</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Izbriši</value>
@@ -475,7 +481,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Zaustavi</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Da li ste uživali u aplikaciji? Ostavite komentar :)</value>
+    <value>Da li uživate u korišćenju Lively? Ostavite komentar :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Podrška</value>
@@ -490,7 +496,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Tagovi</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Zamućenje</value>
+    <value>Zamuti</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Obriši</value>
@@ -534,7 +540,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Nadogradnja dostupna!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Proveri za nadogradnju</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -565,10 +571,10 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Uniformna raspodela</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Udvostruči pozadinu.</value>
+    <value>Udvostruči pozadinu</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Samo izabran ekran</value>
+    <value>Samo odabrani ekran</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
     <value>Razmak izmedju ekrana</value>
@@ -583,7 +589,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Mrežni prenos</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Dobrodošao</value>
+    <value>Dobrodošli</value>
   </data>
   <data name="TextYes" xml:space="preserve">
     <value>Da</value>
@@ -592,28 +598,28 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Video Plejer</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Pogledaj sve podržane formate.</value>
+    <value>Podesi sve podržane tipove datoteka kao pozadinu</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Postavi web url kao pozadinu.</value>
+    <value>Postavi web url koju ste uneli kao pozadinu</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Postavi šta da radi aplikacija kada je drugi prozor fokusiran.</value>
+    <value>Postavi rada aplikacije kada je bilo koja druga aplikacija u fokusu</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Podesite šta treba da se dogodi kada je pokrenuta igra/aplikacija preko celog ekrana</value>
+    <value>Postavi šta da radi aplikacija kada je igirca ili aplikacija u fullscreenu.</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
     <value>Zaustavi pozadinu kada je neka od navedenih aplikacija pokrenuta</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively menja izgled windowsa u skladu sa aplikacijom da vidis podešavanja idi na</value>
+    <value>Lively se prilagođava temi sistema, da promeniš izgled idi na</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>Promeni reprodukciju kada je uređaj na bateriji</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Unesite port za otklanjanje grešaka u pozadinama veb stranica, potrebno je ponovno pokretanje pregledača da bi promene stupile na snagu. Kada budete spremni, idite na http: // localhost: broj porta za pristup konzoli za programere. Unesi port za uklanjanje grešaka pozadine, ponovno pokretanje pretraživača je obavezno da se promene dobile efekat.</value>
+    <value>Unesite port za otklanjanje grešaka u pozadinama veb stranica, potrebno je ponovno pokretanje pregledača da bi promene stupile na snagu. Kada budete spremni, idite na http: //localhost:portnumber za pristup konzoli za developere</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
     <value>Pokaži meni za developere</value>
@@ -622,7 +628,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Postavi sliku animirane pozadine kao pozadinu radne površine</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Pauziraj pozadinu na svim eknanima ili samo na ekranu u kojem je aplikacija fokusirana (preko celog ekrana)</value>
+    <value>Pauziraj pozadinu na svim ekranima ili samo na ekranu u kojem je aplikacija fokusirana (preko celog ekrana)</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
     <value>Kreiranje datoteke izveštaja evidencije</value>
@@ -1166,45 +1172,55 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Dodatne komponente</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Napravite svoju dinamičnu pozadinu</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Napredno</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Određivanje dubine..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Pretvaranje fotografija u 3D koristeći AI (veštačku inteligenciju)</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Nastavi</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Napravite jednostavnu pozadinu</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>VI dubinska pozadina</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Dubinska pozadina
+</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>VI napravljena dubinska pozadina</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Napravite pozadinu</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Neke funkcije možda neće biti dostupne tokom režima administratora</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Potrebno je preuzeti dodatne datoteke za ovu funkciju</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Potrebno Preuzimanje</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Preuzmi</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Odtwarzaj dźwięk tylko po skupieniu na pulpicie</value>
+    <value>Odtwarzaj dźwięk tylko przy skupieniu na pulpicie</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Poziom dźwięku dla wszystkich tapet</value>
@@ -166,7 +166,7 @@ Głównym celem wygaszacza ekranu Lively jest dodanie kolejnej warstwy personali
     <value>Na pewno przerwać?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Czy jesteś pewny że chcesz usunąć tą tapetę z dysku na zawsze?</value>
+    <value>Czy jesteś pewny, że chcesz usunąć tę tapetę z dysku na zawsze?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Czy na pewno chcesz usunąć tę tapetę z Biblioteki?</value>
@@ -297,7 +297,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Cofnij</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Przeglądaj...</value>
+    <value>Przeglądaj</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Anuluj</value>
@@ -309,7 +309,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Zamknij</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Zamknij tapetę</value>
+    <value>Zamknij</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Zakończono!</value>
@@ -318,7 +318,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Kliknij tutaj aby zarządzać tapetami.</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Konwersja na wideo</value>
+    <value>Konwertuj na wideo</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Stwórz podgląd</value>
@@ -341,11 +341,11 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Jeden ekran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Pobierz</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Edytuj</value>
+    <value>Edytuj Tapetę</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Błąd</value>
@@ -354,7 +354,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wyjście</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Eksportuj lively .zip</value>
+    <value>Zapisz jako plik</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>Niektóre funkcje w tej wersji Lively są niedostępne.</value>
@@ -377,14 +377,14 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextHours" xml:space="preserve">
     <value>godziny</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Zainstaluj</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Klawiatura</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Ostatnio sprawdzane</value>
+    <value>Ostatnio sprawdzono</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Dowiedz się więcej</value>
@@ -444,7 +444,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wyłącz</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Nie wybrano</value>
+    <value>Nic</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
     <value>Zatrzymaj</value>
@@ -465,7 +465,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Usuń</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Reguła</value>
+    <value>Zasada</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
     <value>Ekran</value>
@@ -495,10 +495,10 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wsparcie</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Zmień do wersji beta (kanał Dev)</value>
+    <value>Zmień do wersji beta (kanał deweloperski)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Zmień do wersji stabilnej(domyślny kanał)</value>
+    <value>Zmień do wersji stabilnej (kanał domyślny)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Znaczniki</value>
@@ -548,8 +548,8 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Aktualizacja dostępna!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Sprawdź dostępność aktualizacji</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Sprawdź aktualizacje</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Błąd podczas szukania aktualizacji</value>
@@ -591,10 +591,10 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Rodzaj</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Strona Sieci Web</value>
+    <value>Strona</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Strumieniowanie</value>
+    <value>Stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
     <value>Witaj</value>
@@ -615,7 +615,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Zachowanie, gdy inna aplikacja jest na pierwszym planie.</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Zachowanie, gdy uruchomione są aplikacje/gry pełoekranowe.</value>
+    <value>Wybierz co zrobić, kiedy gra/aplikacja pełnoekranowa zostanie włączona</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
     <value>Ustaw rożne reguły odtwarzania dla uruchomionych aplikacji.</value>
@@ -708,14 +708,13 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
     <value>Przechowuj pliki tymczasowe na dysku zamiast w pamięci, ustawienia są przywracane podczas ponownego uruchomienia przeglądarki.</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) jest lekkim silnikiem chromium.
-Edge jest przeglądarką wbudowaną w windows 10.</value>
+    <value>Wybierz odtwarzacza dla tapety HTML</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>O programie</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Dodaj</value>
+    <value>Dodaj tapetę</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
     <value>Inne aktywne aplikacje</value>
@@ -727,16 +726,16 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
     <value>Tapeta Lively</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Reguły aplikacji</value>
+    <value>Zasady aplikacji</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Schemat</value>
+    <value>Motyw</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>Odtwarzaj dźwięk na ekranie</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Zasilanie bateryjne</value>
+    <value>Kiedy Zasilanie bateryjne ma</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Przeglądaj pliki wideo, gif, stron internetowych do ustawienia jako tapeta</value>
@@ -1224,5 +1223,14 @@ Edge jest przeglądarką wbudowaną w windows 10.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Pobierz</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

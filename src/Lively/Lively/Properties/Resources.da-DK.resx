@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Afspil kun lyd, når skrivebordet er fokuseret</value>
+    <value>Afspil kun lyd, når skrivebordet er i fokus</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volumenniveau for alle baggrunde</value>
@@ -340,7 +340,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per skærm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Hent</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TextHours" xml:space="preserve">
     <value>time(r)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Opdatering tilgængelig!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Søg efter opdatering</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1173,51 +1173,60 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
     <value>Det er alt for nu..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Denne funktionsudvikling er sat i bero</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
     <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Opret et dynamisk tapet</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Fremskreden</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Tilnærmelsesvis dybde..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Brug AI omdanner fotografier til 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Blive ved</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Lav et simpelt tapet</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>AI Dybde Baggrund</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Dybde Tapet</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>AI genereret dybde tapet</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Opret tapet</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Nogle funktioner er muligvis ikke tilgængelige, når de køres som administrator</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Yderligere filer skal downloades til denne funktion</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Download påkrævet</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Hent</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

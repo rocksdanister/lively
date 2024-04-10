@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>پخش صدا تنها زمانی که بر روی دسکتاپ هستید</value>
+    <value>صدا را فقط زمانی پخش کنید که دسکتاپ فوکوس شده باشد</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>میزان صدای همه پس زمینه ها</value>
+    <value>سطح صدای همه‌ی پس زمینه‌ها</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>درجه صدا</value>
+    <value>مقدار صدا</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>صدا</value>
@@ -141,10 +141,10 @@
 Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی مجدد شد! این ممکن است تضاد بین Lively و سایر نرم افزارهای سفارشی‌سازی دسکتاپ یا ویندوز باشد. برای جلوگیری از مشکلات بیشتر، تمام تصاویر زمینه بسته می‌شوند.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>برنامه ای ناسازگار پیدا شده است، طرح نوار سیستم غیرفعال شد</value>
+    <value>برنامه ناسازگار پیدا شد، پوسته نوار وظیفه غیرفعال شد</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>وبسایت رسمی Lively Wallpaper</value>
+    <value>صفحه وب رسمی Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>اکثر نمایشگرهای LCD و LED مدرن مشکل سوختگی پیکسل ندارند و بنابراین می‎‌توان از هر تصویر زمینه به عنوان محافظ صفحه استفاده کرد.
@@ -154,7 +154,7 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
 هدف اصلی محافظ‌های صفحه نمایش Lively اضافه کردن لایه دیگری از سفارشی‌سازی به رایانه شما است، از محافظ‌های صفحه نمایش به عنوان محافظت در برابر سوختگی پیکسل با مسئولیت خود استفاده کنید!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>گزارش مشکل درباره نرم‌افزار</value>
+    <value>مشکل نرم افزار را گزارش دهید</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
     <value>یک فایل انتخاب کنید</value>
@@ -163,25 +163,27 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>تنظیم رفتار پس زمینه بر اساس برنامه در حال اجرا.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>آیا از لغو کردن مطمئنید؟</value>
+    <value>آیا مطمئن هستید که می خواهید لغو کنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>آیا از حذف همیشگی این پس زمینه از حافظه مطمئنید؟</value>
+    <value>آیا مطمئن هستید که می خواهید این کاغذدیواری را برای همیشه از دیسک حذف کنید؟</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>آیا از حذف کردن این پس زمینه از کتابخانه مطمئنید؟</value>
+    <value>آیا مطمئن هستید که می خواهید این کاغذدیواری را از کتابخانه حذف کنید؟</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>فایل ها را با کشیدن اینجا رها کنید</value>
+    <value>به سادگی فایل ها را در اینجا بکشید و رها کنید</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>شما دارید یک برنامه خارجی را به عنوان پس زمینه باز میکنید. برنامه های مخرب میتوانند حاوی بد افزار یا ویروس باشند و میتوانند به سیستم شما آسیب بزنند. تنها در صورنی ادامه دهید که این برنامه از منبع قابل اعتماد آمده باشد.</value>
+    <value>شما در حال باز کردن یک برنامه خارجی به عنوان تصویر زمینه هستید.
+برنامه های مخرب می توانند میزبان بدافزارها، ویروس ها و ... باشند و به سیستم شما آسیب برسانند.
+فقط در صورتی ادامه دهید که این برنامه از منبع قابل اعتمادی تهیه شده باشد.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>لایولی کوچک شده و به سیستم تری انتقال یافته، برای ادامه آیکون لایولی را راست کلیک کنید.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>به منظور اعمال تغییرات لطفا سیستم خود را از نو راه‌اندازی کنید</value>
+    <value>لطفاً Lively را مجدداً راه اندازی کنید تا تنظیمات اعمال شوند</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>لطفا قبل از ادامه دست نگه دارید.</value>
@@ -190,7 +192,7 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>برای شروع ضبط فشار دهيد.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>در حال بازيابي پس زمینه پيشين، لطفا صبر کنيد...</value>
+    <value>در حال بازیابی کاغذدیواری(های) قبلی، لطفاً صبر کنید...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>صفحه نمایش خود را انتخاب کنید</value>
@@ -221,7 +223,7 @@ Windows Explorer دو بار در 30 ثانیه گذشته راه‌اندازی
     <value>آیکون System-tray</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>براي اعمال زبان جديد لايولي مجددا اجرا خواهد شد</value>
+    <value>Lively برای اعمال زبان جدید راه اندازی مجدد می شود</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>زبان</value>
@@ -271,7 +273,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 (در بعضي از نسخه هاي اينسايدر ويندوز کار نميکند)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>لايولي بايد در پشت صحنه فعاليت بکند تا پس زمينه اجرا شود.</value>
+    <value>Lively برای پخش کاغذ دیواری باید در پس زمینه اجرا شود</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
     <value>روشن شدن با ویندوز</value>
@@ -313,7 +315,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تکمیل شد!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>اينجا کليک کنيد تا تصاویر پس‌زمینه را مديريت کنيد</value>
+    <value>برای مدیریت تصاویر پس زمینه اینجا را کلیک کنید</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>تبديل به ويديو</value>
@@ -339,7 +341,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>برای هر صفحه</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>دانلود</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -355,7 +357,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>ذخیره در فایل</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>برخی قابليت‌ها در اين نسخه از Lively وجود ندارد</value>
+    <value>برخی از ویژگی ها در این نسخه از Lively موجود نیست</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>فايل پيدا نشد</value>
@@ -375,7 +377,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>نصب</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -454,7 +456,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پیش نمایش</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>سیاست حریم خصوصی</value>
+    <value>سیاست حفظ حریم خصوصی</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
     <value>در حال پردازش</value>
@@ -487,7 +489,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پایان</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>آيا از لايولي خوشتون اومده؟ يک نظر بذاريد :)</value>
+    <value>آیا از استفاده Lively لذت می برید؟ نظر بدهید :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>پشتیبانی</value>
@@ -546,8 +548,8 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>نسخه جدید موجود است!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>بررسی برای نسخه جدید</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>بررسی به‌روزرسانی</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>بررسی برای نسخه جدید با مشکل مواجه شد</value>
@@ -562,7 +564,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>ویدیو</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>آرگومان‌های اختیاری خط فرمان را وارد کنید</value>
+    <value>آرگومان های خط فرمان اختیاری را وارد کنید</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>پر کردن</value>
@@ -604,32 +606,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پخش کننده ویدیو</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>تنظيم همه ي فرمت هاي پشتيباني شده به عنوان کاغذ ديواري.</value>
+    <value>همه انواع فایل های پشتیبانی شده را به عنوان تصویر زمینه تنظیم کنید</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
     <value>تنظيم صفحه وبِ آدرس وارد شده به عنوان کاغذ ديواري.</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>تنظیم کنید که هر برنامه متمرکز شده چه کاری انجام دهد.</value>
+    <value>تنظیم کنید وقتی هر برنامه ای در فوکوس است چه کاری انجام دهید</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>تنظیم کنید که هنگام اجرای بازیها / برنامه های تمام صفحه چه کاری انجام شود.</value>
+    <value>تنظیم کنید وقتی بازی ها/برنامه های تمام صفحه در حال اجرا هستند چه کاری انجام شود</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>قوانین مختلف پخش تصویر زمینه را بر اساس برنامه های در حال اجرا تنظیم کنید.</value>
+    <value>هنگام اجرای این برنامه ها، کاغذدیواری را متوقف کنید</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>لايولي با تغييرات تنظيمات تم سيستم خودش را وفق ميدهد، براي تغيير ظاهر به اينجا برويد.</value>
+    <value>Lively با تنظیمات تم سیستم سازگار می شود تا ظاهر را تغییر دهد</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>(فقط برای سیستم هایی که با باتری کار می کنند) هنگام قطع برق AC ، پخش را تغییر دهید.</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Enter the port for debugging webpage wallpapers, browser restart is required for changes to take effect.
-When ready navigate to http://localhost:portnumber to access developer console.</value>
+    <value>پورت اشکال زدایی والپیپرهای صفحه وب را وارد کنید. پس از آماده شدن به http://localhost:portnumber بروید تا به کنسول توسعه دهنده دسترسی پیدا کنید</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>نشان دادن منو سازنده</value>
+    <value>نمایش منوی برنامه نویس</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
     <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
@@ -791,7 +792,7 @@ Edge is the built in webview of windows 10.</value>
     <value>مکان</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>تصویر Lockscreen</value>
+    <value>تصویر صفحه قفل</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>غیره</value>
@@ -839,7 +840,7 @@ Edge is the built in webview of windows 10.</value>
     <value>تنظیمات</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>رد کردن تاییدیه</value>
+    <value>رد شدن از تایید</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
     <value>کد منبع</value>
@@ -951,7 +952,7 @@ Edge is the built in webview of windows 10.</value>
     <value>گالری</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>سلام من Dani John هستم معروف به rocksdanister. من لایولی رو توسعه دادم، یه برنامه رایگان و منبع باز برای والپیپر. ممنونم از اینکه کار من دیدن کردین.</value>
+    <value>سلام، من دنی جان هستم که با نام rocksdanister نیز شناخته می شود. من Lively یک برنامه تصویر زمینه رایگان و منبع باز (FOSS) را توسعه دادم. ممنون از اینکه وقت گذاشتید و به کارهای من نگاه کردید.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>گواهی نامه نرم افزار</value>
@@ -993,7 +994,7 @@ Edge is the built in webview of windows 10.</value>
     <value>عادی</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>چگونه محافظ صفحه‌نمایش بر نمایشگرهاي متصل نمايش داده شده است</value>
+    <value>نحوه اعمال محافظ صفحه برای اتصال به دستگاه های نمایشگر</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>نوع محافظ صفحه‌نمایش</value>
@@ -1218,9 +1219,18 @@ Edge is the built in webview of windows 10.</value>
     <value>برای فعال سازی این قابلیت باید ابتدا فایل های آن را دانلود کنید</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>بارگیری الزامی</value>
+    <value>دانلود الزامی است</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>دانلود</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

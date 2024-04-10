@@ -124,16 +124,16 @@
     <value>Επίπεδο έντασης όλων των ταπετσαριών.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Κύρια Ένταση</value>
+    <value>Ένταση</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Ήχος</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Φόρουμ διαδικτυακής συζήτησης</value>
+    <value>Online φόρουμ συζήτησης</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>Τεκμηρίωση και βοήθεια API</value>
+    <value>Οδηγίες και βοήθεια API</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Η Lively αντιμετώπισε ένα μοιραίο σφάλμα.
@@ -340,8 +340,8 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Ανά Οθόνη</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Κατεβάστε</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Λήψη</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Επεξεργασία</value>
@@ -376,7 +376,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>ώρες</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Εγκατάσταση</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Διαθέσιμη ενημέρωση!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Έλεγχος για ενημερώσεις</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1221,6 +1221,15 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Απαιτείται Λήψη</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Κατεβάστε</value>
+    <value>Λήψη</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

@@ -121,7 +121,7 @@
     <value>Reproducir el audio solo cuando el escritorio esté enfocado</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Volumen de todos los fondos</value>
+    <value>Nivel de volumen de todos los fondos.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Volumen General</value>
@@ -133,7 +133,7 @@
     <value>Foro de debate</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>Documentación de la API y ayuda</value>
+    <value>Documentación de la API y Ayuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively ha encontrado un error fatal.
@@ -144,7 +144,7 @@
     <value>Se encontró un programa incompatible, tema de la barra de tareas desactivado</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Página web oficial de Lively Wallpaper</value>
+    <value>Sitio web oficial de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
@@ -221,7 +221,7 @@ El objetivo principal del salva pantallas en Lively es ofrecer más posibilidade
     <value>Icono de la bandeja del sistema</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively se reiniciará para aplicar el nuevo idioma.</value>
+    <value>Lively se reiniciará para aplicar el nuevo idioma</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Idioma</value>
@@ -296,7 +296,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Regresar</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Navegar</value>
+    <value>Buscar</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>Cancelar</value>
@@ -340,7 +340,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Por pantalla</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Descargar</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextHours" xml:space="preserve">
     <value>Horas</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalar</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>¡Actualización disponible!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Buscar actualizaciones</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1120,7 +1120,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Compartir fondo de pantalla</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Exportar desde galería</value>
+    <value>Importar desde galería</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Copiar enlace</value>
@@ -1223,5 +1223,14 @@ Edge es la vista web integrada en Windows 10.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Descargar</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

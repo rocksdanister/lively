@@ -147,11 +147,11 @@
     <value>Página web oficial de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como salva pantallas.
+    <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantalla puede ser usado como salvapantallas.
 
-Para pantallas OLED, Plasma o CRT que son susceptibles al quemado y retención de imagen es recomendado el uso de salva pantallas con movimiento continuo, y que tenga un tema relativamente oscuro que se supone que puede mitigar este efecto, pero este método no ha sido comprobado y no se puede garantizar su eficacia.
+Para pantallas OLED, Plasma o CRT, que son susceptibles al quemado y retención de imagen, es recomendado el uso de salvapantallas con movimiento continuo, y que tenga un tema relativamente oscuro que se supone que puede mitigar este efecto, pero este método no ha sido comprobado y no se puede garantizar su eficacia.
 
-El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo!</value>
+El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa salvapantallas como protección contra el quemado de pantalla bajo tu propio riesgo!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Informar de un problema con la aplicación</value>
@@ -207,7 +207,7 @@ Continúa únicamente si esta aplicación proviene de una fuente confiable.</val
     <value>Este asistente te guiará para configurar Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Tu versión de Windows N/KN requiere la descarga de codecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
+    <value>Tu versión de Windows N/KN requerirá la descarga de codecs adicionales para respaldar la reproducción de vídeos como fondos de pantalla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Muestra tu apoyo comprándole un café al desarrollador</value>
@@ -217,10 +217,10 @@ Continúa únicamente si esta aplicación proviene de una fuente confiable.</val
 Las actualizaciones serán frecuentes. ¡Y pueden llegar a tener errores!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilidad del icono de la bandeja del sistema, Lively continuará corriendo con el icono escondido</value>
+    <value>Visibilidad del ícono de la bandeja del sistema, Lively continuará corriendo con el ícono escondido</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Icono de la bandeja del sistema</value>
+    <value>Ícono de la bandeja del sistema</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
     <value>Lively se reiniciará para aplicar el nuevo idioma.</value>
@@ -238,7 +238,7 @@ https://github.com/rocksdanister/lively/releases</value>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Vaya... parece que algo salió mal:(
 Para entender mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
-Visita el siguiente enlace con instrucciones sobre como compartir el archivo de registro:
+Visita el siguiente enlace con instrucciones para compartir el archivo de registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
@@ -261,7 +261,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 ¿Desea restaurar los fondos de pantalla que estaban ejecutando anteriormente?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Debes aplicar algunas configuraciones para que Lively funcione:
+    <value>Parece que debes aplicar algunas configuraciones para que Lively funcione:
 1. En el navegador de archivos da clic derecho en "Este Equipo"
 2. Selecciona Propiedades
 3. Selecciona Configuración avanzada del sistema
@@ -271,7 +271,7 @@ https://github.com/rocksdanister/lively/wiki</value>
 
 Si Windows 7 se acaba de configurar: ajusta para obtener la mejor apariencia y aplica los cambios.
 Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
-(No funciona en algunas versiones insider de Windows 10)</value>
+(No funciona en algunas versiones de Windows 10 Insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Lively necesita ejecutarse en segundo plano para reproducir el fondo de pantalla.</value>
@@ -304,7 +304,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Cancelar</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Cambiar los fondos de pantalla</value>
+    <value>Cambiar los fondos</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Cerrar</value>
@@ -342,7 +342,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Por pantalla</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Descargar</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,9 +376,9 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Ayúdanos a traducir nuestro programa</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>Horas</value>
+    <value>hora(s)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Instalar</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -388,7 +388,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Última vez revisado</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Aprender más</value>
+    <value>Saber más</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>Licencia</value>
@@ -448,7 +448,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Nada</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Pausa</value>
+    <value>Pausar</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Imagen</value>
@@ -487,7 +487,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Comenzar</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Detener</value>
+    <value>Parar</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
     <value>Te está gustando Lively? Deja un comentario 😁</value>
@@ -549,7 +549,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>¡Actualización disponible!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Buscar actualizaciones</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -592,7 +592,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Tipo</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Sitio web</value>
+    <value>Página web</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
     <value>Stream web</value>
@@ -694,7 +694,7 @@ Todos los procesos: Pesado, analiza todos los procesos abiertos para determinar 
     <value>Ruta utilizada para almacenar archivos de fondo de pantalla.</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Algoritmo de redimensionamiento de fondos de pantalla.</value>
+    <value>Algoritmo de redimensionamiento de fondos de pantalla</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Seleccione de qué forma interactuará con el fondo de pantalla</value>
@@ -703,7 +703,7 @@ Todos los procesos: Pesado, analiza todos los procesos abiertos para determinar 
     <value>Cómo se aplica el fondo a las pantallas conectadas.</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Pausa la reproducción del fondo de pantalla cuando el escritorio no está enfocado.</value>
+    <value>Pausa la reproducción del fondo de pantalla cuando el escritorio no está enfocado</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
     <value>Almacenar archivos temporales en el disco en lugar de la memoria, la configuración se restaurará cuando se reinicie el navegador.</value>
@@ -737,7 +737,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Reproducir audio en pantalla</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Al usar la batería</value>
+    <value>Al usar el Ahorro de Batería</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
     <value>Explorar archivos de video, gifs, páginas web... para establecer como fondo de pantalla</value>
@@ -803,7 +803,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Silenciar</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Algoritmo de pausa</value>
+    <value>Algoritmo de Pausa</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
     <value>Rendimiento</value>
@@ -891,7 +891,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Mover los fondos de pantalla existentes a un nuevo directorio</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Elige una opción</value>
+    <value>Elige una dimensión</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
     <value>Entrada</value>
@@ -1008,7 +1008,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Igual que el fondo de pantalla</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Complemento requerido</value>
+    <value>Plugin requerido</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
     <value>Se requiere una configuración por única vez para ejecutar el salvapantallas</value>
@@ -1098,7 +1098,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Enviar</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Por favor confirme esta acción ya que NO PUEDE deshacerse</value>
+    <value>Por favor confirme esta acción, ya que NO PUEDE deshacerse</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
     <value>No se pudo borrar esta cuenta, por favor, inténtalo de nuevo más tarde</value>
@@ -1122,7 +1122,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Compartir fondo de pantalla</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Subir galería</value>
+    <value>Subir a galería</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Copiar enlace</value>
@@ -1140,10 +1140,10 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tamaño</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Por favor, instale el complemento requerido</value>
+    <value>Por favor, instale el plugin requerido</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Complemento no encontrado</value>
+    <value>Plugin no encontrado</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
     <value>Actualización completada</value>
@@ -1170,7 +1170,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>Para prevenir la selección accidental los iconos de escritorio están actualmente ocultos</value>
+    <value>Para prevenir la selección accidental, los iconos de escritorio están actualmente ocultos</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
     <value>Iconos de escritorio</value>
@@ -1182,7 +1182,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>El desarrollo de esta función está en espera</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Complementos</value>
+    <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
     <value>Crear un fondo dinámico</value>
@@ -1191,7 +1191,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Avanzado</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Profundidad aproximada..</value>
+    <value>Aproximando profundidad..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
     <value>Usando IA para transformar fotografías en 3D</value>
@@ -1218,12 +1218,21 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Algunas funcionalidades pueden no estar disponibles cuando se ejecutan como administrador</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Los archivos adicionales deben ser descargados para esta función</value>
+    <value>Se necesitan descargar archivos adicionales para esta función</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
     <value>Descarga requerida</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Descargar</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

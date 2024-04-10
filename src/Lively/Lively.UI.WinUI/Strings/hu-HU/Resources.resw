@@ -121,7 +121,7 @@
     <value>Csak akkor játssza le a hangot, ha az asztal fókuszban van</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Hangerő szint minden egyes háttérképnek</value>
+    <value>Hangerő szint szabályozás az összes háttérnél</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
     <value>Hangerő</value>
@@ -141,7 +141,7 @@
 A Windows Intéző kétszer indult újra az elmúlt 30 másodpercben! Ez ütközés lehet a Lively és más asztali testreszabási szoftverek vagy a Windows között. A további problémák elkerülése érdekében az összes háttérkép le lett állitva.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Incompatible program found, taskbar theming disabled.</value>
+    <value>Inkompatibilis progam észlelve, a tálca témázása letiltva</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
     <value>A Lively Wallpaper hivatalos weboldala</value>
@@ -149,15 +149,15 @@ A Windows Intéző kétszer indult újra az elmúlt 30 másodpercben! Ez ütköz
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>A legtöbb modern LCD és LED kijelző nem szenved beégési problémától, ezért bármilyen háttérkép használható képernyővédőként.
 
-A beégésre hajlamos OLED-, plazma- vagy katódsugárcsöves kijelzők esetében javasolt szabályos mozgású tapéta és általános sötét témát használni, amely a beégést csökkenteni hivatott, de ez a funkció még nem tesztelt, és a hatékonysága nem garantálható.
+A beégésre hajlamos OLED-, plazma vagy CRT kijelzők esetében javasolt szabályos mozgású hátteret és általános sötét témát használni, ami ennek megelőzését szolgálja, de ez a funkció nem tesztelt és nem garantált a hatékony müködése.
 
-A Lively képernyővédőinek fő célja, hogy egy újabb testreszabási réteget adjon a számítógépéhez, és saját felelősségére használja a képernyővédőket beégés elleni védelemként!</value>
+A Lively képernyővédőinek fő célja, hogy egy újabb testreszabási réteget adjon a számítógépéhez, és beégés védett hátteret csak a saját felelősségel használd!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Jelentse be a szoftverrel kapcsolatos problémát</value>
+    <value>A porgrammal kapcsolatos hiba jelentése</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Válassz ki egy egy fáljt vagy egy weboldal linket hogy beállíthasd háttérképnek.</value>
+    <value>Fálj kiválasztása</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>A háttérkép lejátszása a futó alkalmazásokon alapszik.</value>
@@ -169,74 +169,75 @@ A Lively képernyővédőinek fő célja, hogy egy újabb testreszabási rétege
     <value>Biztos véglegesen törölni akarod a háttérképet a lemezről?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Biztos vagy abban hogy ki szeretnéd törölni ezt a háttérképet a könyvtárból?</value>
+    <value>Biztos vagy abban hogy törlöd ezt a háttérképet a könyvtárból?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Egyszerűen húzz és dobj fájlokat a könyvtárba.</value>
+    <value>Egyszerűen húzd ide a fájlokat</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Egy külső alkalmazást nyitsz meg háttérképként.
-Rosszindulatú alkalmazások hordozhatnak káros szoftvert, vírust.. és kárt okozhatnak a rendszerben.
-Csak akkor folytasd, ha ez az alkalmazás egy megbízható forrásból származik.</value>
+Rosszindulatú alkalmazások hordozhatnak káros szoftvert, vírust és kárt okozhatnak a rendszerben.
+Csak akkor folytasd, ha ez az alkalmazás megbízható forrásból származik.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>A Lively minimalizálva lett a talcára, jobb klikkelj a lively ikonra a folytatáshoz.</value>
+    <value>A Lively minimalizálva lett a talcára, jobb klikkelj a lively ikonjára a folytatáshoz.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
     <value>Kérlek indítsd újra a programot hogy a beállítások müködésbe lépjenek.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Please stop before proceeding.</value>
+    <value>Kérlek várj mielött hovább haladnál</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Nyomd meg az Indítást a felvételhez.</value>
+    <value>A felvltel índításához nyomd meg</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Az előző hátter(ek) visszaállítása, kérem várjon...</value>
+    <value>Az előző háttér(ek) visszaállítása folyamatban, kérlek várj...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Válassz kijelzőt</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Egy új verziója elérhető a programnak!</value>
+    <value>Frissítés elérhető!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Írd be a weboldal linket a betöltéshez, shadertoy.com árnyék linkek támogatottak.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Ez a varázsló segít elkezdeni a Lively felépítését.</value>
+    <value>Ez a varázsló segít a Lively beáiitásában</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>A te Windows N/KN verziódhoz további kodekek letöltése szükséges a hetterek videólejátszásához</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Támogassa a fejlesztőt egy kávéval</value>
+    <value>Támogasd egy kávéval a fejlesztőt</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>A Lively béta (fejlesztői) verziójára készül.
+    <value>A Lively béta (fejlesztői) verziójára készülsz váltani.
 A frissítések gyakoriak lesznek, és hibákat tartalmazhatnak!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Rendszertálca ikon láthatósága, élénk továbbra is futni fog az ikon rejtett</value>
+    <value>Tálca ikon láthatósága, a Lively akkor futni fog ha az ikon rejtett</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Tálca Ikon</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>A Lively újra fog indulni, hogy alkalmazza az új nyelvet.</value>
+    <value>A Lively újra fog indulni az új nyelv alkalmazásához</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Nyelv</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Frissítési hiba; próbáld meg letölteni a telepítőt innen: https://github.com/rocksdanister/lively/releases</value>
+    <value>Frissítési hiba; próbáld meg letölteni a telepítőt innen: 
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Meghibásodott háttérkép fájl, próbáld meg újra letölteni.</value>
+    <value>Sérült háttér fájl, próbáld meg újra letölteni</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Hoppá... Úgy látszik valami rosszul sikerült... :(
-Hogy jobban meg legyen értve és ki legyen javítva a hiba, osszd meg a naplófájlt a fejlesztővel.
+    <value>Hoppá... Úgy tűnik valami hiba történ :(
+Azügyben hogy jobban megértsük és megoldjuk, oszd meg a log fájlt a fejlesztóvel
 Instrukciók a naplófájl megosztásához:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
@@ -338,7 +339,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Képernyőnként</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Letöltés</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -374,7 +375,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
   <data name="TextHours" xml:space="preserve">
     <value>hours</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Telepítés</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -545,8 +546,8 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Frissítés elérhető!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Frissítés keresése</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Frissítések keresése</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Hiba frissítés keresése közben</value>
@@ -1221,5 +1222,14 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Letöltés</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

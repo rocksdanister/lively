@@ -189,7 +189,7 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
     <value>请先停止，然后再继续。</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>按下以开始录影</value>
+    <value>按下开始录制</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>正在恢复以前的壁纸，请稍候...</value>
@@ -217,13 +217,13 @@ Lively的屏幕保护程序的主要目的是为您的电脑增加另一层个�
 更新会很频繁，可能会有BUG!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>开启或关闭 Lively 图标系统托盘显示，关闭后 Lively 将在图标隐藏下继续运行</value>
+    <value>系统托盘图标可见性 关闭该选项时 Lively 将在隐藏图标的情况下继续运行</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>系统托盘图标</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively 将重启以应用新语言</value>
+    <value>重启 Lively 以应用新的语言。</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>语言设置</value>
@@ -242,8 +242,8 @@ https://github.com/rocksdanister/lively/releases</value>
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>启用Windows高对比度模式后，Lively无法正常工作!
-请禁用高对比度模式并重新尝试</value>
+    <value>Lively 无法在 Windows 高对比度 (Windows High Contrast) 模式下正常工作！
+请禁用高对比度模式，然后重试。</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>媒体播放失败 :(
@@ -340,7 +340,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>每个屏幕</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>下载</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -365,7 +365,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>动态 GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>通过投下一颗星来表达爱意</value>
+    <value>通过点星来表示喜爱</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>GO</value>
@@ -376,7 +376,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextHours" xml:space="preserve">
     <value>小时</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>安装</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>发现新版本！</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -739,7 +739,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>当处于电池供电模式时</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>浏览视频、GIF、网页......文件以设置为壁纸</value>
+    <value>选择视频、GIF、网页等文件以设置为壁纸</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>调试端口</value>
@@ -775,7 +775,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>通用</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif播放器</value>
+    <value>GIF播放器</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>帮助</value>
@@ -793,7 +793,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>地点</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>锁屏图片</value>
+    <value>锁屏壁纸</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>杂项</value>
@@ -1224,5 +1224,14 @@ Edge 是 Windows 10 内置的浏览器。</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>下载</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

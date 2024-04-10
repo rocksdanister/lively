@@ -340,7 +340,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Tək ekran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Endir</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="TextHours" xml:space="preserve">
     <value>saat</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Quraşdır</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Güncəlləmə mövcuddur!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Güncəlləməni yoxla</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1219,5 +1219,14 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Endir</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

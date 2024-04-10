@@ -340,7 +340,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>개별 화면</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>다운로드</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextHours" xml:space="preserve">
     <value>시간</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>설치</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>업데이트 사용 가능!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>업데이트 확인</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1222,5 +1222,14 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>다운로드</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

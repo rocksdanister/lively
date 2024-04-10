@@ -447,7 +447,7 @@ namespace Lively.UI.WinUI
         {
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), NavPages.library.GetAttrValue(), "\uE8A9"));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGallery"), NavPages.gallery.GetAttrValue(), "\uE719"));
-            navView.MenuItems.Add(CreateMenu("Update", NavPages.appUpdate.GetAttrValue(), "\uE777", new InfoBadge() { Value = 1, Opacity = appUpdater.Status == AppUpdateStatus.available ? 1 : 0 }));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleUpdates"), NavPages.appUpdate.GetAttrValue(), "\uE777", new InfoBadge() { Value = 1, Opacity = appUpdater.Status == AppUpdateStatus.available ? 1 : 0 }));
         }
 
         private void CreateSettingsMenu()
@@ -533,7 +533,7 @@ namespace Lively.UI.WinUI
                 NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
             }
             */
-            if (libraryVm.IsWorking || appUpdateVm.IsDownloading)
+            if (libraryVm.IsWorking || appUpdateVm.IsUpdateDownloading)
             {
                 args.Handled = true;
 

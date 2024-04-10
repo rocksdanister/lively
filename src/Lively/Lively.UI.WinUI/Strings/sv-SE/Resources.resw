@@ -314,7 +314,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per skärm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Ladda ner</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -350,7 +350,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TextHours" xml:space="preserve">
     <value>timmar</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installera</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -521,8 +521,8 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Uppdatering tillgänglig!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Sök efter uppdatering</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Sök efter uppdateringar</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Det gick inte att söka efter uppdateringar</value>
@@ -1193,5 +1193,14 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Ladda ner</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

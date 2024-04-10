@@ -297,7 +297,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>מפתחים</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>אחורה</value>
+    <value>חזור</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
     <value>דפדף</value>
@@ -306,7 +306,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>ביטול</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>שינוי טפט</value>
+    <value>שנה רקע</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>סגור</value>
@@ -344,7 +344,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>לכל מסך</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>הורד</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -380,7 +380,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextHours" xml:space="preserve">
     <value>שעה/שעות</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>התקן</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -551,7 +551,7 @@ https://github.com/rocksdanister/lively/wiki
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>עדכון זמין!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>בדוק עדכונים</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1184,45 +1184,54 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>תוספים</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>צור תמונת מסך דינמית</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>מתקדם</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>עומק מוערך..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>התשמש בבינה מלאכותית כדי לשנות תמונה לתמונת 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>המשך</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>צור רקע פשוט</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>רקע עמוק AI</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>רקע עמוק</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>רקע עמוק שמיוצר בבינה מלאכותית</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>צור רקע</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>פונקצית מסיומות לא יהיו זמינות כאשר הופעל כמנהל</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>נדרש להוריד קבצים נוספים עבור פעולה זו</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>נדרשת הורדה</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>הורד</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

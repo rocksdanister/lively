@@ -130,28 +130,28 @@
     <value>Suara</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Forum diskusi online</value>
+    <value>Forum diskusi</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>Bantuan dan Dokumentasi API</value>
+    <value>API &amp; Bantuan</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively mengalami kesalahan fatal.
 
-Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin ada konflik antara Lively dan perangkat lunak kustomisasi desktop lainnya atau Windows. Untuk menghindari masalah lebih lanjut, semua wallpaper dihentikan.</value>
+Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin terjadi karena adanya tabrakan antara Lively dengan program sejenis atau windows. Untuk menghindari masalah lebih lanjut, semua wallpaper dihentikan.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Program yang tidak kompatibel ditemukan, tema taskbar dinonaktifkan</value>
+    <value>Program tidak kompatibel ditemukan, tema bilah tugas dinonaktifkan</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
     <value>Halaman web resmi Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah burn-in dan oleh karena itu wallpaper apa pun dapat digunakan sebagai screensaver.
+    <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah efek terbakar dan maka dari itu, wallpaper apa pun dapat digunakan sebagai penghemat layar.
 
-Untuk tampilan OLED, Plasma, atau CRT yang rentan mengalami masalah burn-in, disarankan untuk menggunakan wallpaper dengan gerakan reguler dan tema gelap keseluruhan yang seharusnya mengurangi burn-in tetapi fitur ini belum teruji dan efektivitasnya tidak dapat dijamin.
+Untuk layar OLED, Plasma atau CRT yang rentan terhadap burn-in, disarankan untuk menggunakan wallpaper dengan gerakan teratur dan tema gelap secara keseluruhan yang seharusnya dapat mengurangi efek terbakar, namun fitur ini belum teruji dan efektivitasnya tidak dapat dijamin.
 
-Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain ke komputer Anda, gunakan screensaver sebagai perlindungan burn-in dengan risiko Anda sendiri!</value>
+Tujuan utama dari penghemat layar yang dimiliki Oleh Animasi adalah untuk menambahkan lapisan kustomisasi lain pada komputer Anda, gunakanlah penghemat layar sebagai perlindungan terhadap terbakarnya layar dengan risiko Anda sendiri!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Laporkan masalah dengan aplikasi</value>
@@ -163,33 +163,33 @@ Tujuan utama screensaver Lively adalah untuk menambahkan bagian kostumisasi lain
     <value>Pemutaran wallpaper berdasarkan aplikasi yang sedang berjalan</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Anda yakin ingin membatalkan?</value>
+    <value>Apakah Anda yakin ingin membatalkan?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Anda yakin ingin menghapus wallpaper ini secara permanen?</value>
+    <value>Apakah Anda yakin ingin menghapus latar belakang ini secara permanen?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Anda yakin ingin menghapus wallpaper ini dari pustaka?</value>
+    <value>Apakah Anda yakin ingin menghapus latar belakang ini secara permanen?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Cukup drag dan drop file ke sini</value>
+    <value>Cukup seret dan letakkan berkas ke sini</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Anda membuka aplikasi eksternal sebagai wallpaper.
-Aplikasi seperti ini dapat terkontaminasi oleh malware, virus.. dan dapat merusak sistem anda.
-Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
+    <value>Anda membuka aplikasi eksternal sebagai latar belakang.
+Aplikasi berbahaya dapat menampung program jahat, virus, dan membahayakan sistem Anda.
+Lanjutkan hanya jika aplikasi ini berasal dari sumber tepercaya.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
     <value>Lively dikecilkan ke systemtray, klik kanan pada ikon Lively untuk melanjutkan.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Mohon mulai ulang aplikasi agar pengaturan dapat diterapkan</value>
+    <value>Mohon mulai ulang Lively agar pengaturan dapat diterapkan.</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Harap berhenti sebelum melanjutkan</value>
+    <value>Harap berhenti sebelum melanjutkan.</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Tekan untuk mulai merekam</value>
+    <value>Tekan untuk mulai merekam.</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Sedang memulihkan wallpaper sebelumnya, mohon tunggu...</value>
@@ -198,13 +198,13 @@ Lanjutkan jika aplikasi berasal dari sumber terpercaya</value>
     <value>Pilih tampilan</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Versi terbaru Lively telah tersedia!</value>
+    <value>Aplikasi versi terbaru telah tersedia!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Masukkan URL halaman web untuk dimuat, tautan shader dari shadertoy.com dapat digunakan.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Wizard ini akan membantu Anda memulai penyiapan Lively</value>
+    <value>Panduan ini akan membantu Anda memulai pengaturan Animasi</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Versi Windows N/KN kamu membutuhkan codec tambahan untuk mendukung pemutaran video di wallpaper</value>
@@ -234,7 +234,7 @@ https://github.com/rocksdanister/lively/releases
 </value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>File wallpaper rusak, coba unduh ulang</value>
+    <value>File wallpaper rusak, coba unduh ulang.</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
     <value>Oops... Sepertinya terjadi masalah :(
@@ -243,8 +243,8 @@ Petunjuk untuk berbagi file log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively tidak dapat bekerja dengan baik dengan mode Kontras Tinggi Windows jika diaktifkan!
-Nonaktifkan mode Kontras Tinggi dan coba lagi</value>
+    <value>Lively tidak dapat berfungsi dengan Mode Kontras Tinggi Windows!
+Matikan ModeKontras Tinggi dan mulai ulang.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Gagal memutar media:(
@@ -273,10 +273,10 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
 (Tidak berfungsi untuk beberapa Windows 10 Insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively perlu berjalan di latar belakang untuk pemutaran wallpaper</value>
+    <value>Lively harus berjalan di latar belakang untuk memutar wallpaper.</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Memulai aplikasi saat Windows dinyalakan</value>
+    <value>Mulai saat menyala</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Tambah</value>
@@ -341,7 +341,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Layar</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Unduh</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -377,7 +377,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="TextHours" xml:space="preserve">
     <value>jam</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Pasang</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -548,8 +548,8 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update tersedia!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Cek untuk update</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Periksa pembaruan</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Gagal untuk memeriksa update perangkat lunak</value>
@@ -1222,5 +1222,14 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Unduh</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

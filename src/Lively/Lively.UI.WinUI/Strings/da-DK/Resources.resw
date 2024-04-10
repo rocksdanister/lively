@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Afspil kun lyd, når skrivebordet er fokuseret</value>
+    <value>Afspil kun lyd, når skrivebordet er i fokus</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volumenniveau for alle baggrunde</value>
@@ -340,7 +340,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per skærm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Hent</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TextHours" xml:space="preserve">
     <value>time(r)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Opdatering tilgængelig!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Søg efter opdatering</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1219,5 +1219,14 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Hent</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

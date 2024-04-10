@@ -144,7 +144,7 @@ Windows Gezgini son 30 saniye içinde iki kez yeniden başlatıldı! Bu, Lively 
     <value>Uyumsuz program tespit edildi, görev çubuğu teması devre dışı bırakıldı.</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Lively Wallpaper Resmi İnternet Sitesi</value>
+    <value>Lively Wallpaper'ın resmi web sayfası</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Çoğu modern LCD ve LED ekran yanma (burn-in) sorunu yaşamaz ve bu yüzden bu ekranlarda genelde herhangi bir duvar kağıdı ekran koruyucu olarak kullanılabilir.
@@ -154,96 +154,96 @@ Yanmaya duyarlı OLED, Plazma veya CRT ekranlar için, normal hareketli duvar ka
 Lively'nin ekran koruyucularının temel amacı, bilgisayarınıza başka bir özelleştirme katmanı eklemektir, ancak Lively'i yanma koruması için ekran koruyucu olarak kullanmanın riski size aittir!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Uygulamada sorun bildir</value>
+    <value>Yazılım ile ilgili bir sorunu bildir</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Bir dosya seçin</value>
+    <value>Bir dosya seç</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Duvar kağıdı davranışı çalışan uygulamaya göre belirlendi.</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>İptal etmek istediğinize emin misiniz?</value>
+    <value>İptal etmek istediğinizden emin misiniz?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>Duvar kağıdını kalıcı olarak diskten silmek istediğinize emin misiniz?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Duvar kağıdını kütüphaneden silmek istediğinize emin misiniz?</value>
+    <value>Bu duvar kağıdını Kütüphaneden silmek istediğinizden emin misiniz?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>Dosyaları buraya sürükleyin ve bırakın</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Duvar kağıdı olarak dışarıdan bir uygulama açıyorsunuz.
-Kötü amaçlı uygulamalar kötü amaçlı yazılımlar ve virüs içerebilir ve sisteminize ciddi zararlar verebilir.
-Sadece uygulama güvenilir bir kaynaktan geliyorsa devam edin.</value>
+    <value>Dış uygulamayı duvar kağıdı olarak açıyorsunuz.
+Kötü niyetli uygulamalar zararlı yazılım, virüs gibi kötü niyetli içerik barındırabilir ve sistemize zarar verebilir.
+Yalnızca güvenilir bir kaynaktan bu uygulama geldiyse devam edin.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively bildirim alanına küçültüldü, Lively'e geri dönmek için Lively simgesine sağ tıklayın.</value>
+    <value>Lively sistem tepsisine küçültüldü, devam etmek için Lively simgesine sağ tıklayın.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Ayarların uygulanması için Lively'i yeniden başlatın</value>
+    <value>Ayarların etkili olması için Lively'yi yeniden başlatın lütfen</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Lütfen devam etmeden önce biraz bekleyin.</value>
+    <value>Lütfen devam etmeden önce durdurun</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Kayda başlamak için tıklayın</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Şu anda önceki duvar kağıtları geri yükleniyor, lütfen bekleyin...</value>
+    <value>Mevcut duvar kağıdınızı geri yüklüyorum, lütfen bekleyin...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Ekran seçimi</value>
+    <value>Ekranı Seçin</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Yeni sürüm mevcut!</value>
+    <value>Yazılımın yeni bir sürümü mevcut!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
     <value>Yüklemek için website urlsi girin, shadertoy.com shader linkleri destekleniyor.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Bu sihirbaz, Lively kurulumunda size yardımcı olacak</value>
+    <value>Bu sihirbaz, Lively'in kurulumunu başlatmanıza yardımcı olacak</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows N/KN sürümü kullandığınız için, duvar kağıtlarında video oynatmayı desteklemek için ek codec bileşenlerinin indirilmesi gerekir</value>
+    <value>Windows N/KN sürümünüz, duvar kağıtlarında video oynatımını desteklemek için ek kodeklerin indirilmesini gerektirebilir</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Bağışta bulunarak yazılımı destekle!</value>
+    <value>Geliştiriciye kahve alarak destek gösterin</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Lively'nin beta sürümüne geçmek üzeresiniz.
-Beta sürümünde hatalar olabilir ve sık sık güncelleme gelebilir.</value>
+    <value>Lively'nin beta (geliştirici) sürümüne geçmek üzeresiniz.
+Güncellemeler sık olacak ve hatalar içerebilir!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Sistem tepsisinde ikon görünürlüğü, Lively ikon gizli bir şekilde çalışmaya devam edecek.</value>
+    <value>Sistem tepsisi simgesinin görünürlüğü, Lively simgesi gizli olsa bile devam edecek</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Bildirim alanı simgesi</value>
+    <value>Sistem tepsisi simgesi</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively yeni dili uygulamak için yeniden başlatılacak.</value>
+    <value>Yeni dil uygulanması için Lively yeniden başlatılacak</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Dil</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Güncelleme başarısız oldu; Kurulum dosyasını şu adresten indirmeyi deneyin:
+    <value>Güncelleme başarısız oldu; indirme işlemi için aşağıdaki bağlantıyı kullanın:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Duvar kağıdı dosyası hasarlı. Dosyayı yeniden indirmeyi deneyin.</value>
+    <value>Hasarlı duvar kağıdı dosyası, yeniden indirmeyi deneyin</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Görünüşe göre bir şeyler yanlış.
-Bu sorunu daha iyi anlamak ve çözüme kavuşturmak için günlük dosyasını geliştirici ile paylaşın.
-Günlük dosyasını paylaşma hakkında detaylı bilgi:
+    <value>Ups... Bir şeyler yanlış gitti :(
+Bu hatayı daha iyi anlamak ve sorunu düzeltmek için günlük dosyasını geliştiriciyle paylaşın.
+Günlük dosyasını paylaşma talimatları için:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windows yüksek kontrast modu açıkken Lively düzgün çalışamaz.
-Yüksek kontrast modunu kapatın ve tekrar deneyin.</value>
+    <value>Lively, Windows Yüksek Kontrast modu etkin olduğunda düzgün çalışamaz!
+Yüksek Kontrast modunu devre dışı bırakın ve tekrar deneyin</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Medya oynatması başarısız :(
@@ -257,15 +257,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Lively duvar kağıdı dosyası değil</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively düzgün kapatılamadı, güvenli modda başlatılıyor.
-Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
+    <value>Lively düzgün şekilde kapatılmadı, güvenli modda başlatılıyor.
+Daha önce çalışan duvar kağıtlarını geri yüklemek ister misiniz?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Görünüşe göre Lively çalışmak için bazı ayarlara ihtiyaç duyuyor:  
-1. Win + R tuşlarına aynı anda basarak Çalıştır'ı açın,
-2. SystemPropertiesPerformance.exe yazın ve çalıştırın.
-3. "Denetim ve öğe animasyonlarını pencere içinde göster" yazılı butonu işaretleyin (Zaten işaretlenmişse işareti kaldırıp tekrar işartetleyin)
-4. Uygula ve Tamam diyerek pencereyi kapatın.</value>
+    <value>Lively'nin çalışması için bazı ayarların yapılması gerekiyor gibi görünüyor:  
+1. Win + R tuşlarına basarak Çalıştır'ı açın, 
+2. Çalıştır'a SystemPropertiesPerformance.exe yazın, "Tamam" ı tıklayarak Performans Seçenekleri'ni açın.
+3. "Pencere içindeki denetimleri ve öğeleri animasyonlandır"ı etkinleştirin/kontrol edin (Zaten işaretliyse, işareti kaldırıp işaretleyin) &amp; Uygula.
+4. "Uygula" ya tıklayın, sonra pencereyi kapatmak için "Tamam"a basın.
+
+Windows 7 ise - En iyi görünüm için ayarla &amp; Uygula.
+Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeniden başlatın.
+(Bazı insider windows 10 yapılarında çalışmaz)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Duvar kağıdını oynatabilmek için Lively arka planda çalışmalı.</value>
@@ -292,7 +296,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Geri</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Gezin</value>
+    <value>Göz at</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
     <value>İptal</value>
@@ -313,7 +317,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Duvar kağıtlarını yönetmek için tıklayın</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Videoya Dönüştür</value>
+    <value>Video'ya Dönüştür</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Önizleme oluştur</value>
@@ -336,7 +340,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Tek ekran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>İndir</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -349,16 +353,16 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Çıkış</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Dışa aktar</value>
+    <value>Dosyaya Kaydet</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Bazı özellikler Lively'nin bu sürümünde mevcut değil.</value>
+    <value>Bazı özellikler, bu Lively sürümünde mevcut değil</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Dosya bulunamadı</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>Animasyonlu GIF</value>
+    <value>Canlı GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
     <value>Yıldızlayarak sevginizi gösterin</value>
@@ -372,17 +376,17 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
   <data name="TextHours" xml:space="preserve">
     <value>saat</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
-    <value>Kurulum</value>
+  <data name="TextInstall.Content" xml:space="preserve">
+    <value>Yükle</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Klavye</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Son kontrol</value>
+    <value>Son kontrol edilen tarih</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Daha fazla bilgi</value>
+    <value>Daha Fazla Bilgi Edinin</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>Lisans</value>
@@ -394,7 +398,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Bilgi</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Daha fazla duvar kağıdı</value>
+    <value>Daha Fazla Duvar Kağıdı</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
     <value>Fare</value>
@@ -403,7 +407,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Uygulama odaklandığında fare etkileşimi</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>İleri</value>
+    <value>Sonraki</value>
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>Hayır</value>
@@ -421,19 +425,19 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Çevrimiçi</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Lively'yi aç</value>
+    <value>Lively'i Aç</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Tüm işlemler</value>
+    <value>Tüm işlem</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Önplan işlemi</value>
+    <value>Ön Plan İşlemi</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Duvar Kağıdını durdur</value>
+    <value>Duvar Kağıtlarını Duraklat</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
     <value>Sonlandır</value>
@@ -445,10 +449,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Durdur</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Fotoğraflar</value>
+    <value>Resim</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Duvar Kağıdını önizle</value>
+    <value>Önizleme</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Gizlilik Politikası</value>
@@ -466,10 +470,10 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Ekran</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
-    <value>Arama</value>
+    <value>Ara</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Duvar Kağıdı olarak ayarla</value>
+    <value>Duvar Kağıdı Olarak Ayarla</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Dosya konumunu aç</value>
@@ -484,16 +488,16 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Durdur</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Lively kullanmaktan memnun musunuz? Lütfen yorum bırakın :)</value>
+    <value>Lively'yi kullanmaktan keyif alıyor musunuz? Bir değerlendirme bırakın :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Destek</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Beta sürümüne geç</value>
+    <value>Beta (Dev kanalına) geçiş yap</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Kararlı sürümü kullan</value>
+    <value>Stabil (Varsayılan kanala) geçiş yap</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Etiketler</value>
@@ -541,19 +545,19 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Dosya biçimi desteklenmiyor.</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Güncelleştirme mevcut!</value>
+    <value>Güncelleme mevcut!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Güncelleştirmeleri denetle</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Güncelleme kontrol et</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Güncelleştirme denetlenmesi başarısız oldu</value>
+    <value>Yazılım güncellemesi kontrol edilemedi</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Güncelleştirme denetleniyor</value>
+    <value>Güncelleme kontrol ediliyor</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Uygulama en güncel sürümünde!</value>
+    <value>Yazılım güncel!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
@@ -565,7 +569,7 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Doldur</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Sığdırma yok</value>
+    <value>Hiçbiri</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
     <value>Aynı</value>
@@ -574,103 +578,100 @@ Daha önce çalışan duvar kağıdını geri yüklemek ister misiniz?</value>
     <value>Aynı şekilde doldur</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Aynı duvar kağıdını çoğalt</value>
+    <value>Aynı duvar kağıdını kopyala</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Sadece seçili ekran</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Ekranlar arasında uzat</value>
+    <value>Ekranları genişlet</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tip</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Web Sayfası</value>
+    <value>Web sitesi</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
     <value>Web Yayını</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Hoşgeldiniz</value>
+    <value>Hoş geldiniz</value>
   </data>
   <data name="TextYes" xml:space="preserve">
     <value>Evet</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>Video Oynatıcı</value>
+    <value>Video oynatıcı</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Kabul edilen tüm dosya tiplerini duvar kağıdı olarak ayarla</value>
+    <value>Tüm desteklenen dosya türlerini duvar kağıdı olarak ayarla</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Girilen URL'deki sayfayı duvar kağıdı olarak ayarla.</value>
+    <value>Girdiğiniz URL'nin web sayfasını duvar kağıdı olarak ayarla</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Herhangi bir uygulama odaktayken davranışı seçin.</value>
+    <value>Herhangi bir uygulama odaklandığında ne yapılacağını ayarla</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Tam ekran uygulamalar çalışırken davranışı seçin.</value>
+    <value>Tam ekran oyunlar/uygulamalar çalıştığında ne yapılacağını ayarla</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Çalışan uygulamalar için özel kurallar belirleyin.</value>
+    <value>Bu uygulamalar çalıştığında duvar kağıdını duraklat</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively sistem temasına adapte olur, değiştirmek için</value>
+    <value>Lively, sistem tema ayarlarına uyum sağlar; görünümü değiştirmek için şuraya gidin</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Sadece pil ile çalışanlar için) Adaptör çıkarıldığında oynatmayı değiştir.</value>
+    <value>AC güç bağlantısı kesildiğinde oynatımı değiştir</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Internet sitesi duvar kağıtlarında hata ayıklamak için port numarasını girin. Tarayıcının yeniden başlatılması gerekiyor.
-Hazır olduğunuzda http://localhost:port adresinden geliştirici konsoluna ulaşabilirsiniz.</value>
+    <value>Web sayfası duvar kağıtlarının hata ayıklama için kullanılacak bağlantı noktasını girin; hazır olduğunda http://localhost:portnumber adresine giderek geliştirici konsoluna erişebilirsiniz</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
     <value>Geliştirici menüsünü göster</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Masaüstü arkaplanı olarak animasyonlu duvar kağıdı ayarla.</value>
+    <value>Animasyonlu duvar kağıdı resmini masaüstü duvar kağıdı olarak ayarla</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Tek: Uygulamanın odaklandığı ekrandaki duvar kağıdının oynatmasını durdurur.
-Tüm ekranlar: Uygulamaya odaklanılırsa bütün ekranlardaki duvar kağıtlarının oynatılması durdurulur. </value>
+    <value>Tüm ekranlarda veya sadece uygulamanın odaklandığı ekranda duvar kağıdını duraklat</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Log dosyası oluştur.</value>
+    <value>Log rapor dosyası oluştur</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Gif duvar kağıdı için kullanılacak oynatıcıyı seçin</value>
+    <value>GIF duvar kağıdı için kullanılan oynatıcıyı seç</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Devam etmek için kurulumu bitirin.</value>
+    <value>Devam etmek için kurulumu tamamlayın</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Kilit ekranı arkaplanı olarak animasyonlu duvar kağıdı ayarla.</value>
+    <value>Animasyonlu duvar kağıdı resmini kilit ekranı duvar kağıdı olarak ayarla</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Önplan: Hafif, sadece odaktaki uygulamaya göre duvar kağıdı oynatma davranışını belirler.
-Tüm Uygulamalar: Daha ağır, Tüm uygulamara bakarak duvar kağıdı oynatma davranışını belirler.</value>
+    <value>Duvar kağıdı duraklatma algoritması</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Windows güç koruma modu aktifken oynatmayı değiştir.</value>
+    <value>Windows Güç Tasarruf Modu etkinleştirildiğinde oynatımı değiştir</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Uzak masaüstü bağlantısı aktifken oynatmayı değiştir.</value>
+    <value>Uzak Masaüstü oturumu çalıştığında oynatımı değiştir</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>Seçilen inaktivite süresinden sonra kullanılan duvar kağıdını kilit ekranı olarak ayarla.</value>
+    <value>Etkinlik olmadığı süre sonrasında mevcut duvar kağıdını ekran koruyucu olarak kullan</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>Eğer desteklenen video yayın linki tespit edilirse tarayıcı yerine video oynatıcıyı kullan</value>
+    <value>Desteklenen bir video akış bağlantısı algılandığında, web sayfasını yüklemek yerine video oynatıcıyı kullan</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Online yayınlar için video kalitesini seçin.</value>
+    <value>Çevrimiçi akışlar için istenen video kalitesini seçin</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Kararlı ve Beta sürüm arasında geçiş yap</value>
+    <value>Yazılım sürümünü beta'dan stabil veya tersine değiştir</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Sistem görev çubuğu görünüşünü değiştir</value>
+    <value>Sistem görev çubuğu görünümünü değiştir</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Kütüphanedeki duvar kağıtlarının kare boyutu.</value>
@@ -679,32 +680,31 @@ Tüm Uygulamalar: Daha ağır, Tüm uygulamara bakarak duvar kağıdı oynatma d
     <value>Düşük performanslı bilgisayarlarda hafif modu seçin.</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Mümkün olduğunda donanım hızlandırmayı kullan.</value>
+    <value>Mümkünse donanım hızlandırmasını kullan</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Video duvar kağıdı oynatıcısını seçin</value>
+    <value>Video duvar kağıdı için kullanılan oynatıcıyı seç</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Duvar kağıdı dosyalarının depolanacağı klasör</value>
+    <value>Duvar kağıdı dosyalarını saklamak için kullanılan yol</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Duvar kağıdı ölçeklendirme algoritması</value>
+    <value>Duvar kağıdı ölçekleme algoritması</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Duvar kağıdı ile etkileşime geçme yöntemi seçin</value>
+    <value>Duvar kağıdı ile etkileşimde bulunma yöntemlerini seç</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Duvar kağıdının bağlı ekranlara nasıl uygulanacağı</value>
+    <value>Duvar kağıdının bağlı ekran cihazlarına nasıl uygulandığını seç</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Masaüstü odakta değilken duvar kağıdını oynatmayı durdur.</value>
+    <value>Masaüstü odaklanmadığında duvar kağıdı oynatımını duraklat</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Geçici dosyalar hafıza yerine diske yazılıyor, tarayıcı yeniden başlatıldığında ayarlar eski haline dönecek.</value>
+    <value>Geçici dosyaları bellek yerine diske kaydet</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) hafif bir chromium motorudur.
-Edge ise windows 10 için geçerli web gösterim motorudur.</value>
+    <value>HTML duvar kağıdı için kullanılan oynatıcıyı seç</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>Hakkında</value>
@@ -713,13 +713,13 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Duvar Kağıdı ekle</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Odaklanmış uygulama</value>
+    <value>Odaklanan Uygulamalar</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Tam ekran uygulama</value>
+    <value>Tam Ekran Açık Olan Uygulamalar</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Duvar Kağıdı</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
     <value>Uygulama Kuralları</value>
@@ -728,19 +728,19 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Tema</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Ekranda ses oynat</value>
+    <value>Ekran üzerinde ses çal</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Pil gücünde</value>
+    <value>Pil Gücünde İken</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Duvar kağıdı olarak ayarlamak için video, gif, web sayfası gibi dosyaları arayın</value>
+    <value>Duvar kağıdı olarak ayarlamak için video, gif, web sayfası... dosyasını gez</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Port Hata Ayıklama</value>
+    <value>Hata ayıklama portu</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Yenilikler</value>
+    <value>Değişiklik Kaydı</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
     <value>Topluluk</value>
@@ -749,19 +749,19 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
     <value>Hata Ayıklama</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Silmeyi onayla</value>
+    <value>Silme İşlemini Onayla</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Masaüstü fotoğrafı</value>
+    <value>Masaüstü resmi</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Durdurma Kuralı</value>
+    <value>Ekran duraklatma kuralı</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
     <value>Dokümantasyon</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>URL girin</value>
+    <value>URL'yi Gir</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
     <value>Log Dosyası</value>
@@ -1219,5 +1219,14 @@ Edge ise windows 10 için geçerli web gösterim motorudur.</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>İndir</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

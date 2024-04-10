@@ -121,19 +121,19 @@
     <value>Audio alleen afspelen wanneer bureaublad gefocust is</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Geluidsvolume van alle achtergronden</value>
+    <value>Volume niveau van alle achtergrond</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volume</value>
+    <value>Volumes</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Geluid</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Online discussie forum</value>
+    <value>Online forumforum</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>API documentatie en help</value>
+    <value>API documentatie en hulp</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively is een fatale fout tegen gekomen.
@@ -157,7 +157,7 @@ Het belangrijkste doel van Lively's screensavers is om extra visuele aanpassinge
     <value>Een probleem in de software melden</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Selecteer een bestand of website-url om als achtergrond in te stellen.</value>
+    <value>Kies een bestand of website-URL om als achtergrond in te stellen</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Afspeelgedrag van de achtergrond op basis van actieve programma's.</value>
@@ -205,7 +205,7 @@ Het belangrijkste doel van Lively's screensavers is om extra visuele aanpassinge
     <value>De wizard helpt u bij het instellen van Lively.</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Your Windows N/KN version will require the download of additional codecs to support video playback in wallpapers.</value>
+    <value>Uw Windows N/KN versie vereist het downloaden van aanvullende codecs om het afspelen van video's in achtergronden te ondersteunen</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Toon steun door de ontwikkelaar een kop koffie te geven</value>
@@ -221,7 +221,7 @@ Updates zullen vaker voorkomen en de updates kunnen bugs bevatten!</value>
     <value>Systeemvak icoon</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively zal herstart moeten worden om de nieuwe taal instellingen toe te passen.</value>
+    <value>Levendig zal opnieuw starten om de nieuwe taal toe te passen</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Taal</value>
@@ -306,10 +306,10 @@ Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider W
     <value>Voltooid!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Click here to manage wallpapers.</value>
+    <value>Klik hier om achtergronden te beheren</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Omzetten naar Video</value>
+    <value>Omzetten naar video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
     <value>Maak voorvertoning</value>
@@ -327,12 +327,12 @@ Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider W
     <value>Beschrijving</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Alle Schermen</value>
+    <value>Alle scherm(en)</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per Scherm</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -351,7 +351,7 @@ Als dat niet werkt herstart Lively en Windows. (Werkt niet met sommige insider W
     <value>Some features are not available in this version of Lively.</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Het bestand kon niet worden gevonden</value>
+    <value>Bestand niet gevonden</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
     <value>Geanimeerde GIF
@@ -367,9 +367,9 @@ Geanimeerde GIF</value>
     <value>Help Lively vertalen.</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>hours</value>
+    <value>uren</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Installeer</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -397,7 +397,7 @@ Geanimeerde GIF</value>
     <value>Muis</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Muisinteractie zodra toepassing focus heeft</value>
+    <value>Muisinteractie bij focus van applicatie</value>
   </data>
   <data name="TextNext" xml:space="preserve">
     <value>Volgende</value>
@@ -445,7 +445,7 @@ Geanimeerde GIF</value>
     <value>Afbeelding</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Preview Wallpaper</value>
+    <value>Voorvertoning</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Privacybeleid</value>
@@ -540,7 +540,7 @@ Geanimeerde GIF</value>
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Update beschikbaar!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Controleer voor updates</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -625,22 +625,22 @@ Geanimeerde GIF</value>
     <value>Ontwikkelaarsmenu weergeven</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as desktop wallpaper.</value>
+    <value>Stel een afbeelding uit de geanimeerde achtergrond in als bureaublad achtergrond.</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Per: Achtergrond alleen pauzeren op het scherm waar de toepassing de focus heeft/volledig scherm weergeeft. Alle: Achtergrond pauzeren op alle schermen waar de toepassing de focus heeft/volledig scherm weergeeft.</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Create log report file.</value>
+    <value>Creëer een lograpportbestand.</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Select the player used for gif wallpaper.</value>
+    <value>Selecteer de gewenste speler voor gif achtergronden.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
     <value>Voltooi de installatie om verder te gaan.</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Set a picture of animated wallpaper as lockscreen wallpaper.</value>
+    <value>Stel een afbeelding uit de geanimeerde achtergrond in als bureaublad achtergrond.</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Voorgrond: Lightweight, controleert alleen het proces dat zich op de voorgrond bevindt om afspeelmogelijkheden te bepalen.
@@ -662,10 +662,10 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Selecteer de gewenste videokwaliteit voor online streams.</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Schakel tussen de stabiele en de bèta versie van de software.</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Change system taskbar appearance.</value>
+    <value>Verander het uiterlijk van de taakbalk.</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
     <value>Grootte van de achtergrond tegels in de Bibliotheek.</value>
@@ -674,7 +674,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Voor low-end computersystemen selecteer Lite modus.</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Use hardware acceleration when possible.</value>
+    <value>Gebruik hardwareversnelling indien mogelijk.</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
     <value>Selecteer de gewenste speler voor video achtergronden.</value>
@@ -683,7 +683,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Het pad dat wordt gebruikt voor achtergrondbestanden.</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Wallpaper scaling algorithm.</value>
+    <value>Achtergrond schaalingsalgoritme.</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
     <value>Selecteer manieren van interactie voor de achtergrond.</value>
@@ -764,7 +764,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Algemeen</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Player</value>
+    <value>Gif Speler</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
     <value>Hulp</value>
@@ -867,7 +867,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU Decode</value>
+    <value>GPU-decodering</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Achtergrond</value>
@@ -894,7 +894,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Waarschuwing</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Web Browser</value>
+    <value>Webbrowser</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>Schijfcache</value>
@@ -915,7 +915,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Bestand</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Dark</value>
+    <value>Donker</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
     <value>Licht</value>
@@ -978,7 +978,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Gebruikersomgeving</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Lite</value>
+    <value>Licht</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
     <value>Normaal</value>
@@ -1035,7 +1035,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Log in om verder te gaan</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Hoi</value>
+    <value>Hallo</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
     <value>We hebben deze achtergronden gevonden in je account</value>
@@ -1071,7 +1071,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Ongewenste berichten</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Nuditeit of geweld</value>
+    <value>Naaktheid of geweld</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
     <value>Extra opmerkingen</value>
@@ -1173,45 +1173,54 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Maak een dynamische achtergrond</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Geadvanceerde</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Vermindering diepte..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Met AI worden foto's omgezet in 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Verder</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Eenvoudige tabel maken</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>AI diepte achtergrond</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Diepte Achtergrond</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>AI gegenereerd diepte achtergrond</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Achtergrond maken</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Sommige functies zijn mogelijk niet beschikbaar wanneer deze worden uitgevoerd als administrator</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Extra bestanden moeten worden gedownload voor deze functie</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Download vereist</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Download</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

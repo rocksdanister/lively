@@ -157,7 +157,7 @@ Pagrindinis Lively ekrano užsklandų tikslas yra pridėti dar vieną tinkinimo 
     <value>Pranešti apie programinės įrangos problemą</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Pasirinkiti failą</value>
+    <value>Pasirinkite failą</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Wallpaper playback behaviour based on running application</value>
@@ -340,7 +340,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per ekraną</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
+  <data name="TextDownload.Content" xml:space="preserve">
     <value>Atsisiųsti</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
@@ -376,7 +376,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TextHours" xml:space="preserve">
     <value>valanda(-os)</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
+  <data name="TextInstall.Content" xml:space="preserve">
     <value>Įdiegti</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
@@ -547,7 +547,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TextUpdateAvailable" xml:space="preserve">
     <value>Galimas atnaujinimas!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>Tikrinti, ar yra atnaujinimų</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
@@ -1219,5 +1219,14 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
     <value>Atsisiųsti</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>

@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Audionu yalnız iş masası fokuslandıqda oxudun</value>
+    <value>Yalnız masaüstü fokuslandıqda səsi oxut</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Bütün divar kağızlarının səs səviyyəsi.</value>
+    <value>Bütün divar kağızlarının səs səviyyəsi</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Əsas səs səviyyəsi</value>
+    <value>Səs səviyyəsi</value>
   </data>
   <data name="AudioGroup.Header" xml:space="preserve">
     <value>Səs</value>
@@ -133,31 +133,37 @@
     <value>Onlayn müzakirə forumu</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>API sənədləri və kömək</value>
+    <value>API sənədləşdirmə və kömək</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Lively ciddi xəta ilə qarşılaşdı. Windows Explorer son 30 saniyə ərzində iki dəfə yenidən başladıldı! Bu, Lively və digər masaüstü fərdiləşdirmə proqramı və ya Windows arasında ziddiyyət ola bilər. Əlavə problemlərin qarşısını almaq üçün bütün divar kağızları ləğv edilir.</value>
+    <value>Lively ciddi bir xəta ilə qarşılaşdı.
+
+Windows Explorer son 30 saniyədə iki dəfə yenidən başladıldı! Bu, Lively ilə digər masaüstü özəlləşdirmə proqram təminatı və ya Windows arasındakı ziddiyətə görə ola bilər. Daha çox problemlərin qarşısını almaq üçün bütün divar kağızları sonlandırıldı.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Uyğun olmayan proqram tapıldı, tapşırıq paneli mövzusu deaktiv edilib.</value>
+    <value>Uyğun gəlməyən proqram tapıldı, tapşırıq sətri teması sıradan çıxarıldı</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Lively Wallpaper rəsmi internet səhifəsi</value>
+    <value>Lively Wallpaper - rəsmi internet səhifəsi</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Müasir LCD və LED displeylərin əksəriyyəti yanma problemindən əziyyət çəkmir və buna görə də istənilən divar kağızı ekran qoruyucusu kimi istifadə edilə bilər. Yanmağa həssas olan OLED, Plazma və ya CRT displeylər üçün müntəzəm hərəkətli və bütövlükdə divar kağızı istifadə etmək tövsiyə olunur. Yanma ehtimalını azaltmalı olan qaranlıq mövzu həllindən də istifadə etmək olar, lakin bu xüsusiyyət sınaqdan keçirilməmişdir və onun effektivliyinə zəmanət verilə bilməz. Lively-nin ekran qoruyucularının əsas məqsədi kompüterinizə daha bir fərdiləşdirmə qatı əlavə etmək, ekran qoruyucularından yanmadan qorunma kimi istifadə etməkdir!</value>
+    <value>Əksər müasir LCD və LED ekranlar (burn-in) yanma problemi yaşamır və buna görə də istənilən divar kağızı ekran qoruyucu olaraq istifadə edilər bilər.
+
+Yanmağa həssas OLED, Plazma və ya CRT ekranlar üçün yanmanı yüngülləşdirməsi gözlənilən normal hərəkətli və ümumi olaraq qaranlıq temalı divar kağızının istifadə edilməsi tövsiyə olunur, ancaq bu özəllik test edilməyib və effektivliyinə zəmanət verilmir.
+
+Lively-nin ekran qoruyucularının əsas məqsədi, kompüterinizə başqa bir özəlləşdirmə qatı əlavə etməkdir, ancaq ekran qoruyucularını yanma qoruması olaraq istifadə etmək riskini siz daşıyırsınız!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Proqramla bağlı problem barədə məlumat verin</value>
+    <value>Proqram təminatı ilə bağlı problemi bildir</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Divar kağızı kimi təyin etmək üçün fayl seçin və ya bir vebsayt bağlantısı daxil edin.</value>
+    <value>Bir fayl seçin</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Çalışan proqrama əsaslanan divar kağızı davranışı.</value>
+    <value>Divar kağızı oxutma davranışı işləyən tətbiqə görə tənzimləndi</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Ləğv etmək istədiyinizə əminsiniz?</value>
+    <value>İmtina etmək istədiyinizə əminsiniz?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
     <value>Bu divar kağızını diskdən həmişəlik silmək istədiyinizə əminsiniz?</value>
@@ -166,22 +172,24 @@
     <value>Bu divar kağızını Kitabxanadan silmək istədiyinizə əminsiniz?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Sadəcə olaraq faylları Kitabxanaya sürükləyib buraxın.</value>
+    <value>Faylları bura sürükləyib buraxmaq kifayətdir</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Siz divar kağızı kimi xarici proqram açırsınız. Zərərli proqramların sisteminizə zərər verə biləcəyini unutmayın. Yalnız bu proqram etibarlı mənbədən gəldiyinə əmin olduqda davam edin.</value>
+    <value>Divar kağızı olaraq xarici bir tətbiq açırsınız.
+Zərərli tətbiqlər zərərli proqram təminatı, virus ehtiva edə və sisteminizə zərər verə bilər.
+Yalnız güvənli mənbədən gələn tətbiqlə davam edin.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively sistem tepsisinə kiçildilib, davam etmək üçün lively ikonuna sağ klikləyin.</value>
+    <value>Lively, bildiriş sahəsinə kiçildildi, davam etmək üçün Lively nişanına sağ klikləyin.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Parametrlərin qüvvəyə minməsi üçün Lively-i yenidən başladın.</value>
+    <value>Tənzimləmələrin qüvvəyə minməsi üçün Lively-ni yenidən başladın</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Davam etməzdən əvvəl dayandırın.</value>
+    <value>Davam etməzdən əvvəl gözləyin</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Yazmağa başlamaq üçün basın.</value>
+    <value>Yazmağa başlamaq üçün basın</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Hazırda əvvəlki divar kağızları bərpa olunur, zəhmət olmasa gözləyin...</value>
@@ -190,64 +198,84 @@
     <value>Ekran seçin</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Proqramın yeni versiyası mövcuddur!</value>
+    <value>Yeni versiya mövcuddur!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Yükləmək üçün vebsayt linkini daxil edin, shadertoy.com şader bağlantıları dəstəklənir</value>
+    <value>Yüklənəcək bir veb sayt keçidi daxil edin, shadertoy.com shader keçidləri dəstəklənir</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Bu sehrbaz sizə Lively-ni qurmağa kömək edəcək.</value>
+    <value>Bu sehrbaz Lively-ni quraşdırmaqda sizə kömək edəcək</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Sizin Windows N/KN versiyanız divar kağızlarında videoların oxudulmasını dəstəkləmək üçün əlavə kodeklərin endirilməsini tələb edəcək.</value>
+    <value>Windows N/KN versiyanız, divar kağızlarında video oxutmanı dəstəkləmək üçün əlavə kodeklərin endirilməsini tələb edəcək</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Tərtibatçıya qəhvəsini almaqla dəstək göstərin</value>
+    <value>Tərtibatçıya bir qəhvə alaraq dəstək göstərin</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Siz Lively proqramının beta (developer) quruluşuna keçmək üzrəsiniz. Yeniləmələr tez-tez olacaq və baqlar ola bilər!</value>
+    <value>Lively-nin beta versiyasına keçirsiniz.
+Güncəlləmələr tez-tez gələcək və xətalar ehtiva edə bilər!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Sistem tepsisi simgesinin görünməsi, canlı simvol gizlədilmiş şəkildə işləməyə davam edəcək</value>
+    <value>Bildiriş sahəsinə nişan görünməsi, Lively, nişan gizli olduqda işləməyə davam edəcək</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Sistem tepsisi nişanı</value>
+    <value>Bildiriş sahəsi nişanı</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively yeni dili tətbiq etmək üçün yenidən başlayacaq.</value>
+    <value>Lively, yeni dili tətbiq etmək üçün yenidən başladılacaq</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>Dil</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Güncəlləmək olmadı; quraşdırıcını bu ünvandan yükləməyə cəhd edin: https://github.com/rocksdanister/lively/releases</value>
+    <value>Güncəllənmədi; aşağıdakı keçidi istifadə edərək endirin:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Zədələnmiş divar kağızı faylı, yenidən yükləməyə cəhd edin.</value>
+    <value>Divar kağızı faylı zədələnib, yenidən endirməyə çalışın</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Ups... Deyəsən, xəta baş verdi :(Bu xətanı daha yaxşı başa düşmək və problemi həll etmək üçün log faylını tərtibatçı ilə paylaşın. Jurnal faylını paylaşmaq üçün təlimatlar:https://github.com/rocksdanister/lively/wiki</value>
+    <value>Deyəsən, nəsə səhv getdi.
+Bu xətanı daha yaxşı anlamaq və problemi həll etmək üçün jurnal faylını tərtibatçı ilə paylaşın.
+Jurnal faylını paylaşmaq üçün təlimatlar bu keçiddədir:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Windows Yüksək Kontrast rejimi aktiv olduqda Lively düzgün işləyə bilmir! Yüksək Kontrast rejimini söndürün və yenidən cəhd edin.</value>
+    <value>Windows Yüksək Kontrast rejimi fəal olduqda Lively düzgü işləyə bilmir!
+Yüksək Kontrast rejimini sıradan çıxardıb yenidən sınayın</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Media oxutma uğursuz oldu :( lively parametrlərində videopleyeri dəyişməyə cəhd edin. Bu xətanı daha yaxşı başa düşmək və problemi həll etmək üçün log faylını tərtibatçı ilə paylaşın. Jurnal faylını paylaşmaq üçün təlimatlar:https://github.com/rocksdanister/lively /viki</value>
+    <value>Media oxudulmadı
+Tənzimləmələrdə videopleyeri dəyişdirməyə çalışın.
+
+Bu xətanı daha yaxşı anlamaq və problemi həll etmək üçün jurnal faylını tərtibatçı ilə paylaşın.
+Jurnal faylını paylaşmaq üçün təlimatlar bu keçiddədir:
+https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Lively divar kağızı faylı deyil.</value>
+    <value>Lively divar kağızı faylı deyil</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively düzgün qapadılmayıb, ona görə də təhlükəsiz rejimdə başladılır. Əvvəllər işləyən divar kağızı bərpa etmək istəyirsiniz?</value>
+    <value>Lively düzgün bağlanılmadı, güvənli rejimdə başladılır.
+Daha əvvəl işləyən divar kağızını bərpa etmək istəyirsiniz?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Görünür, Lively-nin işləməsi üçün bəzi parametrləri qurmaq lazımdır: 1. Run-u açmaq üçün Win + R düymələrini basın, 2. Run-a SystemPropertiesPerformance.exe yazın, Performans Seçimlərini açmaq üçün "OK" düyməsini basın. 3. "Pəncərələrin daxilində idarəetmə elementlərini və elementləri canlandırın" seçimini aktivləşdirin (əgər artıq işarələnibsə, işarəni çıxarın və yoxlayın). 4. Pəncərəni bağlamaq üçün "Tətbiq et" düyməsini və sonra "OK" düyməsini basın. Əgər Windows 7 yeni quraşdırılıbsa - Ən yaxşı görünüş üçün tənzimləyin &amp; Tətbiq edin. Əgər hələ də işləmirsə, bağlayın və Lively-i yenidən başladın. (Bəzi insayder Windows 10 quruculuqlarında işləmir)</value>
+    <value>Deyəsən, Lively-nin işləməsi üçün bəzi tənzimləmələri etmək lazımdır:  
+1. "İcra et"i açmaq üçün Win + R düymələrinə basın, 
+2. Açılan pəncərədə "SystemPropertiesPerformance.exe" yazın, "Performans Seçimləri"ni açmaq üçün "Ok"a basın.
+3. Üçüncü sırada olan "Pəncərələrin daxilindəki kontrolları və elementləri canlandır"ın yanındakı qutunu işarələyin (əgər işarələnibsə, işarəni götürüb yenidən işarələyin) və "Tətbiq et"ə basın. (Qeyd: Windows Sistem Tənzimləmələri yanlış tərcümə edildiyi üçün yazılar fərqli görünə bilər).
+4. Ardından "Ok"a klikləyərək pəncərəni bağlayın.
+
+Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə və Tətbiq et.
+Əgər işləməsə Lively-ni bağlayıb yenidən başladın.
+(Bəzi Windows 10 quruluşlarında işləməyə bilər)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Divar kağızı oxutmaq üçün Lively arxa planda işləməlidir.</value>
+    <value>Divar kağızı oxutmaq üçün Lively arxaplanda işləməlidir</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Windows ilə başlayın</value>
+    <value>Sistem açılanda başlat</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Əlavə et</value>
@@ -268,55 +296,55 @@
     <value>Geri</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Gözdən keçirin</value>
+    <value>Nəzər sal</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Ləğv et</value>
+    <value>İmtina</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Divar kağızlarını dəyişdirin</value>
+    <value>Divar kağızlarını dəyişdir</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Bağla</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Divar kağızlarını bağlayın</value>
+    <value>Bağla</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
     <value>Tamamlandı!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Divar kağızlarını idarə etmək üçün bura klikləyin.</value>
+    <value>Divar kağızlarını idarə etmək üçün bura klikləyin</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Videoya çevirin</value>
+    <value>Videoya çevir</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Önizləmə yaradın</value>
+    <value>Önbaxış yarat</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
     <value>Özəlləşdir</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Divar kağızını fərdiləşdirin</value>
+    <value>Özəlləşdir</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
     <value>Sil</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Təsvir</value>
+    <value>Açıqlama</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Bütün Ekran</value>
+    <value>Bütün ekran(lar)</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>Ekran başına</value>
+    <value>Tək ekran</value>
   </data>
-  <data name="TextDownload" xml:space="preserve">
-    <value>Yüklə</value>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>Endir</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Redaktə et</value>
+    <value>Düzəliş et</value>
   </data>
   <data name="TextError" xml:space="preserve">
     <value>Xəta</value>
@@ -325,10 +353,10 @@
     <value>Çıx</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Lively .zip formatında ixrac edin</value>
+    <value>Faylda saxla</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Bəzi funksiyalar Lively-in bu versiyasında mövcud deyil.</value>
+    <value>Lively-nin bu versiyasında bəzi özəlliklər mövcud deyil</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
     <value>Fayl tapılmadı</value>
@@ -337,25 +365,25 @@
     <value>Animasiyalı GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>Ulduz ataraq sevginizi göstərin</value>
+    <value>Ulduzlayaraq sevginizi göstərin</value>
   </data>
   <data name="TextGo" xml:space="preserve">
     <value>Get</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Tərcümə etməyə kömək edin</value>
+    <value>Tərcüməyə kömək</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>saat</value>
   </data>
-  <data name="TextInstall" xml:space="preserve">
-    <value>Yüklə</value>
+  <data name="TextInstall.Content" xml:space="preserve">
+    <value>Quraşdır</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
     <value>Klaviatura</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Son yoxlanılma</value>
+    <value>Son yoxlanış</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
     <value>Daha ətraflı</value>
@@ -370,61 +398,61 @@
     <value>Məlumat</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Daha çox Divar kağızları</value>
+    <value>Daha çox divar kağızı</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>Siçan</value>
+    <value>Maus</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Tətbiq fokuslandıqda siçanla qarşılıqlı əlaqə</value>
+    <value>Tətbiq fokuslandıqda mausla qarşılıqlı əlaqə</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Sonrakı</value>
+    <value>Növbəti</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Yox</value>
+    <value>Xeyr</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>Söndür</value>
+    <value>Bağlı</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>Oldu</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>Yandır</value>
+    <value>Açıq</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
     <value>Onlayn</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Lively-i açın</value>
+    <value>Lively-ni aç</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Bütün Proseslər</value>
+    <value>Bütün proseslər</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>PauseAlqoritmiNövüEksklüzivMode.Məzmun</value>
+    <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Ön Proses</value>
+    <value>Önplan prosesi</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Divar kağızlarına fasilə verin</value>
+    <value>Divar kağızına fasilə ver</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Xitam ver</value>
+    <value>Sonlandır</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>Heç nə</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Fasilə</value>
+    <value>Fasilə ver</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>Şəkil</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Önizləmə</value>
+    <value>Önbaxış</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Gizlilik Siyasəti</value>
@@ -445,40 +473,40 @@
     <value>Axtar</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Divar kağızı kimi təyin edin</value>
+    <value>Divar kağızı olaraq tənzimlə</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Fayl yerini açın</value>
+    <value>Fayl yerini aç</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>Mənbə</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Başla</value>
+    <value>Başlat</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Dayan</value>
+    <value>Dayandır</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Lively-dən zövq alırsınız? Rəy buraxın :)</value>
+    <value>Lively-dən zövq alırsınız? Rəy bildirin :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
     <value>Dəstək</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Beta versiyaya keçin (İnkişaf kanalı)</value>
+    <value>Betaya keçin (Dev kanalı)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Stabil versiyaya keçin (Defolt kanal)</value>
+    <value>Stabilə keçin (İlkin kanal)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Teqlər</value>
+    <value>Etiketlər</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Tapşırıq çubuğuMövzuBlur.Məzmun</value>
+    <value>Bulanıqlıq</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Təmiz</value>
+    <value>Aydın</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Rəng</value>
@@ -490,7 +518,7 @@
     <value>Divar kağızı</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Səlis divar kağızı</value>
+    <value>Axıcı divar kağızı</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>Böyük</value>
@@ -517,49 +545,49 @@
     <value>Fayl formatı dəstəklənmir</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Yenilənmə mövcuddur!</value>
+    <value>Güncəlləmə mövcuddur!</value>
   </data>
-  <data name="TextUpdateCheck" xml:space="preserve">
-    <value>Yenilənməni yoxlayın</value>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>Güncəlləməni yoxla</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Proqram yenilənməsini yoxlamaq alınmadı</value>
+    <value>Güncəlləmə yoxlanılmadı</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Yenilənmə yoxlanılır</value>
+    <value>Güncəlləmələr yoxlanılır</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Proqram yenilənib!</value>
+    <value>Tətbiq güncəldir!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Əlavə əmr xətti arqumentlərini daxil edin</value>
+    <value>İxtiyari əmr sətri arqumentlərini daxil edin</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Doldur</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Heç biri</value>
+    <value>Yoxdur</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Uniforma</value>
+    <value>Eyni</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Vahid doldurma</value>
+    <value>Eyni formada doldur</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Eyni divar kağızı kopyalayın</value>
+    <value>Eyni divar kağızını çoxalt</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
     <value>Yalnız seçilmiş ekran</value>
   </data>
   <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Ekranlar arasında yaymaq</value>
+    <value>Ekranlar arasında yay</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Növ</value>
+    <value>Növü</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
     <value>Veb sayt</value>
@@ -568,7 +596,7 @@
     <value>Veb yayım</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Xoş gəldiniz</value>
+    <value>Xoş gəlmisiniz</value>
   </data>
   <data name="TextYes" xml:space="preserve">
     <value>Bəli</value>
@@ -577,118 +605,118 @@
     <value>Video pleyer</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Bütün dəstəklənən fayl növlərini divar kağızı kimi təyin edin.</value>
+    <value>Dəstəklənən bütün fayl növlərini divar kağızı kimi tənzimlə</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Divar kağızı kimi daxil etdiyiniz URL-in veb səhifəsini təyin edin.</value>
+    <value>Daxil etdiyiniz URL-nin veb səhifəsini divar kağızı kimi tənzimlə</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Hər hansı proqram diqqət mərkəzində olduqda nə edəcəyinizi təyin edin.</value>
+    <value>Hər hansısa bir tətbiqə fokuslandıqda nə edəcəyini tənzimlə</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Tam ekranlı oyunlar/tətbiqlər işləyərkən nə edəcəyinizi təyin edin.</value>
+    <value>Tam ekranlı oyunlar/tətbiqlər işləyərkən nə edəcəyi tənzimlə</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Çalışan proqram əsasında müxtəlif divar kağızı oxutma qaydalarını təyin edin.</value>
+    <value>Bu tətbiqləri işə salarkən divar kağızına fasilə ver</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Canlı görünüşünü dəyişmək üçün sistem mövzu parametrlərinə uyğunlaşır</value>
+    <value>Lively, görünüşü dəyişdirmək üçün sistemin tema tənzimləmələrinə uyğunlaşır</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>AC enerjisi kəsildikdə oxutmanı dəyişdirin.</value>
+    <value>Adapter çıxarıldıqda oxutmanı dəyişdir</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Veb səhifə divar kağızlarını sazlamaq üçün portu daxil edin, dəyişikliklərin qüvvəyə minməsi üçün brauzerin yenidən işə salınması tələb olunur. Hazır olduqda, developer konsoluna daxil olmaq üçün http://localhost:portnumber səhifəsinə keçin.</value>
+    <value>Veb səhifə divar kağızlarını sazlamaq üçün portu daxil edin, hazır olduqda tərtibatçı konsoluna müraciət etmək üçün http://localhost:portnumber ünvanına gedin</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Tərtibatçı menyusunu göstərin.</value>
+    <value>Tərtibatçı menyusunu göstər</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Cizgi divar kağızı şəklini masa üstü divar kağızı kimi təyin edin.</value>
+    <value>Animasiyalı divar kağızının şəklini masaüstü divar kağızı olaraq tənzimlə</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Divar kağızı bütün ekranlarda və ya yalnız tətbiqin fokuslandığı ekranda olduğu müvafiq ekranda dayandırılacağını seçin.</value>
+    <value>Divar kağızına bütün ekranlarda və ya yalnız tətbiqin fokuslandığı ekranda fasilə ver</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Log faylı yaradın.</value>
+    <value>Jurnal hesabat faylını yarat</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Gif divar kağızı üçün istifadə olunan pleyeri seçin.</value>
+    <value>GIF divar kağızı üçün istifadə ediləcək pleyeri seçin</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Davam etmək üçün quraşdırmanı tamamlayın.</value>
+    <value>Davam etmək üçün quraşdırmanı tamamla</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Kilid ekranı divar kağızı kimi cizgi divar kağızı şəklini təyin edin.</value>
+    <value>Animasiyalı divar kağızının şəklini kilid ekranı divar kağızı olaraq tənzimlə</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Divar kağızı fasilə alqoritmi.</value>
+    <value>Divar kağızı fasilə alqoritmi</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Windows Enerjiyə Qənaət Modu aktiv olduqda oxutmanı dəyişdirin.</value>
+    <value>Windows Enerjiyə Qənaət rejimi fəal olduqda oxutmanı dəyişdir</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Uzaq Masaüstü seansını işlədən zaman oxutmanı dəyişdirin.</value>
+    <value>Uzaq Masaüstü seansını işlədən zaman oxutmanı dəyişdir</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>Seçilmiş hərəkətsizlik müddətindən sonra ekran qoruyucunuz kimi cari divar kağızı istifadə edin.</value>
+    <value>Seçilmiş hərəkətsizlik müddətindən sonra hazırkı divar kağızını ekran qoruyucu olaraq istifadə et</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>Dəstəklənən video axını bağlantısı aşkar edilərsə, veb səhifəni yükləmək əvəzinə video pleyerdən istifadə edin.</value>
+    <value>Dəstəklənən video yayım keçidi aşkarlansa, veb səhifəni yükləmək əvəzinə video pleyeri istifadə et</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Onlayn yayımlar üçün istədiyiniz video keyfiyyətini seçin.</value>
+    <value>Onlayn yayımlar üçün istədiyiniz video keyfiyyətini seçin</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Proqram təminatı buraxılışını betadan stabilə və ya əksinə dəyişdirin.</value>
+    <value>Beta və stabil versiyalar arasında keçid edin</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Sistem tapşırıq çubuğunun görünüşünü dəyişdirin.</value>
+    <value>Sistem tapşırıq sətri görünüşünü dəyişdir</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Kitabxanada divar kağızı plitələrinin ölçüsü.</value>
+    <value>Kitabxanadakı divar kağızı xanalarının ölçüsü</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Aşağı səviyyəli sistemlər üçün Lite rejimi seçin.</value>
+    <value>Aşağı səviyyəli sistemlər üçün Lite rejimi seçin</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Mümkün olduqda cihaz sürətləndirilməsindən istifadə edin.</value>
+    <value>Mümkün olduqda avadanlıq sürətləndirməni istifadə et</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Video divar kağızı üçün istifadə olunan pleyeri seçin.</value>
+    <value>Video divar kağızı üçün istifadə olunan pleyeri seçin</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Divar kağızı fayllarını saxlamaq üçün istifadə edilən yol.</value>
+    <value>Divar kağızı fayllarının saxlanılacağı yol</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Divar kağızı ölçmə alqoritmi.</value>
+    <value>Divar kağızı miqyaslandırma alqoritmi</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Divar kağızı ilə qarşılıqlı əlaqə yollarını seçin.</value>
+    <value>Divar kağızı ilə qarşılıqlı əlaqə qurma yollarını seçin</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Qoşulmuş ekran cihazlarına divar kağızı necə tətbiq olunur.</value>
+    <value>Divar kağızı bağlantılı ekranlara necə tətbiq edilir</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>İş masası fokuslanmadıqda divar kağızı oxunmasını dayandırın.</value>
+    <value>Masaüstü fokusda olmadıqda divar kağızı oxutmaya fasilə ver</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Müvəqqəti faylları yaddaş əvəzinə diskdə saxlayın, brauzer yenidən işə salındıqda parametrlər bərpa olunur.</value>
+    <value>Müvəqqəti faylları yaddaş (RAM) əvəzinə diskdə (anbar) saxla</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) yüngül xrom mühərrikidir. Edge, Windows 10-un daxili veb görünüşüdür.</value>
+    <value>HTML divar kağızı üçün istifadə edilən pleyeri seçin</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>Haqqında</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Divar kağızı əlavə edin</value>
+    <value>Divar kağızı əlavə et</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Applications Focused</value>
+    <value>Fokuslanmış tətbiqlər</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Proqramlar Tam ekran</value>
+    <value>Tam ekran tətbiqlər</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
     <value>Lively divar kağızı</value>
@@ -697,55 +725,55 @@
     <value>Tətbiq qaydaları</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Mövzu</value>
+    <value>Tema</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Audionu ekranda səsləndirin</value>
+    <value>Səsi ekranda oxut</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Batareya şəbəkəyə taxıldıqda</value>
+    <value>Batareya enerjisi ilə</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Divar kağızı kimi təyin etmək üçün video, gif, veb səhifə... faylı axtarın</value>
+    <value>Divar kağızı olaraq tənzimləmək üçün video, GIF, veb səhifə kimi faylları axtar</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Sazlama Portu</value>
+    <value>Sazlama portu</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Dəyişikliklər jurnalı</value>
+    <value>Dəyişiklik jurnalı</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>İcma</value>
+    <value>Cəmiyyət</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
     <value>Sazlama</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Silinməni təsdiqləyin</value>
+    <value>Silməni təsdiqlə</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Masa üstü şəkli</value>
+    <value>Masaüstü şəkli</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Pauza Qaydasını göstərin</value>
+    <value>Ekran fasilə qaydası</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Dokumentasiya</value>
+    <value>Sənədləşdirmə</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>URL daxil edin</value>
+    <value>URL-ni daxil et</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Log Faylı</value>
+    <value>Jurnal faylı</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
     <value>Ümumi</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>Gif Pleyer</value>
+    <value>GIF pleyeri</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Yardım</value>
+    <value>Kömək</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
     <value>Qarşılıqlı əlaqə</value>
@@ -754,19 +782,19 @@
     <value>Kitabxana</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Lively Quraştırılma</value>
+    <value>Lively Quraşdırması</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Məkan</value>
+    <value>Yerləşmə</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Lockscreen Picture</value>
+    <value>Kilid ekranı şəkli</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
     <value>Müxtəlif</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Sustur</value>
+    <value>Səsi kəs</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>Fasilə alqoritmi</value>
@@ -778,37 +806,37 @@
     <value>Pleylist</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Zəhmət olmasa, gözləyin</value>
+    <value>Zəhmət olmasa gözləyin</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>Batareyaya qənaət edəndə</value>
+    <value>Batareyaya qənaət ilə</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>Uzaq Masaüstündə olduqda</value>
+    <value>"Uzaq Masaüstü"ndə olduqda</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Xəta bildirin</value>
+    <value>Xətanı bildir</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Ölçəkləmə/Uyğunlaşdırma</value>
+    <value>Miqyas/Uyğunluq</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>İdarə paneli</value>
+    <value>Kontrol Paneli</value>
   </data>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Ekran qoruyucu</value>
   </data>
   <data name="TitleScreensaverLockOnResume" xml:space="preserve">
-    <value>Davam edərkən daxil olma ekranını göstərin</value>
+    <value>Davam edərkən giriş etmə ekranını göstər</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>Fayl seçin</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Parametrlər</value>
+    <value>Tənzimləmələr</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Təsdiqetməni keçin</value>
+    <value>Təsdiqi ötür</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
     <value>Mənbə kodu</value>
@@ -818,34 +846,34 @@
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Yayımla</value>
+    <value>Yayım</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Axınları aşkar edin</value>
+    <value>Yayımları aşkarla</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Video Keyfiyyəti</value>
+    <value>Video keyfiyyəti</value>
   </data>
   <data name="System.Header" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Tapşırıq çubuğu mövzusu</value>
+    <value>Tapşırıq sətri teması</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Tile ölçüsü</value>
+    <value>Xana ölçüsü</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>İstifadəçi interfeysi</value>
+    <value>İnterfeys</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Yenilənmələr</value>
+    <value>Güncəlləmələr</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
     <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU deşifrəsi</value>
+    <value>GPU kod açma</value>
   </data>
   <data name="TitleWallpaper" xml:space="preserve">
     <value>Divar kağızı</value>
@@ -854,7 +882,7 @@
     <value>Divar kağızı kataloqu</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Mövcud divar kağızlarını yeni qovluğa köçürün</value>
+    <value>Mövcud divar kağızlarını yeni qovluğa daşı</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
     <value>Bir uyğunluq seçin</value>
@@ -866,13 +894,13 @@
     <value>Yerləşdirmə üsulu</value>
   </data>
   <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
-    <value>Divar kağızı oxunması</value>
+    <value>Divar kağızı oxutma</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>Xəbərdarlıq</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Veb Brauzer</value>
+    <value>Veb brauzer</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>Disk keşi</value>
@@ -881,13 +909,13 @@
     <value>Mühərrik</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Veb səhifəni yükləyin</value>
+    <value>Veb səhifəni yüklə</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Daha sürətli işə düşmək üçün İstifadəçi İnterfeysini işlək saxlayın</value>
+    <value>Daha sürətli işə salmaq üçün İnterfeysi işlək saxla</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Sürətli başlanğıc</value>
+    <value>Sürətli başlatma</value>
   </data>
   <data name="WallpaperDirGroup.Header" xml:space="preserve">
     <value>Fayl</value>
@@ -896,43 +924,43 @@
     <value>Qaranlıq</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Açıq</value>
+    <value>İşıqlı</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows rəng parametrləri</value>
+    <value>Windows rəng tənzimləmələri</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
     <value>Noutbuklar</value>
   </data>
   <data name="DeveloperGroup.Header" xml:space="preserve">
-    <value>İnkişaf etdirici</value>
+    <value>Tərtibatçı</value>
   </data>
   <data name="AppearanceBehaviour.Header" xml:space="preserve">
     <value>Görünüş və davranış</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Aktiv divar kağızı(lar)</value>
+    <value>Aktiv divar kağızları</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
     <value>Qalereya</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Salam, mən Dani Con həm də rocksdanist kimi tanınıram. Mən Lively pulsuz və açıq mənbəli (FOSS) divar kağızı tətbiqini hazırladım. İşimə baxmaq üçün vaxt ayırdığınız üçün təşəkkür edirəm.</value>
+    <value>Salam, adım "Dani John"dur, həm də "rocksdanist" olaraq tanınıram. Lively-ni ödənişsiz və açıq mənbəli (FOSS) divar kağızı tətbiqi olaraq hazırladım. İşimə baxmaq üçün vaxt ayırdığınıza görə təşəkkür edirəm.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
     <value>Proqram təminatı lisenziyası</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Third party software notice</value>
+    <value>Üçüncü tərəf proqram təminatı bildirişi</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Data collection policy</value>
+    <value>Data yığma siyasəti</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Add wallpaper</value>
+    <value>Divar kağızı əlavə et</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
     <value>Tezliklə</value>
@@ -944,16 +972,16 @@
     <value>Veb sayt</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Açıq</value>
+    <value>Aç</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Yadda saxla</value>
+    <value>Saxla</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>İstifadəçi interfeysi effektləri və animasiyalar</value>
+    <value>İnterfeys effektləri və animasiyalar</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>İstifadəçi interfeysi</value>
+    <value>İnterfeys</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
     <value>Lite</value>
@@ -962,64 +990,64 @@
     <value>Normal</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>Ekran qoruyucusu ekran cihazlarına qoşulanlara necə tətbiq edilir</value>
+    <value>Ekran cihazlarına bağlanmış ekran qoruyucu necə tətbiq edilir</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Ekran qoruyucu növü</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Ayrı-ayrılıqda konfiqurasiya edilmişdir</value>
+    <value>Ayrıca konfiqurasiya edilir</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Çalışan divar kağızı kimi</value>
+    <value>İstifadə edilən divar kağızı ilə eyni</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Plugin tələb olunur</value>
+    <value>Qoşma tələb olunur</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Ekran qoruyucusunu işə salmaq üçün bir dəfə quraşdırma tələb olunur</value>
+    <value>Ekran qoruyucunu işə salmaq üçün bir dəfə quraşdırma tələb olunur</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Divar kağızı seçərkən həmişə ekranı seçin</value>
+    <value>Divar kağızı seçərkən daim ekranı seç</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
     <value>Hesab</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Hesabı silin</value>
+    <value>Hesabı sil</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Məlumatları ixrac edin</value>
+    <value>Datanı xaricə köçür</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Daxil ol</value>
+    <value>Giriş et</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Çıxış</value>
+    <value>Çıxış et</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
     <value>Kolleksiya</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Ev</value>
+    <value>Əsas ekran</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Idarə etmək</value>
+    <value>İdarə et</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
     <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Davam etmək üçün daxil olun</value>
+    <value>Davam etmək üçün giriş edin</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
     <value>Salam</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>Bu divar kağızlarını hesabınızda tapdıq</value>
+    <value>Hesabınızda bu divar kağızlarını tapdıq</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>İndi yüklə</value>
+    <value>İndi endir</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
     <value>Bəlkə sonra</value>
@@ -1028,7 +1056,7 @@
     <value>Hamısını seç</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Heç birini seçin</value>
+    <value>Heç birini seçmə</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
     <value>Yenidən xoş gəlmisiniz!</value>
@@ -1037,10 +1065,10 @@
     <value>Səbəb</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Müəllif hüquqlarının pozulması</value>
+    <value>Müəllif hüququnun pozulması</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Yanlış məlumat</value>
+    <value>Əskik məlumat</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
     <value>Digər</value>
@@ -1055,28 +1083,28 @@
     <value>Əlavə qeydlər</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Raport</value>
+    <value>Bildir</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Raport divar kağızı</value>
+    <value>Divar kağızını bildir</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
     <value>Göndər</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Lütfən, bu əməliyyatı təsdiq edin, çünki onu geri qaytarmaq OLMAZ</value>
+    <value>Bunu təsdiqləyin, bu əməliyyatın GERİ DÖNÜŞÜ YOXDUR</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Hesabı silmək alınmadı, sonra yenidən cəhd edin</value>
+    <value>Hesab silinmədi, daha sonra yenidən sınayın</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Ləğv etmək istəyirsiniz?</value>
+    <value>İmtina etmək istəyirsiniz?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
     <value>Gözləyin</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Yükləmə davam edir</value>
+    <value>Endirmə davam edir</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
     <value>Töhfəçilər</value>
@@ -1085,34 +1113,34 @@
     <value>Paylaş</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Divar kağızı paylaşın</value>
+    <value>Divar kağızını paylaş</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
     <value>Qalereya yükləmə</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Link köçürmək</value>
+    <value>Keçidi kopyala</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Divar kağızını fərdiləşdirin</value>
+    <value>Divar kağızını özəlləşdir</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Divar kağızlarını bağlayın</value>
+    <value>Divar kağızlarını bağla</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
     <value>Tətbiq seçin</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Həcm</value>
+    <value>Ölçüsü</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Zəhmət olmasa tələb olunan plaqini quraşdırın</value>
+    <value>Tələb olunan qoşmanı quraşdırın</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Plugin tapılmadı</value>
+    <value>Qoşma tapılmadı</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Yeniləmə tamamlandı</value>
+    <value>Güncəlləmə tamamlandı</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Yeniliklərə baxın</value>
@@ -1121,75 +1149,84 @@
     <value>Rəng</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Sistem standartını istifadə edin</value>
+    <value>İlkin sistem halını istifadə et</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Sistem standartını istifadə edin</value>
+    <value>Divar kağızına uyğunlaş</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>Defolt</value>
+    <value>İlkin</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
     <value>Dinamik</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>Mövzu</value>
+    <value>Tema</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>Təsadüfi seçimin qarşısını almaq üçün masa üstü nişanlar hazırda gizlidir</value>
+    <value>Səhv seçimin qarşısını almaq üçün masaüstü nişanlar hazırda gizlidir</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>İş masası nişanları</value>
+    <value>Masaüstü nişanlar</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>Hələlik bu qədər..</value>
+    <value>İndilik bu qədər..</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>This feature development is on hold</value>
+    <value>Bu özəlliyin təkmilləşdirilməsi gözlənilir</value>
   </data>
   <data name="WallpaperPluginGroup.Header" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Qoşmalar</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Create a dynamic wallpaper</value>
+    <value>Dinamik bir divar kağızı yarat</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Qabaqcıl</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Approximating depth..</value>
+    <value>Təxmini dərinlik..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Using AI transform photographs into 3D</value>
+    <value>Süni zəka ilə fotoları 3D-yə çevir</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Continue</value>
+    <value>Davam</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Create a simple wallpaper</value>
+    <value>Sadə bir divar kağızı yarat</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>AI Depth Wallpaper</value>
+    <value>Süni zəka Dərinlik Divar kağızı</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Depth Wallpaper</value>
+    <value>Dərinlik Divar kağızı</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>AI generated depth wallpaper</value>
+    <value>Süni zəka tərəfindən yaradılan dərinlik divar kağızı</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Create Wallpaper</value>
+    <value>Divar kağızı yarat</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Some functionalities may not be available when run as administrator</value>
+    <value>Administrator olaraq icra etdikdə bəzi funksionallıqlar əlçatmaz ola bilər</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Additional files need to be downloaded for this feature</value>
+    <value>Bu özəllik üçün əlavə faylların endirilməsi lazımdır</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Download Required</value>
+    <value>Endirmə tələb olunur</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Yüklə</value>
+    <value>Endir</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
   </data>
 </root>
