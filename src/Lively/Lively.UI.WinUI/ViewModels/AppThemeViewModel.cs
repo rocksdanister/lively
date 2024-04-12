@@ -18,6 +18,7 @@ using Windows.Storage.Pickers;
 using Microsoft.UI.Dispatching;
 using Lively.UI.WinUI.Factories;
 using Windows.ApplicationModel.Resources;
+using Lively.UI.WinUI.Extensions;
 
 namespace Lively.UI.WinUI.ViewModels
 {

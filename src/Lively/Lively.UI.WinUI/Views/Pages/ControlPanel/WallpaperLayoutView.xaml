@@ -2,8 +2,8 @@
     x:Class="Lively.UI.WinUI.Views.Pages.ControlPanel.WallpaperLayoutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUICommunity"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customControls="using:Lively.UI.WinUI.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
@@ -73,22 +73,20 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <Grid CornerRadius="5">
-                        <!--  Temp, replace with Segmented control(WCTK) and icons.  -->
-                        <ListBox SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
+                    <controls:Segmented SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
+                        <controls:SegmentedItem>
                             <TextBlock MinWidth="50" HorizontalTextAlignment="Center">
                                 <Run Text="Screen" />
-                                <Run Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                                <Run Foreground="{ThemeResource SystemAccentColorLight3}" Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
+                        </controls:SegmentedItem>
+                        <controls:SegmentedItem>
                             <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Span</TextBlock>
+                        </controls:SegmentedItem>
+                        <controls:SegmentedItem>
                             <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Duplicate</TextBlock>
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
-                    </Grid>
+                        </controls:SegmentedItem>
+                    </controls:Segmented>
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox x:Uid="WallpaperLayoutScreenPicker" IsChecked="{Binding IsRememberSelectedScreen, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />

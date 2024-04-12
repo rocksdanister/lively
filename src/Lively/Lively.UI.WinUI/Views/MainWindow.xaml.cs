@@ -34,10 +34,10 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
-using WinUICommunity;
 using Lively.Common.Helpers.Files;
 using static Lively.Common.Errors;
 using Lively.Common.Extensions;
+using Lively.UI.WinUI.Extensions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -285,6 +285,7 @@ namespace Lively.UI.WinUI
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.Content.XamlRoot,
             };
+            //addDialog.Resources["ContentDialogMinWidth"] = 500;
             addVm.OnRequestAddUrl += async(_, e) =>
             {
                 addDialog.Hide();

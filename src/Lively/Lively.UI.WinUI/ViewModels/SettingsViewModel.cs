@@ -20,6 +20,7 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;

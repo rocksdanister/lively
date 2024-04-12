@@ -2,13 +2,13 @@
     x:Class="Lively.UI.WinUI.Views.Pages.Gallery.GalleryLoginView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:converters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
-    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -51,7 +51,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Visibility="{Binding IsOpen, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
-            <PersonPicture Margin="0,0,0,5" />
+            <PersonPicture Margin="0,0,0,5" ui:Effects.Shadow="{StaticResource PersonShadow}" />
             <TextBlock
                 x:Uid="ComingSoon"
                 HorizontalAlignment="Center"
@@ -83,10 +83,7 @@
                     Duration="0:0:1" />
             </animations:Implicit.ShowAnimations>
             <Grid>
-                <PersonPicture
-                    Margin="0,0,0,5"
-                    ui:Effects.Shadow="{StaticResource PersonShadow}"
-                    ProfilePicture="{Binding Picture, Mode=OneWay}" />
+                <PersonPicture Margin="0,0,0,5" ProfilePicture="{Binding Picture, Mode=OneWay}" />
                 <ProgressRing
                     Width="100"
                     Height="100"

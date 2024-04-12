@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     x:Name="rootPage"
     MinWidth="490"
     MinHeight="400"
@@ -48,14 +48,13 @@
                             Grid.Column="0"
                             Margin="12.5,0,0,0"
                             IsChecked="{Binding IsSelected, Mode=TwoWay}" />
-                        <toolkit:ImageEx
+                        <Image
                             Grid.Column="1"
                             Width="50"
                             Height="50"
                             Margin="10,5,5,5"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            CornerRadius="5"
                             Source="{Binding LivelyInfo.Thumbnail}"
                             Stretch="UniformToFill" />
                         <StackPanel Grid.Column="2" Orientation="Vertical">

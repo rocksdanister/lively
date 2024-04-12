@@ -2,12 +2,12 @@
     x:Class="Lively.UI.WinUI.Views.Pages.Gallery.GallerySubscriptionView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Gallery"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
     x:Name="rootPage"
     mc:Ignorable="d">
 
@@ -47,14 +47,13 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <toolkit:ImageEx
-                            Grid.Column="0"
-                            Margin="5"
-                            Background="{ThemeResource SystemAltLowColor}"
-                            CornerRadius="5"
-                            IsCacheEnabled="True"
-                            Source="{Binding LivelyInfo.Thumbnail}"
-                            Stretch="UniformToFill" />
+                        <Border CornerRadius="5">
+                            <Image
+                                Grid.Column="0"
+                                Margin="5"
+                                Source="{Binding LivelyInfo.Thumbnail}"
+                                Stretch="UniformToFill" />
+                        </Border>
                         <StackPanel
                             Grid.Column="1"
                             Padding="7"

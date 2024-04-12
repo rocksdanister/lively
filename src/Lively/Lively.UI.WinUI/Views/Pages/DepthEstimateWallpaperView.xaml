@@ -2,14 +2,14 @@
     x:Class="Lively.UI.WinUI.Views.Pages.DepthEstimateWallpaperView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -26,23 +26,21 @@
 
     <Grid>
         <Border
+            Width="500"
+            Height="350"
             BorderBrush="{ThemeResource SystemAltHighColor}"
             BorderThickness="20"
             CornerRadius="5">
-            <toolkit:TileControl
-                x:Name="tileControl"
-                Width="500"
-                Height="350"
-                AnimationDuration="30"
-                AnimationStepX="1"
-                AnimationStepY="1"
-                Background="{ThemeResource SystemAltMediumColor}"
-                ImageAlignment="None"
-                ImageSource="{Binding BackgroundImage}"
-                IsAnimated="True"
-                OffsetX="0"
-                OffsetY="0"
-                ScrollOrientation="Both" />
+            <Grid
+                Width="700"
+                Height="550"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Grid.RenderTransform>
+                    <TranslateTransform x:Name="BackgroundArtTranslateTransform" />
+                </Grid.RenderTransform>
+                <Image Source="{Binding BackgroundImage}" Stretch="UniformToFill" />
+            </Grid>
         </Border>
         <Border Background="{ThemeResource AcrylicBrushCustom}" CornerRadius="5" />
         <!--  Shadow background  -->
@@ -64,13 +62,13 @@
                 <!--<ui:Effects.Shadow>
                     <media:AttachedCardShadow Offset="4" Color="{ThemeResource SystemAltMediumColor}" />
                 </ui:Effects.Shadow>-->
-                <toolkit:ImageEx
-                    x:Name="imgPreview"
-                    Height="250"
-                    CornerRadius="5"
-                    IsCacheEnabled="False"
-                    Source="{Binding PreviewImage}"
-                    Stretch="UniformToFill" />
+                <Border CornerRadius="5">
+                    <Image
+                        x:Name="imgPreview"
+                        Height="250"
+                        Source="{Binding PreviewImage}"
+                        Stretch="UniformToFill" />
+                </Border>
             </Viewbox>
             <TextBlock
                 x:Name="textPreview"
@@ -143,5 +141,55 @@
             <TextBlock Foreground="Red" Text="{Binding ErrorText}" />
             <HyperlinkButton Content="https://github.com/rocksdanister/lively/wiki/machine-learning" NavigateUri="https://github.com/rocksdanister/lively/wiki/machine-learning" />
         </StackPanel>
+
+        <!--  ref: https://github.com/huynhsontung/Screenbox/blob/main/Screenbox/Pages/PlayerPage.xaml  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="True" />
+                    </VisualState.StateTriggers>
+                    <Storyboard x:Name="BackgroundArtAnimation">
+                        <DoubleAnimationUsingKeyFrames
+                            RepeatBehavior="Forever"
+                            Storyboard.TargetName="BackgroundArtTranslateTransform"
+                            Storyboard.TargetProperty="X">
+                            <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="-100" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:30" Value="100">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuadraticEase EasingMode="EaseInOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <DiscreteDoubleKeyFrame KeyTime="0:1:00" Value="100" />
+                            <EasingDoubleKeyFrame KeyTime="0:1:30" Value="-100">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuadraticEase EasingMode="EaseInOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <DiscreteDoubleKeyFrame KeyTime="0:2:00" Value="-100" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames
+                            BeginTime="0:0:30"
+                            RepeatBehavior="Forever"
+                            Storyboard.TargetName="BackgroundArtTranslateTransform"
+                            Storyboard.TargetProperty="Y">
+                            <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="-100" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:30" Value="100">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuadraticEase EasingMode="EaseInOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <DiscreteDoubleKeyFrame KeyTime="0:1:00" Value="100" />
+                            <EasingDoubleKeyFrame KeyTime="0:1:30" Value="-100">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuadraticEase EasingMode="EaseInOut" />
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                            <DiscreteDoubleKeyFrame KeyTime="0:2:00" Value="-100" />
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>

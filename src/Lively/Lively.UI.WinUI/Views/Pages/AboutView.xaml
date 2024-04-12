@@ -2,12 +2,11 @@
     x:Class="Lively.UI.WinUI.Views.Pages.AboutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUICommunity"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wctc="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:wctc="using:CommunityToolkit.WinUI.Controls"
     MinWidth="500"
     mc:Ignorable="d">
 
@@ -34,7 +33,12 @@
                         VerticalAlignment="Center"
                         ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
                 </StackPanel>
-                <CommandBar HorizontalAlignment="Center" OverflowButtonVisibility="Collapsed">
+                <CommandBar HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
+                    <AppBarButton Command="{Binding OpenPersonalWebsiteCommand}" ToolTipService.ToolTip="https://rocksdanister.com">
+                        <AppBarButton.Icon>
+                            <FontIcon Height="25" Glyph="&#xEA8C;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
                     <AppBarButton Command="{Binding OpenGithubCommand}" ToolTipService.ToolTip="https://github.com/rocksdanister">
                         <AppBarButton.Icon>
                             <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE907;" />

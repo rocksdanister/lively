@@ -1,6 +1,7 @@
 ﻿using Lively.Common.Helpers.Files;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
@@ -24,7 +25,6 @@ using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
-using WinUICommunity;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -163,7 +163,7 @@ namespace Lively.UI.WinUI.Views.Pages
             }
         }
 
-        private void libraryGridView_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        private void GridView_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             try
             {
@@ -171,8 +171,8 @@ namespace Lively.UI.WinUI.Views.Pages
                 selectedTile = (LibraryModel)a;
                 if (selectedTile.DataType == LibraryItemType.ready)
                 {
-                    GridView gridView = (GridView)sender;
-                    contextMenu.ShowAt(gridView, e.GetPosition(gridView));
+                    var item = sender as GridView;
+                    contextMenu.ShowAt(item, e.GetPosition(item));
                     customiseWallpaper.IsEnabled = selectedTile.LivelyPropertyPath != null;
                 }
             }

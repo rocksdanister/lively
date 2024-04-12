@@ -1,4 +1,5 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
+using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using WinRT;
 
-namespace Microsoft.UI.Xaml
+namespace Lively.UI.WinUI.Extensions
 {
-    //Note: Don't prefer extensions, remove when not required; suffix all methods with Ex.
     public static class WindowExtensions
     {
         public static void SetIconEx(this Window window, string iconName)
@@ -27,7 +27,7 @@ namespace Microsoft.UI.Xaml
             //appWindow.Resize(new Windows.Graphics.SizeInt32(1200, 720));
             //SetWindowSize(m_windowHandle, 875, 875);
 
-            var hwnd = GetWindowHandleEx(window);
+            var hwnd = window.GetWindowHandleEx();
             var dpi = NativeMethods.GetDpiForWindow(hwnd);
             float scalingFactor = (float)dpi / 96;
             width = (int)(width * scalingFactor);
@@ -36,7 +36,7 @@ namespace Microsoft.UI.Xaml
             NativeMethods.SetWindowPos(hwnd, 0, 0, 0, width, height, (int)NativeMethods.SetWindowPosFlags.SWP_NOMOVE);
         }
 
-        public static IntPtr GetWindowHandleEx(this Window window)
+        public static nint GetWindowHandleEx(this Window window)
         {
             var windowNative = window.As<IWindowNative>();
             return windowNative.WindowHandle;
@@ -50,10 +50,10 @@ namespace Microsoft.UI.Xaml
             var status = false;
             if (IsWindows10OrGreater(17763))
             {
-                var hwnd = GetWindowHandleEx(window);
+                var hwnd = window.GetWindowHandleEx();
                 int useImmersiveDarkMode = enabled ? 1 : 0;
                 var attribute = IsWindows10OrGreater(18985) ? NativeMethods.DWMWA_USE_IMMERSIVE_DARK_MODE : NativeMethods.DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1;
-                status = NativeMethods.DwmSetWindowAttribute(hwnd, (int)attribute, ref useImmersiveDarkMode, sizeof(int)) == 0;
+                status = NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref useImmersiveDarkMode, sizeof(int)) == 0;
 
                 NativeMethods.ShowWindow(hwnd, (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
                 NativeMethods.ShowWindow(hwnd, (uint)NativeMethods.SHOWWINDOW.SW_SHOW);
@@ -79,10 +79,10 @@ namespace Microsoft.UI.Xaml
         {
             //Get the Window's HWND
             var hwnd = window.As<IWindowNative>().WindowHandle;
-            IntPtr hIcon = NativeMethods.LoadImage(IntPtr.Zero, iconName,
+            nint hIcon = NativeMethods.LoadImage(nint.Zero, iconName,
                       IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
 
-            NativeMethods.SendMessage(hwnd, (int)NativeMethods.WM.SETICON, (IntPtr)0, hIcon);
+            NativeMethods.SendMessage(hwnd, (int)NativeMethods.WM.SETICON, 0, hIcon);
         }
 
         [ComImport]
@@ -90,7 +90,7 @@ namespace Microsoft.UI.Xaml
         [Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB")]
         internal interface IWindowNative
         {
-            IntPtr WindowHandle { get; }
+            nint WindowHandle { get; }
         }
 
         private static bool IsWindows10OrGreater(int build = -1)

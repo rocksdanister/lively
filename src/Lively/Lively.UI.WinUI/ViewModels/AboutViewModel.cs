@@ -15,6 +15,12 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class AboutViewModel : ObservableObject
     {
         [RelayCommand]
+        private void OpenPersonalWebsite()
+        {
+            LinkUtil.OpenBrowser("https://rocksdanister.com");
+        }
+
+        [RelayCommand]
         private void OpenGithub()
         {
             LinkUtil.OpenBrowser("https://github.com/rocksdanister");

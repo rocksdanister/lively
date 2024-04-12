@@ -1,9 +1,10 @@
 ﻿using Microsoft.UI.Xaml;
 using System;
 using System.Runtime.InteropServices;
+using Windows.Storage.Pickers;
 using WinRT;
 
-namespace Windows.Storage.Pickers
+namespace Lively.UI.WinUI.Extensions
 {
     //Ref: https://github.com/microsoft/microsoft-ui-xaml/issues/4100
     public static class WindowsStoragePickersExtensions
@@ -13,14 +14,14 @@ namespace Windows.Storage.Pickers
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         public interface IInitializeWithWindow
         {
-            void Initialize(IntPtr hwnd);
+            void Initialize(nint hwnd);
         }
         [ComImport]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         [Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB")]
         internal interface IWindowNative
         {
-            IntPtr WindowHandle { get; }
+            nint WindowHandle { get; }
         }
 
         /// <summary>

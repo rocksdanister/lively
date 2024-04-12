@@ -1,6 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Files;
 using Lively.Models;
+using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
@@ -13,7 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using WinUICommunity;
 using static Lively.UI.WinUI.Services.IDialogService;
 
 namespace Lively.UI.WinUI.Services

@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using Lively.UI.WinUI.ViewModels;
 using System.Diagnostics;
-using CommunityToolkit.WinUI.UI;
+using CommunityToolkit.WinUI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -33,7 +33,7 @@ namespace Lively.UI.WinUI.Views.Pages.Gallery
             this.DataContext = App.Services.GetRequiredService<GalleryViewModel>();
             this.Loaded += (_, _) =>
             {
-                var scrollViewer = galleryGridView.FindDescendant<ScrollViewer>();
+                var scrollViewer = gridView.FindDescendant<ScrollViewer>();
                 scrollViewer.ViewChanged += ScrollViewer_ViewChanged;
             };
         }

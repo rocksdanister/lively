@@ -2,13 +2,13 @@
     x:Class="Lively.UI.WinUI.Views.Pages.ControlPanel.ScreensaverLayoutView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUICommunity"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:customControls="using:Lively.UI.WinUI.UserControls"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.ControlPanel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
     Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
     mc:Ignorable="d">
 
@@ -76,7 +76,7 @@
                 VerticalAlignment="Top"
                 IsClosable="False"
                 IsOpen="True"
-                Severity="Informational"
+                Severity="Warning"
                 Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                 <InfoBar.ActionButton>
                     <HyperlinkButton
@@ -102,23 +102,19 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <Grid CornerRadius="5">
-                        <!--  Temp, replace with Segmented control(WCTK) and icons.  -->
-                        <ListBox IsHitTestVisible="False" SelectedIndex="0">
+                    <controls:Segmented SelectedIndex="0">
+                        <controls:SegmentedItem>
                             <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Mirror Wallpaper</TextBlock>
+                        </controls:SegmentedItem>
+                        <controls:SegmentedItem IsEnabled="False">
                             <TextBlock
                                 MinWidth="50"
                                 HorizontalTextAlignment="Center"
                                 Opacity="0.5">
                                 Custom
                             </TextBlock>
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
-                    </Grid>
+                        </controls:SegmentedItem>
+                    </controls:Segmented>
                 </controls:SettingsCard>
             </controls:SettingsExpander.Items>
         </controls:SettingsExpander>

@@ -20,9 +20,9 @@ using Lively.UI.WinUI.Services;
 using Lively.Gallery.Client;
 using CommunityToolkit.Mvvm.Input;
 using Windows.ApplicationModel.Resources;
-using CommunityToolkit.WinUI.UI;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Lively.Helpers;
+using CommunityToolkit.WinUI.Collections;
 
 namespace Lively.UI.WinUI.ViewModels
 {

@@ -19,12 +19,12 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" CornerRadius="5">
+            <!--  DefaultBackgroundColor="Transparency" issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6527  -->
             <WebView2
                 x:Name="WebView"
                 Height="500"
                 HorizontalAlignment="Stretch"
                 CoreWebView2Initialized="WebView_CoreWebView2Initialized"
-                DefaultBackgroundColor="Transparent"
                 NavigationStarting="WebView_NavigationStarting"
                 Source="https://www.rocksdanister.com/lively/supporters/"
                 Visibility="{Binding SupportersFetchError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />

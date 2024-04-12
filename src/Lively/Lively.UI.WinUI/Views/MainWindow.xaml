@@ -2,13 +2,14 @@
     x:Class="Lively.UI.WinUI.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:customControls="using:Lively.UI.WinUI.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:winex="using:WinUIEx"
     Title="Lively Wallpaper"
     Width="875"
@@ -38,7 +39,7 @@
         </Grid.Resources>
 
         <!--  Custom background  -->
-        <toolkit:ImageEx
+        <Image
             x:Name="backgroundImage"
             Grid.RowSpan="2"
             Source="{Binding AppThemeBackground, Mode=OneWay}"

@@ -2,19 +2,20 @@
     x:Class="Lively.UI.WinUI.Views.Pages.LibraryView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
-    xmlns:behaviors="using:CommunityToolkit.WinUI.UI.Behaviors"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:behaviors="using:CommunityToolkit.WinUI.Behaviors"
     xmlns:controls="using:Lively.UI.WinUI.UserControls"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:media="using:CommunityToolkit.WinUI.UI.Media"
-    xmlns:toolkit="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:ui="using:CommunityToolkit.WinUI.UI"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:util="using:Lively.UI.WinUI.Helpers"
     x:Name="rootPage"
     AllowDrop="True"
     DragLeave="Page_DragLeave"
@@ -45,21 +46,19 @@
         </Grid.RowDefinitions>
         -->
 
-        <toolkit:AdaptiveGridView
-            x:Name="libraryGridView"
+        <!--  TODO: Write a custom ItemsRepeater  -->
+        <!--  ref: https://learn.microsoft.com/en-us/windows/apps/design/controls/items-repeater  -->
+        <GridView
+            x:Name="gridView"
             Margin="5"
-            Padding="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            DesiredWidth="272"
+            util:GridViewUtil.ItemClickCommand="{Binding LibraryClickCommand}"
             IsItemClickEnabled="True"
-            ItemClickCommand="{Binding LibraryClickCommand}"
-            ItemHeight="153"
             ItemsSource="{Binding LibraryItemsFiltered}"
-            RightTapped="libraryGridView_RightTapped"
+            RightTapped="GridView_RightTapped"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-            SelectionMode="{Binding LibrarySelectionMode, Mode=OneWay, Converter={StaticResource ListViewSelectionModeStringToEnumConverter}}"
-            StretchContentForSingleRow="False">
+            SelectionMode="{Binding LibrarySelectionMode, Mode=OneWay, Converter={StaticResource ListViewSelectionModeStringToEnumConverter}}">
             <MenuFlyout x:Name="contextMenu">
                 <MenuFlyout.Items>
                     <MenuFlyoutItem
@@ -137,9 +136,11 @@
                     </MenuFlyoutItem>
                 </MenuFlyout.Items>
             </MenuFlyout>
-            <toolkit:AdaptiveGridView.ItemTemplate>
+            <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid
+                        Width="272"
+                        Height="153"
                         ui:VisualExtensions.NormalizedCenterPoint="0.5"
                         AutomationProperties.Name="{Binding Title}"
                         CornerRadius="5">
@@ -281,7 +282,7 @@
                         </Grid>
                     </Grid>
                 </DataTemplate>
-            </toolkit:AdaptiveGridView.ItemTemplate>
+            </GridView.ItemTemplate>
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="5,5,5,5" />
@@ -300,14 +301,12 @@
                     </Setter>
                 </Style>
             </GridView.ItemContainerStyle>
-            <!--
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Name="GridWrap" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
-            -->
-        </toolkit:AdaptiveGridView>
+        </GridView>
 
         <Grid
             x:Name="AddFilePanel"

@@ -2,74 +2,89 @@
     x:Class="Lively.UI.WinUI.Views.Pages.Settings.SettingsPerformanceView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:WinUICommunity"
+    xmlns:animations="using:CommunityToolkit.WinUI.Animations"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!--  TODO: pause algorithm, display pause rule  -->
     <Grid>
         <ScrollViewer>
-            <StackPanel Margin="10,5,10,5">
-                <controls:SettingsGroup x:Uid="WallpaperPlaybackGroup">
+            <StackPanel Margin="10,25,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
+                <!--  WallpaperPlaybackGroup  -->
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontWeight="SemiBold"
+                        Text="Wallpaper playback" />
                     <controls:SettingsCard x:Uid="AppFullScreen">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90E;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
-                            <ComboBoxItem x:Uid="TextPerformancePause" />
-                            <ComboBoxItem x:Uid="TextPerformanceNone" />
-                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </ComboBox>
+                        <controls:Segmented SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
+                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </controls:Segmented>
                     </controls:SettingsCard>
 
                     <controls:SettingsCard x:Uid="AppFocus">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90C;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
-                            <ComboBoxItem x:Uid="TextPerformancePause" />
-                            <ComboBoxItem x:Uid="TextPerformanceNone" />
-                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </ComboBox>
+                        <controls:Segmented SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
+                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </controls:Segmented>
+                    </controls:SettingsCard>
+                </StackPanel>
+
+                <!--  LaptopWallpaperPlaybackGroup  -->
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontWeight="SemiBold"
+                        Text="Laptops" />
+                    <controls:SettingsCard x:Uid="BatteryPower">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE856;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <controls:Segmented SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
+                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </controls:Segmented>
                     </controls:SettingsCard>
 
-                    <controls:SettingsGroup x:Uid="LaptopWallpaperPlaybackGroup">
-                        <controls:SettingsCard x:Uid="BatteryPower">
-                            <controls:SettingsCard.HeaderIcon>
-                                <FontIcon Glyph="&#xE856;" />
-                            </controls:SettingsCard.HeaderIcon>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="TextPerformancePause" />
-                                <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                            </ComboBox>
-                        </controls:SettingsCard>
+                    <controls:SettingsCard x:Uid="PowerSavingModePower">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE863;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <controls:Segmented SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
+                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </controls:Segmented>
+                    </controls:SettingsCard>
+                </StackPanel>
 
-                        <controls:SettingsCard x:Uid="PowerSavingModePower">
-                            <controls:SettingsCard.HeaderIcon>
-                                <FontIcon Glyph="&#xE863;" />
-                            </controls:SettingsCard.HeaderIcon>
-                            <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
-                                <ComboBoxItem x:Uid="TextPerformancePause" />
-                                <ComboBoxItem x:Uid="TextPerformanceNone" />
-                                <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                            </ComboBox>
-                        </controls:SettingsCard>
-                    </controls:SettingsGroup>
-                </controls:SettingsGroup>
-
-                <controls:SettingsGroup x:Uid="System">
+                <!--  System  -->
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontWeight="SemiBold"
+                        Text="System" />
                     <controls:SettingsCard x:Uid="RemoteDesktopPower">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE703;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
-                            <ComboBoxItem x:Uid="TextPerformancePause" />
-                            <ComboBoxItem x:Uid="TextPerformanceNone" />
-                            <ComboBoxItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </ComboBox>
+                        <controls:Segmented SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
+                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
+                        </controls:Segmented>
                     </controls:SettingsCard>
 
                     <controls:SettingsCard x:Uid="DisplayPauseRule">
@@ -94,7 +109,6 @@
                     </controls:SettingsCard>
                     <InfoBar
                         Title="?"
-                        Margin="0,-2.5,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsIconVisible="False"
@@ -107,10 +121,35 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-15,0"
+                                To="0"
+                                Duration="0:0:0.4" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:0.6" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
-                </controls:SettingsGroup>
+                </StackPanel>
 
-                <controls:SettingsGroup x:Uid="Application">
+                <!--  Application  -->
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontWeight="SemiBold"
+                        Text="Application" />
                     <controls:SettingsExpander x:Uid="AppRules" IsExpanded="False">
                         <controls:SettingsExpander.HeaderIcon>
                             <FontIcon Glyph="&#xF0E3;" />
@@ -150,7 +189,8 @@
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
-                </controls:SettingsGroup>
+                </StackPanel>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>
