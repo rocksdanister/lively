@@ -12,12 +12,12 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,25,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
-                <!--  WallpaperPlaybackGroup  -->
+                <!--  Wallpaper Playback  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="WallpaperPlaybackGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Wallpaper playback" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="AppFullScreen">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90E;" />
@@ -41,12 +41,12 @@
                     </controls:SettingsCard>
                 </StackPanel>
 
-                <!--  LaptopWallpaperPlaybackGroup  -->
+                <!--  Laptop Wallpaper Playback  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="LaptopWallpaperPlaybackGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Laptops" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="BatteryPower">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE856;" />
@@ -73,9 +73,9 @@
                 <!--  System  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="System"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="System" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="RemoteDesktopPower">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE703;" />
@@ -147,9 +147,9 @@
                 <!--  Application  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="Application"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Application" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsExpander x:Uid="AppRules" IsExpanded="False">
                         <controls:SettingsExpander.HeaderIcon>
                             <FontIcon Glyph="&#xF0E3;" />
@@ -190,7 +190,6 @@
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
                 </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -104,13 +104,10 @@
                 <controls:SettingsCard ContentAlignment="Left">
                     <controls:Segmented SelectedIndex="0">
                         <controls:SegmentedItem>
-                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Mirror Wallpaper</TextBlock>
+                            <TextBlock x:Uid="ScreensaverModeSameWallpaper" />
                         </controls:SegmentedItem>
                         <controls:SegmentedItem IsEnabled="False">
-                            <TextBlock
-                                MinWidth="50"
-                                HorizontalTextAlignment="Center"
-                                Opacity="0.5">
+                            <TextBlock x:Uid="ScreensaverModeDifferentWallpaper">
                                 Custom
                             </TextBlock>
                         </controls:SegmentedItem>

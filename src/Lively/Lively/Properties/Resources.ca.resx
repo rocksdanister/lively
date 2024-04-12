@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Volum</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Àudio</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ Si encara no funciona, tanca i inicia de nou o reinicia Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Tots els fitxers</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Aplicació</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ Si encara no funciona, tanca i inicia de nou o reinicia Windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Omplir uniformement</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicar el mateix fons de pantalla</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Nomès la pantalla seleccionada</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Pantalla</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Estirar</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipus</value>
@@ -858,7 +858,7 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Qualitat dels Streams</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Sistema</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -897,7 +897,7 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Mètode d'ubicació</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Reproducció de fons</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -921,7 +921,7 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Inici ràpid</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Arxiu</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -936,13 +936,13 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Configuració del color de Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Portàtils</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Desenvolupador</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Aparença i comportament</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -999,11 +999,11 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Tipus d'estalvi de pantalla</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configurat separadament</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Mateix que el fons de pantalla executant-se</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin requerit</value>
@@ -1179,7 +1179,7 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>El desenvolupament d'aquestes funcions està en espera</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Connectors</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

@@ -126,8 +126,8 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>音量</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
-    <value>音频</value>
+  <data name="AudioGroup.Text" xml:space="preserve">
+    <value>声音</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
     <value>在线论坛</value>
@@ -283,7 +283,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextAllFiles" xml:space="preserve">
     <value>所有文件</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>应用程序</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>统一填充</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>复制相同壁纸</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>仅选中的屏幕</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>屏幕</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>跨显示器</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>类型</value>
@@ -859,7 +859,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>视频质量</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>系统</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -898,7 +898,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>布局方式</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>壁纸播放</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -922,7 +922,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>快速启动</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -937,13 +937,13 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Windows 颜色设置</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>笔记本电脑</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>开发者</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>外观 &amp; 行为</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -1000,11 +1000,11 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>屏保类型</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>单独配置</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>与正在运行的壁纸相同</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>需要插件</value>
@@ -1180,7 +1180,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>此功能开发已暂停</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>插件</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1226,12 +1226,12 @@ Edge 是 Windows 10 内置的浏览器。</value>
     <value>下载</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>成为Patreon赞助者</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>感谢所有支持此项目的成员。</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon赞助者</value>
   </data>
 </root>

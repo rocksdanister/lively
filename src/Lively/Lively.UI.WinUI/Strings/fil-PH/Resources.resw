@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Master Volume</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Tunog</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -278,7 +278,7 @@ Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Lahat ang Files</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Aplikasyon</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -572,14 +572,14 @@ Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Uniporme ang punan</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>I-duplicate ang parehong wallpaper</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Piling screen lamang</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Screen</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Span sa buong mga screen</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Uri</value>
@@ -852,7 +852,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Video Quality</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Sistema</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -891,7 +891,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Wallpaper Layout</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Wallpaper Playback</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -915,7 +915,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Mabilis na pagbukas</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -930,13 +930,13 @@ Edge is the built in webview of windows 10.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Setting sa Kulay ng Window</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Laptops</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Ang Developer</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Itsura at pag-uugali</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -993,11 +993,11 @@ Edge is the built in webview of windows 10.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Uri ng screensaver</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configured separately</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Magkaparehas sa running wallpaper</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Kailangan ng plugin</value>
@@ -1173,7 +1173,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>This feature development is on hold</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

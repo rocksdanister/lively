@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Volym</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Ljud</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -257,7 +257,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TextAllFiles" xml:space="preserve">
     <value>Alla Filer</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Applikation</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -551,14 +551,14 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Enhetlig fyllning</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicera samma tapet</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicera</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Endast den valda skärmen</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Skärm</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Spänn över skärmar</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Typ</value>
@@ -828,7 +828,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Videokvalitet</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>System</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -867,7 +867,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Bakgrundsslayout</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Bakgrundsuppspelning</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -891,7 +891,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="FastUI.Header" xml:space="preserve">
     <value>Snabb uppstart</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Fil</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -906,13 +906,13 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Windows färginställningar</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Bärbara datorer</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Utvecklare</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Utseende &amp; beteende</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -969,11 +969,11 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Typ av skärmsläckare</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Konfigurera separat</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Samma som nuvarande bakgrundsbild</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Tillägg krävs</value>
@@ -1149,7 +1149,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Utvecklingen av den här funktionen är pausad</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Tillägg</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

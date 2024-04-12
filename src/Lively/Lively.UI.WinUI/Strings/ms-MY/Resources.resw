@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Lantang</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Audio</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -282,7 +282,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Semua Fail</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Aplikasi</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -576,14 +576,14 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Isi Seragam</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Salin wallpaper yang sama</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Hanya skrin yang dipilih</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Skrin</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Panjangkan seberang skrin</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Jenis</value>
@@ -857,7 +857,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Kualiti Video</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -896,7 +896,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Kaedah Peletakan</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Mainsemula Wallpaper</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -920,7 +920,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Permulaan Cepat</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Fail</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -935,13 +935,13 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Tetapan Warna Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Komputer Riba</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Pemaju</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Penampilan &amp; Tingkah Laku</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -998,11 +998,11 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Jenis Penyelamat Skrin</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Ditetapkan secara berasingan</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Sama seperti wallpaper terkini</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin diperlukan</value>
@@ -1178,7 +1178,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Pembangunan ciri ini ditangguhkan</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Pemalam</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1224,12 +1224,12 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Muat-turun</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Jadi penyumbang Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Terima kasih kepada semua yang menyokong projek ini.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Penyumbang Patreon</value>
   </data>
 </root>

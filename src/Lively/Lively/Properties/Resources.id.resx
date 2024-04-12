@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Tingkat Suara</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Suara</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -284,7 +284,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Semua File</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Aplikasi</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -578,14 +578,14 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Isi Seragam</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplikat wallpaper yang sama</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Hanya layar yang dipilih</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Layar</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Rentangkan ke layar lain</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipe</value>
@@ -857,8 +857,8 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Kualitas Video</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
-    <value>Sistem</value>
+  <data name="System.Text" xml:space="preserve">
+    <value>Ikuti Sistem</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
     <value>Tema Taskbar</value>
@@ -896,7 +896,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Metode Peletakan</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Pemutaran Wallpaper</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -920,7 +920,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="FastUI.Header" xml:space="preserve">
     <value>Mulai cepat</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Berkas</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -935,13 +935,13 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Pengaturan Warna Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Laptop</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Pengembang</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Tampilan &amp; Perilaku</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -998,11 +998,11 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Jenis latar belakang</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Atur terpisah</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Sama dengan latar belakang yang digunakan</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Pengaya diperlukan</value>
@@ -1178,7 +1178,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Pengembangan fitur ini sedang ditahan</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Plugin</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

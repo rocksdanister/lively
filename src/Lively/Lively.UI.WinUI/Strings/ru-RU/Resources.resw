@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Громкость</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Аудио</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Все файлы</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Приложение</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Равномерное заполнение</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Дублировать те же обои</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Только выбранный дисплей</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Экран</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Охватить все дисплеи</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Тип</value>
@@ -857,7 +857,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Качество видео</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Система</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -896,7 +896,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Способ размещения</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Воспроизведение обоев</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -920,7 +920,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Быстрый запуск</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Файл</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -935,13 +935,13 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Системная</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Ноутбуки</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Разработчик</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Вид и поведение</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -998,11 +998,11 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Тип заставки</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Настроить отдельно</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Пользовательское</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Совместно с текущими обоями</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Требуется плагин</value>
@@ -1178,7 +1178,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Создание данного функционала приостановлено</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Плагины</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1224,12 +1224,12 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Скачать</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Станьте подписчиком на Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Спасибо всем участникам, которые поддерживают этот проект.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Подписчики Patreon</value>
   </data>
 </root>

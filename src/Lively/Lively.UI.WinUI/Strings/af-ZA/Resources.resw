@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Volume</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Oudio</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Alle lêers</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Toepassing</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Eenvormige vul</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Dupliseer dieselfde plakpapier</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Slegs geselekteerde skerm</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Skerm</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Span oor skerms</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tik</value>
@@ -854,7 +854,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Video kwaliteit</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Stelsel</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -893,7 +893,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Plasingsmetode</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Muurpapier speel</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -917,7 +917,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="FastUI.Header" xml:space="preserve">
     <value>Vinnige opstart</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Lêer</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -932,13 +932,13 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Windows-kleurinstellings</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Skootrekenaars</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Ontwikkelaar</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Voorkoms en gedrag</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -995,11 +995,11 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Tipe skermbewaarder</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Afsonderlik gekonfigureer</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Dieselfde as lopende plakpapier</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Inprop vereis</value>
@@ -1175,7 +1175,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Hierdie funksie-ontwikkeling word opgehou</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Inproppe</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

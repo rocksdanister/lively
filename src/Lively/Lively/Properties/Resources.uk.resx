@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Гучність</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Звук</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -285,7 +285,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextAllFiles" xml:space="preserve">
     <value>Всі файли</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Застосунок</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -579,14 +579,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Рівномірне заповнення</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Дублювати шпалери</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Тільки обраний дисплей</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Екран</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Перекривати</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Тип</value>
@@ -860,7 +860,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Якість відео</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Система</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -899,7 +899,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Виберіть макет шпалер</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Відтворення шпалер</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -923,7 +923,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Швидкий запуск</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Файл</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -938,13 +938,13 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Параметри кольору Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Ноутбуки</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Розробник</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Зовнішній вигляд і поведінка</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -1001,11 +1001,11 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Тип заставки</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Налаштувати окремо</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Власні</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Те саме, що запущені шпалери</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Потрібно доповнення</value>
@@ -1181,7 +1181,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Розробка цієї функції призупинена</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Плагіни</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

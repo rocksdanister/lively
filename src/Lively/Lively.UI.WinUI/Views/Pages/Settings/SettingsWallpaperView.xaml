@@ -17,12 +17,12 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,25,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
-                <!--  AppearanceBehaviour  -->
+                <!--  Appearnace and Behaviour  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="AppearanceBehaviour"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Appearance and behaviour" />
+                        FontWeight="SemiBold" />
 
                     <!--  depreciated  -->
                     <!--<controls:SettingsCard x:Uid="LockscreenPicture" Visibility="Collapsed">
@@ -65,41 +65,41 @@
                     </controls:SettingsExpander>
                     <InfoBar
                         x:Uid="IconsHidden"
-                        Margin="0,-2.5,0,0"
+                        Margin="0,0,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
                         Severity="Informational"
                         Visibility="{Binding IsDesktopIconsHidden, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
-                        <!--<animations:Implicit.ShowAnimations>
-                        <animations:TranslationAnimation
-                            From="0,-15,0"
-                            To="0"
-                            Duration="0:0:0.4" />
-                        <animations:OpacityAnimation
-                            From="0"
-                            To="1.0"
-                            Duration="0:0:0.6" />
-                    </animations:Implicit.ShowAnimations>
-                    <animations:Implicit.HideAnimations>
-                        <animations:OpacityAnimation
-                            From="1.0"
-                            To="0"
-                            Duration="0:0:0.2" />
-                        <animations:TranslationAnimation
-                            From="0"
-                            To="0,-15,0"
-                            Duration="0:0:0.2" />
-                    </animations:Implicit.HideAnimations>-->
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-15,0"
+                                To="0"
+                                Duration="0:0:0.4" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:0.6" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
                 </StackPanel>
 
-                <!--  WallpaperPluginGroup  -->
+                <!--  Plugin  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="WallpaperPluginGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Plugins" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsExpander x:Uid="VideoPlayer" IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                             <ComboBoxItem>wmf</ComboBoxItem>
@@ -168,7 +168,7 @@
                     </controls:SettingsExpander>
                     <InfoBar
                         x:Uid="PluginNotFound"
-                        Margin="0,-2.5,0,0"
+                        Margin="0,0,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
@@ -181,7 +181,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <!--<animations:Implicit.ShowAnimations>
+                        <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -200,7 +200,7 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>-->
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
 
                     <controls:SettingsCard x:Uid="GifPlayer">
@@ -212,7 +212,7 @@
                     </controls:SettingsCard>
                     <InfoBar
                         x:Uid="PluginNotFound"
-                        Margin="0,-2.5,0,0"
+                        Margin="0,0,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
@@ -225,7 +225,7 @@
                                 </HyperlinkButton.Content>
                             </HyperlinkButton>
                         </InfoBar.ActionButton>
-                        <!--<animations:Implicit.ShowAnimations>
+                        <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
                                 From="0,-15,0"
                                 To="0"
@@ -244,7 +244,7 @@
                                 From="0"
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
-                        </animations:Implicit.HideAnimations>-->
+                        </animations:Implicit.HideAnimations>
                     </InfoBar>
 
                     <controls:SettingsExpander
@@ -267,7 +267,6 @@
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
                 </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

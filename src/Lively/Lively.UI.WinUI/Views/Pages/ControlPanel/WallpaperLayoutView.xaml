@@ -75,16 +75,16 @@
                 <controls:SettingsCard ContentAlignment="Left">
                     <controls:Segmented SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
                         <controls:SegmentedItem>
-                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">
-                                <Run Text="Screen" />
+                            <TextBlock>
+                                <Run x:Uid="WallpaperLayoutPerScreen" />
                                 <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                         </controls:SegmentedItem>
                         <controls:SegmentedItem>
-                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Span</TextBlock>
+                            <TextBlock x:Uid="WallpaperLayoutSpan" />
                         </controls:SegmentedItem>
                         <controls:SegmentedItem>
-                            <TextBlock MinWidth="50" HorizontalTextAlignment="Center">Duplicate</TextBlock>
+                            <TextBlock x:Uid="WallpaperLayoutDuplicate" />
                         </controls:SegmentedItem>
                     </controls:Segmented>
                 </controls:SettingsCard>

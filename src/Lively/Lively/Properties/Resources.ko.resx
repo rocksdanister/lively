@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>마스터 볼륨</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>음량</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="TextAllFiles" xml:space="preserve">
     <value>모든 파일</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>응용 프로그램</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>비율유지 확대/축소(잘림)</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>동일한 배경화면 복사</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>선택한 화면만</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>화면</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>배경화면을 여러 디스플레이에 확장</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>유형</value>
@@ -857,7 +857,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>비디오 품질</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>시스템</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -896,7 +896,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>배경 화면 배치 방식</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>배경화면 재생</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -920,7 +920,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>빠른 시작</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>파일</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -935,13 +935,13 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>창 색상 설정</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>랩탑</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>개발자</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>모양 &amp; 동작</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -998,11 +998,11 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>화면 보호기 유형</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>별도로 구성</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>사용자 정의</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>실행 중인 배경 화면과 동일</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>플러그인 필요</value>
@@ -1178,7 +1178,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>이 기능 개발이 보류 중입니다</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>플러그인</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1224,12 +1224,12 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>다운로드</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Patreon 후원자 되기</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>이 프로젝트를 후원해주시는 모든 회원분들께 감사드립니다.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon 후원자</value>
   </data>
 </root>

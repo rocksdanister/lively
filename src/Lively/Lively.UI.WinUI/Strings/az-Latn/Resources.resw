@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Səs səviyyəsi</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Səs</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -138,10 +138,10 @@
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively ciddi bir xəta ilə qarşılaşdı.
 
-Windows Explorer son 30 saniyədə iki dəfə yenidən başladıldı! Bu, Lively ilə digər masaüstü özəlləşdirmə proqram təminatı və ya Windows arasındakı ziddiyətə görə ola bilər. Daha çox problemlərin qarşısını almaq üçün bütün divar kağızları sonlandırıldı.</value>
+Windows Explorer son 30 saniyədə iki dəfə yenidən başladıldı! Bu, Lively ilə digər masaüstü özəlləşdirmə yazılımı və ya Windows arasındakı ziddiyətə görə ola bilər. Daha çox problemi önləmək üçün bütün divar kağızları sonlandırıldı.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Uyğun gəlməyən proqram tapıldı, tapşırıq sətri teması sıradan çıxarıldı</value>
+    <value>Uyumsuz proqram tapıldı, tapşırıq çubuğu teması sıradan çıxarıldı</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
     <value>Lively Wallpaper - rəsmi internet səhifəsi</value>
@@ -160,7 +160,7 @@ Lively-nin ekran qoruyucularının əsas məqsədi, kompüterinizə başqa bir �
     <value>Bir fayl seçin</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Divar kağızı oxutma davranışı işləyən tətbiqə görə tənzimləndi</value>
+    <value>Divar kağızı oxutma davranışı işləyən tətbiqə görə ayarlandı</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
     <value>İmtina etmək istədiyinizə əminsiniz?</value>
@@ -183,7 +183,7 @@ Yalnız güvənli mənbədən gələn tətbiqlə davam edin.</value>
     <value>Lively, bildiriş sahəsinə kiçildildi, davam etmək üçün Lively nişanına sağ klikləyin.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Tənzimləmələrin qüvvəyə minməsi üçün Lively-ni yenidən başladın</value>
+    <value>Ayarların qüvvəyə minməsi üçün Lively-ni yenidən başladın</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Davam etməzdən əvvəl gözləyin</value>
@@ -247,7 +247,7 @@ Yüksək Kontrast rejimini sıradan çıxardıb yenidən sınayın</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Media oxudulmadı
-Tənzimləmələrdə videopleyeri dəyişdirməyə çalışın.
+Ayarlarda video pleyeri dəyişdirməyə çalışın.
 
 Bu xətanı daha yaxşı anlamaq və problemi həll etmək üçün jurnal faylını tərtibatçı ilə paylaşın.
 Jurnal faylını paylaşmaq üçün təlimatlar bu keçiddədir:
@@ -261,13 +261,13 @@ https://github.com/rocksdanister/lively/wiki</value>
 Daha əvvəl işləyən divar kağızını bərpa etmək istəyirsiniz?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Deyəsən, Lively-nin işləməsi üçün bəzi tənzimləmələri etmək lazımdır:  
+    <value>Deyəsən, Lively-nin işləməsi üçün bəzi ayarları etmək lazımdır:  
 1. "İcra et"i açmaq üçün Win + R düymələrinə basın, 
 2. Açılan pəncərədə "SystemPropertiesPerformance.exe" yazın, "Performans Seçimləri"ni açmaq üçün "Ok"a basın.
-3. Üçüncü sırada olan "Pəncərələrin daxilindəki kontrolları və elementləri canlandır"ın yanındakı qutunu işarələyin (əgər işarələnibsə, işarəni götürüb yenidən işarələyin) və "Tətbiq et"ə basın. (Qeyd: Windows Sistem Tənzimləmələri yanlış tərcümə edildiyi üçün yazılar fərqli görünə bilər).
+3. Üçüncü sırada olan "Pəncərələrin daxilindəki kontrolları və elementləri canlandır"ın yanındakı qutunu işarələyin (əgər işarələnibsə, işarəni götürüb yenidən işarələyin) və "Tətbiq et"ə basın. (Qeyd: Windows Sistem Ayarları yanlış tərcümə edildiyi üçün yazılar fərqli görünə bilər).
 4. Ardından "Ok"a klikləyərək pəncərəni bağlayın.
 
-Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə və Tətbiq et.
+Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və Tətbiq et.
 Əgər işləməsə Lively-ni bağlayıb yenidən başladın.
 (Bəzi Windows 10 quruluşlarında işləməyə bilər)</value>
   </data>
@@ -283,7 +283,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="TextAllFiles" xml:space="preserve">
     <value>Bütün Fayllar</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Tətbiq</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -320,7 +320,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Videoya çevir</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Önbaxış yarat</value>
+    <value>Önizləmə yarat</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
     <value>Özəlləşdir</value>
@@ -452,7 +452,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Şəkil</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Önbaxış</value>
+    <value>Önizləmə</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
     <value>Gizlilik Siyasəti</value>
@@ -473,7 +473,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Axtar</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Divar kağızı olaraq tənzimlə</value>
+    <value>Divar kağızı olaraq ayarla</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
     <value>Fayl yerini aç</value>
@@ -577,14 +577,14 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Eyni formada doldur</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Eyni divar kağızını çoxalt</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Yalnız seçilmiş ekran</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Ekran</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Ekranlar arasında yay</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Növü</value>
@@ -605,22 +605,22 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Video pleyer</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Dəstəklənən bütün fayl növlərini divar kağızı kimi tənzimlə</value>
+    <value>Dəstəklənən bütün fayl növlərini divar kağızı kimi ayarla</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Daxil etdiyiniz URL-nin veb səhifəsini divar kağızı kimi tənzimlə</value>
+    <value>Daxil etdiyiniz URL-nin veb səhifəsini divar kağızı kimi ayarla</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Hər hansısa bir tətbiqə fokuslandıqda nə edəcəyini tənzimlə</value>
+    <value>Hər hansısa bir tətbiqə fokuslandıqda nə edəcəyini ayarla</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Tam ekranlı oyunlar/tətbiqlər işləyərkən nə edəcəyi tənzimlə</value>
+    <value>Tam ekranlı oyunlar/tətbiqlər işləyərkən nə edəcəyi ayarla</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
     <value>Bu tətbiqləri işə salarkən divar kağızına fasilə ver</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively, görünüşü dəyişdirmək üçün sistemin tema tənzimləmələrinə uyğunlaşır</value>
+    <value>Lively, görünüşü dəyişdirmək üçün sistemin tema ayarlarına uyğunlaşır</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
     <value>Adapter çıxarıldıqda oxutmanı dəyişdir</value>
@@ -632,7 +632,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Tərtibatçı menyusunu göstər</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Animasiyalı divar kağızının şəklini masaüstü divar kağızı olaraq tənzimlə</value>
+    <value>Animasiyalı divar kağızının şəklini masaüstü divar kağızı olaraq ayarla</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>Divar kağızına bütün ekranlarda və ya yalnız tətbiqin fokuslandığı ekranda fasilə ver</value>
@@ -647,7 +647,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Davam etmək üçün quraşdırmanı tamamla</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Animasiyalı divar kağızının şəklini kilid ekranı divar kağızı olaraq tənzimlə</value>
+    <value>Animasiyalı divar kağızının şəklini kilid ekranı divar kağızı olaraq ayarla</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
     <value>Divar kağızı fasilə alqoritmi</value>
@@ -734,7 +734,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Batareya enerjisi ilə</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Divar kağızı olaraq tənzimləmək üçün video, GIF, veb səhifə kimi faylları axtar</value>
+    <value>Divar kağızı olaraq ayarlamaq üçün video, GIF, veb səhifə kimi faylları axtar</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Sazlama portu</value>
@@ -818,7 +818,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Xətanı bildir</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Miqyas/Uyğunluq</value>
+    <value>Miqyas/Sığışdır</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Kontrol Paneli</value>
@@ -833,7 +833,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Fayl seçin</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Tənzimləmələr</value>
+    <value>Ayarlar</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
     <value>Təsdiqi ötür</value>
@@ -854,7 +854,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Video keyfiyyəti</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Sistem</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -893,7 +893,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Yerləşdirmə üsulu</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Divar kağızı oxutma</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -917,7 +917,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="FastUI.Header" xml:space="preserve">
     <value>Sürətli başlatma</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Fayl</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -930,15 +930,15 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Sistem</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Windows rəng tənzimləmələri</value>
+    <value>Windows rəng ayarları</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Noutbuklar</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Tərtibatçı</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Görünüş və davranış</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -995,11 +995,11 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Ekran qoruyucu növü</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Ayrıca konfiqurasiya edilir</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>İstifadə edilən divar kağızı ilə eyni</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Qoşma tələb olunur</value>
@@ -1175,7 +1175,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Bu özəlliyin təkmilləşdirilməsi gözlənilir</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Qoşmalar</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1221,12 +1221,12 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün tənzimlə v�
     <value>Endir</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Patreon dəstəkçisi olun</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Bu layihəyə dəstək verən bütün üzvlərə təşəkkür edirik.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon Dəstəkçiləri</value>
   </data>
 </root>

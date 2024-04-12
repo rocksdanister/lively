@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>マスターボリューム</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>音声</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="TextAllFiles" xml:space="preserve">
     <value>すべてのファイル</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>アプリケーション</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>均一に埋める</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>同じ壁紙を複製する</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>選択した画面のみ</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>画面</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>画面をまたいで伸ばす</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>タイプ</value>
@@ -856,7 +856,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>動画の画質</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>システム</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -895,7 +895,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>配置方法</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>壁紙の再生</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -919,7 +919,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>高速起動</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -934,13 +934,13 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>ユーザーインターフェースのスタイル</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>ノートパソコン</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>開発者</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>外見と動作</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -997,11 +997,11 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>壁紙の配置方法</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>別々に設定</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>カスタム</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>壁紙と同じ</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>プラグインが必要</value>
@@ -1177,7 +1177,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>この機能の開発は保留中です</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>拡張機能</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">

@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>مستوى الصوت</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>الصوت</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TextAllFiles" xml:space="preserve">
     <value>جميع الملفات</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>التطبيق</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>تعبئة موحدة</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>تكرار نفس الخلفية</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>اختيار الشاشة فقط</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>شاشة</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>إمتداد(تجريبي)</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>النوع</value>
@@ -857,7 +857,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>جودة الفيديو</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>النظام</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -896,7 +896,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>حدد تخطيط الخلفية:-</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>تشغيل الخلفية:</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -920,7 +920,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>بدأ تشغيل اسرع</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>الملف</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -935,13 +935,13 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>إعدادات لون Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>الحواسيب المحمولة</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>مطور</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>المظهر والسلوك</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -998,11 +998,11 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>نوع شاشة التوفير</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>تكوين بشكل منفصل</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>نفس الخلفية قيد التشغيل</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>إضافة مطلوبة</value>
@@ -1178,7 +1178,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>تطوير هذه المِيزة قيد الانتظار</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>الإضافات</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1224,10 +1224,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>تنزيل</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value/>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value/>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>

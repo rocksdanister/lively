@@ -456,7 +456,7 @@ namespace Lively.UI.WinUI
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), NavPages.settingsGeneral.GetAttrValue()));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), NavPages.settingsPerformance.GetAttrValue()));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), NavPages.settingsWallpaper.GetAttrValue()));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Header"), NavPages.settingsSystem.GetAttrValue()));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Text"), NavPages.settingsSystem.GetAttrValue()));
         }
 
         //When items change selection not showing, ref: https://github.com/microsoft/microsoft-ui-xaml/issues/7216

@@ -17,12 +17,12 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,25,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
-                <!--  AppearanceBehaviour  -->
+                <!--  Appearnace and Behaviour  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="AppearanceBehaviour"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Appearance and behaviour" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="Startup">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE768;" />
@@ -105,12 +105,12 @@
                     </InfoBar>
                 </StackPanel>
 
-                <!--  AudioGroup  -->
+                <!--  Audio  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="AudioGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Audio" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsExpander
                         x:Name="audioBtn"
                         x:Uid="Audio"
@@ -133,12 +133,12 @@
                 </StackPanel>
 
                 <!--  Icon="&#xF12B;"  -->
-                <!--  WallpaperDirGroup  -->
+                <!--  Wallpaper Directory  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="WallpaperDirGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="File" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsExpander x:Uid="WallpaperDir" IsExpanded="False">
                         <controls:SettingsExpander.HeaderIcon>
                             <FontIcon Glyph="&#xF12B;" />
@@ -168,7 +168,6 @@
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
                 </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

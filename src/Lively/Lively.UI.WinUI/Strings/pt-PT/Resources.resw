@@ -126,7 +126,7 @@
   <data name="Audio.Header" xml:space="preserve">
     <value>Volume</value>
   </data>
-  <data name="AudioGroup.Header" xml:space="preserve">
+  <data name="AudioGroup.Text" xml:space="preserve">
     <value>Áudio</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
@@ -283,7 +283,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="TextAllFiles" xml:space="preserve">
     <value>Todos os Ficheiros</value>
   </data>
-  <data name="Application.Header" xml:space="preserve">
+  <data name="Application.Text" xml:space="preserve">
     <value>Aplicação</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
@@ -577,14 +577,14 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
     <value>Preenchimento uniforme</value>
   </data>
-  <data name="WallpaperLayoutDuplicate.Content" xml:space="preserve">
-    <value>Duplicar o mesmo fundo</value>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
   </data>
-  <data name="WallpaperLayoutPerScreen.Content" xml:space="preserve">
-    <value>Apenas o ecrã seleccionado</value>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>Ecrã</value>
   </data>
-  <data name="WallpaperLayoutSpan.Content" xml:space="preserve">
-    <value>Esticar</value>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipo</value>
@@ -858,7 +858,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>Qualidade do Vídeo</value>
   </data>
-  <data name="System.Header" xml:space="preserve">
+  <data name="System.Text" xml:space="preserve">
     <value>Sistema</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
@@ -897,7 +897,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="WallpaperLayout.Header" xml:space="preserve">
     <value>Seleccionar disposição do(s) fundo(s)</value>
   </data>
-  <data name="WallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Reprodução do Fundo</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
@@ -921,7 +921,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="FastUI.Header" xml:space="preserve">
     <value>Inicialização rápida</value>
   </data>
-  <data name="WallpaperDirGroup.Header" xml:space="preserve">
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
     <value>Ficheiro</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
@@ -936,13 +936,13 @@ Edge é o webview integrado do windows 10.</value>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
     <value>Definições de cor do Windows</value>
   </data>
-  <data name="LaptopWallpaperPlaybackGroup.Header" xml:space="preserve">
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
     <value>Computadores Portáteis</value>
   </data>
-  <data name="DeveloperGroup.Header" xml:space="preserve">
+  <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Desenvolvedor</value>
   </data>
-  <data name="AppearanceBehaviour.Header" xml:space="preserve">
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Aparência e comportamento</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
@@ -999,11 +999,11 @@ Edge é o webview integrado do windows 10.</value>
   <data name="Screensaver.Header" xml:space="preserve">
     <value>Tipo de protetor de tela</value>
   </data>
-  <data name="ScreensaverModeDifferentWallpaper.Content" xml:space="preserve">
-    <value>Configurado separadamente</value>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
   </data>
-  <data name="ScreensaverModeSameWallpaper.Content" xml:space="preserve">
-    <value>Papel de parede iguais</value>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin necessário</value>
@@ -1179,7 +1179,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>O desenvolvimento deste recurso está em espera</value>
   </data>
-  <data name="WallpaperPluginGroup.Header" xml:space="preserve">
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
     <value>Plugins</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
@@ -1225,12 +1225,12 @@ Edge é o webview integrado do windows 10.</value>
     <value>Transferir</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Torne-se um apoiante de Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Obrigado a todos os membros que apoiam este projecto.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Apoiantes do Patreon</value>
   </data>
 </root>

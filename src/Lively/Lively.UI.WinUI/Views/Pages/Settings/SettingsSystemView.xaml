@@ -12,12 +12,12 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="10,30,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
-                <!--  AppearanceBehaviour  -->
+                <!--  Appearance and Behaviour  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="AppearanceBehaviour"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Appearance and behaviour" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="TaskbarTheme">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE771;" />
@@ -68,12 +68,12 @@
                     </InfoBar>
                 </StackPanel>
 
-                <!--  DeveloperGroup  -->
+                <!--  Developer  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="DeveloperGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Developer" />
+                        FontWeight="SemiBold" />
                     <controls:SettingsCard x:Uid="Debug">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xEC7A;" />
