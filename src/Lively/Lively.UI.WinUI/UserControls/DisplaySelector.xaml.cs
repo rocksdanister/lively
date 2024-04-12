@@ -111,103 +111,125 @@ namespace Lively.UI.WinUI.UserControls
             {
                 case WallpaperArrangement.per:
                     {
-                        // Normalize values
-                        // Note: It is better to implement auto scaling canvas control instead in the future
-                        int totalWidth = Displays.Sum(item => item.Screen.Bounds.Width);
-                        int totalHeight = Displays.Sum(item => item.Screen.Bounds.Height);
-
-                        foreach (var item in Displays)
-                        {
-                            var normalizedBounds = Normalize(item.Screen.Bounds, totalWidth, totalHeight);
-                            item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
-                        }
-
-                        // Bounds.Left and Right can be negative
-                        int minLeft = Displays.Min(item => item.NormalizedBounds.Left);
-                        int maxRight = Displays.Max(item => item.NormalizedBounds.Left + item.NormalizedBounds.Width);
-                        int minTop = Displays.Min(item => item.NormalizedBounds.Top);
-                        int maxBottom = Displays.Max(item => item.NormalizedBounds.Top + item.NormalizedBounds.Height);
-
-                        // Center to canvas
-                        double horizontalOffset = (maxRight + minLeft) / 2 - this.ActualWidth / 2;
-                        double verticalOffset = (maxBottom + minTop) / 2 - this.ActualHeight / 2;
-
-                        foreach (var item in Displays)
-                        {
-                            item.NormalizedBounds = new Rectangle(
-                                (int)(item.NormalizedBounds.Left - horizontalOffset),
-                                (int)(item.NormalizedBounds.Top - verticalOffset),
-                                item.NormalizedBounds.Width,
-                                item.NormalizedBounds.Height);
-                        }
+                        DrawPerLayout();
                     }
                     break;
                 case WallpaperArrangement.duplicate:
                     {
-                        // Normalize values
-                        int sampleWidth = 1920;
-                        int sampleHeight = 1080;
-                        int totalWidth = sampleWidth * Displays.Count;
-                        int totalHeight = sampleHeight * Displays.Count;
-
-                        foreach (var item in Displays)
-                        {
-                            var normalizedBounds = Normalize(new Rectangle(0, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
-                            item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
-                        }
-
-                        // Center to canvas
-                        int normalizedTotalWidth = Displays[0].NormalizedBounds.Width + (int)(sampleWidth * Displays.Count * 0.01f);
-                        int normalizedTotalHeight = Displays[0].NormalizedBounds.Height;
-                        double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
-                        double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
-
-                        for (int i = 0; i < Displays.Count; i++)
-                        {
-                            var item = Displays[i];
-                            var allMargin = sampleWidth * i * 0.01f;
-                            item.NormalizedBounds = new Rectangle(
-                                (int)(item.NormalizedBounds.Left + horizontalOffset + allMargin),
-                                (int)(item.NormalizedBounds.Top + verticalOffset + allMargin),
-                                item.NormalizedBounds.Width,
-                                item.NormalizedBounds.Height);
-                        }
+                        // Make it identical to per-screen
+                        if (Displays.Count == 1)
+                            DrawPerLayout();
+                        else
+                            DrawDuplicateLayout();
                     }
                     break;
                 case WallpaperArrangement.span:
                     {
-                        // Normalize values
-                        int sampleWidth = 1920;
-                        int sampleHeight = 1080;
-                        int totalWidth = sampleWidth * Displays.Count;
-                        int totalHeight = sampleHeight * Displays.Count;
-
-                        for (int i = 0; i < Displays.Count; i++)
-                        {
-                            var normalizedBounds = Normalize(new Rectangle(sampleWidth * i, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
-                            Displays[i].NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
-                        }
-
-                        // Center to canvas
-                        int normalizedTotalWidth = Displays.Sum(item => item.NormalizedBounds.Width) - (int)(Displays.Count * sampleWidth * 0.01f);
-                        int normalizedTotalHeight = Displays.Max(item => item.NormalizedBounds.Height);
-                        double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
-                        double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
-
-                        for (int i = 0; i < Displays.Count; i++)
-                        {
-                            var item = Displays[i];
-                            var leftMargin = -i * sampleWidth * 0.01f;
-                            item.NormalizedBounds = new Rectangle(
-                            (int)(item.NormalizedBounds.Left + horizontalOffset + leftMargin),
-                            (int)(item.NormalizedBounds.Top + verticalOffset),
-                            item.NormalizedBounds.Width,
-                            item.NormalizedBounds.Height);
-                        }
+                        if (Displays.Count == 1)
+                            DrawPerLayout();
+                        else
+                            DrawSpanLayout();
                     }
                     break;
                 default:
                     throw new NotImplementedException();
+            }
+        }
+
+        private void DrawPerLayout()
+        {
+            // Normalize values
+            // Note: It is better to implement auto scaling canvas control instead in the future
+            int totalWidth = Displays.Sum(item => item.Screen.Bounds.Width);
+            int totalHeight = Displays.Sum(item => item.Screen.Bounds.Height);
+
+            foreach (var item in Displays)
+            {
+                var normalizedBounds = Normalize(item.Screen.Bounds, totalWidth, totalHeight);
+                item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
+            }
+
+            // Bounds.Left and Right can be negative
+            int minLeft = Displays.Min(item => item.NormalizedBounds.Left);
+            int maxRight = Displays.Max(item => item.NormalizedBounds.Left + item.NormalizedBounds.Width);
+            int minTop = Displays.Min(item => item.NormalizedBounds.Top);
+            int maxBottom = Displays.Max(item => item.NormalizedBounds.Top + item.NormalizedBounds.Height);
+
+            // Center to canvas
+            double horizontalOffset = (maxRight + minLeft) / 2 - this.ActualWidth / 2;
+            double verticalOffset = (maxBottom + minTop) / 2 - this.ActualHeight / 2;
+
+            foreach (var item in Displays)
+            {
+                item.NormalizedBounds = new Rectangle(
+                    (int)(item.NormalizedBounds.Left - horizontalOffset),
+                    (int)(item.NormalizedBounds.Top - verticalOffset),
+                    item.NormalizedBounds.Width,
+                    item.NormalizedBounds.Height);
+            }
+        }
+
+        private void DrawDuplicateLayout()
+        {
+            // Normalize values
+            int sampleWidth = 1920;
+            int sampleHeight = 1080;
+            int totalWidth = sampleWidth * Displays.Count;
+            int totalHeight = sampleHeight * Displays.Count;
+
+            foreach (var item in Displays)
+            {
+                var normalizedBounds = Normalize(new Rectangle(0, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
+                item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
+            }
+
+            // Center to canvas
+            int normalizedTotalWidth = Displays[0].NormalizedBounds.Width + (int)(sampleWidth * Displays.Count * 0.01f);
+            int normalizedTotalHeight = Displays[0].NormalizedBounds.Height;
+            double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
+            double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
+
+            for (int i = 0; i < Displays.Count; i++)
+            {
+                var item = Displays[i];
+                var allMargin = sampleWidth * i * 0.01f;
+                item.NormalizedBounds = new Rectangle(
+                    (int)(item.NormalizedBounds.Left + horizontalOffset + allMargin),
+                    (int)(item.NormalizedBounds.Top + verticalOffset + allMargin),
+                    item.NormalizedBounds.Width,
+                    item.NormalizedBounds.Height);
+            }
+        }
+
+        private void DrawSpanLayout()
+        {
+            // Normalize values
+            int sampleWidth = 1920;
+            int sampleHeight = 1080;
+            int totalWidth = sampleWidth * Displays.Count;
+            int totalHeight = sampleHeight * Displays.Count;
+
+            for (int i = 0; i < Displays.Count; i++)
+            {
+                var normalizedBounds = Normalize(new Rectangle(sampleWidth * i, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
+                Displays[i].NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
+            }
+
+            // Center to canvas
+            int normalizedTotalWidth = Displays.Sum(item => item.NormalizedBounds.Width) - (int)(Displays.Count * sampleWidth * 0.01f);
+            int normalizedTotalHeight = Displays.Max(item => item.NormalizedBounds.Height);
+            double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
+            double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
+
+            for (int i = 0; i < Displays.Count; i++)
+            {
+                var item = Displays[i];
+                var leftMargin = -i * sampleWidth * 0.01f;
+                item.NormalizedBounds = new Rectangle(
+                (int)(item.NormalizedBounds.Left + horizontalOffset + leftMargin),
+                (int)(item.NormalizedBounds.Top + verticalOffset),
+                item.NormalizedBounds.Width,
+                item.NormalizedBounds.Height);
             }
         }
 

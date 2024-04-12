@@ -77,7 +77,7 @@
                         <controls:SegmentedItem>
                             <TextBlock MinWidth="50" HorizontalTextAlignment="Center">
                                 <Run Text="Screen" />
-                                <Run Foreground="{ThemeResource SystemAccentColorLight3}" Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                                <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                         </controls:SegmentedItem>
                         <controls:SegmentedItem>
