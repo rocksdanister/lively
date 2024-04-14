@@ -22,6 +22,8 @@ using Lively.Common.Helpers.Pinvoke;
 using Microsoft.UI.Dispatching;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.UserControls;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Lively.Common.Helpers.Shell;
 //using CommunityToolkit.WinUI.UI.Controls;
 
 
@@ -289,14 +291,14 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Name = item.Key,
                         Margin = margin,
                         Orientation = Orientation.Horizontal,
-                        HorizontalAlignment= HorizontalAlignment.Left,
+                        HorizontalAlignment = HorizontalAlignment.Left,
                     };
                     var cmbBox = new ComboBox
                     {
                         //Tag = item.Key,
                         MaxWidth = minWidth,
                         MinWidth = minWidth,
-                        MinHeight = 35,
+                        MinHeight = 45,
                     };
                     var fileOpenBtn = new Button()
                     {
@@ -317,12 +319,12 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         var destDir = Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), item.Value["folder"].ToString());
                         Directory.CreateDirectory(destDir);
                         //filter syntax: "*.jpg|*.png"
-                        var files = GetFileNames(destDir, item.Value["filter"].ToString(), SearchOption.TopDirectoryOnly);
+                        var files = GetFiles(destDir, item.Value["filter"].ToString(), SearchOption.TopDirectoryOnly);
                         foreach (var file in files)
                         {
-                            cmbBox.Items.Add(file);
+                            cmbBox.Items.Add(CreateFolderDropDownContent(file));
                         }
-                        cmbBox.SelectedIndex = Array.FindIndex(files, x => x.Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
+                        cmbBox.SelectedIndex = Array.FindIndex(files, x => Path.GetFileName(x).Contains(item.Value["value"].ToString())); //returns -1 if not found, none selected.
                     }
                     catch (Exception ie1)
                     {
@@ -415,10 +417,14 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             try
             {
                 var menuItem = (ComboBox)sender;
+                var selectedItem = menuItem.SelectedItem as StackPanel;
+                if (selectedItem == null) 
+                    return;
+
                 var propertyName = (menuItem.Parent as StackPanel).Name;
-                var filePath = Path.Combine(livelyPropertyCopyData[propertyName]["folder"].ToString(), menuItem.SelectedItem.ToString()); //filename is unique.
+                var filePath = Path.Combine(livelyPropertyCopyData[propertyName]["folder"].ToString(), selectedItem.Tag.ToString()); //filename is unique.
                 WallpaperSendMsg(new LivelyFolderDropdown() { Name = propertyName, Value = filePath });
-                livelyPropertyCopyData[propertyName]["value"] = menuItem.SelectedItem.ToString();
+                livelyPropertyCopyData[propertyName]["value"] = selectedItem.Tag.ToString();
                 UpdatePropertyFile();
             }
             catch { }
@@ -464,13 +470,12 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                                     destFile = FileUtil.NextAvailableFilename(destFile);
                                     File.Copy(srcFile.Path, destFile);
                                 }
-                                destFiles.Add(Path.GetFileName(destFile));
+                                destFiles.Add(destFile);
                             }
-                            destFiles.Sort();
                             //add copied files to bottom of dropdown..
-                            foreach (var file in destFiles)
+                            foreach (var file in destFiles.OrderBy(x => Path.GetFileName(x)))
                             {
-                                cmbBox.Items.Add(file);
+                                cmbBox.Items.Add(CreateFolderDropDownContent(file));
                             }
 
                             if (selectedFiles.Count == 1)
@@ -488,7 +493,80 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             }
         }
 
-        private static string[] GetFileNames(string path, string searchPattern, SearchOption searchOption)
+        private void FolderDropDownDeleteFileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var btn = sender as Button;
+                //find folder selection ComboBox
+                var panel = btn.Parent as StackPanel;
+                var cmbBox = panel.Parent as ComboBox;
+
+                foreach (var lp in livelyPropertyCopyData)
+                {
+                    string uiElementType = lp.Value["type"].ToString();
+                    if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var destFolder = Path.Combine(Path.GetDirectoryName(libraryItem.FilePath), lp.Value["folder"].ToString());
+                        var destFile = Path.Combine(destFolder, panel.Tag.ToString());
+                        cmbBox.Items.Remove(panel);
+                        File.Delete(destFile);
+
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+        private StackPanel CreateFolderDropDownContent(string file)
+        {
+            var imgExts = FileFilter.LivelySupportedFormats.Where(x => x.Type == WallpaperType.picture || x.Type == WallpaperType.gif).SelectMany(x => x.Extentions);
+            var fileName = Path.GetFileName(file);
+            var isImage = imgExts.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase);
+
+            var previewBorder = new Border()
+            {
+                CornerRadius = new CornerRadius(5f),
+                Width = 32,
+                Height = 32,
+            };
+            var preview = new Image()
+            {
+                Stretch = Stretch.UniformToFill,
+                Source = isImage ? new BitmapImage() { UriSource = new Uri(file) } : GetThumbnail(file),
+            };
+            previewBorder.Child = preview;
+            var label = new TextBlock()
+            {
+                Text = fileName,
+                TextWrapping = TextWrapping.NoWrap,
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                VerticalAlignment = VerticalAlignment.Center,
+                Width = minWidth + 50,
+                MaxWidth = minWidth + 50,
+            };
+            // There is an issue where ComboBox SelectionChanged event is firing when closing it if an item above the selecteditem is deleted.
+            //var deleteBtn = new Button() { Content = new FontIcon() { Glyph = "\xE74D", FontSize = 12 } };
+            //deleteBtn.Click += FolderDropDownDeleteFileBtn_Click;
+
+            var stackPanel = new StackPanel()
+            {
+                Orientation = Orientation.Horizontal,
+                Tag = fileName,
+                Spacing = 5
+            };
+            ToolTipService.SetToolTip(stackPanel, new ToolTip() { Content = fileName });
+            stackPanel.Children.Add(previewBorder);
+            stackPanel.Children.Add(label);
+            //stackPanel.Children.Add(deleteBtn);
+            return stackPanel;
+        }
+
+        private static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
             string[] searchPatterns = searchPattern.Split('|');
             List<string> files = new List<string>();
@@ -499,7 +577,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             List<string> tmp = new List<string>();
             foreach (var item in files)
             {
-                tmp.Add(Path.GetFileName(item));
+                tmp.Add(item);
             }
             return tmp.ToArray();
         }
@@ -787,6 +865,26 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 }
             }
             return new Tuple<string, DisplayMonitor>(livelyPropertyCopy, screen);
+        }
+
+        /// <summary>
+        /// Retrieve system thumbnail, if not found file association icon is required.
+        /// </summary>
+        private static BitmapImage GetThumbnail(string filePath)
+        {
+            int THUMB_SIZE = 128;
+            // System.Drawing.Icon.ExtractAssociatedIcon can also be used if only file association icon is required.
+            var thumbnail = ThumbnailUtil.GetThumbnail(
+               filePath, THUMB_SIZE, THUMB_SIZE, ThumbnailUtil.ThumbnailOptions.None);
+
+            // System.Drawing.Bitmap -> Microsoft.UI.Xaml.Media.Imaging.Bitmap.
+            using var memoryStream = new MemoryStream();
+            thumbnail.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            BitmapImage bitmapImage = new();
+            bitmapImage.SetSource(memoryStream.AsRandomAccessStream());
+
+            return bitmapImage;
         }
 
         #endregion //helpers
