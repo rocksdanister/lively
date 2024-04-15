@@ -193,26 +193,7 @@
                         -->
                     </AppBarButton>
 
-                    <AppBarSeparator x:Name="separatorLabel2" Visibility="Collapsed" />
-                    <AppBarButton
-                        Name="audioBtn"
-                        MaxWidth="50"
-                        LabelPosition="Collapsed"
-                        Visibility="Collapsed">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <Slider
-                                    Name="audioSlider"
-                                    MinWidth="125"
-                                    ValueChanged="SliderAudio_ValueChanged" />
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                        <AppBarButton.Icon>
-                            <FontIcon Glyph="&#xE994;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
                     <AppBarSeparator x:Name="separatorLabel3" />
-
                     <AppBarButton
                         Name="coffeeBtn"
                         MaxWidth="50"

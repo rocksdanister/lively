@@ -21,33 +21,13 @@ using Windows.Foundation.Collections;
 
 namespace Lively.UI.WinUI.Views.Pages.Settings
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SettingsGeneralView : Page
     {
-        private readonly FontIcon[] audioIcons =
-{
-            new FontIcon(){ Glyph = "\uE74F" },
-            new FontIcon(){ Glyph = "\uE992" },
-            new FontIcon(){ Glyph = "\uE993" },
-            new FontIcon(){ Glyph = "\uE994" },
-            new FontIcon(){ Glyph = "\uE995" },
-        };
-
         public SettingsGeneralView()
         {
             this.InitializeComponent();
             var settings = App.Services.GetRequiredService<SettingsViewModel>();
             this.DataContext = settings;
-            UpdateAudioSliderIcon(settings.GlobalWallpaperVolume);
         }
-
-        private void UpdateAudioSliderIcon(double volume) => 
-            audioBtn.HeaderIcon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
-
-        private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e) => UpdateAudioSliderIcon(e.NewValue);
-
-        private void Language_HyperlinkButton_Click(object sender, RoutedEventArgs e) => LinkUtil.OpenBrowser("https://rocksdanister.github.io/lively/translation/");
     }
 }

@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Lively.Common.Extensions;
+using System.Windows.Interop;
 
 namespace Lively.Core.Wallpapers
 {
@@ -89,15 +90,6 @@ namespace Lively.Core.Wallpapers
                 }
             }
 
-            var scalerArg = scaler switch
-            {
-                WallpaperScaler.none => "--video-unscaled=yes",
-                WallpaperScaler.fill => "--keepaspect=no",
-                WallpaperScaler.uniform => "--keepaspect=yes",
-                WallpaperScaler.uniformFill => "--panscan=1.0",
-                //WallpaperScaler.auto => "--keepaspect-window=no",
-                _ => "--keepaspect=no",
-            };
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
             var configDir = GetConfigDir();
 
@@ -124,8 +116,6 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append("--stop-screensaver=no ");
             //disable mpv default (built-in) key bindings
             cmdArgs.Append("--input-default-bindings=no ");
-            //video stretch algorithm
-            cmdArgs.Append(scalerArg + " ");
             //on-screen-controller visibility
             cmdArgs.Append(!onScreenControl ? "--no-osc " : " ");
             //alternative: --input-ipc-server=\\.\pipe\
@@ -319,6 +309,12 @@ namespace Lively.Core.Wallpapers
                         {
                             msg = GetMpvCommand("set_property", item.Key, (bool)item.Value["value"]);
                         }
+                        else if (uiElement.Equals("dropdown_scaler", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var scaler = (WallpaperScaler)(int)item.Value["value"];
+                            UpdateScaler(scaler);
+                            continue;
+                        }
 
                         if (msg != null)
                         {
@@ -418,38 +414,44 @@ namespace Lively.Core.Wallpapers
                 switch (obj.Type)
                 {
                     case MessageType.lp_slider:
-                        var sl = (LivelySlider)obj;
-                        if ((sl.Step % 1) != 0)
                         {
-                            msg = GetMpvCommand("set_property", sl.Name, sl.Value);
-                        }
-                        else
-                        {
-                            //mpv is strongly typed; sending decimal value for integer commands fails..
-                            msg = GetMpvCommand("set_property", sl.Name, Convert.ToInt32(sl.Value));
+                            var sl = (LivelySlider)obj;
+                            if ((sl.Step % 1) != 0)
+                            {
+                                msg = GetMpvCommand("set_property", sl.Name, sl.Value);
+                            }
+                            else
+                            {
+                                //mpv is strongly typed; sending decimal value for integer commands fails..
+                                msg = GetMpvCommand("set_property", sl.Name, Convert.ToInt32(sl.Value));
+                            }
                         }
                         break;
                     case MessageType.lp_chekbox:
-                        var chk = (LivelyCheckbox)obj;
-                        msg = GetMpvCommand("set_property", chk.Name, chk.Value);
+                        {
+                            var chk = (LivelyCheckbox)obj;
+                            msg = GetMpvCommand("set_property", chk.Name, chk.Value);
+                        }
                         break;
                     case MessageType.lp_button:
-                        var btn = (LivelyButton)obj;
-                        if (btn.IsDefault)
                         {
-                            try
+                            var btn = (LivelyButton)obj;
+                            if (btn.IsDefault)
                             {
-                                //load new file.
-                                livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
-                                //restore new property values.
-                                SetPlaybackProperties(livelyPropertiesData);
+                                try
+                                {
+                                    //load new file.
+                                    livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
+                                    //restore new property values.
+                                    SetPlaybackProperties(livelyPropertiesData);
+                                }
+                                catch (Exception e)
+                                {
+                                    Logger.Error(e.ToString());
+                                }
                             }
-                            catch (Exception e)
-                            {
-                                Logger.Error(e.ToString());
-                            }
+                            else { } //unused
                         }
-                        else { } //unused
                         break;
                     case MessageType.lp_dropdown:
                         //todo
@@ -463,6 +465,13 @@ namespace Lively.Core.Wallpapers
                     case MessageType.lp_fdropdown:
                         //todo
                         break;
+                    case MessageType.lp_dropdown_scaler:
+                        {
+                            var sl = (LivelyDropdownScaler)obj;
+                            var scaler = (WallpaperScaler)sl.Value;
+                            UpdateScaler(scaler);
+                        }
+                        break;
                 }
 
                 if (msg != null)
@@ -475,6 +484,32 @@ namespace Lively.Core.Wallpapers
                 Logger.Error("Mpv{0}: Slider double -> int overlow", uniqueId); 
             }
             catch { }
+        }
+
+        // Ref: https://github.com/rocksdanister/lively/issues/2194
+        private void UpdateScaler(WallpaperScaler scaler)
+        {
+            switch (scaler)
+            {
+                case WallpaperScaler.none:
+                    SendMessage(GetMpvCommand("set_property", "keepaspect", "yes"));
+                    SendMessage(GetMpvCommand("set_property", "video-unscaled", "yes"));
+                    break;
+                case WallpaperScaler.fill:
+                    SendMessage(GetMpvCommand("set_property", "video-unscaled", "no"));
+                    SendMessage(GetMpvCommand("set_property", "keepaspect", "no"));
+                    break;
+                case WallpaperScaler.uniform:
+                    SendMessage(GetMpvCommand("set_property", "panscan", "0.0"));
+                    SendMessage(GetMpvCommand("set_property", "video-unscaled", "no"));
+                    SendMessage(GetMpvCommand("set_property", "keepaspect", "yes"));
+                    break;
+                case WallpaperScaler.uniformFill:
+                    SendMessage(GetMpvCommand("set_property", "video-unscaled", "no"));
+                    SendMessage(GetMpvCommand("set_property", "keepaspect", "yes"));
+                    SendMessage(GetMpvCommand("set_property", "panscan", "1.0"));
+                    break;
+            }
         }
 
         #region mpv util

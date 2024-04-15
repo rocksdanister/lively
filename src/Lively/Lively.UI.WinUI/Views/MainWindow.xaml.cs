@@ -97,8 +97,6 @@ namespace Lively.UI.WinUI
             this.SystemBackdrop = new MicaBackdrop();
             Root.DataContext = mainViewModel;
             i18n = ResourceLoader.GetForViewIndependentUse();
-            this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
-            UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
@@ -164,7 +162,6 @@ namespace Lively.UI.WinUI
         private void CompactLabels()
         {
             separatorLabel1.Visibility = Visibility.Collapsed;
-            separatorLabel2.Visibility = Visibility.Collapsed;
             separatorLabel3.Visibility = Visibility.Collapsed;
             controlPanelLabel.LabelPosition = CommandBarLabelPosition.Collapsed;
             addWallpaperLabel.LabelPosition = CommandBarLabelPosition.Collapsed;
@@ -269,9 +266,6 @@ namespace Lively.UI.WinUI
         {
             ShowMainMenu();
             NavViewNavigate(NavPages.library);
-
-            //If audio changed in settings page..
-            this.audioSlider.Value = settingsVm.GlobalWallpaperVolume;
         }
 
         private async void AddWallpaperButton_Click(object sender, RoutedEventArgs e)
@@ -438,12 +432,6 @@ namespace Lively.UI.WinUI
             _ = dialogService.ShowAboutDialogAsync();
         }
 
-        private void SliderAudio_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            settingsVm.GlobalWallpaperVolume = (int)e.NewValue;
-            UpdateAudioSliderIcon(settingsVm.GlobalWallpaperVolume);
-        }
-
         private void CreateMainMenu()
         {
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), NavPages.library.GetAttrValue(), "\uE8A9"));
@@ -482,9 +470,6 @@ namespace Lively.UI.WinUI
 
             }
         }
-
-        private void UpdateAudioSliderIcon(double volume) =>
-            audioBtn.Icon = audioIcons[(int)Math.Ceiling((audioIcons.Length - 1) * volume / 100)];
 
         //Actually called before window closed!
         //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/5454
@@ -869,15 +854,6 @@ namespace Lively.UI.WinUI
             [EnumMember(Value = "settings_system")]
             settingsSystem,
         }
-
-        private readonly FontIcon[] audioIcons =
-        {
-            new FontIcon(){ Glyph = "\uE74F" },
-            new FontIcon(){ Glyph = "\uE992" },
-            new FontIcon(){ Glyph = "\uE993" },
-            new FontIcon(){ Glyph = "\uE994" },
-            new FontIcon(){ Glyph = "\uE995" },
-        };
 
         private readonly string[] monitorGlyphs =
         {

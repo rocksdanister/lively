@@ -5,6 +5,7 @@
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:customConverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages.Settings"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -12,6 +13,7 @@
 
     <Page.Resources>
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <customConverters:AudioVolumeGlyphConverter x:Key="AudioVolumeGlyphConverter" />
     </Page.Resources>
 
     <Grid>
@@ -76,7 +78,7 @@
                         IsOpen="True"
                         Severity="Informational">
                         <InfoBar.ActionButton>
-                            <HyperlinkButton NavigateUri="https://crwd.in/lively-wallpaper" ToolTipService.ToolTip="https://crwd.in/lively-wallpaper">
+                            <HyperlinkButton NavigateUri="https://rocksdanister.github.io/lively/translation" ToolTipService.ToolTip="https://rocksdanister.github.io/lively/translation">
                                 <HyperlinkButton.Content>
                                     <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
                                 </HyperlinkButton.Content>
@@ -112,17 +114,13 @@
                         Margin="0,0,0,10"
                         FontWeight="SemiBold" />
                     <controls:SettingsExpander
-                        x:Name="audioBtn"
                         x:Uid="Audio"
+                        HeaderIcon="{Binding GlobalWallpaperVolume, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource AudioVolumeGlyphConverter}}"
                         IsExpanded="True">
-                        <controls:SettingsExpander.HeaderIcon>
-                            <FontIcon Glyph="&#xE767;" />
-                        </controls:SettingsExpander.HeaderIcon>
                         <Slider
                             MinWidth="{StaticResource SettingActionControlMinWidth}"
                             Maximum="100"
                             Minimum="0"
-                            ValueChanged="Slider_ValueChanged"
                             Value="{Binding GlobalWallpaperVolume, Mode=TwoWay}" />
                         <controls:SettingsExpander.Items>
                             <controls:SettingsCard ContentAlignment="Left">

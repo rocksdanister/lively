@@ -74,24 +74,22 @@
                         x:Uid="DeveloperGroup"
                         Margin="0,0,0,10"
                         FontWeight="SemiBold" />
-                    <controls:SettingsCard x:Uid="Debug">
+                    <controls:SettingsCard
+                        x:Uid="Debug"
+                        Command="{Binding ShowDebugCommand}"
+                        IsClickEnabled="True">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xEC7A;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Button
-                            x:Uid="TextOpen"
-                            MinWidth="150"
-                            Command="{Binding ShowDebugCommand}" />
                     </controls:SettingsCard>
 
-                    <controls:SettingsCard x:Uid="ExportLogs">
+                    <controls:SettingsCard
+                        x:Uid="ExportLogs"
+                        Command="{Binding ExtractLogCommand}"
+                        IsClickEnabled="True">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE9F9;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Button
-                            x:Uid="TextSave"
-                            MinWidth="150"
-                            Command="{Binding ExtractLogCommand}" />
                     </controls:SettingsCard>
                 </StackPanel>
 

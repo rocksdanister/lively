@@ -24,6 +24,7 @@ using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.UserControls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Lively.Common.Helpers.Shell;
+using Windows.ApplicationModel.Resources;
 //using CommunityToolkit.WinUI.UI.Controls;
 
 
@@ -48,6 +49,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         private readonly IDisplayManagerClient displayManager;
         private readonly DispatcherQueue dispatcherQueue;
 
+        private readonly ResourceLoader languageResource;
+
         public LivelyPropertiesView() // Default constructor for OnNavigatedTo
         {
             this.InitializeComponent();
@@ -56,6 +59,8 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
             //MainWindow dispatcher may not be ready yet, creating our own instead..
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
+
+            languageResource = ResourceLoader.GetForViewIndependentUse();
         }
 
         public LivelyPropertiesView(LibraryModel model) : this()
@@ -104,18 +109,10 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
         {
             if (livelyPropertyCopyData == null)
             {
-                var msg = "Property file not found!";
-                if (libraryItem.LivelyInfo.Type == WallpaperType.video ||
-                    libraryItem.LivelyInfo.Type == WallpaperType.videostream ||
-                    libraryItem.LivelyInfo.Type == WallpaperType.gif ||
-                    libraryItem.LivelyInfo.Type == WallpaperType.picture)
-                {
-                    msg += "\n(Mpv player is required.)";
-                }
                 //Empty..
                 AddUIElement(new TextBlock
                 {
-                    Text = msg,
+                    Text = "Property file not found!",
                     //Background = Brushes.Red,
                     FontSize = 18,
                     //Foreground = Brushes.Gray,
@@ -262,7 +259,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     chk.Unchecked += Checkbox_CheckedChanged;
                     obj = chk;
                 }
-                else if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+                else if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("dropdown_scaler", StringComparison.OrdinalIgnoreCase))
                 {
                     var cmbBox = new ComboBox()
                     {
@@ -273,15 +270,28 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                         Margin = margin,
                         SelectedIndex = (int)item.Value["value"],
                     };
-                    foreach (var dropItem in item.Value["items"])
+
+                    if (uiElementType.Equals("dropdown_scaler", StringComparison.OrdinalIgnoreCase))
                     {
-                        cmbBox.Items.Add(dropItem.ToString());
+                        cmbBox.Items.Add(languageResource.GetString("WallpaperFitNone/Content"));
+                        cmbBox.Items.Add(languageResource.GetString("WallpaperFitFill/Content"));
+                        cmbBox.Items.Add(languageResource.GetString("WallpaperFitUniform/Content"));
+                        cmbBox.Items.Add(languageResource.GetString("WallpaperFitUniformToFill/Content"));
+                        ToolTipService.SetToolTip(cmbBox, new ToolTip() { Content = languageResource.GetString("WallpaperFit/Description") });
+                        cmbBox.SelectionChanged += XamlCmbBox_Slider_SelectionChanged;
                     }
-                    if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                    else
                     {
-                        ToolTipService.SetToolTip(cmbBox, new ToolTip() { Content = (string)item.Value["help"] });
+                        foreach (var dropItem in item.Value["items"])
+                        {
+                            cmbBox.Items.Add(dropItem.ToString());
+                        }
+                        if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
+                        {
+                            ToolTipService.SetToolTip(cmbBox, new ToolTip() { Content = (string)item.Value["help"] });
+                        }
+                        cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;
                     }
-                    cmbBox.SelectionChanged += XamlCmbBox_SelectionChanged;
                     obj = cmbBox;
                 }
                 else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
@@ -359,19 +369,26 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                     !uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase) &&
                     !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
                 {
+                    string help = null;
+                    string title = null;
+                    if (uiElementType.Equals("dropdown_scaler", StringComparison.OrdinalIgnoreCase))
+                    {
+                        title = languageResource.GetString("WallpaperFit/Header");
+                        help = languageResource.GetString("WallpaperFit/Description");
+                    }
+
                     var tb = new TextBlock
                     {
-                        Text = item.Value["text"].ToString(),
+                        Text = title ?? item.Value["text"].ToString(),
                         HorizontalAlignment = HorizontalAlignment.Left,
                         //MaxWidth = minWidth,
                         MinWidth = minWidth,
                         Margin = margin
                     };
                     AddUIElement(tb);
+
                     if (item.Value["help"] != null && !string.IsNullOrWhiteSpace(item.Value["help"].ToString()))
-                    {
-                        ToolTipService.SetToolTip(tb, new ToolTip() { Content = (string)item.Value["help"] });
-                    }
+                        ToolTipService.SetToolTip(tb, new ToolTip() { Content = help ?? (string)item.Value["help"] });
                 }
 
                 AddUIElement(obj);
@@ -406,6 +423,18 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
             {
                 var item = (ComboBox)sender;
                 WallpaperSendMsg(new LivelyDropdown() { Name = item.Name, Value = item.SelectedIndex });
+                livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
+                UpdatePropertyFile();
+            }
+            catch { }
+        }
+
+        private void XamlCmbBox_Slider_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var item = (ComboBox)sender;
+                WallpaperSendMsg(new LivelyDropdownScaler() { Name = item.Name, Value = item.SelectedIndex });
                 livelyPropertyCopyData[item.Name]["value"] = item.SelectedIndex;
                 UpdatePropertyFile();
             }

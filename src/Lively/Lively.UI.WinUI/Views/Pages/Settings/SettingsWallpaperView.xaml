@@ -36,7 +36,7 @@
                         <ToggleSwitch IsOn="{Binding IsDesktopAutoWallpaper, Mode=TwoWay}" />
                     </controls:SettingsCard>
 
-                    <controls:SettingsCard x:Uid="WallpaperFit">
+                    <controls:SettingsCard x:Uid="WallpaperFit" Visibility="{Binding IsBackwardCompatibilityWallpaperScaler, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE73F;" />
                         </controls:SettingsCard.HeaderIcon>
@@ -152,7 +152,7 @@
                         </animations:Implicit.HideAnimations>
                     </InfoBar>
 
-                    <controls:SettingsExpander x:Uid="WebBrowser" IsExpanded="False">
+                    <controls:SettingsExpander x:Uid="WebBrowser" IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWebBrowserIndex, Mode=TwoWay}">
                             <ComboBoxItem>CefSharp</ComboBoxItem>
                             <ComboBoxItem>WebView2</ComboBoxItem>
@@ -203,7 +203,8 @@
                         </animations:Implicit.HideAnimations>
                     </InfoBar>
 
-                    <controls:SettingsCard x:Uid="GifPlayer">
+                    <!--  depreciated  -->
+                    <!--<controls:SettingsCard x:Uid="GifPlayer">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedGifPlayerIndex, Mode=TwoWay}">
                             <ComboBoxItem>Win10</ComboBoxItem>
                             <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
@@ -245,7 +246,7 @@
                                 To="0,-15,0"
                                 Duration="0:0:0.2" />
                         </animations:Implicit.HideAnimations>
-                    </InfoBar>
+                    </InfoBar>-->
 
                     <controls:SettingsExpander
                         x:Uid="StreamWallpaperVideoQuality"

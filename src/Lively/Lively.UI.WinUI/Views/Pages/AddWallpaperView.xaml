@@ -76,14 +76,14 @@
         </Grid>
 
         <StackPanel Grid.Row="1">
-            <controls:SettingsCard x:Uid="AddWallpaperFileBrowse" Margin="0,10,0,0">
+            <controls:SettingsCard
+                x:Uid="AddWallpaperFileBrowse"
+                Margin="0,10,0,0"
+                Command="{Binding BrowseFileCommand}"
+                IsClickEnabled="True">
                 <controls:SettingsCard.HeaderIcon>
                     <FontIcon Glyph="&#xEB9F;" />
                 </controls:SettingsCard.HeaderIcon>
-                <Button
-                    x:Uid="TextOpen"
-                    MinWidth="150"
-                    Command="{Binding BrowseFileCommand}" />
             </controls:SettingsCard>
             <!--<InfoBar
                 IsClosable="False"
@@ -102,19 +102,21 @@
                 </controls:SettingsExpander.HeaderIcon>
                 <controls:SettingsExpander.Items>
                     <controls:SettingsCard ContentAlignment="Left">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="325" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <StackPanel
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="4">
+                            <TextBox
+                                Width="350"
+                                Text="{Binding WebUrlText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="NoWrap" />
                             <Button
-                                Grid.Column="1"
-                                Margin="5,0,0,0"
+                                Background="Transparent"
+                                BorderThickness="0"
                                 Command="{Binding BrowseWebCommand}">
                                 <FontIcon Glyph="&#xE72A;" />
                             </Button>
-                        </Grid>
+                        </StackPanel>
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>

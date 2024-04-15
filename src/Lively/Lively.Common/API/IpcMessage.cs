@@ -28,6 +28,7 @@ namespace Lively.Common.API
         lp_button,
         lp_cpicker,
         lp_chekbox,
+        lp_dropdown_scaler,
     }
 
     public enum ConsoleMessageType
@@ -191,6 +192,16 @@ namespace Lively.Common.API
         public string Name { get; set; }
         public int Value { get; set; }
         public LivelyDropdown() : base(MessageType.lp_dropdown)
+        {
+        }
+    }
+
+    [Serializable]
+    public class LivelyDropdownScaler : IpcMessage
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+        public LivelyDropdownScaler() : base(MessageType.lp_dropdown_scaler)
         {
         }
     }
