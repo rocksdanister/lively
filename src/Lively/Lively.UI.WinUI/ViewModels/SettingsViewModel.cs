@@ -99,7 +99,6 @@ namespace Lively.UI.WinUI.ViewModels
             //IsDebugMenuVisible = userSettings.Settings.DebugMenu;
             SelectedWebBrowserIndex = (int)userSettings.Settings.WebBrowser;
             //SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleDelay;
-            //IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             IsKeepUIAwake = userSettings.Settings.KeepAwakeUI;
             IsStartup = userSettings.Settings.Startup;
             SelectedLanguageItem = SupportedLanguages.GetLanguage(userSettings.Settings.Language);
@@ -744,21 +743,6 @@ namespace Lively.UI.WinUI.ViewModels
         //            UpdateSettingsConfigFile();
         //        }
         //        OnPropertyChanged();
-        //    }
-        //}
-
-        //private bool _isScreensaverLockOnResume;
-        //public bool IsScreensaverLockOnResume
-        //{
-        //    get => _isScreensaverLockOnResume;
-        //    set
-        //    {
-        //        if (userSettings.Settings.ScreensaverLockOnResume != value)
-        //        {
-        //            userSettings.Settings.ScreensaverLockOnResume = value;
-        //            UpdateSettingsConfigFile();
-        //        }
-        //        SetProperty(ref _isScreensaverLockOnResume, value);
         //    }
         //}
 

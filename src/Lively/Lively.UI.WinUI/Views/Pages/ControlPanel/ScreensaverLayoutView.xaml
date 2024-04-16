@@ -113,6 +113,9 @@
                         </controls:SegmentedItem>
                     </controls:Segmented>
                 </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="On resume, display logon screen" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
+                </controls:SettingsCard>
             </controls:SettingsExpander.Items>
         </controls:SettingsExpander>
     </Grid>

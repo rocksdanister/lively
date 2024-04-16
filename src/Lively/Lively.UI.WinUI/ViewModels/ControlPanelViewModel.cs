@@ -41,6 +41,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             SelectedWallpaperLayoutIndex = (int)userSettings.Settings.WallpaperArrangement;
             IsRememberSelectedScreen = userSettings.Settings.RememberSelectedScreen;
+            IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             UpdateLayout();
 
             desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
@@ -130,6 +131,21 @@ namespace Lively.UI.WinUI.ViewModels
                 {
                     return true;
                 }
+            }
+        }
+
+        private bool _isScreensaverLockOnResume;
+        public bool IsScreensaverLockOnResume
+        {
+            get => _isScreensaverLockOnResume;
+            set
+            {
+                if (userSettings.Settings.ScreensaverLockOnResume != value)
+                {
+                    userSettings.Settings.ScreensaverLockOnResume = value;
+                    UpdateSettingsConfigFile();
+                }
+                SetProperty(ref _isScreensaverLockOnResume, value);
             }
         }
 
