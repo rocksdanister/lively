@@ -114,7 +114,7 @@
                     </controls:Segmented>
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="On resume, display logon screen" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
+                    <CheckBox x:Uid="ScreensaverLockOnResume" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />
                 </controls:SettingsCard>
             </controls:SettingsExpander.Items>
         </controls:SettingsExpander>

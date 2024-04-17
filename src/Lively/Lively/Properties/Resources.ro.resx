@@ -576,13 +576,13 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Umplere uniformă</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplicare</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Ecran</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Întindere</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tip</value>
@@ -826,7 +826,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Screensaver</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>La reluare, arată ecranul de autentificare</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -999,7 +999,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Personalizat</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Folosiți imaginea de fundal</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin necesar</value>
@@ -1221,12 +1221,15 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Descărcare</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Deveniți un suporter pe Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Mulțumim tuturor membrilor care susțin acest proiect.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Suporteri Patreon</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

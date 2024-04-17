@@ -832,7 +832,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Заставка</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>У резюме, екрана входу</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1234,5 +1234,8 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

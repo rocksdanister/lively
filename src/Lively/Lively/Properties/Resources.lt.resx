@@ -578,13 +578,13 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Užpildyti suvienodinant</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Dubliuoti</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Ekranas</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Išplėsti</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipas</value>
@@ -826,7 +826,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Ekrano užsklanda</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Tęsiant rodyti prisijungimo ekraną</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1228,5 +1228,8 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon remėjai</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

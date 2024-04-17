@@ -578,13 +578,13 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
     <value>Aynı şekilde doldur</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Tekrarla</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Ekran</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Uzat</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tip</value>
@@ -826,7 +826,7 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Kilit Ekranı</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ekran koruyucu devreye girdiğinde bilgisayarı kilitle</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -999,7 +999,7 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
     <value>Özel</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Ayna Duvar Kağıdı</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Eklenti gerekli</value>
@@ -1228,5 +1228,8 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Destekçileri</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

@@ -578,13 +578,13 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Remplissage uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Dupliquer</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Écran</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Étendre</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Type</value>
@@ -832,7 +832,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Économiseur d'écran</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Lors de la reprise, afficher l'écran de connexion</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1005,7 +1005,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Personnalisée</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Dupliquer le fond d'écran</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Extension requise</value>
@@ -1234,5 +1234,8 @@ Edge est la vue Web intégrée de Windows 10.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Supporter Patreon</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

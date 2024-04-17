@@ -578,13 +578,13 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Preenchimento uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplicar</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Ecrã</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Expandir</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipo</value>
@@ -830,7 +830,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Protetor de tela</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ao retomar, exibe a tela de login</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1000,10 +1000,10 @@ Edge é o webview integrado do windows 10.</value>
     <value>Tipo de protetor de tela</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Espelhar papel de parede</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin necessário</value>
@@ -1232,5 +1232,8 @@ Edge é o webview integrado do windows 10.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Apoiantes do Patreon</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Soita ääntä vain, kun työpöytä on kohdistettuna</value>
+    <value>Toista ääntä vain, kun työpöytä on kohdistettuna</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Kaikkien taustakuvien äänenvoimakkuus</value>
@@ -149,9 +149,9 @@ Windows Explorer uudelleenkäynnistyi kahdesti viimeisen 30 sekunnin aikana! Tä
   <data name="DescOledScreensaverNotice" xml:space="preserve">
     <value>Useimmat nykyaikaiset LCD ja LED-näytöt eivät kärsi burn-in ongelmista ja siksi mitä tahansa taustakuvaa voidaan käyttää näytönsäästäjä.
 
-OLED, Plasma tai CRT näytöt, jotka ovat alttiita palamiselle on suositeltavaa käyttää taustakuvaa säännöllisellä liikeellä ja yleisellä tummalla teemalla, jonka on tarkoitus lieventää palamista, mutta tämä ominaisuus on testaamaton ja sen tehokkuutta ei voida taata.
+OLED, Plasma tai CRT näytöillä, jotka ovat alttiita palamiselle, on suositeltavaa käyttää taustakuvaa säännöllisellä liikeellä ja yleisellä tummalla teemalla, jonka on tarkoitus lieventää palamista, mutta tämä ominaisuus on testaamaton ja sen tehokkuutta ei voida taata.
 
-Livelyn näytönsäästäjien päätarkoituksena on lisätä toinen kustomisoinnin kerros tietokoneeseen, käytä näytönsäästäjiä kuten palo-suojaa omalla riskilläsi!</value>
+Livelyn näytönsäästäjien päätarkoituksena on lisätä toinen kustomisoinnin kerros tietokoneeseen, käytä näytönsäästäjiä kuten burn-in -suojana omalla riskilläsi!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Ilmoita ongelmasta Livelyn kanssa</value>
@@ -302,7 +302,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Peruuta</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Vaihda taustakuvaa</value>
+    <value>Vaihda taustakuvia</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>Sulje</value>
@@ -413,7 +413,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Ei</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>Pois</value>
+    <value>Pois päältä</value>
   </data>
   <data name="TextOK" xml:space="preserve">
     <value>OK</value>
@@ -437,10 +437,10 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Etualan prosessi</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Sulje Taustakuvat</value>
+    <value>Pysäytä Taustakuvat</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Tapa</value>
+    <value>Lopeta</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
     <value>Ei mitään</value>
@@ -497,7 +497,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Vaihda beta-tilaan (kehittäjätila)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Vaihda pois beta-tilasta</value>
+    <value>Vaihda pois beta-tilasta (oletus)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
     <value>Tunnisteet</value>
@@ -506,13 +506,13 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Sumennus</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Kirkkaus</value>
+    <value>Kirkas</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
     <value>Väri</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Sujuvuus</value>
+    <value>Sujuva</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
     <value>Taustakuva</value>
@@ -578,13 +578,13 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Täytä säilyttäen kuvasuhde</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Monista</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Näyttö</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Levitä</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tyyppi</value>
@@ -701,7 +701,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Keskeytä taustakuvan toisto, kun työpöytää ei ole kohdistettu</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Tallenna väliaikaisia tiedostoja levylle muistin sijasta</value>
+    <value>Tallenna väliaikaiset tiedostot levylle muistin sijasta</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
     <value>Valitse soitin, jota käytetään html-taustakuville</value>
@@ -722,7 +722,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Lively Taustakuva</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Sovellussäännöt</value>
+    <value>Sovelluskohtaiset säännöt</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
     <value>Teema</value>
@@ -734,7 +734,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Akkuvirralla</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Selaa videon, gifin, verkkosivun... tiedoston asettamiseksi taustakuvaksi</value>
+    <value>Selaa video, gif, verkkosivu... tiedoston asettamiseksi taustakuvaksi</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Virheenkorjauksen portti</value>
@@ -826,7 +826,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Näytönsäästäjä</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Jatkaessa, näytä kirjautumisruutu</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -933,7 +933,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Windowsin väriasetukset</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Kannettava tietokone</value>
+    <value>Kannettavat tietokoneet</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
     <value>Kehittäjä</value>
@@ -996,10 +996,10 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Näytönsäästäjän tyyppi</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Mukautettu</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Peilaa Taustakuva</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Lisäosa vaaditaan</value>
@@ -1083,7 +1083,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Lisähuomautukset</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Raportit</value>
+    <value>Raportoi</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
     <value>Ilmoita Taustakuva</value>
@@ -1107,7 +1107,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Lataaminen käynnissä</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Osallistu</value>
+    <value>Osallistujat</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
     <value>Jaa</value>
@@ -1116,7 +1116,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Jaa Taustakuva</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Gallerian tuonti</value>
+    <value>Lataa Galleriaan</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>Kopioi linkki</value>
@@ -1128,19 +1128,19 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Sulje Taustakuvat</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Valitse sovellus</value>
+    <value>Valitse Sovellus</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
     <value>Koko</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Asenna tarvittava liitännäinen</value>
+    <value>Asenna tarvittava lisäosa</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Liitännäistä ei löydy</value>
+    <value>Lisäosaa ei löydy</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Päivitys valmistui</value>
+    <value>Päivitys valmis</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
     <value>Katso, mikä on uutta</value>
@@ -1203,10 +1203,10 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Syvyystaustakuva</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>Tekoälyn luoma animoitu taustakuva</value>
+    <value>Tekoälyn luoma syvyystaustakuva</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Luo taustakuva</value>
+    <value>Luo Taustakuva</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
     <value>Jotkin toiminnot eivät ole käytössä, jos käynnistetty järjestelmänvalvojana</value>
@@ -1221,12 +1221,15 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Lataa</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Tule Patreon-tukijaksi</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Kiitos kaikille jäsenille, jotka tukevat tätä projektia.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon-tukijat</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

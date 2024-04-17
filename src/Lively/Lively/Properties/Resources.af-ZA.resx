@@ -826,7 +826,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Skermbeveiliging</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Op hervat, vertoon aanmeldskerm</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1228,5 +1228,8 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

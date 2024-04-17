@@ -826,7 +826,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Pauseskærm</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ved genoptagelse, vis login skærm</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1228,5 +1228,8 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

@@ -578,7 +578,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đồng nhất lấp đầy (Uniform Fill)</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Tạo bản sao</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Màn hình</value>
@@ -826,7 +826,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Màn hình chờ</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Khi trở lại, hiển thị màn hình đăng nhập</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1228,5 +1228,8 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

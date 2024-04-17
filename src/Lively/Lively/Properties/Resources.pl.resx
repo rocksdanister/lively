@@ -579,13 +579,13 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wypełnij</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplikuj</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Ekran</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Rozciągnij</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Rodzaj</value>
@@ -830,7 +830,7 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Wygaszacz ekranu</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Po wznowieniu wyświetl ekran logowania</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1003,7 +1003,7 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
     <value>Niestandardowe</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Odbij tło pulpitu</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Wymagana wtyczka</value>
@@ -1225,12 +1225,15 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
     <value>Pobierz</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Wesprzyj przez Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Dziękujemy wszystkich osobom wspierającym ten projekt.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Wspierający przez Patreon</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>

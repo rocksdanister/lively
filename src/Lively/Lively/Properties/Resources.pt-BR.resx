@@ -578,7 +578,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Preenchimento uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Contexto</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Tela</value>
@@ -830,7 +830,7 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="TitleScreensaver" xml:space="preserve">
     <value>Protetor de Tela</value>
   </data>
-  <data name="TitleScreensaverLockOnResume" xml:space="preserve">
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ao retornar, exibir tela de logon</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
@@ -1003,7 +1003,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Personalizado</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Contexto</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin necessário</value>
@@ -1232,5 +1232,8 @@ O Edge é a webview embutida do Windows 10.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
   </data>
 </root>
