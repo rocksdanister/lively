@@ -125,6 +125,17 @@ namespace Lively.Common.Helpers.Files
             }
         }
 
+        public static List<string> GetFiles(string path, string searchPattern, SearchOption searchOption)
+        {
+            var searchPatterns = searchPattern.Split('|');
+            var files = new List<string>();
+            foreach (string sp in searchPatterns)
+                files.AddRange(Directory.GetFiles(path, sp, searchOption));
+            files.Sort();
+
+            return files;
+        }
+
         /// <summary>
         /// Checks if file is greater than the given byte, false if exception
         /// </summary>

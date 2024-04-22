@@ -105,14 +105,18 @@ namespace Lively.UI.WinUI
                         {
                             var libraryVm = Services.GetRequiredService<LibraryViewModel>();
                             var model = libraryVm.LibraryItems.FirstOrDefault(x => selection.LivelyInfoFolderPath == x.LivelyInfoFolderPath);
+                            var viewModel = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
                             if (model is not null)
                             {
-                                var tray = new LivelyPropertiesTray(model);
-                                tray.Closed += (s, e) =>
+                                var window = new LivelyPropertiesTray(viewModel);
+                                window.Title = model.Title;
+                                window.Closed += (s, e) =>
                                 {
+                                    viewModel.OnClose();
                                     App.ShutDown();
                                 };
-                                tray.Show();
+                                viewModel.Load(model);
+                                window.Show();
                             }
                         }
                     }
@@ -160,6 +164,7 @@ namespace Lively.UI.WinUI
                 //transient
                 //.AddTransient<HelpViewModel>()
                 .AddTransient<AboutViewModel>()
+                .AddTransient<CustomiseWallpaperViewModel>()
                 .AddTransient<PatreonSupportersViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ControlPanelViewModel>()

@@ -72,8 +72,8 @@
     <None Remove="Nlog.config" />
     <None Remove="UserControls\ColorPickerButton.xaml" />
     <None Remove="UserControls\DisplaySelector.xaml" />
-    <None Remove="UserControls\ImageEx.xaml" />
-    <None Remove="Views\LivelyProperty\ColorEyeDropWindow.xaml" />
+    <None Remove="UserControls\FolderDropdown.xaml" />
+    <None Remove="Views\LivelyProperty\EyeDropper.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesTray.xaml" />
     <None Remove="Views\LivelyProperty\LivelyPropertiesView.xaml" />
     <None Remove="Views\Pages\AboutView.xaml" />
@@ -215,7 +215,7 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Page Update="UserControls\ImageEx.xaml">
+    <Page Update="UserControls\FolderDropdown.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="UserControls\ColorPickerButton.xaml">
@@ -254,7 +254,7 @@
     <Page Update="Views\Pages\Settings\FindMoreAppsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Views\LivelyProperty\ColorEyeDropWindow.xaml">
+    <Page Update="Views\LivelyProperty\EyeDropper.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\Pages\Gallery\ShareWallpaperView.xaml">

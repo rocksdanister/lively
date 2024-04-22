@@ -11,9 +11,7 @@
     IsResizable="True"
     TaskBarIcon="appicon.ico"
     mc:Ignorable="d">
-    <Grid Margin="10,5">
-        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-            <Frame x:Name="contentFrame" />
-        </ScrollViewer>
+    <Grid Margin="10">
+        <Frame x:Name="contentFrame" />
     </Grid>
 </winex:WindowEx>

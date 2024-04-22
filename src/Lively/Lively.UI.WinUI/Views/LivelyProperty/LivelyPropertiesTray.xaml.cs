@@ -1,6 +1,6 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
-using Lively.Models;
+using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Media;
 using WinUIEx;
@@ -15,10 +15,9 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
     /// </summary>
     public sealed partial class LivelyPropertiesTray : WindowEx
     {
-        public LivelyPropertiesTray(LibraryModel model)
+        public LivelyPropertiesTray(CustomiseWallpaperViewModel viewModel)
         {
             this.InitializeComponent();
-            this.Title = model.Title;
             this.SystemBackdrop = new MicaBackdrop();
             this.SetTitleBarBackgroundColors(((SolidColorBrush)App.Current.Resources["SystemControlBackgroundChromeMediumLowBrush"]).Color);
 
@@ -35,7 +34,7 @@ namespace Lively.UI.WinUI.Views.LivelyProperty
                 NativeMethods.SetWindowPos(this.GetWindowHandle(), -2, left, top, width, height, (int)NativeMethods.SetWindowPosFlags.SWP_SHOWWINDOW);
             }
 
-            contentFrame.Navigate(typeof(LivelyPropertiesView), model);
+            contentFrame.Navigate(typeof(LivelyPropertiesView), viewModel);
         }
     }
 }

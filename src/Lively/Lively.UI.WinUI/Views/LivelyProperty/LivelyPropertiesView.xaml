@@ -2,26 +2,189 @@
     x:Class="Lively.UI.WinUI.Views.LivelyProperty.LivelyPropertiesView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="using:Lively.UI.WinUI.Behaviors"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:customControls="using:Lively.UI.WinUI.UserControls"
+    xmlns:customConverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:Lively.UI.WinUI.Helpers"
     xmlns:local="using:Lively.UI.WinUI.Views.LivelyProperty"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="rootPage"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:Double x:Key="MinControlWidth">200</x:Double>
+        <x:Double x:Key="TitleControlSpacing">10</x:Double>
+        <Thickness x:Key="MinControlMargin">0,0,0,15</Thickness>
+        <customConverters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+        <!--  Templates  -->
+        <!--  label  -->
+        <DataTemplate x:Key="LabelTemplate">
+            <TextBlock
+                Margin="{StaticResource MinControlMargin}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                FontSize="16"
+                FontWeight="SemiBold"
+                Text="{Binding Value}"
+                TextWrapping="Wrap"
+                ToolTipService.ToolTip="{Binding Help}" />
+        </DataTemplate>
+        <!--  slider  -->
+        <DataTemplate x:Key="SliderTemplate">
+            <Slider
+                Margin="{StaticResource MinControlMargin}"
+                behaviors:SliderValueChangedBehavior.Command="{Binding DataContext.SliderValueChangedCommand, ElementName=rootPage}"
+                behaviors:SliderValueChangedBehavior.CommandParameter="{Binding}"
+                Header="{Binding Text}"
+                Maximum="{Binding Max}"
+                Minimum="{Binding Min}"
+                StepFrequency="{Binding Step}"
+                ToolTipService.ToolTip="{Binding Help}"
+                Value="{Binding Value, Mode=TwoWay}" />
+        </DataTemplate>
+        <!--  textbox  -->
+        <DataTemplate x:Key="TextBoxTemplate">
+            <StackPanel
+                Margin="{StaticResource MinControlMargin}"
+                Spacing="{StaticResource TitleControlSpacing}"
+                ToolTipService.ToolTip="{Binding Help}">
+                <TextBlock Text="{Binding Text}" />
+                <TextBox
+                    MinWidth="{StaticResource MinControlWidth}"
+                    behaviors:TextBoxTextChangedBehavior.Command="{Binding DataContext.TextboxValueChangedCommand, ElementName=rootPage}"
+                    behaviors:TextBoxTextChangedBehavior.CommandParameter="{Binding}"
+                    Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </DataTemplate>
+        <!--  dropdown  -->
+        <DataTemplate x:Key="DropdownTemplate">
+            <ComboBox
+                MinWidth="{StaticResource MinControlWidth}"
+                Margin="{StaticResource MinControlMargin}"
+                behaviors:ComboBoxSelectionChangedBehavior.Command="{Binding DataContext.DropdownValueChangedCommand, ElementName=rootPage}"
+                behaviors:ComboBoxSelectionChangedBehavior.CommandParameter="{Binding}"
+                Header="{Binding Text}"
+                ItemsSource="{Binding Items}"
+                SelectedIndex="{Binding Value, Mode=TwoWay}"
+                ToolTipService.ToolTip="{Binding Help}" />
+        </DataTemplate>
+        <!--  folderDropdown  -->
+        <DataTemplate x:Key="FolderDropdownTemplate">
+            <StackPanel
+                Margin="{StaticResource MinControlMargin}"
+                Spacing="{StaticResource TitleControlSpacing}"
+                ToolTipService.ToolTip="{Binding Help}">
+                <TextBlock Text="{Binding Text}" />
+                <customControls:FolderDropdown
+                    HorizontalAlignment="Left"
+                    Command="{Binding DataContext.DropdownValueChangedCommand, ElementName=rootPage}"
+                    CommandParameter="{Binding}"
+                    FileName="{Binding Value, Mode=TwoWay}"
+                    Filter="{Binding Filter, Mode=OneWay}"
+                    FolderName="{Binding Folder, Mode=OneWay}"
+                    ParentFolderPath="{Binding DataContext.Model.LivelyInfoFolderPath, Mode=OneWay, ElementName=rootPage}" />
+            </StackPanel>
+        </DataTemplate>
+        <!--  checkbox  -->
+        <DataTemplate x:Key="CheckboxTemplate">
+            <CheckBox
+                Margin="{StaticResource MinControlMargin}"
+                behaviors:CheckBoxCheckedChangedBehavior.Command="{Binding DataContext.CheckboxValueChangedCommand, ElementName=rootPage}"
+                behaviors:CheckBoxCheckedChangedBehavior.CommandParameter="{Binding}"
+                Content="{Binding Text}"
+                IsChecked="{Binding Value, Mode=TwoWay}"
+                ToolTipService.ToolTip="{Binding Help}" />
+        </DataTemplate>
+        <!--  button  -->
+        <DataTemplate x:Key="ButtonTemplate">
+            <StackPanel
+                Margin="{StaticResource MinControlMargin}"
+                Spacing="{StaticResource TitleControlSpacing}"
+                ToolTipService.ToolTip="{Binding Help}">
+                <TextBlock Text="{Binding Text}" />
+                <Button
+                    MinWidth="{StaticResource MinControlWidth}"
+                    Command="{Binding DataContext.ButtonCommand, ElementName=rootPage}"
+                    CommandParameter="{Binding}"
+                    Content="{Binding Value}" />
+            </StackPanel>
+        </DataTemplate>
+        <!--  colorpicker  -->
+        <DataTemplate x:Key="ColorPickerTemplate">
+            <StackPanel
+                Margin="{StaticResource MinControlMargin}"
+                Spacing="{StaticResource TitleControlSpacing}"
+                ToolTipService.ToolTip="{Binding Help}">
+                <TextBlock Text="{Binding Text}" />
+                <customControls:ColorPickerButton
+                    ColorChangedCommand="{Binding DataContext.ColorPickerValueChangedCommand, ElementName=rootPage}"
+                    CommandParameter="{Binding}"
+                    SelectedColor="{Binding Value, Mode=TwoWay}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <helpers:LivelyControlTemplateSelector
+            x:Key="ControlTemplateSelector"
+            ButtonTemplate="{StaticResource ButtonTemplate}"
+            CheckboxTemplate="{StaticResource CheckboxTemplate}"
+            ColorPickerTemplate="{StaticResource ColorPickerTemplate}"
+            DropdownTemplate="{StaticResource DropdownTemplate}"
+            FolderDropdownTemplate="{StaticResource FolderDropdownTemplate}"
+            LabelTemplate="{StaticResource LabelTemplate}"
+            SliderTemplate="{StaticResource SliderTemplate}"
+            TextBoxTemplate="{StaticResource TextBoxTemplate}" />
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="0">
-            <StackPanel Name="uiPanel" Orientation="Vertical" />
-        </ScrollViewer>
+
+        <!--  Controls  -->
+        <ListView
+            Grid.Row="0"
+            Padding="0,0,5,0"
+            ItemTemplateSelector="{StaticResource ControlTemplateSelector}"
+            ItemsSource="{Binding Controls}"
+            SelectionMode="None"
+            Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
+        <!--  Error  -->
+        <StackPanel
+            Grid.Row="0"
+            Margin="25"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Spacing="5"
+            Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
+            <FontIcon
+                FontSize="75"
+                Foreground="Red"
+                Glyph="&#xEA39;" />
+            <TextBlock
+                FontSize="14"
+                Text="{Binding ErrorText}"
+                TextAlignment="Start"
+                TextWrapping="Wrap" />
+            <HyperlinkButton
+                HorizontalAlignment="Center"
+                NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems"
+                ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Common-Problems">
+                <HyperlinkButton.Content>
+                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                </HyperlinkButton.Content>
+            </HyperlinkButton>
+        </StackPanel>
+        <!--  Restore default  -->
         <Button
-            Name="restoreDefaultBtn"
             Grid.Row="1"
-            Margin="5"
+            Margin="0,5,0,0"
             HorizontalAlignment="Right"
-            Click="DefaultBtn_Click"
-            ToolTipService.ToolTip="Restore default">
+            Command="{Binding RestoreDefaultCommand}"
+            ToolTipService.ToolTip="Restore default"
+            Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}">
             <FontIcon Glyph="&#xE777;" />
         </Button>
     </Grid>

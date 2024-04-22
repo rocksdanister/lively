@@ -20,6 +20,11 @@ namespace Lively.UI.WinUI.Services
         Task<string> ShowTextInputDialogAsync(string title);
         Task ShowThemeDialogAsync();
         Task ShowPatreonSupportersDialogAsync();
+        Task ShowShareWallpaperDialogAsync(LibraryModel obj);
+        Task ShowAboutWallpaperDialogAsync(LibraryModel obj);
+        Task<bool> ShowDeleteWallpaperDialogAsync(LibraryModel obj);
+        Task ShowReportWallpaperDialogAsync(LibraryModel obj);
+        Task ShowCustomiseWallpaperDialogAsync(LibraryModel obj);
         Task<LibraryModel> ShowDepthWallpaperDialogAsync(string imagePath);
         Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync(string filePath);
         Task<WallpaperCreateType?> ShowWallpaperCreateDialogAsync();

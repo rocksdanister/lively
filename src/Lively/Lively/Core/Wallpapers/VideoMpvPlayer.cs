@@ -309,7 +309,7 @@ namespace Lively.Core.Wallpapers
                         {
                             msg = GetMpvCommand("set_property", item.Key, (bool)item.Value["value"]);
                         }
-                        else if (uiElement.Equals("dropdown_scaler", StringComparison.OrdinalIgnoreCase))
+                        else if (uiElement.Equals("scalerDropdown", StringComparison.OrdinalIgnoreCase))
                         {
                             var scaler = (WallpaperScaler)(int)item.Value["value"];
                             UpdateScaler(scaler);

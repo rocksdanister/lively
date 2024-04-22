@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Lively.UI.WinUI.Helpers
+namespace Lively.UI.WinUI.Behaviors
 {
-    public static class GridViewUtil
+    public static class GridViewItemClickBehavior
     {
         public static readonly DependencyProperty ItemClickCommandProperty =
-            DependencyProperty.RegisterAttached("ItemClickCommand", typeof(ICommand), typeof(GridViewUtil), new PropertyMetadata(null, OnItemClickCommandChanged));
+            DependencyProperty.RegisterAttached("ItemClickCommand", typeof(ICommand), typeof(GridViewItemClickBehavior), new PropertyMetadata(null, OnItemClickCommandChanged));
 
         public static ICommand GetItemClickCommand(DependencyObject obj)
         {

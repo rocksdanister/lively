@@ -18,21 +18,15 @@ using Windows.Foundation.Collections;
 using Windows.UI;
 using WinUIEx;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Lively.UI.WinUI.Views.LivelyProperty
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class ColorEyeDropWindow : WindowEx
+    public sealed partial class EyeDropper : WindowEx
     {
         public Color? SelectedColor { get; private set; }
 
         private readonly LowLevelMouseHook hook;
 
-        public ColorEyeDropWindow()
+        public EyeDropper()
         {
             this.InitializeComponent();
             this.SystemBackdrop = new DesktopAcrylicBackdrop();
