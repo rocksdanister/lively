@@ -816,7 +816,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Kontrolna tabla</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Čuvar ekrana</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -868,8 +868,11 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Dekodiranje</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Pozadina</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Izmeni</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Lokacija pozadine</value>

@@ -809,7 +809,7 @@
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Контролна табла</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Чувар екрана</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -861,8 +861,11 @@
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Позадина</value>
+  <data name="TitleWallpaper.Content" xml:space="preserve">
+    <value>Тапете</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Измени</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Локације позадине</value>

@@ -823,7 +823,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Control Panel</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Screensaver</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Wallpaper</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Customise</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Wallpaper Directory</value>

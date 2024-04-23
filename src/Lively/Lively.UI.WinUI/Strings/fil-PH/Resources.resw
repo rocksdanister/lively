@@ -821,7 +821,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Screen Layout</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Screensaver</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -873,8 +873,11 @@ Edge is the built in webview of windows 10.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Wolpeyper</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>I-customise</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Direktoryo ng Wallpaper</value>

@@ -826,7 +826,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Панель управления</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Заставка</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -878,8 +878,11 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>Декодирование GPU</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Обои</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Настроить</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Папка с обоями</value>
@@ -1233,6 +1236,6 @@ Edge - встроенный в Windows 10 WebView.</value>
     <value>Подписчики Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Выберите заставку</value>
   </data>
 </root>

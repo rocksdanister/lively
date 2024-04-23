@@ -826,8 +826,8 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Képernyő elrendezés</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Képernyőkímélő</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Képernyővédő</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Számítógép zárolása</value>
@@ -878,8 +878,11 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Háttérkép</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Testreszab</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Háttérkép Címtár</value>

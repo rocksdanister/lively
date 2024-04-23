@@ -817,8 +817,8 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Controlepaneel</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Screensaver</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Schermbeveiliging</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Bij hervatten, weergeef aanmeldscherm</value>
@@ -869,8 +869,11 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU-decodering</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Achtergrond</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Bewerken</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Achtergrond folder</value>
@@ -1224,6 +1227,6 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
     <value>Patreon Supporters</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Selecteer screensaver</value>
   </data>
 </root>

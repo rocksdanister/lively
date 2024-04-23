@@ -204,10 +204,10 @@ Yalnızca güvenilir bir kaynaktan bu uygulama geldiyse devam edin.</value>
     <value>Yüklemek için website urlsi girin, shadertoy.com shader linkleri destekleniyor.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Bu sihirbaz, Lively'in kurulumunu başlatmanıza yardımcı olacak</value>
+    <value>Bu sihirbaz, Lively kurulumunda size yardımcı olacak</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Windows N/KN sürümünüz, duvar kağıtlarında video oynatımını desteklemek için ek kodeklerin indirilmesini gerektirebilir</value>
+    <value>Windows N/KN versiyonunuzda video duvar kağıtlarının oynatılabilmesi için ek çözümleyicilerin indirilmesi gerekiyor.</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
     <value>Geliştiriciye kahve alarak destek gösterin</value>
@@ -823,8 +823,8 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Kontrol Paneli</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Kilit Ekranı</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Ekran Koruyucu</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ekran koruyucu devreye girdiğinde bilgisayarı kilitle</value>
@@ -875,8 +875,11 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Çözücü</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Duvar Kağıdı</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Özelleştir</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Duvar Kağıdı Dizini</value>
@@ -1230,6 +1233,6 @@ Hala çalışmıyorsa, Lively'yi kapatın ve yeniden başlatın / Windows'u yeni
     <value>Patreon Destekçileri</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Ekran koruyucuyu seçin</value>
   </data>
 </root>

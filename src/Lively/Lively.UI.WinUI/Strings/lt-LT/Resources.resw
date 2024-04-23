@@ -823,7 +823,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Valdymo skydas</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Ekrano užsklanda</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU dekodavimas</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Darbalaukio fonas</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Tinkinti</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Fono paveikslėlių katalogas</value>
@@ -996,10 +999,10 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Ekrano užsklandos tipas</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Pasirinkta</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Veidrodinis fonas</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Reikalingas papildinys</value>
@@ -1230,6 +1233,6 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Patreon remėjai</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Pasirinkti užsklandą</value>
   </data>
 </root>

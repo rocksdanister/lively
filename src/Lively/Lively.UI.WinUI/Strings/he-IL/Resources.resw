@@ -828,7 +828,7 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>לוח הבקרה</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>שומר מסך</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -880,8 +880,11 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>פענוח GPU</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>טפט</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>התאם אישית</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>מיקום הטפט</value>

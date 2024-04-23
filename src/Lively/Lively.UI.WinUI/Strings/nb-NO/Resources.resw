@@ -823,7 +823,7 @@ Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Kontrollpanel</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Skjermsparer</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU dekoding</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Bakgrunn</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Tilpass</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Bakgrunnsmappe</value>

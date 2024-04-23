@@ -826,8 +826,8 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Panel Kawalan</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Penyelamat Skrin</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Screensaver</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Paparkan skrin log masuk ketika menyambung semula</value>
@@ -878,8 +878,11 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>Nyahkod GPU</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Wallpaper</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Sunting</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Direktori Wallpaper</value>
@@ -1233,6 +1236,6 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Penyumbang Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Pilih gambar skrin</value>
   </data>
 </root>

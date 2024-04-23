@@ -829,7 +829,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>कंट्रोल पैनल</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>स्क्रीन सेवर</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -881,8 +881,11 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>वॉलपेपर</value>
+  <data name="TitleWallpaper.Content" xml:space="preserve">
+    <value>वॉलपेपर करें</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>वैयक्तिकृत करें</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>वॉलपेपर की निर्देशिका</value>

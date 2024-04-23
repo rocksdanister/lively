@@ -826,11 +826,11 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>제어 패널</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>화면 보호기</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
-    <value>다시 시작할 때 로그온 화면 표시</value>
+    <value>재개 시 로그온 화면 표시</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
     <value>파일 선택</value>
@@ -878,8 +878,11 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU 디코드</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>배경화면</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>사용자 정의</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>배경화면 디렉터리</value>
@@ -1233,6 +1236,6 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
     <value>Patreon 후원자</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>화면 보호기 선택</value>
   </data>
 </root>

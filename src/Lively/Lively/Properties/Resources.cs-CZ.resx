@@ -578,13 +578,13 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Rovnoměrně vyplnit</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplikovat</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Obrazovka</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Rozpětí</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Typ</value>
@@ -823,7 +823,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Ovládací panel</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Spořič obrazovky</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>Dekódování GPU</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Tapeta</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Přizpůsobení</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Adresář tapet</value>
@@ -996,10 +999,10 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Typ spořiče obrazovky</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Vlastní</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Zrcadlit pozadí</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Je vyžadován plug-in</value>
@@ -1221,15 +1224,15 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Cc</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Staňte se podporovatelem Patreona</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Díky všem členům, kteří tento projekt podporují.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Podporovatelé Patreonu</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Vybrat spořič obrazovky</value>
   </data>
 </root>

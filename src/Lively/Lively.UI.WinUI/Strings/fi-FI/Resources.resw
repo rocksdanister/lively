@@ -823,7 +823,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Ohjauspaneeli</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Näytönsäästäjä</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU:n purku</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Taustakuva</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Kustomoi</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Taustakuvan Hakemisto</value>
@@ -1230,6 +1233,6 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Patreon-tukijat</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Valitse näytönsäästäjä</value>
   </data>
 </root>

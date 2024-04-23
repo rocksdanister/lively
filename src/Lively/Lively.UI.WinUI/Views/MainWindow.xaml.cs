@@ -432,6 +432,7 @@ namespace Lively.UI.WinUI
             _ = dialogService.ShowAboutDialogAsync();
         }
 
+        // We have to create menu each time, setting Visibility to collapsed creates visual artifacts like menu items being hidden under more button.
         private void CreateMainMenu()
         {
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleLibrary"), NavPages.library.GetAttrValue(), "\uE8A9"));
@@ -443,7 +444,7 @@ namespace Lively.UI.WinUI
         {
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleGeneral"), NavPages.settingsGeneral.GetAttrValue()));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("TitlePerformance"), NavPages.settingsPerformance.GetAttrValue()));
-            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper"), NavPages.settingsWallpaper.GetAttrValue()));
+            navView.MenuItems.Add(CreateMenu(i18n.GetString("TitleWallpaper/Content"), NavPages.settingsWallpaper.GetAttrValue()));
             navView.MenuItems.Add(CreateMenu(i18n.GetString("System/Text"), NavPages.settingsSystem.GetAttrValue()));
         }
 

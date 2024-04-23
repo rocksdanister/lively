@@ -829,8 +829,8 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Mise en page des écrans</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Économiseur d'écran</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Écran de veille</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Lors de la reprise, afficher l'écran de connexion</value>
@@ -881,8 +881,11 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>Accélération GPU</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fond d'écran</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Personnaliser</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Répertoire des fonds d'écran</value>

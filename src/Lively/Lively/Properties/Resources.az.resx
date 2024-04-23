@@ -823,7 +823,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Kontrol Paneli</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Ekran qoruyucu</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU kod açma</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Divar kağızı</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Özəlləşdir</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Divar kağızı kataloqu</value>
@@ -1230,6 +1233,6 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
     <value>Patreon Dəstəkçiləri</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Ekran qoruyucu seç</value>
   </data>
 </root>

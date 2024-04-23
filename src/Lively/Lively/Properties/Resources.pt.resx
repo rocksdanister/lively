@@ -136,9 +136,9 @@
     <value>Documentação da API e ajuda</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>A aplicação encontrou um erro fatal.
+    <value>O Lively encontrou um erro fatal.
 
-O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Este pode ser um conflito entre a aplicação e outro software de personalização da área de trabalho, ou do Windows. Para evitar mais problemas, todos os papéis de parede foram encerrados.</value>
+O Explorador do Windows reiniciou duas vezes nos últimos 30 segundos! Este pode ser um conflito entre a aplicação e outro software de personalização do ambiente de trabalho, ou do Windows. Para evitar mais problemas, todos os papéis de parede foram encerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Programa incompatível encontrado, animação da barra de tarefas foi desativada</value>
@@ -827,8 +827,8 @@ Edge é o webview integrado do windows 10.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Layout de Ecrã(s)</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
-    <value>Protetor de tela</value>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>Proteção de ecrã</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Ao retomar, exibe a tela de login</value>
@@ -879,8 +879,11 @@ Edge é o webview integrado do windows 10.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
-    <value>Fundo</value>
+  <data name="TitleWallpaper.Content" xml:space="preserve">
+    <value>Papel de parede</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Personalizar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Directório do Fundo</value>
@@ -1234,6 +1237,6 @@ Edge é o webview integrado do windows 10.</value>
     <value>Apoiantes do Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Selecionar proteção de ecrã</value>
   </data>
 </root>

@@ -825,7 +825,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>コントロール パネル</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>スクリーンセーバー</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -877,8 +877,11 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU デコード</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>壁紙</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>カスタマイズ</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>壁紙のディレクトリ</value>

@@ -823,7 +823,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Beheer paneel</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Skermbeveiliging</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU dekodeer</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Muurpapier</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Pasmaak</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Muurpapiergids</value>
@@ -1230,6 +1233,6 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Patreon Supporters</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>စခရင်ဆေဗာကို ရွေးပါ</value>
   </data>
 </root>

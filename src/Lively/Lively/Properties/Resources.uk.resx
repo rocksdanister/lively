@@ -580,13 +580,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Рівномірне заповнення</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Дублювати</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Екран</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Розтягнути</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Тип</value>
@@ -829,7 +829,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Макет шпалер</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Заставка</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -881,8 +881,11 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU декодування</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Шпалери</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Налаштувати</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Тека зі шпалерами</value>
@@ -1005,7 +1008,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Власні</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Віддзеркалювати шпалери</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Потрібно доповнення</value>
@@ -1227,15 +1230,15 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Завантажити</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Стати підписником Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Дякуємо всім членам, які підтримують цей проект.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Підписники Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Виберіть заставку екрану</value>
   </data>
 </root>

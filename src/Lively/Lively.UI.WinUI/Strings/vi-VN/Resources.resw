@@ -823,7 +823,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="ControlPanel.Title" xml:space="preserve">
     <value>Bảng điều khiển</value>
   </data>
-  <data name="TitleScreensaver" xml:space="preserve">
+  <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>Màn hình chờ</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
@@ -875,8 +875,11 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
     <value>GPU Decode</value>
   </data>
-  <data name="TitleWallpaper" xml:space="preserve">
+  <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Hình nền</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Tùy chỉnh</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Thư mục hình nền</value>
@@ -1230,6 +1233,6 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Patreon Supporters</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Chọn màn hình chờ</value>
   </data>
 </root>
