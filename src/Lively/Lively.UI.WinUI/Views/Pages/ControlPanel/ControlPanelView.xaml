@@ -16,13 +16,16 @@
             x:Name="navView"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="False"
-            ItemInvoked="navView_ItemInvoked"
+            ItemInvoked="NavView_ItemInvoked"
             PaneDisplayMode="Top">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="{x:Bind I18n.TitleWallpaper}" Tag="wallpaper" />
                 <NavigationViewItem Content="{x:Bind I18n.TitleScreenSaver}" Tag="screensaver" />
-                <!--  navView selection not visible to user  -->
-                <NavigationViewItem Tag="customiseWallpaper" Visibility="Collapsed" />
+                <!--  navView selection not visible to user until navigated.  -->
+                <NavigationViewItem
+                    x:Name="customiseWallpaperItem"
+                    Content="Customise"
+                    Tag="customiseWallpaper" />
                 <NavigationViewItem Tag="customiseScreensaver" Visibility="Collapsed" />
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame" />

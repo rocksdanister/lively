@@ -217,7 +217,11 @@ namespace Lively.UI.WinUI.ViewModels
                 }
 
                 if (obj != null)
-                    NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = obj });
+                {
+                    var viewModel = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
+                    viewModel.Load(obj);
+                    NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = viewModel });
+                }
             }
         }
 

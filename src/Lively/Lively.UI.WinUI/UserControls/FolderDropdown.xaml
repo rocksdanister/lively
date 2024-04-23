@@ -55,6 +55,7 @@
                         <Flyout.FlyoutPresenterStyle>
                             <Style TargetType="FlyoutPresenter">
                                 <Setter Property="MinWidth" Value="200" />
+                                <Setter Property="CornerRadius" Value="5" />
                             </Style>
                         </Flyout.FlyoutPresenterStyle>
                         <ListView

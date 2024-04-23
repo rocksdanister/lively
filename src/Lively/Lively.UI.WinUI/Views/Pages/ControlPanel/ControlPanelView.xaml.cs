@@ -29,12 +29,12 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
     /// </summary>
     public sealed partial class ControlPanelView : Page
     {
-        private readonly List<(Type Page, string tag)> pages = new List<(Type Page, string tag)>
-        {
+        private readonly List<(Type Page, string tag)> pages =
+        [
             (typeof(WallpaperLayoutView), "wallpaper"),
             (typeof(ScreensaverLayoutView), "screensaver"),
             (typeof(WallpaperLayoutCustomiseView), "customiseWallpaper"),
-        };
+        ];
 
         private class Localization
         {
@@ -59,7 +59,7 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
         private void Vm_NavigatePage(object sender, ControlPanelViewModel.NavigatePageEventArgs e) => 
             NavigatePage(e.Tag, e.Arg);
 
-        private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.InvokedItemContainer != null)
             {
@@ -76,13 +76,16 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
             // Only navigate if the selected page isn't currently loaded.
             if (!(nextNavPageType is null) && !Type.Equals(preNavPageType, nextNavPageType))
             {
-                var effect =  pages.FindIndex(p => p.Page.Equals(nextNavPageType)) < pages.FindIndex(p => p.Page.Equals(preNavPageType)) ? 
+                // ->, <- direction based on order of item on the list. 
+                var effect = pages.FindIndex(p => p.Page.Equals(nextNavPageType)) < pages.FindIndex(p => p.Page.Equals(preNavPageType)) ? 
                     SlideNavigationTransitionEffect.FromLeft : SlideNavigationTransitionEffect.FromRight;
                 contentFrame.Navigate(nextNavPageType, arg, new SlideNavigationTransitionInfo() { Effect = effect });
 
-                var item = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag);
-                //Show selection only if visible.
-                navView.SelectedItem = ((UIElement)item).Visibility != Visibility.Collapsed ? item : navView.SelectedItem;
+                var currentNavViewItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == tag) as NavigationViewItem;
+                // Show customise page only when in use.
+                customiseWallpaperItem.Visibility = currentNavViewItem.Tag.ToString() == customiseWallpaperItem.Tag.ToString() ? Visibility.Visible : Visibility.Collapsed;
+                //Show selection only if item is visible.
+                navView.SelectedItem = currentNavViewItem .Visibility != Visibility.Collapsed ? currentNavViewItem : navView.SelectedItem;
             }
         }
     }

@@ -8,25 +8,29 @@
     Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" CornerRadius="5">
+    <Grid
+        Padding="25"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+        CornerRadius="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
         <Button
             Grid.Column="0"
             Margin="5"
             VerticalAlignment="Top"
             Background="Transparent"
             BorderBrush="Transparent"
-            Command="{Binding NavigateBackWallpaperCommand}">
+            Command="{Binding NavigateBackWallpaperCommand}"
+            Visibility="Collapsed">
             <FontIcon FontSize="15" Glyph="&#xE72B;" />
         </Button>
         <Frame
             x:Name="contentFrame"
-            Grid.ColumnSpan="2"
-            Width="325"
+            Grid.Column="1"
             Margin="0,5,0,5"
-            HorizontalAlignment="Center" />
+            HorizontalAlignment="Stretch" />
     </Grid>
 </Page>
