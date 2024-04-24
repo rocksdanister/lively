@@ -32,9 +32,12 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
             (typeof(WallpaperLayoutCustomiseView), "customiseWallpaper"),
         ];
 
+        private readonly ControlPanelViewModel viewModel;
+
         public ControlPanelView(ControlPanelViewModel vm)
         {
             this.InitializeComponent();
+            this.viewModel = vm;
             this.DataContext = vm;
             vm.NavigatePage += Vm_NavigatePage;
 
@@ -71,6 +74,10 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
                 customiseWallpaperItem.Visibility = currentNavViewItem.Tag.ToString() == customiseWallpaperItem.Tag.ToString() ? Visibility.Visible : Visibility.Collapsed;
                 //Show selection only if item is visible.
                 navView.SelectedItem = currentNavViewItem .Visibility != Visibility.Collapsed ? currentNavViewItem : navView.SelectedItem;
+
+                // Notify vm to save customisation to disk.
+                if (preNavPageType is not null && Type.Equals(preNavPageType, typeof(WallpaperLayoutCustomiseView)))
+                    viewModel.CustomiseWallpaperPageOnClosed();
             }
         }
     }

@@ -210,6 +210,7 @@ namespace Lively.RPC
                     DisplayName = settings.SelectedDisplay.DisplayName ?? string.Empty,
                     HMonitor = settings.SelectedDisplay.HMonitor.ToInt32(),
                     IsPrimary = settings.SelectedDisplay.IsPrimary,
+                    Index = settings.SelectedDisplay.Index,
                     WorkingArea = new Rectangle()
                     {
                         X = settings.SelectedDisplay.WorkingArea.X,

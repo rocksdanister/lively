@@ -255,56 +255,40 @@ namespace Lively.UI.WinUI.ViewModels
             if (obj.LivelyPropertyPath == null)
                 throw new ArgumentException("Customisation not supported.");
 
-            string livelyPropertyCopy = string.Empty;
-            DisplayMonitor screen = null;
-            var items = desktopCore.Wallpapers.ToList().FindAll(x => x.LivelyInfoFolderPath == obj.LivelyInfoFolderPath);
-            if (items.Count == 0)
+            string propertyCopyPath = null;
+            DisplayMonitor wallpaperScreen = null;
+            var items = desktopCore.Wallpapers.Where(x => x.LivelyInfoFolderPath == obj.LivelyInfoFolderPath);
+            if (!items.Any())
             {
-                try
+                // We create the files only when wallpaper is not running, when launching the wallpaper the Core will create the file for us.
+                wallpaperScreen = selectedScreen;
+                var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
+                //Create a directory with the wallpaper foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                //Further modifications are done to the copy file.
+                string wallpaperDataDirectoryPath = null;
+                switch (arrangement)
                 {
-                    screen = selectedScreen;
-                    var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
-                    if (screen?.Index.ToString() != null)
-                    {
-                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
-                        //Further modifications are done to the copy file.
-                        string wpdataFolder = null;
-                        switch (arrangement)
-                        {
-                            case WallpaperArrangement.per:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, screen.Index.ToString());
-                                break;
-                            case WallpaperArrangement.span:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, "span");
-                                break;
-                            case WallpaperArrangement.duplicate:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, "duplicate");
-                                break;
-                        }
-                        Directory.CreateDirectory(wpdataFolder);
-                        //copy the original file if not found..
-                        livelyPropertyCopy = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(livelyPropertyCopy))
-                        {
-                            File.Copy(obj.LivelyPropertyPath, livelyPropertyCopy);
-                        }
-                    }
-                    else
-                    {
-                        //todo: fallback, use the original file (restore feature disabled.)
-                    }
+                    case WallpaperArrangement.per:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, wallpaperScreen.Index.ToString());
+                        break;
+                    case WallpaperArrangement.span:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, "span");
+                        break;
+                    case WallpaperArrangement.duplicate:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(obj.LivelyInfoFolderPath).Name, "duplicate");
+                        break;
                 }
-                catch (Exception e)
-                {
-                    //todo: fallback, use the original file (restore feature disabled.)
-                    Logger.Error(e.ToString());
-                }
+                Directory.CreateDirectory(wallpaperDataDirectoryPath);
+                //copy the original file if not found..
+                propertyCopyPath = Path.Combine(wallpaperDataDirectoryPath, "LivelyProperties.json");
+                if (!File.Exists(propertyCopyPath))
+                    File.Copy(obj.LivelyPropertyPath, propertyCopyPath);
             }
-            else if (items.Count == 1)
+            else if (items.Count() == 1)
             {
                 //send regardless of selected display, if wallpaper is running on non-selected display - its modified instead.
-                livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
-                screen = displayManager.DisplayMonitors.FirstOrDefault(x => x.Equals(items[0].Display));
+                propertyCopyPath = items.First().LivelyPropertyCopyPath;
+                wallpaperScreen = displayManager.DisplayMonitors.FirstOrDefault(x => x.Equals(items.First().Display));
             }
             else
             {
@@ -313,21 +297,21 @@ namespace Lively.UI.WinUI.ViewModels
                     case WallpaperArrangement.per:
                         {
                             //more than one screen; if selected display, sendpath otherwise send the first one found.
-                            int index = items.FindIndex(x => selectedScreen.Equals(x.Display));
-                            livelyPropertyCopy = index != -1 ? items[index].LivelyPropertyCopyPath : items[0].LivelyPropertyCopyPath;
-                            screen = index != -1 ? items[index].Display : items[0].Display;
+                            var selection = items.FirstOrDefault(x => selectedScreen.Equals(x.Display));
+                            propertyCopyPath = selection != null ? selection.LivelyPropertyCopyPath : items.First().LivelyPropertyCopyPath;
+                            wallpaperScreen = selection != null ? selection.Display : items.First().Display;
                         }
                         break;
                     case WallpaperArrangement.span:
                     case WallpaperArrangement.duplicate:
                         {
-                            livelyPropertyCopy = items[0].LivelyPropertyCopyPath;
-                            screen = items[0].Display;
+                            propertyCopyPath = items.First().LivelyPropertyCopyPath;
+                            wallpaperScreen = items.First().Display;
                         }
                         break;
                 }
             }
-            return (livelyPropertyCopy, screen);
+            return (propertyCopyPath, wallpaperScreen);
         }
     }
 }

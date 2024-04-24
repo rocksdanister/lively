@@ -265,7 +265,7 @@ namespace Lively.UI.WinUI.Services
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
-            vm.OnWindowClosing(this, new RoutedEventArgs());
+            vm.OnWindowClosing(this, EventArgs.Empty);
         }
 
         public async Task ShowHelpDialogAsync()

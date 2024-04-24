@@ -14,7 +14,6 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <x:Double x:Key="MinControlWidth">200</x:Double>
         <x:Double x:Key="TitleControlSpacing">10</x:Double>
         <Thickness x:Key="MinControlMargin">0,0,0,15</Thickness>
         <customConverters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
@@ -33,11 +32,12 @@
         </DataTemplate>
         <!--  slider  -->
         <DataTemplate x:Key="SliderTemplate">
+            <!--  The slider may have default margin for the header (?)  -->
             <Slider
-                Margin="{StaticResource MinControlMargin}"
+                Margin="0,0,0,5"
                 behaviors:SliderValueChangedBehavior.Command="{Binding DataContext.SliderValueChangedCommand, ElementName=rootPage}"
                 behaviors:SliderValueChangedBehavior.CommandParameter="{Binding}"
-                Header="{Binding Text}"
+                Header="{Binding Text, Mode=OneWay}"
                 Maximum="{Binding Max}"
                 Minimum="{Binding Min}"
                 StepFrequency="{Binding Step}"
@@ -52,17 +52,20 @@
                 ToolTipService.ToolTip="{Binding Help}">
                 <TextBlock Text="{Binding Text}" />
                 <TextBox
-                    MinWidth="{StaticResource MinControlWidth}"
+                    MaxHeight="75"
+                    HorizontalAlignment="Stretch"
                     behaviors:TextBoxTextChangedBehavior.Command="{Binding DataContext.TextboxValueChangedCommand, ElementName=rootPage}"
                     behaviors:TextBoxTextChangedBehavior.CommandParameter="{Binding}"
-                    Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
             </StackPanel>
         </DataTemplate>
         <!--  dropdown  -->
         <DataTemplate x:Key="DropdownTemplate">
             <ComboBox
-                MinWidth="{StaticResource MinControlWidth}"
                 Margin="{StaticResource MinControlMargin}"
+                HorizontalAlignment="Stretch"
                 behaviors:ComboBoxSelectionChangedBehavior.Command="{Binding DataContext.DropdownValueChangedCommand, ElementName=rootPage}"
                 behaviors:ComboBoxSelectionChangedBehavior.CommandParameter="{Binding}"
                 Header="{Binding Text}"
@@ -74,11 +77,11 @@
         <DataTemplate x:Key="FolderDropdownTemplate">
             <StackPanel
                 Margin="{StaticResource MinControlMargin}"
+                HorizontalAlignment="Stretch"
                 Spacing="{StaticResource TitleControlSpacing}"
                 ToolTipService.ToolTip="{Binding Help}">
                 <TextBlock Text="{Binding Text}" />
                 <customControls:FolderDropdown
-                    HorizontalAlignment="Left"
                     Command="{Binding DataContext.DropdownValueChangedCommand, ElementName=rootPage}"
                     CommandParameter="{Binding}"
                     FileName="{Binding Value, Mode=TwoWay}"
@@ -105,7 +108,7 @@
                 ToolTipService.ToolTip="{Binding Help}">
                 <TextBlock Text="{Binding Text}" />
                 <Button
-                    MinWidth="{StaticResource MinControlWidth}"
+                    HorizontalAlignment="Stretch"
                     Command="{Binding DataContext.ButtonCommand, ElementName=rootPage}"
                     CommandParameter="{Binding}"
                     Content="{Binding Value}" />

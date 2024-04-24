@@ -182,6 +182,7 @@ namespace Lively.Grpc.Client
                     DisplayName = settings.SelectedDisplay.DisplayName,
                     HMonitor = settings.SelectedDisplay.HMonitor.ToInt32(),
                     IsPrimary = settings.SelectedDisplay.IsPrimary,
+                    Index = settings.SelectedDisplay.Index,
                     WorkingArea = new Rectangle()
                     {
                         X = settings.SelectedDisplay.WorkingArea.X,
@@ -270,7 +271,17 @@ namespace Lively.Grpc.Client
                     DeviceName = settings.SelectedDisplay.DeviceName,
                     HMonitor = new IntPtr(settings.SelectedDisplay.HMonitor),
                     IsPrimary = settings.SelectedDisplay.IsPrimary,
-                    Index = settings.SelectedDisplay.Index,
+                    Index = settings.SelectedDisplay.Index,                  
+                    Bounds = new System.Drawing.Rectangle(
+                        settings.SelectedDisplay.Bounds.X,
+                        settings.SelectedDisplay.Bounds.Y,
+                        settings.SelectedDisplay.Bounds.Width,
+                        settings.SelectedDisplay.Bounds.Height),
+                    WorkingArea = new System.Drawing.Rectangle(
+                        settings.SelectedDisplay.WorkingArea.X,
+                        settings.SelectedDisplay.WorkingArea.Y,
+                        settings.SelectedDisplay.WorkingArea.Width,
+                        settings.SelectedDisplay.WorkingArea.Height),
                 },
                 WallpaperArrangement = (WallpaperArrangement)((int)settings.WallpaperArrangement),
                 AppVersion = settings.AppVersion,

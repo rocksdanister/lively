@@ -14,117 +14,128 @@
     </UserControl.Resources>
 
     <Grid>
-        <StackPanel Orientation="Horizontal" Spacing="5">
-            <!--  Using ListView, ComboBox has issue: SelectionChanged is firing when closing it if an item above the selecteditem is deleted.  -->
-            <DropDownButton
-                Width="200"
-                Padding="5"
-                HorizontalContentAlignment="Left">
-                <DropDownButton.Content>
-                    <Grid>
-                        <StackPanel
-                            Orientation="Horizontal"
-                            Spacing="5"
-                            Visibility="{x:Bind SelectedFile, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
-                            <Border
-                                Width="40"
-                                Height="25"
-                                Background="{ThemeResource SystemAltLowColor}"
-                                BorderBrush="{ThemeResource SystemChromeHighColor}"
-                                BorderThickness="1"
-                                CornerRadius="5">
-                                <Image Source="{x:Bind SelectedFile.ImagePath, Mode=OneWay}" Stretch="UniformToFill" />
-                            </Border>
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                Text="{x:Bind SelectedFile.FileName, Mode=OneWay}"
-                                TextTrimming="CharacterEllipsis"
-                                TextWrapping="NoWrap" />
-                        </StackPanel>
-                        <StackPanel
-                            Orientation="Horizontal"
-                            Spacing="5"
-                            Visibility="{x:Bind SelectedFile, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}">
-                            <FontIcon Glyph="&#xE783;" />
-                            <TextBlock>...</TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </DropDownButton.Content>
-                <DropDownButton.Flyout>
-                    <Flyout Opened="Flyout_Opened" Placement="Bottom">
-                        <Flyout.FlyoutPresenterStyle>
-                            <Style TargetType="FlyoutPresenter">
-                                <Setter Property="MinWidth" Value="200" />
-                                <Setter Property="CornerRadius" Value="5" />
-                            </Style>
-                        </Flyout.FlyoutPresenterStyle>
-                        <ListView
-                            x:Name="listView"
-                            Height="350"
-                            Margin="-15"
-                            x:Load="False"
-                            ItemsSource="{x:Bind Files, Mode=OneWay}"
-                            SelectedItem="{x:Bind SelectedFile, Mode=TwoWay}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Padding="0,10,0,10" ToolTipService.ToolTip="{Binding FileName, Mode=OneWay}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="200" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <!--  File preview  -->
-                                        <Border
-                                            Grid.Column="0"
-                                            Width="75"
-                                            Height="50"
-                                            Margin="0,0,5,0"
-                                            Background="{ThemeResource SystemAltLowColor}"
-                                            BorderBrush="{ThemeResource SystemChromeHighColor}"
-                                            BorderThickness="1"
-                                            CornerRadius="5">
-                                            <Image Source="{Binding ImagePath, Mode=OneWay}" Stretch="UniformToFill" />
-                                        </Border>
-                                        <!--  File title  -->
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="0,0,5,0"
-                                            VerticalAlignment="Center"
-                                            Text="{Binding FileName, Mode=OneWay}"
-                                            TextTrimming="CharacterEllipsis"
-                                            TextWrapping="NoWrap" />
-                                        <!--  File delete  -->
-                                        <Button
-                                            Grid.Column="2"
-                                            Margin="0,0,5,0"
-                                            VerticalAlignment="Stretch"
-                                            Background="#258B0000"
-                                            Click="Delete_Button_Click">
-                                            <Button.Resources>
-                                                <ResourceDictionary>
-                                                    <ResourceDictionary.ThemeDictionaries>
-                                                        <ResourceDictionary x:Key="Dark">
-                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#55ff0000" />
-                                                        </ResourceDictionary>
-                                                        <ResourceDictionary x:Key="Light">
-                                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#55ff0000" />
-                                                        </ResourceDictionary>
-                                                    </ResourceDictionary.ThemeDictionaries>
-                                                </ResourceDictionary>
-                                            </Button.Resources>
-                                            <FontIcon FontSize="14" Glyph="&#xE74D;" />
-                                        </Button>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Flyout>
-                </DropDownButton.Flyout>
-            </DropDownButton>
-            <!--  Add file  -->
-            <Button VerticalAlignment="Stretch" Command="{x:Bind OpenFileCommand}">
-                <FontIcon FontSize="14" Glyph="&#xE8E5;" />
-            </Button>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--  Using ListView, ComboBox has issue: SelectionChanged is firing when closing it if an item above the selecteditem is deleted.  -->
+        <DropDownButton
+            Grid.Column="0"
+            Margin="0,0,5,0"
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Left">
+            <DropDownButton.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        Grid.Column="0"
+                        Width="40"
+                        Height="25"
+                        Margin="0,0,5,0"
+                        Background="{ThemeResource SystemAltLowColor}"
+                        BorderBrush="{ThemeResource SystemChromeHighColor}"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        Visibility="{x:Bind SelectedFile, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
+                        <Image Source="{x:Bind SelectedFile.ImagePath, Mode=OneWay}" Stretch="UniformToFill" />
+                    </Border>
+                    <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Text="{x:Bind SelectedFile.FileName, Mode=OneWay}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap"
+                        ToolTipService.ToolTip="{x:Bind SelectedFile.FileName, Mode=OneWay}"
+                        Visibility="{x:Bind SelectedFile, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}" />
+                    <TextBlock
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Text="(￣o￣) . z Z"
+                        Visibility="{x:Bind SelectedFile, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
+                </Grid>
+            </DropDownButton.Content>
+            <DropDownButton.Flyout>
+                <Flyout Opened="Flyout_Opened" Placement="Bottom">
+                    <Flyout.FlyoutPresenterStyle>
+                        <Style TargetType="FlyoutPresenter">
+                            <Setter Property="MinWidth" Value="200" />
+                            <Setter Property="CornerRadius" Value="5" />
+                        </Style>
+                    </Flyout.FlyoutPresenterStyle>
+                    <ListView
+                        x:Name="listView"
+                        Height="350"
+                        Margin="-15"
+                        x:Load="False"
+                        ItemsSource="{x:Bind Files, Mode=OneWay}"
+                        SelectedItem="{x:Bind SelectedFile, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="0,10,0,10" ToolTipService.ToolTip="{Binding FileName, Mode=OneWay}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <!--  File preview  -->
+                                    <Border
+                                        Grid.Column="0"
+                                        Width="75"
+                                        Height="50"
+                                        Margin="0,0,5,0"
+                                        Background="{ThemeResource SystemAltLowColor}"
+                                        BorderBrush="{ThemeResource SystemChromeHighColor}"
+                                        BorderThickness="1"
+                                        CornerRadius="5">
+                                        <Image Source="{Binding ImagePath, Mode=OneWay}" Stretch="UniformToFill" />
+                                    </Border>
+                                    <!--  File title  -->
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Margin="0,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding FileName, Mode=OneWay}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="NoWrap" />
+                                    <!--  File delete  -->
+                                    <Button
+                                        Grid.Column="2"
+                                        Margin="0,0,5,0"
+                                        VerticalAlignment="Stretch"
+                                        Background="#258B0000"
+                                        Click="Delete_Button_Click">
+                                        <Button.Resources>
+                                            <ResourceDictionary>
+                                                <ResourceDictionary.ThemeDictionaries>
+                                                    <ResourceDictionary x:Key="Dark">
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#55ff0000" />
+                                                    </ResourceDictionary>
+                                                    <ResourceDictionary x:Key="Light">
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#55ff0000" />
+                                                    </ResourceDictionary>
+                                                </ResourceDictionary.ThemeDictionaries>
+                                            </ResourceDictionary>
+                                        </Button.Resources>
+                                        <FontIcon FontSize="14" Glyph="&#xE74D;" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Flyout>
+            </DropDownButton.Flyout>
+        </DropDownButton>
+        <!--  Add file  -->
+        <Button
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            Command="{x:Bind OpenFileCommand}">
+            <FontIcon FontSize="14" Glyph="&#xE8E5;" />
+        </Button>
     </Grid>
 </UserControl>

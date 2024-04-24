@@ -11,7 +11,6 @@ using Lively.Common;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -28,6 +27,8 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDisplayManagerClient displayManager;
         private readonly LibraryViewModel libraryVm;
+
+        private CustomiseWallpaperViewModel customiseWallpaperViewModel;
 
         public ControlPanelViewModel(IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
@@ -107,6 +108,7 @@ namespace Lively.UI.WinUI.ViewModels
                     {
                         libraryVm.LibrarySelectionMode = "Single";
                         //Updating library selected item.
+                        libraryVm.SelectedItem = null;
                         libraryVm.UpdateSelectedWallpaper();
                     }
                     else
@@ -218,9 +220,9 @@ namespace Lively.UI.WinUI.ViewModels
 
                 if (obj != null)
                 {
-                    var viewModel = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
-                    viewModel.Load(obj);
-                    NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = viewModel });
+                    customiseWallpaperViewModel = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
+                    customiseWallpaperViewModel.Load(obj);
+                    NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "customiseWallpaper", Arg = customiseWallpaperViewModel });
                 }
             }
         }
@@ -230,8 +232,21 @@ namespace Lively.UI.WinUI.ViewModels
         public RelayCommand NavigateBackWallpaperCommand =>
             new RelayCommand(() => NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "wallpaper", Arg = null }));
 
-        public void OnWindowClosing(object sender, RoutedEventArgs e) 
-            => desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+        // Page.Unloaded event is unreliable, if the issue is fixed just call this directly.
+        public void CustomiseWallpaperPageOnClosed()
+        {
+            if (customiseWallpaperViewModel == null)
+                return;
+
+            customiseWallpaperViewModel.OnClose();
+            customiseWallpaperViewModel = null;
+        }
+
+        public void OnWindowClosing(object sender, object e)
+        {
+            desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            CustomiseWallpaperPageOnClosed();
+        }
 
         private void UpdateLayout()
         {
