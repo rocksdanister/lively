@@ -6,6 +6,8 @@ namespace Lively.UI.WinUI.Services
 {
     public interface IDialogService
     {
+        bool IsWorking { get; }
+
         Task ShowHelpDialogAsync();
         Task ShowControlPanelDialogAsync();
         Task ShowAboutDialogAsync();

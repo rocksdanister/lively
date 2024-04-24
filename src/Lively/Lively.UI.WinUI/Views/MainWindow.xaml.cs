@@ -479,6 +479,7 @@ namespace Lively.UI.WinUI
             if (userSettings.Settings.IsFirstRun)
             {
                 args.Handled = true;
+
                 var dlg = new ContentDialog()
                 {
                     Title = i18n.GetString("PleaseWait/Text"),
@@ -501,26 +502,19 @@ namespace Lively.UI.WinUI
                 await dlg.ShowAsyncQueue();
                 userSettings.Settings.IsFirstRun = false;
                 userSettings.Save<SettingsModel>();
+
                 this.Close();
             }
-
-            if (userSettings.Settings.IsUpdated)
+            else if (userSettings.Settings.IsUpdated)
             {
                 args.Handled = true;
+
                 userSettings.Settings.IsUpdated = false;
                 userSettings.Save<SettingsModel>();
+
                 this.Close();
             }
-
-            /*
-            if (userSettings.Settings.KeepAwakeUI)
-            {
-                args.Handled = true;
-                contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
-                NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
-            }
-            */
-            if (libraryVm.IsWorking || appUpdateVm.IsUpdateDownloading)
+            else if (libraryVm.IsWorking || appUpdateVm.IsUpdateDownloading)
             {
                 args.Handled = true;
 
@@ -535,6 +529,7 @@ namespace Lively.UI.WinUI
                     appUpdateVm.CancelDownload();
                     libraryVm.CancelAllDownloads();
                     libraryVm.IsBusy = true;
+
                     await Task.Delay(1500);
                     this.Close();
                 }
@@ -542,6 +537,11 @@ namespace Lively.UI.WinUI
                 //Option 2: Keep UI client running and close after work completed.
                 //contentFrame.Visibility = Visibility.Collapsed; //drop resource usage.
                 //NativeMethods.ShowWindow(this.GetWindowHandleEx(), (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
+            }
+            else if (dialogService.IsWorking)
+            {
+                // Wait for user to close the dialog and try again manually.
+                args.Handled = true;
             }
             else
             {

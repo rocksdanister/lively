@@ -22,6 +22,8 @@ namespace Lively.UI.WinUI.Services
 {
     public class DialogService : IDialogService
     {
+        public bool IsWorking { get; private set; }
+
         private readonly ResourceLoader i18n;
 
         public DialogService()
@@ -121,21 +123,30 @@ namespace Lively.UI.WinUI.Services
 
         public async Task ShowCustomiseWallpaperDialogAsync(LibraryModel obj)
         {
-            var vm = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
-            var dialog = new ContentDialog()
+            try
             {
-                Title = obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
-                Content = new LivelyPropertiesView(vm) { MinWidth = 325 },
-                PrimaryButtonText = i18n.GetString("TextOk"),
-                DefaultButton = ContentDialogButton.Primary,
-                XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            };
-            dialog.Closing += (s, e) =>
+                IsWorking = true;
+
+                var vm = App.Services.GetRequiredService<CustomiseWallpaperViewModel>();
+                var dialog = new ContentDialog()
+                {
+                    Title = obj.Title.Length > 35 ? obj.Title.Substring(0, 35) + "..." : obj.Title,
+                    Content = new LivelyPropertiesView(vm) { MinWidth = 325 },
+                    PrimaryButtonText = i18n.GetString("TextOk"),
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+                };
+                dialog.Closing += (s, e) =>
+                {
+                    vm.OnClose();
+                };
+                vm.Load(obj);
+                await dialog.ShowAsyncQueue();
+            }
+            finally
             {
-                vm.OnClose();
-            };
-            vm.Load(obj);
-            await dialog.ShowAsyncQueue();
+                IsWorking = false;
+            }
         }
 
         public async Task<LibraryModel> ShowDepthWallpaperDialogAsync(string imagePath)

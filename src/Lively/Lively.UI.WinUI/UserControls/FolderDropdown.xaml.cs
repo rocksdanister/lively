@@ -209,7 +209,7 @@ namespace Lively.UI.WinUI.UserControls
 
         private async void OpenFile()
         {
-            if (isInitialized)
+            if (!isInitialized)
                 return;
 
             var selectedFiles = await OpenMultipleFilePicker(Filter);

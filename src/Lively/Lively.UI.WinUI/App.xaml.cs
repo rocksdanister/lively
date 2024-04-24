@@ -148,6 +148,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IDisplayManagerClient, DisplayManagerClient>()
                 .AddSingleton<ICommandsClient, CommandsClient>()
                 .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
+                .AddSingleton<IDialogService, DialogService>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
                 .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",
@@ -176,7 +177,6 @@ namespace Lively.UI.WinUI
                 .AddTransient<RestoreWallpaperViewModel>()
                 .AddTransient<AddWallpaperCreateViewModel>()
                 .AddTransient<DepthEstimateWallpaperViewModel>()
-                .AddTransient<IDialogService, DialogService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
