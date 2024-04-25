@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.25.3" />
+    <PackageReference Include="Google.Protobuf" Version="3.26.1" />
     <PackageReference Include="Grpc" Version="2.46.6" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.61.0" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.62.0" />
     <PackageReference Include="Grpc.Tools" Version="2.62.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

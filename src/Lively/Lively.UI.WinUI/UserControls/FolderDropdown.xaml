@@ -105,7 +105,7 @@
                                     <!--  File delete  -->
                                     <Button
                                         Grid.Column="2"
-                                        Margin="0,0,5,0"
+                                        Margin="0,-5,0,-5"
                                         VerticalAlignment="Stretch"
                                         Background="#258B0000"
                                         Click="Delete_Button_Click">
