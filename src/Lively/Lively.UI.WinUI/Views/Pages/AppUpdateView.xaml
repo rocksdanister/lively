@@ -86,58 +86,68 @@
                             NavigateUri="https://github.com/rocksdanister/lively/releases" />-->
                     </StackPanel>
                 </controls:SettingsCard.Description>
-                <Grid VerticalAlignment="Center" Visibility="{Binding IsWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}">
-                    <Grid Visibility="{Binding IsUpdateAvailable, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
-                        <!--  Download  -->
+                <Grid>
+                    <Grid VerticalAlignment="Center" Visibility="{Binding IsWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}">
+                        <Grid Visibility="{Binding IsUpdateAvailable, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+                            <!--  Download  -->
+                            <Button
+                                x:Uid="TextDownload"
+                                MinWidth="100"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource SystemAccentColor}"
+                                Command="{Binding DownloadUpdateCommand}"
+                                Visibility="{Binding IsUpdateDownloaded, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
+                                            </ResourceDictionary>
+                                            <ResourceDictionary x:Key="Light">
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                            <!--  Install  -->
+                            <Button
+                                x:Uid="TextInstall"
+                                MinWidth="100"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource SystemAccentColor}"
+                                Command="{Binding InstallUpdateCommand}"
+                                Visibility="{Binding IsUpdateDownloaded, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.ThemeDictionaries>
+                                            <ResourceDictionary x:Key="Dark">
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
+                                            </ResourceDictionary>
+                                            <ResourceDictionary x:Key="Light">
+                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
+                                            </ResourceDictionary>
+                                        </ResourceDictionary.ThemeDictionaries>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                        <!--  Check for update  -->
                         <Button
-                            x:Uid="TextDownload"
+                            x:Uid="TextUpdateCheck"
                             MinWidth="100"
                             HorizontalAlignment="Right"
-                            Background="{ThemeResource SystemAccentColor}"
-                            Command="{Binding DownloadUpdateCommand}"
-                            Visibility="{Binding IsUpdateDownloaded, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <ResourceDictionary.ThemeDictionaries>
-                                        <ResourceDictionary x:Key="Dark">
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
-                                        </ResourceDictionary>
-                                        <ResourceDictionary x:Key="Light">
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
-                                        </ResourceDictionary>
-                                    </ResourceDictionary.ThemeDictionaries>
-                                </ResourceDictionary>
-                            </Button.Resources>
-                        </Button>
-                        <!--  Install  -->
-                        <Button
-                            x:Uid="TextInstall"
-                            MinWidth="100"
-                            HorizontalAlignment="Right"
-                            Background="{ThemeResource SystemAccentColor}"
-                            Command="{Binding InstallUpdateCommand}"
-                            Visibility="{Binding IsUpdateDownloaded, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <ResourceDictionary.ThemeDictionaries>
-                                        <ResourceDictionary x:Key="Dark">
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
-                                        </ResourceDictionary>
-                                        <ResourceDictionary x:Key="Light">
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{ThemeResource SystemAccentColorDark1}" />
-                                        </ResourceDictionary>
-                                    </ResourceDictionary.ThemeDictionaries>
-                                </ResourceDictionary>
-                            </Button.Resources>
-                        </Button>
+                            Command="{Binding CheckUpdateCommand}"
+                            Visibility="{Binding IsUpdateAvailable, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}" />
                     </Grid>
-                    <!--  Check for update  -->
+                    <!--  Check for update (store)  -->
                     <Button
                         x:Uid="TextUpdateCheck"
                         MinWidth="100"
                         HorizontalAlignment="Right"
-                        Command="{Binding CheckUpdateCommand}"
-                        Visibility="{Binding IsUpdateAvailable, Mode=OneWay, Converter={StaticResource VisibilityConverter}, ConverterParameter=Reverse}" />
+                        VerticalAlignment="Center"
+                        Command="{Binding OpenStorePageCommand}"
+                        Visibility="{Binding IsWinStore, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" />
                 </Grid>
             </controls:SettingsCard>
             <ProgressBar

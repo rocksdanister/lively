@@ -118,6 +118,12 @@ namespace Lively.UI.WinUI.ViewModels
         }
 
         [RelayCommand]
+        private void OpenStorePage()
+        {
+            LinkUtil.OpenBrowser("ms-windows-store://pdp/?productid=9NTM2QC6QWS7");
+        }
+
+        [RelayCommand]
         private async Task DownloadUpdate()
         {
             try
@@ -198,7 +204,7 @@ namespace Lively.UI.WinUI.ViewModels
                     break;
                 case AppUpdateStatus.notchecked:
                     IsUpdateAvailable = false;
-                    UpdateStatusSeverity = "Warning";
+                    UpdateStatusSeverity = IsWinStore ? "Informational" : "Warning";
                     UpdateStatusText = languageResource.GetString("TextUpdateChecking");
                     break;
                 case AppUpdateStatus.error:
