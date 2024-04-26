@@ -80,6 +80,8 @@ namespace Lively.Core.Wallpapers
                 RedirectStandardOutput = true,
                 RedirectStandardError = false,
                 UseShellExecute = false,
+                StandardInputEncoding = Encoding.UTF8,
+                //StandardOutputEncoding = Encoding.UTF8,
                 WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef")
             };
 
@@ -225,7 +227,11 @@ namespace Lively.Core.Wallpapers
         {
             try
             {
+                // Setting process StandardInputEncoding to UTF8.
                 Proc?.StandardInput.WriteLine(msg);
+                // Or convert message to UTF8.
+                //byte[] bytes = Encoding.UTF8.GetBytes(msg);
+                //Proc.StandardInput.BaseStream.Write(bytes, 0, bytes.Length);
             }
             catch (Exception e)
             {
