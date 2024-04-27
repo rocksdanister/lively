@@ -61,7 +61,7 @@ namespace Lively.UI.WinUI.ViewModels
                 ScreenItems.Add(new ScreenLayoutModel(item,
                     string.IsNullOrEmpty(wallpaper?.PreviewPath) ? wallpaper?.ThumbnailPath : wallpaper.PreviewPath,
                     wallpaper?.LivelyPropertyCopyPath,
-                    item.Index.ToString()));
+                    string.Empty));
             }
         }
 

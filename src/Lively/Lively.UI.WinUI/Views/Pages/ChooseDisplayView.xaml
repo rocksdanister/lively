@@ -10,8 +10,8 @@
 
 
     <Grid
-        Width="450"
-        Height="250"
+        Width="490"
+        Height="360"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         CornerRadius="5">
         <customControls:DisplaySelector Displays="{Binding ScreenItems, Mode=OneWay}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />

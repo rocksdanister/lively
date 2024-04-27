@@ -107,46 +107,84 @@ namespace Lively.UI.WinUI.UserControls
             if (Displays is null || !Displays.Any() || !this.IsLoaded)
                 return;
 
-            switch (Layout)
+            switch (Displays.Count > 1 ? Layout : WallpaperArrangement.per)
             {
                 case WallpaperArrangement.per:
                     {
-                        DrawPerLayout();
+                        var totalBounds = new Rectangle();
+                        foreach (var item in Displays)
+                        {
+                            totalBounds = Rectangle.Union(totalBounds, item.Screen.Bounds);
+                        }
+                        int totalWidth = totalBounds.Width;
+                        int totalHeight = totalBounds.Height;
+                        // Worst case factor + margin
+                        var factor = Math.Max(totalHeight / this.ActualHeight, totalWidth / this.ActualWidth) + 2;
+
+                        // Normalize values, alternatively implement auto-scaling Canvas control.
+                        foreach (var item in Displays)
+                        {
+                            item.NormalizedBounds = new Rectangle((int)(item.Screen.Bounds.Left / factor),
+                                (int)(item.Screen.Bounds.Top / factor),
+                                (int)(item.Screen.Bounds.Width / factor),
+                                (int)(item.Screen.Bounds.Height / factor));
+                        }
                     }
                     break;
                 case WallpaperArrangement.duplicate:
                     {
-                        // Make it identical to per-screen
-                        if (Displays.Count == 1)
-                            DrawPerLayout();
-                        else
-                            DrawDuplicateLayout();
+                        int sampleWidth = 1920;
+                        int sampleHeight = 1080;
+                        int offsetX = 150;
+                        int offsetY = 150;
+                        var totalBounds = new Rectangle();
+                        // Creating fake display for presentation (overlapped.)
+                        for (int i = 0; i < Displays.Count; i++)
+                        {
+                            var bounds = new Rectangle(offsetX * i, offsetY * i, sampleWidth, sampleHeight);
+                            totalBounds = Rectangle.Union(totalBounds, bounds);
+                        }
+                        int totalWidth = totalBounds.Width;
+                        int totalHeight = totalBounds.Height;
+                        var factor = Math.Max(totalHeight / this.ActualHeight, totalWidth / this.ActualWidth) + 2;
+
+                        for (int i = 0; i < Displays.Count; i++)
+                        {
+                            Displays[i].NormalizedBounds = new Rectangle((int)(offsetX * i / factor),
+                                (int)(offsetY * i / factor),
+                                (int)(sampleWidth / factor),
+                                (int)(sampleHeight / factor));
+                        }
                     }
                     break;
                 case WallpaperArrangement.span:
                     {
-                        if (Displays.Count == 1)
-                            DrawPerLayout();
-                        else
-                            DrawSpanLayout();
+                        int sampleWidth = 1920;
+                        int sampleHeight = 1080;
+                        int offsetX = sampleWidth / 2;
+                        int offsetY = 0;
+                        var totalBounds = new Rectangle();
+                        // Creating fake display for presentation (side by side.)
+                        for (int i = 0; i < Displays.Count; i++)
+                        {
+                            var bounds = new Rectangle(offsetX * i, offsetY * i, sampleWidth, sampleHeight);
+                            totalBounds = Rectangle.Union(totalBounds, bounds);
+                        }
+                        int totalWidth = totalBounds.Width;
+                        int totalHeight = totalBounds.Height;
+                        var factor = Math.Max(totalHeight / this.ActualHeight, totalWidth / this.ActualWidth) + 2;
+
+                        for (int i = 0; i < Displays.Count; i++)
+                        {
+                            Displays[i].NormalizedBounds = new Rectangle((int)(offsetX * i / factor),
+                                (int)(offsetY * i / factor),
+                                (int)(sampleWidth / factor),
+                                (int)(sampleHeight / factor));
+                        }
                     }
                     break;
                 default:
                     throw new NotImplementedException();
-            }
-        }
-
-        private void DrawPerLayout()
-        {
-            // Normalize values
-            // Note: It is better to implement auto scaling canvas control instead in the future
-            int totalWidth = Displays.Sum(item => item.Screen.Bounds.Width);
-            int totalHeight = Displays.Sum(item => item.Screen.Bounds.Height);
-
-            foreach (var item in Displays)
-            {
-                var normalizedBounds = Normalize(item.Screen.Bounds, totalWidth, totalHeight);
-                item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
             }
 
             // Bounds.Left and Right can be negative
@@ -166,70 +204,6 @@ namespace Lively.UI.WinUI.UserControls
                     (int)(item.NormalizedBounds.Top - verticalOffset),
                     item.NormalizedBounds.Width,
                     item.NormalizedBounds.Height);
-            }
-        }
-
-        private void DrawDuplicateLayout()
-        {
-            // Normalize values
-            int sampleWidth = 1920;
-            int sampleHeight = 1080;
-            int totalWidth = sampleWidth * Displays.Count;
-            int totalHeight = sampleHeight * Displays.Count;
-
-            foreach (var item in Displays)
-            {
-                var normalizedBounds = Normalize(new Rectangle(0, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
-                item.NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
-            }
-
-            // Center to canvas
-            int normalizedTotalWidth = Displays[0].NormalizedBounds.Width + (int)(sampleWidth * Displays.Count * 0.01f);
-            int normalizedTotalHeight = Displays[0].NormalizedBounds.Height;
-            double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
-            double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
-
-            for (int i = 0; i < Displays.Count; i++)
-            {
-                var item = Displays[i];
-                var allMargin = sampleWidth * i * 0.01f;
-                item.NormalizedBounds = new Rectangle(
-                    (int)(item.NormalizedBounds.Left + horizontalOffset + allMargin),
-                    (int)(item.NormalizedBounds.Top + verticalOffset + allMargin),
-                    item.NormalizedBounds.Width,
-                    item.NormalizedBounds.Height);
-            }
-        }
-
-        private void DrawSpanLayout()
-        {
-            // Normalize values
-            int sampleWidth = 1920;
-            int sampleHeight = 1080;
-            int totalWidth = sampleWidth * Displays.Count;
-            int totalHeight = sampleHeight * Displays.Count;
-
-            for (int i = 0; i < Displays.Count; i++)
-            {
-                var normalizedBounds = Normalize(new Rectangle(sampleWidth * i, 0, sampleWidth, sampleHeight), totalWidth, totalHeight);
-                Displays[i].NormalizedBounds = new Rectangle(normalizedBounds.Left, normalizedBounds.Top, normalizedBounds.Width, normalizedBounds.Height);
-            }
-
-            // Center to canvas
-            int normalizedTotalWidth = Displays.Sum(item => item.NormalizedBounds.Width) - (int)(Displays.Count * sampleWidth * 0.01f);
-            int normalizedTotalHeight = Displays.Max(item => item.NormalizedBounds.Height);
-            double horizontalOffset = this.ActualWidth / 2 - normalizedTotalWidth / 2;
-            double verticalOffset = this.ActualHeight / 2 - normalizedTotalHeight / 2;
-
-            for (int i = 0; i < Displays.Count; i++)
-            {
-                var item = Displays[i];
-                var leftMargin = -i * sampleWidth * 0.01f;
-                item.NormalizedBounds = new Rectangle(
-                (int)(item.NormalizedBounds.Left + horizontalOffset + leftMargin),
-                (int)(item.NormalizedBounds.Top + verticalOffset),
-                item.NormalizedBounds.Width,
-                item.NormalizedBounds.Height);
             }
         }
 
@@ -295,23 +269,6 @@ namespace Lively.UI.WinUI.UserControls
         {
             //TODO: Unsubcribe Grid_PointerPressed().. ?
             //TODO: Unsub CollectionChanged event ViewModel ?
-        }
-
-        private static Rectangle Normalize(Rectangle rect, int maxWidth, int maxHeight, int newMaxValue = 300)
-        {
-            int largerDimension = Math.Max(maxWidth, maxHeight);
-
-            double normalizedLeft = (double)rect.Left / largerDimension;
-            double normalizedTop = (double)rect.Top / largerDimension;
-            double normalizedWidth = (double)rect.Width / largerDimension;
-            double normalizedHeight = (double)rect.Height / largerDimension;
-
-            int left = (int)(normalizedLeft * newMaxValue);
-            int top = (int)(normalizedTop * newMaxValue);
-            int width = (int)(normalizedWidth * newMaxValue);
-            int height = (int)(normalizedHeight * newMaxValue);
-
-            return new Rectangle(left, top, width, height);
         }
     }
 }

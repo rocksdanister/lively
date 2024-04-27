@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -263,7 +264,7 @@ namespace Lively.UI.WinUI.ViewModels
                 ScreenItems.Add(new ScreenLayoutModel(item,
                     string.IsNullOrEmpty(wallpaper?.PreviewPath) ? wallpaper?.ThumbnailPath : wallpaper.PreviewPath,
                     wallpaper?.LivelyPropertyCopyPath,
-                    item.Index.ToString()));
+                    string.Empty));
             }
 
             SelectedItem = ScreenItems.FirstOrDefault(x => x.Screen.Equals(userSettings.Settings.SelectedDisplay));

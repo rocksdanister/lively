@@ -39,28 +39,19 @@
                 Layout="{Binding SelectedWallpaperLayout, Mode=OneWay}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
 
-            <CommandBar
+            <StackPanel
                 Grid.Row="1"
+                Margin="5"
                 HorizontalAlignment="Center"
-                DefaultLabelPosition="Right">
-                <AppBarButton
-                    x:Uid="CustomiseWallpaper"
-                    Command="{Binding CustomiseWallpaperCommand}"
-                    LabelPosition="Collapsed">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE790;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarSeparator Visibility="Visible" />
-                <AppBarButton
-                    x:Uid="CloseWallpapers"
-                    Command="{Binding CloseWallpaperCommand}"
-                    LabelPosition="Collapsed">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE894;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar>
+                Orientation="Horizontal"
+                Spacing="5">
+                <Button Command="{Binding CustomiseWallpaperCommand}">
+                    <FontIcon Glyph="&#xE790;" />
+                </Button>
+                <Button Command="{Binding CloseWallpaperCommand}">
+                    <FontIcon Glyph="&#xE894;" />
+                </Button>
+            </StackPanel>
         </Grid>
 
         <controls:SettingsExpander
@@ -77,7 +68,7 @@
                         <controls:SegmentedItem>
                             <TextBlock>
                                 <Run x:Uid="WallpaperLayoutPerScreen" />
-                                <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.ScreenTitle, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                                <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.Screen.Index, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                         </controls:SegmentedItem>
                         <controls:SegmentedItem>

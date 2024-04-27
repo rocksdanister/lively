@@ -78,6 +78,11 @@
                             Opacity="1"
                             Source="{Binding ScreenImagePath, Mode=OneWay}"
                             Stretch="UniformToFill" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            Text="{Binding ScreenTitle, Mode=OneWay}" />
                         <!--  Improve label visiblity  -->
                         <Rectangle>
                             <Rectangle.Fill>
@@ -112,7 +117,7 @@
                         <TextBlock
                             Margin="2.5,-2.5,0,0"
                             FontSize="18"
-                            Text="{Binding ScreenTitle, Mode=OneWay}" />
+                            Text="{Binding Screen.Index, Mode=OneWay}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

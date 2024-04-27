@@ -39,30 +39,19 @@
                 IsSelection="False"
                 Layout="{Binding WallpaperLayout, Mode=OneWay}" />
 
-            <CommandBar
+            <!--<StackPanel
                 Grid.Row="1"
+                Margin="5"
                 HorizontalAlignment="Center"
-                DefaultLabelPosition="Right"
-                IsEnabled="false">
-                <AppBarButton
-                    x:Uid="CustomiseWallpaper"
-                    Command="{Binding CustomiseWallpaperCommand}"
-                    LabelPosition="Collapsed"
-                    Visibility="Visible">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE790;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-                <AppBarSeparator Visibility="Visible" />
-                <AppBarButton
-                    x:Uid="CloseWallpapers"
-                    Command="{Binding CloseWallpaperCommand}"
-                    LabelPosition="Collapsed">
-                    <AppBarButton.Icon>
-                        <FontIcon Glyph="&#xE894;" />
-                    </AppBarButton.Icon>
-                </AppBarButton>
-            </CommandBar>
+                Orientation="Horizontal"
+                Spacing="5">
+                <Button Command="{Binding CustomiseWallpaperCommand}">
+                    <FontIcon Glyph="&#xE790;" />
+                </Button>
+                <Button Command="{Binding CloseWallpaperCommand}">
+                    <FontIcon Glyph="&#xE894;" />
+                </Button>
+            </StackPanel>-->
 
             <Border Grid.RowSpan="2" Visibility="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource VisibilityConverter}}">
                 <Border.Background>
