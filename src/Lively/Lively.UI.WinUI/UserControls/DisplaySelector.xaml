@@ -115,7 +115,7 @@
                         </Grid>
                         <!--  Labels  -->
                         <TextBlock
-                            Margin="2.5,-2.5,0,0"
+                            Margin="5,0,0,0"
                             FontSize="18"
                             Text="{Binding Screen.Index, Mode=OneWay}" />
                     </Grid>

@@ -13,23 +13,29 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 
+// Ref:
+// https://github.com/micdenny/WpfScreenHelper
+// http://referencesource.microsoft.com/#System.Windows.Forms/ndp/fx/src/winforms/Managed/System/WinForms/Screen.cs
+// http://msdn.microsoft.com/en-us/library/windows/desktop/dd145072.aspx
+// http://msdn.microsoft.com/en-us/library/windows/desktop/dd183314.aspx
 namespace Lively.Core.Display
 {
     public class DisplayManager : ObservableObject, IDisplayManager //,IWndProcHookHandler
     {
-        private const int PRIMARY_MONITOR = unchecked((int)0xBAADF00D);
-
-        private const int MONITORINFOF_PRIMARY = 0x00000001;
-        private const int MONITOR_DEFAULTTONEAREST = 0x00000002;
-
-        private static bool multiMonitorSupport;
-        private const string defaultDisplayDeviceName = "DISPLAY";
-
-        //public static DisplayManager Instance { get; private set; }
-
         public event EventHandler DisplayUpdated;
 
         public ObservableCollection<DisplayMonitor> DisplayMonitors { get; } = new ObservableCollection<DisplayMonitor>();
+
+        // This identifier is just for us, so that we don't try to call the multimon
+        // functions if we just need the primary monitor... this is safer for
+        // non-multimon OSes.
+        private const int PRIMARY_MONITOR = unchecked((int)0xBAADF00D);
+        private const int MONITORINFOF_PRIMARY = 0x00000001;
+        private const int MONITOR_DEFAULTTONEAREST = 0x00000002;
+        private const string defaultDisplayDeviceName = "DISPLAY";
+
+        // Indicates if we have more than one monitor.
+        private bool multiMonitorSupport;
 
         private Rectangle virtualScreenBounds = Rectangle.Empty;
 
@@ -46,13 +52,6 @@ namespace Lively.Core.Display
         {
             RefreshDisplayMonitorList();
         }
-
-        /*
-        public static void Initialize()
-        {
-            Instance = new DisplayManager();
-        }
-        */
 
         public uint OnHwndCreated(IntPtr hWnd, out bool register)
         {
@@ -142,7 +141,7 @@ namespace Lively.Core.Display
                 }
 
                 displayMonitor.Bounds = GetVirtualScreenBounds();
-                displayMonitor.DeviceId = GetDefaultDisplayDeviceId();
+                displayMonitor.DeviceId = string.Empty;
                 displayMonitor.DisplayName = "Display";
                 displayMonitor.HMonitor = hMonitor;
                 displayMonitor.IsPrimary = true;
@@ -152,7 +151,7 @@ namespace Lively.Core.Display
             }
             else
             {
-                var info = new NativeMethods.MONITORINFOEX();// MONITORINFOEX();
+                var info = new NativeMethods.MONITORINFOEX();
                 NativeMethods.GetMonitorInfo(new HandleRef(null, hMonitor), info);
 
                 string deviceName = new string(info.szDevice).TrimEnd((char)0);
@@ -165,6 +164,9 @@ namespace Lively.Core.Display
 
                 UpdateDisplayMonitor(displayMonitor, info);
             }
+
+            if (string.IsNullOrWhiteSpace(displayMonitor.DeviceId))
+                displayMonitor.DeviceId = GetDefaultDisplayDeviceId(displayMonitor.Bounds);
 
             return displayMonitor;
         }
@@ -246,17 +248,21 @@ namespace Lively.Core.Display
             }
             catch { }
 
-            if (string.IsNullOrEmpty(result.DeviceID)
-                || string.IsNullOrWhiteSpace(result.DeviceID))
-            {
-                result.DeviceID = GetDefaultDisplayDeviceId();
-            }
-
             return result;
         }
 
-        private static string GetDefaultDisplayDeviceId() => NativeMethods.GetSystemMetrics((int)NativeMethods.SystemMetric.SM_REMOTESESSION) != 0 ?
-                    "\\\\?\\DISPLAY#REMOTEDISPLAY#" : "\\\\?\\DISPLAY#LOCALDISPLAY#";
+        private static string GetDefaultDisplayDeviceId(Rectangle displayBounds)
+        {
+            var isRemote = NativeMethods.GetSystemMetrics((int)NativeMethods.SystemMetric.SM_REMOTESESSION) != 0;
+            var boundsString = $"{displayBounds.X}-{displayBounds.Y}-{displayBounds.Width}-{displayBounds.Height}";
+
+            // Calculate SHA-256 hash
+            var hashBytes = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(boundsString));
+            var hashString = BitConverter.ToString(hashBytes).Replace("-", string.Empty).ToLowerInvariant();
+            var prefix = isRemote ? "\\\\?\\DISPLAY#REMOTEDISPLAY#" : "\\\\?\\DISPLAY#LOCALDISPLAY#";
+
+            return $"{prefix}{hashString}";
+        }
 
         private static Rectangle GetVirtualScreenBounds()
         {
