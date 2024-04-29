@@ -7,6 +7,7 @@ using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
 using Lively.UI.WinUI.Views.Pages.Gallery;
+using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -51,7 +52,7 @@ namespace Lively.UI.WinUI.Services
         public async Task<ApplicationModel> ShowApplicationPickerDialogAsync()
         {
             var vm = App.Services.GetRequiredService<FindMoreAppsViewModel>();
-            var result = await ShowDialogAsync(new Views.Pages.Settings.FindMoreAppsView() { DataContext = vm },
+            var result = await ShowDialogAsync(new FindMoreAppsView() { DataContext = vm },
                                           i18n.GetString("TitleChooseApplication/Text"),
                                           i18n.GetString("TextAdd"),
                                           i18n.GetString("Cancel/Content"));

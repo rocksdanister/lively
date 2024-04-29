@@ -22,18 +22,20 @@ namespace Lively.UI.WinUI.ViewModels
     public partial class FindMoreAppsViewModel : ObservableObject
     {
         private readonly IApplicationsFactory appFactory;
-        private readonly string[] excludedClasses = new string[]
-        {
+        private readonly string[] excludedClasses =
+        [
             //uwp apps
             "ApplicationFrameWindow",
             //startmeu, taskview (win10), action center etc
             "Windows.UI.Core.CoreWindow",
-        };
+        ];
 
         [ObservableProperty]
-        private ObservableCollection<ApplicationModel> applications = new();
+        private ObservableCollection<ApplicationModel> applications = [];
+
         [ObservableProperty]
         private AdvancedCollectionView applicationsFiltered;
+
         [ObservableProperty]
         private ApplicationModel selectedItem;
 
@@ -48,7 +50,9 @@ namespace Lively.UI.WinUI.ViewModels
                 foreach (var item in Process.GetProcesses()
                     .Where(x => x.MainWindowHandle != IntPtr.Zero && !string.IsNullOrEmpty(x.MainWindowTitle) && !IsExcluded(x.MainWindowHandle)))
                 {
-                    Applications.Add(appFactory.CreateApp(item));
+                    var app = appFactory.CreateApp(item);
+                    if (app is not null)
+                        Applications.Add(app);
                 }
             }
             SelectedItem = Applications.FirstOrDefault();
@@ -65,9 +69,12 @@ namespace Lively.UI.WinUI.ViewModels
             var file = await filePicker.PickSingleFileAsync();
             if (file != null)
             {
-                var item = appFactory.CreateApp(file.Path);
-                Applications.Add(item);
-                SelectedItem = item;
+                var app = appFactory.CreateApp(file.Path);
+                if (app is not null)
+                {
+                    Applications.Add(app);
+                    SelectedItem = app;
+                }
             }
         }
 

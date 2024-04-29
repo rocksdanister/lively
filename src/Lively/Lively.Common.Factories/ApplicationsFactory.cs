@@ -3,6 +3,7 @@ using Lively.Common.Helpers.Pinvoke;
 using Lively.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -18,29 +19,37 @@ namespace Lively.Common.Factories
 
         public ApplicationModel CreateApp(Process process)
         {
-            var model = new ApplicationModel
+            var model = new ApplicationModel();
+            try
             {
-                AppName = process.ProcessName
-            };
+                //Can throw exception
+                model.AppName = process.ProcessName;
+                //Workaround: x86 apps cannot access Process.MainModule of x64 apps
+                int capacity = 1024;
+                var sb = new StringBuilder(capacity);
+                if (!NativeMethods.QueryFullProcessImageName(process.Handle, 0, sb, ref capacity))
+                    throw new Win32Exception();
+
+                model.AppPath = sb.ToString(0, capacity);
+            }
+            catch
+            {
+                //Failed to retrieve process information.
+                return null;
+            }
 
             try
             {
-                int capacity = 1024;
-                var sb = new StringBuilder(capacity);
-                //Workaround: x86 apps cannot access Process.MainModule of x64 apps
-                NativeMethods.QueryFullProcessImageName(process.Handle, 0, sb, ref capacity);
-                model.AppPath = sb.ToString(0, capacity);
-
                 Directory.CreateDirectory(cacheDir);
                 var iconPath = Path.Combine(cacheDir, model.AppName);
                 if (!File.Exists(iconPath))
                 {
-                    //temp cache
+                    //Temp cache
                     Icon.ExtractAssociatedIcon(model.AppPath).ToBitmap().Save(iconPath);
                 }
                 model.AppIcon = iconPath;
             }
-            catch { }
+            catch { /* Model is still useful without Icon */ }
 
             return model;
         }
@@ -63,7 +72,7 @@ namespace Lively.Common.Factories
                 }
                 model.AppIcon = iconPath;
             }
-            catch { }
+            catch { /* Model is still useful without Icon */ }
 
             return model;
         }

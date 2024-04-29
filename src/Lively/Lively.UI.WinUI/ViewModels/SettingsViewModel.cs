@@ -357,24 +357,20 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task AppRuleAddProgram()
         {
             var result = await dialogService.ShowApplicationPickerDialogAsync();
-            if (result != null)
+            if (result is null)
+                return;
+
+            try
             {
-                try
-                {
-                    var rule = appRuleFactory.CreateAppRule(result.AppPath, AppRulesEnum.pause);
-                    if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
-                    {
-                        return;
-                    }
-                    userSettings.AppRules.Add(rule);
-                    AppRules.Add(rule);
-                    UpdateAppRulesConfigFile();
-                }
-                catch (Exception)
-                {
-                    //TODO
-                }
+                var rule = appRuleFactory.CreateAppRule(result.AppPath, AppRulesEnum.pause);
+                if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
+                    return;
+
+                userSettings.AppRules.Add(rule);
+                AppRules.Add(rule);
+                UpdateAppRulesConfigFile();
             }
+            catch { /* Failed to parse program information, ignore. */ }
         }
 
         private void AppRuleRemoveProgram()
