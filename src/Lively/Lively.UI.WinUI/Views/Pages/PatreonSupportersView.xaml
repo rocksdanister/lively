@@ -26,7 +26,7 @@
                 HorizontalAlignment="Stretch"
                 CoreWebView2Initialized="WebView_CoreWebView2Initialized"
                 NavigationStarting="WebView_NavigationStarting"
-                Source="https://www.rocksdanister.com/lively/supporters/"
+                Source="https://www.rocksdanister.com/lively/supporters/?source=app"
                 Visibility="{Binding SupportersFetchError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
         </Border>
         <!--  Error  -->
