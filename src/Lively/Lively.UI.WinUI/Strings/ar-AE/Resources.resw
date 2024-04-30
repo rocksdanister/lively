@@ -341,7 +341,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لكل شاشة</value>
   </data>
   <data name="TextDownload.Content" xml:space="preserve">
-    <value>تنزيل</value>
+    <value>تحميل</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>تحرير</value>
@@ -350,10 +350,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>خطأ</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>إغلاق</value>
+    <value>خروج</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>احفظه كملف</value>
+    <value>حفظ إلى ملف</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
     <value>بعض الميزات غير متوفرة في هذا الإصدار من البرنامج</value>
@@ -584,7 +584,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>شاشة</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>امتداد</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>النوع</value>
@@ -1002,10 +1002,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>نوع شاشة التوفير</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>مخصص</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>تشبه الخلفية</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>إضافة مطلوبة</value>
@@ -1224,7 +1224,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>التنزيل مطلوب</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>تنزيل</value>
+    <value>تحميل</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
     <value/>
@@ -1233,9 +1233,9 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value/>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>داعمين باتريون</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>اختر شاشة التوقف</value>
   </data>
 </root>

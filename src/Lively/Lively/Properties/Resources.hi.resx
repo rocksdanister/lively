@@ -1005,10 +1005,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>स्क्रीनसेवर का प्रकार</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>स्वनिर्मित</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Live wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>प्लगइन आवश्यक</value>
@@ -1209,7 +1209,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>एआई गहराई वॉलपेपर</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>वालपेपर बनाए</value>
+    <value>Depth Wallpaper</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
     <value/>

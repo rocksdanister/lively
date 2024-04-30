@@ -118,1124 +118,1121 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مركز الاهتمام</value>
+    <value>Prehrávať zvuk iba vtedy, keď je zameranie na pracovnú plochu</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>مستوى الصوت لجميع الخلفيات</value>
+    <value>Úroveň hlasitosti všetkých pozadí</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>مستوى الصوت</value>
+    <value>Hlasitosť</value>
   </data>
   <data name="AudioGroup.Text" xml:space="preserve">
-    <value>الصوت</value>
+    <value>Zvuk</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>منتدى المناقشات عبر الإنترنت</value>
+    <value>Online diskusné fórum</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>مستندات API والمساعدة</value>
+    <value>API dokumentácia a pomoc</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>لقد واجهنا مشكلة غريبة...
+    <value>Lively narazil na fatálnu chybu.
 
-تم إعادة تشغيل مستكشف الملفات الخاص بالنظام مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين التطبيق وبرنامج تخصيص آخر أو النظام نفسه.
- لتجنب المزيد من المشكلات، سيتم إيقاف جميع الخلفيات حاليا.</value>
+Prieskumník Windows sa reštartoval dvakrát za posledných 30 sekúnd! Môže ísť o konflikt medzi Lively a iným softvérom na prispôsobenie pracovnej plochy alebo systémom Windows. Všetky tapety boli ukončené, aby sa predišlo ďalším problémom.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>تم العثور على برنامج غير متوافق ، تم تعطيل تطبيق سمات شريط المهام.</value>
+    <value>Našiel sa nekompatibilný program, funkcia zmeny motívu panelu úloh je zakázaná</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>صفحة الإنترنت الرسمية لـ Lively Wallpaper</value>
+    <value>Oficiálna webová stránka Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>لا تعاني معظم شاشات LCD و LED الحديثة من مشاكل الاحتراق؛ لذلك، يمكن استخدام أي خلفية كشاشة توقف.
+    <value>Väčšina moderných LCD a LED displejov nemá problém s vypáľovaním, a preto je možné ako šetrič obrazovky použiť akúkoľvek tapetu.
 
-بالنسبة لشاشات OLED أو Plasma أو CRT المعرضة للاحتراق، يُنصح باستخدام الخلفيات المظلمة التي من المفترض أن تخفف الاحتراق. ومع ذلك، لم يتم اختبار هذه الميزة ولا يمكن ضمان فعاليتها.
+Pre OLED, plazmové alebo CRT displeje, ktoré sú náchylné na vypálenie, sa odporúča použiť tapetu s pravidelným pohybom a celkovo tmavým motívom, ktorý by mal zmierniť vypálenie obrazovky, ale táto funkcia nie je odskúšaná a jej účinnosť nemožno zaručiť.
 
-الغرض الأساسي من شاشات توقف Lively هو إضافة طبقة أخرى من التخصيص إلى جهاز الكمبيوتر الخاص بك، واستخدام شاشات التوقف كحماية ضد الاحتراق هو على مسؤوليتك الخاصة!</value>
+Hlavným účelom šetričov obrazovky Lively je pridať ďalšiu vrstvu prispôsobenia vášmu počítaču. Použitie šetriča obrazovky ako ochranu pred vypálením obrazovky je na vlastné riziko!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>الإبلاغ عن مشكلة في البرنامج</value>
+    <value>Nahlásiť problém so softvérom</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>قم بتحديد ملف</value>
+    <value>Vyberte súbor</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>تعيين الخلفية(ات) سلوك التشغيل بناءً على تشغيل التطبيق:-</value>
+    <value>Wallpaper playback behaviour based on running application</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>هل أنت متأكد من إلغاء هذه العملية؟</value>
+    <value>Ste si istý, že chcete zrušiť?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>هل أنت متأكد من حذف الخلفية بشكل دائم من القرص؟</value>
+    <value>Ste si istý, že chcete navždy odstrániť toto pozadie z disku?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>هل أنت متأكد أنك تريد حذف هذه الخلفية من المكتبة؟</value>
+    <value>Ste si istý, že chcete navždy odstrániť toto pozadie z knižnice?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>ببساطة، ما عليك سوى سحب الملفات وإفلاتها هنا</value>
+    <value>Sem potiahnite súbor</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>أنت تفتح تطبيقًا خارجيا كخلفية.
-يمكن أن تحمل التطبيقات الخارجية برامج ضارة وفيروسات.. وتضر بنظامك.
-استمر فقط إذا كنت بمصدر هذا التطبيق.</value>
+    <value>Pokúšate sa otvoriť externú aplikáciu, ako pozadie.
+Škodlivé aplikácie v sebe môžu ukrývať malvéry, vírusy… a poškodiť váš systém.
+Pokračujte len vtedy, ak táto aplikácia pochádza z dôveryhodného zdroja.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>تم تصغير  Lively Wallpaper إلى الأيقونات المصغرة بجانب الساعة، يرجى النقر بزر الفأرة الأيمن فوق الرمز التطبيق لمزيد من الخيارات...</value>
+    <value>Lively sa zminimalizovalo do system tray. Kliknite pravým tlačidlom na ikonu Lively pre pokračovanie.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>يرجى إعادة تشغيل البرنامج لتطبيق الإعدادات الجديدة...</value>
+    <value>Prosím, reštartujte Lively, aby sa zmeny aplikovali</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>يرجى التوقف قبل المتابعة</value>
+    <value>Pred pokračovaním počkajte</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>اضغط لبدء التسجيل</value>
+    <value>Stlačením spustíte nahrávanie</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>جاري إستعادة الخلفية (الخلفيات) السابقة, يرجى الانتظار...</value>
+    <value>Obnovuje predošlé pozadie(a), prosím počkajte...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>اختر الشاشة</value>
+    <value>Vyberte obrazovku</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>إصدار جديد متوفر من التطبيق!</value>
+    <value>Je dostupná nová verzia softvéru!</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>أدخل رابط الموقع للتحميل, Shadertoy.com  روابط هذا الموقع مدعومة:-</value>
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>هذا المساعد سوف يمكنك من البدء في إعداد Lively</value>
+    <value>Tento sprievodca vám pomôže nastaviť Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>سيتطلب إصدار Windows N/KN تنزيل برامج ترميز إضافية لدعم تشغيل الفيديو في خلفيات.</value>
+    <value>Vaša N/KN verzia Windowsu bude potrebovať inštaláciu prídavných kodekov pre podporu prehrávania videopozadí</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>اضهر دعمك من خلال شراء كوب قهوة للمطور</value>
+    <value>Preukážte vývojárovi podporu kúpením kávy</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>أنت على وشك التغير إلى النسخة التجربية (المطور) من Lively.
-التحديثات ستكون متكررة وقد تحتوي على أخطاء!</value>
+    <value>Pokúšate sa prepnúť verziu Lively na beta (vývojárska).
+Aktualizácie budú častejšie a môžu obsahovať chyby!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>رؤية رمز بصرية النظام ، سوف تستمر في تشغيل الأيقونة المخفية</value>
+    <value>Viditeľnosť ikony v system tray. Vypnutím sa ikona skryje</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>أيقونة علبة النظام</value>
+    <value>Ikona v system tray</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>سيتم إعادة تشغيل البرنامج لتطبيق اللغة الجديدة</value>
+    <value>Lively sa reštartuje, aby sa nastavil nový jazyk</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>اللغة</value>
+    <value>Jazyk</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>فشل التحديث؛ حاول تحميل البرنامج من:
-https://github.com/rocksdanister/lively/releasases</value>
+    <value>Nepodarilo sa aktualizovať, skúste stiahnuť inštalátor z odkazu:
+https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>ملف الخلفية تالف, حاول إعادة تنزيله.</value>
+    <value>Súbor je poškodený. Skúste zopakovať sťahovanie</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>للأسف... يبدو أن شيئا ما قد احدث خطأ :(
-لفهم هذا الخطأ بشكل أفضل وإصلاح المشكلة ، شارك ملف السجل مع المطور.
-تعليمات لمشاركة ملف السجل:
+    <value>Ups... Vyzerá, že sa niečo pokazilo :(
+Aby sme túto chybu lepšie pochopili a mohli ju čo najskôr opraviť, podeľte sa o záznamový log s vývojárom.
+Návod na poslanie záznamového logu:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>لا يمكن للتطبيق أن يعمل بصورة صحيحة في حين أن وضع التباين العالي لويندزر مُمَكّن!
-عطّل وضع التباين العالي و حاول مرة أخرى</value>
+    <value>Lively nefunguje správne s povoleným režimom vysokého kontrastu v systéme Windows!
+Vypnite režim vysokého kontrastu a skúste to znova</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>تشغيل الوسائط فشل :(
-حاول تغيير مشغل الفيديو في إعدادات البرنامج.
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
 
-من أجل فهم هذا الخطأ بشكل أفضل وإصلاح المشكلة ، شارك ملف السجل مع المطور.
-تعليمات لمشاركة ملف السجل:
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>هذا ليس مِلَفّ ليفلي</value>
+    <value>Nejedná sa o súbor Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>لم يتم إغلاق التطبيق بشكل صحيح, هل تود استعادة الخلفيات السابقة؟</value>
+    <value>Lively nebol správne zatvorený a spustil sa v režime safe mode.
+Želáte si obnoviť predtým spustené pozadia?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>يبدو أنه يجب تعديل بعض الإعدادات لتشغيل Lively بشكل صحيح:
-1. اضغط مفتاحي Win + R معًا لفتح التشغيل،  
-2. اكتب SystemPropertiesPerformance.exe في التشغيل ثم انقر فوق "موافق" لفتح خيارات الأداء.
-3. قم بتفعيل/تحديد "تحريك عناصر النوافذ والتحكمات" (إذا كان مفعلًا مسبقًا فقم بإلغاء تحديده ثم تحديده مرة أخرى) وتطبيق التغييرات. 
-4. انقر فوق "تطبيق" ثم على "موافق" لإغلاق النافذة.
+    <value>Vyzerá, že ešte musíte nastaviť pár vecí, aby Lively fungoval:
+1. Stlačte klávesy Win + R na otvorenie okna spustenia
+2. Napíšte doň SystemPropertiesPerformance.exe a kliknite na tlačidlo "OK" na otvorenie nastavení výkonu
+3. Povoľte (zaškrtnite) možnosť "Animovať ovládacie prvky v oknách" (Ak už je zaškrtnutá, odškrtnite ju a znovu zaškrtnite)
+4. Kliknite na tlačidlo "Použiť" a potom na tlačidlo "OK"
 
-في حالة ويندوز 7 قم بـ - ضبطه لأقصى جودة مظهر وتطبيق التغييرات.
-إذا لم يعمل بعدها، اغلق Lively ثم اعد فتحه/إعادة تشغيل ويندوز.
-(قد لا يعمل في بعض بناءات ويندوز 10 إنسايدر)</value>
+Pre používateľov Windows 7 - nastavte "Nastaviť na dosiahnutie najvyššieho výkonu", kliknite na "Použiť"
+Ak aj napriek tomu Lively nefunguje, zatvorte a otvorte Lively alebo reštartujte Windows
+(Nefunguje na niektorých zostavách Windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>سيعمل التطبيق في الخلفية لعرض الوسائط</value>
+    <value>Lively musí bežať na pozadí, aby fungovalo prehrávanie pozadí</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>فتح التطبيق تِلقائياً عند تشغيل الحاسوب</value>
+    <value>Spustiť pri spustení Windowsu</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>أضف</value>
+    <value>Pridať</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>جميع الملفات</value>
+    <value>Všetky súbory</value>
   </data>
   <data name="Application.Text" xml:space="preserve">
-    <value>التطبيق</value>
+    <value>Aplikácia</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>المساهمة</value>
+    <value>(Atribúcia)</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>المصمم</value>
+    <value>Autor</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>رجوع</value>
+    <value>Späť</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>تصفح</value>
+    <value>Prehľadávať</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>إلغاء</value>
+    <value>Zrušiť</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>تغيير الخلفية</value>
+    <value>Zmeniť pozadia</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>اغلاق</value>
+    <value>Zavrieť</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>إغلاق</value>
+    <value>Zavrieť</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>تم!</value>
+    <value>Dokončené!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>انقر هنا لإدارة خلفيات.</value>
+    <value>Kliknite sem pre správu pozadí</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>التحويل إلى فيديو</value>
+    <value>Konvertovať na video</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>إنشاء معاينة</value>
+    <value>Vytvoriť náhľad</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>تخصيص</value>
+    <value>Prispôsobiť</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>تخصيص خلفية</value>
+    <value>Prispôsobiť</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>حذف الخلفية</value>
+    <value>Vymazať</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>الوصف</value>
+    <value>Popis</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>جميع الشاشة(ات)</value>
+    <value>Všetky obrazovky</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>لكل شاشة</value>
+    <value>Každá obrazovka zvlášť</value>
   </data>
   <data name="TextDownload.Content" xml:space="preserve">
-    <value>تحميل</value>
+    <value>Stiahnuť</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>تحرير</value>
+    <value>Upraviť</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>خطأ</value>
+    <value>Chyba</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>خروج</value>
+    <value>Ukončiť</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>حفظ إلى ملف</value>
+    <value>Uložiť ako súbor</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>بعض الميزات غير متوفرة في هذا الإصدار من البرنامج</value>
+    <value>Niektoré funkcie nie sú v tejto verzii Lively dostupné</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>لم يتم العثور على الملف</value>
+    <value>Súbor sa nenašiel</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF المتحركة</value>
+    <value>Animovaný GIF</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>أظهر بعض الحب بإعطائنا نجمة</value>
+    <value>Preukážte trochu vďaky tým, že dáte hviezdičku</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>اذهب</value>
+    <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>مساعدة في ترجمة البرنامج.</value>
+    <value>Pomôžte s prekladmi</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>ساعة(ات)</value>
+    <value>hodiny</value>
   </data>
   <data name="TextInstall.Content" xml:space="preserve">
-    <value>تثبيت</value>
+    <value>Inštalovať</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>لوحة المفاتيح</value>
+    <value>Klávesnica</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>آخر فحص</value>
+    <value>Naposledy skontrolované</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>إعرف أكثر</value>
+    <value>Ďalšie informácie</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>الترخيص</value>
+    <value>Licencie</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>دقيقة(دقائق)</value>
+    <value>minúty</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>المعلومات</value>
+    <value>Informácie</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>المزيد من الخلفيات</value>
+    <value>Viac pozadí</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>الماوس</value>
+    <value>Myš</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>تفاعل الفأرة عند التركيز على التطبيق</value>
+    <value>Interakcia myši, keď je zameranie na aplikáciu</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>التالي</value>
+    <value>Ďalšie</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>لا</value>
+    <value>Nie</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>إطفاء</value>
+    <value>Vyp.</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>حسنا</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>تشغيل</value>
+    <value>Zap.</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>عبر الإنترنت</value>
+    <value>Online</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>تشغيل لايفلي</value>
+    <value>Otvoriť Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>جميع العمليات</value>
+    <value>Všetky procesy</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
-    <value>ثلاثي الأبعاد</value>
+    <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>المعالجة الأمامية</value>
+    <value>Proces v popredí</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>ايقاف مؤقت للخلفيات</value>
+    <value>Pozastaviť pozadia</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>إنهاء</value>
+    <value>Ukončiť</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>لاشئ</value>
+    <value>Nič</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>توقف مؤقت</value>
+    <value>Pozastaviť</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>الصورة</value>
+    <value>Obrázok</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>معاينة الخلفية</value>
+    <value>Náhľad</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>سياسة الخصوصية</value>
+    <value>Ochrana osobných údajov</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>المعالجة</value>
+    <value>Spracovávanie</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>إزالة</value>
+    <value>Odstrániť</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>القاعدة</value>
+    <value>Pravidlo</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>شاشة</value>
+    <value>Obrazovka</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
-    <value>بحث</value>
+    <value>Hľadať</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>تعيين كخلفية</value>
+    <value>Nastaviť ako tapetu</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>عرض على القرص</value>
+    <value>Otvor umiestnenie súboru</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>المصدر</value>
+    <value>Zdroj</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>ابدأ</value>
+    <value>Spustiť</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>توقف</value>
+    <value>Zastaviť</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>هل تستمتع باستخدام Lively ؟  اترك مراجعة :)</value>
+    <value>Radi používate Lively? Zanechajte recenziu :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>الدعم</value>
+    <value>Podpora</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>التبديل إلى النسخة التجريبية (قناة التطوير)</value>
+    <value>Prepnúť na beta verziu (pre vývojárov)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>التبديل إلى النسخة المستقرة (القناة الافتراضية)</value>
+    <value>Prepnúť na stabilnú verziu (predvolené)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>العلامات</value>
+    <value>Tagy</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>ضبابي</value>
+    <value>Rozmazanie</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>صافي</value>
+    <value>Vymazať</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>اللون</value>
+    <value>Farba</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>طلق</value>
+    <value>Plynulý</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>Pozadie</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>ورق الجدران بطلاقة</value>
+    <value>Plynulé pozadie</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>كبير</value>
+    <value>Large</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>صغير</value>
+    <value>Small</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>العنوان</value>
+    <value>Názov</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>بلا رأس</value>
+    <value>Headless</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>خفيف</value>
+    <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>تنسيق المِلَفّ غير معتمد</value>
+    <value>Formát súboru nie je podporovaný</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>تحديث متوفر!</value>
+    <value>K dispozícii je aktualizácia!</value>
   </data>
   <data name="TextUpdateCheck.Content" xml:space="preserve">
-    <value>البحث عن تحديثات</value>
+    <value>Skontrolovať aktualizácie</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>خطأ في التحقق من التحديث</value>
+    <value>Nepodarilo sa skontrolovať aktualizáciu softvéru</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>التحقق من وجود تحديث</value>
+    <value>Kontrola aktualizácií</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>لايفلي مُحدَّث!</value>
+    <value>Softvér je aktuálny!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>فيديو</value>
+    <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>إدخال وسيطات سطر الأوامر الاختيارية</value>
+    <value>Zadajte voliteľné príkazy</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>ملء</value>
+    <value>Vyplniť</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>بلا</value>
+    <value>Žiadne</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>موحد</value>
+    <value>Rovnomerné</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>تعبئة موحدة</value>
+    <value>Rovnomerne vyplniť</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>كرر</value>
+    <value>Duplicate</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
-    <value>شاشة</value>
+    <value>Obrazovka</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>امتداد</value>
+    <value>Span</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>النوع</value>
+    <value>Druh</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>موقع</value>
+    <value>Stránka</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>Webový stream</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>مرحبا بكم</value>
+    <value>Vitajte</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>نعم</value>
+    <value>Áno</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>مشغّل الفيديو:</value>
+    <value>Video prehrávač</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>تعيين جميع أنواع الملفات المدعومة كخلفية.</value>
+    <value>Nastavte akýkoľvek podporovaný súbor ako pozadie</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>قم بتعيين صفحة الويب لعنوان URL الذي أدخلته كخلفية.</value>
+    <value>Nastaviť zadané URL (stránku) ako pozadie</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عندما يكون التطبيق في التركيز.</value>
+    <value>Set what to do when any application is in focus</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عند تشغيل الألعاب / التطبيقات بوضع ملء الشاشة.</value>
+    <value>Nastavte, čo sa stane, keď je nejaká aplikácia zobrazená na celú obrazovku</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>تعيين قواعد تشغيل خلفية مختلفة على أساس تشغيل التطبيق.</value>
+    <value>Pozadie sa pozastaví, keď sú spustené tieto aplikácie</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>تتكيف البرنامج مع إعدادات موضوع النظام ، لتغيير المظهر ، انتقل إلى:</value>
+    <value>Lively sa prispôsobí systémovému nastaveniu motívu, zmení vzhľad</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(بالنسبة للأنظمة التي تعمل بالبطارية فقط) قم بتغيير التشغيل عند فصل طاقة التيار المتردد.</value>
+    <value>Prehrávanie sa zmení pri odpojení z napájania</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>أدخل المنفذ لتصحيح أخطاء خلفيات صفحة الويب ، يلزم إعادة تشغيل المتصفح حتى تصبح التغييرات نافذة المفعول.
-عندما تكون جاهزة انتقل إلى http://localhost:portnumber للوصول إلى وحدة تحكم المطور.</value>
+    <value>Zadajte port na debugovanie webových pozadí. Potom navštívte http://localhost:cisloportu na prístup do vývojárskej konzoly</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>عرض قائمة المطور</value>
+    <value>Zobrazí vývojárske možnosti</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>تعيين صورة خلفية متحركة كخلفية سطح المكتب.</value>
+    <value>Nastavte si obrázok animovaného pozadia ako pozadie</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>إيقاف الخلفية مؤقتا على جميع الشاشات أو الشاشة التي يركز عليها التطبيق فقط</value>
+    <value>Pozastaviť pozadie na všetkých obrazovkách alebo len na tej, kde je zameranie na aplikáciu</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>إنشاء ملف تقرير السجل.</value>
+    <value>Vytvorí záznamový log</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>حدد المشغل المستخدم لخلفية gif.</value>
+    <value>Vyberte, ktorý prehrávač sa použije na prehrávanie GIF pozadí</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>الانتهاء من الإعداد للمتابعة.</value>
+    <value>Najprv dokončite prípravu</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>قم بتعيين صورة خلفية متحركة كخلفية لشاشة القفل.</value>
+    <value>Nastaviť obrázok animovaného pozadia ako pozadie</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>المقدمة: خفيفة الوزن، يتحقق فقط من العملية الفردية الموجودة في المقدمة لتحديد سلوك تشغيل ورق الجدران.
-جميع العمليات: أثقل، بمسح كل عملية لتحديد سلوك التشغيل.</value>
+    <value>Algoritmus na pozastavenie pozadia</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تمكين وضع توفير الطاقة للويندوز</value>
+    <value>Zmení prehrávanie, keď je zapnutý režim šetrenia batérie vo Windowse</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تشغيل جِلسة سطح المكتب عن بعد</value>
+    <value>Zmení prehrávanie, keď pristupujete zo vzdialenej pracovnej plochy</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>بعد مدّة عدم النشاط، استخدم خلفية الشاشة الحالية كشاشة توقف على جهازك</value>
+    <value>Po uplynutí zadanej doby neaktivity nastaví aktuálne pozadie ako šetrič obrazovky</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>إذا تم اكتشاف رابط دفق الفيديو المدعوم استخدم مشغل الفيديو بدلا من تحميل صفحة الويب</value>
+    <value>Ak sa detegne odkaz na stream, bude na prehratie použitý prehrávač videa namiesto načítania stránky</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>حدد جودة الفيديو المطلوبة للتدفقات عبر الإنترنت.</value>
+    <value>Vyberte si video kvalitu, ktorou sa budú streamy prehrávať</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>تغيير البرنامَج تتلق منا لبيتا إلى المستقر أو العكس</value>
+    <value>Zmeňte vydanie softvéru z beta na stabilné alebo naopak</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>تغيير مظهر شريط مهام النظام</value>
+    <value>Zmení vzhľad panelu úloh</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>حجم البلاط ورق الجدران في المكتبة.</value>
+    <value>Size of the wallpaper tiles in Library</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>بالنسبة للأنظمة المنخفضة حدًا ، حدد الوضع البسيط.</value>
+    <value>For low-end systems select Lite mode</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>استخدام تسريع الأجهزة عندما يكون ذلك ممكنا.</value>
+    <value>Ak je to možné, použije sa hardvérová akcelerácia</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>حدد المشغل المستخدم لخلفية الفيديو.</value>
+    <value>Vyberte, ktorý prehrávač sa použije na prehrávanie videopozadí</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>المسار المستخدم لتخزين ملفات ورق الجدران.</value>
+    <value>Cesta k priečinku, kde sú uložené pozadia</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>خوارزمية قياس ورق الجدران.</value>
+    <value>Algoritmus na škálovanie pozadí</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>حدد طرق التفاعل مع ورق الجدران.</value>
+    <value>Vyberte spôsoby na interakciu s pozadím</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة.</value>
+    <value>Ako sa pozadie aplikuje na pripojené obrazovky</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>إيقاف تشغيل خلفية الشاشة مؤقتا عندما لا يكون سطح المكتب مركزا.</value>
+    <value>Pozastaviť prehrávanie pozadia, keď nie je zameranie na pracovnú plochu</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>تخزين الملفات المؤقتة على القرص بدلا من الذاكرة ، يتم استعادة الإعدادات عند إعادة تشغيل المتصفح.</value>
+    <value>Ukladať dočasné súbory na disk namiesto pamäte</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) هو محرك كروم خفيف الوزن.
-Edge هو عرض الويب المدمج في windows 10.</value>
+    <value>Vyberte, ktorý prehrávač sa použije na prehrávanie HTML pozadí</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>حول</value>
+    <value>Informácie</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>إضافة</value>
+    <value>Pridať pozadie</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>تركيز تطبيق آخر:</value>
+    <value>Zameranie na aplikáciu</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>تطبيقات وضع ملء الشاشة الأخرى:</value>
+    <value>Aplikácia na celú obrazovku</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>خلفيات حية</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>قواعد التطبيق</value>
+    <value>Pravidlá pri aplikáciách</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>سمة</value>
+    <value>Motív</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>تشغيل الصوت على الشاشة</value>
+    <value>Prehrávať na obrazovke zvuk</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>عندما يكون على وضع البطارية:</value>
+    <value>Pri napájaní z batérie</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>تصفح للفيديو ، صورة متحركة ، صفحة ويب. ملف للتعيين كخلفية</value>
+    <value>Prehľadávať videá, GIFy, stránky... súbory vhodné ako pozadie</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>منفذ التصحيح</value>
+    <value>Port na debugovanie</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>سِجل التغييرات</value>
+    <value>Zoznam zmien</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>المجتمع</value>
+    <value>Komunita</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>التصحيح</value>
+    <value>Debugovanie</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>تأكيد الحذف</value>
+    <value>Potvrdiť zmazanie</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>صورة سطح المكتب</value>
+    <value>Obrázok ako pozadie</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>عرض قاعدة الإيقاف المؤقت:</value>
+    <value>Pravidlo pozastavenia</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>الوثائق</value>
+    <value>Dokumentácia</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>ادخل عنوان URL</value>
+    <value>Zadať adresu URL</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>ملف السجل</value>
+    <value>Záznamový log súbor</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>عام:</value>
+    <value>Hlavné</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>مشغل Gif</value>
+    <value>Prehrávač GIFov</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>مساعدة</value>
+    <value>Pomoc</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>التفاعل</value>
+    <value>Interakcia</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>المكتبة</value>
+    <value>Knižnica</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>الإعداد Lively </value>
+    <value>Príprava Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>الموقع</value>
+    <value>Poloha</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>صورة شاشة القفل</value>
+    <value>Obrázok na uzamknutej obrazovke</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>متنوعة</value>
+    <value>Rôzne</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>كتم الصوت</value>
+    <value>Stlmiť</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>إيقاف مؤقت للخوارزمية:</value>
+    <value>Pozastavovací algoritmus</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>الأداء:</value>
+    <value>Výkon</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>قائمة التشغيل</value>
+    <value>Playlist</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>يرجى الإنتظار</value>
+    <value>Prosím, počkajte</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>عندما يكون على وضع البطارية</value>
+    <value>Pri zapnutom šetriči batérie</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>عندما يكون على سطح المكتب البعيد</value>
+    <value>Pri pristupovaní zo vzdialenej pracovnej plochy</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>الإبلاغ عن الخطأ</value>
+    <value>Nahlásiť chybu</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>التحجيم/ الاحتواء</value>
+    <value>Škálovanie/Prispôsobenie</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>تخطيط الشاشة</value>
+    <value>Ovládací panel</value>
   </data>
   <data name="TitleScreensaver.Content" xml:space="preserve">
-    <value>شاشة التوقف</value>
+    <value>Šetrič obrazovky</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
-    <value>عند الاستئناف، عرض شاشة تسجيل الدخول</value>
+    <value>Po skončení šetriča zobraziť prihlásenie</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>تحديد ملف</value>
+    <value>Vybrať súbor</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>الإعدادات</value>
+    <value>Nastavenia</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>تخطي التأكيد</value>
+    <value>Preskočiť potvrdenie</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>شفرة المصدر</value>
+    <value>Zdrojový kód</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>متجر</value>
+    <value>Obchod</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>Stream</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>كشف تيارات</value>
+    <value>Detegovať streamy</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>جودة الفيديو</value>
+    <value>Kvalita videa</value>
   </data>
   <data name="System.Text" xml:space="preserve">
-    <value>النظام</value>
+    <value>Systém</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>موضوع شريط المهام</value>
+    <value>Motív panelu úloh</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>حجم البلاط</value>
+    <value>Veľkosť dlaždice</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>واجهة المستخدم</value>
+    <value>Užívateľské rozhranie</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>التحديثات</value>
+    <value>Aktualizácie</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>فيديو</value>
+    <value>Video</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>وحدة فك تشفير GPU</value>
+    <value>Dekódovanie pomocou GPU</value>
   </data>
   <data name="TitleWallpaper.Content" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>Pozadie</value>
   </data>
     <data name="TitleCustomise.Content" xml:space="preserve">
-    <value>تخصيص</value>
+    <value>Prispôsobiť</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>دليل ورق الجدران</value>
+    <value>Priečinok pozadí</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>نقل خلفيات موجودة إلى مجلد جديد</value>
+    <value>Presúvať existujúce pozadia do nového priečinka</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>اختيار صالح</value>
+    <value>Prispôsobenie veľkosti</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>إدخال ورق الحائط</value>
+    <value>Vstup</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>حدد تخطيط الخلفية:-</value>
+    <value>Rozloženie</value>
   </data>
   <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>تشغيل الخلفية:</value>
+    <value>Prehrávanie pozadia</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>تحذير</value>
+    <value>Upozornenie</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>متصفح الويب:</value>
+    <value>Webový prehliadač</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>ذاكرة التخزين المؤقت على القرص</value>
+    <value>Používať disk ako vyrovnávaciu pamäť</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>محرك</value>
+    <value>Engine</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>تحميل الصفحة</value>
+    <value>Načítať stránku</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>إبقاء واجهة المستخدم تعمل من أجل بدء تشغيل أسرع</value>
+    <value>Ponechať užívateľské rozhranie spustené pre rýchlejšie spúšťanie</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>بدأ تشغيل اسرع</value>
+    <value>Rýchle spúšťanie</value>
   </data>
   <data name="WallpaperDirGroup.Text" xml:space="preserve">
-    <value>الملف</value>
+    <value>Úložisko</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>داكن</value>
+    <value>Tmavá</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>ابيض</value>
+    <value>Svetlá</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>النظام</value>
+    <value>Systém</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>إعدادات لون Windows</value>
+    <value>Nastavenie farieb vo Windowse</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>الحواسيب المحمولة</value>
+    <value>Laptopy</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
-    <value>مطور</value>
+    <value>Vývojárske</value>
   </data>
   <data name="AppearanceBehaviour.Text" xml:space="preserve">
-    <value>المظهر والسلوك</value>
+    <value>Vzhľad a správanie</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>خلفيات نشطة</value>
+    <value>Aktívne pozadie(a)</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>المعرض</value>
+    <value>Galéria</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>مرحباً، أنا داني جون معروف أيضًا باسم rocksdanister. لقد طورت تطبيق Lively والمفتوح المصدر (FOSS). شكراً على تخصيص الوقت للنظر في عملي.</value>
+    <value>Ahoj, volám sa Dani John, taktiež známy ako rocksdanister. Som vývojárom Lively, čo je zdarma open-source (FOSS) aplikácia na zmenu pozadia. Ďakujem, že si si našiel čas, aby si si obzrel moju prácu.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>ترخيص البرنامج</value>
+    <value>Licencia</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>إشعار برنامج الطرف الثالث</value>
+    <value>Third-party softvérové oznámenia</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>سياسة جمع البيانات</value>
+    <value>Zásady zhromažďovania údajov</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>إضافة خلفية</value>
+    <value>Pridať pozadie</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>قريباً</value>
+    <value>Už čoskoro</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
-    <value>حول</value>
+    <value>Informácie</value>
   </data>
   <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>موقع</value>
+    <value>Stránka</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>فتح</value>
+    <value>Otvoriť</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>حفظ</value>
+    <value>Uložiť</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>تأثيرات واجهة المستخدم والرسوم المتحركة</value>
+    <value>Efekty používateľského rozhrania a animácie</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>واجهة المستخدم</value>
+    <value>Používateľské rozhranie</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>خفيف</value>
+    <value>Jednoduché</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>عادي</value>
+    <value>Normálne</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة</value>
+    <value>Ako sa šetrič obrazovky aplikuje na pripojené obrazovky</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>نوع شاشة التوفير</value>
+    <value>Druh šetriča obrazovky</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>مخصص</value>
+    <value>Custom</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>تشبه الخلفية</value>
+    <value>Mirror Wallpaper</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>إضافة مطلوبة</value>
+    <value>Vyžaduje sa plugin</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>مطلوب في المرة الأولى الإعداد لتشغيل شاشة التوقف</value>
+    <value>Na fungovanie je potrebné jednorazové nastavenie šetriča obrazovky</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>اختيار الشاشة دائماً عند اختيار الخلفية</value>
+    <value>Vždy dať na výber obrazovku pri výbere pozadia</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>الحساب</value>
+    <value>Účet</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>حذف الحساب</value>
+    <value>Vymazať účet</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>تصدير البيانات</value>
+    <value>Exportovať údaje</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>Prihlásiť sa</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>تسجيل الخروج</value>
+    <value>Odhlásiť sa</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>المجموعة</value>
+    <value>Zbierka</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>الرئيسية</value>
+    <value>Domov</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>إدارة</value>
+    <value>Spravovať</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>الملف الشخصي</value>
+    <value>Profil</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>الرجاء تسجيل الدخول للمتابعة</value>
+    <value>Prosím, prihláste sa, ak chcete pokračovať</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>مرحباً</value>
+    <value>Ahoj,</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>لقد وجدنا هذه الخلفيات في حسابك</value>
+    <value>V tvojom účte sme našli tieto pozadia</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>حمل الان</value>
+    <value>Stiahnuť teraz</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>ربما لاحقاً</value>
+    <value>Možno neskôr</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>تحديد الكل</value>
+    <value>Vybrať všetky</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>عدم تحديد شيء</value>
+    <value>Nevybrať žiadne</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>أهلاً بعودتك!</value>
+    <value>Vitajte spať!</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>أسباب</value>
+    <value>Dôvody</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>انتهاك لحقوق النشر</value>
+    <value>Porušenie autorských práv</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>معلومات مضلِّلة</value>
+    <value>Zavádzajúce informácie</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>آخر</value>
+    <value>Iné</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>رسائل متكررة</value>
+    <value>Spam</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>يحتوي على عنف أو تعري</value>
+    <value>Nahota alebo násilie</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>ملاحظات إضافيه</value>
+    <value>Dodatočné poznámky</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>إبلاغ</value>
+    <value>Nahlásiť</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>الإبلاغ عن الخلفية</value>
+    <value>Nahlásiť pozadie</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>إرسال</value>
+    <value>Odoslať</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>يرجى تأكيد هذا الإجراء لأنه لا يمكن التراجع عنه</value>
+    <value>Prosím, potvrďte tento krok, nakoľko sa NEDÁ vrátiť späť</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>فشل حذف الحساب ، يرجى المحاولة مرة أخرى في وقت لاحق</value>
+    <value>Nepodarilo sa vymazať účet. Skúste to, prosím, neskôr</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>هل تريد إلغاءه؟</value>
+    <value>Želáte si ho prerušiť?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>يرجى الانتظار</value>
+    <value>Čakať</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>جاري التحميل</value>
+    <value>Prebieha sťahovanie</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>المساهمين</value>
+    <value>Prispievatelia</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>مشاركة</value>
+    <value>Zdieľať</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>مشاركة خلفيات</value>
+    <value>Zdieľať pozadie</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>تحميل المَعْرِض</value>
+    <value>Uverejniť v galérii</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>نسخ الرابط</value>
+    <value>Kopírovať odkaz</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>تخصيص خلفية</value>
+    <value>Prispôsobiť pozadie</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>إغلاق الخلفية</value>
+    <value>Zavrieť pozadia</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>اختيار التطبيق</value>
+    <value>Vybrať aplikáciu</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>الحجم</value>
+    <value>Veľkosť</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>الرجاء تثبيت الإضافة المطلوبة</value>
+    <value>Prosím, nainštalujte potrebný plugin</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>الإضافة غير موجودة</value>
+    <value>Plugin nebol nájdený</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>اكتمل التحديث</value>
+    <value>Aktualizácia dokončená</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>تفقد ما هوى جديد</value>
+    <value>Čo je nové</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>اللون</value>
+    <value>Farba</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>استخدام الإعداد التلقائي للنظام</value>
+    <value>Použiť predvolené systémom</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>التكيف مع الخلفية</value>
+    <value>Prispôsobiť pozadiu</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>افتراضي</value>
+    <value>Predvolené</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>متغير</value>
+    <value>Dynamické</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>خلفية</value>
+    <value>Motív</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>لمنع التحديد العرضي لأيقونات سطح المكتب مخفية حاليا</value>
+    <value>Aby sa zabránilo náhodnému označeniu, ikony na ploche sú momentálne skryté</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>ايقونة سطح المكتب</value>
+    <value>Ikony na ploche</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>هذا كل شيء حتى الآن..</value>
+    <value>To je nateraz všetko...</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>تطوير هذه المِيزة قيد الانتظار</value>
+    <value>Vývoj tejto funkcie je pozastavený</value>
   </data>
   <data name="WallpaperPluginGroup.Text" xml:space="preserve">
-    <value>الإضافات</value>
+    <value>Pluginy</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>إنشاء خلفية متحركة</value>
+    <value>Vytvoriť dynamické pozadie</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>متقدم</value>
+    <value>Rozšírené</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>حساب عمق تقريبي للصورة..</value>
+    <value>Odhadovanie hĺbky...</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>استخدام الذكاء الاصطناعي لتحويل الصور إلى ثلاثية الأبعاد</value>
+    <value>Použiť AI na pretvorenie fotografií do 3D</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>استمر</value>
+    <value>Pokračovať</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>إنشاء خلفية بسيطة</value>
+    <value>Vytvoriť jednoduché pozadie</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>خلفية ذات عمق باستخدام الذكاء الاصطناعي</value>
+    <value>Hĺbkové pozadie s AI</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>خلفية ذات عمق</value>
+    <value>Pozadie s hĺbkou</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>خلفية ذات عمق مصنوعة باستخدام الذكاء الاصطناعي</value>
+    <value>Pozadie s AI generovanou hĺbkou</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>إنشاء خلفية</value>
+    <value>Vytvoriť pozadie</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>بعض الوظائف قد لا تكون متاحة عند التشغيل كمدير</value>
+    <value>Niektoré funkcie nemusia byť dostupné, keď aplikácia beží ako správca</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>يجب تحميل ملفات أضافية لهذه المِيزة</value>
+    <value>Táto funkcia si vyžaduje prídavné súbory</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>التنزيل مطلوب</value>
+    <value>Vyžaduje sa stiahnutie</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>تحميل</value>
+    <value>Stiahnuť</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value/>
+    <value>Become a Patreon supporter</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value/>
+    <value>Thanks to all the members who support this project.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>داعمين باتريون</value>
+    <value>Patreon Supporters</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>اختر شاشة التوقف</value>
+    <value>Select screensaver</value>
   </data>
 </root>

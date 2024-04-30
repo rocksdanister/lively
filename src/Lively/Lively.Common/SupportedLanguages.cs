@@ -49,6 +49,11 @@ namespace Lively.Common
             new LanguagesModel("lietuvių kalba(lt)", new string[] { "lt", "lt-LT" }),
             new LanguagesModel("Afrikaans(af)", new string[] { "af", "af-ZA" }),
             new LanguagesModel("Dansk(da)", new string[] { "da", "da-DK" }),
+            new LanguagesModel("беларуская мова(be-BY)", new string[] { "be", "be-BY" }),
+            new LanguagesModel("galego(gl-ES)", new string[] { "gl", "gl-ES" }),
+            new LanguagesModel("қазақ тілі(kk-KZ)", new string[] { "kk", "kk-KZ" }),
+            new LanguagesModel("မြန်မာဘာသာ(my-MM)", new string[] { "my", "my-MM" }),
+            new LanguagesModel("slovenčina(sk-SK)", new string[] { "sk", "sk-SK" }),
         };
 
         public static ReadOnlyCollection<LanguagesModel> Languages => Array.AsReadOnly(languages);

@@ -226,7 +226,7 @@ Actualizările vor fi frecvente și poate să nu meargă stabil!</value>
     <value>Lively va reporni pentru a aplica o nouă limbă</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Limbă</value>
+    <value>Limbă romana</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Actualizare eșuată; încearcă să descarci programul de instalare de la:

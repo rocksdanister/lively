@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>ဒက်စ်တော့ကို အာရုံစိုက်ထားမှသာ အသံဖွင့်ပါ။</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>နောက်ခံပုံများအားလုံး၏ အသံအတိုးအကျယ်အဆင့်</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>အသံအတိုးအကျယ်</value>
+  </data>
+  <data name="AudioGroup.Text" xml:space="preserve">
+    <value>အသံ</value>
+  </data>
+  <data name="Community.Description" xml:space="preserve">
+    <value>အွန်လိုင်းဆွေးနွေးပွဲဖိုရမ်</value>
+  </data>
+  <data name="Documentation.Description" xml:space="preserve">
+    <value>API စာရွက်စာတမ်းနှင့် အကူအညီ</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>Lively သည် ဆိုးရွားသော အမှားတစ်ခုနှင့် ကြုံတွေ့ခဲ့ရသည်။
+
+Windows Explorer သည် ပြီးခဲ့သည့် 30 စက္ကန့်အတွင်း နှစ်ကြိမ် ပြန်လည်စတင်ခဲ့သည်။ ၎င်းသည် Lively နှင့် အခြားသော desktop စိတ်ကြိုက်ဆော့ဖ်ဝဲ သို့မဟုတ် Windows အကြား ပဋိပက္ခဖြစ်နိုင်သည်။ နောက်ထပ်ပြဿနာများကိုရှောင်ရှားရန်၊ နောက်ခံပုံများအားလုံးကိုရပ်စဲထားသည်။</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>သဟဇာတမဖြစ်သော ပရိုဂရမ်ကို တွေ့ရှိသည်၊ အလုပ်ဘား အပြင်အဆင်ကို ပိတ်ထားသည်။</value>
+  </data>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Lively Wallpaper ၏တရားဝင်ဝဘ်စာမျက်နှာ</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>ခေတ်မီ LCD နှင့် LED ဖန်သားပြင်အများစုသည် မီးလောင်မှုပြဿနာကို မခံစားရသောကြောင့် မည်သည့်နောက်ခံပုံများကို စခရင်စခန်ဆာဗာအဖြစ် အသုံးပြုနိုင်သည်။
+
+OLED၊ Plasma သို့မဟုတ် CRT ဖန်သားပြင်များအတွက် မီးလောင်မှုကို လျော့ပါးသက်သာစေရန် ပုံမှန်ရွေ့လျားမှုနှင့် အလုံးစုံမှောင်မိုက်သော အပြင်အဆင်ကို အသုံးပြုရန် အကြံပြုထားသော်လည်း ဤအင်္ဂါရပ်သည် စမ်းသပ်မရသေးဘဲ ၎င်း၏ထိရောက်မှုကို အာမမခံနိုင်ပါ။
+
+Lively's screensavers ၏ အဓိကရည်ရွယ်ချက်မှာ သင့်ကွန်ပြူတာတွင် စိတ်ကြိုက်ပြင်ဆင်ခြင်းအလွှာကို ပေါင်းထည့်ရန်ဖြစ်ပြီး၊ သင့်ကိုယ်ပိုင်အန္တရာယ်ဖြင့် မီးလောင်ခြင်းအတွက် ကာကွယ်မှုအဖြစ် စခရင်ခရင်ကို အသုံးပြုပါ။</value>
+  </data>
+  <data name="ReportBug.Description" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲတွင် ပြဿနာတစ်ခုကို သတင်းပို့ပါ။</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>ဖိုင်တစ်ခုကို ရွေးပါ။</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Wallpaper playback behaviour based on running application</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>ပယ်ဖျက်လိုသည်မှာ သေချာပါသလား။</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>ဤနောက်ခံပုံကို ဒစ်ခ်မှ အပြီးတိုင်ဖျက်လိုသည်မှာ သေချာပါသလား။</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>ဤနောက်ခံပုံကို စာကြည့်တိုက်မှ ဖျက်လိုသည်မှာ သေချာပါသလား။</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>ဖိုင်များကို ဤနေရာတွင် ဆွဲယူ၍ ချလိုက်ပါ။</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>သင်သည် နောက်ခံပုံအဖြစ် ပြင်ပအပလီကေးရှင်းတစ်ခုကို ဖွင့်နေပါသည်။
+အန္တရာယ်ရှိသော အပလီကေးရှင်းများသည် မဲလ်ဝဲ၊ ဗိုင်းရပ်စ်များကို လက်ခံဆောင်ရွက်ပေးနိုင်ပြီး သင့်စနစ်အား အန္တရာယ်ဖြစ်စေနိုင်သည်။
+ဤအပလီကေးရှင်းသည် ယုံကြည်စိတ်ချရသောအရင်းအမြစ်မှ လာမှသာ ဆက်လက်လုပ်ဆောင်ပါ။</value>
+  </data>
+  <data name="MinimizedTray.Text" xml:space="preserve">
+    <value>တက်ကြွမှုကို systemtray သို့ လျှော့ချထားပြီး ရှေ့ဆက်ရန် သက်ဝင်လှုပ်ရှားနေသော အိုင်ကွန်ကို ညာကလစ်နှိပ်ပါ။</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>ဆက်တင်များအကျိုးသက်ရောက်စေရန်အတွက် Lively ကို ပြန်လည်စတင်ပါ။</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>ဆက်မလုပ်မီ ရပ်တန့်ပါ။</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>စတင်ရိုက်ကူးရန် နှိပ်ပါ။</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>လက်ရှိတွင် ယခင်နောက်ခံပုံ(များ)ကို ပြန်လည်ရယူနေသည်၊ ကျေးဇူးပြု၍ ခဏစောင့်ပါ...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>Display ကို ရွေးပါ။</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲလ်ဗားရှင်းအသစ် ရနိုင်ပါပြီ။</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>ဤ wizard သည် Lively ကိုစဖွင့်သတ်မှတ်ခြင်းတွင်သင့်အားစတင်စေလိမ့်မည်။</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>သင်၏ Windows N/KN ဗားရှင်းသည် နောက်ခံပုံများတွင် ဗီဒီယိုပြန်ဖွင့်ခြင်းကို ပံ့ပိုးရန် နောက်ထပ်ကုဒ်ဒစ်များကို ဒေါင်းလုဒ်လုပ်ရန် လိုအပ်ပါသည်။</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>Developer ကော်ဖီကို ဝယ်ယူခြင်းဖြင့် ပံ့ပိုးမှုကို ပြသပါ။</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>သင်သည် Lively ၏ beta (ဆော့ဖ်ဝဲအင်ဂျင်နီယာ) သို့ ပြောင်းလဲပါတော့မည်။
+အပ်ဒိတ်များသည် မကြာခဏဖြစ်မည်ဖြစ်ပြီး ချွတ်ယွင်းချက်များ ပါဝင်နိုင်သည်။</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>စနစ်-ဗန်းအိုင်ကွန် မြင်နိုင်စွမ်း၊ သက်ဝင်သော အိုင်ကွန်ကို ဝှက်ထားခြင်းဖြင့် ဆက်လက်လည်ပတ်နေပါမည်။</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>စနစ်-ဗန်း သင်္ကေတ</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>ဘာသာစကားအသစ်ကို အသုံးပြုရန် တက်ကြွစွာ ပြန်လည်စတင်ပါမည်။</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>ဘာသာစကား</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>အပ်ဒိတ်လုပ်ရန် မအောင်မြင်ပါ။ Installer ကို https://github.com/rocksdanister/lively/releases မှ ဒေါင်းလုဒ်လုပ်ကြည့်ပါ။</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>ပျက်စီးနေသော နောက်ခံဖိုင်ကို ပြန်လည်ဒေါင်းလုဒ်လုပ်ကြည့်ပါ။</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>အိုး... တစ်ခုခု မှားသွားပုံပဲ :(
+ဤအမှားကို ပိုမိုနားလည်ပြီး ပြဿနာကို ဖြေရှင်းရန်အတွက် မှတ်တမ်းဖိုင်ကို ဆော့ဖ်ဝဲအင်ဂျင်နီယာနှင့် မျှဝေပါ။
+မှတ်တမ်းဖိုင်မျှဝေခြင်းအတွက် လမ်းညွှန်ချက်များ-
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>Windows High Contrast မုဒ်ကို ဖွင့်ထားခြင်းဖြင့် Lively ကောင်းစွာ အလုပ်မလုပ်နိုင်ပါ။
+High Contrast မုဒ်ကိုပိတ်ပြီး ထပ်စမ်းကြည့်ပါ။</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>Lively နောက်ခံပုံ ဖိုင်မဟုတ်ပါ။</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>Lively သည် လုံခြုံသောမုဒ်တွင် စတင်၍ ကောင်းစွာပိတ်မထားပါ။
+ယခင်က အသုံးပြုနေသည့် နောက်ခံပုံများကို ပြန်လည်ရယူလိုပါသလား။</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>Lively အလုပ်လုပ်ရန် အချို့သော ဆက်တင်များကို သတ်မှတ်ရန် လိုအပ်ပုံပေါ်သည်-
+1. Run ကိုဖွင့်ရန် Win + R ခလုတ်များကို နှိပ်ပါ၊
+2. Run ထဲသို့ SystemPropertiesPerformance.exe ဟုရိုက်ထည့်ကာ Performance Options ကိုဖွင့်ရန် "OK" ကိုနှိပ်ပါ။
+3. "ဝင်းဒိုးများအတွင်း သက်ဝင်လှုပ်ရှားနေသော ထိန်းချုပ်မှုများနှင့် ဒြပ်စင်များ" ကို ဖွင့်/စစ်ဆေးပါ (စစ်ဆေးပြီးပါက၊ အမှန်ခြစ်ဖြုတ်ပြီး စစ်ဆေးပါ) &amp; အသုံးပြုပါ။
+4. "Apply" ကိုနှိပ်ပြီး window ကိုပိတ်ရန် "OK" ကိုနှိပ်ပါ။
+
+အကယ်၍ Windows 7 ကို သတ်မှတ်လိုက်လျှင် - အကောင်းဆုံးအသွင်အပြင်အတွက် ချိန်ညှိပါ &amp; လျှောက်ထားပါ။
+အလုပ်မလုပ်သေးပါက ပိတ်ပြီး Lively ပြန်စပါ/ windows ကို ပြန်လည်စတင်ပါ။
+(အချို့အတွင်းပိုင်း windows 10 တည်ဆောက်မှုများတွင် အလုပ်မလုပ်ပါ။)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>နောက်ခံပုံဖွင့်ခြင်းအတွက် Lively သည် နောက်ခံတွင်လည်ပတ်ရန်လိုအပ်သည်။</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>Windows ဖြင့် စတင်ပါ။</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>ထည့်ပါ။</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>ဖိုင်များအားလုံး</value>
+  </data>
+  <data name="Application.Text" xml:space="preserve">
+    <value>အက်ပလီကေးရှင်း</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>ထည့်တွက်ခြင်း</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>စာရေးသူ</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>ပြန်လှည့်</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>ရှာဖွေရန်</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>မလုပ်တော့</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>နောက်ခံပုံများပြောင်းပါ။</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>ပိတ်ပါ</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>ပိတ်ပါ</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>ပြီးစီးပါပြီ။</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>နောက်ခံပုံများ စီမံရန် ဤနေရာကိုနှိပ်ပါ</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>ဗီဒီယိုသို့ ပြောင်းပါ</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>အစမ်းကြည့် ဖန်တီးပါ</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>စိတ်ကြိုက်လုပ်ပါ</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>စိတ်ကြိုက်လုပ်ပါ</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>ဖျက်ပါ</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>ဖော်ပြချက်</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>မျက်နှာပြင်(များ) အားလုံး</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>မျက်နှာပြင်အလိုက်</value>
+  </data>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>ဒေါင်းလုဒ်လုပ်ပါ</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>တည်းဖြတ်ပါ</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>အမှား</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>ထွက်ပါ</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>ဖိုင်တွင်သိမ်းဆည်းပါ</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>အချို့သောဝန်ဆောင်မှုများသည် Lively ဗားရှင်းတွင် မရရှိနိုင်ပါ</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>ဖိုင်မတွေ့ပါ</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>ကာတွန်း GIF</value>
+  </data>
+  <data name="SourceCode.Description" xml:space="preserve">
+    <value>ကြယ်တစ်ပွင့် ပစ်ချခြင်းဖြင့် အချစ်ကို ပြသပါ</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
+    <value>ဘာသာပြန်ဆိုမှုကူညီပါ</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>နာရီ(များ)</value>
+  </data>
+  <data name="TextInstall.Content" xml:space="preserve">
+    <value>တပ်ဆင်ပါ</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>ကီးဘုတ်</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>နောက်ဆုံး စစ်ဆေးခဲ့သော</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>ပိုမိုသိရှိရန်</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>လိုင်စင်</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>မိနစ်(များ)</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>အချက်အလက်</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>နောက်ထပ် နောက်ခံပုံများ</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>မောက်စ်</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>အပလီကေးရှင်းကို အာရုံစိုက်သည့်အခါ မောက်စ် အပြန်အလှန်တုံ့ပြန်မှု</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>နောက်တစ်ခု</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>ဟင့်အင်း</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>ပိတ်</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>အိုကေ</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>ဖွင့်</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>အွန်လိုင်း</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Lively ကိုဖွင့်ပါ</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>လုပ်ငန်းစဉ်အားလုံး</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>တိုက်ရိုက်3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>ရှေ့လုပ်ငန်းစဉ်</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>နောက်ခံပုံများကို ခဏရပ်ပါ</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>သတ်ပါ</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>ဘာမှ</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>ရပ်</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>ပုံ</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>ကြိုတင်ကြည့်ရှုပါ</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>မူပိုင်ခွင့် မူဝါဒ</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>လုပ်ဆောင်နေသည်</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>ဖယ်ရှားပါ။</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>စည်းကမ်း</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>မျက်နှာပြင်</value>
+  </data>
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
+    <value>ရှာရန်</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>Wallpaper အဖြစ် သတ်မှတ်ပါ</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>ဖိုင်တည်နေရာကိုဖွင့်ပါ</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>အရင်းအမြစ်</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>စတင်ပါ</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>ရပ်</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>Lively ကို သုံးရတာ နှစ်သက်ပါသလား။ သုံးသပ်ချက်ထားခဲ့ပါ :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>အထောက်အပံ့</value>
+  </data>
+  <data name="TextSwitchBranchDev" xml:space="preserve">
+    <value>ဘီတာ (Dev ချန်နယ်) သို့ ပြောင်းပါ</value>
+  </data>
+  <data name="TextSwitchBranchOfficial" xml:space="preserve">
+    <value>တည်ငြိမ်သော (မူရင်းချန်နယ်) သို့ ပြောင်းပါ</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>တဂ်များ</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>ဝေဝါး</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>ကြည်လင်</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>အရောင်</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>သွက်လက်</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>နောက်ခံပုံ</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>Wallpaper ကျွမ်းကျင်မှု</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>ခေါင်းစဥ်</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>ဖိုင်ဖော်မ် မပံ့ပိုးပါ။</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>အပ်ဒိတ် ရနိုင်ပါသည်။</value>
+  </data>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>အပ်ဒိတ် စစ်ဆေးပါ။</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲအပ်ဒိတ် စစ်ဆေးမှု မအောင်မြင်ပါ။</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>အပ်ဒိတ် စစ်ဆေးနေသည်။</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲလ်သည် နောက်ဆုံးပေါ်ဖြစ်သည်။</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>ဗီဒီယို</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>ရွေးချယ်နိုင်သော commandline အကြောင်းပြချက်များကို ထည့်သွင်းပါ။</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>ဖြည့်စွက်ပါ။</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>တစ်ခုမှ</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>ယူနီဖောင်း</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>ယူနီဖောင်းဖြည့်ပါ</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>မျက်နှာပြင်</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>Span</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>အမျိုးအစား</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>ဝဘ်ဆိုဒ်</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value>Web Stream</value>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>ကြိုဆိုပါတယ်။</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>ဟုတ်ကဲ့</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>ဗီဒီယိုဖွင့်စက်</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>ပံ့ပိုးထားသော ဖိုင်အမျိုးအစားအားလုံးကို နောက်ခံပုံအဖြစ် သတ်မှတ်ပါ။</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>သင်ထည့်သွင်းထားသော URL ၏ ဝဘ်စာမျက်နှာကို နောက်ခံပုံအဖြစ် သတ်မှတ်ပါ။</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>အပလီကေးရှင်းတစ်ခုခုကို အာရုံစူးစိုက်ထားသည့်အခါ ဘာလုပ်ရမည်ကို သတ်မှတ်ပါ။</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>မျက်နှာပြင်အပြည့် ဂိမ်း/အပလီကေးရှင်းများ လုပ်ဆောင်နေချိန်တွင် လုပ်ဆောင်ရမည့်အရာကို သတ်မှတ်ပါ။</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>ဤအပလီကေးရှင်းများကိုအသုံးပြုသည့်အခါ နောက်ခံပုံများကို ခေတ္တရပ်ပါ။</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively အသွင်အပြင်ကိုပြောင်းရန် စနစ်အပြင်အဆင်ဆက်တင်များဆီသို့ လိုက်လျောညီထွေဖြစ်အောင်လုပ်ပါ။</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>AC ပါဝါ ချိတ်ဆက်မှု ပြတ်တောက်သောအခါတွင် ပြန်ဖွင့်ခြင်းကို ပြောင်းလဲပါ။</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>ဝဘ်စာမျက်နှာ နောက်ခံပုံများကို အမှားရှာခြင်းအတွက် port ကို ထည့်သွင်းပါ။ အဆင်သင့်ဖြစ်သောအခါ developer console ကိုဝင်ရောက်ရန် http://localhost:portnumber သို့သွားပါ။</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>ပြုစုသူ ‌မီနူးကို ပြပါ</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>ကာတွန်းနောက်ခံပုံတစ်ပုံကို ကွန်ပျူတာ နောက်ခံပုံ အဖြစ် သတ်မှတ်ပါ။</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>ဖန်သားပြင်အားလုံးတွင် နောက်ခံပုံ သို့မဟုတ် အပလီကေးရှင်းကို အာရုံစိုက်ထားသည့် မျက်နှာပြင်ကိုသာ ခေတ္တရပ်ပါ။</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>မှတ်တမ်း အစီရင်ခံစာဖိုင်ကို ဖန်တီးပါ</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>gif နောက်ခံပုံအတွက် အသုံးပြုသည့် ပလေယာကို ရွေးပါ</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>ဆက်လုပ်ရန် စနစ်ထည့်သွင်းမှုကို အပြီးသတ်ပါ</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>ကာတွန်းနောက်ခံပုံတစ်ပုံကို လော့ခ်စခရင် အဖြစ် သတ်မှတ်ပါ</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>နောက်ခံပုံ ခေတ္တရပ်ခြင်း အယ်လဂိုရီသမ်</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>ဝင်းဒိုး ပါဝါချွေတာရေးမုဒ်ကို ဖွင့်ထားသောအခါတွင် ပြန်ဖွင့်ခြင်းကို ပြောင်းလဲပါ</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>အဝေးထိန်း ဒက်စ်တော့ စက်ရှင်ကို ဖွင့်သောအခါတွင် ပြန်ဖွင့်ခြင်းကို ပြောင်းလဲပါ</value>
+  </data>
+  <data name="TipScreensaver" xml:space="preserve">
+    <value>လှုပ်ရှားမှုမရှိသောကာလပြီးနောက် လက်ရှိနောက်ခံပုံကို သင်၏စခရင်ခြာဘေးဗာအဖြစ် အသုံးပြုပါ။</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>ပံ့ပိုးထားသော ဗီဒီယိုစီးကြောင်းလင့်ခ်ကို တွေ့ရှိပါက ဝဘ်စာမျက်နှာကို တင်မည့်အစား ဗီဒီယိုပလေယာကို အသုံးပြုပါ။</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>အွန်လိုင်းစီးကြောင်းများအတွက် အလိုရှိသော ဗီဒီယိုအရည်အသွေးကို ရွေးချယ်ပါ။</value>
+  </data>
+  <data name="TipSwitchSoftwareBranch" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲထုတ်လွှတ်မှုကို beta မှတည်ငြိမ်သော သို့မဟုတ် အပြန်အလှန်ပြောင်းပါ။</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>စနစ် Taskbar အသွင်အပြင်ကို ပြောင်းပါ။</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Size of the wallpaper tiles in Library</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>For low-end systems select Lite mode</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>ဖြစ်နိုင်လျှင် ဟာ့ဒ်ဝဲ အရှိန်မြှင့်ခြင်းကို သုံးပါ။</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>ဗီဒီယိုနောက်ခံပုံအတွက် အသုံးပြုသည့် ပလေယာကို ရွေးပါ။</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>နောက်ခံဖိုင်များကိုသိမ်းဆည်းရန်အသုံးပြုသည့်လမ်းကြောင်း</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>နောက်ခံပုံချဲ့ခြင်း အယ်လဂိုရီသမ်</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>နောက်ခံပုံများနှင့် အပြန်အလှန်တုံ့ပြန်ရန် နည်းလမ်းများကို ရွေးချယ်ပါ။</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>ချိတ်ဆက်ထားသော ပြသစက်များတွင် နောက်ခံပုံကို  အသုံးပြုပုံ</value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>ဒက်စ်တော့ကို အာရုံစိုက်မထားသောအခါ နောက်ခံဖွင့်ခြင်းကို ခေတ္တရပ်ပါ</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>မှတ်ဉာဏ်အစား ယာယီဖိုင်များကို ဒစ်ပေါ်တွင် သိမ်းဆည်းပါ</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>html နောက်ခံပုံအတွက် အသုံးပြုသည့် ပလေယာကို ရွေးပါ</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>အကြောင်း</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>နောက်ခံပုံ ထည့်ပါ</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>အာရုံစိုက်သော အက်ပလီကေးရှင်းများ</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>မျက်နှာပြင်အပြည့် အက်ပလီကေးရှင်းများ</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>သက်ဝင်လှုပ်ရှား နောက်ခံပုံ</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>အက်ပလီကေးရှင်း စည်းမျဉ်းများ</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>အပြင်အဆင်</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>မျက်နှာပြင်ပေါ်တွင် အသံဖွင့်ပါ</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>Battery Power ကိုဖွင့်သည့်အခါ</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>နောက်ခံပုံအဖြစ်ထားဖို့ရန် video, gif, webpage...ဖိုင်ကို ရွေးချယ်ပါ</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>အမှားရှာပြင်ခြင်း port</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>ပြောင်းလဲမှု မှတ်တမ်း</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>အသိုင်းဝိုင်း</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>အမှားရှာပါ</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>ဖျက်ကြောင်း အတည်ပြုပါ။</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>ဒက်စ်တော့ပုံ</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>ခေတ္တရပ်ခြင်း စည်းမျဉ်းကို ပြသပါ</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>စာတမ်းပြုစုခြင်း</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>URL ရိုက်ထည့်ပါ</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>မှတ်တမ်းဖိုင်</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>အထွေထွေ</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>Gif ဖွင့်စက်</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>အကူအညီ</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>အပြန်အလှန်ဆက်သွယ်မှု</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>မီဒီယာတိုက်</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>Lively သတ်မှတ်မှု</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>တည်နေရာ</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>Lockscreen ပုံ</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>ထွေ</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>အသံတိတ်</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>အယ်လဂိုရီသမ်ကို ခဏရပ်ပါ</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>စွမ်းဆောင်ရည်</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>အစီအစဉ်</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>ကျေးဇူးပြုပြီးခဏစောင့်ပါ</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>Battery Saver ကိုဖွင့်သည့်အခါ</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>Remote Desktop ကိုဖွင့်သည့်အခါ</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>Bug ကို သတင်းပို့ပါ</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>အတိုင်းအတာ/ ကြံ့ခိုင်မှု</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>ထိန်းချုပ်ရာနေရာ</value>
+  </data>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>ကွန်ပျူတာလှုပ်ရှားမှုမရှိသည့်အခါတွင်ဖန်ပြင်၌ပေါ်ခြင်း</value>
+  </data>
+  <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
+    <value>ကိုယ်ရေးမှတ်တမ်းတွင်၊ အကောင့်ဝင်သည့်မျက်နှာပြင်ကိုပြသပါ</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>ဖိုင်ကို ရွေးပါ။</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>ဆက်တင်များ</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>အတည်ပြုချက်ကို ကျော်သွားပါ</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>အရင်းအမြစ်ကုဒ်</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>စတိုး</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>ထုတ်လွှင့်မှု</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>လမ်းကြောင်းများကို ထောက်လှမ်းပါ</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>ဗီဒီယိုအရည်အသွေး</value>
+  </data>
+  <data name="System.Text" xml:space="preserve">
+    <value>စနစ်</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>Taskbar နောက်ခံ</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>ကြွေပြားအရွယ်အစား</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>အသုံးပြုသူ အင်တာဖေ့စ်</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>အပ်ဒိတ်များ</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>ဗီဒီယို</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>GPU ကုဒ်</value>
+  </data>
+  <data name="TitleWallpaper.Content" xml:space="preserve">
+    <value>နောက်ခံပုံ</value>
+  </data>
+    <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>စိတ်ကြိုက်လုပ်ပါ</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>နောက်ခံပုံ လမ်းညွှန်</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>ရှိပြီးသား နောက်ခံပုံများကို ဖိုင်တွဲအသစ်သို့ ရွှေ့ပါ</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>အံကိုက်ကိုရွေးချယ်ပါ</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>နောက်ခံပုံထည့်သွင်းခြင်း</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>နေရာချထားမှုနည်းလမ်း</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
+    <value>နောက်ခံပုံဖွင့်ခြင်း</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>သတိပေးချက်</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>ဝဘ်ဘရောက်ဆာ</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>ဒစ်ရှ် အမှိုက်</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>အင်ဂျင်</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>ဝဘ်စာမျက်နှာကို တင်ပါ</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>ပိုမိုမြန်ဆန်စွာ စတင်ရန်အတွက် အသုံးပြုသူ အင်တာဖေ့စ် ကို ဆက်လက်လုပ်ဆောင်ပါ</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>အမြန်စတင်ပါ</value>
+  </data>
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
+    <value>ဖိုင်</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>အမှောင်</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>အလင်း</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>စနစ်</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>ပြတင်းပေါက် အရောင်ဆက်တင်များ</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
+    <value>လက်ပ်တော့များ</value>
+  </data>
+  <data name="DeveloperGroup.Text" xml:space="preserve">
+    <value>ပြုစုသူ</value>
+  </data>
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
+    <value>အသွင်အပြင်နှင့် အပြုအမူ</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>အသုံးပြုနေသော နောက်ခံပုံ(များ)</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>ပြခန်း</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>မင်္ဂလာပါ၊ ကျွန်တော်က rocksdanister လို့လည်းသိကြတဲ့ Dani John ဖြစ်ပါတယ်။ အခမဲ့ဖြစ်ပြီး ပွင့်လင်းတဲ့အရင်းအမြစ် (FOSS) နောက်ခံပလီကေးရှင်းကို Lively ကို တီထွင်ခဲ့တာပါ။ ကျွန်တော့် အလုပ်ကို အချိန်ပေးပြီး ကြည့်ပေးလို့ ကျေးဇူးတင်ပါတယ်။</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>ဆော့ဖ်ဝဲလိုင်စင်</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>ပြင်ပဆော့ဖ်ဝဲ အသိပေးချက်</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>ဒေတာစုဆောင်းခြင်းမူဝါဒ</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>နောက်ခံပုံ ထည့်ပါ</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>မကြာမီမျှေ်</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>အကြောင်း</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>ဝဘ်ဆိုဒ်</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>ဖွင့်ပါ</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>သိမ်းဆည်းမည်</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>အသုံးပြုသူ အင်တာဖေ့စ်အကျိုးသက်ရောက်မှုများနှင့် ကာတွန်းများ</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>အသုံးပြုသူ အင်တာဖေ့စ်</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>ပေါ့ပါး</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>ပုံမှန်</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>မျက်နှာပြင်အားထိန်းစနစ်ကို ပြသသည့်ကိရိယာများနှင့် ချိတ်ဆက်ရာတွင် အသုံးပြုပုံ</value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>စခရင်စေဗာ အမျိုးအစား</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>Mirror Wallpaper</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>Plugin လိုအပ်နေပါသည်</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>စခရင်စေဗာ ကို ဖွင့်ရန် တစ်ကြိမ်တည်းသာ စနစ်ထည့်သွင်းရန် လိုအပ်သည်။</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>နောက်ခံပုံများကို ရွေးချယ်သည့်အခါ မျက်နှာပြင်ကို အမြဲရွေးပါ</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>အကောင့်</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>အကောင့်ဖျက်ပါ</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>အချက်အလက် ထုတ်ယူရန်</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>လော့ဂ်အင်</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>ထွက်ပါ</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>စုဆောင်းမှု</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>ပင်မ</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>စီမံပါ</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>ပရိုဖိုင်</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>ရှေ့ဆက်ရန် ကျေးဇူးပြု၍ လော့ဂ်အင်ဝင်ပါ။</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>မင်္ဂလာပါ</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>သင့်အကောင့်တွင် ဤနောက်ခံပုံများကို ကျွန်ုပ်တို့တွေ့ရှိထားသည်။</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>ယခု ဒေါင်းလုဒ်လုပ်ပါ</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>နောက်မှ</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>အားလုံးရွေးချယ်ပါ</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>တစ်ခု ရွေးပါ</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>ပြန်လည်ကြိုဆိုပါတယ်!</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>အကြောင်းပြချက်များ</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>မူပိုင်ခွင့်ချိုးဖောက်မှု</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>မှားယွင်းသော အချက်အလက်များ</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>အခြား</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>စပန်</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>ညစ်ညမ်း သို့မဟုတ် အကြမ်းဖက်မှု</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>အပို မှတ်တမ်းများ</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>တိုင်ကြားပါ</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>နောက်ခံပုံကို တိုင်ကြားပါ</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>ပို့ပါ</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>ပြန်ပြင်၍မရသောကြောင့် ကျေးဇူးပြုပြီး ဤလုပ်ဆောင်ချက်ကို အတည်ပြုပါ</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>အကောင့်ကိုဖျက်၍မရပါ၊ ကျေးဇူးပြု၍ နောက်မှထပ်ကြိုးစားပါ</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>၎င်းကို ပယ်ဖျက်လိုပါသလား။</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>စောင့်ပါ</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>ဒေါင်းလုဒ်လုပ်နေသည်</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>ပံ့ပိုးကူညီသူများ</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>မျှဝေပါ</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>နောက်ခံပုံကို မျှဝေပါ</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>ပြခန်း အပ်လုဒ်</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>လင့်ခ်ကို ကူးယူပါ</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>နောက်ခံပုံကို စိတ်ကြိုက်လုပ်ပါ</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>နောက်ခံပုံများကို ပိတ်ပါ</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>အက်ပလီကေးရှင်းကို ရွေးချယ်ပါ</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>အရွယ်အစား</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>ကျေးဇူးပြုပြီး လိုအပ်သော ပလပ်အင်ကို ထည့်သွင်းပါ</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>ပလပ်အင် ရှာမတွေ့ပါ</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>အပ်ဒိတ် ပြီးပါပြီ</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>အသစ်အဆန်းတွေကို ကြည့်ပါ</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>အရောင်</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>စနစ် ပုံသေကို သုံးပါ</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>နောက်ခံပုံနှင့် လိုက်လျောညီထွေစေပါ</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>ပုံသေ</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>တက်ကြွသော</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>အပြင်အဆင်</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>မတော်တဆရွေးချယ်မှုကို ကာကွယ်ရန် ဒက်စ်တော့အိုင်ကွန်များကို လောလောဆယ် ဝှက်ထားသည်</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>ဒက်စ်တော့အိုင်ကွန်များ</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>လောလောဆယ် ဒီလောက်ပါပဲ..</value>
+  </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>ဤအင်္ဂါရပ်ဖွံ့ဖြိုးတိုးတက်မှုကို ဆိုင်းငံ့ထားသည်</value>
+  </data>
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
+    <value>ပလပ်အင်များ</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>ပြောင်းလဲနေသော နောက်ခံပုံ ဖန်တီးပါ</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>အဆင့်မြင့်</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>အနီးစပ်ဆုံးအတိမ်အနက်..</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>AI ကိုအသုံးပြု၍ ဓာတ်ပုံများကို 3D အဖြစ်ပြောင်းလဲပါ</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>ဆက်လက်</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>ရိုးရှင်းသောနောက်ခံပုံဖန်တီးပါ</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>အေအိုင် နက်နက်သော နောက်ခံပုံ</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>နက်နက်သော နောက်ခံပုံ</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>အေအိုင် ထုတ်ပေးသော နောက်ခံပုံနက်</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>နောက်ခံပုံကို ဖန်တီးပါ</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>စီမံခန့်ခွဲသူအဖြစ် လုပ်ဆောင်သည့်အခါ အချို့သောလုပ်ဆောင်ချက်များကို မရနိုင်ပါ</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>ဤအင်္ဂါရပ်အတွက် နောက်ထပ်ဖိုင်များကို ဒေါင်းလုဒ်လုပ်ရန် လိုအပ်သည်</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>ဒေါင်းလုဒ်လုပ်ရန် လိုအပ်သည်</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>ဒေါင်းလုဒ်လုပ်ပါ</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>Become a Patreon supporter</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>Thanks to all the members who support this project.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>Patreon Supporters</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>Select screensaver</value>
+  </data>
+</root>

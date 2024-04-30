@@ -213,7 +213,7 @@ Jatka vain, jos luotat tähän sovellukseen.</value>
     <value>Näytä tukesi lahjoittamalla kehittäjälle kupillinen kahvia</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Olet vaihtamassa Livelyn beta versioon.
+    <value>Olet vaihtamassa Livelyn beta (kehittäjä) versioon.
 Päivityksiä tulee usein ja ne saattavat sisältää vikoja!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
@@ -261,15 +261,15 @@ https://github.com/rocksdanister/lively/wiki</value>
 Haluatko palauttaa viimeisimmät taustakuvat?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Näyttää siltä, että jotkut asetukset täytyy asettaa, jotta Lively saataisiin toimimaan:  
-1. Paina Win + R -näppäimiä avataksesi suorittimen, 
+    <value>Näyttää siltä, että jotkut asetukset täytyy asettaa, jotta Lively saataisiin toimimaan:
+1. Paina Win + R -näppäimiä avataksesi Suorita-sovelluksen,
 2. Kirjoita "SystemPropertiesPerformance.exe" ja, napsauta "OK" avataksesi suorituskykyasetukset.
-3. Ota käyttöön "Animoi ohjaimet ja elementit ikkunoiden sisäpuolella" (Jos ne on jo valittu, poista valinta ja tarkista ja ota käyttöön.
+3. Ota käyttöön "Animoi ohjaimet ja elementit ikkunoiden sisäpuolella" (Jos ne on jo valittu, poista ja valitse uudelleen) &amp; ota käyttöön.
 4. Napsauta "Käytä" ja paina "OK" sulkeaksesi ikkunan.
 
-Jos Windows 7 on juuri asetettu - Säädä paras ulkonäkö &amp; Käytä .
-Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudelleenkäynnistys.
-(Ei toimi joissakin Windows 10 -käyttöjärjestelmissä)</value>
+Jos Windows 7 on juuri asetettu - Säädä paras ulkonäkö &amp; Käytä.
+Jos ikkuna ei vieläkään toimi, sulje ja käynnistä Windows ja Lively uudestaan.
+(Ei toimi joissakin Windows 10 Insider Build versioissa)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
     <value>Livelyn täytyy pystyä suorittumaan taustalla, jotta taustakuva saadaan toimimaan</value>
@@ -335,7 +335,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Kuvaus</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Kaikki ruudut</value>
+    <value>Kaikki näytö(t)</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
     <value>Per näyttö</value>
@@ -374,7 +374,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Auta kääntämään</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>tuntia</value>
+    <value>tunti(a)</value>
   </data>
   <data name="TextInstall.Content" xml:space="preserve">
     <value>Asenna</value>
@@ -1173,7 +1173,7 @@ Jos ikkuna ei vieläkään toimi, sulje &amp; käynnistä eloisa uudestaan/uudel
     <value>Työpöydän kuvakkeet</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>Siinä kaikki tältä erää.</value>
+    <value>Siinä kaikki tältä erää...</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
     <value>Tämän ominaisuuden kehittäminen on tauolla</value>

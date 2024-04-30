@@ -882,7 +882,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Háttérkép</value>
   </data>
     <data name="TitleCustomise.Content" xml:space="preserve">
-    <value>Testreszab</value>
+    <value>Testreszabás</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Háttérkép Címtár</value>

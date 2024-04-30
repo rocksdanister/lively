@@ -827,7 +827,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Panel Kawalan</value>
   </data>
   <data name="TitleScreensaver.Content" xml:space="preserve">
-    <value>Screensaver</value>
+    <value>Penghias skrin</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Paparkan skrin log masuk ketika menyambung semula</value>
@@ -879,7 +879,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Nyahkod GPU</value>
   </data>
   <data name="TitleWallpaper.Content" xml:space="preserve">
-    <value>Wallpaper</value>
+    <value>Kertas dinding</value>
   </data>
     <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Sunting</value>

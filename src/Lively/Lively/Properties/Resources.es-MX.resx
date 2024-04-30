@@ -578,13 +578,13 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Relleno Uniforme</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Dupiclar</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Pantalla</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Estirar</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipo</value>
@@ -1003,10 +1003,12 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Tipo de salvapantalla</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Duplicar Fondo de pantalla 
+Fondo de pantalla espejo
+Espejo de Fondo de pantalla</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plug-in requerido</value>
@@ -1228,15 +1230,15 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Descargar</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Conviertete en un seguidor de Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Gracias a todos los miembros que han apoyado al proyecto.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Apoyadores de Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Seleccione salvapantallas</value>
   </data>
 </root>
