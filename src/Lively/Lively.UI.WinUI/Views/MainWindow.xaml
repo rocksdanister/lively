@@ -148,6 +148,11 @@
                         x:Name="addWallpaperLabel"
                         x:Uid="AddWallpaper"
                         Click="AddWallpaperButton_Click">
+                        <ToolTipService.ToolTip>
+                            <ToolTip>
+                                <TextBlock x:Uid="AddWallpaperDrop" />
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
                         <AppBarButton.Icon>
                             <FontIcon Glyph="&#xE710;" />
                         </AppBarButton.Icon>
@@ -158,6 +163,11 @@
                         x:Name="controlPanelLabel"
                         x:Uid="ActiveWallpapers"
                         Click="ControlPanelButton_Click">
+                        <ToolTipService.ToolTip>
+                            <ToolTip>
+                                <TextBlock x:Name="controlPanelTooltip" />
+                            </ToolTip>
+                        </ToolTipService.ToolTip>
                         <AppBarButton.Icon>
                             <FontIcon
                                 x:Name="controlPanelMonitor"

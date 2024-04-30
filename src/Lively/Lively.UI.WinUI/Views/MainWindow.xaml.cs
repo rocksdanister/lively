@@ -98,6 +98,7 @@ namespace Lively.UI.WinUI
             Root.DataContext = mainViewModel;
             i18n = ResourceLoader.GetForViewIndependentUse();
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
+            this.controlPanelTooltip.Text = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperError += DesktopCore_WallpaperError;
@@ -206,7 +207,8 @@ namespace Lively.UI.WinUI
         {
             _ = this.DispatcherQueue.TryEnqueue(() =>
             {
-                //wallpaper focus steal fix.
+                //Wallpaper focus steal fix.
+                //Note: This is no longer required.
                 if (this.Visible)
                 {
                     if (!userSettings.Settings.ControlPanelOpened)
@@ -223,6 +225,7 @@ namespace Lively.UI.WinUI
                     }
                 }
                 controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
+                controlPanelTooltip.Text = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
                 controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];
             });
         }
