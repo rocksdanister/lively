@@ -180,15 +180,15 @@ namespace Lively.UI.WinUI
 
         private void ShowError(Exception e)
         {
-            infoBar.IsOpen = true;
-            infoBar.ActionButton = new HyperlinkButton
+            errorBar.IsOpen = true;
+            errorBar.ActionButton = new HyperlinkButton
             {
                 Content = i18n.GetString("Help/Label"),
                 NavigateUri = new Uri("https://github.com/rocksdanister/lively/wiki/Common-Problems"),
             };
-            infoBar.Title = i18n.GetString("TextError");
-            infoBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
-            infoBar.Severity = InfoBarSeverity.Error;
+            errorBar.Title = i18n.GetString("TextError");
+            errorBar.Message = $"{e.Message}\n\nException:\n{e.GetType().Name}";
+            errorBar.Severity = InfoBarSeverity.Error;
         }
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)

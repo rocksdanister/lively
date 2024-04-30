@@ -320,10 +320,12 @@
             <Frame x:Name="contentFrame" />
         </NavigationView>
 
-        <InfoBar Name="infoBar" Grid.Row="1" />
+        <InfoBar Name="errorBar" Grid.Row="1" />
+        <!--  Setting background because default Information infobar style color is transparent now.  -->
         <InfoBar
             Name="importBar"
             Grid.Row="1"
+            Background="{ThemeResource SystemAccentColorDark1}"
             IsClosable="False">
             <ProgressBar Name="importBarProgress" Margin="-50,0,0,0" />
         </InfoBar>
