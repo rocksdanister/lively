@@ -40,6 +40,7 @@ namespace Lively.Services
             //previous installed appversion is different from current instance..    
             if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
+                Settings.AppPreviousVersion = Settings.AppVersion;
                 Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 Settings.IsUpdated = true;
             }

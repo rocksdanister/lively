@@ -199,6 +199,7 @@ namespace Lively.Grpc.Client
                     }
                 },
                 AppVersion = settings.AppVersion,
+                AppPreviousVersion = settings.AppPreviousVersion,
                 Startup = settings.Startup,
                 IsFirstRun = settings.IsFirstRun,
                 ControlPanelOpened = settings.ControlPanelOpened,
@@ -285,6 +286,7 @@ namespace Lively.Grpc.Client
                 },
                 WallpaperArrangement = (WallpaperArrangement)((int)settings.WallpaperArrangement),
                 AppVersion = settings.AppVersion,
+                AppPreviousVersion = settings.AppPreviousVersion,
                 Startup = settings.Startup,
                 IsFirstRun = settings.IsFirstRun,
                 ControlPanelOpened = settings.ControlPanelOpened,

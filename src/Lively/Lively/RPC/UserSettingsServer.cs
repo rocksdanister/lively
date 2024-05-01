@@ -121,6 +121,7 @@ namespace Lively.RPC
             userSettings.Settings.SelectedDisplay = displayManager.DisplayMonitors.FirstOrDefault(x => req.SelectedDisplay.DeviceId == x.DeviceId) ?? displayManager.PrimaryDisplayMonitor;
             userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)((int)req.WallpaperArrangement);
             userSettings.Settings.AppVersion = req.AppVersion;
+            userSettings.Settings.AppPreviousVersion = req.AppPreviousVersion;
             //userSettings.Settings.Startup = req.Startup;
             userSettings.Settings.IsFirstRun = req.IsFirstRun;
             userSettings.Settings.ControlPanelOpened = req.ControlPanelOpened;
@@ -227,6 +228,7 @@ namespace Lively.RPC
                     }
                 },
                 AppVersion = settings.AppVersion,
+                AppPreviousVersion = settings.AppPreviousVersion,
                 Startup = settings.Startup,
                 IsFirstRun = settings.IsFirstRun,
                 ControlPanelOpened = settings.ControlPanelOpened,

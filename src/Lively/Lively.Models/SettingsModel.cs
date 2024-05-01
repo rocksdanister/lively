@@ -8,6 +8,7 @@ namespace Lively.Models
     public class SettingsModel
     {
         public string AppVersion { get; set; }
+        public string AppPreviousVersion { get; set; }
         public string Language { get; set; }
         public bool Startup { get; set; }
         /// <summary>
@@ -128,6 +129,7 @@ namespace Lively.Models
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
             AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
+            AppPreviousVersion = string.Empty;
             Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;

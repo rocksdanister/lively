@@ -12,12 +12,17 @@ namespace Lively.Helpers
 {
     public class WallpaperLibraryFactory : IWallpaperLibraryFactory
     {
-        public LibraryModel CreateFromDirectory(string folderPath)
+        public LivelyInfoModel GetMetadata(string folderPath)
         {
             if (!File.Exists(Path.Combine(folderPath, "LivelyInfo.json")))
                 throw new FileNotFoundException("LivelyInfo.json not found");
 
-            var metadata = JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json")) ?? throw new FileNotFoundException("Corrupted wallpaper metadata");
+            return JsonStorage<LivelyInfoModel>.LoadData(Path.Combine(folderPath, "LivelyInfo.json")) ?? throw new FileNotFoundException("Corrupted wallpaper metadata");
+        }
+
+        public LibraryModel CreateFromDirectory(string folderPath)
+        {
+            var metadata = GetMetadata(folderPath);
             var result = new LibraryModel
             {
                 LivelyInfo = metadata,

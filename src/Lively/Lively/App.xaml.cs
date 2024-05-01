@@ -35,6 +35,8 @@ using Lively.Common.Services.Update;
 using Lively.Helpers;
 using Lively.Common.Services.Downloader;
 using Lively.ViewModels;
+using System.Collections.Generic;
+using Lively.Common.Extensions;
 
 namespace Lively
 {
@@ -156,10 +158,12 @@ namespace Lively
             Services.GetRequiredService<ISystray>();
 
             //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
-            //On first run default assets are installed by UI to avoid slow startup times and better user experience.
             if (userSettings.Settings.IsUpdated || userSettings.Settings.IsFirstRun)
             {
-                SplashWindow spl = userSettings.Settings.IsFirstRun ? new(0, 500) : null; spl?.Show();
+                SplashWindow spl = new(0, 500); 
+                spl.Show();
+
+                // Install default wallpapers or updates.
                 var maxWallpaper = ZipExtract.ExtractAssetBundle(userSettings.Settings.WallpaperBundleVersion,
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bundle", "wallpapers"),
                     Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir));
@@ -172,7 +176,45 @@ namespace Lively
                     userSettings.Settings.ThemeBundleVersion = maxTheme;
                     userSettings.Save<SettingsModel>();
                 }
-                spl?.Close();
+
+                // Mpv property file changed in v2.1, delete user data.
+                if (userSettings.Settings.IsUpdated
+                    && !string.IsNullOrWhiteSpace(userSettings.Settings.AppPreviousVersion)
+                    && new Version(userSettings.Settings.AppPreviousVersion) < new Version(2, 1, 0, 0))
+                {
+                    var wallpaperLibraryFactory = Services.GetRequiredService<IWallpaperLibraryFactory>();
+                    var dir = new List<string>();
+                    string[] folderPaths = {
+                        Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                        Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
+                    };
+                    for (int i = 0; i < folderPaths.Count(); i++)
+                    {
+                        try
+                        {
+                            dir.AddRange(Directory.GetDirectories(folderPaths[i], "*", SearchOption.TopDirectoryOnly));
+                        }
+                        catch { /* TODO */ }
+                    }
+
+                    for (int i = 0; i < dir.Count; i++)
+                    {
+                        try
+                        {
+                            var metadata = wallpaperLibraryFactory.GetMetadata(dir[i]);
+                            if (metadata.Type.IsMediaWallpaper())
+                            {
+                                var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
+                                var wallpaperDataFolder = Path.Combine(dataFolder, new DirectoryInfo(dir[i]).Name);
+                                if (Directory.Exists(wallpaperDataFolder))
+                                    Directory.Delete(wallpaperDataFolder, true);
+                            }
+                        }
+                        catch { }
+                    }
+                }
+
+                spl.Close();
             }
 
             //restore wallpaper(s) from previous run.

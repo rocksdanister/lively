@@ -72,6 +72,7 @@ message SettingsDataModel {
     AppThemeBackground application_theme_background = 60;
     string application_theme_background_path = 61;
     int32 theme_bundle_version = 62;
+    string app_previous_version = 63;
 }
 
 message AppRulesSettings {
