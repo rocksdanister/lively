@@ -1,4 +1,5 @@
 ﻿using Lively.Common;
+using Lively.Grpc.Client;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -20,6 +21,18 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             this.viewModel = App.Services.GetRequiredService<AppUpdateViewModel>();
             this.DataContext = this.viewModel;
+
+            var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
+            {
+                AppTheme.Auto => string.Empty, // Website handles theme change based on WebView change.
+                AppTheme.Light => "&theme=light",
+                AppTheme.Dark => "&theme=dark",
+                _ => string.Empty,
+            };
+            var url = !viewModel.IsBetaBuild ? 
+                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}" : 
+                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}";
+            WebView.Source = LinkUtil.SanitizeUrl(url);
         }
 
         // ref: https://github.com/MicrosoftEdge/WebView2Samples

@@ -60,14 +60,16 @@ namespace Lively.UI.WinUI.ViewModels
 
         public bool IsWinStore => Constants.ApplicationType.IsMSIX;
 
+        public bool IsBetaBuild => Constants.ApplicationType.IsTestBuild;
+
         public string AppVersionText
         {
             get
             {
                 var ver = "v" + desktopCore.AssemblyVersion;
-                if (Constants.ApplicationType.IsTestBuild)
+                if (IsBetaBuild)
                     ver += "b";
-                else if (Constants.ApplicationType.IsMSIX)
+                else if (IsWinStore)
                     ver += $" {languageResource.GetString("Store/Header")}";
                 return ver;
             }
