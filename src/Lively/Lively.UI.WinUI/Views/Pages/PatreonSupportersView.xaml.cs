@@ -1,4 +1,5 @@
 using Lively.Common;
+using Lively.Grpc.Client;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -31,6 +32,21 @@ namespace Lively.UI.WinUI.Views.Pages
             this.InitializeComponent();
             this.viewModel = App.Services.GetRequiredService<PatreonSupportersViewModel>();
             this.DataContext = viewModel;
+
+            // Error when setting in xaml
+            WebView.DefaultBackgroundColor = ((SolidColorBrush)App.Current.Resources["ApplicationPageBackgroundThemeBrush"]).Color;
+            // Set website theme to reflect app setting
+            var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
+            {
+                AppTheme.Auto => string.Empty, // Website handles theme change based on WebView change.
+                AppTheme.Light => "theme=light",
+                AppTheme.Dark => "theme=dark",
+                _ => string.Empty,
+            };
+            var url = viewModel.IsBetaBuild ? 
+                $"https://www.rocksdanister.com/lively/supporters/?{pageTheme}" :
+                $"https://www.rocksdanister.com/lively-webpage/supporters/?{pageTheme}";
+            WebView.Source = LinkUtil.SanitizeUrl(url);
         }
 
         private void WebView_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
@@ -65,6 +81,13 @@ namespace Lively.UI.WinUI.Views.Pages
             // Stay in page
             if (args.IsRedirected)
                 args.Cancel = true;
+            else
+                WebViewProgress.Visibility = Visibility.Visible;
+        }
+
+        private void WebView_NavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+        {
+            WebViewProgress.Visibility = Visibility.Collapsed;
         }
 
         public void OnClose()
