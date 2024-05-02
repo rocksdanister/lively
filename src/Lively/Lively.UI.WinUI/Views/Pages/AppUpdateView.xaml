@@ -9,6 +9,7 @@
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Loaded="Page_Loaded"
+    Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -23,9 +24,22 @@
         <WebView2
             x:Name="WebView"
             CoreWebView2Initialized="WebView_CoreWebView2Initialized"
-            DefaultBackgroundColor="Black"
+            NavigationCompleted="WebView_NavigationCompleted"
             NavigationStarting="WebView_NavigationStarting"
             Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
+        <!--  Changelog loading  -->
+        <ProgressBar
+            x:Name="WebViewProgress"
+            VerticalAlignment="Top"
+            IsIndeterminate="True"
+            Visibility="Collapsed">
+            <animations:Implicit.ShowAnimations>
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:1" />
+            </animations:Implicit.ShowAnimations>
+        </ProgressBar>
         <!--  Changelog error  -->
         <StackPanel
             Margin="5,125,5,0"

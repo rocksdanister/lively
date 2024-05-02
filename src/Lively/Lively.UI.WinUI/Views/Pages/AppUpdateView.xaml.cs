@@ -4,6 +4,7 @@ using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.Web.WebView2.Core;
 using System;
 
@@ -22,6 +23,9 @@ namespace Lively.UI.WinUI.Views.Pages
             this.viewModel = App.Services.GetRequiredService<AppUpdateViewModel>();
             this.DataContext = this.viewModel;
 
+            // Error when setting in xaml
+            WebView.DefaultBackgroundColor = ((SolidColorBrush)App.Current.Resources["ApplicationPageBackgroundThemeBrush"]).Color;
+            // Set website theme to reflect app setting
             var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
             {
                 AppTheme.Auto => string.Empty, // Website handles theme change based on WebView change.
@@ -59,6 +63,7 @@ namespace Lively.UI.WinUI.Views.Pages
             if (!args.IsUserInitiated)
                 return;
 
+            // Open hyperlinks in default browser
             args.Handled = true;
             LinkUtil.OpenBrowser(args.Uri);
         }
@@ -68,11 +73,23 @@ namespace Lively.UI.WinUI.Views.Pages
             // Stay in page
             if (args.IsRedirected)
                 args.Cancel = true;
+            else
+                WebViewProgress.Visibility = Visibility.Visible;
+        }
+
+        private void WebView_NavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+        {
+            WebViewProgress.Visibility = Visibility.Collapsed;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             BackgroundGridShadow.Receivers.Add(BackgroundGrid);
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            WebView.Close();
         }
     }
 }

@@ -66,5 +66,15 @@ namespace Lively.UI.WinUI.Views.Pages
             if (args.IsRedirected)
                 args.Cancel = true;
         }
+
+        public void OnClose()
+        {
+            WebView.Close();
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Unloaded is not reliable when used in dialog
+        }
     }
 }
