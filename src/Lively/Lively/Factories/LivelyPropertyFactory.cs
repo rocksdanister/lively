@@ -12,51 +12,38 @@ namespace Lively.Factories
     {
         public string CreateLivelyPropertyFolder(LibraryModel model, DisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings)
         {
-            string propertyPath = null;
-            if (model.LivelyPropertyPath != null)
+            // Customisation not supported.
+            if (model.LivelyPropertyPath is null)
+                return null;
+
+            string propertyCopyPath = null;
+            var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
+            try
             {
-                //customisable wallpaper, livelyproperty.json is present.
-                var dataFolder = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperSettingsDir);
-                try
+                // Create a directory with the wallpaper foldername in SaveData/wpdata/, copy livelyproperties.json into this.
+                // Further modifications are done to the copy file.
+                string wallpaperDataDirectoryPath = null;
+                switch (arrangement)
                 {
-                    //extract last digits of the Screen class DeviceName, eg: \\.\DISPLAY4 -> 4
-                    var screenNumber = display.Index.ToString();
-                    if (screenNumber != null)
-                    {
-                        //Create a directory with the wp foldername in SaveData/wpdata/, copy livelyproperties.json into this.
-                        //Further modifications are done to the copy file.
-                        string wpdataFolder = null;
-                        switch (arrangement)
-                        {
-                            case WallpaperArrangement.per:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, screenNumber);
-                                break;
-                            case WallpaperArrangement.span:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
-                                break;
-                            case WallpaperArrangement.duplicate:
-                                wpdataFolder = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
-                                break;
-                        }
-                        Directory.CreateDirectory(wpdataFolder);
-                        //copy the original file if not found..
-                        propertyPath = Path.Combine(wpdataFolder, "LivelyProperties.json");
-                        if (!File.Exists(propertyPath))
-                        {
-                            File.Copy(model.LivelyPropertyPath, propertyPath);
-                        }
-                    }
-                    else
-                    {
-                        //todo: fallback, use the original file (restore feature disabled.)
-                    }
+                    case WallpaperArrangement.per:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, display.Index.ToString());
+                        break;
+                    case WallpaperArrangement.span:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "span");
+                        break;
+                    case WallpaperArrangement.duplicate:
+                        wallpaperDataDirectoryPath = Path.Combine(dataFolder, new DirectoryInfo(model.LivelyInfoFolderPath).Name, "duplicate");
+                        break;
                 }
-                catch
-                {
-                    //todo: fallback, use the original file (restore feature disabled.)
-                }
+                Directory.CreateDirectory(wallpaperDataDirectoryPath);
+                // Copy the original file if not found..
+                propertyCopyPath = Path.Combine(wallpaperDataDirectoryPath, "LivelyProperties.json");
+                if (!File.Exists(propertyCopyPath))
+                    File.Copy(model.LivelyPropertyPath, propertyCopyPath);
             }
-            return propertyPath;
+            catch { /* Ignore, file related issue so consider wallpaper uncustomisable. */ }
+
+            return propertyCopyPath;
         }
     }
 }

@@ -3,6 +3,7 @@ using Lively.Common.Models;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Timer = System.Timers.Timer;
@@ -108,14 +109,31 @@ namespace Lively.Common.Services.Update
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
             Version version = GithubUtil.GetVersion(gitRelease);
 
-            //download asset format: lively_setup_x86_full_vXXXX.exe, XXXX - 4 digit version no.
-            var gitUrl = await GithubUtil.GetAssetUrl("lively_setup_x86_full",
+            // Download latest installer file
+            // Format: lively_setup_ARCH_full_vXXXX.exe, XXXX - 4 digit version no and ARCH - x86, arm64
+            var arch = GetArchSetupString();
+            var gitUrl = await GithubUtil.GetAssetUrl($"lively_setup_{arch}_full",
                 gitRelease, repositoryName, userName);
-            Uri uri = new Uri(gitUrl);
-
-            //string changelog = gitRelease.Body;
+            var uri = new Uri(gitUrl);
 
             return (uri, version);
+        }
+
+        private static string GetArchSetupString()
+        {
+            return RuntimeInformation.ProcessArchitecture switch
+            {
+                Architecture.X86 => "x86",
+                Architecture.X64 => "x64",
+                Architecture.Arm => throw new NotImplementedException(),
+                Architecture.Arm64 => "arm64",
+                Architecture.Wasm => throw new NotImplementedException(),
+                Architecture.S390x => throw new NotImplementedException(),
+                Architecture.LoongArch64 => throw new NotImplementedException(),
+                Architecture.Armv6 => throw new NotImplementedException(),
+                Architecture.Ppc64le => throw new NotImplementedException(),
+                _ => throw new NotImplementedException(),
+            };
         }
     }
 }
