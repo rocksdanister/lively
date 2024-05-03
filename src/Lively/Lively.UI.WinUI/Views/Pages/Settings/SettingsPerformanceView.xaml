@@ -23,8 +23,12 @@
                             <FontIcon Glyph="&#xE90E;" />
                         </controls:SettingsCard.HeaderIcon>
                         <controls:Segmented SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
-                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE769;" />
+                            </controls:SegmentedItem>
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE768;" />
+                            </controls:SegmentedItem>
                             <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                         </controls:Segmented>
                     </controls:SettingsCard>
@@ -34,8 +38,12 @@
                             <FontIcon Glyph="&#xE90C;" />
                         </controls:SettingsCard.HeaderIcon>
                         <controls:Segmented SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
-                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE769;" />
+                            </controls:SegmentedItem>
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE768;" />
+                            </controls:SegmentedItem>
                             <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                         </controls:Segmented>
                     </controls:SettingsCard>
@@ -52,8 +60,12 @@
                             <FontIcon Glyph="&#xE856;" />
                         </controls:SettingsCard.HeaderIcon>
                         <controls:Segmented SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
-                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE769;" />
+                            </controls:SegmentedItem>
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE768;" />
+                            </controls:SegmentedItem>
                             <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                         </controls:Segmented>
                     </controls:SettingsCard>
@@ -63,8 +75,12 @@
                             <FontIcon Glyph="&#xE863;" />
                         </controls:SettingsCard.HeaderIcon>
                         <controls:Segmented SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
-                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE769;" />
+                            </controls:SegmentedItem>
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE768;" />
+                            </controls:SegmentedItem>
                             <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                         </controls:Segmented>
                     </controls:SettingsCard>
@@ -81,8 +97,12 @@
                             <FontIcon Glyph="&#xE703;" />
                         </controls:SettingsCard.HeaderIcon>
                         <controls:Segmented SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem x:Uid="TextPerformancePause" Width="120" />
-                            <controls:SegmentedItem x:Uid="TextPerformanceNone" Width="120" />
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE769;" />
+                            </controls:SegmentedItem>
+                            <controls:SegmentedItem Width="120">
+                                <FontIcon FontSize="16" Glyph="&#xE768;" />
+                            </controls:SegmentedItem>
                             <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
                         </controls:Segmented>
                     </controls:SettingsCard>

@@ -105,6 +105,7 @@ namespace Lively
                 //clear temp files from previous run if any..
                 FileUtil.EmptyDirectory(Constants.CommonPaths.TempDir);
                 FileUtil.EmptyDirectory(Constants.CommonPaths.ThemeCacheDir);
+                FileUtil.EmptyDirectory(Constants.CommonPaths.CefRootCacheDir);
             }
             catch { /* TODO */ }
 
