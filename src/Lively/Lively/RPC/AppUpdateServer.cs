@@ -34,7 +34,10 @@ namespace Lively.RPC
 
         public override async Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
         {
+#if !DEBUG
             await updater.CheckUpdate(0);
+#endif
+            Debug.WriteLine("App Update checking disabled in DEBUG mode.");
             return await Task.FromResult(new Empty());
         }
 

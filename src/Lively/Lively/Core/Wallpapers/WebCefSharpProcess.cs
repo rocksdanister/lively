@@ -50,28 +50,28 @@ namespace Lively.Core.Wallpapers
             bool diskCache,
             int volume)
         {
-            //Streams can also use browser..
-            //TODO: Add support for livelyproperty video adjustments.
+            //Streams can also use browser.
             var isWeb = model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.web || model.LivelyInfo.Type == WallpaperType.webaudio;
             LivelyPropertyCopyPath = isWeb ? livelyPropertyPath : null;
 
-            StringBuilder cmdArgs = new StringBuilder();
-            cmdArgs.Append(" --url " + "\"" + path + "\"");
-            cmdArgs.Append(" --display " + "\"" + display.DeviceId + "\"");
-            cmdArgs.Append(" --property " + "\"" + LivelyPropertyCopyPath + "\"");
+            var cmdArgs = new StringBuilder();
+            cmdArgs.Append(" --wallpaper-url " + "\"" + path + "\"");
+            cmdArgs.Append(" --wallpaper-display " + "\"" + display.DeviceId + "\"");
+            cmdArgs.Append(" --wallpaper-property " + "\"" + LivelyPropertyCopyPath + "\"");
             //volume == 0, Cef is permanently muted and cannot be adjusted runtime
-            cmdArgs.Append(" --volume " + 100);
-            cmdArgs.Append(" --geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
+            cmdArgs.Append(" --wallpaper-volume " + 100);
+            cmdArgs.Append(" --wallpaper-geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
             //--audio false Issue: https://github.com/commandlineparser/commandline/issues/702
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --audio true" : " ");
-            cmdArgs.Append(!string.IsNullOrWhiteSpace(model.LivelyInfo.Arguments) ? " " + model.LivelyInfo.Arguments : " ");
-            cmdArgs.Append(!string.IsNullOrWhiteSpace(debugPort) ? " --debug " + debugPort : " ");
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --type online" : " --type local");
-            cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "cache", display.Index.ToString()) + "\"" : " ");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --wallpaper-audio true" : " ");
+            cmdArgs.Append(!string.IsNullOrWhiteSpace(debugPort) ? " --wallpaper-debug " + debugPort : " ");
+            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --wallpaper-type online" : " --wallpaper-type local");
+            cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --wallpaper-cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "cache", display.Index.ToString()) + "\"" : " ");
+            if (TryParseUserCommandArgs(model.LivelyInfo.Arguments, out string parsedArgs))
+                cmdArgs.Append(parsedArgs);
 #if DEBUG
             //cmdArgs.Append(" --verbose-log true"); 
 #endif
-        
+
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
@@ -98,7 +98,7 @@ namespace Lively.Core.Wallpapers
             //for logging purpose
             uniqueId = globalCount++;
         }
-
+        
         public void Pause()
         {
             //minimize browser.
@@ -333,6 +333,29 @@ namespace Lively.Core.Wallpapers
             {
                 Proc.OutputDataReceived -= OutputDataReceived;
             }
+        }
+
+        /// <summary>
+        /// Backward compatibility, appends --wallpaper to arguments if required.
+        /// </summary>
+        private static bool TryParseUserCommandArgs(string args, out string result)
+        {
+            if (string.IsNullOrWhiteSpace(args))
+            {
+                result = null;
+                return false;
+            }
+
+            var words = args.Split(' ');
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (words[i].StartsWith("--"))
+                {
+                    words[i] = string.Concat("--wallpaper-", words[i].AsSpan(2));
+                }
+            }
+            result = string.Join(" ", words);
+            return true;
         }
     }
 }
