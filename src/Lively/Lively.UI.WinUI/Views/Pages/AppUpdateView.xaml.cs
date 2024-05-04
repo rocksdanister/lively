@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Grpc.Client;
+using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -33,9 +34,12 @@ namespace Lively.UI.WinUI.Views.Pages
                 AppTheme.Dark => "&theme=dark",
                 _ => string.Empty,
             };
-            var url = !viewModel.IsBetaBuild ? 
-                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}" : 
-                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}";
+            // Set website accent color
+            var accentColor = ((Windows.UI.Color)App.Current.Resources["SystemAccentColor"]).ToHex().Substring(1);
+
+            var url = viewModel.IsBetaBuild ?
+                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}&color={accentColor}" :
+                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}&color={accentColor}";
             WebView.Source = LinkUtil.SanitizeUrl(url);
         }
 
