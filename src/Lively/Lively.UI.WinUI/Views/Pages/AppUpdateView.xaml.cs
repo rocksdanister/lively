@@ -35,11 +35,12 @@ namespace Lively.UI.WinUI.Views.Pages
                 _ => string.Empty,
             };
             // Set website accent color
-            var accentColor = ((Windows.UI.Color)App.Current.Resources["SystemAccentColor"]).ToHex().Substring(1);
+            var accentColorDark1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorDark1"]).ToHex().Substring(1);
+            var accentColorLight1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorLight1"]).ToHex().Substring(1);
 
             var url = viewModel.IsBetaBuild ?
-                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}&color={accentColor}" :
-                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}&color={accentColor}";
+                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}" :
+                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
             WebView.Source = LinkUtil.SanitizeUrl(url);
         }
 

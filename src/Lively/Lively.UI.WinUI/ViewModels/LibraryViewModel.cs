@@ -23,6 +23,7 @@ using Windows.ApplicationModel.Resources;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Lively.Helpers;
 using CommunityToolkit.WinUI.Collections;
+using Lively.Common.Extensions;
 
 namespace Lively.UI.WinUI.ViewModels
 {
@@ -47,6 +48,8 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDialogService dialogService;
         private readonly GalleryClient galleryClient;
 
+        private readonly ResourceLoader i18n;
+
         public LibraryViewModel(IWallpaperLibraryFactory wallpaperLibraryFactory, 
             IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
@@ -62,6 +65,8 @@ namespace Lively.UI.WinUI.ViewModels
             this.userSettings = userSettings;
             this.dialogService = dialogService;
             this.galleryClient = galleryClient;
+
+            i18n = ResourceLoader.GetForViewIndependentUse();
 
             wallpaperScanFolders = new List<string>
             {
@@ -570,11 +575,15 @@ namespace Lively.UI.WinUI.ViewModels
                     }
                     else
                     {
-                        throw new InvalidOperationException(ResourceLoader.GetForViewIndependentUse().GetString("LivelyExceptionNotLivelyZip"));
+                        throw new InvalidOperationException(i18n.GetString("LivelyExceptionNotLivelyZip"));
                     }
                 }
                 else
                 {
+                    var arguments = string.Empty;
+                    if (type.IsApplicationWallpaper())
+                        arguments = await dialogService.ShowTextInputDialogAsync(i18n.GetString("TextWallpaperCommandlineArgs"), "Examples: --myarguments1 -myargument2");
+
                     var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
                     Directory.CreateDirectory(dir);
                     var data = new LivelyInfoModel()
@@ -586,15 +595,14 @@ namespace Lively.UI.WinUI.ViewModels
                         Contact = string.Empty,
                         Preview = string.Empty,
                         Thumbnail = string.Empty,
-                        Arguments = string.Empty,
+                        Arguments =  string.IsNullOrWhiteSpace(arguments) ? string.Empty : arguments,
                     };
 
-                    //TODO generate livelyproperty for gif etc..
                     JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
                     return AddWallpaper(dir, true);
                 }
             }
-            throw new InvalidOperationException($"{ResourceLoader.GetForViewIndependentUse().GetString("TextUnsupportedFile")} ({Path.GetExtension(filePath)})");
+            throw new InvalidOperationException($"{i18n.GetString("TextUnsupportedFile")} ({Path.GetExtension(filePath)})");
         }
 
         public LibraryModel AddWallpaperLink(string url)
@@ -613,7 +621,6 @@ namespace Lively.UI.WinUI.ViewModels
                 Arguments = string.Empty,
             };
 
-            //TODO generate livelyproperty for gif etc..
             JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
             return AddWallpaper(dir, true);
         }

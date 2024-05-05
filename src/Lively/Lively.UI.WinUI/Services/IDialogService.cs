@@ -19,7 +19,7 @@ namespace Lively.UI.WinUI.Services
             string primaryBtnText,
             string secondaryBtnText,
             bool isDefaultPrimary = true);
-        Task<string> ShowTextInputDialogAsync(string title);
+        Task<string> ShowTextInputDialogAsync(string title, string placeholderText);
         Task ShowThemeDialogAsync();
         Task ShowPatreonSupportersDialogAsync();
         Task ShowShareWallpaperDialogAsync(LibraryModel obj);

@@ -15,6 +15,9 @@ namespace Lively.Common.Extensions
         public static bool IsVideoWallpaper(this WallpaperType type) =>
             type == WallpaperType.video || type == WallpaperType.videostream;
 
+        public static bool IsApplicationWallpaper(this WallpaperType type) =>
+            type == WallpaperType.unity || type == WallpaperType.unityaudio || type == WallpaperType.app || type == WallpaperType.godot || type == WallpaperType.bizhawk;
+
         /// <summary>
         /// Picture, gif and other non dynamic format
         /// </summary>

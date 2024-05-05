@@ -96,9 +96,15 @@ namespace Lively.UI.WinUI.Services
             };
         }
 
-        public async Task<string> ShowTextInputDialogAsync(string title)
+        public async Task<string> ShowTextInputDialogAsync(string title, string placeholderText)
         {
-            var tb = new TextBox();
+            var tb = new TextBox()
+            {
+                Height = 75,
+                Padding = new Thickness(10),
+                TextWrapping = TextWrapping.Wrap,
+                PlaceholderText = placeholderText
+            };
             var dialog = new ContentDialog
             {
                 Title = title,
