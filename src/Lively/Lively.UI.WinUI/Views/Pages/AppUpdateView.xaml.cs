@@ -9,9 +9,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.Web.WebView2.Core;
 using System;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Lively.UI.WinUI.Views.Pages
 {
     public sealed partial class AppUpdateView : Page
@@ -26,26 +23,26 @@ namespace Lively.UI.WinUI.Views.Pages
 
             // Error when setting in xaml
             WebView.DefaultBackgroundColor = ((SolidColorBrush)App.Current.Resources["ApplicationPageBackgroundThemeBrush"]).Color;
-            // Set website theme to reflect app setting
+            // Set website to reflect app interface
             var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
             {
-                AppTheme.Auto => string.Empty, // Website handles theme change based on WebView change.
-                AppTheme.Light => "&theme=light",
-                AppTheme.Dark => "&theme=dark",
-                _ => string.Empty,
+                AppTheme.Auto => "auto", // Website handles theme change based on WebView change.
+                AppTheme.Light => "light",
+                AppTheme.Dark => "dark",
+                _ => "auto",
             };
-            // Set website accent color
             var accentColorDark1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorDark1"]).ToHex().Substring(1);
             var accentColorLight1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorLight1"]).ToHex().Substring(1);
+            var param = $"?source=app&theme={pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
 
             var url = viewModel.IsBetaBuild ?
-                $"https://www.rocksdanister.com/lively-webpage/changelog/?source=app{pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}" :
-                $"https://www.rocksdanister.com/lively/changelog/?source=app{pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
+                $"https://www.rocksdanister.com/lively-webpage/changelog/{param}" :
+                $"https://www.rocksdanister.com/lively/changelog/{param}";
             WebView.Source = LinkUtil.SanitizeUrl(url);
         }
 
         // ref: https://github.com/MicrosoftEdge/WebView2Samples
-        private async void WebView_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
+        private void WebView_CoreWebView2Initialized(WebView2 sender, CoreWebView2InitializedEventArgs args)
         {
             if (args.Exception != null)
             {

@@ -67,16 +67,19 @@ namespace Lively
         {
             try
             {
-                //wait a few seconds in case application instance is just shutting down..
-                if (!mutex.WaitOne(TimeSpan.FromSeconds(1), false))
+                // Wait a few seconds in case application instance is just shutting down..
+                // Note: This wait is longer required since Core is never restarted after 2.0 rewrite.
+                if (!mutex.WaitOne(0, false))
                 {
                     try
                     {
-                        //skipping first element (application path.)
+                        // If another instance is running, communicate with it and then exit.
+                        // Commandline args, first element is application path.
                         var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
                         var client = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
                         var request = new AutomationCommandRequest();
-                        request.Args.AddRange(args.Length != 0 ? args : new string[] { "--showApp", "true" });
+                        // If no argument assume user opened via icon and show interface.
+                        request.Args.AddRange(args.Length != 0 ? args : ["--showApp", "true"]);
                         _ = client.AutomationCommandAsync(request);
                     }
                     catch (Exception e)
