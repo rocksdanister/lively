@@ -427,9 +427,9 @@ namespace Lively.Automation
 
         private int RunScreenSaverOptions(ScreenSaverOptions opts)
         {
-            if (opts.Show != null)
+            if (opts.Show != null || opts.ShowExclusive != null)
             {
-                if (opts.Show == true)
+                if (opts.Show == true || opts.ShowExclusive == true)
                 {
                     screenSaver.Start();
                 }

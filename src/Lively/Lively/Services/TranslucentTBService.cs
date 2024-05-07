@@ -290,7 +290,7 @@ namespace Lively.Services
             return Color.FromArgb(255 * color.R / 255, 255 * color.G / 255, 255 * color.B / 255);
         }
 
-        private static bool IsSupportedWindows11 => Environment.OSVersion.Version.Build < 22621 && Environment.OSVersion.Version.Revision < 1343;
+        private static bool IsSupportedWindows11 => Environment.OSVersion.Version < new Version(10, 0, 22621, 1343);
 
         #endregion //helpers
 

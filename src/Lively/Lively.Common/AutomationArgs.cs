@@ -127,6 +127,11 @@ namespace Lively.Common
             Required = false,
             HelpText = "Show the ss full-screen, false cancels running ss.")]
             public bool? Show { get; set; }
+
+            [Option("showExclusive",
+            Required = false,
+            HelpText = "Show the ss full-screen and avoid running wallpaper (if not running already.) To be used on app startup.")]
+            public bool? ShowExclusive { get; set; }
         }
 
         [Verb("screenshot", HelpText = "Take wallpaper screenshot.")]

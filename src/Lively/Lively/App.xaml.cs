@@ -37,6 +37,8 @@ using Lively.Common.Services.Downloader;
 using Lively.ViewModels;
 using System.Collections.Generic;
 using Lively.Common.Extensions;
+using CommandLine;
+using static Lively.Common.AutomationArgs;
 
 namespace Lively
 {
@@ -62,9 +64,12 @@ namespace Lively
                 return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
             }
         }
+        public bool IsExclusiveScreensaverMode { get; }
 
         public App()
         {
+            // Commandline args, first element is application path.
+            var commandArgs = Environment.GetCommandLineArgs().Skip(1).ToArray();
             try
             {
                 // Wait a few seconds in case application instance is just shutting down..
@@ -74,12 +79,10 @@ namespace Lively
                     try
                     {
                         // If another instance is running, communicate with it and then exit.
-                        // Commandline args, first element is application path.
-                        var args = Environment.GetCommandLineArgs().Skip(1).ToArray();
                         var client = new CommandsService.CommandsServiceClient(new NamedPipeChannel(".", Constants.SingleInstance.GrpcPipeServerName));
                         var request = new AutomationCommandRequest();
                         // If no argument assume user opened via icon and show interface.
-                        request.Args.AddRange(args.Length != 0 ? args : ["--showApp", "true"]);
+                        request.Args.AddRange(commandArgs.Length != 0 ? commandArgs : ["--showApp", "true"]);
                         _ = client.AutomationCommandAsync(request);
                     }
                     catch (Exception e)
@@ -221,16 +224,33 @@ namespace Lively
                 spl.Close();
             }
 
-            //restore wallpaper(s) from previous run.
-            Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
-
-            //first run Setup-Wizard show..
-            if (userSettings.Settings.IsFirstRun)
+            if (commandArgs.Length != 0)
             {
-                Services.GetRequiredService<IRunnerService>().ShowUI();
+                var opts = new ScreenSaverOptions();
+                Parser.Default.ParseArguments<ScreenSaverOptions>(commandArgs)
+                    .WithParsed((x) => opts = x)
+                    .WithNotParsed((x) => Debug.WriteLine(x));
+
+                if (opts.ShowExclusive != null)
+                    IsExclusiveScreensaverMode = opts.ShowExclusive == true;
             }
 
-            //need to load theme later stage of startu to update..
+            if (IsExclusiveScreensaverMode)
+            {
+                Logger.Info("Starting in exclusive screensaver mode, skipping wallpaper restore..");
+                // TODO: Call screensaver.
+            }
+            else
+            {
+                // Restore wallpaper(s) from previous run.
+                Services.GetRequiredService<IDesktopCore>().RestoreWallpaper();
+            }
+
+            // First run setup wizard show.
+            if (userSettings.Settings.IsFirstRun)
+                Services.GetRequiredService<IRunnerService>().ShowUI();
+
+            // Need to load theme later stage of startup to update.
             this.Startup += (s, e) => {
                 ChangeTheme(userSettings.Settings.ApplicationTheme);
             };
