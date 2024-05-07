@@ -23,7 +23,6 @@ namespace Lively.Services
         private AccentPolicy accentPolicyRegular = new AccentPolicy();
         private bool disposedValue;
 
-        //private AccentPolicy accentPolicyMaximised = new AccentPolicy();
         private readonly bool incompatibleProgramFound;
         private readonly System.Timers.Timer _timer = new System.Timers.Timer();
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -56,10 +55,8 @@ namespace Lively.Services
 
         public void Start(TaskbarTheme theme)
         {
-            if (incompatibleProgramFound)
-            {
+            if (incompatibleProgramFound || !IsSupportedWindows11)
                 return;
-            }
 
             if (theme == TaskbarTheme.none)
             {
@@ -78,13 +75,13 @@ namespace Lively.Services
 
         public void Stop()
         {
-            if (IsRunning)
-            {
-                _timer.Stop();
-                ResetTaskbar();
-                IsRunning = false;
-                Logger.Info("Taskbar theme service stopped.");
-            }
+            if (!IsRunning)
+                return;
+
+            _timer.Stop();
+            ResetTaskbar();
+            IsRunning = false;
+            Logger.Info("Taskbar theme service stopped.");
         }
 
         private void SetTheme(TaskbarTheme theme)
@@ -224,6 +221,9 @@ namespace Lively.Services
 
         private void ResetTaskbar()
         {
+            if (incompatibleProgramFound || !IsSupportedWindows11)
+                return;
+
             foreach (var taskbar in GetTaskbars())
             {
                 NativeMethods.SendMessage(taskbar, (int)NativeMethods.WM.DWMCOMPOSITIONCHANGED, IntPtr.Zero, IntPtr.Zero);
@@ -289,6 +289,8 @@ namespace Lively.Services
             //ImageMagick Q8 color range is 0 - 255.
             return Color.FromArgb(255 * color.R / 255, 255 * color.G / 255, 255 * color.B / 255);
         }
+
+        private static bool IsSupportedWindows11 => Environment.OSVersion.Version.Build < 22621 && Environment.OSVersion.Version.Revision < 1343;
 
         #endregion //helpers
 
