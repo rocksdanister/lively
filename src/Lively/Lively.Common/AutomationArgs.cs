@@ -63,7 +63,7 @@ namespace Lively.Common
         {
             [Option("file",
             Required = true,
-            HelpText = "Path containing LivelyInfo.json project file.")]
+            HelpText = "Directory containing LivelyInfo.json project file or path to media file.\nSpecial parameter(s):\nrandom")]
             public string File { get; set; }
 
             [Option("monitor",
@@ -71,10 +71,7 @@ namespace Lively.Common
             HelpText = "Index of the monitor to load the wallpaper on (optional).")]
             public int? Monitor { get; set; }
 
-            [Option("random",
-            Required = false,
-            HelpText = "Set random wallpaper from library.")]
-            public bool? RandomWallpaper { get; set; }
+            public bool IsRandom => string.Equals(File, "random", StringComparison.OrdinalIgnoreCase);
         }
 
         [Verb("closewp", HelpText = "Close wallpaper.")]

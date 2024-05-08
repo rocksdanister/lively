@@ -150,55 +150,51 @@ namespace Lively.Automation
 
         private int RunSetWallpaperOptions(SetWallpaperOptions opts)
         {
-            if (opts.RandomWallpaper != null)
+            if (opts.File != null)
             {
-                if (opts.RandomWallpaper is false)
-                    return 1;
-
-                switch (userSettings.Settings.WallpaperArrangement)
+                if (opts.IsRandom)
                 {
-                    case WallpaperArrangement.per:
-                        {
-                            var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
-                            if (screen != null)
+                    switch (userSettings.Settings.WallpaperArrangement)
+                    {
+                        case WallpaperArrangement.per:
                             {
-                                _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), screen);
-                            }
-                            else
-                            {
-                                // Apply wallpaper to all screens.
-                                var screenCount = displayManager.DisplayMonitors.Count;
-                                var wallpapersRandom = GetRandomWallpaper().Take(screenCount);
-                                var wallpapersCount = wallpapersRandom.Count();
-                                if (wallpapersCount > 0)
+                                var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
+                                if (screen != null)
                                 {
-                                    for (int i = 0; i < screenCount; i++)
+                                    _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), screen);
+                                }
+                                else
+                                {
+                                    // Apply wallpaper to all screens.
+                                    var screenCount = displayManager.DisplayMonitors.Count;
+                                    var wallpapersRandom = GetRandomWallpaper().Take(screenCount);
+                                    var wallpapersCount = wallpapersRandom.Count();
+                                    if (wallpapersCount > 0)
                                     {
-                                        _ = desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                                        for (int i = 0; i < screenCount; i++)
+                                        {
+                                            _ = desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                                        }
                                     }
                                 }
                             }
-                        }
-                        break;
-                    case WallpaperArrangement.span:
-                    case WallpaperArrangement.duplicate:
-                        {
-                            try
+                            break;
+                        case WallpaperArrangement.span:
+                        case WallpaperArrangement.duplicate:
                             {
-                                _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                                try
+                                {
+                                    _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                                }
+                                catch (InvalidOperationException)
+                                {
+                                    //No wallpapers present.
+                                }
                             }
-                            catch (InvalidOperationException)
-                            {
-                                //No wallpapers present.
-                            }
-                        }
-                        break;
+                            break;
+                    }
                 }
-            }
-
-            if (opts.File != null)
-            {
-                if (Directory.Exists(opts.File))
+                else if (Directory.Exists(opts.File))
                 {
                     //Folder containing LivelyInfo.json file.
                     var screen = opts.Monitor != null ?
