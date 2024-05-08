@@ -70,6 +70,11 @@ namespace Lively.Common
             Required = false,
             HelpText = "Index of the monitor to load the wallpaper on (optional).")]
             public int? Monitor { get; set; }
+
+            [Option("random",
+            Required = false,
+            HelpText = "Set random wallpaper from library.")]
+            public bool? RandomWallpaper { get; set; }
         }
 
         [Verb("closewp", HelpText = "Close wallpaper.")]

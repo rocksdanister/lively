@@ -18,11 +18,8 @@ using Lively.Core.Suspend;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Services;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Octokit.Internal;
 using static Lively.Common.AutomationArgs;
-using static Lively.Common.Helpers.Archive.ZipCreate;
 
 namespace Lively.Automation
 {
@@ -39,6 +36,8 @@ namespace Lively.Automation
         private readonly IPlayback playbackMonitor;
         private readonly IRunnerService runner;
         private readonly ISystray systray;
+
+        private readonly Random rng = new Random();
 
         public CommandHandler(IWallpaperLibraryFactory wallpaperLibraryFactory,
             IUserSettingsService userSettings, 
@@ -151,6 +150,52 @@ namespace Lively.Automation
 
         private int RunSetWallpaperOptions(SetWallpaperOptions opts)
         {
+            if (opts.RandomWallpaper != null)
+            {
+                if (opts.RandomWallpaper is false)
+                    return 1;
+
+                switch (userSettings.Settings.WallpaperArrangement)
+                {
+                    case WallpaperArrangement.per:
+                        {
+                            var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
+                            if (screen != null)
+                            {
+                                _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), screen);
+                            }
+                            else
+                            {
+                                // Apply wallpaper to all screens.
+                                var screenCount = displayManager.DisplayMonitors.Count;
+                                var wallpapersRandom = GetRandomWallpaper().Take(screenCount);
+                                var wallpapersCount = wallpapersRandom.Count();
+                                if (wallpapersCount > 0)
+                                {
+                                    for (int i = 0; i < screenCount; i++)
+                                    {
+                                        _ = desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case WallpaperArrangement.span:
+                    case WallpaperArrangement.duplicate:
+                        {
+                            try
+                            {
+                                _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
+                            }
+                            catch (InvalidOperationException)
+                            {
+                                //No wallpapers present.
+                            }
+                        }
+                        break;
+                }
+            }
+
             if (opts.File != null)
             {
                 if (Directory.Exists(opts.File))
@@ -519,6 +564,49 @@ namespace Lively.Automation
                     {
                         yield return libItem;
                     }
+                }
+            }
+        }
+
+        private IEnumerable<LibraryModel> GetRandomWallpaper()
+        {
+            var dir = new List<string>();
+            string[] folderPaths = {
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir),
+                Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir)
+            };
+            for (int i = 0; i < folderPaths.Count(); i++)
+            {
+                try
+                {
+                    dir.AddRange(Directory.GetDirectories(folderPaths[i], "*", SearchOption.TopDirectoryOnly));
+                }
+                catch { /* TODO */ }
+            }
+
+            //Fisher-Yates shuffle
+            int n = dir.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                var value = dir[k];
+                dir[k] = dir[n];
+                dir[n] = value;
+            }
+
+            for (int i = 0; i < dir.Count; i++)
+            {
+                LibraryModel libItem = null;
+                try
+                {
+                    libItem = wallpaperLibraryFactory.CreateFromDirectory(dir[i]);
+                }
+                catch { }
+
+                if (libItem != null)
+                {
+                    yield return libItem;
                 }
             }
         }
