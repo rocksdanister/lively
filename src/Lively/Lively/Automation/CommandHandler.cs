@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using CommandLine;
 using Lively.Common;
 using Lively.Common.API;
+using Lively.Common.Extensions;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
@@ -19,7 +20,9 @@ using Lively.Models;
 using Lively.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Octokit.Internal;
 using static Lively.Common.AutomationArgs;
+using static Lively.Common.Helpers.Archive.ZipCreate;
 
 namespace Lively.Automation
 {
@@ -171,60 +174,49 @@ namespace Lively.Automation
                 {
                     var screen = opts.Monitor != null ?
                         displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
-                    LibraryModel libraryItem = null;
-                    foreach (var x in GetWallpapers())
-                    {
-                        if (x.FilePath != null && x.FilePath.Equals(opts.File, StringComparison.OrdinalIgnoreCase))
-                        {
-                            libraryItem = x;
-                            break;
-                        }
-                    }
+                    LibraryModel libraryItem = GetWallpapers().FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File, StringComparison.OrdinalIgnoreCase));
 
-                    if (screen != null)
+                    if (screen is null)
+                        return 1;
+
+                    if (libraryItem != null)
                     {
-                        if (libraryItem != null)
-                            _ = desktopCore.SetWallpaperAsync(libraryItem, screen);
-                        /*
-                        else
+                        _ = desktopCore.SetWallpaperAsync(libraryItem, screen);
+                    }
+                    else
+                    {
+                        try
                         {
-                            Logger.Info("Wallpaper not found in library, importing as new file.");
-                            WallpaperType type = FileFilter.GetLivelyFileType(opts.File);
-                            switch (type)
+                            Logger.Info("Wallpaper not found in library, importing as new file..");
+                            var type = FileFilter.GetLivelyFileType(opts.File);
+                            if (type.IsMediaWallpaper())
                             {
-                                case WallpaperType.web:
-                                case WallpaperType.webaudio:
-                                case WallpaperType.url:
-                                    Logger.Info("Web type wallpaper import is disabled for cmd control.");
-                                    break;
-                                case WallpaperType.video:
-                                case WallpaperType.gif:
-                                case WallpaperType.videostream:
-                                case WallpaperType.picture:
-                                    libraryVm.AddWallpaper(opts.File,
-                                        type,
-                                        LibraryTileType.cmdImport,
-                                        userSettings.Settings.SelectedDisplay);
-                                    break;
-                                case WallpaperType.app:
-                                case WallpaperType.bizhawk:
-                                case WallpaperType.unity:
-                                case WallpaperType.godot:
-                                case WallpaperType.unityaudio:
-                                    Logger.Info("App type wallpaper import is disabled for cmd control.");
-                                    break;
-                                case (WallpaperType)100:
-                                    Logger.Info("Lively .zip type wallpaper import is disabled for cmd control.");
-                                    break;
-                                case (WallpaperType)(-1):
-                                    Logger.Info("Wallpaper format not supported.");
-                                    break;
-                                default:
-                                    Logger.Info("No wallpaper type recognised.");
-                                    break;
+                                var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());
+                                Directory.CreateDirectory(dir);
+                                var data = new LivelyInfoModel()
+                                {
+                                    Title = Path.GetFileNameWithoutExtension(opts.File),
+                                    Type = type,
+                                    IsAbsolutePath = true,
+                                    FileName = opts.File,
+                                    Contact = string.Empty,
+                                    Preview = string.Empty,
+                                    Thumbnail = string.Empty,
+                                    Arguments = string.Empty,
+                                };
+                                JsonStorage<LivelyInfoModel>.StoreData(Path.Combine(dir, "LivelyInfo.json"), data);
+
+                                var model = wallpaperLibraryFactory.CreateFromDirectory(dir);
+                                model.DataType = LibraryItemType.cmdImport;
+                                _ = desktopCore.SetWallpaperAsync(model, screen);
                             }
+                            else
+                                Logger.Info($"Unsupported command import file:{type}");
                         }
-                        */
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.ToString());
+                        }
                     }
                 }
             }

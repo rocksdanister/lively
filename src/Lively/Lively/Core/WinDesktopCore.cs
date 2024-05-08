@@ -319,7 +319,7 @@ namespace Lively.Core
                 case LibraryItemType.edit:
                 case LibraryItemType.processing:
                 case LibraryItemType.multiImport:
-                    //case LibraryItemType.cmdImport:
+                case LibraryItemType.cmdImport:
                     try
                     {
                         runner.SetBusyUI(true);
