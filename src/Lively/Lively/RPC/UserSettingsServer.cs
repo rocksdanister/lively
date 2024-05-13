@@ -122,6 +122,8 @@ namespace Lively.RPC
             userSettings.Settings.WallpaperArrangement = (WallpaperArrangement)((int)req.WallpaperArrangement);
             userSettings.Settings.AppVersion = req.AppVersion;
             userSettings.Settings.AppPreviousVersion = req.AppPreviousVersion;
+            userSettings.Settings.ScreensaverType = (ScreensaverType)req.ScreensaverType;
+            userSettings.Settings.ScreensaverArragement = (WallpaperArrangement)req.ScreensaverArrangement;
             //userSettings.Settings.Startup = req.Startup;
             userSettings.Settings.IsFirstRun = req.IsFirstRun;
             userSettings.Settings.ControlPanelOpened = req.ControlPanelOpened;
@@ -229,6 +231,8 @@ namespace Lively.RPC
                 },
                 AppVersion = settings.AppVersion,
                 AppPreviousVersion = settings.AppPreviousVersion,
+                ScreensaverArrangement = (WallpaperArrangementRule)settings.ScreensaverArragement,
+                ScreensaverType = (ScreensaverTypeRule)settings.ScreensaverType,
                 Startup = settings.Startup,
                 IsFirstRun = settings.IsFirstRun,
                 ControlPanelOpened = settings.ControlPanelOpened,

@@ -216,16 +216,9 @@ namespace Lively.UI.WinUI.UserControls
 
         private void UpdateDisplaySelection()
         {
-            var isSelectionVisible = Layout switch
-            {
-                WallpaperArrangement.per => true,
-                WallpaperArrangement.span => false,
-                WallpaperArrangement.duplicate => false,
-                _ => throw new NotImplementedException(),
-            };
-
+            // Only visual change
             foreach (var item in Displays)
-                item.IsSelected = isSelectionVisible && item == SelectedItem;
+                item.IsSelected = Layout != WallpaperArrangement.per || item == SelectedItem;
         }
 
         private void Grid_PointerPressed(object sender, PointerRoutedEventArgs e)

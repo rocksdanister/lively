@@ -463,13 +463,9 @@ namespace Lively.Automation
             if (opts.Show != null || opts.ShowExclusive != null)
             {
                 if (opts.Show == true || opts.ShowExclusive == true)
-                {
-                    screenSaver.Start();
-                }
+                    _ = screenSaver.StartAsync();
                 else
-                {
                     screenSaver.Stop();
-                }
             }
 
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate

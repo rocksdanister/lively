@@ -28,7 +28,7 @@ namespace Lively.Core.Wallpapers
         private readonly IntPtr thumbnailSrc;
         private readonly Rectangle targetRect;
         private DwmThumbnailWrapper dwmThumbnail;
-        private Blank window;
+        private BlankWindow window;
 
         public DwmThumbnailPlayer(IntPtr thumbnailSrc, LibraryModel model, DisplayMonitor display, Rectangle targetRect)
         {
@@ -62,7 +62,7 @@ namespace Lively.Core.Wallpapers
             {
                 try
                 {
-                    window = new Blank()
+                    window = new BlankWindow()
                     {
                         WindowStartupLocation = WindowStartupLocation.Manual,
                         ResizeMode = ResizeMode.NoResize,

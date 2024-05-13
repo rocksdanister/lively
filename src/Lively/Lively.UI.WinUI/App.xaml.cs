@@ -29,6 +29,7 @@ using Lively.Common.Factories;
 using static Lively.Common.Constants;
 using Lively.Common.Services.Downloader;
 using Lively.Helpers;
+using Lively.UI.WinUI.ViewModels.ControlPanel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -169,6 +170,8 @@ namespace Lively.UI.WinUI
                 .AddTransient<PatreonSupportersViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ControlPanelViewModel>()
+                .AddTransient<ScreensaverLayoutViewModel>()
+                .AddTransient<WallpaperLayoutViewModel>()
                 .AddTransient<ChooseDisplayViewModel>()
                 .AddTransient<FindMoreAppsViewModel>()
                 .AddTransient<AppThemeViewModel>()

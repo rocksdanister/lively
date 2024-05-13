@@ -77,7 +77,7 @@ namespace Lively.UI.WinUI.Views.Pages.ControlPanel
 
                 // Notify vm to save customisation to disk.
                 if (preNavPageType is not null && Type.Equals(preNavPageType, typeof(WallpaperLayoutCustomiseView)))
-                    viewModel.CustomiseWallpaperPageOnClosed();
+                    viewModel.WallpaperVm.CustomiseWallpaperPageOnClosed();
             }
         }
     }

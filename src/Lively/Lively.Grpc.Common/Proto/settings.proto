@@ -73,6 +73,8 @@ message SettingsDataModel {
     string application_theme_background_path = 61;
     int32 theme_bundle_version = 62;
     string app_previous_version = 63;
+    WallpaperArrangementRule screensaver_arrangement = 64;
+    ScreensaverTypeRule screensaver_type = 65;
 }
 
 message AppRulesSettings {
@@ -225,4 +227,10 @@ enum ScreensaverIdleTime
     min45 = 10;
     min60 = 11;
     min120 = 12;
+}
+
+enum ScreensaverTypeRule
+{
+    wallpaper_ = 0;
+    different = 1;
 }

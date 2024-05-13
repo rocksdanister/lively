@@ -26,6 +26,9 @@ using Lively.Views;
 using static Lively.Common.Errors;
 using System.Reflection;
 using NLog;
+using Lively.Common.Helpers.Pinvoke;
+using System.Windows.Interop;
+using Lively.Extensions;
 
 namespace Lively.RPC
 {
@@ -34,16 +37,19 @@ namespace Lively.RPC
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         private readonly IDesktopCore desktopCore;
+        private readonly IRunnerService runnerService;
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         public WinDesktopCoreServer(IDesktopCore desktopCore,
+            IRunnerService runnerService,
             IDisplayManager displayManager,
             IUserSettingsService userSettings,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.desktopCore = desktopCore;
+            this.runnerService = runnerService;
             this.displayManager = displayManager;
             this.userSettings = userSettings;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
@@ -129,11 +135,16 @@ namespace Lively.RPC
                 var lm = wallpaperLibraryFactory.CreateFromDirectory(request.LivelyInfoPath);
                 _ = Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new ThreadStart(delegate
                   {
-                      new WallpaperPreview(lm)
-                      {
+                      var preview = new WallpaperPreview(lm, userSettings.Settings.SelectedDisplay, userSettings.Settings.WallpaperArrangement) {
+                          // Default incase UI not running.
                           WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                          Topmost = true,
-                      }.Show();
+                      };
+                      preview.Show();
+                      // Center preview relative to UI.
+                      if (runnerService.IsVisibleUI)
+                          preview.CenterToWindow(runnerService.HwndUI);
+                      // Re-activate incase launching wallpaper loses focus.
+                      preview.Activate();
                   }));
             }
             catch (Exception e)

@@ -1,19 +1,15 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
-using System.Windows;
-//using System.Windows.Forms;
-using System.Windows.Threading;
-using System.Linq;
-using Lively.Common;
-using Lively.Services;
+﻿using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
-using Lively.Helpers.Hardware;
 using Lively.Core.Display;
+using Lively.Helpers.Hardware;
 using Lively.Models;
+using Lively.Services;
+using Microsoft.Win32;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Windows.Threading;
 
 namespace Lively.Core.Suspend
 {
@@ -173,8 +169,16 @@ namespace Lively.Core.Suspend
         {
             if (screenSaver.IsRunning)
             {
-                PlayWallpapers();
-                SetWallpaperVolume(userSettings.Settings.AudioVolumeGlobal);
+                // Pause running wallpaper if screensaver is using a separate instance of wallpaper.
+                if (screenSaver.Mode == Services.ScreensaverApplyMode.process)
+                {
+                    PauseWallpapers();
+                }
+                else
+                {
+                    PlayWallpapers();
+                    SetWallpaperVolume(userSettings.Settings.AudioVolumeGlobal);
+                }
             }
             else if (WallpaperPlayback == PlaybackState.paused || _isLockScreen ||
                 (_isRemoteSession && userSettings.Settings.RemoteDesktopPause == AppRulesEnum.pause))

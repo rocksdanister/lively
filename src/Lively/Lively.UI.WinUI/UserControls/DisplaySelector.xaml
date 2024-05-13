@@ -118,6 +118,14 @@
                             Margin="5,0,0,0"
                             FontSize="18"
                             Text="{Binding Screen.Index, Mode=OneWay}" />
+                        <FontIcon
+                            Margin="5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            FontSize="12"
+                            Glyph="&#xEA8A;"
+                            Opacity="0.5"
+                            Visibility="{Binding Screen.IsPrimary, Mode=OneWay}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

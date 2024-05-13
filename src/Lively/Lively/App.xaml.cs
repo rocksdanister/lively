@@ -238,7 +238,12 @@ namespace Lively
             if (IsExclusiveScreensaverMode)
             {
                 Logger.Info("Starting in exclusive screensaver mode, skipping wallpaper restore..");
-                // TODO: Call screensaver.
+                var screenSaverService = Services.GetRequiredService<IScreensaverService>();
+                screenSaverService.Stopped += (_, _) => {
+                    App.ShutDown();
+                };
+                // Custom theme resources are not this early, make sure not to call any window or control using it.
+                _ = screenSaverService.StartAsync();
             }
             else
             {
@@ -431,7 +436,7 @@ namespace Lively
             }
             catch (InvalidOperationException) { /* not initialised */ }
             ((App)Current).grpcServer?.Dispose();
-            //Shutdown needs to be called from dispatcher..
+            // Shutdown needs to be called from dispatcher.
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
     }

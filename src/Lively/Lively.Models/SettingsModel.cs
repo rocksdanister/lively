@@ -108,6 +108,8 @@ namespace Lively.Models
         /// </summary>
         public bool DesktopAutoWallpaper { get; set; }
         public TaskbarTheme SystemTaskbarTheme { get; set; }
+        public ScreensaverType ScreensaverType { get; set; }
+        public WallpaperArrangement ScreensaverArragement { get; set; }
         public ScreensaverIdleTime ScreensaverIdleDelay { get; set; }
         public bool ScreensaverOledWarning { get; set; }
         public bool ScreensaverEmptyScreenShowBlack { get; set; }
@@ -128,6 +130,8 @@ namespace Lively.Models
             SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.foreground;
             WallpaperArrangement = WallpaperArrangement.per;
+            ScreensaverArragement = WallpaperArrangement.per;
+            ScreensaverType = ScreensaverType.wallpaper;
             AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
             AppPreviousVersion = string.Empty;
             Startup = true;

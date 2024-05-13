@@ -175,6 +175,8 @@ namespace Lively.Grpc.Client
                 SavedUrl = settings.SavedURL,
                 ProcessMonitorAlogorithm = (ProcessMonitorRule)((int)settings.ProcessMonitorAlgorithm),
                 WallpaperArrangement = (WallpaperArrangementRule)settings.WallpaperArrangement,
+                ScreensaverArrangement = (WallpaperArrangementRule)settings.ScreensaverArragement,
+                ScreensaverType = (ScreensaverTypeRule)settings.ScreensaverType,
                 SelectedDisplay = new GetScreensResponse()
                 {
                     DeviceId = settings.SelectedDisplay.DeviceId,
@@ -265,6 +267,8 @@ namespace Lively.Grpc.Client
             {
                 SavedURL = settings.SavedUrl,
                 ProcessMonitorAlgorithm = (ProcessMonitorAlgorithm)((int)settings.ProcessMonitorAlogorithm),
+                ScreensaverArragement = (WallpaperArrangement)settings.ScreensaverArrangement,
+                ScreensaverType = (ScreensaverType)settings.ScreensaverType,
                 SelectedDisplay = new DisplayMonitor()
                 {
                     DeviceId = settings.SelectedDisplay.DeviceId,

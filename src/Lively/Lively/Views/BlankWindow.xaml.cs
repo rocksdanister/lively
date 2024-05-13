@@ -8,9 +8,9 @@ namespace Lively.Views
     /// <summary>
     /// Blank window
     /// </summary>
-    public partial class Blank : Window
+    public partial class BlankWindow : Window
     {
-        public Blank()
+        public BlankWindow()
         {
             InitializeComponent();
         }

@@ -12,9 +12,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using static Lively.UI.WinUI.Services.IDialogService;
@@ -266,16 +263,50 @@ namespace Lively.UI.WinUI.Services
 
         public async Task ShowControlPanelDialogAsync()
         {
+            var isDialogVisible = true;
             var vm = App.Services.GetRequiredService<ControlPanelViewModel>();
-            await new ContentDialog()
+            var dialog = new ContentDialog()
             {
                 Title = i18n.GetString("DescriptionScreenLayout"),
                 Content = new ControlPanelView(vm),
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
-            }.ShowAsyncQueue();
-            vm.OnWindowClosing(this, EventArgs.Empty);
+            };
+            dialog.Closed += OnDialogClose;
+            vm.PropertyChanged += PropertyChanged;
+            await dialog.ShowAsyncQueue();
+
+            async void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+            {
+                if (e.PropertyName == nameof(vm.IsHideDialog))
+                {
+                    if (vm.IsHideDialog)
+                    {
+                        isDialogVisible = false;
+                        dialog.Hide();
+                    }
+                    else
+                    {
+                        isDialogVisible = true;
+                        // Re-open the dialog
+                        await dialog.ShowAsyncQueue();
+                    }
+                }
+            }
+
+            void OnDialogClose(object sender, ContentDialogClosedEventArgs args)
+            {
+                if (isDialogVisible)
+                    OnWindowClose();
+            }
+
+            void OnWindowClose()
+            {
+                vm.OnWindowClosing(this, EventArgs.Empty);
+                vm.PropertyChanged -= PropertyChanged;
+                dialog.Closed -= OnDialogClose;
+            }
         }
 
         public async Task ShowHelpDialogAsync()

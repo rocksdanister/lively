@@ -25,7 +25,7 @@ namespace Lively.Factories
             return new DwmThumbnailPlayer(thumbnailSrc, model, display, targetRect);
         }
 
-        public IWallpaper CreateWallpaper(LibraryModel model, DisplayMonitor display, IUserSettingsService userSettings, bool isPreview = false)
+        public IWallpaper CreateWallpaper(LibraryModel model, DisplayMonitor display, WallpaperArrangement arrangement, IUserSettingsService userSettings, bool isPreview = false)
         {
             switch (model.LivelyInfo.Type)
             {
@@ -38,7 +38,7 @@ namespace Lively.Factories
                             return new WebCefSharpProcess(model.FilePath,
                                 model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                                 userSettings.Settings.WebDebugPort,
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);
@@ -46,7 +46,7 @@ namespace Lively.Factories
                             return new WebWebView2(model.FilePath,
                                 model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings));
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings));
                     }
                     break;
                 case WallpaperType.video:
@@ -71,14 +71,14 @@ namespace Lively.Factories
                             return new VideoPlayerMpvExt(obj.FilePath, 
                                 obj, 
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(obj, display, userSettings.Settings.WallpaperArrangement), 
+                                lpFactory.CreateLivelyPropertyFolder(obj, display, arrangement), 
                                 userSettings.Settings.WallpaperScaling);
                             */
                         case LivelyMediaPlayer.mpv:
                             return new VideoMpvPlayer(model.FilePath,
                                 model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                                 userSettings.Settings.WallpaperScaling,
                                 userSettings.Settings.VideoPlayerHwAccel,
                                 isPreview);
@@ -101,7 +101,7 @@ namespace Lively.Factories
                             return new VideoMpvPlayer(model.FilePath,
                                            model,
                                            display,
-                                           lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                           lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                                            userSettings.Settings.WallpaperScaling,
                                            userSettings.Settings.VideoPlayerHwAccel,
                                            isPreview);
@@ -113,12 +113,12 @@ namespace Lively.Factories
                         case LivelyPicturePlayer.picture:
                             throw new PluginNotFoundException("xaml island gif player not available.");
                         case LivelyPicturePlayer.winApi:
-                        return new PictureWinApi(model.FilePath, model, display, userSettings.Settings.WallpaperArrangement, userSettings.Settings.WallpaperScaling);
+                        return new PictureWinApi(model.FilePath, model, display, arrangement, userSettings.Settings.WallpaperScaling);
                         case LivelyPicturePlayer.mpv:
                             return new VideoMpvPlayer(model.FilePath,
                                               model,
                                               display,
-                                              lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                              lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                                               userSettings.Settings.WallpaperScaling,
                                               userSettings.Settings.VideoPlayerHwAccel,
                                               isPreview);
@@ -146,7 +146,7 @@ namespace Lively.Factories
                         return new VideoMpvPlayer(model.FilePath,
                             model,
                             display,
-                            lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                            lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                             userSettings.Settings.WallpaperScaling, userSettings.Settings.VideoPlayerHwAccel,
                             isPreview, userSettings.Settings.StreamQuality);
                     }
@@ -155,7 +155,7 @@ namespace Lively.Factories
                         return new WebCefSharpProcess(model.FilePath,
                                 model,
                                 display,
-                                lpFactory.CreateLivelyPropertyFolder(model, display, userSettings.Settings.WallpaperArrangement, userSettings),
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                                 userSettings.Settings.WebDebugPort,
                                 userSettings.Settings.CefDiskCache,
                                 userSettings.Settings.AudioVolumeGlobal);

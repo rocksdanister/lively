@@ -215,12 +215,16 @@ namespace Lively.Common
         min120
     }
 
-    public enum ScreensaverMode
+    public enum ScreensaverType
     {
-        [Description("Same as running wallpaper.")]
+        /// <summary>
+        /// Mirror the current wallpaper(s.)
+        /// </summary>
         wallpaper,
-        [Description("Different from running wallpaper.")]
-        standalone
+        /// <summary>
+        /// Different screensaver from running wallpaper.
+        /// </summary>
+        different
     }
 
     /// <summary>

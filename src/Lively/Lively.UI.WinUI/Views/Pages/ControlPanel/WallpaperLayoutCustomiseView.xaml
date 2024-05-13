@@ -12,24 +12,8 @@
         Padding="25"
         Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
         CornerRadius="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Button
-            Grid.Column="0"
-            Margin="5"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            Command="{Binding NavigateBackWallpaperCommand}"
-            Visibility="Collapsed">
-            <FontIcon FontSize="15" Glyph="&#xE72B;" />
-        </Button>
         <Frame
             x:Name="contentFrame"
-            Grid.Column="1"
             Margin="0,5,0,5"
             HorizontalAlignment="Stretch" />
     </Grid>

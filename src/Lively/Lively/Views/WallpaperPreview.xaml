@@ -9,15 +9,15 @@
     Title="{x:Static p:Resources.PreviewWallpaper_Text}"
     Width="1281"
     Height="762"
+    Background="Black"
     Closing="Window_Closing"
     Loaded="Window_Loaded"
     ResizeMode="CanResize"
     SizeChanged="Window_SizeChanged"
-    Style="{StaticResource WindowUI}"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
-    <Grid>
 
+    <Grid>
         <!--  wallpaper window will be placed here!  -->
         <Rectangle
             x:Name="PreviewBorder"
@@ -25,21 +25,37 @@
             MinHeight="2160"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Fill="{DynamicResource BackgroundMediumBrush}" />
+            Fill="Black" />
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="25"
-                Text="{x:Static p:Resources.PleaseWait_Text}" />
-            <ProgressBar
-                x:Name="ProgressIndicator"
-                Grid.Row="1"
-                Width="100"
-                Height="25"
-                Margin="10"
-                IsIndeterminate="True" />
-        </StackPanel>
+        <Viewbox
+            MaxWidth="1280"
+            MaxHeight="720"
+            Margin="25"
+            HorizontalAlignment="Left">
+            <StackPanel
+                x:Name="LoadingPanel"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+                <Border
+                    Width="50"
+                    Height="50"
+                    HorizontalAlignment="Left"
+                    CornerRadius="2.5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/Resources/splash.png" Stretch="Fill" />
+                    </Border.Background>
+                </Border>
+                <TextBlock
+                    FontSize="14"
+                    Foreground="White"
+                    Text="{x:Static p:Resources.PleaseWait_Text}" />
+                <ProgressBar
+                    Grid.Row="1"
+                    Width="350"
+                    MaxHeight="5"
+                    Margin="0,5,0,0"
+                    IsIndeterminate="True" />
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </Window>

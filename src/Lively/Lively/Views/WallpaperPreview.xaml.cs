@@ -21,37 +21,42 @@ namespace Lively.Views
     public partial class WallpaperPreview : Window
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly LibraryModel wallpaperData;
+        private readonly LibraryModel model;
+        private readonly DisplayMonitor display;
+        private readonly WallpaperArrangement arrangement;
+        private readonly TaskCompletionSource loadingTaskCompletionSource = new();
         private IWallpaper wallpaper;
         private bool isInitialized = false;
 
         private readonly IWallpaperPluginFactory wallpaperFactory;
         private readonly IUserSettingsService userSettings;
 
-        public WallpaperPreview(LibraryModel model)
+        public WallpaperPreview(LibraryModel model, DisplayMonitor display, WallpaperArrangement arrangement, bool autoLoad = true)
         {
             userSettings = App.Services.GetRequiredService<IUserSettingsService>();
             wallpaperFactory = App.Services.GetRequiredService<IWallpaperPluginFactory>();
-            this.wallpaperData = model;
-            this.Title = model.Title;
+            this.model = model;
+            this.display = display;
+            this.arrangement = arrangement;
 
             InitializeComponent();
+            this.Title = model.Title;
+
+            if (autoLoad)
+                _ = LoadWallpaperAsync();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public async Task LoadWallpaperAsync()
         {
-            _ = LoadWallpaper(wallpaperData);
-        }
+            if (isInitialized)
+                return;
 
-        private async Task LoadWallpaper(LibraryModel model)
-        {
             try
             {
-                wallpaper = wallpaperFactory.CreateWallpaper(model, userSettings.Settings.SelectedDisplay, userSettings, true);
+                await loadingTaskCompletionSource.Task;
+                wallpaper = wallpaperFactory.CreateWallpaper(model, display, arrangement, userSettings, true);
                 await wallpaper.ShowAsync();
 
-                isInitialized = true;
-                ProgressIndicator.IsIndeterminate = false;
                 //Attach wp hwnd to border ui element.
                 WpfUtil.SetProgramToFramework(this, wallpaper.Handle, PreviewBorder);
                 //Fix for wallpaper overlapping window bordere in high dpi screens.
@@ -59,13 +64,19 @@ namespace Lively.Views
             }
             catch (Exception e)
             {
-                // TODO: Show user error message
                 Logger.Error(e.ToString());
-                // Allow dialog close
-                isInitialized = true;
-                // Close dialog and exit wallpaper
-                this.Close();
             }
+            finally
+            {
+                //Allow closing.
+                isInitialized = true;
+                LoadingPanel.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadingTaskCompletionSource.TrySetResult();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -79,7 +90,7 @@ namespace Lively.Views
             {
                 NativeMethods.SetWindowPos(wallpaper.Handle, 1, pts.X, pts.Y, (int)item.Width, (int)item.Height, 0 | 0x0010);
             }
-            this.Title = $"{(int)item.Width}x{(int)item.Height} - {wallpaperData.Title}";
+            this.Title = $"{(int)item.Width}x{(int)item.Height} - {model.Title}";
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

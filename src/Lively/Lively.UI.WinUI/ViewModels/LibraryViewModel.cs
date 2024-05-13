@@ -49,6 +49,7 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly GalleryClient galleryClient;
 
         private readonly ResourceLoader i18n;
+        private TaskCompletionSource<LibraryModel> selectionTaskCompletionSource;
 
         public LibraryViewModel(IWallpaperLibraryFactory wallpaperLibraryFactory, 
             IDesktopCoreClient desktopCore,
@@ -104,8 +105,6 @@ namespace Lively.UI.WinUI.ViewModels
             settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
         }
 
-        #region collections
-
         [ObservableProperty]
         private AdvancedCollectionView libraryItemsFiltered;
 
@@ -154,23 +153,74 @@ namespace Lively.UI.WinUI.ViewModels
         [ObservableProperty]
         private string librarySelectionMode = "Single";
 
-        private RelayCommand<LibraryModel> _libraryClickCommand;
-        public RelayCommand<LibraryModel> LibraryClickCommand => _libraryClickCommand ??= new RelayCommand<LibraryModel>(async (wp) =>
+        [RelayCommand]
+        private async Task LibraryClick(LibraryModel model)
         {
-            if (wp is null || userSettings.Settings.RememberSelectedScreen || wp.DataType != LibraryItemType.ready)
+            if (IsSelectionOnlyMode)
+            {
+                selectionTaskCompletionSource?.TrySetResult(model);
+                return;
+            }
+
+            if (model is null || userSettings.Settings.RememberSelectedScreen || model.DataType != LibraryItemType.ready)
                 return;
 
             var monitor = displayManager.DisplayMonitors.Count == 1 || userSettings.Settings.WallpaperArrangement != WallpaperArrangement.per ?
                 displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialogAsync();
             if (monitor is not null)
-                await desktopCore.SetWallpaper(wp, monitor);
-        });
+                await desktopCore.SetWallpaper(model, monitor);
+        }
 
-        #endregion //collections
+        private bool _isSelectionOnlyMode;
+        public bool IsSelectionOnlyMode
+        {
+            get => _isSelectionOnlyMode;
+            set
+            {
+                if (!value && userSettings.Settings.RememberSelectedScreen)
+                {
+                    LibrarySelectionMode = "Single";
+                    //Updating library selected item.
+                    UpdateSelectedWallpaper();
+                }
+                else
+                {
+                    LibrarySelectionMode = "None";
+                }
+                SetProperty(ref _isSelectionOnlyMode, value);
+            }
+        }
 
-        private RelayCommand<LibraryModel> _cancelDownloadCommand;
-        public RelayCommand<LibraryModel> CancelDownloadCommand =>
-            _cancelDownloadCommand ??= new RelayCommand<LibraryModel>((obj) => CancelDownload(obj.LivelyInfo.Id));
+        public async Task<LibraryModel> SelectItem()
+        {
+            if (LibraryItems.Count == 0)
+                return null;
+
+            selectionTaskCompletionSource = new TaskCompletionSource<LibraryModel>();
+
+            try
+            {
+                IsSelectionOnlyMode = true;
+                return await selectionTaskCompletionSource.Task;
+            }
+            finally
+            {
+                IsSelectionOnlyMode = false;
+                selectionTaskCompletionSource = null;
+            }
+        }
+
+        [RelayCommand]
+        private void SelectItemCancel()
+        {
+            selectionTaskCompletionSource?.TrySetResult(null);
+        }
+
+        [RelayCommand]
+        private void CancelDownload(LibraryModel model)
+        {
+            CancelDownload(model.LivelyInfo.Id);
+        }
 
         [ObservableProperty]
         private bool isBusy;

@@ -329,6 +329,34 @@
             IsClosable="False">
             <ProgressBar Name="importBarProgress" Margin="-50,0,0,0" />
         </InfoBar>
+        <InfoBar
+            Name="screensaverSelectorBar"
+            Grid.Row="1"
+            Background="{ThemeResource SystemAccentColorDark1}"
+            CloseButtonCommand="{x:Bind libraryVm.SelectItemCancelCommand}"
+            IsOpen="{x:Bind libraryVm.IsSelectionOnlyMode, Mode=OneWay}"
+            Message=""
+            Severity="Informational"
+            Visibility="{x:Bind libraryVm.IsSelectionOnlyMode, Mode=OneWay}">
+            <TextBlock x:Uid="SelectScreensaverCustomMode" />
+            <animations:Implicit.ShowAnimations>
+                <animations:TranslationAnimation
+                    From="0,-15,0"
+                    To="0"
+                    Duration="0:0:0.5" />
+                <animations:OpacityAnimation
+                    From="0"
+                    To="1.0"
+                    Duration="0:0:0.75" />
+            </animations:Implicit.ShowAnimations>
+            <animations:Implicit.HideAnimations>
+                <animations:OpacityAnimation
+                    From="1.0"
+                    To="0"
+                    Duration="0:0:0.5" />
+            </animations:Implicit.HideAnimations>
+        </InfoBar>
+        <!--  Updated notification.  -->
         <TeachingTip
             Grid.Row="1"
             BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"

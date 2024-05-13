@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using static Lively.UI.WinUI.ViewModels.ControlPanelViewModel;
 
-namespace Lively.UI.WinUI.ViewModels
+namespace Lively.UI.WinUI.ViewModels.ControlPanel
 {
-    public partial class ControlPanelViewModel : ObservableObject
+    public partial class WallpaperLayoutViewModel : ObservableObject
     {
-        public class NavigatePageEventArgs : EventArgs
-        {
-            public string Tag { get; set; }
-            public object Arg { get; set; }
-        }
         public event EventHandler<NavigatePageEventArgs> NavigatePage;
 
         private readonly IUserSettingsClient userSettings;
@@ -31,7 +24,7 @@ namespace Lively.UI.WinUI.ViewModels
 
         private CustomiseWallpaperViewModel customiseWallpaperViewModel;
 
-        public ControlPanelViewModel(IUserSettingsClient userSettings,
+        public WallpaperLayoutViewModel(IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             LibraryViewModel libraryVm)
@@ -43,10 +36,10 @@ namespace Lively.UI.WinUI.ViewModels
 
             SelectedWallpaperLayoutIndex = (int)userSettings.Settings.WallpaperArrangement;
             IsRememberSelectedScreen = userSettings.Settings.RememberSelectedScreen;
-            IsScreensaverLockOnResume = userSettings.Settings.ScreensaverLockOnResume;
             UpdateLayout();
 
-            desktopCore.WallpaperChanged += SetupDesktop_WallpaperChanged;
+            // This event is also fired when monitor configuration changed.
+            desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
         }
 
         [ObservableProperty]
@@ -122,39 +115,11 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        public bool IsScreensaverPluginNotify 
+        [RelayCommand(CanExecute = nameof(CanCloseWallpaper))]
+        private void CloseWallpaper()
         {
-            get
-            {
-                try
-                {
-                    return !File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Lively.scr"));
-                }
-                catch
-                {
-                    return true;
-                }
-            }
+            CloseWallpaper(SelectedItem);
         }
-
-        private bool _isScreensaverLockOnResume;
-        public bool IsScreensaverLockOnResume
-        {
-            get => _isScreensaverLockOnResume;
-            set
-            {
-                if (userSettings.Settings.ScreensaverLockOnResume != value)
-                {
-                    userSettings.Settings.ScreensaverLockOnResume = value;
-                    UpdateSettingsConfigFile();
-                }
-                SetProperty(ref _isScreensaverLockOnResume, value);
-            }
-        }
-
-        private RelayCommand _closeWallpaperCommand;
-        public RelayCommand CloseWallpaperCommand => _closeWallpaperCommand ??=
-            new RelayCommand(() => CloseWallpaper(SelectedItem), CanCloseWallpaper);
 
         private void CloseWallpaper(ScreenLayoutModel selection)
         {
@@ -191,9 +156,11 @@ namespace Lively.UI.WinUI.ViewModels
             }
         }
 
-        private RelayCommand _customiseWallpaperCommand;
-        public RelayCommand CustomiseWallpaperCommand => _customiseWallpaperCommand ??=
-            new RelayCommand(() => CustomiseWallpaper(SelectedItem), CanCustomiseWallpaper);
+        [RelayCommand(CanExecute = nameof(CanCustomiseWallpaper))]
+        private void CustomiseWallpaper()
+        {
+            CustomiseWallpaper(SelectedItem);
+        }
 
         private void CustomiseWallpaper(ScreenLayoutModel selection)
         {
@@ -216,7 +183,7 @@ namespace Lively.UI.WinUI.ViewModels
                             var item = items[0];
                             obj = libraryVm.LibraryItems.FirstOrDefault(x => x.LivelyInfoFolderPath.Equals(item.LivelyInfoFolderPath, StringComparison.OrdinalIgnoreCase));
                         }
-                        break;      
+                        break;
                 }
 
                 if (obj != null)
@@ -230,9 +197,6 @@ namespace Lively.UI.WinUI.ViewModels
 
         private bool CanCustomiseWallpaper() => !string.IsNullOrEmpty(SelectedItem?.LivelyPropertyPath);
 
-        public RelayCommand NavigateBackWallpaperCommand =>
-            new RelayCommand(() => NavigatePage?.Invoke(this, new NavigatePageEventArgs() { Tag = "wallpaper", Arg = null }));
-
         // Page.Unloaded event is unreliable, if the issue is fixed just call this directly.
         public void CustomiseWallpaperPageOnClosed()
         {
@@ -243,9 +207,9 @@ namespace Lively.UI.WinUI.ViewModels
             customiseWallpaperViewModel = null;
         }
 
-        public void OnWindowClosing(object sender, object e)
+        public void OnWindowClosing()
         {
-            desktopCore.WallpaperChanged -= SetupDesktop_WallpaperChanged;
+            desktopCore.WallpaperChanged -= DesktopCore_WallpaperChanged;
             CustomiseWallpaperPageOnClosed();
         }
 
@@ -266,7 +230,6 @@ namespace Lively.UI.WinUI.ViewModels
                     wallpaper?.LivelyPropertyCopyPath,
                     string.Empty));
             }
-
             SelectedItem = ScreenItems.FirstOrDefault(x => x.Screen.Equals(userSettings.Settings.SelectedDisplay));
         }
 
@@ -278,7 +241,7 @@ namespace Lively.UI.WinUI.ViewModels
             });
         }
 
-        private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
+        private void DesktopCore_WallpaperChanged(object sender, EventArgs e)
         {
             _ = App.Services.GetRequiredService<MainWindow>().DispatcherQueue.TryEnqueue(() =>
             {

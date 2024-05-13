@@ -46,10 +46,10 @@
                 Orientation="Horizontal"
                 Spacing="5">
                 <Button Command="{Binding CustomiseWallpaperCommand}">
-                    <FontIcon Glyph="&#xE790;" />
+                    <FontIcon FontSize="16" Glyph="&#xE790;" />
                 </Button>
                 <Button Command="{Binding CloseWallpaperCommand}">
-                    <FontIcon Glyph="&#xE894;" />
+                    <FontIcon FontSize="16" Glyph="&#xE894;" />
                 </Button>
             </StackPanel>
         </Grid>

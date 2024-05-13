@@ -1,34 +1,23 @@
 ﻿using Lively.UI.WinUI.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
+using Lively.UI.WinUI.ViewModels.ControlPanel;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Lively.UI.WinUI.Views.Pages.ControlPanel
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class WallpaperLayoutView : Page
     {
+        private WallpaperLayoutViewModel viewModel;
+
         public WallpaperLayoutView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.viewModel ??= (DataContext as ControlPanelViewModel)?.WallpaperVm;
+            this.DataContext = this.viewModel;
         }
     }
 }

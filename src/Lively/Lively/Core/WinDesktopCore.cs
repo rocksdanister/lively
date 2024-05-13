@@ -2,35 +2,28 @@
 using Lively.Common.API;
 using Lively.Common.Com;
 using Lively.Common.Extensions;
-using Lively.Common.Helpers;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
-using Lively.Common.Helpers.Storage;
 using Lively.Core.Display;
-using Lively.Core.Wallpapers;
 using Lively.Core.Watchdog;
+using Lively.Extensions;
 using Lively.Factories;
 using Lively.Helpers;
-using Lively.Helpers.Hardware;
 using Lively.Models;
 using Lively.Services;
 using Lively.ViewModels;
 using Lively.Views;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
 using System.Windows.Threading;
 using WinEventHook;
 using static Lively.Common.Errors;
@@ -159,7 +152,7 @@ namespace Lively.Core
                     {
                         case WallpaperArrangement.per:
                             {
-                                IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, display, userSettings);
+                                IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, display, userSettings.Settings.WallpaperArrangement, userSettings);
                                 await instance.ShowAsync();
                                 var dialogOk = await ShowWallpaperDialog(instance);
                                 if (!dialogOk)
@@ -183,7 +176,7 @@ namespace Lively.Core
                             break;
                         case WallpaperArrangement.span:
                             {
-                                IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, display, userSettings);
+                                IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, display, userSettings.Settings.WallpaperArrangement, userSettings);
                                 await instance.ShowAsync();
                                 var dialogOk = await ShowWallpaperDialog(instance);
                                 if (!dialogOk)
@@ -209,7 +202,7 @@ namespace Lively.Core
                                 CloseAllWallpapers(false, true);
                                 foreach (var item in displayManager.DisplayMonitors)
                                 {
-                                    IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, item, userSettings);
+                                    IWallpaper instance = wallpaperFactory.CreateWallpaper(wallpaper, item, userSettings.Settings.WallpaperArrangement, userSettings);
                                     await instance.ShowAsync();
                                     var dialogOk = await ShowWallpaperDialog(instance);
                                     if (!dialogOk)
@@ -355,20 +348,7 @@ namespace Lively.Core
                                     };
                                     pWindow.Show();
                                     if (runner.IsVisibleUI)
-                                    {
-                                        var client = runner.HwndUI;
-                                        var preview = new WindowInteropHelper(pWindow).Handle;
-                                        NativeMethods.GetWindowRect(client, out NativeMethods.RECT crt);
-                                        NativeMethods.GetWindowRect(preview, out NativeMethods.RECT prt);
-                                        //Assigning left, top to window directly not working correctly with display scaling..
-                                        NativeMethods.SetWindowPos(preview,
-                                            0,
-                                            crt.Left + (crt.Right - crt.Left) / 2 - (prt.Right - prt.Left) / 2,
-                                            crt.Top - (crt.Top - crt.Bottom) / 2 - (prt.Bottom - prt.Top) / 2,
-                                            0,
-                                            0,
-                                            0x0001 | 0x0004);
-                                    }
+                                        pWindow.CenterToWindow(runner.HwndUI);
                                 }));
                             }
                             catch (Exception e)

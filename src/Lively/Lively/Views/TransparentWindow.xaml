@@ -1,0 +1,18 @@
+﻿<Window
+    x:Class="Lively.Views.TransparentWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Lively.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Transparent"
+    Width="800"
+    Height="450"
+    AllowsTransparency="True"
+    Background="#00000000"
+    BorderThickness="0"
+    WindowState="Normal"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid />
+</Window>
