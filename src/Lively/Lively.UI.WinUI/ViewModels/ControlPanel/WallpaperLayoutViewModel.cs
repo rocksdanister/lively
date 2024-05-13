@@ -230,7 +230,7 @@ namespace Lively.UI.WinUI.ViewModels.ControlPanel
                     wallpaper?.LivelyPropertyCopyPath,
                     string.Empty));
             }
-            SelectedItem = ScreenItems.FirstOrDefault(x => x.Screen.Equals(userSettings.Settings.SelectedDisplay));
+            SelectedItem = ScreenItems.FirstOrDefault(x => x.Screen.Equals(userSettings.Settings.SelectedDisplay)) ?? ScreenItems.FirstOrDefault(x=>x.Screen.IsPrimary);
         }
 
         private void UpdateSettingsConfigFile()
