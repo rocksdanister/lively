@@ -556,7 +556,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Unesite opcione argumente komandne linije</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Popuni</value>
@@ -871,7 +871,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Pozadina</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Izmeni</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

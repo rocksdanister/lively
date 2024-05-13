@@ -558,7 +558,7 @@ Pag hindi pa gumagana, i-close at buksan ulit ang Lively/i-restart Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Maglagay ng mga opsyonal na argumento sa command line</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Pagpuno</value>
@@ -876,7 +876,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Wolpeyper</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>I-customise</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

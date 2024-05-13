@@ -556,7 +556,7 @@ Geanimeerde GIF</value>
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Optionele opdrachtregel argumenten invoeren</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Schermvullend</value>
@@ -872,7 +872,7 @@ Alle processen: Heavier, Scant alle processen om afspeelmogelijkheden te bepalen
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Achtergrond</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Bewerken</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

@@ -563,7 +563,7 @@ Se ainda não funcionar, fechei e inicie o Lively/ reinicei o Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Digite comandos opcionais na linha de comando</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Preencher</value>
@@ -882,7 +882,7 @@ Edge é o webview integrado do windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Papel de parede</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personalizar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

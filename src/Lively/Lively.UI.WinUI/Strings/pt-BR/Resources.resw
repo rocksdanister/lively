@@ -223,7 +223,7 @@ Atualizações serão frequentes e podem ter alguns bugs !</value>
     <value>Ícone da bandeja do sistema</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>O Lively irá reiniciar para aplicar o novo idioma</value>
+    <value>O Lively precisará reiniciar para aplicar o novo idioma</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
     <value>idioma</value>
@@ -563,7 +563,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Insira argumentos da linha de comando opcionais</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Preencher</value>
@@ -882,7 +882,7 @@ O Edge é a webview embutida do Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Plano de Fundo</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Customizar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -1228,13 +1228,13 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Baixar</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Torne-se um apoiador Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Obrigado a todos os membros que apoiam este projeto.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Apoiadores do Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Selecione o protetor de tela</value>

@@ -562,7 +562,7 @@ Ha még mindig nem működik, zárd be &amp; indítsd el a Livelyt újra/ indít
     <value>Videó</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Opcionális parancssori értékek</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Kitölt</value>
@@ -881,7 +881,7 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Háttérkép</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Testreszabás</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

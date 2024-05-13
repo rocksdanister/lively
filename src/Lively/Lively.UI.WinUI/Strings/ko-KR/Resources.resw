@@ -563,7 +563,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
     <value>비디오</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>선택적 명령줄 인수 입력</value>
+    <value>실행 옵션</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>채우기</value>
@@ -881,7 +881,7 @@ Edge는 Windows 10의 내장 웹뷰입니다.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>배경화면</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>사용자 정의</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

@@ -163,16 +163,16 @@
     <value>Wallpaper playback behaviour based on running application</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Вы ўпэўнены ў тым, што хочаце скасаваць?</value>
+    <value>Вы сапраўды хочаце скасаваць?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Вы ўпэўнены ў тым, што хочаце назаўжды выдаліць гэтыя шпалеры з дыска?</value>
+    <value>Вы сапраўды хочаце незваротна выдаліць гэтыя шпалеры з дыска?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
     <value>Вы ўпэўнены ў тым, што хочаце выдаліць гэтыя шпалеры з галерэі?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Звычайна перацягніце файлы сюды</value>
+    <value>Проста перацягніце файлы сюды</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
     <value>Вы адкрывайце іншае прыкладанне як шпалеры.
@@ -180,19 +180,19 @@
 Працягвайце толькі калі вы ўпэўнены, што прыкладанне з праверанага рэсурсу.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively было мінізавана, націсніце на іконку lively, для прагляду опцый.</value>
+    <value>Lively быў згорнуты ў сістэмны латок. Націсніце на правую кнопку праграмы, каб працягнуць.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Калі ласка, перазапусціце Lively, каб змены ўступілі ў сілу</value>
+    <value>Перазапусціце праграму, каб змены набылі моц</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Калі ласка, спыніцеся перад тым, каб працягнуць</value>
+    <value>Спыніцеся перад тым, як працягнуць</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
     <value>Націсніце, каб пачаць запіс</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Ідзе аднаўленне апошніх шпалер, калі ласка, пачакайце...</value>
+    <value>Адбываецца аднаўленне папярэдніх шпалер. Пачакайце...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
     <value>Абярыце дысплэй</value>
@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Відэа</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Увядзіце неабавязковыя аргументы каманднага радку</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Запоўніць</value>
@@ -878,7 +878,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Шпалеры</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Дапасаваць</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

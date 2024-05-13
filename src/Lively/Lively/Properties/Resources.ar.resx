@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مركز الاهتمام</value>
+    <value>تشغيل الصوت فقط عندما يكون سطح المكتب مركز</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>مستوى الصوت لجميع الخلفيات</value>
@@ -136,10 +136,9 @@
     <value>مستندات API والمساعدة</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>لقد واجهنا مشكلة غريبة...
+    <value>لقد واجهنا مشكلة كبيرة.
 
-تم إعادة تشغيل مستكشف الملفات الخاص بالنظام مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين التطبيق وبرنامج تخصيص آخر أو النظام نفسه.
- لتجنب المزيد من المشكلات، سيتم إيقاف جميع الخلفيات حاليا.</value>
+تم إعادة تشغيل مستكشف الملفات مرتين في آخر 30 ثانية! قد يكون هذا تعارضًا بين التطبيق وبرنامج تخصيص آخر أو النظام نفسه. لتجنب المزيد من المشاكل، سيتم إيقاف جميع الخلفيات حالياً.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>تم العثور على برنامج غير متوافق ، تم تعطيل تطبيق سمات شريط المهام.</value>
@@ -258,7 +257,8 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>هذا ليس مِلَفّ ليفلي</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>لم يتم إغلاق التطبيق بشكل صحيح, هل تود استعادة الخلفيات السابقة؟</value>
+    <value>لم يتم إغلاق التطبيق بشكل صحيح وسيتم تشغيلها بالوضع الآمن.
+هل تود استعادة الخلفيات السابقة؟</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>يبدو أنه يجب تعديل بعض الإعدادات لتشغيل Lively بشكل صحيح:
@@ -275,7 +275,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>سيعمل التطبيق في الخلفية لعرض الوسائط</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>فتح التطبيق تِلقائياً عند تشغيل الحاسوب</value>
+    <value>فتح التطبيق تلقائياً عند تشغيل Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>أضف</value>
@@ -386,7 +386,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>آخر فحص</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>إعرف أكثر</value>
+    <value>معرفة المزيد</value>
   </data>
   <data name="License.Header" xml:space="preserve">
     <value>الترخيص</value>
@@ -413,10 +413,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>لا</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>إطفاء</value>
+    <value>إيقاف</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>حسنا</value>
+    <value>موافق</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
     <value>تشغيل</value>
@@ -425,7 +425,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>عبر الإنترنت</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>تشغيل لايفلي</value>
+    <value>تشغيل Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
     <value>جميع العمليات</value>
@@ -476,13 +476,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تعيين كخلفية</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>عرض على القرص</value>
+    <value>فتح موقع الملف</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
     <value>المصدر</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>ابدأ</value>
+    <value>بدء</value>
   </data>
   <data name="TextStop" xml:space="preserve">
     <value>توقف</value>
@@ -512,13 +512,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>اللون</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>طلق</value>
+    <value>متقن</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>الخلفية</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>ورق الجدران بطلاقة</value>
+    <value>طلاقة الخلفية</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
     <value>كبير</value>
@@ -542,28 +542,28 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>عادي</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>تنسيق المِلَفّ غير معتمد</value>
+    <value>تنسيق الملف غير معتمد</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>تحديث متوفر!</value>
+    <value>يوجد تحديث متوفر!</value>
   </data>
   <data name="TextUpdateCheck.Content" xml:space="preserve">
     <value>البحث عن تحديثات</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>خطأ في التحقق من التحديث</value>
+    <value>خطأ في البحث عن التحديث</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>التحقق من وجود تحديث</value>
+    <value>جاري البحث عن تحديث</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>لايفلي مُحدَّث!</value>
+    <value>البرنامج مُحدَّث!</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
     <value>فيديو</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>إدخال وسيطات سطر الأوامر الاختيارية</value>
+    <value>خيارات التشغيل</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>ملء</value>
@@ -578,10 +578,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>تعبئة موحدة</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>كرر</value>
+    <value>تكرار</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
-    <value>شاشة</value>
+    <value>الشاشة</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
     <value>امتداد</value>
@@ -593,72 +593,70 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>موقع</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>بث ويب</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>مرحبا بكم</value>
+    <value>مرحبا</value>
   </data>
   <data name="TextYes" xml:space="preserve">
     <value>نعم</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>مشغّل الفيديو:</value>
+    <value>مشغّل الفيديو</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>تعيين جميع أنواع الملفات المدعومة كخلفية.</value>
+    <value>تعيين جميع أنواع الملفات المدعومة كخلفية</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>قم بتعيين صفحة الويب لعنوان URL الذي أدخلته كخلفية.</value>
+    <value>قم بتعيين صفحة الويب لعنوان URL الذي أدخلته كخلفية</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عندما يكون التطبيق في التركيز.</value>
+    <value>تعيين ما يجب القيام به عندما يكون التطبيق مركز</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>تعيين ما يجب القيام به عند تشغيل الألعاب / التطبيقات بوضع ملء الشاشة.</value>
+    <value>تعيين ما يجب القيام به عند تشغيل الألعاب/التطبيقات بوضع ملء الشاشة</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>تعيين قواعد تشغيل خلفية مختلفة على أساس تشغيل التطبيق.</value>
+    <value>إيقاف الخلفية مؤقتاً عند تشغيل هؤلاء التطبيقات</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>تتكيف البرنامج مع إعدادات موضوع النظام ، لتغيير المظهر ، انتقل إلى:</value>
+    <value>تتكيف البرنامج مع إعدادات موضوع النظام، لتغيير المظهر انتقل إلى</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(بالنسبة للأنظمة التي تعمل بالبطارية فقط) قم بتغيير التشغيل عند فصل طاقة التيار المتردد.</value>
+    <value>قم بتغيير التشغيل عند فصل الشاحن</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>أدخل المنفذ لتصحيح أخطاء خلفيات صفحة الويب ، يلزم إعادة تشغيل المتصفح حتى تصبح التغييرات نافذة المفعول.
-عندما تكون جاهزة انتقل إلى http://localhost:portnumber للوصول إلى وحدة تحكم المطور.</value>
+    <value>أدخل المنفذ لتصحيح أخطاء خلفيات صفحة الويب ،عندما تكون جاهز انتقل إلى http://localhost:portnumber للوصول إلى وحدة تحكم المطور</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
     <value>عرض قائمة المطور</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>تعيين صورة خلفية متحركة كخلفية سطح المكتب.</value>
+    <value>تعيين صورة خلفية متحركة كخلفية سطح المكتب</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
     <value>إيقاف الخلفية مؤقتا على جميع الشاشات أو الشاشة التي يركز عليها التطبيق فقط</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>إنشاء ملف تقرير السجل.</value>
+    <value>إنشاء ملف تقرير السجل</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
     <value>حدد المشغل المستخدم لخلفية gif.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>الانتهاء من الإعداد للمتابعة.</value>
+    <value>إنتهي من الإعداد للمتابعة</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>قم بتعيين صورة خلفية متحركة كخلفية لشاشة القفل.</value>
+    <value>قم بتعيين صورة خلفية متحركة كخلفية لشاشة القفل</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>المقدمة: خفيفة الوزن، يتحقق فقط من العملية الفردية الموجودة في المقدمة لتحديد سلوك تشغيل ورق الجدران.
-جميع العمليات: أثقل، بمسح كل عملية لتحديد سلوك التشغيل.</value>
+    <value>خوارزمية الإيقاف المؤقت للخلفية</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تمكين وضع توفير الطاقة للويندوز</value>
+    <value>تغيير التشغيل عند تمكين وضع توفير الطاقة لـ Windows</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>تغيير التشغيل عند تشغيل جِلسة سطح المكتب عن بعد</value>
+    <value>تغيير التشغيل عند تشغيل جلسة سطح المكتب عن بعد</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
     <value>بعد مدّة عدم النشاط، استخدم خلفية الشاشة الحالية كشاشة توقف على جهازك</value>
@@ -667,10 +665,10 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>إذا تم اكتشاف رابط دفق الفيديو المدعوم استخدم مشغل الفيديو بدلا من تحميل صفحة الويب</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>حدد جودة الفيديو المطلوبة للتدفقات عبر الإنترنت.</value>
+    <value>حدد جودة الفيديو المطلوبة للبثوث عبر الإنترنت</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>تغيير البرنامَج تتلق منا لبيتا إلى المستقر أو العكس</value>
+    <value>تغيير إصدار البرنامج من لبيتا إلى المستقر أو العكس</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
     <value>تغيير مظهر شريط مهام النظام</value>
@@ -682,32 +680,31 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>بالنسبة للأنظمة المنخفضة حدًا ، حدد الوضع البسيط.</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>استخدام تسريع الأجهزة عندما يكون ذلك ممكنا.</value>
+    <value>استخدام تسريع الأجهزة إن أمكن</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>حدد المشغل المستخدم لخلفية الفيديو.</value>
+    <value>حدد المشغل المستخدَم لخلفية الفيديو</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>المسار المستخدم لتخزين ملفات ورق الجدران.</value>
+    <value>المسار المستخدم لتخزين ملفات الخلفية</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>خوارزمية قياس ورق الجدران.</value>
+    <value>خوارزمية قياس الخلفية</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>حدد طرق التفاعل مع ورق الجدران.</value>
+    <value>حدد طرق التفاعل مع الخلفية</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>كيفية تطبيق ورق الجدران على أجهزة العرض المتصلة.</value>
+    <value>كيف يتم تطبيق الخلفية على أجهزة العرض المتصلة</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>إيقاف تشغيل خلفية الشاشة مؤقتا عندما لا يكون سطح المكتب مركزا.</value>
+    <value>إيقاف تشغيل الخلفية مؤقتاً عندما لا يكون سطح المكتب مركزاً</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>تخزين الملفات المؤقتة على القرص بدلا من الذاكرة ، يتم استعادة الإعدادات عند إعادة تشغيل المتصفح.</value>
+    <value>تخزين الملفات المؤقتة على القرص بدلاً من الذاكرة</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF (Chromium Embedded Framework) هو محرك كروم خفيف الوزن.
-Edge هو عرض الويب المدمج في windows 10.</value>
+    <value>حدد المشغل المستخدَم لخلفية html</value>
   </data>
   <data name="About.Label" xml:space="preserve">
     <value>حول</value>
@@ -716,28 +713,28 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>إضافة</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>تركيز تطبيق آخر:</value>
+    <value>التطبيقات المركزة</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>تطبيقات وضع ملء الشاشة الأخرى:</value>
+    <value>تطبيقات في وضع ملء الشاشة</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>خلفيات حية</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
     <value>قواعد التطبيق</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>سمة</value>
+    <value>السمة</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
     <value>تشغيل الصوت على الشاشة</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>عندما يكون على وضع البطارية:</value>
+    <value>عندما يكون على وضع البطارية</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>تصفح للفيديو ، صورة متحركة ، صفحة ويب. ملف للتعيين كخلفية</value>
+    <value>تصفح لملف للتعيين كخلفية</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>منفذ التصحيح</value>
@@ -758,7 +755,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>صورة سطح المكتب</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>عرض قاعدة الإيقاف المؤقت:</value>
+    <value>عرض قاعدة الإيقاف المؤقت</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
     <value>الوثائق</value>
@@ -770,7 +767,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>ملف السجل</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>عام:</value>
+    <value>عام</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
     <value>مشغل Gif</value>
@@ -785,7 +782,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>المكتبة</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>الإعداد Lively </value>
+    <value>إعداد Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
     <value>الموقع</value>
@@ -794,16 +791,16 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>صورة شاشة القفل</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>متنوعة</value>
+    <value>أخرى</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>كتم الصوت</value>
+    <value>كتم</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
     <value>إيقاف مؤقت للخوارزمية:</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>الأداء:</value>
+    <value>الأداء</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
     <value>قائمة التشغيل</value>
@@ -818,13 +815,13 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>عندما يكون على سطح المكتب البعيد</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>الإبلاغ عن الخطأ</value>
+    <value>الإبلاغ عن خطأ</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
     <value>التحجيم/ الاحتواء</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>تخطيط الشاشة</value>
+    <value>لوحة التحكم</value>
   </data>
   <data name="TitleScreensaver.Content" xml:space="preserve">
     <value>شاشة التوقف</value>
@@ -845,14 +842,14 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>شفرة المصدر</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>متجر</value>
+    <value>المتجر</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>ستريم/فيديو مباشر</value>
+    <value>البث</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>كشف تيارات</value>
+    <value>كشف البثوث</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
     <value>جودة الفيديو</value>
@@ -861,10 +858,10 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>النظام</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>موضوع شريط المهام</value>
+    <value>سمة شريط المهام</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>حجم البلاط</value>
+    <value>الحجم</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
     <value>واجهة المستخدم</value>
@@ -879,34 +876,34 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>وحدة فك تشفير GPU</value>
   </data>
   <data name="TitleWallpaper.Content" xml:space="preserve">
-    <value>ورق الجدران</value>
+    <value>الخلفية</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>تخصيص</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>دليل ورق الجدران</value>
+    <value>دليل الخلفية</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
     <value>نقل خلفيات موجودة إلى مجلد جديد</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>اختيار صالح</value>
+    <value>اختيار ملائمة</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>إدخال ورق الحائط</value>
+    <value>إدخال الخلفية</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>حدد تخطيط الخلفية:-</value>
+    <value>طريقة الوضع</value>
   </data>
   <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>تشغيل الخلفية:</value>
+    <value>تشغيل الخلفية</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
     <value>تحذير</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>متصفح الويب:</value>
+    <value>متصفح الويب</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
     <value>ذاكرة التخزين المؤقت على القرص</value>
@@ -930,7 +927,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>داكن</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>ابيض</value>
+    <value>فاتح</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
     <value>النظام</value>
@@ -942,7 +939,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>الحواسيب المحمولة</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
-    <value>مطور</value>
+    <value>المطور</value>
   </data>
   <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>المظهر والسلوك</value>
@@ -1086,7 +1083,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>يحتوي على عنف أو تعري</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>ملاحظات إضافيه</value>
+    <value>ملاحظات إضافية</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
     <value>إبلاغ</value>
@@ -1122,7 +1119,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>مشاركة خلفيات</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>تحميل المَعْرِض</value>
+    <value>تحميل المعرض</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
     <value>نسخ الرابط</value>
@@ -1149,13 +1146,13 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>اكتمل التحديث</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>تفقد ما هوى جديد</value>
+    <value>انظر ما هو جديد</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
     <value>اللون</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>استخدام الإعداد التلقائي للنظام</value>
+    <value>استخدام الإعداد للنظام</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
     <value>التكيف مع الخلفية</value>
@@ -1164,7 +1161,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>افتراضي</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>متغير</value>
+    <value>متحرك</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
     <value>خلفية</value>
@@ -1173,7 +1170,7 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>لمنع التحديد العرضي لأيقونات سطح المكتب مخفية حاليا</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>ايقونة سطح المكتب</value>
+    <value>أيقونة سطح المكتب</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
     <value>هذا كل شيء حتى الآن..</value>
@@ -1191,34 +1188,34 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>متقدم</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>حساب عمق تقريبي للصورة..</value>
+    <value>جارٍ تقريب العمق..</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>استخدام الذكاء الاصطناعي لتحويل الصور إلى ثلاثية الأبعاد</value>
+    <value>يستخدم الذكاء الاصطناعي لتحويل الصور إلى ثلاثية الأبعاد</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>استمر</value>
+    <value>التالي</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
     <value>إنشاء خلفية بسيطة</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>خلفية ذات عمق باستخدام الذكاء الاصطناعي</value>
+    <value>خلفية ذات عمق بالذكاء الاصطناعي</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
     <value>خلفية ذات عمق</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>خلفية ذات عمق مصنوعة باستخدام الذكاء الاصطناعي</value>
+    <value>خلفية ذات عمق مصنوعة بالذكاء الاصطناعي</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
     <value>إنشاء خلفية</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>بعض الوظائف قد لا تكون متاحة عند التشغيل كمدير</value>
+    <value>بعض الوظائف قد لا تكون متاحة عند التشغيل كمسؤول</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>يجب تحميل ملفات أضافية لهذه المِيزة</value>
+    <value>يجب تحميل ملفات إضافية لهذه الميزة</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
     <value>التنزيل مطلوب</value>
@@ -1227,15 +1224,15 @@ Edge هو عرض الويب المدمج في windows 10.</value>
     <value>تحميل</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value/>
+    <value>كن داعم باتريون</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value/>
+    <value>شكرا لكل الأعضاء الذين يدعمون هذا المشروع.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
     <value>داعمين باتريون</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>اختر شاشة التوقف</value>
+    <value>حدد شاشة التوقف</value>
   </data>
 </root>

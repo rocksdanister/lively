@@ -561,7 +561,7 @@ Dacă tot nu funcționează, repornește Lively/Windows.
     <value>Videoclip</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Introdu argumente opționale în linia de comandă</value>
+    <value>Opțiuni Lansare</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Umplere</value>
@@ -878,7 +878,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fundal</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personalizează</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

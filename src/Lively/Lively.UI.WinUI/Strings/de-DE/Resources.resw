@@ -562,7 +562,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Optionale Kommandozeilenparameter eingeben</value>
+    <value>Startoptionen</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Ausfüllen</value>
@@ -877,7 +877,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Hintergrund</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Anpassen</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

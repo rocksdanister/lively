@@ -564,7 +564,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>ویدیو</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>آرگومان های خط فرمان اختیاری را وارد کنید</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>پر کردن</value>
@@ -579,7 +579,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>پر کردن مساوی</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>تکثیر کردن</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>صفحه</value>
@@ -882,7 +882,7 @@ Edge is the built in webview of windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>پس زمینه</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>سفارشی‌سازی</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -1234,7 +1234,7 @@ Edge is the built in webview of windows 10.</value>
     <value>Thanks to all the members who support this project.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>حامیان Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Select screensaver</value>

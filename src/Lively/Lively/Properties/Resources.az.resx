@@ -563,7 +563,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>İxtiyari əmr sətri arqumentlərini daxil edin</value>
+    <value>Başlatma seçimləri</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Doldur</value>
@@ -878,7 +878,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Divar kağızı</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Özəlləşdir</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

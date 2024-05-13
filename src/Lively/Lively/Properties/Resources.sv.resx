@@ -537,7 +537,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Ange valfria kommandsargument</value>
+    <value>Startalternativ</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Fyll</value>
@@ -852,7 +852,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Bakgrundsbild</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Anpassa bakgrundsbilden</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -973,7 +973,7 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
     <value>Typ av skärmsläckare</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Anpassad</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
     <value>Spegla bakgrundsbild</value>
@@ -1198,13 +1198,13 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
     <value>Ladda ner</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Bli en Patreon supporter</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Tack till alla medlemmar som stödjer det här projektet.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon supportrar</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Välj skärmsläckare</value>

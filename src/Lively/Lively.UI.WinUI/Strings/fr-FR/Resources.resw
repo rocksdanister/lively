@@ -563,7 +563,7 @@ Si cela ne fonctionne toujours pas, fermez et relancez Lively / redémarrez Wind
     <value>Vidéo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Entrez les arguments de ligne de commande additionnels</value>
+    <value>Options de lancement</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Remplir</value>
@@ -884,7 +884,7 @@ Edge est la vue Web intégrée de Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fond d'écran</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personnaliser</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Видео</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Қосымша пәрмен жолы аргументтерін енгізіңіз</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Толтыру</value>
@@ -879,7 +879,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Түсқағаз</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Баптау</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

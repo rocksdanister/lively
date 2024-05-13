@@ -563,7 +563,7 @@ Si encara no funciona, tanca i inicia de nou o reinicia Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Introduir paràmetres opcionals de la línia de comandaments</value>
+    <value>Opcions d'Inici</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Omplir</value>
@@ -578,13 +578,13 @@ Si encara no funciona, tanca i inicia de nou o reinicia Windows.
     <value>Omplir uniformement</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplicar</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Pantalla</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Expandir</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tipus</value>
@@ -882,7 +882,7 @@ Edge és la vista web integrada amb Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fons de pantalla</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personalitzar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -1003,10 +1003,10 @@ Edge és la vista web integrada amb Windows 10.</value>
     <value>Tipus d'estalvi de pantalla</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalitzat</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Reflectir el Fons de Pantalla</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin requerit</value>
@@ -1228,15 +1228,15 @@ Edge és la vista web integrada amb Windows 10.</value>
     <value>Descarregar</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Feu-vos partidari a Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Gràcies a tots els membres que suporten aquest projecte.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Partidaris a Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Seleccioni salvapantalles</value>
   </data>
 </root>

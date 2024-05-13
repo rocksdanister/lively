@@ -563,7 +563,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Intoducir linea de comandos de agumentos (Opcional) .</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Rellenar</value>
@@ -882,7 +882,7 @@ Edge es la vista web integrada en Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fondo De Pantalla</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personalizar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

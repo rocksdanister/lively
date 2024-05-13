@@ -563,7 +563,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Indtast valgfrie kommandolinjeargumenter</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Fyld</value>
@@ -878,7 +878,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Baggrund</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Tilpas</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

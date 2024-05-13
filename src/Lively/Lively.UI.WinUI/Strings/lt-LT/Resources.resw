@@ -157,7 +157,7 @@ Pagrindinis Lively ekrano užsklandų tikslas yra pridėti dar vieną tinkinimo 
     <value>Pranešti apie programinės įrangos problemą</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Pasirinkite failą</value>
+    <value>Pasirinkiti failą</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Wallpaper playback behaviour based on running application</value>
@@ -563,7 +563,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Vaizdo įrašas</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Įveskite papildomus komandinės eilutės argumentus</value>
+    <value>Paleidimo Pasirinkimai</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Užpildyti</value>
@@ -878,8 +878,8 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Darbalaukio fonas</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
-    <value>Tinkinti</value>
+  <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>Pritaikyti</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
     <value>Fono paveikslėlių katalogas</value>
@@ -999,7 +999,7 @@ Jei vis tiek neveikia, uždarykite ir iš naujo įjunkite Lively/perkraukite Win
     <value>Ekrano užsklandos tipas</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Pasirinkta</value>
+    <value>Pasirinktinis</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
     <value>Veidrodinis fonas</value>

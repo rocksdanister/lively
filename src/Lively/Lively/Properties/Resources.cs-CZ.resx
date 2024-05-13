@@ -563,7 +563,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Zadejte volitelné argumenty příkazového řádku</value>
+    <value>Možnosti spuštění</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Vyplnit</value>
@@ -878,7 +878,7 @@ Pokud stále nefunguje, zavřete a spusťte Lively znova/restartujte okna.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Tapeta</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Přizpůsobení</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

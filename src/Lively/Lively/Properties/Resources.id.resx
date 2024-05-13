@@ -564,7 +564,7 @@ Jika masih tidak berfungsi, tutup dan mulai ulang Lively/Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Masukkan argumen commandline opsional</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Isi</value>
@@ -881,7 +881,7 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Wallpaper</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Sesuaikan</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

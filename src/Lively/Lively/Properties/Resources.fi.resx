@@ -563,7 +563,7 @@ Jos ikkuna ei vieläkään toimi, sulje ja käynnistä Windows ja Lively uudesta
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Syötä valinnaiset komentorivin parametrit</value>
+    <value>Käynnistysvalinnat</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Täytä</value>
@@ -878,7 +878,7 @@ Jos ikkuna ei vieläkään toimi, sulje ja käynnistä Windows ja Lively uudesta
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Taustakuva</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Kustomoi</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

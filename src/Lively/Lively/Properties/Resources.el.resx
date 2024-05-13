@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Βίντεο</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Εισάγετε προαιρετικά ορίσματα γραμμής εντολών</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Γέμισμα</value>
@@ -880,7 +880,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Ταπετσαρία</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Προσαρμογή</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

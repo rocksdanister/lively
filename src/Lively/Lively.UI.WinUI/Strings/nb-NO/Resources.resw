@@ -563,7 +563,7 @@ Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Skriv inn valgfrie kommandoarumenter</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Fyll</value>
@@ -878,7 +878,7 @@ Hvis fortsatt ikke fungerer, lukk og start Lively igjen/restart Windows.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Bakgrunn</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Tilpass</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

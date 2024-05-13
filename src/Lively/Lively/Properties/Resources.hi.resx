@@ -565,7 +565,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>वीडियो</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>वैकल्पिक (Optional) कमांडलाइन तर्क (Arguments) दर्ज करें</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>भरण</value>
@@ -884,7 +884,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>वॉलपेपर करें</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>वैयक्तिकृत करें</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

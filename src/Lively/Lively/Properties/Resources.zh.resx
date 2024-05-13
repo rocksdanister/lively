@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>视频</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>输入可选的命令行参数</value>
+    <value>Lively Wallpaper</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>填充</value>
@@ -883,7 +883,7 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>壁纸色半透明</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>自定义</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

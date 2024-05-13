@@ -127,7 +127,7 @@
     <value>Âm lượng</value>
   </data>
   <data name="AudioGroup.Text" xml:space="preserve">
-    <value>Âm thanh</value>
+    <value>Tùy chọn Âm thanh</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
     <value>Diễn đàn thảo luận online</value>
@@ -341,7 +341,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Từng màn hình</value>
   </data>
   <data name="TextDownload.Content" xml:space="preserve">
-    <value>Tải về</value>
+    <value>Tải xuống</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
     <value>Chỉnh sửa</value>
@@ -548,7 +548,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đã có bản cập nhật mới!</value>
   </data>
   <data name="TextUpdateCheck.Content" xml:space="preserve">
-    <value>Kiểm tra phiên bản mới</value>
+    <value>Kiểm tra và cập nhật</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
     <value>Kiểm tra phiên bản mới thất bại</value>
@@ -563,7 +563,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Nhập thêm câu lệnh riêng</value>
+    <value>Tùy chọn Khởi động</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Lấp đầy (Fill)</value>
@@ -578,13 +578,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Đồng nhất lấp đầy (Uniform Fill)</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Tạo bản sao</value>
+    <value>Nhân Đôi</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Màn hình</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Trải dài</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Loại</value>
@@ -824,7 +824,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Bảng điều khiển</value>
   </data>
   <data name="TitleScreensaver.Content" xml:space="preserve">
-    <value>Màn hình chờ</value>
+    <value>Trình bảo vệ màn hình</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
     <value>Khi trở lại, hiển thị màn hình đăng nhập</value>
@@ -878,7 +878,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Hình nền</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Tùy chỉnh</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -936,10 +936,10 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Cài đặt màu cho Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Laptops</value>
+    <value>Máy tính xách tay</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
-    <value>Nhà phát triển</value>
+    <value>Tùy chọn dành cho nhà phát triển</value>
   </data>
   <data name="AppearanceBehaviour.Text" xml:space="preserve">
     <value>Vẻ ngoài &amp; biểu hiện</value>
@@ -1002,7 +1002,7 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Tuỳ chỉnh</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Phản chiếu</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Cần Plugin</value>
@@ -1224,13 +1224,13 @@ Nếu vẫn không thể hoạt động, đóng lại &amp; khởi động lại
     <value>Tải xuống</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Trở thành người hỗ trợ chúng tôi</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Cảm ơn tất cả các thành viên đã hỗ trợ dự án này.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Những người hỗ trợ bằng Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Chọn màn hình chờ</value>

@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>影片</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>輸入可選命令列引數</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>填滿</value>
@@ -878,7 +878,7 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>桌布取色</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>自訂</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

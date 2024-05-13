@@ -226,7 +226,7 @@
     <value>Lively будет перезапущен, чтобы применить новый язык.</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Выбор языка</value>
+    <value>Язык</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
     <value>Не удалось обновится. Попробуйте скачать установщик самостоятельно:
@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Видео</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Введите необязательные аргументы командной строки</value>
+    <value>Параметры запуска</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Заполнение</value>
@@ -881,7 +881,7 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Обои</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Настроить</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

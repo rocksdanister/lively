@@ -564,7 +564,7 @@ Jeśli ciągle nie działa,  uruchom ponownie Lively / system Windows.
     <value>Wideo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Wprowadź opcjonalne argumenty linii poleceń.</value>
+    <value>Opcje uruchamiania</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Rozciągnij</value>
@@ -882,7 +882,7 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Tapeta</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Dostosuj</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -1237,6 +1237,6 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
     <value>Wspierający przez Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Wybierz wygaszacz ekranu</value>
   </data>
 </root>

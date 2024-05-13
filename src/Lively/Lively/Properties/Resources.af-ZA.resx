@@ -563,7 +563,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Voer opsionele opdragreëlargumente in</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Vul</value>
@@ -878,7 +878,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Muurpapier</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Pasmaak</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

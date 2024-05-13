@@ -254,7 +254,7 @@ Panduan kongsi:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Fail bukan fail wallpaper Lively.</value>
+    <value>Fail bukan fail wallpaper Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>Lively tidak ditamatkan secara teratur, memulakan aplikasi dalam mod selamat. Adakah anda mahu mengembalikan latar belakang yang sebelumnya?</value>
@@ -562,7 +562,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Masukkan argumen baris perintah</value>
+    <value>Pilihan Pelancar</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Isi</value>
@@ -577,7 +577,7 @@ Jika masih tidak berkesan, mulakan semula Lively/Windows.
     <value>Isi Seragam</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Salin</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Skrin</value>
@@ -881,7 +881,7 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Kertas dinding</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Sunting</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
@@ -1002,10 +1002,10 @@ Edge ialah Webview sedia ada bagi Windows 10.</value>
     <value>Jenis Penyelamat Skrin</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>Tersuai</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Kertas Dinding Cermin</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Plugin diperlukan</value>

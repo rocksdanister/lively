@@ -565,7 +565,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Відео</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Введіть необов'язкові аргументи командного рядка</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Заповнення</value>
@@ -884,7 +884,7 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Шпалери</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Налаштувати</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

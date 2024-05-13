@@ -568,7 +568,7 @@ Se aínda non funciona, pecha e inicia Lively de novo ou reinicia Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Introduza argumentos de liña de comandos opcionais</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Encher</value>
@@ -883,7 +883,7 @@ Se aínda non funciona, pecha e inicia Lively de novo ou reinicia Windows.
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>Fondo de pantalla</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>Personalizar</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">

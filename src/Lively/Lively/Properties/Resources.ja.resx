@@ -563,7 +563,7 @@ Windows 7 の場合は、"パフォーマンスを優先する"を選択する�
     <value>動画</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>任意のコマンドライン引数を入力</value>
+    <value>Launch Options</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>埋める</value>
@@ -880,7 +880,7 @@ Edge Webview2は、Windowsに内蔵されたWebViewです。</value>
   <data name="TitleWallpaper.Content" xml:space="preserve">
     <value>壁紙</value>
   </data>
-    <data name="TitleCustomise.Content" xml:space="preserve">
+  <data name="TitleCustomise.Content" xml:space="preserve">
     <value>カスタマイズ</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
