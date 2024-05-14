@@ -1,4 +1,5 @@
 ﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
 using Microsoft.Win32;
 using System;
@@ -13,6 +14,10 @@ namespace Lively.Screensaver
     {
         static async Task Main(string[] args)
         {
+            // Not possible to display screensaver in restricted lockscreen region since this utility and screensaver(s) are different applications.
+            if (IsSystemLocked())
+                return;
+
             if (SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
             {
                 // Application is running
@@ -145,6 +150,20 @@ namespace Lively.Screensaver
             preview,
             configure,
             undefined
+        }
+
+        private static bool IsSystemLocked()
+        {
+            bool result = false;
+            var fHandle = NativeMethods.GetForegroundWindow();
+            try
+            {
+                NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
+                using Process fProcess = Process.GetProcessById(processID);
+                result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
+            }
+            catch { /* Ignore */ }
+            return result;
         }
     }
 }
