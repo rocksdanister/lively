@@ -2,6 +2,7 @@
 using Lively.Common.Models;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Lively.Common.Services.Update
         private readonly int fetchDelayError = 30 * 60 * 1000; //30min
         private readonly int fetchDelayRepeat = 12 * 60 * 60 * 1000; //12hr
         private readonly Timer retryTimer = new Timer();
+        private static Architecture ProcessArch => RuntimeInformation.ProcessArchitecture;
 
         //public
         public AppUpdateStatus Status { get; private set; } = AppUpdateStatus.notchecked;
@@ -23,6 +25,7 @@ namespace Lively.Common.Services.Update
         public Version LastCheckVersion { get; private set; } = new Version(0, 0, 0, 0);
         public string LastCheckChangelog { get; private set; }
         public Uri LastCheckUri { get; private set; }
+        public string LastCheckFileName { get; private set; }
 
         public event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
@@ -71,8 +74,8 @@ namespace Lively.Common.Services.Update
             try
             {
                 await Task.Delay(fetchDelay);
-                (Uri, Version) data = await GetLatestRelease(Constants.ApplicationType.IsTestBuild);
-                int verCompare = GithubUtil.CompareAssemblyVersion(data.Item2);
+                var (SetupUri, SetupFileName, SetupVersion) = await GetLatestRelease(Constants.ApplicationType.IsTestBuild);
+                int verCompare = GithubUtil.CompareAssemblyVersion(SetupVersion);
                 if (verCompare > 0)
                 {
                     //update available.
@@ -88,8 +91,9 @@ namespace Lively.Common.Services.Update
                     //up-to-date.
                     Status = AppUpdateStatus.uptodate;
                 }
-                LastCheckUri = data.Item1;
-                LastCheckVersion = data.Item2;
+                LastCheckUri = SetupUri;
+                LastCheckVersion = SetupVersion;
+                LastCheckFileName = SetupFileName;
             }
             catch (Exception e)
             {
@@ -98,30 +102,36 @@ namespace Lively.Common.Services.Update
             }
             LastCheckTime = DateTime.Now;
 
-            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri));
+            UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri, LastCheckFileName));
             return Status;
         }
 
-        public async Task<(Uri, Version)> GetLatestRelease(bool isBeta)
+        public static async Task<(Uri, string, Version)> GetLatestRelease(bool isBeta)
         {
             var userName = "rocksdanister";
             var repositoryName = isBeta ? "lively-beta" : "lively";
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
             Version version = GithubUtil.GetVersion(gitRelease);
 
-            // Download latest installer file
+            // Get latest installer file
+            var arch = GetArchSetupString(ProcessArch);
+            var assets = await GithubUtil.GetAssetUrl(gitRelease, repositoryName, userName);
             // Format: lively_setup_ARCH_full_vXXXX.exe, XXXX - 4 digit version no and ARCH - x86, arm64
-            var arch = GetArchSetupString();
-            var gitUrl = await GithubUtil.GetAssetUrl($"lively_setup_{arch}_full",
-                gitRelease, repositoryName, userName);
-            var uri = new Uri(gitUrl);
+            var (FileName, Url) = assets.FirstOrDefault(x => x.Name.Contains($"lively_setup_{arch}_full", StringComparison.OrdinalIgnoreCase));
+            if (FileName == null && ProcessArch == Architecture.X64)
+            {
+                // Fallback, old updater has hardcoded arch value so for backward compatibility initially x64 setup will be named x86.
+                // In the future make an x86 installer that downloads x64 installer and installs.
+                // Lively v2.1 onwards only x64 version is available.
+                (FileName, Url) = assets.FirstOrDefault(x => x.Name.Contains($"lively_setup_x86_full", StringComparison.OrdinalIgnoreCase));
+            }
 
-            return (uri, version);
+            return (Url is null ? null : new Uri(Url), FileName, version);
         }
 
-        private static string GetArchSetupString()
+        private static string GetArchSetupString(Architecture arch)
         {
-            return RuntimeInformation.ProcessArchitecture switch
+            return arch switch
             {
                 Architecture.X86 => "x86",
                 Architecture.X64 => "x64",

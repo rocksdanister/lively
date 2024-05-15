@@ -9,13 +9,13 @@ namespace Lively.Common.Services.Update
     {
         DateTime LastCheckTime { get; }
         Uri LastCheckUri { get; }
+        string LastCheckFileName {get;}
         Version LastCheckVersion { get; }
         AppUpdateStatus Status { get; }
 
         event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
         Task<AppUpdateStatus> CheckUpdate(int fetchDelay);
-        Task<(Uri, Version)> GetLatestRelease(bool isBeta);
         void Start();
         void Stop();
     }

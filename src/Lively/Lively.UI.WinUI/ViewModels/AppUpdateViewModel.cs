@@ -37,6 +37,7 @@ namespace Lively.UI.WinUI.ViewModels
             this.appUpdater = appUpdater;
             this.desktopCore = desktopCore;
             this.downloader = downloader;
+            this.dialogService = dialogService;
 
             languageResource = ResourceLoader.GetForViewIndependentUse();
 
@@ -53,7 +54,8 @@ namespace Lively.UI.WinUI.ViewModels
             }
             else if (appUpdater.Status == AppUpdateStatus.available)
             {
-                var filePath = Path.Combine(Constants.CommonPaths.TempDir, appUpdater.LastCheckUri.Segments.Last());
+                var fileName = appUpdater.LastCheckFileName ?? appUpdater.LastCheckUri.Segments.Last();
+                var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
                 IsUpdateDownloaded = File.Exists(filePath);
             }
         }
@@ -132,8 +134,9 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 IsUpdateDownloading = true;
 
-                var fileName = appUpdater.LastCheckUri.Segments.Last();
+                var fileName = appUpdater.LastCheckFileName ?? appUpdater.LastCheckUri.Segments.Last();
                 var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
+                Logger.Info($"Downloading update: {filePath}");
                 await downloader.DownloadFile(appUpdater.LastCheckUri, filePath);
             }
             catch (Exception ex)

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -259,11 +260,10 @@ namespace Lively.UI.WinUI.ViewModels
             var userName = "rocksdanister";
             var repositoryName = "lively-ml-models";
             var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
+            var assets = await GithubUtil.GetAssetUrl(gitRelease, repositoryName, userName);
+            var (_, Url) = assets.FirstOrDefault(x => x.Name.Contains("midas_small.zip", StringComparison.OrdinalIgnoreCase));
 
-            var gitUrl = await GithubUtil.GetAssetUrl("midas_small.zip", gitRelease, repositoryName, userName);
-            var uri = new Uri(gitUrl);
-
-            return uri;
+            return new Uri(Url);
         }
 
         private bool CheckModel() => File.Exists(modelPath);

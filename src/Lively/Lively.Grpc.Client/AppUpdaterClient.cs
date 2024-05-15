@@ -18,6 +18,7 @@ namespace Lively.Grpc.Client
         public Version LastCheckVersion { get; private set; } = new Version(0, 0, 0, 0);
         public string LastCheckChangelog { get; private set; }
         public Uri LastCheckUri { get; private set; }
+        public string LastCheckFileName { get; private set; }
 
         public event EventHandler<AppUpdaterEventArgs> UpdateChecked;
 
@@ -60,6 +61,7 @@ namespace Lively.Grpc.Client
             {
                 LastCheckVersion = string.IsNullOrEmpty(resp.Version) ? null : new Version(resp.Version);
                 LastCheckUri = string.IsNullOrEmpty(resp.Url) ? null : new Uri(resp.Url);
+                LastCheckFileName = string.IsNullOrEmpty(resp.FileName) ? null : resp.FileName;
             }
             catch { /* TODO */ }
         }
@@ -76,7 +78,7 @@ namespace Lively.Grpc.Client
                     {
                         var resp = call.ResponseStream.Current;
                         await UpdateStatusRefresh();
-                        UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri));
+                        UpdateChecked?.Invoke(this, new AppUpdaterEventArgs(Status, LastCheckVersion, LastCheckTime, LastCheckUri, LastCheckFileName));
                     }
                     finally
                     {

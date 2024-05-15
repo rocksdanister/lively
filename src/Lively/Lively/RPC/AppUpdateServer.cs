@@ -82,6 +82,7 @@ namespace Lively.RPC
                 Status = (UpdateStatus)((int)updater.Status),
                 Changelog = string.Empty,
                 Url = updater.LastCheckUri?.OriginalString ?? string.Empty,
+                FileName = updater.LastCheckFileName ?? string.Empty,
                 Version = updater.LastCheckVersion?.ToString() ?? string.Empty,
                 Time = Timestamp.FromDateTime(updater.LastCheckTime.ToUniversalTime()),
             });

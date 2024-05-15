@@ -16,6 +16,7 @@ message UpdateResponse {
 	string url = 3;
 	string changelog = 4;
 	google.protobuf.Timestamp time = 5;
+	string file_name = 6;
 }
 
 enum UpdateStatus {

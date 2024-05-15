@@ -11,6 +11,7 @@ namespace Lively.Grpc.Client
         string LastCheckChangelog { get; }
         DateTime LastCheckTime { get; }
         Uri LastCheckUri { get; }
+        string LastCheckFileName { get; }
         Version LastCheckVersion { get; }
         AppUpdateStatus Status { get; }
 

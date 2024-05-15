@@ -7,18 +7,20 @@ namespace Lively.Common.Models
 {
     public class AppUpdaterEventArgs : EventArgs
     {
-        public AppUpdaterEventArgs(AppUpdateStatus updateStatus, Version updateVersion, DateTime updateDate, Uri updateUri)
+        public AppUpdaterEventArgs(AppUpdateStatus updateStatus, Version updateVersion, DateTime updateDate, Uri updateUri, string fileName)
         {
-            UpdateStatus = updateStatus;
-            UpdateVersion = updateVersion;
-            UpdateUri = updateUri;
+            this.UpdateStatus = updateStatus;
+            this.UpdateVersion = updateVersion;
+            this.UpdateUri = updateUri;
             UpdateDate = updateDate;
+            this.FileName = fileName;
         }
 
         public AppUpdateStatus UpdateStatus { get; }
         public Version UpdateVersion { get; }
         public Uri UpdateUri { get; }
         public DateTime UpdateDate { get; }
+        public string FileName { get; }
     }
 
     public enum AppUpdateStatus

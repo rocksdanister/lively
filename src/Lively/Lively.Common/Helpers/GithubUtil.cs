@@ -11,22 +11,6 @@ namespace Lively.Common.Helpers
     public static class GithubUtil
     {
         /// <summary>
-        /// After given delay retrieve github release asset download url.
-        /// Returns first asset matching substring (make sure asset name is unique to get correct file.), case is ignored.
-        /// </summary>
-        /// <param name="assetNameSubstring"></param>
-        /// <param name="repositoryName"></param>
-        /// <param name="userName"></param>
-        /// <param name="startDelay"></param>
-        /// <returns></returns>
-        public static async Task<string> GetLatestAssetUrl(string assetNameSubstring, string repositoryName, string userName, int startDelay = 1000)
-        {
-            Release release = await GetLatestRelease(repositoryName, userName, startDelay);
-            var url = await GetAssetUrl(assetNameSubstring, release, repositoryName, userName);
-            return url;
-        }
-
-        /// <summary>
         /// Get latest release from github after given delay.
         /// </summary>
         /// <param name="repositoryName"></param>
@@ -44,22 +28,17 @@ namespace Lively.Common.Helpers
             return latest;
         }
 
-        /// <summary>
-        /// Get github release asset download url.
-        /// Returns first asset matching substring (make sure asset name is unique to get correct file.), case is ignored.
-        /// </summary>
-        /// <param name="assetNameSubstring"></param>
-        /// <param name="release"></param>
-        /// <param name="repositoryName"></param>
-        /// <param name="userName"></param>
-        /// <returns></returns>
-        public static async Task<string> GetAssetUrl(string assetNameSubstring, Release release, string repositoryName, string userName)
+        public static async Task<IEnumerable<(string Name, string Url)>> GetAssetUrl(Release release, string repositoryName, string userName)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue(repositoryName));
             var allAssets = await client.Repository.Release.GetAllAssets(userName, repositoryName, release.Id);
-            //var requiredAssets = allAssets.Single(x => x.Name.Equals(assetName, StringComparison.OrdinalIgnoreCase));
-            var requiredAsset = allAssets.First(x => Contains(x.Name, assetNameSubstring, StringComparison.OrdinalIgnoreCase));
-            return requiredAsset.BrowserDownloadUrl;
+            return allAssets.Select(x => (x.Name, Url: x.BrowserDownloadUrl));
+        }
+
+        public static async Task<IEnumerable<(string Name, string Url)>> GetLatestAsset(string repositoryName, string userName, int startDelay = 1000)
+        {
+            Release release = await GetLatestRelease(repositoryName, userName, startDelay);
+            return await GetAssetUrl(release, repositoryName, userName);
         }
 
         public static Version GetVersion(Release release)
