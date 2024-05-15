@@ -102,7 +102,8 @@ namespace Lively.PlayerWebView2
         {
             //Ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions("--disk-cache-size=1"); //workaround: avoid cache
-            var env = await CoreWebView2Environment.CreateAsync(null, Constants.CommonPaths.TempWebView2Dir, options);
+            var userDataPath = Path.Combine(Constants.CommonPaths.TempWebView2Dir, Assembly.GetExecutingAssembly().GetName().Name);
+            var env = await CoreWebView2Environment.CreateAsync(null, userDataPath, options);
             await webView.EnsureCoreWebView2Async(env);
 
             webView.CoreWebView2.ProcessFailed += (s, e) =>

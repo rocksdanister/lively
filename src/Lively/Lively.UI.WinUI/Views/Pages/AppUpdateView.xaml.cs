@@ -8,6 +8,9 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Web.WebView2.Core;
 using System;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Lively.UI.WinUI.Views.Pages
 {
@@ -23,22 +26,22 @@ namespace Lively.UI.WinUI.Views.Pages
 
             // Error when setting in xaml
             WebView.DefaultBackgroundColor = ((SolidColorBrush)App.Current.Resources["ApplicationPageBackgroundThemeBrush"]).Color;
-            // Set website to reflect app interface
-            var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
-            {
-                AppTheme.Auto => "auto", // Website handles theme change based on WebView change.
-                AppTheme.Light => "light",
-                AppTheme.Dark => "dark",
-                _ => "auto",
-            };
-            var accentColorDark1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorDark1"]).ToHex().Substring(1);
-            var accentColorLight1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorLight1"]).ToHex().Substring(1);
-            var param = $"?source=app&theme={pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
+            _ = InitializeWebView2Async();
+        }
 
-            var url = viewModel.IsBetaBuild ?
-                $"https://www.rocksdanister.com/lively-webpage/changelog/{param}" :
-                $"https://www.rocksdanister.com/lively/changelog/{param}";
-            WebView.Source = LinkUtil.SanitizeUrl(url);
+        private async Task InitializeWebView2Async()
+        {
+            try
+            {
+                var options = new CoreWebView2EnvironmentOptions();
+                var userDataPath = Path.Combine(Constants.CommonPaths.TempWebView2Dir, Assembly.GetExecutingAssembly().GetName().Name);
+                var webView2Environment = await CoreWebView2Environment.CreateWithOptionsAsync(null, userDataPath, options);
+                await WebView.EnsureCoreWebView2Async(webView2Environment);
+            }
+            catch (Exception ex)
+            {
+                viewModel.UpdateChangelogError = ex.ToString();
+            }
         }
 
         // ref: https://github.com/MicrosoftEdge/WebView2Samples
@@ -50,6 +53,23 @@ namespace Lively.UI.WinUI.Views.Pages
             }
             else
             {
+                // Set website to reflect app interface
+                var pageTheme = App.Services.GetRequiredService<IUserSettingsClient>().Settings.ApplicationTheme switch
+                {
+                    AppTheme.Auto => "auto", // Website handles theme change based on WebView change.
+                    AppTheme.Light => "light",
+                    AppTheme.Dark => "dark",
+                    _ => "auto",
+                };
+                var accentColorDark1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorDark1"]).ToHex().Substring(1);
+                var accentColorLight1 = ((Windows.UI.Color)App.Current.Resources["SystemAccentColorLight1"]).ToHex().Substring(1);
+                var param = $"?source=app&theme={pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
+
+                var url = viewModel.IsBetaBuild ?
+                    $"https://www.rocksdanister.com/lively-webpage/changelog/{param}" :
+                    $"https://www.rocksdanister.com/lively/changelog/{param}";
+                WebView.Source = LinkUtil.SanitizeUrl(url);
+
                 WebView.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
                 // Theme need to set css, ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/4426
                 WebView.CoreWebView2.Profile.PreferredColorScheme = CoreWebView2PreferredColorScheme.Auto;

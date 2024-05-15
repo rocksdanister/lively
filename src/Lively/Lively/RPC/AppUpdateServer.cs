@@ -50,7 +50,8 @@ namespace Lively.RPC
                     try
                     {
                         // Main user interface downloads the setup.
-                        var filePath = Path.Combine(Constants.CommonPaths.TempDir, updater.LastCheckUri.Segments.Last());
+                        var fileName = updater.LastCheckFileName ?? updater.LastCheckUri.Segments.Last();
+                        var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
                         if (!File.Exists(filePath))
                             throw new FileNotFoundException(filePath);
 
