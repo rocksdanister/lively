@@ -73,6 +73,7 @@ namespace Lively.Views.WindowMsg
             {
                 if (lParam != IntPtr.Zero && lParam == (IntPtr)0x00000001) // ENDSESSION_CLOSEAPP
                 {
+                    App.ReleaseMutex();
                     //The app is being queried if it can close for an update.
                     _ = NativeMethods.RegisterApplicationRestart(
                         null,

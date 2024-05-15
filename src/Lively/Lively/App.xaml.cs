@@ -48,9 +48,9 @@ namespace Lively
     public partial class App : Application
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly Mutex mutex = new Mutex(false, Constants.SingleInstance.UniqueAppName);
         private readonly NamedPipeServer grpcServer;
         private int updateNotifyAmt = 1;
+        private static Mutex mutex;
 
         private readonly IServiceProvider _serviceProvider;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Lively
             {
                 // Wait a few seconds in case application instance is just shutting down..
                 // Note: This wait is longer required since Core is never restarted after 2.0 rewrite.
-                if (!mutex.WaitOne(0, false))
+                if (!AcquireMutex())
                 {
                     try
                     {
@@ -428,6 +428,24 @@ namespace Lively
 
         private void LogUnhandledException(Exception exception, string source) => Logger.Error(exception);
 
+        public static bool AcquireMutex()
+        {
+            mutex = new Mutex(true, Constants.SingleInstance.UniqueAppName, out bool mutexCreated);
+            if (!mutexCreated)
+            {
+                mutex = null;
+                return false;
+            }
+            return true;
+        }
+
+        public static void ReleaseMutex()
+        {
+            mutex?.ReleaseMutex();
+            mutex?.Close();
+            mutex = null;
+        }
+
         public static void ShutDown()
         {
             try
@@ -436,6 +454,7 @@ namespace Lively
             }
             catch (InvalidOperationException) { /* not initialised */ }
             ((App)Current).grpcServer?.Dispose();
+            ReleaseMutex();
             // Shutdown needs to be called from dispatcher.
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
