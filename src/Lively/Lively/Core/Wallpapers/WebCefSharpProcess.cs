@@ -65,7 +65,7 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --wallpaper-audio true" : " ");
             cmdArgs.Append(!string.IsNullOrWhiteSpace(debugPort) ? " --wallpaper-debug " + debugPort : " ");
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.url || model.LivelyInfo.Type == WallpaperType.videostream ? " --wallpaper-type online" : " --wallpaper-type local");
-            cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --wallpaper-cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "cache", display.Index.ToString()) + "\"" : " ");
+            cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --wallpaper-cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "Lively.PlayerCefSharp", display.Index.ToString()) + "\"" : " ");
             if (TryParseUserCommandArgs(model.LivelyInfo.Arguments, out string parsedArgs))
                 cmdArgs.Append(parsedArgs);
 #if DEBUG

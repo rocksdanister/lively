@@ -9,8 +9,6 @@ namespace Lively.Common
     {
         public static class CommonPaths
         {
-            //User configurable in settings
-            //public static string WallpaperDir { get; set; }
             public static string AppDataDir { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper");
             public static string LogDir { get; } = Path.Combine(AppDataDir, "logs");
             public static string LogDirUI { get; } = Path.Combine(AppDataDir, "UI"); //temp use..
