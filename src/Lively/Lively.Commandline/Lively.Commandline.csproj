@@ -6,6 +6,7 @@
     <PublishTrimmed>true</PublishTrimmed>
     <PublishAot>false</PublishAot>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

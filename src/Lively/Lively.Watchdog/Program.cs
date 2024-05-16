@@ -1,12 +1,11 @@
-﻿using Lively.Common.Helpers.Pinvoke;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-//TODO: Kill UI program also.
 namespace Lively.Watchdog
 {
     /// <summary>
@@ -74,7 +73,7 @@ namespace Lively.Watchdog
             }
 
             //force refresh desktop.
-            _ = NativeMethods.SystemParametersInfo(NativeMethods.SPI_SETDESKWALLPAPER, 0, null, NativeMethods.SPIF_UPDATEINIFILE);
+            _ = SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, null, SPIF_UPDATEINIFILE);
         }
 
 
@@ -114,5 +113,11 @@ namespace Lively.Watchdog
             }
             catch { }
         }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [return: MarshalAs(UnmanagedType.I4)]
+        private static extern Int32 SystemParametersInfo(UInt32 uiAction, UInt32 uiParam, String pvParam, UInt32 fWinIni);
+        private static UInt32 SPI_SETDESKWALLPAPER = 20;
+        private static UInt32 SPIF_UPDATEINIFILE = 0x1;
     }
 }
