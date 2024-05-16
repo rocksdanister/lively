@@ -137,11 +137,10 @@ type
   #DEFINE AW "A"
 #ENDIF
 
-{ Visual C++ 2019 v14, the included installer is a bundle consisting of older vers }
-VC_2015_2022_REDIST_X64 = '{c649ede4-f16a-4486-a117-dcc2f2a35165}';
 function MsiQueryProductState(szProduct: string): INSTALLSTATE; 
   external 'MsiQueryProductState{#AW}@msi.dll stdcall';
 
+//ref: https://github.com/DomGries/InnoDependencyInstaller
 function VCVersionInstalled(const ProductID: string): Boolean;
 begin
   Result := MsiQueryProductState(ProductID) = INSTALLSTATE_DEFAULT;
@@ -149,7 +148,7 @@ end;
 
 function VCRedistNeedsInstall: Boolean;
 begin
-  Result := not VCVersionInstalled(VC_2015_2022_REDIST_X64);
+  Result := not IsMsiProductInstalled('{36F68A90-239C-34DF-B58C-64B30153CE35}', PackVersionComponents(14, 30, 30704, 0));
 end;
 
 
