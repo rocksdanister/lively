@@ -134,6 +134,7 @@
             x:Uid="Screensaver"
             Grid.Row="1"
             Margin="0,5,0,0"
+            IsEnabled="{Binding IsScreensaverPluginNotify, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}"
             IsExpanded="True">
             <controls:SettingsExpander.HeaderIcon>
                 <FontIcon Glyph="&#xE90C;" />
