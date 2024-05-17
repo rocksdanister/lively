@@ -32,6 +32,9 @@ namespace Lively.UI.WinUI.Helpers
 
         public static async Task<bool> InstallWebView2()
         {
+            if (Constants.ApplicationType.IsMSIX)
+                return false;
+
             try
             {
                 var filePath = Path.Combine(Constants.CommonPaths.TempDir, "MicrosoftEdgeWebview2Setup.exe");
