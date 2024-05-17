@@ -1,19 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Helpers.Files;
 using Lively.Common.Models;
 using Lively.Common.Services.Downloader;
 using Lively.Grpc.Client;
+using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -26,18 +22,21 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDownloadService downloader;
         private readonly IDialogService dialogService;
+        private readonly ICommandsClient commandsClient;
 
         private readonly ResourceLoader languageResource;
 
         public AppUpdateViewModel(IAppUpdaterClient appUpdater,
             IDesktopCoreClient desktopCore,
             IDownloadService downloader,
+            ICommandsClient commandsClient,
             IDialogService dialogService)
         {
             this.appUpdater = appUpdater;
             this.desktopCore = desktopCore;
             this.downloader = downloader;
             this.dialogService = dialogService;
+            this.commandsClient = commandsClient;
 
             languageResource = ResourceLoader.GetForViewIndependentUse();
 
@@ -64,13 +63,15 @@ namespace Lively.UI.WinUI.ViewModels
 
         public bool IsBetaBuild => Constants.ApplicationType.IsTestBuild;
 
+        public bool IsWebView2Available => WebViewUtil.IsWebView2Available();
+
         public string AppVersionText
         {
             get
             {
                 var ver = "v" + desktopCore.AssemblyVersion;
                 if (IsBetaBuild)
-                    ver += "b";
+                    ver += "(b)";
                 else if (IsWinStore)
                     ver += $" {languageResource.GetString("Store/Header")}";
                 return ver;
@@ -79,6 +80,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private double currentProgress;
+
+        [ObservableProperty]
+        private bool isWebView2Installing;
 
         [ObservableProperty]
         private bool isUpdateChecking;
@@ -156,6 +160,24 @@ namespace Lively.UI.WinUI.ViewModels
         private async Task InstallUpdate()
         {
             await appUpdater.StartUpdate();
+        }
+
+        [RelayCommand]
+        private async Task InstallWebView2()
+        {
+            try
+            {
+                IsWebView2Installing = true;
+
+                if (await WebViewUtil.InstallWebView2())
+                    _ = commandsClient.RestartUI("--appUpdate true");
+                else
+                    LinkUtil.OpenBrowser(WebViewUtil.DownloadUrl);
+            }
+            finally
+            {
+                IsWebView2Installing = false;
+            }
         }
 
         public void CancelDownload()

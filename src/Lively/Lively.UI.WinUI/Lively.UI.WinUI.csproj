@@ -49,6 +49,7 @@
   
   <ItemGroup>
     <None Remove="Assets\banner-lively-1080.jpg" />
+    <None Remove="Assets\changelog-page-preview.jpg" />
     <None Remove="Assets\CustomIcons.ttf" />
     <None Remove="Assets\icon-lively-48.png" />
     <None Remove="Assets\icons8-application-window-96.png" />
@@ -68,6 +69,7 @@
     <None Remove="Assets\Icons\icons8-info.svg" />
     <None Remove="Assets\Icons\icons8-ok.svg" />
     <None Remove="Assets\Icons\icons8-warn.svg" />
+    <None Remove="Assets\patreon-page-preview.jpg" />
     <None Remove="Assets\tray-tutorial.gif" />
     <None Remove="Nlog.config" />
     <None Remove="UserControls\ColorPickerButton.xaml" />
@@ -169,6 +171,9 @@
     <PRIResource Remove="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Assets\changelog-page-preview.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Assets\icon-lively-48.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -216,6 +221,9 @@
     <None Update="appicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\patreon-page-preview.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Update="UserControls\FolderDropdown.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

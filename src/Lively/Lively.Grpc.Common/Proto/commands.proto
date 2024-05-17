@@ -11,6 +11,7 @@ service CommandsService {
   rpc ShutDown (google.protobuf.Empty) returns (google.protobuf.Empty);
   rpc AutomationCommand (AutomationCommandRequest) returns (google.protobuf.Empty);
   rpc SaveRectUI(google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc RestartUIWithArgs(RestartRequest) returns (google.protobuf.Empty);
 }
 
 message ScreensaverRequest {
@@ -27,4 +28,8 @@ enum ScreensaverState {
 	stop = 1;
 	preview = 2;
 	configure = 3;
+}
+
+message RestartRequest {
+	string start_args = 1;
 }

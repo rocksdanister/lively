@@ -7,7 +7,7 @@ namespace Lively.Services
         IntPtr HwndUI { get; }
         void ShowUI();
         void CloseUI();
-        void RestartUI();
+        void RestartUI(string startArgs = null);
         void SetBusyUI(bool isBusy);
         void ShowCustomisWallpaperePanel();
         void ShowAppUpdatePage();

@@ -31,6 +31,9 @@ namespace Lively.UI.WinUI.Views.Pages
 
         private async Task InitializeWebView2Async()
         {
+            if (!viewModel.IsWebView2Available)
+                return;
+
             try
             {
                 var options = new CoreWebView2EnvironmentOptions();
@@ -40,7 +43,7 @@ namespace Lively.UI.WinUI.Views.Pages
             }
             catch (Exception ex)
             {
-                viewModel.UpdateChangelogError = ex.ToString();
+                viewModel.UpdateChangelogError = $"Exception: {ex.GetType().Name}\nMessage: {ex.Message}";
             }
         }
 
@@ -49,7 +52,7 @@ namespace Lively.UI.WinUI.Views.Pages
         {
             if (args.Exception != null)
             {
-                viewModel.UpdateChangelogError = args.Exception.ToString();
+                viewModel.UpdateChangelogError = $"Exception: {args.Exception.GetType().Name}\nMessage: {args.Exception.Message}";
             }
             else
             {

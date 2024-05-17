@@ -37,6 +37,11 @@ namespace Lively.Grpc.Client
             await client.RestartUIAsync(new Empty());
         }
 
+        public async Task RestartUI(string startArgs)
+        {
+            await client.RestartUIWithArgsAsync(new RestartRequest() { StartArgs = startArgs });
+        }
+
         public async Task ShowDebugger()
         {
             await client.ShowDebuggerAsync(new Empty());

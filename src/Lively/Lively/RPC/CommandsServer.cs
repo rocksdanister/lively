@@ -47,6 +47,12 @@ namespace Lively.RPC
             return Task.FromResult(new Empty());
         }
 
+        public override Task<Empty> RestartUIWithArgs(RestartRequest request, ServerCallContext context)
+        {
+            runner.RestartUI(request.StartArgs);
+            return Task.FromResult(new Empty());
+        }
+
         public override Task<Empty> ShowDebugger(Empty _, ServerCallContext context)
         {
             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate

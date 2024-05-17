@@ -85,7 +85,7 @@ namespace Lively.Services
             }
         }
 
-        public void RestartUI()
+        public void RestartUI(string startArgs = null)
         {
             if (processUI != null)
             {
@@ -109,7 +109,7 @@ namespace Lively.Services
                     processUI = null;
                 }
             }
-            ShowUI();
+            ShowUI(startArgs, null);
         }
 
         public void CloseUI()
@@ -152,7 +152,8 @@ namespace Lively.Services
             {
                 try
                 {
-                    processUI.StandardInput.WriteLine(wmArgs);
+                    if (wmArgs != null)
+                        processUI.StandardInput.WriteLine(wmArgs);
                 }
                 catch (Exception e)
                 {

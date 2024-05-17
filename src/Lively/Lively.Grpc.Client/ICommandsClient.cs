@@ -10,6 +10,7 @@ namespace Lively.Grpc.Client
         Task ShowUI();
         Task CloseUI();
         Task RestartUI();
+        Task RestartUI(string startArgs);
         Task ShowDebugger();
         Task ShutDown();
         Task AutomationCommandAsync(string[] args);

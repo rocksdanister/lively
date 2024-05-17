@@ -4,15 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:customconverters="using:Lively.UI.WinUI.Helpers.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Lively.UI.WinUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:CommunityToolkit.WinUI.Media"
     Loaded="Page_Loaded"
     Unloaded="Page_Unloaded"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <converters:EmptyStringToObjectConverter
+            x:Key="StringToBoolConverter"
+            EmptyValue="False"
+            NotEmptyValue="True" />
         <customconverters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
         <customconverters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
         <customconverters:StringToInfoBarSeverityIconConverter x:Key="StringToInfoBarSeverityIconConverter" />
@@ -20,48 +26,78 @@
     </Page.Resources>
 
     <Grid>
-        <!--  Changelog  -->
-        <WebView2
-            x:Name="WebView"
-            CoreWebView2Initialized="WebView_CoreWebView2Initialized"
-            NavigationCompleted="WebView_NavigationCompleted"
-            NavigationStarting="WebView_NavigationStarting"
-            Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
-        <!--  Changelog loading  -->
-        <ProgressBar
-            x:Name="WebViewProgress"
-            VerticalAlignment="Top"
-            IsIndeterminate="True"
-            Visibility="Collapsed">
-            <animations:Implicit.ShowAnimations>
-                <animations:OpacityAnimation
-                    From="0"
-                    To="1.0"
-                    Duration="0:0:1" />
-            </animations:Implicit.ShowAnimations>
-        </ProgressBar>
-        <!--  Changelog error  -->
-        <StackPanel
-            Margin="5,125,5,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Spacing="5"
-            Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
+        <!--  WebView2 available.  -->
+        <Grid Visibility="{Binding IsWebView2Available, Mode=OneWay}">
+            <!--  Changelog  -->
+            <WebView2
+                x:Name="WebView"
+                CoreWebView2Initialized="WebView_CoreWebView2Initialized"
+                NavigationCompleted="WebView_NavigationCompleted"
+                NavigationStarting="WebView_NavigationStarting"
+                Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
+            <!--  Changelog loading  -->
+            <ProgressBar
+                x:Name="WebViewProgress"
+                VerticalAlignment="Top"
+                IsIndeterminate="True"
+                Visibility="Collapsed">
+                <animations:Implicit.ShowAnimations>
+                    <animations:OpacityAnimation
+                        From="0"
+                        To="1.0"
+                        Duration="0:0:1" />
+                </animations:Implicit.ShowAnimations>
+            </ProgressBar>
+            <!--  Changelog error  -->
             <FontIcon
-                FontSize="100"
-                Foreground="Red"
-                Glyph="&#xEA39;" />
-            <TextBlock
-                FontSize="14"
-                Text="{Binding UpdateChangelogError}"
-                TextAlignment="Start"
-                TextWrapping="Wrap" />
-            <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Common-Problems">
-                <HyperlinkButton.Content>
-                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
-                </HyperlinkButton.Content>
-            </HyperlinkButton>
-        </StackPanel>
+                FontSize="250"
+                Foreground="DarkRed"
+                Glyph="&#xEA39;"
+                Visibility="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}" />
+            <InfoBar
+                VerticalAlignment="Top"
+                IsClosable="False"
+                IsOpen="{Binding UpdateChangelogError, Mode=OneWay, Converter={StaticResource StringToBoolConverter}}"
+                Severity="Error">
+                <StackPanel Margin="10" Spacing="5">
+                    <ScrollViewer MaxHeight="300">
+                        <TextBlock Text="{Binding UpdateChangelogError, Mode=OneWay}" TextWrapping="Wrap" />
+                    </ScrollViewer>
+                    <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Common-Problems">
+                        <HyperlinkButton.Content>
+                            <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </StackPanel>
+            </InfoBar>
+        </Grid>
+        <!--  WebView2 not found  -->
+        <Grid Visibility="{Binding IsWebView2Available, Converter={StaticResource VisibilityConverter}, Mode=OneWay, ConverterParameter=Reverse}">
+            <Grid.Background>
+                <ImageBrush ImageSource="ms-appx:///Assets/changelog-page-preview.jpg" Stretch="Uniform" />
+            </Grid.Background>
+            <Border>
+                <Border.Background>
+                    <media:BackdropBlurBrush Amount="12" />
+                </Border.Background>
+            </Border>
+            <InfoBar
+                Title="Plugin required"
+                Margin="0,-5,0,0"
+                VerticalAlignment="Top"
+                IsClosable="False"
+                IsOpen="True"
+                Message="Microsoft WebView2 is required to view this page"
+                Severity="Warning">
+                <InfoBar.ActionButton>
+                    <Button x:Uid="TitleDownload" Command="{Binding InstallWebView2Command}" />
+                </InfoBar.ActionButton>
+                <ProgressBar
+                    Margin="-50,0,0,0"
+                    IsIndeterminate="True"
+                    Visibility="{Binding IsWebView2Installing, Mode=OneWay}" />
+            </InfoBar>
+        </Grid>
         <!--  Bottom gradient effect  -->
         <Rectangle IsHitTestVisible="False">
             <Rectangle.Fill>
