@@ -1240,4 +1240,10 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>בחר שומר מסך</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Microsoft WebView2 is required to view this content</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>נדרש תוסף</value>
+  </data>
 </root>

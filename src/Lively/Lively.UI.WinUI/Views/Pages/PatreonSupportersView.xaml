@@ -91,12 +91,11 @@
                 </Border.Background>
             </Border>
             <InfoBar
-                Title="Plugin required"
+                x:Uid="WebViewRequired"
                 Margin="0,0,0,0"
                 VerticalAlignment="Top"
                 IsClosable="False"
                 IsOpen="True"
-                Message="Microsoft WebView2 is required to view this page"
                 Severity="Warning">
                 <InfoBar.ActionButton>
                     <Button x:Uid="TitleDownload" Command="{Binding InstallWebView2Command}" />
@@ -108,12 +107,11 @@
             </InfoBar>
         </Grid>
         <TextBlock
+            x:Uid="TextPatreonMembersThankYou"
             Grid.Row="1"
             Margin="0,5,0,0"
             HorizontalAlignment="Center"
             Opacity="0.75"
-            Style="{ThemeResource BodyTextBlockStyle}">
-            Thanks to all the members who support this project.
-        </TextBlock>
+            Style="{ThemeResource BodyTextBlockStyle}" />
     </Grid>
 </Page>

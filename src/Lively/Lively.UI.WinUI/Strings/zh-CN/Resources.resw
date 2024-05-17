@@ -1240,4 +1240,10 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>选择屏幕保护程序</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Microsoft WebView2 is required to view this content</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>需要插件</value>
+  </data>
 </root>

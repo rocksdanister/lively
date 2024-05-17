@@ -565,7 +565,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Відео</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Параметри запуску</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Заповнення</value>
@@ -1240,5 +1240,11 @@ Edge - веб-двигун з Windows 10 WebView.</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Виберіть заставку екрану</value>
+  </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Для перегляду цього вмісту потрібен Microsoft WebView2</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>Потрібно доповнення</value>
   </data>
 </root>

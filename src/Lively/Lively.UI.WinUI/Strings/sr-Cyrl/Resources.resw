@@ -1221,4 +1221,10 @@
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Select screensaver</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Microsoft WebView2 is required to view this content</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>Потребна је додатна компонента</value>
+  </data>
 </root>

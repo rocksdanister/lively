@@ -82,12 +82,11 @@
                 </Border.Background>
             </Border>
             <InfoBar
-                Title="Plugin required"
+                x:Uid="WebViewRequired"
                 Margin="0,-5,0,0"
                 VerticalAlignment="Top"
                 IsClosable="False"
                 IsOpen="True"
-                Message="Microsoft WebView2 is required to view this page"
                 Severity="Warning">
                 <InfoBar.ActionButton>
                     <Button x:Uid="TitleDownload" Command="{Binding InstallWebView2Command}" />

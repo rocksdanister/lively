@@ -1239,4 +1239,10 @@ Wszystkie procesy: Większe obciążenie procesora, skanuje wszystkie procesy ab
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Wybierz wygaszacz ekranu</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Microsoft WebView2 is required to view this content</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>Wymagana wtyczka</value>
+  </data>
 </root>

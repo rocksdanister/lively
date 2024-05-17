@@ -1234,4 +1234,10 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Bildschirmschoner auswählen</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Microsoft WebView2 wird benötigt, um diesen Inhalt anzuzeigen</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>Plugin erforderlich</value>
+  </data>
 </root>

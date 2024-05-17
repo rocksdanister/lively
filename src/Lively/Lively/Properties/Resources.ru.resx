@@ -1238,4 +1238,10 @@ Edge - встроенный в Windows 10 WebView.</value>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>Выберите заставку</value>
   </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>Для просмотра этого содержимого требуется Microsoft WebView2</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>Требуется плагин</value>
+  </data>
 </root>
