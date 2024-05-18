@@ -42,7 +42,7 @@ namespace Lively.Screensaver
             else
             {
                 // Application is not running, always launch in screensaver only mode.
-                if (TryGetInstalledAppPath("{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}", out string installedPath))
+                if (TryGetInnoInstalledAppPath("{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}", out string installedPath))
                 {
                     Process.Start(Path.Combine(installedPath, "Lively.exe"), "screensaver --showExclusive true");
                 }
@@ -97,51 +97,27 @@ namespace Lively.Screensaver
             }
         }
 
-        private static bool TryGetInstalledAppPath(string appId, out string installPath)
+        // The path is stored to registry to HKLM (administrative install mode) or HKCU (non administrative install mode) to a subkey named after the AppId with _is1 suffix,
+        // stored under a key SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall (as you alraedy know). The value name is Inno Setup: App Path.
+        // The path is also stored to InstallLocation with additional trailing slash, as that's where Windows reads it from. But Inno Setup reads the first value.
+        // Ref: https://stackoverflow.com/questions/68990713/how-to-access-the-path-of-inno-setup-installed-program-from-outside-of-inno-setu
+        private static bool TryGetInnoInstalledAppPath(string appId, out string installPath)
         {
-            var uninstallKeyPath32Bit = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
-            var uninstallKeyPath64Bit = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
+            var appPathValueName = "Inno Setup: App Path";
+            var registryPath = $@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{appId}}}_is1";
 
-            // Try accessing the 32-bit registry first
-            using var baseKey32Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath32Bit);
-            installPath = GerInnoInstallPathInRegistry(baseKey32Bit, appId);
-            if (installPath is null)
-            {
-                // If not found in the 32-bit registry, try the 64-bit registry
-                using var baseKey64Bit = Registry.LocalMachine.OpenSubKey(uninstallKeyPath64Bit);
-                installPath = GerInnoInstallPathInRegistry(baseKey64Bit, appId);
-            }
-            return installPath is not null;
+            installPath = GetRegistryValue(RegistryHive.CurrentUser, registryPath, appPathValueName) ??
+                GetRegistryValue(RegistryHive.LocalMachine, registryPath, appPathValueName);
+
+            return installPath != null;
         }
 
-        //The path is stored to registry to HKLM (administrative install mode) or HKCU (non administrative install mode) to a subkey named after the AppId with _is1 suffix,
-        //stored under a key SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall (as you alraedy know). The value name is Inno Setup: App Path.
-        //The path is also stored to InstallLocation with additional trailing slash, as that's where Windows reads it from. But Inno Setup reads the first value.
-        //ref: https://stackoverflow.com/questions/68990713/how-to-access-the-path-of-inno-setup-installed-program-from-outside-of-inno-setu
-        private static string GerInnoInstallPathInRegistry(RegistryKey baseKey, string appId)
+        private static string GetRegistryValue(RegistryHive hive, string registryPath, string valueName)
         {
-            var subKeySuffix = "_is1";
-            var appPathValueName = "Inno Setup: App Path";
+            using var baseKey = RegistryKey.OpenBaseKey(hive, RegistryView.Registry64);
+            using var subKey = baseKey.OpenSubKey(registryPath);
 
-            if (baseKey != null)
-            {
-                foreach (var subKeyName in baseKey.GetSubKeyNames())
-                {
-                    if (subKeyName.EndsWith(subKeySuffix, StringComparison.OrdinalIgnoreCase) && subKeyName.StartsWith(appId, StringComparison.OrdinalIgnoreCase))
-                    {
-                        using var subKey = baseKey.OpenSubKey(subKeyName);
-                        if (subKey != null)
-                        {
-                            var installPath = subKey.GetValue(appPathValueName) as string;
-                            if (!string.IsNullOrEmpty(installPath))
-                            {
-                                return installPath;
-                            }
-                        }
-                    }
-                }
-            }
-            return null;
+            return subKey?.GetValue(valueName) as string;
         }
 
         private enum ScreensaverOptions
