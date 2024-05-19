@@ -1242,7 +1242,7 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Seleccione salvapantallas</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Necesitas tener Microsoft WebView2 instalado para ver este contenido</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Plugin requerido</value>
