@@ -84,13 +84,11 @@ Name: "serbiancyrillic"; MessagesFile: "Languages\SerbianCyrillic.isl";
 Name: "serbianlatin"; MessagesFile: "Languages\SerbianLatin.isl";
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; 
-;GroupDescription: "{cm:AdditionalIcons}"
-Name: "windowsstartup";Description: "{cm:AutoStartProgram,{#MyAppName}}" 
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}";
 
 [Registry]
 ;current user only
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Lively"; ValueData: """{app}\Lively.exe"""; Flags: uninsdeletevalue; Tasks:windowsstartup
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Lively"; ValueData: """{app}\Lively.exe"""; Flags: uninsdeletevalue;
 
 ;[UninstallDelete]
 
