@@ -1,71 +1,57 @@
-﻿using Lively.Common.Com;
-using Lively.Common.Helpers;
-using Lively.Common.Helpers.Pinvoke;
-using Lively.Grpc.Client;
+﻿using Lively.Screensaver.Minimal.Com;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.Management.Deployment;
-using static Lively.Common.Constants;
+using System.Runtime.InteropServices;
+using System.Threading;
 
-namespace Lively.Screensaver
+namespace Lively.Screensaver.Minimal
 {
-    class Program
+    /// <summary>
+    /// Lightweight version of screensaver launcher.
+    /// We rely on the installed app to communicate to the running instance.
+    /// Low dependency libraries and .NET framework ensure final build size to be few kilobytes.
+    /// </summary>
+    internal class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             // Not possible to display screensaver in restricted lockscreen region since this utility and screensaver(s) are different applications.
             if (IsSystemLocked())
                 return;
 
+            var mutexName = "LIVELY:DESKTOPWALLPAPERSYSTEM";
+            var installerGuid = "{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}";
+            var packageFamilyName = "12030rocksdanister.LivelyWallpaper_97hta09mmv6hy";
+            var appUserModelId = $"{packageFamilyName}!App";
+            var isRunning = IsAppMutexRunning(mutexName);
             var (option, hwnd) = ParseScreensaverArgs(args);
-            if (SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
+            var startArgs = option switch
             {
-                // Application is running
-                var commandsClient = new CommandsClient();
-                switch (option)
-                {
-                    case ScreensaverOptions.show:
-                        await commandsClient.ScreensaverShow(true);
-                        break;
-                    case ScreensaverOptions.preview:
-                        await commandsClient.ScreensaverPreview(hwnd);
-                        break;
-                    case ScreensaverOptions.configure:
-                        await commandsClient.ScreensaverConfigure();
-                        break;
-                    case ScreensaverOptions.undefined:
-                        // Incorrect argument, ignore.
-                        break;
-                }
-            }
-            else if (option == ScreensaverOptions.show)
-            {
-                // Application is not running, launch in screensaver only mode if show requested.
-                var startArgs = "screensaver --showExclusive true";
-                var installerGuid = "{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}";
-                var packageFamilyName = "12030rocksdanister.LivelyWallpaper_97hta09mmv6hy";
-                var appUserModelId = $"{packageFamilyName}!App";
+                ScreensaverOptions.show => !isRunning ? "screensaver --showExclusive true" : "screensaver --show true",
+                ScreensaverOptions.preview => $"screensaver --preview {hwnd}",
+                ScreensaverOptions.configure => "screensaver --configure",
+                ScreensaverOptions.undefined => string.Empty,
+                _ => string.Empty,
+            };
 
-                if (TryGetInnoInstalledAppPath(installerGuid, out string installedPath))
+            // Incorrect argument, ignore || Do not launch new instance of app unless exclusive screensaver mode.
+            if (option == ScreensaverOptions.undefined || (!isRunning && option != ScreensaverOptions.show))
+                return;
+
+            // If app is already running will forward the message to running instance via ipc, otherwise starts in exclusive screensaver mode.
+            if (TryGetInnoInstalledAppPath(installerGuid, out string installedPath))
+            {
+                Process.Start(Path.Combine(installedPath, "Lively.exe"), startArgs);
+            }
+            else
+            {
+                try
                 {
-                    Process.Start(Path.Combine(installedPath, "Lively.exe"), startArgs);
+                    _ = new ApplicationActivationManager().ActivateApplication(appUserModelId, startArgs, ActivateOptions.None, out _);
                 }
-                else if (IsStoreAppInstalled(packageFamilyName))
-                {
-                    try
-                    {
-                        _ = new ApplicationActivationManager().ActivateApplication(appUserModelId, startArgs, ActivateOptions.None, out _);
-                    }
-                    catch { /* Ignore */ }
-                }
-                else
-                {
-                    // Application not installed, ignore.
-                }
+                catch { /*Ignore*/ }
             }
         }
 
@@ -101,7 +87,7 @@ namespace Lively.Screensaver
                 {
                     return (ScreensaverOptions.show, 0);
                 }
-                else 
+                else
                 {
                     // Undefined argument
                     return (ScreensaverOptions.undefined, 0);
@@ -122,26 +108,24 @@ namespace Lively.Screensaver
             var appPathValueName = "Inno Setup: App Path";
             var registryPath = $@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{appId}}}_is1";
 
-            installPath = GetRegistryValue(RegistryHive.CurrentUser, registryPath, appPathValueName) ??
-                GetRegistryValue(RegistryHive.LocalMachine, registryPath, appPathValueName);
+            // Check x64 registry
+            installPath = GetRegistryValue(RegistryHive.CurrentUser, registryPath, appPathValueName, RegistryView.Registry64) ??
+                GetRegistryValue(RegistryHive.LocalMachine, registryPath, appPathValueName, RegistryView.Registry64);
+
+            // If not found retry x86 registry
+            installPath ??= GetRegistryValue(RegistryHive.CurrentUser, registryPath, appPathValueName, RegistryView.Registry32) ??
+                    GetRegistryValue(RegistryHive.LocalMachine, registryPath, appPathValueName, RegistryView.Registry32);
 
             return installPath != null;
-        }
-
-        private static bool IsStoreAppInstalled(string packageFamilyName)
-        {
-            var packageManager = new PackageManager();
-            var packages = packageManager.FindPackagesForUser(string.Empty, packageFamilyName);
-            return packages.Any();
         }
 
         private static bool IsSystemLocked()
         {
             bool result = false;
-            var fHandle = NativeMethods.GetForegroundWindow();
+            var fHandle = GetForegroundWindow();
             try
             {
-                NativeMethods.GetWindowThreadProcessId(fHandle, out int processID);
+                GetWindowThreadProcessId(fHandle, out int processID);
                 using Process fProcess = Process.GetProcessById(processID);
                 result = fProcess.ProcessName.Equals("LockApp", StringComparison.OrdinalIgnoreCase);
             }
@@ -149,9 +133,22 @@ namespace Lively.Screensaver
             return result;
         }
 
-        private static string GetRegistryValue(RegistryHive hive, string registryPath, string valueName)
+        private static bool IsAppMutexRunning(string mutexName)
         {
-            using var baseKey = RegistryKey.OpenBaseKey(hive, RegistryView.Registry64);
+            Mutex mutex = null;
+            try
+            {
+                return Mutex.TryOpenExisting(mutexName, out mutex);
+            }
+            finally
+            {
+                mutex?.Dispose();
+            }
+        }
+
+        private static string GetRegistryValue(RegistryHive hive, string registryPath, string valueName, RegistryView view)
+        {
+            using var baseKey = RegistryKey.OpenBaseKey(hive, view);
             using var subKey = baseKey.OpenSubKey(registryPath);
 
             return subKey?.GetValue(valueName) as string;
@@ -164,5 +161,11 @@ namespace Lively.Screensaver
             configure,
             undefined
         }
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
     }
 }

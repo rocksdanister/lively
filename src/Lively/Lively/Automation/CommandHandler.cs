@@ -468,13 +468,13 @@ namespace Lively.Automation
                     screenSaver.Stop();
             }
 
+            if (opts.Configure != null)
+            {
+                runner.ShowUI();
+            }
+
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {
-                if (opts.Configure != null)
-                {
-                    //TODO
-                }
-
                 if (opts.Preview != null)
                 {
                     screenSaver.CreatePreview(new IntPtr((int)opts.Preview));
