@@ -72,8 +72,6 @@ namespace Lively
             var commandArgs = Environment.GetCommandLineArgs().Skip(1).ToArray();
             try
             {
-                // Wait a few seconds in case application instance is just shutting down..
-                // Note: This wait is longer required since Core is never restarted after 2.0 rewrite.
                 if (!AcquireMutex())
                 {
                     try
@@ -91,6 +89,10 @@ namespace Lively
                     }
                     ShutDown();
                     return;
+                }
+                else
+                {
+                    this.Exit += (_, _) => ReleaseMutex();
                 }
             }
             catch (AbandonedMutexException e)
@@ -454,7 +456,6 @@ namespace Lively
             }
             catch (InvalidOperationException) { /* not initialised */ }
             ((App)Current).grpcServer?.Dispose();
-            ReleaseMutex();
             // Shutdown needs to be called from dispatcher.
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
