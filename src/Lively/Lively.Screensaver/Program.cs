@@ -1,11 +1,14 @@
-﻿using Lively.Common.Helpers;
+﻿using Lively.Common.Com;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using Windows.Management.Deployment;
 using static Lively.Common.Constants;
 
 namespace Lively.Screensaver
@@ -41,14 +44,27 @@ namespace Lively.Screensaver
             }
             else
             {
+                var startArgs = "screensaver --showExclusive true";
+                var installerGuid = "{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}";
+                var packageFamilyName = "12030rocksdanister.LivelyWallpaper_97hta09mmv6hy";
+                var appUserModelId = "12030rocksdanister.LivelyWallpaper_97hta09mmv6hy!App";
+
                 // Application is not running, always launch in screensaver only mode.
-                if (TryGetInnoInstalledAppPath("{E3E43E1B-DEC8-44BF-84A6-243DBA3F2CB1}", out string installedPath))
+                if (TryGetInnoInstalledAppPath(installerGuid, out string installedPath))
                 {
-                    Process.Start(Path.Combine(installedPath, "Lively.exe"), "screensaver --showExclusive true");
+                    Process.Start(Path.Combine(installedPath, "Lively.exe"), startArgs);
+                }
+                else if (IsStoreAppInstalled(packageFamilyName))
+                {
+                    try
+                    {
+                        _ = new ApplicationActivationManager().ActivateApplication(appUserModelId, startArgs, ActivateOptions.None, out _);
+                    }
+                    catch { /* Ignore */ }
                 }
                 else
                 {
-                    // TODO: MSIX.
+                    // Application not installed, ignore.
                 }
             }
         }
@@ -112,20 +128,11 @@ namespace Lively.Screensaver
             return installPath != null;
         }
 
-        private static string GetRegistryValue(RegistryHive hive, string registryPath, string valueName)
+        private static bool IsStoreAppInstalled(string packageFamilyName)
         {
-            using var baseKey = RegistryKey.OpenBaseKey(hive, RegistryView.Registry64);
-            using var subKey = baseKey.OpenSubKey(registryPath);
-
-            return subKey?.GetValue(valueName) as string;
-        }
-
-        private enum ScreensaverOptions
-        {
-            show,
-            preview,
-            configure,
-            undefined
+            var packageManager = new PackageManager();
+            var packages = packageManager.FindPackagesForUser(string.Empty, packageFamilyName);
+            return packages.Any();
         }
 
         private static bool IsSystemLocked()
@@ -140,6 +147,22 @@ namespace Lively.Screensaver
             }
             catch { /* Ignore */ }
             return result;
+        }
+
+        private static string GetRegistryValue(RegistryHive hive, string registryPath, string valueName)
+        {
+            using var baseKey = RegistryKey.OpenBaseKey(hive, RegistryView.Registry64);
+            using var subKey = baseKey.OpenSubKey(registryPath);
+
+            return subKey?.GetValue(valueName) as string;
+        }
+
+        private enum ScreensaverOptions
+        {
+            show,
+            preview,
+            configure,
+            undefined
         }
     }
 }
