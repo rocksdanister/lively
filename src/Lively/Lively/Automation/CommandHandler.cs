@@ -60,6 +60,9 @@ namespace Lively.Automation
 
         public void ParseArgs(string[] args)
         {
+            if (App.IsExclusiveScreensaverMode)
+                return;
+
             _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions, ScreenshotOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),

@@ -64,7 +64,7 @@ namespace Lively
                 return serviceProvider ?? throw new InvalidOperationException("The service provider is not initialized");
             }
         }
-        public bool IsExclusiveScreensaverMode { get; }
+        public static bool IsExclusiveScreensaverMode { get; private set; }
 
         public App()
         {
