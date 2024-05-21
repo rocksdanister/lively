@@ -99,7 +99,7 @@ namespace Lively.RPC
             }
             finally
             {
-                App.ShutDown();
+                App.QuitApp();
             }
         }
 

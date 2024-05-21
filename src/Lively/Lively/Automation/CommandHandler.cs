@@ -124,7 +124,7 @@ namespace Lively.Automation
 
             if (opts.ShutdownApp != null)
             {
-                App.ShutDown();
+                App.QuitApp();
             }
 
             if (opts.RestartApp != null)

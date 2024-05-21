@@ -87,7 +87,7 @@ namespace Lively.Views.WindowMsg
             else if (msg == (uint)NativeMethods.WM.ENDSESSION)
             {
                 //Gracefully close app.
-                App.ShutDown();
+                App.QuitApp();
             }
 
             //Screen message processing...

@@ -87,19 +87,19 @@ namespace Lively
                     {
                         _ = MessageBox.Show($"Failed to communicate with Core:\n{e.Message}", "Lively Wallpaper");
                     }
-                    ShutDown();
+                    QuitApp();
                     return;
-                }
-                else
-                {
-                    this.Exit += (_, _) => ReleaseMutex();
                 }
             }
             catch (AbandonedMutexException e)
             {
-                //unexpected app termination.
+                // If a thread terminates while owning a mutex, the mutex is said to be abandoned.
+                // The state of the mutex is set to signaled, and the next waiting thread gets ownership.
+                // Ref: https://learn.microsoft.com/en-us/dotnet/api/system.threading.mutex?view=net-8.0
                 Debug.WriteLine(e.Message);
             }
+            // Call release on same thread.
+            this.Exit += (_, _) => ReleaseMutex();
 
             SetupUnhandledExceptionLogging();
             Logger.Info(LogUtil.GetHardwareInfo());
@@ -132,7 +132,7 @@ namespace Lively
             {
                 //nothing much can be done here..
                 MessageBox.Show(ex.Message, "AppData directory creation failed, exiting Lively..", MessageBoxButton.OK, MessageBoxImage.Error);
-                ShutDown();
+                QuitApp();
                 return;
             }
 
@@ -242,7 +242,7 @@ namespace Lively
                 Logger.Info("Starting in exclusive screensaver mode, skipping wallpaper restore..");
                 var screenSaverService = Services.GetRequiredService<IScreensaverService>();
                 screenSaverService.Stopped += (_, _) => {
-                    App.ShutDown();
+                    App.QuitApp();
                 };
                 // Custom theme resources are not this early, make sure not to call any window or control using it.
                 _ = screenSaverService.StartAsync();
@@ -277,7 +277,7 @@ namespace Lively
                 if (e.ReasonSessionEnding == ReasonSessionEnding.Shutdown || e.ReasonSessionEnding == ReasonSessionEnding.Logoff)
                 {
                     e.Cancel = true;
-                    ShutDown();
+                    QuitApp();
                 }
             };
 
@@ -448,7 +448,7 @@ namespace Lively
             mutex = null;
         }
 
-        public static void ShutDown()
+        public static void QuitApp()
         {
             try
             {

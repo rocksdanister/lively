@@ -127,7 +127,7 @@ namespace Lively
             };
             //Exit app
             _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.ShutDown();
+            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.QuitApp();
 
             //Change events
             playbackMonitor.PlaybackStateChanged += Playback_PlaybackStateChanged;

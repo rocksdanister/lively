@@ -58,7 +58,7 @@ namespace Lively.RPC
                         // Run setup in silent mode.
                         Process.Start(filePath, "/SILENT /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS");
                         // Inno installer will auto retry, waiting for application exit.
-                        App.ShutDown();
+                        App.QuitApp();
                     }
                     catch (Exception ex)
                     {
