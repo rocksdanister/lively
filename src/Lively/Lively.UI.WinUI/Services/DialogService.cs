@@ -61,7 +61,14 @@ namespace Lively.UI.WinUI.Services
             await new ContentDialog()
             {
                 Title = title,
-                Content = new TextBlock() { Text = message },
+                Content = new ScrollViewer()
+                {
+                    Content = new TextBlock()
+                    {
+                        Text = message,
+                        TextWrapping = TextWrapping.Wrap
+                    } 
+                },
                 PrimaryButtonText = primaryBtnText,
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,

@@ -53,9 +53,16 @@ namespace Lively.UI.WinUI.ViewModels
             }
             else if (appUpdater.Status == AppUpdateStatus.available)
             {
-                var fileName = appUpdater.LastCheckFileName ?? appUpdater.LastCheckUri.Segments.Last();
-                var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
-                IsUpdateDownloaded = File.Exists(filePath);
+                try
+                {
+                    var fileName = appUpdater.LastCheckFileName;
+                    var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
+                    IsUpdateDownloaded = File.Exists(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex);
+                }
             }
         }
 
@@ -138,7 +145,7 @@ namespace Lively.UI.WinUI.ViewModels
             {
                 IsUpdateDownloading = true;
 
-                var fileName = appUpdater.LastCheckFileName ?? appUpdater.LastCheckUri.Segments.Last();
+                var fileName = appUpdater.LastCheckFileName;
                 var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
                 Logger.Info($"Downloading update: {filePath}");
                 await downloader.DownloadFile(appUpdater.LastCheckUri, filePath);
