@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Βίντεο</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Επιλογές Έναρξης</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Γέμισμα</value>
@@ -578,13 +578,13 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Ομοειδής Συμπλήρωση</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Αντίγραφο</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Οθόνη</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>Έκταση</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Τύπος</value>
@@ -1004,7 +1004,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Προσαρμοσμένη</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Ταπετσαρία Καθρεφτών</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Απαιτείται πρόσθετο</value>
@@ -1227,19 +1227,19 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Λήψη</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Γίνετε υποστηρικτής Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Ευχαριστούμε όλα τα μέλη που υποστηρίζουν αυτό το έργο.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Υποστηρικτές Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Select screensaver</value>
+    <value>Επιλογή προφύλαξης οθόνης</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Το Microsoft WebView2 είναι απαραίτητο για την προβολή αυτού του περιεχομένου</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Απαιτείται πρόσθετο</value>

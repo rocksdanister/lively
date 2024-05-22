@@ -563,7 +563,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Відэа</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Параметры запуску</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Запоўніць</value>
@@ -1236,7 +1236,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Абярыце застаўку</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Для прагляду гэтага кантэнту патрэбны Microsoft WebView2</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Патрэбны плагін</value>
