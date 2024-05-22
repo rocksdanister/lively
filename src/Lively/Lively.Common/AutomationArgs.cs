@@ -122,8 +122,7 @@ namespace Lively.Common
             [Option("configure",
             Required = false,
             HelpText = "Show the ss configuration dialog box.")]
-            public int? Configure { get; set; }
-
+            public bool? Configure { get; set; }
 
             [Option("show",
             Required = false,

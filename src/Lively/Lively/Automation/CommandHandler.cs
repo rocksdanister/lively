@@ -471,10 +471,8 @@ namespace Lively.Automation
                     screenSaver.Stop();
             }
 
-            if (opts.Configure != null)
-            {
+            if (opts.Configure != null && opts.Configure == true)
                 runner.ShowUI();
-            }
 
             _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
             {

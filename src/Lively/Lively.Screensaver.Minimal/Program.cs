@@ -31,7 +31,7 @@ namespace Lively.Screensaver.Minimal
             {
                 ScreensaverOptions.show => !isRunning ? "screensaver --showExclusive true" : "screensaver --show true",
                 ScreensaverOptions.preview => $"screensaver --preview {hwnd}",
-                ScreensaverOptions.configure => "screensaver --configure",
+                ScreensaverOptions.configure => "screensaver --configure true",
                 ScreensaverOptions.undefined => string.Empty,
                 _ => string.Empty,
             };
