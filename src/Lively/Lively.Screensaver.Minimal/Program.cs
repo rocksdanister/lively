@@ -47,6 +47,10 @@ namespace Lively.Screensaver.Minimal
             }
             else
             {
+                // Don't work with DesktopBridge, Windows screensaver is not run on desktop session.
+                if (!isRunning)
+                    return;
+
                 try
                 {
                     _ = new ApplicationActivationManager().ActivateApplication(appUserModelId, startArgs, ActivateOptions.None, out _);

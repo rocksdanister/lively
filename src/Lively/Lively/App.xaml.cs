@@ -109,7 +109,7 @@ namespace Lively
                     .WithNotParsed((x) => Debug.WriteLine(x));
 
                 if (opts.ShowExclusive != null)
-                    IsExclusiveScreensaverMode = opts.ShowExclusive == true;
+                    IsExclusiveScreensaverMode = opts.ShowExclusive == true && !Constants.ApplicationType.IsMSIX;
             }
 
             SetupUnhandledExceptionLogging();
