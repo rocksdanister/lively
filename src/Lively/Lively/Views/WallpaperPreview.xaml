@@ -21,8 +21,8 @@
         <!--  wallpaper window will be placed here!  -->
         <Rectangle
             x:Name="PreviewBorder"
-            MinWidth="3840"
-            MinHeight="2160"
+            MinWidth="99999"
+            MinHeight="99999"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Fill="Black" />

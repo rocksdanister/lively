@@ -243,7 +243,7 @@ namespace Lively.Services
                                     Logger.Info($"Screen missing, skipping screensaver {layout.LivelyInfoPath} | {layout.Display.DeviceName}");
                                 else
                                 {
-                                    Logger.Info($"Starting screensaver {model.Title} | {model.LivelyInfoFolderPath}");
+                                    Logger.Info($"Starting screensaver {model.Title} | {model.LivelyInfoFolderPath} | {layout.Display.Bounds}");
                                     await ShowPreviewWindowAsScreensaver(model, layout.Display);
                                 }
                             }
@@ -251,12 +251,12 @@ namespace Lively.Services
                             {
                                 Logger.Info($"Failed to load Screensaver {layout.LivelyInfoPath} | {ex}");
                                 // Protect screen regardless wallpaper state.
-                                ShowBlankWindowAsScreensaver(layout.Display.Bounds);
+                                ShowBlankWindowAsScreensaver(layout.Display);
                             }
                         }
                         // Show black screen to protect display if no wallpaper.
                         foreach (var display in displayManager.DisplayMonitors.Where(x => !wallpaperLayout.Exists(y => y.Display.Equals(x))))
-                            ShowBlankWindowAsScreensaver(display.Bounds);
+                            ShowBlankWindowAsScreensaver(display);
                     }
                     break;
                 case WallpaperArrangement.span:
@@ -303,12 +303,13 @@ namespace Lively.Services
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 BorderThickness = new Thickness(0),
+                WindowStyle = WindowStyle.None,
+                ResizeMode = ResizeMode.NoResize,
                 Topmost = true,
             };
             window.Show();
-            window.NativeResize(display.Bounds);
-            window.WindowStyle = WindowStyle.None;
-            window.ResizeMode = ResizeMode.NoResize;
+            window.NativeMove(display.Bounds);
+            window.WindowState = WindowState.Maximized;
             await window.LoadWallpaperAsync();
 
             screensaverWindows.Add(window);
@@ -336,6 +337,23 @@ namespace Lively.Services
             screensaverWindows.ForEach(x => x.Close());
             screensaverWindows.Clear();
             CloseBlankWindowAsScreensaver();
+        }
+
+        private void ShowBlankWindowAsScreensaver(DisplayMonitor display)
+        {
+            var window = new BlankWindow
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                BorderThickness = new Thickness(0),
+                WindowStyle = WindowStyle.None,
+                ResizeMode = ResizeMode.NoResize,
+                Topmost = true,
+            };
+            window.Show();
+            window.NativeMove(display.Bounds);
+            window.WindowState = WindowState.Maximized;
+
+            blankWindows.Add(window);
         }
 
         private void ShowBlankWindowAsScreensaver(Rectangle bounds)

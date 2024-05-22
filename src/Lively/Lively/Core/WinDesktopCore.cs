@@ -71,6 +71,9 @@ namespace Lively.Core
             this.wallpaperFactory = wallpaperFactory;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
+            if (App.IsExclusiveScreensaverMode)
+                return;
+
             if (SystemParameters.HighContrast)
                 Logger.Warn("Highcontrast mode detected, some functionalities may not work properly.");
 

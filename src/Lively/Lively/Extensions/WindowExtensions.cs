@@ -33,5 +33,10 @@ namespace Lively.Extensions
         {
             NativeMethods.SetWindowPos(new WindowInteropHelper(window).Handle, 0, rect.Left, rect.Top, rect.Width, rect.Height, 0x0010 | 0x0004);
         }
+
+        public static void NativeMove(this Window window, Rectangle rect)
+        {
+            NativeMethods.SetWindowPos(new WindowInteropHelper(window).Handle, 0, rect.Left, rect.Top, 0, 0, 0x0010 | 0x0001);
+        }
     }
 }

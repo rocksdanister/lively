@@ -100,6 +100,17 @@ namespace Lively
             }
             // Call release on same thread.
             this.Exit += (_, _) => ReleaseMutex();
+            // Parse commands (if any) before configuring services
+            if (commandArgs.Length != 0)
+            {
+                var opts = new ScreenSaverOptions();
+                Parser.Default.ParseArguments<ScreenSaverOptions>(commandArgs)
+                    .WithParsed((x) => opts = x)
+                    .WithNotParsed((x) => Debug.WriteLine(x));
+
+                if (opts.ShowExclusive != null)
+                    IsExclusiveScreensaverMode = opts.ShowExclusive == true;
+            }
 
             SetupUnhandledExceptionLogging();
             Logger.Info(LogUtil.GetHardwareInfo());
@@ -224,17 +235,6 @@ namespace Lively
                 }
 
                 spl.Close();
-            }
-
-            if (commandArgs.Length != 0)
-            {
-                var opts = new ScreenSaverOptions();
-                Parser.Default.ParseArguments<ScreenSaverOptions>(commandArgs)
-                    .WithParsed((x) => opts = x)
-                    .WithNotParsed((x) => Debug.WriteLine(x));
-
-                if (opts.ShowExclusive != null)
-                    IsExclusiveScreensaverMode = opts.ShowExclusive == true;
             }
 
             if (IsExclusiveScreensaverMode)

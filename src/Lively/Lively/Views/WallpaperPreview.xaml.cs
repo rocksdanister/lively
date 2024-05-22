@@ -26,7 +26,7 @@ namespace Lively.Views
         private readonly WallpaperArrangement arrangement;
         private readonly TaskCompletionSource loadingTaskCompletionSource = new();
         private IWallpaper wallpaper;
-        private bool isInitialized = false;
+        private bool _isInitialized = false;
 
         private readonly IWallpaperPluginFactory wallpaperFactory;
         private readonly IUserSettingsService userSettings;
@@ -48,7 +48,7 @@ namespace Lively.Views
 
         public async Task LoadWallpaperAsync()
         {
-            if (isInitialized)
+            if (_isInitialized)
                 return;
 
             try
@@ -69,7 +69,7 @@ namespace Lively.Views
             finally
             {
                 //Allow closing.
-                isInitialized = true;
+                _isInitialized = true;
                 LoadingPanel.Visibility = Visibility.Collapsed;
             }
         }
@@ -95,7 +95,7 @@ namespace Lively.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!isInitialized)
+            if (!_isInitialized)
             {
                 e.Cancel = true;
                 return;
