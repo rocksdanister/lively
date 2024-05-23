@@ -51,20 +51,24 @@
                 <Button IsEnabled="{Binding IsScreensaverLayout, Mode=OneWay}">
                     <Button.Flyout>
                         <Flyout>
-                            <controls:Segmented SelectedIndex="{Binding SelectedScreensaverArrangementIndex, Mode=TwoWay}">
-                                <controls:SegmentedItem>
+                            <Grid CornerRadius="5">
+                                <ListBox
+                                    Padding="-2.5"
+                                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                                    SelectedIndex="{Binding SelectedScreensaverArrangementIndex, Mode=TwoWay}">
                                     <TextBlock>
                                         <Run x:Uid="WallpaperLayoutPerScreen" />
                                         <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.Screen.Index, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                                     </TextBlock>
-                                </controls:SegmentedItem>
-                                <controls:SegmentedItem>
                                     <TextBlock x:Uid="WallpaperLayoutSpan" />
-                                </controls:SegmentedItem>
-                                <controls:SegmentedItem>
                                     <TextBlock x:Uid="WallpaperLayoutDuplicate" />
-                                </controls:SegmentedItem>
-                            </controls:Segmented>
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                            </Grid>
                         </Flyout>
                     </Button.Flyout>
                     <FontIcon FontSize="16" Glyph="&#xE7F4;" />
@@ -141,14 +145,17 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <controls:Segmented SelectedIndex="{Binding SelectedScreensaverTypeIndex, Mode=TwoWay}">
-                        <controls:SegmentedItem>
+                    <Grid CornerRadius="5">
+                        <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedScreensaverTypeIndex, Mode=TwoWay}">
                             <TextBlock x:Uid="ScreensaverModeSameWallpaper" />
-                        </controls:SegmentedItem>
-                        <controls:SegmentedItem>
                             <TextBlock x:Uid="ScreensaverModeDifferentWallpaper" />
-                        </controls:SegmentedItem>
-                    </controls:Segmented>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </Grid>
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox x:Uid="ScreensaverLockOnResume" IsChecked="{Binding IsScreensaverLockOnResume, Mode=TwoWay}" />

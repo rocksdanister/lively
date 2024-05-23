@@ -22,30 +22,34 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90E;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <controls:Segmented SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem Width="120">
+                        <Grid CornerRadius="5">
+                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem Width="120">
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </controls:Segmented>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
                     </controls:SettingsCard>
 
                     <controls:SettingsCard x:Uid="AppFocus">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90C;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <controls:Segmented SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem Width="120">
+                        <Grid CornerRadius="5">
+                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem Width="120">
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </controls:Segmented>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
                     </controls:SettingsCard>
                 </StackPanel>
 
@@ -59,30 +63,34 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE856;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <controls:Segmented SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem Width="120">
+                        <Grid CornerRadius="5">
+                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem Width="120">
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </controls:Segmented>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
                     </controls:SettingsCard>
 
                     <controls:SettingsCard x:Uid="PowerSavingModePower">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE863;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <controls:Segmented SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem Width="120">
+                        <Grid CornerRadius="5">
+                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem Width="120">
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </controls:Segmented>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
                     </controls:SettingsCard>
                 </StackPanel>
 
@@ -96,15 +104,17 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE703;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <controls:Segmented SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
-                            <controls:SegmentedItem Width="120">
+                        <Grid CornerRadius="5">
+                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem Width="120">
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
-                            </controls:SegmentedItem>
-                            <controls:SegmentedItem x:Uid="TextPerformanceKill" Visibility="Collapsed" />
-                        </controls:Segmented>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
                     </controls:SettingsCard>
 
                     <controls:SettingsCard x:Uid="DisplayPauseRule">
