@@ -2,7 +2,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "Lively Wallpaper"
-#define MyAppVersion "2.1.0.4"
+#define MyAppVersion "2.1.0.6"
 #define MyAppPublisher "rocksdanister"
 #define MyAppURL "https://github.com/rocksdanister/lively"
 #define MyAppExeName "Lively.exe"
@@ -71,7 +71,6 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl";
 Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl";
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl";
 Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl";
-Name: "turkish"; MessagesFile: "compiler:Languages\Turkish.isl";
 Name: "chinese"; MessagesFile: "Languages\ChineseSimplified.isl";
 Name: "traditionalchinese"; MessagesFile: "Languages\ChineseTraditional.isl";
 Name: "arabic"; MessagesFile: "Languages\Arabic.isl";
