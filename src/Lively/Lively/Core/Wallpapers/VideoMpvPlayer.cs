@@ -96,8 +96,8 @@ namespace Lively.Core.Wallpapers
             var cmdArgs = new StringBuilder();
             //startup volume will be 0
             cmdArgs.Append("--volume=0 ");
-            //disable window decorations
-            //cmdArgs.Append("--no-border ");
+            //disable terminal message
+            cmdArgs.Append("--terminal=no ");
             //alternative: --loop-file=inf
             cmdArgs.Append("--loop-file ");
             //do not close after media end
