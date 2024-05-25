@@ -96,8 +96,8 @@ namespace Lively.Core.Wallpapers
             var cmdArgs = new StringBuilder();
             //startup volume will be 0
             cmdArgs.Append("--volume=0 ");
-            //disable terminal message
-            cmdArgs.Append("--terminal=no ");
+            //disable progress message, ref: https://mpv.io/manual/master/#options-msg-level
+            cmdArgs.Append("--msg-level=all=info ");
             //alternative: --loop-file=inf
             cmdArgs.Append("--loop-file ");
             //do not close after media end
