@@ -1,21 +1,12 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Lively.Common;
+﻿using Lively.Common;
 using Lively.Models;
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 
 namespace Lively.UI.WinUI.UserControls

@@ -1,21 +1,13 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common;
+using Lively.Grpc.Client;
 using Lively.Models;
-using Lively.UI.WinUI.Extensions;
-using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
-using Lively.UI.WinUI.Views.LivelyProperty;
-using Lively.UI.WinUI.Views.Pages.Gallery;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
@@ -34,6 +26,7 @@ namespace Lively.UI.WinUI.Views.Pages
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
         private readonly IDialogService dialogService;
+        private readonly IDisplayManagerClient displayManager;
 
         public LibraryView()
         {
@@ -41,6 +34,7 @@ namespace Lively.UI.WinUI.Views.Pages
             this.libraryVm = App.Services.GetRequiredService<LibraryViewModel>();
             this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
             this.dialogService = App.Services.GetRequiredService<IDialogService>();
+            this.displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
 
             this.InitializeComponent();
             i18n = ResourceLoader.GetForViewIndependentUse();
@@ -65,7 +59,16 @@ namespace Lively.UI.WinUI.Views.Pages
                     await libraryVm.WallpaperShowOnDisk(obj);
                     break;
                 case "setWallpaper":
-                    await desktopCore.SetWallpaper(obj, userSettings.Settings.SelectedDisplay);
+                    DisplayMonitor monitor;
+                    if (userSettings.Settings.RememberSelectedScreen)
+                        monitor = userSettings.Settings.SelectedDisplay;
+                    else
+                        monitor = displayManager.DisplayMonitors.Count == 1 || userSettings.Settings.WallpaperArrangement != WallpaperArrangement.per ?
+                           displayManager.DisplayMonitors.FirstOrDefault(x => x.IsPrimary) : await dialogService.ShowDisplayChooseDialogAsync();
+                    if (monitor is null)
+                        return;
+
+                    await desktopCore.SetWallpaper(obj, monitor);
                     break;
                 case "exportWallpaper":
                     await dialogService.ShowShareWallpaperDialogAsync(obj);
