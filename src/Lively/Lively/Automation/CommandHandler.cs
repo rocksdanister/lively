@@ -155,7 +155,11 @@ namespace Lively.Automation
         {
             if (opts.File != null)
             {
-                if (opts.IsRandom)
+                if (opts.IsReload)
+                {
+                    _ = desktopCore.ReloadWallpaperAsync();
+                }
+                else if (opts.IsRandom)
                 {
                     switch (userSettings.Settings.WallpaperArrangement)
                     {

@@ -578,6 +578,20 @@ namespace Lively.Core
             }
         }
 
+        public async Task ReloadWallpaperAsync()
+        {
+            // Copy existing wallpapers
+            var originalWallpapers = Wallpapers.ToList();
+            CloseAllWallpapers(true);
+            foreach (var item in originalWallpapers)
+            {
+                await SetWallpaperAsync(item.Model, item.Screen);
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    break;
+            }
+
+        }
+
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             SaveWallpaperLayout();

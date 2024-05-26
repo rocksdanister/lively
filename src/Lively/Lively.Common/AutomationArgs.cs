@@ -72,6 +72,7 @@ namespace Lively.Common
             public int? Monitor { get; set; }
 
             public bool IsRandom => string.Equals(File, "random", StringComparison.OrdinalIgnoreCase);
+            public bool IsReload => string.Equals(File, "reload", StringComparison.OrdinalIgnoreCase);
         }
 
         [Verb("closewp", HelpText = "Close wallpaper.")]
