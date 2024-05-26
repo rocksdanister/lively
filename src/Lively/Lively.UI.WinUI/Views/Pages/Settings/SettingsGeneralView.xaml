@@ -155,7 +155,7 @@
                                         MinWidth="45"
                                         MinHeight="35"
                                         Margin="5,0,0,0"
-                                        Command="{Binding OpenWallpaperDirectory}">
+                                        Command="{Binding OpenWallpaperDirectoryCommand}">
                                         <SymbolIcon Symbol="OpenLocal" />
                                     </Button>
                                 </StackPanel>

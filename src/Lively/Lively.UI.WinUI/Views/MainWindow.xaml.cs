@@ -61,7 +61,6 @@ namespace Lively.UI.WinUI
             (typeof(SettingsSystemView), NavPages.settingsSystem),
         ];
 
-        private readonly SettingsViewModel settingsVm;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly LibraryViewModel libraryVm;
@@ -77,13 +76,11 @@ namespace Lively.UI.WinUI
             IDialogService dialogService,
             ICommandsClient commands,
             IUserSettingsClient userSettings,
-            SettingsViewModel settingsVm,
             LibraryViewModel libraryVm,
             IAppUpdaterClient appUpdater,
             AppUpdateViewModel appUpdateVm,
             GalleryClient galleryClient)
         {
-            this.settingsVm = settingsVm;
             this.desktopCore = desktopCore;
             this.libraryVm = libraryVm;
             this.galleryClient = galleryClient;

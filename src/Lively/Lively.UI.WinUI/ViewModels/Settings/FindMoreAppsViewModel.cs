@@ -1,21 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.WinUI;
+using CommunityToolkit.WinUI.Collections;
+using Lively.Common.Factories;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Models;
-using Lively.UI.WinUI.Factories;
+using Lively.UI.WinUI.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
-using Lively.Common.Factories;
-using CommunityToolkit.WinUI.Collections;
-using Lively.UI.WinUI.Extensions;
 
 namespace Lively.UI.WinUI.ViewModels
 {

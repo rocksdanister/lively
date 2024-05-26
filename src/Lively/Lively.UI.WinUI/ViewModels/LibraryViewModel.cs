@@ -43,7 +43,6 @@ namespace Lively.UI.WinUI.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IUserSettingsClient userSettings;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
-        private readonly SettingsViewModel settingsVm;
         private readonly IDisplayManagerClient displayManager;
         private readonly IDialogService dialogService;
         private readonly GalleryClient galleryClient;
@@ -55,14 +54,12 @@ namespace Lively.UI.WinUI.ViewModels
             IDesktopCoreClient desktopCore,
             IDisplayManagerClient displayManager,
             IUserSettingsClient userSettings,
-            SettingsViewModel settingsVm,
             IDialogService dialogService,
             GalleryClient galleryClient)
         {
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
             this.desktopCore = desktopCore;
             this.displayManager = displayManager;
-            this.settingsVm = settingsVm;
             this.userSettings = userSettings;
             this.dialogService = dialogService;
             this.galleryClient = galleryClient;
@@ -89,20 +86,8 @@ namespace Lively.UI.WinUI.ViewModels
             //Select already running item when UI program is started again..
             UpdateSelectedWallpaper();
 
-            settingsVm.PropertyChanged += (s, e) =>
-            {
-                switch(e.PropertyName)
-                {
-                    case "IsReducedMotion":
-                        foreach (var item in LibraryItems)
-                            item.ImagePath = userSettings.Settings.UIMode == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
-                        break;
-                };
-            };
-
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             desktopCore.WallpaperUpdated += DesktopCore_WallpaperUpdated;
-            settingsVm.WallpaperDirChanged += (s, e) => WallpaperDirectoryUpdate(e);
         }
 
         [ObservableProperty]
@@ -720,6 +705,30 @@ namespace Lively.UI.WinUI.ViewModels
             return AddWallpaper(folder, false);
         }
 
+        /// <summary>
+        /// Rescans wallpaper directory and update library.
+        /// </summary>
+        public void UpdateWallpaperDirectory(string newDir)
+        {
+            LibraryItems.Clear();
+            wallpaperScanFolders.Clear();
+            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir));
+            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir));
+            using (LibraryItemsFiltered.DeferRefresh())
+            {
+                foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
+                {
+                    LibraryItems.Add(item);
+                }
+            }
+        }
+
+        public void UpdateAnimationSettings(LivelyGUIState state)
+        {
+            foreach (var item in LibraryItems)
+                item.ImagePath = state == LivelyGUIState.lite ? item.ThumbnailPath : item.PreviewClipPath ?? item.ThumbnailPath;
+        }
+
         #endregion //public methods
 
         #region helpers
@@ -812,24 +821,6 @@ namespace Lively.UI.WinUI.ViewModels
                     r = m - 1;
             }
             return l;//(l - 1);
-        }
-
-        /// <summary>
-        /// Rescans wallpaper directory and update library.
-        /// </summary>
-        private void WallpaperDirectoryUpdate(string newDir)
-        {
-            LibraryItems.Clear();
-            wallpaperScanFolders.Clear();
-            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallDir));
-            wallpaperScanFolders.Add(Path.Combine(newDir, Constants.CommonPartialPaths.WallpaperInstallTempDir));
-            using (LibraryItemsFiltered.DeferRefresh())
-            {
-                foreach (var item in ScanWallpaperFolders(wallpaperScanFolders))
-                {
-                    LibraryItems.Add(item);
-                }
-            }
         }
 
         #endregion //helpers

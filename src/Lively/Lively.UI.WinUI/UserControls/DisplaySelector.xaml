@@ -75,6 +75,8 @@
                         </ToolTipService.ToolTip>
                         <!--  Wallpaper preview  -->
                         <Image
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
                             Opacity="1"
                             Source="{Binding ScreenImagePath, Mode=OneWay}"
                             Stretch="UniformToFill" />

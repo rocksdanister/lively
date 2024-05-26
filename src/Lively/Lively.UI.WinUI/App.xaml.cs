@@ -1,20 +1,21 @@
 ﻿using CommandLine;
+using Lively.Common.Factories;
 using Lively.Common.Helpers;
-using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services.Downloader;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
+using Lively.Helpers;
 using Lively.ML.DepthEstimate;
-using Lively.Models;
 using Lively.UI.WinUI.Factories;
-using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
+using Lively.UI.WinUI.ViewModels.ControlPanel;
+using Lively.UI.WinUI.ViewModels.Settings;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -25,11 +26,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.Globalization;
 using WinUIEx;
-using Lively.Common.Factories;
 using static Lively.Common.Constants;
-using Lively.Common.Services.Downloader;
-using Lively.Helpers;
-using Lively.UI.WinUI.ViewModels.ControlPanel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -159,7 +156,6 @@ namespace Lively.UI.WinUI
                 .AddSingleton<LibraryViewModel>() //Storing and tracking library items.
                 .AddSingleton<GalleryViewModel>()
                 .AddSingleton<GallerySubscriptionViewModel>()
-                .AddSingleton<SettingsViewModel>() //Property events.
                 .AddSingleton<AppUpdateViewModel>()
                 .AddSingleton<ICacheService, DiskCacheService>((e) => new DiskCacheService(e.GetRequiredService<IHttpClientFactory>(), Path.Combine(Path.GetTempPath(), "Lively Wallpaper", "gallery")))
                 .AddSingleton<IDepthEstimate, MiDaS>()
@@ -180,6 +176,10 @@ namespace Lively.UI.WinUI
                 .AddTransient<RestoreWallpaperViewModel>()
                 .AddTransient<AddWallpaperCreateViewModel>()
                 .AddTransient<DepthEstimateWallpaperViewModel>()
+                .AddTransient<SettingsGeneralViewModel>()
+                .AddTransient<SettingsPerformanceViewModel>()
+                .AddTransient<SettingsWallpaperViewModel>()
+                .AddTransient<SettingsSystemViewModel>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
