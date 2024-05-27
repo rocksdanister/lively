@@ -271,13 +271,10 @@
                 <!--  Music  -->
                 <StackPanel>
                     <TextBlock
+                        x:Uid="WallpaperMusicGroup"
                         Margin="0,0,0,10"
-                        FontWeight="SemiBold"
-                        Text="Music" />
-                    <controls:SettingsExpander
-                        Description="Avoid showing music details from these apps"
-                        Header="App Exclusion"
-                        IsExpanded="False">
+                        FontWeight="SemiBold" />
+                    <controls:SettingsExpander x:Uid="AppMusicExclusion" IsExpanded="False">
                         <controls:SettingsExpander.HeaderIcon>
                             <FontIcon Glyph="&#xF0E3;" />
                         </controls:SettingsExpander.HeaderIcon>
@@ -318,15 +315,15 @@
                     </controls:SettingsExpander>
                     <InfoBar
                         x:Name="musicWallpaperRestartNotify"
+                        x:Uid="WallpaperRestartRequiredNotify"
                         Margin="0,0,0,0"
                         VerticalAlignment="Top"
                         IsClosable="False"
                         IsOpen="True"
-                        Message="Wallpaper restart is required for the settings to take effect."
                         Severity="Informational"
                         Visibility="{Binding IsAppMusicExclusionRuleChanged, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
                         <InfoBar.ActionButton>
-                            <Button Command="{Binding RestartMusicWallpapersCommand}" Content="Restart" />
+                            <Button x:Uid="RestartCommand" Command="{Binding RestartMusicWallpapersCommand}" />
                         </InfoBar.ActionButton>
                         <animations:Implicit.ShowAnimations>
                             <animations:TranslationAnimation
