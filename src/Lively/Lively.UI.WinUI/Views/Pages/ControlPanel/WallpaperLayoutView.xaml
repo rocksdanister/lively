@@ -64,7 +64,10 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <Grid CornerRadius="5">
+                    <Grid
+                        BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="5">
                         <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
                             <TextBlock>
                                 <Run x:Uid="WallpaperLayoutPerScreen" />
