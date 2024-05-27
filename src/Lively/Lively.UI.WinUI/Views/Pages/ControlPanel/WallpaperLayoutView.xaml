@@ -68,7 +68,7 @@
                         <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
                             <TextBlock>
                                 <Run x:Uid="WallpaperLayoutPerScreen" />
-                                <Run Foreground="{ThemeResource SystemAccentColorLight2}" Text="{Binding SelectedItem.Screen.Index, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
+                                <Run Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Text="{Binding SelectedItem.Screen.Index, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
                             <TextBlock x:Uid="WallpaperLayoutSpan" />
                             <TextBlock x:Uid="WallpaperLayoutDuplicate" />
