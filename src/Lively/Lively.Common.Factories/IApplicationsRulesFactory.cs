@@ -5,6 +5,8 @@ namespace Lively.Common.Factories
 {
     public interface IApplicationsRulesFactory
     {
-        ApplicationRulesModel CreateAppRule(string appPath, AppRulesEnum rule);
+        ApplicationRulesModel CreateAppPauseRule(string appPath, AppRulesEnum rule);
+
+        AppMusicExclusionRuleModel CreateAppMusicExclusionRule(string appPath);
     }
 }

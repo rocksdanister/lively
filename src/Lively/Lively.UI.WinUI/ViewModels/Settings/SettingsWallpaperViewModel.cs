@@ -1,9 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
+using Lively.Common.Factories;
 using Lively.Common.Helpers.Shell;
+using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.UI.WinUI.Services;
 using Microsoft.UI.Dispatching;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,15 +23,23 @@ namespace Lively.UI.WinUI.ViewModels.Settings
 
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
+        private readonly IDialogService dialogService;
+        private readonly IApplicationsRulesFactory appRuleFactory;
 
-        public SettingsWallpaperViewModel(IUserSettingsClient userSettings, IDesktopCoreClient desktopCore)
+        public SettingsWallpaperViewModel(IUserSettingsClient userSettings,
+            IDesktopCoreClient desktopCore,
+            IDialogService dialogService,
+            IApplicationsRulesFactory appRuleFactory)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
+            this.dialogService = dialogService;
+            this.appRuleFactory = appRuleFactory;
 
             //MainWindow dispatcher may not be ready yet, creating our own instead..
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
 
+            AppMusicExclusionRules = new ObservableCollection<AppMusicExclusionRuleModel>(GetAppMusicExclusionRule());
             IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
             //IsLockScreenAutoWallpaper = userSettings.Settings.LockScreenAutoWallpaper;
             SelectedWallpaperScalingIndex = (int)userSettings.Settings.WallpaperScaling;
@@ -285,6 +300,80 @@ namespace Lively.UI.WinUI.ViewModels.Settings
                 SetProperty(ref _detectStreamWallpaper, value);
             }
         }
+
+        #region apprules
+
+        [ObservableProperty]
+        private bool isAppMusicExclusionRuleChanged;
+
+        [ObservableProperty]
+        private ObservableCollection<AppMusicExclusionRuleModel> appMusicExclusionRules;
+
+        private AppMusicExclusionRuleModel _selectedAppMusicExclusionRuleItem;
+        public AppMusicExclusionRuleModel SelectedAppMusicExclusionRuleItem
+        {
+            get => _selectedAppMusicExclusionRuleItem;
+            set
+            {
+                SetProperty(ref _selectedAppMusicExclusionRuleItem, value);
+                RemoveAppMusicExclusionRuleCommand.NotifyCanExecuteChanged();
+            }
+        }
+
+        [RelayCommand]
+        private async Task AddAppMusicExclusionRule()
+        {
+            var result = await dialogService.ShowApplicationPickerDialogAsync();
+            if (result is null)
+                return;
+
+            try
+            {
+                var rule = appRuleFactory.CreateAppMusicExclusionRule(result.AppPath);
+                if (AppMusicExclusionRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
+                    return;
+
+                AppMusicExclusionRules.Add(rule);
+                IsAppMusicExclusionRuleChanged = true;
+                UpdateAppMusicExclusionRule();
+            }
+            catch { /* Failed to parse program information, ignore. */ }
+        }
+
+        [RelayCommand(CanExecute = nameof(CanRemoveAppRule))]
+        private void RemoveAppMusicExclusionRule()
+        {
+            AppMusicExclusionRules.Remove(SelectedAppMusicExclusionRuleItem);
+            IsAppMusicExclusionRuleChanged = true;
+            UpdateAppMusicExclusionRule();
+        }
+
+        private bool CanRemoveAppRule => SelectedAppMusicExclusionRuleItem != null;
+
+        [RelayCommand]
+        private async Task RestartMusicWallpapers()
+        {
+            IsAppMusicExclusionRuleChanged = false;
+            await WallpaperRestart([WallpaperType.web, WallpaperType.webaudio]);
+        }
+
+        private void UpdateAppMusicExclusionRule()
+        {
+            JsonStorage<List<AppMusicExclusionRuleModel>>.StoreData(Constants.CommonPaths.MusicAppExclusionRulesPath, AppMusicExclusionRules.ToList());
+        }
+
+        private static List<AppMusicExclusionRuleModel> GetAppMusicExclusionRule()
+        {
+            try
+            {
+                if (File.Exists(Constants.CommonPaths.MusicAppExclusionRulesPath))
+                    return JsonStorage<List<AppMusicExclusionRuleModel>>.LoadData(Constants.CommonPaths.MusicAppExclusionRulesPath);
+            }
+            catch { /* Ignore */ }
+            return [];
+        }
+
+        #endregion //apprules
 
         public void UpdateSettingsConfigFile()
         {

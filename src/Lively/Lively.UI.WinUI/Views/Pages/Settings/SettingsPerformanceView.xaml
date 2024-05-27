@@ -22,8 +22,11 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90E;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Grid CornerRadius="5">
-                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>
@@ -39,8 +42,11 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE90C;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Grid CornerRadius="5">
-                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedAppFocusIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>
@@ -63,8 +69,11 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE856;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Grid CornerRadius="5">
-                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedBatteryPowerIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>
@@ -80,8 +89,11 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE863;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Grid CornerRadius="5">
-                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedPowerSaveModeIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>
@@ -104,8 +116,11 @@
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE703;" />
                         </controls:SettingsCard.HeaderIcon>
-                        <Grid CornerRadius="5">
-                            <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
+                        <Grid
+                            BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedRemoteDestopPowerIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>

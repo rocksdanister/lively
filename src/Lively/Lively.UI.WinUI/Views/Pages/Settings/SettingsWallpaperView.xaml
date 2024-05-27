@@ -15,7 +15,7 @@
     </Page.Resources>
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer x:Name="scrollViewer">
             <StackPanel Margin="10,25,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
                 <!--  Appearnace and Behaviour  -->
                 <StackPanel>
@@ -267,6 +267,88 @@
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
+                </StackPanel>
+                <!--  Music  -->
+                <StackPanel>
+                    <TextBlock
+                        Margin="0,0,0,10"
+                        FontWeight="SemiBold"
+                        Text="Music" />
+                    <controls:SettingsExpander
+                        Description="Avoid showing music details from these apps"
+                        Header="App Exclusion"
+                        IsExpanded="False">
+                        <controls:SettingsExpander.HeaderIcon>
+                            <FontIcon Glyph="&#xF0E3;" />
+                        </controls:SettingsExpander.HeaderIcon>
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ListView
+                                        Grid.Column="0"
+                                        MinWidth="500"
+                                        MinHeight="200"
+                                        MaxHeight="200"
+                                        Background="{ThemeResource ControlFillColorDefault}"
+                                        CornerRadius="5"
+                                        ItemsSource="{Binding AppMusicExclusionRules}"
+                                        SelectedItem="{Binding SelectedAppMusicExclusionRuleItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectionMode="Single">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="0,5,0,5" Text="{Binding AppName}" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <Button Margin="5" Command="{Binding AddAppMusicExclusionRuleCommand}">
+                                            <FontIcon FontSize="12" Glyph="&#xE710;" />
+                                        </Button>
+                                        <Button Margin="5" Command="{Binding RemoveAppMusicExclusionRuleCommand}">
+                                            <FontIcon FontSize="12" Glyph="&#xE738;" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
+                    <InfoBar
+                        x:Name="musicWallpaperRestartNotify"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Message="Wallpaper restart is required for the settings to take effect."
+                        Severity="Informational"
+                        Visibility="{Binding IsAppMusicExclusionRuleChanged, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
+                        <InfoBar.ActionButton>
+                            <Button Command="{Binding RestartMusicWallpapersCommand}" Content="Restart" />
+                        </InfoBar.ActionButton>
+                        <animations:Implicit.ShowAnimations>
+                            <animations:TranslationAnimation
+                                From="0,-15,0"
+                                To="0"
+                                Duration="0:0:0.4" />
+                            <animations:OpacityAnimation
+                                From="0"
+                                To="1.0"
+                                Duration="0:0:0.6" />
+                        </animations:Implicit.ShowAnimations>
+                        <animations:Implicit.HideAnimations>
+                            <animations:OpacityAnimation
+                                From="1.0"
+                                To="0"
+                                Duration="0:0:0.2" />
+                            <animations:TranslationAnimation
+                                From="0"
+                                To="0,-15,0"
+                                Duration="0:0:0.2" />
+                        </animations:Implicit.HideAnimations>
+                    </InfoBar>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

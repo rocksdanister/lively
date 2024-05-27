@@ -148,6 +148,8 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             }
         }
 
+        #region apprules
+
         [ObservableProperty]
         private ObservableCollection<ApplicationRulesModel> appRules = [];
 
@@ -171,7 +173,7 @@ namespace Lively.UI.WinUI.ViewModels.Settings
 
             try
             {
-                var rule = appRuleFactory.CreateAppRule(result.AppPath, AppRulesEnum.pause);
+                var rule = appRuleFactory.CreateAppPauseRule(result.AppPath, AppRulesEnum.pause);
                 if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
                     return;
 
@@ -191,6 +193,8 @@ namespace Lively.UI.WinUI.ViewModels.Settings
         }
 
         private bool CanRemoveAppRule => SelectedAppRuleItem != null;
+
+        #endregion //apprules
 
         public void UpdateSettingsConfigFile()
         {
