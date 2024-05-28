@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Lively.Common.Helpers
 {
-    public class LogUtil
+    public static class LogUtil
     {
         /// <summary>
         /// Returns data stored in class object file.
@@ -32,7 +32,7 @@ namespace Lively.Common.Helpers
             }
             catch
             {
-                return "Failed to retrive properties of config file.";
+                return "Failed to retrive properties of object.";
             }
         }
 
@@ -41,7 +41,7 @@ namespace Lively.Common.Helpers
         /// </summary>
         public static string GetHardwareInfo()
         {
-            var arch = Environment.Is64BitProcess ? "x86" : "x64";
+            var arch = Environment.Is64BitProcess ? "x64" : "x86";
             var container = Constants.ApplicationType.IsMSIX ? "desktop-bridge" : "desktop-native";
             return $"\nLively v{Assembly.GetEntryAssembly().GetName().Version} {arch} {container} {CultureInfo.CurrentUICulture.Name}" +
                 $"\n{SystemInfo.GetOSInfo()}\n{SystemInfo.GetCpuInfo()}\n{SystemInfo.GetGpuInfo()}\n";
@@ -69,35 +69,23 @@ namespace Lively.Common.Helpers
         /// </summary>
         public static void ExtractLogFiles(string savePath)
         {
-            if (string.IsNullOrEmpty(savePath))
-            {
-                throw new ArgumentNullException(savePath);
-            }
-
             var files = new List<string>();
-            var logFolder = Constants.CommonPaths.LogDir;
-            if (Directory.Exists(logFolder))
-            {
-                files.AddRange(Directory.GetFiles(logFolder, "*.*", SearchOption.TopDirectoryOnly));
-            }
 
-            var logFolderUI = Constants.CommonPaths.LogDirUI;
-            if (Directory.Exists(logFolder))
-            {
-                files.AddRange(Directory.GetFiles(logFolderUI, "*.*", SearchOption.TopDirectoryOnly));
-            }
+            if (Directory.Exists(Constants.CommonPaths.LogDir))
+                files.AddRange(Directory.GetFiles(Constants.CommonPaths.LogDir, "*.*", SearchOption.TopDirectoryOnly));
 
-            var settingsFile = Constants.CommonPaths.UserSettingsPath;
-            if (File.Exists(settingsFile))
-            {
-                files.Add(settingsFile);
-            }
+            if (Directory.Exists(Constants.CommonPaths.LogDirUI))
+                files.AddRange(Directory.GetFiles(Constants.CommonPaths.LogDirUI, "*.*", SearchOption.TopDirectoryOnly));
 
-            var layoutFile = Constants.CommonPaths.WallpaperLayoutPath;
-            if (File.Exists(layoutFile))
-            {
-                files.Add(layoutFile);
-            }
+            if (File.Exists(Constants.CommonPaths.UserSettingsPath))
+                files.Add(Constants.CommonPaths.UserSettingsPath);
+
+            if (File.Exists(Constants.CommonPaths.WallpaperLayoutPath))
+                files.Add(Constants.CommonPaths.WallpaperLayoutPath);
+
+            var cefLogFile = Path.Combine(Constants.CommonPaths.TempCefDir, "logfile.txt");
+            if (File.Exists(cefLogFile))
+                files.Add(cefLogFile);
 
             /*
             var procFile = Path.Combine(Program.AppDataDir, "temp", "process.txt");
@@ -105,12 +93,14 @@ namespace Lively.Common.Helpers
             files.Add(procFile);
             */
 
-            if (files.Count != 0)
+            ZipCreate.CreateZip(savePath, new List<ZipCreate.FileData>() 
             {
-                ZipCreate.CreateZip(savePath,
-                    new List<ZipCreate.FileData>() {
-                                new ZipCreate.FileData() { ParentDirectory = Constants.CommonPaths.AppDataDir, Files = files } });
-            }
+                new ZipCreate.FileData() 
+                {
+                    ParentDirectory = Constants.CommonPaths.AppDataDir,
+                    Files = files
+                }
+            });
         }
     }
 }
