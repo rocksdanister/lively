@@ -505,11 +505,11 @@ namespace Lively.UI.WinUI
 
                 this.Close();
             }
-            else if (userSettings.Settings.IsUpdated)
+            else if (userSettings.Settings.IsUpdatedNotify)
             {
                 args.Handled = true;
 
-                userSettings.Settings.IsUpdated = false;
+                userSettings.Settings.IsUpdatedNotify = false;
                 userSettings.Save<SettingsModel>();
 
                 this.Close();

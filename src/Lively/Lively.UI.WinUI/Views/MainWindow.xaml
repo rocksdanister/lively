@@ -361,7 +361,7 @@
             Grid.Row="1"
             BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"
             BorderThickness="0,3,0,0"
-            IsOpen="{Binding IsUpdated, Mode=OneWay}"
+            IsOpen="{Binding IsUpdatedNotify, Mode=OneWay}"
             PlacementMargin="0,55,0,0"
             PreferredPlacement="TopRight">
             <Grid>

@@ -117,6 +117,7 @@ namespace Lively.Models
         public bool KeepAwakeUI { get; set; }
         public bool RememberSelectedScreen { get; set; }
         public bool IsUpdated { get; set; }
+        public bool IsUpdatedNotify { get; set; }
         public string ApplicationThemeBackgroundPath { get; set; }
         public AppThemeBackground ApplicationThemeBackground { get; set; }
         public int ThemeBundleVersion { get; set; }
@@ -197,6 +198,7 @@ namespace Lively.Models
             KeepAwakeUI = false;
             RememberSelectedScreen = true;
             IsUpdated = false;
+            IsUpdatedNotify = false;
             ApplicationThemeBackgroundPath = null;
             ApplicationThemeBackground = AppThemeBackground.default_mica;
             TaskbarCrashTimeOutDelay = 30;

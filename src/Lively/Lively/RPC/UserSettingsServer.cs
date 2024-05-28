@@ -177,6 +177,7 @@ namespace Lively.RPC
             userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)req.DisplayPauseSettings;
             userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
             userSettings.Settings.IsUpdated = req.Updated;
+            userSettings.Settings.IsUpdatedNotify = req.UpdatedNotify;
             userSettings.Settings.ApplicationThemeBackground = (Common.AppThemeBackground)req.ApplicationThemeBackground;
             userSettings.Settings.ApplicationThemeBackgroundPath = req.ApplicationThemeBackgroundPath;
             userSettings.Settings.ThemeBundleVersion = req.ThemeBundleVersion;
@@ -286,6 +287,7 @@ namespace Lively.RPC
                 DisplayPauseSettings = (DisplayPauseRule)settings.DisplayPauseSettings,
                 RememberSelectedScreen = settings.RememberSelectedScreen,
                 Updated = settings.IsUpdated,
+                UpdatedNotify = settings.IsUpdatedNotify,
                 ApplicationThemeBackground = (Grpc.Common.Proto.Settings.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath ?? string.Empty,
                 ThemeBundleVersion = settings.ThemeBundleVersion,

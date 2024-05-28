@@ -37,12 +37,22 @@ namespace Lively.Services
             Settings.GifPlayer = IsGifPlayerAvailable(Settings.GifPlayer) ? Settings.GifPlayer : LivelyGifPlayer.mpv;
             Settings.WebBrowser = IsWebPlayerAvailable(Settings.WebBrowser) ? Settings.WebBrowser : LivelyWebBrowser.cef;
 
-            //previous installed appversion is different from current instance..    
+            // Previous installed version is different from current instance.  
             if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
                 Settings.AppPreviousVersion = Settings.AppVersion;
                 Settings.AppVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 Settings.IsUpdated = true;
+                // This flag is set to false once UI program closes after notifying user.
+                Settings.IsUpdatedNotify = true;
+                // Save the new AppVersion.
+                Save<SettingsModel>();
+            }
+            else if (Settings.IsUpdated)
+            {
+                // IsUpdated is set only once after each update.
+                Settings.IsUpdated = false;
+                Save<SettingsModel>();
             }
 
             //Ensure if the locale is supported..

@@ -75,6 +75,7 @@ message SettingsDataModel {
     string app_previous_version = 63;
     WallpaperArrangementRule screensaver_arrangement = 64;
     ScreensaverTypeRule screensaver_type = 65;
+    bool updatedNotify = 66;
 }
 
 message AppRulesSettings {
