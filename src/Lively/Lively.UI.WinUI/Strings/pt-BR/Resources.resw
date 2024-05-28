@@ -214,7 +214,7 @@ Prossiga apenas se confia na fonte do aplicativo.</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Você está prestes a mudar para a versão beta (desenvolvedor) do Lively.
-Atualizações serão frequentes e podem ter alguns bugs !</value>
+Atualizações serão frequentes e podem conter alguns erros!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
     <value>Visibilidade do ícone na bandeja do sistema, Lively continuará a ser executado com o ícone oculto </value>
@@ -254,7 +254,7 @@ Instruções para compartilhar o arquivo de log:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Não é um arquivo compatível com o Lively</value>
+    <value>Arquivo não compatível com o Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
     <value>O Lively não foi fechado corretamente, iniciando no modo de segurança.
@@ -262,12 +262,12 @@ Deseja restaurar os planos de fundos que estavam ativos? </value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Parece que algumas configurações precisam ser feitas para que o Lively funcione corretamente:
-1. Aperte Win + R para abrir a janela de Executar.
-2. Digite "SystemPropertiesPerformance.exe" e aperte Enter para abrir as Opções de Desempenho.
-3. Ative/Marque "Animar controles e elementos no Windows" (Se já estiver marcado, então desmarque e marque de novo) &amp; Aplique.
-4. Clique em "Aplicar" e então aperte no "OK" para fechar a janela.
+1. Aperte Win + R para abrir a janela "Executar".
+2. Digite "SystemPropertiesPerformance.exe" e aperte Enter para abrir as "Opções de Desempenho".
+3. Ative/Marque "Animar controles e elementos no Windows" (Se já estiver marcado, então desmarque e marque de novo)
+4. Clique em "Aplicar" e então aperte "OK" para fechar a janela.
 
-Se estiver no Windows 7, ative "Ajustar para melhor aparência" e Aplique.
+Se estiver no Windows 7, selecione a opção "Ajustar para melhor aparência" e Aplique.
 Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
 (Não funciona em algumas versões insider do Windows 10)</value>
   </data>
@@ -284,7 +284,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Todos os arquivos</value>
   </data>
   <data name="Application.Text" xml:space="preserve">
-    <value>Aplicativo</value>
+    <value>Aplicação</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
     <value>Atribuições</value>
@@ -371,7 +371,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Ir</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Ajude a traduzir o Lively.</value>
+    <value>Ajude na tradução do Lively!</value>
   </data>
   <data name="TextHours" xml:space="preserve">
     <value>horas</value>
@@ -422,7 +422,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Ativado</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Online</value>
+    <value>On-line</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
     <value>Abrir o Lively</value>
@@ -563,7 +563,7 @@ Se ainda não funcionar, abra o Lively novamente ou reinicie o Windows.
     <value>Vídeo</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Executar Opções</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Preencher</value>
@@ -1240,9 +1240,24 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Selecione o protetor de tela</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Microsoft WebView2 é necessário para ver este conteúdo</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Plugin necessário</value>
+  </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>Selecione aplicativos para remover de mostrar detalhes de música</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>Exclusão de aplicativos</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>Música</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>É preciso reiniciar o plano de fundo para que as configurações tenham efeito</value>
   </data>
 </root>

@@ -1241,4 +1241,19 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Патрэбны плагін</value>
   </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>Абярыце праграмы, пры якіх не будуць адлюстроўвацца дэталі прайгравання музыкі</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>Выключэнні праграм</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>Перазагрузіць</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>Музыка</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>Каб прыменіць налады, патрэбна перазагрузка шпалер</value>
+  </data>
 </root>

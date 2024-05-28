@@ -1240,4 +1240,19 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Plugin erforderlich</value>
   </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>Apps auswählen, die von der Anzeige der Musikdetails ausgeschlossen werden sollen</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>App-Ausschluss</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>Neu starten</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>Musik</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>Ein Neustart des Hintergrundbildes ist erforderlich, damit die Einstellungen wirksam werden</value>
+  </data>
 </root>

@@ -1244,4 +1244,19 @@ https://github.com/rocksdanister/lively/wiki</value>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Απαιτείται πρόσθετο</value>
   </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>Επιλογή εφαρμογών για αποκλεισμό από την εμφάνιση λεπτομερειών μουσικής</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>Αποκλεισμός εφαρμογών</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>Επανεκκίνηση</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>Μουσική</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>Απαιτείται επανεκκίνηση της ταπετσαρίας για να εφαρμοστούν οι ρυθμίσεις</value>
+  </data>
 </root>

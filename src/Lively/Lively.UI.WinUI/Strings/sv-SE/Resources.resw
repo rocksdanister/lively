@@ -1215,4 +1215,19 @@ Utforskaren har startat om två gånger under de senaste 30 sekunderna! Detta ka
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Tillägg krävs</value>
   </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>Select apps to exclude from showing music details</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>App exclusion</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>Music</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>Wallpaper restart is required for the settings to take effect</value>
+  </data>
 </root>
