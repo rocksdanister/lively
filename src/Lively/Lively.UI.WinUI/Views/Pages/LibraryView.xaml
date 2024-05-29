@@ -53,6 +53,7 @@
             Margin="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            animations:ItemsReorderAnimation.Duration="0:0:0.2"
             customBehaviors:GridViewItemClickBehavior.ItemClickCommand="{Binding LibraryClickCommand}"
             IsItemClickEnabled="True"
             ItemsSource="{Binding LibraryItemsFiltered}"

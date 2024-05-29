@@ -44,6 +44,7 @@
             Margin="5"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            animations:ItemsReorderAnimation.Duration="0:0:0.2"
             ItemsSource="{Binding Wallpapers}"
             SelectionMode="None">
             <GridView.ItemTemplate>
