@@ -41,6 +41,8 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             SelectedPowerSaveModeIndex = (int)userSettings.Settings.PowerSaveModePause;
             SelectedDisplayPauseRuleIndex = (int)userSettings.Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)userSettings.Settings.ProcessMonitorAlgorithm;
+            //Only pause rules are shown to user, rest is internal use.
+            AppRules = new ObservableCollection<ApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
         }
 
         private int _selectedAppFullScreenIndex;
