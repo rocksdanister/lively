@@ -306,7 +306,7 @@ https://github.com/rocksdanister/lively/wiki
     <value>ביטול</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>שנה רקע</value>
+    <value>שינוי טפט</value>
   </data>
   <data name="TextClose" xml:space="preserve">
     <value>סגור</value>
@@ -1241,24 +1241,24 @@ Edge הוא תצוגת האינטרנט המובנית של Windows 10.</value>
     <value>בחר שומר מסך</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Microsoft WebView2 נדרש כדי להציג תוכן זה</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>נדרש תוסף</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>בחר אפליקציות להחרגה מהצגת פרטי מוזיקה</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>אי הכללת אפליקציות</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>הפעל מחדש</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>מוזיקה</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>נדרשת הפעלה מחדש של הטפטים כדי שההגדרות ייכנסו לתוקף</value>
   </data>
 </root>

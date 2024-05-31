@@ -733,7 +733,7 @@ Wenn dies immer noch nicht funktioniert, schließen &amp; starten Sie Lively ode
     <value>Wiedergabeverhalten im Akkubetrieb</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Nach Video, Gif, Webseite, etc... suchen um Hintergrund festzulegen</value>
+    <value>Nach Video, Gif, Webseite, etc... suchen um als Hintergrund festzulegen</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
     <value>Debugging-Port</value>

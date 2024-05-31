@@ -1248,18 +1248,18 @@ Edge - веб-двигун з Windows 10 WebView.</value>
     <value>Потрібно доповнення</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Виберіть програми, які потрібно виключити з зображенням деталей музики</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Вимкнення додатку</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Перезавантаження</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Музика</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Щоб налаштування набрали чинності, потрібно перезавантажити шпалери</value>
   </data>
 </root>

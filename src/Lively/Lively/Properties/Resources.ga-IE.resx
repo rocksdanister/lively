@@ -118,1148 +118,1142 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Відтворювати аудіо тільки коли робочий стіл у фокусі</value>
+    <value>Ná seinn fuaim ach amháin nuair atá an deasc i bhfócas</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
-    <value>Рівень гучності звуку шпалер</value>
+    <value>Airde fuaime gach cúlbhrat</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Гучність</value>
+    <value>Airde fuaime</value>
   </data>
   <data name="AudioGroup.Text" xml:space="preserve">
-    <value>Звук</value>
+    <value>Fuaim</value>
   </data>
   <data name="Community.Description" xml:space="preserve">
-    <value>Онлайн обговорення</value>
+    <value>Fóram plé ar líne</value>
   </data>
   <data name="Documentation.Description" xml:space="preserve">
-    <value>Документація API та допомога</value>
+    <value>Cáipéisíocht API ⁊ cabhair</value>
   </data>
   <data name="DescExplorerCrash" xml:space="preserve">
-    <value>Хай тобі грець, в Lively трапилася фатальна помилка.
+    <value>Tháinig Lively ar earráid mharfach.
 
-Провідник Windows перезавантажився двічі за останні 30 секунд! Це може бути пов'язано з конфліктом між Lively та іншою програмою кастомізації системи. Для уникнення подальших проблем всі шпалери вимкнено.</value>
+Tá Windows Explorer tar éis atosnú dhá uair le 30 soicind anuas. Is féidir gur coinbhleacht é seo idir Lively agus bogearraí phearsantú deisce eile nó Windows. Cuireadh stop le gach cúlbhrat chun fadhbanna eile a sheachaint.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
-    <value>Знайдена несумісна програма, тема панелі завдань вимкнена</value>
+    <value>Aimsíodh feidhmchlár neamh-chomhoiriúnach, tá téama an tascbharra díchumasaithe</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Офіційна вебсторінка Lively Wallpaper</value>
+    <value>Suíomh oifigiúil Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Більшість сучасних рідкокристалічних та світлодіодних дисплеїв не страждають від вигорання, і тому будь-які шпалери можна використовувати як заставку.
+    <value>Ní fhulaingíonn an chuid is mó de scáileáin LCD ⁊ LED an lae inniubh le fadhbanna triailreatha agus is féidir aon chúlbhrat a úsáid mar spárálaí scáileáin.
 
-Для OLED, плазмових або ЕЛТ-дисплеїв, які чутливі до вигорання, рекомендується використовувати шпалери з регулярним рухом та загальну темну тему, яка повинна пом'якшити вигорання, але ця функція не перевірена, і її ефективність не може бути гарантована.
+Le haghaidh scáileán OLED, plasma nó CRT ar féidir leo triailrith a fhulaingt, moltar cúlbhrat a úsáid a bhfuil gluaiseacht rialta agus téama atá dorcha go ginearálta ann chun trailrith a mhaolú. Is gné neamhphrofa í seo agus ní féidir a héifeachtacht a dhearbhú.
 
-Основна мета заставки Lively - це додати ще один рівень налаштування до свого ПК, використовувати заставки як захист від вигорання на власний ризик!</value>
+Is é príomhchuspóir spárálaithe scáileáin Lively ná leibhéal eile pearsantaithe a chur le do ríomhaire. Is ar do phriacal féin a bhaineann tú úsáid as spárálaithe scáileáin mar chosaint ar an triailrith.</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Повідомити про проблему з програмним забезпеченням</value>
+    <value>Tuairiscigh fadhb leis an mbogearra</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Оберіть файл</value>
+    <value>Roghnaigh comhad</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
-    <value>Встановіть поведінку відтворення шпалер на основі запущеної програми</value>
+    <value>Wallpaper playback behaviour based on running application</value>
   </data>
   <data name="DescriptionCancelQuestion" xml:space="preserve">
-    <value>Ви впевнені, що хочете скасувати?</value>
+    <value>An bhfuil tú cinnte go bhfuil fonn ort cealú?</value>
   </data>
   <data name="DescriptionDeleteConfirmation" xml:space="preserve">
-    <value>Ви справді бажаєте остаточно видалити шпалери з файлової системи?</value>
+    <value>An bhfuil tú cinnte go bhfuil fonn ort an cúlbhrat so a scriosadh go buan ón diosca?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Ви впевнені, що хочете видалити ці шпалери з бібліотеки?</value>
+    <value>An bhfuil tú cinnte go bhfuil fonn ort an cúlbhrat so a scriosadh ón leabharlann?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Просто перетягніть файли сюди</value>
+    <value>Tarraing ⁊ scaoil comhaid anso</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Ви відкриваєте зовнішню програму як шпалери.
-Шкідливі програми можуть містити віруси та зашкодити Вашій системі.
-Продовжуйте лише в тому разі, якщо програму отримано з надійного джерела.</value>
+    <value>Tá feidhmchlár seachtrach á oscailt agat mar chúlbhrat.
+Is féidir le feidhmchláir mhailíseacha bogearraí mailíseacha nó víris a óstáil agus dochar a dhéanamh don chóras.
+Ná lean ar aghaidh ach amháin má thagann an feidhmchlár so ó fhoinse iontaofa.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively згорнено до системного лотка, натисніть правою кнопкою миші на значок Lively для додаткових опцій.</value>
+    <value>Tá Lively íosmhéadaithe sa tráidire córais, deaschliceáil ar dheilbhín Lively le leanúint ar aghaidh.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Будь ласка, перезапустіть Lively, щоб налаштування набули чинності</value>
+    <value>Atosnaigh Lively le hathruithe a chur i bhfeidhm</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
-    <value>Будь ласка, зупиніться, перш ніж продовжити</value>
+    <value>Please stop before proceeding</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Натисніть для початку запису</value>
+    <value>Brúigh chun taifeadadh a thosnú</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Наразі відбувається відновлення попередніх шпалер, будь ласка, зачекайте...</value>
+    <value>Cúlbhrait roimhe seo á gcur thar n-ais, fan nóiméad...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Виберіть дисплей</value>
+    <value>Roghnaigh modh taispeána</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
-    <value>Доступна нова версія!</value>
+    <value>Tá leagan nua den mbogearra ar fáil</value>
   </data>
   <data name="DescriptionWebpageLoad" xml:space="preserve">
-    <value>Введіть посилання на сторінку, підтримуються посилання Shadertoy.com</value>
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Цей майстер допоможе вам розпочати налаштування Lively</value>
+    <value>Cabhróidh an draoi seo leat le cumraíocht Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Ваша версія Windows N/KN потребуватиме завантаження додаткових кодеків для підтримки відтворення відео у шпалерах</value>
+    <value>Beidh comhbhrúnna breise ag teastáil ó leagan N/KN Windows chun tacú le hathsheinnt físeán i gcúlbhrait</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Проявіть підтримку, купивши каву для розробників</value>
+    <value>Taispeáin tacaíocht don bhforbróir agus ceannaigh caife dhó</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Ви збираєтеся перейти на бета-версію (для розробників) Lively.
-Оновлення будуть частими та можуть містити помилки!</value>
+    <value>Tá tú ar tí athrú go dtí an leagan béite (forbróra) de Lively.
+Tiocfaidh na nuashonruithe go minic agus seans go mbeidh fabhtanna iontu</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Видимість значка системного лотка, Lively продовжуватиме працювати з прихованим значком</value>
+    <value>Infheictheacht an deilbhín sa tráidire córas, leanfaidh Lively ag rith agus an deilbhín folaithe</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Значок системного трею</value>
+    <value>Deilbhín an tráidire córais</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
-    <value>Lively перезапуститься для зміни мови</value>
+    <value>Atosnófar Lively chun an teanga nua a chur i bhfeidhm</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Мова</value>
+    <value>Teanga</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Помилка оновлення. Спробуйте завантажити інсталятор з:
+    <value>Theip ar an nuashonrú. Bain triail as an suiteálaí a íoslódáil ó:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Файл шпалер пошкоджено, спробуйте завантажити заново</value>
+    <value>Comhad cúlbhrait damáistithe, bain triail as é a íoslódáil arís</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Упс... Схоже, щось пішло не так :(
-Щоб краще зрозуміти цю помилку та виправити проблему, надайте файл журналу розробнику.
-Інструкції щодо надсилання файлу журналу:
+    <value>Hoips... Is cosúil go bhfuil fadhb ann :(
+Chun tuiscint níos fearr a fháil ar an earráid seo agus chun an fhadhb a réiteach, comhroinn an comhad loga leis an bhforbróir.
+Treoir le haghaidh comhroinnte an chomhaid loga:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively не може працювати з увімкненим режимом високої контрастності Windows!
-Вимкніть режим високої контрастності та спробуйте знову</value>
+    <value>Ní fheidhmíonn Lively i gceart agus mód 'Ardchodarsnacht' Windows casta air.
+Cas an mód 'Ardchodarsnacht' as agus bain triail eile as</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
-    <value>Помилка відтворення медіа :(
-Спробуйте змінити відеоплеєр в налаштуваннях Lively.
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
 
-Для того, щоб краще зрозуміти помилку і знайти вирішення, можна надіслати розробнику файл журналу.
-Прочитайте про те, як це можна зробити:
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Це не файл шпалер Lively</value>
+    <value>Ní comhad cúlbhrait Lively é seo</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively was не було закрито належним чином, запуск в безпечному режимі.
-Бажаєте відновити раніше запущені шпалери?</value>
+    <value>Lively was not closed properly, starting in safe mode.
+Do you wish to restore previously running wallpapers?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Здається, потрібно змінити деякі налаштування, щоб Lively запрацював:-  
-1. Відкрийте Мій комп'ютер
-2. Натисніть правою кнопкою миші на пустій ділянці
-3. Оберіть "Властивості"
-4. Оберіть "Додаткові настройки системи"
-5. На вкладці Продуктивність оберіть "Настройки"
-6. Ввімкніть "Анімація елементів керування та елементів всередині вікна" і натисніть застосувати.
+    <value>Is cosúil go gcaithfidh tú cúpla socruithe a athrú chun Lively a rith i gceart:
+1. Brúigh ar na heochracha 'Win' + 'R' le 'Rith' a oscailt.
+2. Clóscríobh "SystemPropertiesPerformance.exe" isteach i 'Rith', cliceáil ar 'OK' chun 'Roghanna feidhmíochta' a oscailt.
+3. Cumasaigh/Ticeáil 'Beoigh rialtáin agus eilimintí laistigh de Windows' (Má tá tic ann cheana féin, déan é a bhaint agus a chur ann arís) agus cuir i bhfeidhm é.
+4. Cliceáil ar 'Cuir i bhfeidhm' agus ansan ar 'OK' chun an fhuinneog a dhúnadh.
 
-Якщо у Вас Windows 7, виберіть - "Налаштувати на кращий вигляд" і натисніть застосувати.
-Якщо далі не працює, перезавантажте Lively / windows.
-(Не працює в інсайдерських збірках windows 10)</value>
+I gcás Windows 7, déan é a shocrú mar 'Adjust for best appearance' (Coigeartaigh i gcomhair na cuma is fearr) agus cuir i bhfeidhm é.
+Mura bhfuil sé ag feidhmiú go fóill, déan Lively a dhúnadh agus a atosnú arís/atosnaigh Windows.
+(Ní oibreoidh sé i roinnt leaganacha 'Insider' de Windows 10)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively необхідно працювати в фоні для відтворення шпалер.</value>
+    <value>Ní mór do Lively a bheith ag rith sa chúlra le haghaidh athsheinnt na gcúlbhrat</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Запускати разом з Windows</value>
+    <value>Tosnaigh le Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
-    <value>Додати</value>
+    <value>Cuir leis</value>
   </data>
   <data name="TextAllFiles" xml:space="preserve">
-    <value>Всі файли</value>
+    <value>Gach comhad</value>
   </data>
   <data name="Application.Text" xml:space="preserve">
-    <value>Застосунок</value>
+    <value>Feidhmchlár</value>
   </data>
   <data name="Attribution.Header" xml:space="preserve">
-    <value>Атрибути</value>
+    <value>Údarás</value>
   </data>
   <data name="Author.Text" xml:space="preserve">
-    <value>Автор</value>
+    <value>Údar</value>
   </data>
   <data name="TextBack" xml:space="preserve">
-    <value>Назад</value>
+    <value>Siar</value>
   </data>
   <data name="TextBrowse" xml:space="preserve">
-    <value>Огляд</value>
+    <value>Cuardaigh</value>
   </data>
   <data name="Cancel.Content" xml:space="preserve">
-    <value>Скасувати</value>
+    <value>Cealaigh</value>
   </data>
   <data name="TextChangeWallpaper" xml:space="preserve">
-    <value>Змінити шпалери</value>
+    <value>Athraigh cúlbhrait</value>
   </data>
   <data name="TextClose" xml:space="preserve">
-    <value>Закрити</value>
+    <value>Dún</value>
   </data>
   <data name="CloseWallpapers.Label" xml:space="preserve">
-    <value>Закрити шпалери</value>
+    <value>Dún</value>
   </data>
   <data name="TextCompleted" xml:space="preserve">
-    <value>Готово!</value>
+    <value>Críochnaithe</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Натисніть тут для керування шпалерами.</value>
+    <value>Cliceáil anso chun cúlbhrait a bhainistiú</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
-    <value>Перетворення в відео</value>
+    <value>Tiontaigh go físeán</value>
   </data>
   <data name="TextCreatePreview" xml:space="preserve">
-    <value>Створити попередній перегляд</value>
+    <value>Cruthaigh réamhamharc</value>
   </data>
   <data name="Customise.Text" xml:space="preserve">
-    <value>Налаштувати</value>
+    <value>Pearsantaigh</value>
   </data>
   <data name="CustomiseWallpaper.Label" xml:space="preserve">
-    <value>Налаштувати шпалер</value>
+    <value>Pearsantaigh</value>
   </data>
   <data name="DeleteWallpaper.Text" xml:space="preserve">
-    <value>Видалити шпалери</value>
+    <value>Scrios</value>
   </data>
   <data name="Description.Text" xml:space="preserve">
-    <value>Опис</value>
+    <value>Cur síos</value>
   </data>
   <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
-    <value>Всі екрани</value>
+    <value>Gach scáileán</value>
   </data>
   <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
-    <value>Певний екран</value>
+    <value>In aghaidh an scáileáin</value>
   </data>
   <data name="TextDownload.Content" xml:space="preserve">
-    <value>Завантажити</value>
+    <value>Íoslódáil</value>
   </data>
   <data name="EditWallpaper.Text" xml:space="preserve">
-    <value>Редагувати</value>
+    <value>Cuir in eagar</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Помилка</value>
+    <value>Earráid</value>
   </data>
   <data name="TextExit" xml:space="preserve">
-    <value>Вихід</value>
+    <value>Scoir</value>
   </data>
   <data name="ExportWallpaperZip.Text" xml:space="preserve">
-    <value>Експортувати lively .zip</value>
+    <value>Sábháil chuig comhad</value>
   </data>
   <data name="TextFeatureMissing" xml:space="preserve">
-    <value>Деякі можливості недоступні в цій версії Lively.</value>
+    <value>Níl roinnt gnéithe ar fáil sa leagan so de Lively</value>
   </data>
   <data name="TextFileNotFound" xml:space="preserve">
-    <value>Файл не знайдено</value>
+    <value>Comhad ar iarraidh</value>
   </data>
   <data name="TextGIF" xml:space="preserve">
-    <value>GIF-анімація</value>
+    <value>GIF beo</value>
   </data>
   <data name="SourceCode.Description" xml:space="preserve">
-    <value>Покажіть свою любов через зірочку на GitHub</value>
+    <value>Taispeáin grá trí réiltín a fágaint</value>
   </data>
   <data name="TextGo" xml:space="preserve">
-    <value>Вперед</value>
+    <value>GO</value>
   </data>
   <data name="TextHelpTranslate.Title" xml:space="preserve">
-    <value>Допоможіть з перекладом Lively.</value>
+    <value>Cabhraigh leis an aistriúchán</value>
   </data>
   <data name="TextHours" xml:space="preserve">
-    <value>години(-а)</value>
+    <value>uair</value>
   </data>
   <data name="TextInstall.Content" xml:space="preserve">
-    <value>Встановити</value>
+    <value>Suiteáil</value>
   </data>
   <data name="TextKeyboard.Content" xml:space="preserve">
-    <value>Клавіатура</value>
+    <value>Méarchlár</value>
   </data>
   <data name="TextLastChecked" xml:space="preserve">
-    <value>Востаннє перевірено</value>
+    <value>Dearbhú is déanaí</value>
   </data>
   <data name="TextLearnMore.Text" xml:space="preserve">
-    <value>Дізнатись більше</value>
+    <value>Tuilleadh eolais</value>
   </data>
   <data name="License.Header" xml:space="preserve">
-    <value>Ліцензія</value>
+    <value>Ceadúnas</value>
   </data>
   <data name="TextMinutes" xml:space="preserve">
-    <value>хвилини(-а)</value>
+    <value>nóiméad</value>
   </data>
   <data name="TextmoreInfo" xml:space="preserve">
-    <value>Інформація</value>
+    <value>Faisnéis</value>
   </data>
   <data name="TextMoreWallpapers" xml:space="preserve">
-    <value>Більше шпалер...</value>
+    <value>Tuilleadh cúlbhrat</value>
   </data>
   <data name="TextMouse.Content" xml:space="preserve">
-    <value>Миша</value>
+    <value>Luch</value>
   </data>
   <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
-    <value>Миша взаємодіє зі шпалерами, коли на передньому плані відкрито додаток</value>
+    <value>Idirghníomhú leis an luch agus an feidhmchlár i bhfócas</value>
   </data>
   <data name="TextNext" xml:space="preserve">
-    <value>Далі</value>
+    <value>Ar aghaidh</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Ні</value>
+    <value>Níl</value>
   </data>
   <data name="TextOff.Content" xml:space="preserve">
-    <value>Вимк.</value>
+    <value>As</value>
   </data>
   <data name="TextOK" xml:space="preserve">
-    <value>Гаразд</value>
+    <value>OK</value>
   </data>
   <data name="TextOn.Content" xml:space="preserve">
-    <value>Увімк.</value>
+    <value>Air</value>
   </data>
   <data name="TextOnline" xml:space="preserve">
-    <value>Онлайн</value>
+    <value>Ar líne</value>
   </data>
   <data name="TextOpenLively" xml:space="preserve">
-    <value>Відкрити Lively</value>
+    <value>Oscail Lively</value>
   </data>
   <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
-    <value>Всі процеси</value>
+    <value>Gach próiseas</value>
   </data>
   <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
     <value>Direct3D</value>
   </data>
   <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
-    <value>Процес переднього плану</value>
+    <value>Próiseas an tulra</value>
   </data>
   <data name="TextPauseWallpapers" xml:space="preserve">
-    <value>Призупинити шпалери</value>
+    <value>Cuir cúlbhrait ar sos</value>
   </data>
   <data name="TextPerformanceKill.Content" xml:space="preserve">
-    <value>Вбити</value>
+    <value>Múch</value>
   </data>
   <data name="TextPerformanceNone.Content" xml:space="preserve">
-    <value>Нічого</value>
+    <value>Dada</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>Пауза</value>
+    <value>Cuir ar sos</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
-    <value>Зображення</value>
+    <value>Íomhá</value>
   </data>
   <data name="PreviewWallpaper.Text" xml:space="preserve">
-    <value>Попередній перегляд</value>
+    <value>Réamhamharc</value>
   </data>
   <data name="PrivacyPolicy.Header" xml:space="preserve">
-    <value>Політика приватності</value>
+    <value>Beartas Príobháideachais</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Обробка</value>
+    <value>Processing</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
-    <value>Видалити</value>
+    <value>Bain</value>
   </data>
   <data name="TextRule" xml:space="preserve">
-    <value>Правило</value>
+    <value>Riail</value>
   </data>
   <data name="TextScreen" xml:space="preserve">
-    <value>Екран</value>
+    <value>Scáileán</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
-    <value>Пошук</value>
+    <value>Cuardaigh</value>
   </data>
   <data name="SetWallpaper.Text" xml:space="preserve">
-    <value>Встановити як шпалери</value>
+    <value>Socraigh mar chúlbhrat</value>
   </data>
   <data name="ShowOnDisk.Text" xml:space="preserve">
-    <value>Показати на диску</value>
+    <value>Oscail suíomh an chomhaid</value>
   </data>
   <data name="WallpaperSource.Text" xml:space="preserve">
-    <value>Джерело</value>
+    <value>Foinse</value>
   </data>
   <data name="TextStart" xml:space="preserve">
-    <value>Старт</value>
+    <value>Tosnaigh</value>
   </data>
   <data name="TextStop" xml:space="preserve">
-    <value>Стоп</value>
+    <value>Stad</value>
   </data>
   <data name="StoreReview.Content" xml:space="preserve">
-    <value>Вам подобається користуватися Lively? Залиште відгук :)</value>
+    <value>An bhfuil tú ag baint sult as Lively? Scríobh léirmheas :)</value>
   </data>
   <data name="TextSupport.Content" xml:space="preserve">
-    <value>Підтримати</value>
+    <value>Support</value>
   </data>
   <data name="TextSwitchBranchDev" xml:space="preserve">
-    <value>Перейти на бета-версію (канал для розробників)</value>
+    <value>Athraigh go dtí an leagan béite (Cainéal forbartha)</value>
   </data>
   <data name="TextSwitchBranchOfficial" xml:space="preserve">
-    <value>Перейти на стабільний (канал за замовчуванням)</value>
+    <value>Athraigh go dtí an leagan cobhsaí (Cainéal réamhshocraithe)</value>
   </data>
   <data name="TextTags" xml:space="preserve">
-    <value>Теги</value>
+    <value>Clibeanna</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Розмиття</value>
+    <value>Geamhú</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
-    <value>Прозоре</value>
+    <value>Trédhearcach</value>
   </data>
   <data name="TaskbarThemeColor.Content" xml:space="preserve">
-    <value>Колір</value>
+    <value>Dath</value>
   </data>
   <data name="TaskbarThemeFluent.Content" xml:space="preserve">
-    <value>Плавний</value>
+    <value>Éasca</value>
   </data>
   <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
-    <value>Шпалери</value>
+    <value>Cúlbhrat</value>
   </data>
   <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
-    <value>Плавні шпалери</value>
+    <value>Cúlbhrat éasca</value>
   </data>
   <data name="TextTileSizeLarge" xml:space="preserve">
-    <value>Великі</value>
+    <value>Large</value>
   </data>
   <data name="TextTileSizeNormal" xml:space="preserve">
-    <value>Нормальні</value>
+    <value>Normal</value>
   </data>
   <data name="TextTileSizeSmall" xml:space="preserve">
-    <value>Малі</value>
+    <value>Small</value>
   </data>
   <data name="Title.Text" xml:space="preserve">
-    <value>Назва</value>
+    <value>Teideal</value>
   </data>
   <data name="TextUIHeadless" xml:space="preserve">
-    <value>Без заголовка</value>
+    <value>Headless</value>
   </data>
   <data name="TextUILite" xml:space="preserve">
-    <value>Простий</value>
+    <value>Lite</value>
   </data>
   <data name="TextUINormal" xml:space="preserve">
-    <value>Нормальний</value>
+    <value>Normal</value>
   </data>
   <data name="TextUnsupportedFile" xml:space="preserve">
-    <value>Формат файлу не підтримується</value>
+    <value>Ní thacaítear le formáid an chomhaid</value>
   </data>
   <data name="TextUpdateAvailable" xml:space="preserve">
-    <value>Доступне оновлення!</value>
+    <value>Tá nuashonrú ar fáil</value>
   </data>
   <data name="TextUpdateCheck.Content" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>Seiceáil le haghaidh nuashonraithe</value>
   </data>
   <data name="TextupdateCheckFail" xml:space="preserve">
-    <value>Помилка перевірки оновлень</value>
+    <value>Theip ar an seiceáil le haghaidh nuashonraithe</value>
   </data>
   <data name="TextUpdateChecking" xml:space="preserve">
-    <value>Перевірити оновлення</value>
+    <value>Ag seiceáil le haghaidh nuashonraithe</value>
   </data>
   <data name="TextUpdateUptodate" xml:space="preserve">
-    <value>Lively оновлено!</value>
+    <value>Tá an bogearra cothrom le dáta</value>
   </data>
   <data name="TextVideo" xml:space="preserve">
-    <value>Відео</value>
+    <value>Físeán</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Параметри запуску</value>
+    <value>Roghanna lainseála</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
-    <value>Заповнення</value>
+    <value>Líon</value>
   </data>
   <data name="WallpaperFitNone.Content" xml:space="preserve">
-    <value>Ніякий</value>
+    <value>Neamhní</value>
   </data>
   <data name="WallpaperFitUniform.Content" xml:space="preserve">
-    <value>Рівномірний</value>
+    <value>Aonghnéitheach</value>
   </data>
   <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
-    <value>Рівномірне заповнення</value>
+    <value>Líonadh aonghnéitheach</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Дублювати</value>
+    <value>Dúbláil</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
-    <value>Екран</value>
+    <value>Scáileán</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Розтягнути</value>
+    <value>Trasnaigh</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
-    <value>Тип</value>
+    <value>Cineál</value>
   </data>
   <data name="Website.Header" xml:space="preserve">
-    <value>Вебсайт</value>
+    <value>Suíomh Gréasáin</value>
   </data>
   <data name="TextWebStream" xml:space="preserve">
-    <value>Стрім</value>
+    <value>Sruth Gréasáin</value>
   </data>
   <data name="TextWelcome" xml:space="preserve">
-    <value>Вітаємо</value>
+    <value>Fáilte</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Так</value>
+    <value>Tá</value>
   </data>
   <data name="VideoPlayer.Header" xml:space="preserve">
-    <value>Відео програвач</value>
+    <value>Seinnteoir físeáin</value>
   </data>
   <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
-    <value>Встановіть шпалери з файлу підтримуваного формату.</value>
+    <value>Socraigh íomhá de gach cineál comhaid a thacaítear leis mar chúlbhrat</value>
   </data>
   <data name="EnterUrl.Description" xml:space="preserve">
-    <value>Встановіть веб-сторінку в якості шпалер використовуючи її веб-адресу.</value>
+    <value>Socraigh leathanach Gréasáin ón URL a iontráladh mar chúlbhrat</value>
   </data>
   <data name="AppFocus.Description" xml:space="preserve">
-    <value>Вкажіть, що робити, коли на передньому плані відкрито будь-який додаток.</value>
+    <value>Socraigh an iompraíocht agus feidhmchlár i bhfócas</value>
   </data>
   <data name="AppFullScreen.Description" xml:space="preserve">
-    <value>Вкажіть, що робити, коли відкрито повноекранний додаток/гра.</value>
+    <value>Socraigh an iompraíocht agus cluichí/feidhmchláir á rith ar lánscáileán</value>
   </data>
   <data name="AppRules.Description" xml:space="preserve">
-    <value>Встановіть правила відтворення шпалер в залежності від відкритої програми.</value>
+    <value>Cuir an cúlbhrat ar sos agus na feidhmchláir seo á rith</value>
   </data>
   <data name="TipAppTheme" xml:space="preserve">
-    <value>Lively використовує системні налаштування для встановлення теми. Щоб змінити це, перейдіть в</value>
+    <value>Lively adapts to system theme settings, to change appearance goto</value>
   </data>
   <data name="BatteryPower.Description" xml:space="preserve">
-    <value>(Для систем які працюють від акумулятора) Змінити режим відтворення при відключенні від мережі.</value>
+    <value>Athraigh an athsheinnt nuair a bhaintear cumhacht srutha ailtéarnaigh</value>
   </data>
   <data name="BrowserDebuggingPort.Description" xml:space="preserve">
-    <value>Введіть порт для налагодження веб шпалер. Для прийняття змін необхідне перезавантаження браузера.
-Коли будете готові, переходьте на http://localhost:port для отримання доступу до консолі розробника.</value>
+    <value>Iontráil an port le haghaidh dífhabhtaithe chúlbhrait leathanach Gréasáin. Gabh go dtí http://localhost:portnumber nuair a bhéas tú réidh le rochtain a dhéanamh ar an gconsól forbróra</value>
   </data>
   <data name="Debug.Description" xml:space="preserve">
-    <value>Показати  меню розробника</value>
+    <value>Taispeáin an roghchlár forbróra</value>
   </data>
   <data name="DesktopPicture.Description" xml:space="preserve">
-    <value>Встановіть зображення анімованих шпалер в якості шпалер робочого столу.</value>
+    <value>Socraigh íomhá de chúlbhrat beo mar chúlbhrat deisce</value>
   </data>
   <data name="DisplayPauseRule.Description" xml:space="preserve">
-    <value>Для кожного: Призупиняти шпалери тільки на тому екрані, де відрито додаток на передньому плані/на весь екран.
-Всі: Припиняти шпалери на всіх екранах, якщо відкрито додаток на передньому плані/на весь екран.</value>
+    <value>Cuir an cúlbhrat ar sos ar gach scáileán nó ar an scáileán ar a bhfuil an feidhmchlár i bhfócas amháin</value>
   </data>
   <data name="ExportLogs.Description" xml:space="preserve">
-    <value>Експорт журналу.</value>
+    <value>Cruthaigh comhad loga tuairiscithe</value>
   </data>
   <data name="GifPlayer.Description" xml:space="preserve">
-    <value>Виберіть плеєр для відтворення GIF шпалер.</value>
+    <value>Roghnaigh seinnteoir le húsáid le cúlbhrat GIF</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Закінчіть встановлення, щоб продовжити.</value>
+    <value>Cuir an chumraíocht i gcrích le leanúint ar aghaidh</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
-    <value>Встановіть зображення анімованих шпалер в якості шпалер екрану блокування.</value>
+    <value>Socraigh íomhá de chúlbhrat beo mar chúlbhrat scáileáin ghlasáilte</value>
   </data>
   <data name="PauseAlgorithm.Description" xml:space="preserve">
-    <value>Процес переднього плану: Швидкий. Сканує тільки процес на передньому плані, щоб визначити режим відтворення.
-Всі процеси: Повільний. Сканує всі процеси, щоб визначити режим відтворення.</value>
+    <value>Algartam sosa an chúlbhrait</value>
   </data>
   <data name="PowerSavingModePower.Description" xml:space="preserve">
-    <value>Змінити відтворення, коли ввімкнено режим енергозбереження Windows</value>
+    <value>Athraigh an athsheinnt agus mód sábhála cumhachta Windows casta air</value>
   </data>
   <data name="RemoteDesktopPower.Description" xml:space="preserve">
-    <value>Змінити відтворення під час запуску сеансу віддаленого робочого стола</value>
+    <value>Athraigh an athsheinnt agus seisiún ciandeisce ar siúl</value>
   </data>
   <data name="TipScreensaver" xml:space="preserve">
-    <value>Після вибраного періоду бездіяльності використовуйте поточні шпалери як заставку.</value>
+    <value>Úsáid an cúlbhrat reatha mar spárálaí scáileáin i ndiaidh an aga neamhghníomhaíochta socraithe</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
-    <value>Якщо виявлено підтримуване посилання, використовувати відеоплеєр замість підвантаження веб-сторінки.</value>
+    <value>Má bhraitear nasc shruth físeáin, bain úsáid as an seinnteoir físeáin in ionad an leathanach Gréasáin a lódáil</value>
   </data>
   <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
-    <value>Виберіть бажану якість потокового відео.</value>
+    <value>Roghnaigh an caighdeán físeáin atá uait le haghaidh sruthanna ar líne</value>
   </data>
   <data name="TipSwitchSoftwareBranch" xml:space="preserve">
-    <value>Change software release from beta to stable or vice versa.</value>
+    <value>Athraigh idir leagan béite agus leagan cobhsaí an bhogearra</value>
   </data>
   <data name="TaskbarTheme.Description" xml:space="preserve">
-    <value>Зміна оформлення системної панелі завдань.</value>
+    <value>Athraigh cuma thascbharra an chórais</value>
   </data>
   <data name="TipTileSize" xml:space="preserve">
-    <value>Розмір плиток зі шпалерами в Бібліотеці.</value>
+    <value>Size of the wallpaper tiles in Library</value>
   </data>
   <data name="TipUIMode" xml:space="preserve">
-    <value>Якщо у вас низькопродуктивна система, вибирайте Простий режим.</value>
+    <value>For low-end systems select Lite mode</value>
   </data>
   <data name="VideoHardwareDecode.Description" xml:space="preserve">
-    <value>Використовуйте апаратне прискорення, коли це можливо.</value>
+    <value>Bain úsáid as luathú crua-earraí más féidir</value>
   </data>
   <data name="VideoPlayer.Description" xml:space="preserve">
-    <value>Виберіть плеєр для відео-шпалер.</value>
+    <value>Roghnaigh seinnteoir le húsáid le cúlbhrat físeáin</value>
   </data>
   <data name="WallpaperDir.Description" xml:space="preserve">
-    <value>Шлях, по якому зберігаються файли шпалер.</value>
+    <value>An cosán a úsáidtear le comhaid chúlbhrait a stóráil</value>
   </data>
   <data name="WallpaperFit.Description" xml:space="preserve">
-    <value>Алгоритм масштабування шпалер.</value>
+    <value>Algartam scálaithe an chúlbhrait</value>
   </data>
   <data name="WallpaperInput.Description" xml:space="preserve">
-    <value>Виберіть спосіб взаємодії зі шпалерами.</value>
+    <value>Roghnaigh bealaí le hidirghníomhú leis an gcúlbhrat</value>
   </data>
   <data name="WallpaperLayout.Description" xml:space="preserve">
-    <value>Спосіб застосування шпалер до підключених пристроїв відображення.</value>
+    <value>Conas a chuirtear an cúlbhrat i bhfeidhm ar na gléasanna taispeána ceangailte</value>
   </data>
   <data name="TipWallpaperPlayback" xml:space="preserve">
-    <value>Призупинити відтворення шпалер, коли робочий стіл не в фокусі.</value>
+    <value>Cuir athsheinnt an chúlbhrait ar sos nuair ná fuil an deasc i bhfócas</value>
   </data>
   <data name="WebBrowserDiskCache.Description" xml:space="preserve">
-    <value>Зберігайте тимчасові файли на диску, а не в оперативній пам'яті. Дозволяє зберігати налаштування для шпалер веб-сайтів.</value>
+    <value>Stóráil comhaid shealadacha ar an diosca seachas sa chuimhne</value>
   </data>
   <data name="WebBrowser.Description" xml:space="preserve">
-    <value>CEF(Chromium Embedded Framework) - полегшений веб-двигун Chromium.
-Edge - веб-двигун з Windows 10 WebView.</value>
+    <value>Roghnaigh seinnteoir le húsáid le cúlbhrat HTML</value>
   </data>
   <data name="About.Label" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Maidir leis seo</value>
   </data>
   <data name="AddWallpaper.Label" xml:space="preserve">
-    <value>Додати</value>
+    <value>Cuir cúlbhrat leis</value>
   </data>
   <data name="AppFocus.Header" xml:space="preserve">
-    <value>Інший додаток у фокусі</value>
+    <value>Feidhmchláir atá i bhfócas</value>
   </data>
   <data name="AppFullScreen.Header" xml:space="preserve">
-    <value>Інший додаток на весь екран</value>
+    <value>Feidhmchláir atá ar lánscáileán</value>
   </data>
   <data name="TitleAppName" xml:space="preserve">
-    <value>Lively Wallpaper</value>
+    <value>Cúlbhrat Lively</value>
   </data>
   <data name="AppRules.Header" xml:space="preserve">
-    <value>Правила для програм</value>
+    <value>Rialacha feidhmchlár</value>
   </data>
   <data name="AppTheme.Header" xml:space="preserve">
-    <value>Тема</value>
+    <value>Téama</value>
   </data>
   <data name="TitleAudioPlayOnScreen" xml:space="preserve">
-    <value>Грати музику на екрані</value>
+    <value>Seinn fuaim ar an scáileán</value>
   </data>
   <data name="BatteryPower.Header" xml:space="preserve">
-    <value>Коли працює від акумулятора</value>
+    <value>Ar chumhacht ceallra</value>
   </data>
   <data name="TitleBrowseFile" xml:space="preserve">
-    <value>Виберіть відео, GIF, веб-сторінку ... щоб встановити як шпалери</value>
+    <value>Cuardaigh comhad físeáin, GIF, leathanaigh Ghréasáin... le socrú mar chúlbhrat</value>
   </data>
   <data name="BrowserDebuggingPort.Header" xml:space="preserve">
-    <value>Порт налагодження</value>
+    <value>Port dífhabhtaithe</value>
   </data>
   <data name="TitleChangelog" xml:space="preserve">
-    <value>Журнал змін</value>
+    <value>Loga athruithe</value>
   </data>
   <data name="Community.Header" xml:space="preserve">
-    <value>Спільнота</value>
+    <value>Pobal</value>
   </data>
   <data name="Debug.Header" xml:space="preserve">
-    <value>Налагодження</value>
+    <value>Dífhabhtaithe</value>
   </data>
   <data name="TitleDeleteConfirmation" xml:space="preserve">
-    <value>Підтвердіть видалення</value>
+    <value>Deimhnigh an scriosadh</value>
   </data>
   <data name="DesktopPicture.Header" xml:space="preserve">
-    <value>Зображення на робочому столі</value>
+    <value>Íomhá deisce</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Правило зупинки екрану</value>
+    <value>Riail maidir le sos na taispeána</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
-    <value>Документація</value>
+    <value>Cáipéisíocht</value>
   </data>
   <data name="EnterUrl.Header" xml:space="preserve">
-    <value>Введіть URL</value>
+    <value>Cuir URL isteach</value>
   </data>
   <data name="ExportLogs.Header" xml:space="preserve">
-    <value>Файл журналу</value>
+    <value>Comhad loga</value>
   </data>
   <data name="TitleGeneral" xml:space="preserve">
-    <value>Основні</value>
+    <value>Ginearálta</value>
   </data>
   <data name="GifPlayer.Header" xml:space="preserve">
-    <value>GIF-плеєр</value>
+    <value>Seinnteoir GIF</value>
   </data>
   <data name="Help.Label" xml:space="preserve">
-    <value>Допомога</value>
+    <value>Cabhair</value>
   </data>
   <data name="TitleInteraction" xml:space="preserve">
-    <value>Взаємодія</value>
+    <value>Idirghníomhú</value>
   </data>
   <data name="TitleLibrary" xml:space="preserve">
-    <value>Бібліотека</value>
+    <value>Leabharlann</value>
   </data>
   <data name="TitleLivelySetup" xml:space="preserve">
-    <value>Встановлення Lively</value>
+    <value>Cumraíocht Lively</value>
   </data>
   <data name="TitleLocation" xml:space="preserve">
-    <value>Місцезнаходження</value>
+    <value>Suíomh</value>
   </data>
   <data name="LockscreenPicture.Header" xml:space="preserve">
-    <value>Зображення на екрані блокування</value>
+    <value>Íomhá scáileáin ghlasáilte</value>
   </data>
   <data name="TitleMisc" xml:space="preserve">
-    <value>Інше</value>
+    <value>Eile</value>
   </data>
   <data name="TitleMute" xml:space="preserve">
-    <value>Заглушити</value>
+    <value>Balbhaigh</value>
   </data>
   <data name="PauseAlgorithm.Header" xml:space="preserve">
-    <value>Алгоритм зупинки</value>
+    <value>Algartam sosa</value>
   </data>
   <data name="TitlePerformance" xml:space="preserve">
-    <value>Продуктивність</value>
+    <value>Feidhmíocht</value>
   </data>
   <data name="TitlePlaylist" xml:space="preserve">
-    <value>Плейлист</value>
+    <value>Seinnliosta</value>
   </data>
   <data name="PleaseWait.Text" xml:space="preserve">
-    <value>Будь ласка, зачекайте</value>
+    <value>Fan nóiméad</value>
   </data>
   <data name="PowerSavingModePower.Header" xml:space="preserve">
-    <value>У режимі економії заряду акумулятора</value>
+    <value>Ar mód 'Spárálaí ceallra'</value>
   </data>
   <data name="RemoteDesktopPower.Header" xml:space="preserve">
-    <value>Коли на віддаленому робочому столі</value>
+    <value>Ar ciandeasc</value>
   </data>
   <data name="ReportBug.Header" xml:space="preserve">
-    <value>Повідомити про помилку</value>
+    <value>Tuairscigh fabht</value>
   </data>
   <data name="TitleScalingFit" xml:space="preserve">
-    <value>Масштабування/Розміщення</value>
+    <value>Scálaigh/oiriúnaigh</value>
   </data>
   <data name="ControlPanel.Title" xml:space="preserve">
-    <value>Макет шпалер</value>
+    <value>Painéal rialúcháin</value>
   </data>
   <data name="TitleScreensaver.Content" xml:space="preserve">
-    <value>Заставка</value>
+    <value>Spárálaí scáileáin</value>
   </data>
   <data name="ScreensaverLockOnResume.Content" xml:space="preserve">
-    <value>У резюме, екрана входу</value>
+    <value>Taispeáin an scáileán logála isteach tar éis athdhúiseachta</value>
   </data>
   <data name="TitleSelectFile" xml:space="preserve">
-    <value>Виберіть файл</value>
+    <value>Roghnaigh comhad</value>
   </data>
   <data name="TitleSettings" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>Socruithe</value>
   </data>
   <data name="TitleSkipConfirm" xml:space="preserve">
-    <value>Пропустити підтвердження</value>
+    <value>Skip Confirmation</value>
   </data>
   <data name="SourceCode.Header" xml:space="preserve">
-    <value>Вихідний код</value>
+    <value>Cód foinseach</value>
   </data>
   <data name="Store.Header" xml:space="preserve">
-    <value>Магазин</value>
+    <value>Microsoft Store</value>
     <comment>For different version of Lively, example: Microsoft Store</comment>
   </data>
   <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
-    <value>Стрім</value>
+    <value>Sruth</value>
   </data>
   <data name="StreamWallpaperDetect.Header" xml:space="preserve">
-    <value>Виявляти потокове відео</value>
+    <value>Braith sruthanna</value>
   </data>
   <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
-    <value>Якість відео</value>
+    <value>Caighdeán físeáin</value>
   </data>
   <data name="System.Text" xml:space="preserve">
-    <value>Система</value>
+    <value>Córas</value>
   </data>
   <data name="TaskbarTheme.Header" xml:space="preserve">
-    <value>Тема панелі завдань</value>
+    <value>Téama an tascbharra</value>
   </data>
   <data name="TitleTileSize" xml:space="preserve">
-    <value>Розмір плитки</value>
+    <value>Méid na dtíleanna</value>
   </data>
   <data name="TitleUIMode" xml:space="preserve">
-    <value>Інтерфейс</value>
+    <value>Comhéadan úsáideora</value>
   </data>
   <data name="TitleUpdates" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>Nuashonruithe</value>
   </data>
   <data name="TitleVideo" xml:space="preserve">
-    <value>Відео</value>
+    <value>Físeán</value>
   </data>
   <data name="VideoHardwareDecode.Header" xml:space="preserve">
-    <value>GPU декодування</value>
+    <value>Díchódú GPU</value>
   </data>
   <data name="TitleWallpaper.Content" xml:space="preserve">
-    <value>Шпалери</value>
+    <value>Cúlbhrat</value>
   </data>
   <data name="TitleCustomise.Content" xml:space="preserve">
-    <value>Налаштувати</value>
+    <value>Pearsantaigh</value>
   </data>
   <data name="WallpaperDir.Header" xml:space="preserve">
-    <value>Тека зі шпалерами</value>
+    <value>Comhadlann na gcúlbhrat</value>
   </data>
   <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
-    <value>Перемістіть наявні шпалери в нову теку</value>
+    <value>Bog cúlbhrait reatha go dtí fillteán nua</value>
   </data>
   <data name="WallpaperFit.Header" xml:space="preserve">
-    <value>Метод розміщення</value>
+    <value>Roghnaigh oiriúnú</value>
   </data>
   <data name="WallpaperInput.Header" xml:space="preserve">
-    <value>Пристрій вводу</value>
+    <value>Forimeallach idirghníomhaithe</value>
   </data>
   <data name="WallpaperLayout.Header" xml:space="preserve">
-    <value>Виберіть макет шпалер</value>
+    <value>Modh curtha</value>
   </data>
   <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Відтворення шпалер</value>
+    <value>Athsheinnt na gcúlbhrat</value>
   </data>
   <data name="TitleWarning" xml:space="preserve">
-    <value>Увага</value>
+    <value>Rabhadh</value>
   </data>
   <data name="WebBrowser.Header" xml:space="preserve">
-    <value>Веб браузер:</value>
+    <value>Brabhsálaí Gréasáin</value>
   </data>
   <data name="WebBrowserDiskCache.Header" xml:space="preserve">
-    <value>Кеш на диску</value>
+    <value>Dioscthaisce</value>
   </data>
   <data name="TitleWebBrowserEngine" xml:space="preserve">
-    <value>Веб-двигун</value>
+    <value>Inneall</value>
   </data>
   <data name="TitleWebpageLoad" xml:space="preserve">
-    <value>Завантажити сторінку</value>
+    <value>Lódáil leathanach Gréasáin</value>
   </data>
   <data name="FastUI.Description" xml:space="preserve">
-    <value>Залишати інтерфейс користувача запущеним для швидкого запуску</value>
+    <value>Coinnigh an comhéadan úsáideora ag rith le haghaidh tosnaithe níos tapa</value>
   </data>
   <data name="FastUI.Header" xml:space="preserve">
-    <value>Швидкий запуск</value>
+    <value>Mearthosnú</value>
   </data>
   <data name="WallpaperDirGroup.Text" xml:space="preserve">
-    <value>Файл</value>
+    <value>Comhad</value>
   </data>
   <data name="AppThemeDark.Content" xml:space="preserve">
-    <value>Темний</value>
+    <value>Dorcha</value>
   </data>
   <data name="AppThemeLight.Content" xml:space="preserve">
-    <value>Світлий</value>
+    <value>Geal</value>
   </data>
   <data name="AppThemeSystem.Content" xml:space="preserve">
-    <value>Система</value>
+    <value>Córas</value>
   </data>
   <data name="WindowsSettingsColor.Content" xml:space="preserve">
-    <value>Параметри кольору Windows</value>
+    <value>Socruithe datha Windows</value>
   </data>
   <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
-    <value>Ноутбуки</value>
+    <value>Ríomhairí glúine</value>
   </data>
   <data name="DeveloperGroup.Text" xml:space="preserve">
-    <value>Розробник</value>
+    <value>Forbróir</value>
   </data>
   <data name="AppearanceBehaviour.Text" xml:space="preserve">
-    <value>Зовнішній вигляд і поведінка</value>
+    <value>Cuma ⁊ iompraíocht</value>
   </data>
   <data name="ActiveWallpapers.Label" xml:space="preserve">
-    <value>Активні шпалери</value>
+    <value>Cúlbhrait ghníomhacha</value>
   </data>
   <data name="TitleGallery" xml:space="preserve">
-    <value>Галерея</value>
+    <value>Gailearaí</value>
   </data>
   <data name="AboutMe.Text" xml:space="preserve">
-    <value>Привіт, я Дані Джон, також відомий як rocksdanister. Я розробив безплатну програму для шпалер Lively із відкритим кодом (FOSS). Дякую, що знайшли час переглянути мою роботу.</value>
+    <value>Hé, mise Dani John, nó "rocksdanister". D'fhorbair mé Lively mar fheidhmchlár foinse oscailte saor in aisce le haghaidh cúlbhrat. Go raibh maith agat as súil a chaitheamh ar mo chuid saothar.</value>
   </data>
   <data name="LicenseLink.Content" xml:space="preserve">
-    <value>Ліцензія ПЗ</value>
+    <value>Ceadúnas bogearra</value>
   </data>
   <data name="AttributionLink.Content" xml:space="preserve">
-    <value>Повідомити про використання стороннього ПЗ</value>
+    <value>Fógra maidir le bogearraí tríú páirtí</value>
   </data>
   <data name="PrivacyPolicyLink.Content" xml:space="preserve">
-    <value>Політика збору даних</value>
+    <value>Beartas um bailiú sonraí</value>
   </data>
   <data name="AddWallpaperDrop.Text" xml:space="preserve">
-    <value>Додати шпалери</value>
+    <value>Cuir cúlbhrat leis</value>
   </data>
   <data name="ComingSoon.Text" xml:space="preserve">
-    <value>Незабаром</value>
+    <value>Ag teacht go luath</value>
   </data>
   <data name="AboutMenu.Text" xml:space="preserve">
-    <value>Про програму</value>
+    <value>Maidir leis seo</value>
   </data>
   <data name="SourceWebsite.Text" xml:space="preserve">
-    <value>Вебсайт</value>
+    <value>Suíomh Gréasáin</value>
   </data>
   <data name="TextOpen.Content" xml:space="preserve">
-    <value>Відкрити</value>
+    <value>Oscail</value>
   </data>
   <data name="TextSave.Content" xml:space="preserve">
-    <value>Зберегти</value>
+    <value>Sábháil</value>
   </data>
   <data name="UIMode.Description" xml:space="preserve">
-    <value>Ефекти та анімація інтерфейсу користувача</value>
+    <value>Maisíochtaí agus beochaintí an chomhéadain úsáideora</value>
   </data>
   <data name="UIMode.Header" xml:space="preserve">
-    <value>Інтерфейс користувача</value>
+    <value>Comhéadan úsáideora</value>
   </data>
   <data name="UIModeLite.Content" xml:space="preserve">
-    <value>Простий</value>
+    <value>Éadrom</value>
   </data>
   <data name="UIModeNormal.Content" xml:space="preserve">
-    <value>Нормальні</value>
+    <value>Gnách</value>
   </data>
   <data name="Screensaver.Description" xml:space="preserve">
-    <value>Як заставка застосовується до підключених до дисплея пристроїв</value>
+    <value>Conas a chuirtear an spárálaí scáileáin i bhfeidhm ar na gléasanna taispeána ceangailte</value>
   </data>
   <data name="Screensaver.Header" xml:space="preserve">
-    <value>Тип заставки</value>
+    <value>Cineál spárálaí scáileáin</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Власні</value>
+    <value>Pearsantaithe</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Віддзеркалювати шпалери</value>
+    <value>Dúblaigh an cúlbhrat</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
-    <value>Потрібно доповнення</value>
+    <value>Breiseán de dhíth</value>
   </data>
   <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
-    <value>Для запуску заставки потрібно одноразове налаштування</value>
+    <value>Tá cumraíocht aonuaire de dhíth chun spárálaí scáileáin a rith</value>
   </data>
   <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
-    <value>Завжди вибирати екран під час вибору шпалер</value>
+    <value>Roghnaigh "Scáileán" i gcónaí agus cúlbhrat á roghnú</value>
   </data>
   <data name="GalleryAccount.Text" xml:space="preserve">
-    <value>Обліковий запис</value>
+    <value>Cuntas</value>
   </data>
   <data name="GalleryAccountDelete.Content" xml:space="preserve">
-    <value>Видалити обліковий запис</value>
+    <value>Scrios an cuntas</value>
   </data>
   <data name="GalleryAccountExport.Content" xml:space="preserve">
-    <value>Експорт даних</value>
+    <value>Easpórtáil sonraí</value>
   </data>
   <data name="GalleryAccountLogin.Content" xml:space="preserve">
-    <value>Увійти</value>
+    <value>Logáil isteach</value>
   </data>
   <data name="GalleryAccountLogout.Content" xml:space="preserve">
-    <value>Вийти</value>
+    <value>Logáil amach</value>
   </data>
   <data name="GalleryPageCollection.Content" xml:space="preserve">
-    <value>Колекція</value>
+    <value>Bailiúchán</value>
   </data>
   <data name="GalleryPageHome.Content" xml:space="preserve">
-    <value>Головна</value>
+    <value>Baile</value>
   </data>
   <data name="GalleryPageManage.Content" xml:space="preserve">
-    <value>Керування</value>
+    <value>Bainistigh</value>
   </data>
   <data name="GalleryPageProfile.Content" xml:space="preserve">
-    <value>Профіль</value>
+    <value>Próifíl</value>
   </data>
   <data name="GalleryPleaseLogin.Text" xml:space="preserve">
-    <value>Увійдіть, щоб продовжити</value>
+    <value>Logáil isteach le leanúint ar aghaidh</value>
   </data>
   <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
-    <value>Привіт</value>
+    <value>Haigh,</value>
   </data>
   <data name="RestoreWallpaper.Text" xml:space="preserve">
-    <value>Ми знайшли ці шпалери у вашому обліковому записі</value>
+    <value>D'aimsíomair na cúlbhrait seo i do chuntas</value>
   </data>
   <data name="TextDownloadNow.Content" xml:space="preserve">
-    <value>Завантажити зараз</value>
+    <value>Íoslódáil anois</value>
   </data>
   <data name="TextMaybeLater.Content" xml:space="preserve">
-    <value>Можливо пізніше</value>
+    <value>Níos déanaí b'fhéidir</value>
   </data>
   <data name="TextSelectAll.Content" xml:space="preserve">
-    <value>Вибрати всі</value>
+    <value>Roghnaigh gach ceann</value>
   </data>
   <data name="TextSelectNone.Content" xml:space="preserve">
-    <value>Скасувати вибране</value>
+    <value>Díroghnaigh gach ceann</value>
   </data>
   <data name="TitleWelcomeback.Text" xml:space="preserve">
-    <value>З поверненням!</value>
+    <value>Fáilte thar n-ais</value>
   </data>
   <data name="ReportWallpaper.Header" xml:space="preserve">
-    <value>Причина</value>
+    <value>Cúiseanna</value>
   </data>
   <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
-    <value>Порушення авторських прав</value>
+    <value>Sárú ar chóipcheart</value>
   </data>
   <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
-    <value>Оманлива інформація</value>
+    <value>Eolas míthreorach</value>
   </data>
   <data name="ReportWallpaperOther.Content" xml:space="preserve">
-    <value>Інше</value>
+    <value>Eile</value>
   </data>
   <data name="ReportWallpaperSpam.Content" xml:space="preserve">
-    <value>Спам</value>
+    <value>Turscar</value>
   </data>
   <data name="ReportWallpaperViolence.Content" xml:space="preserve">
-    <value>Нагота або насильство</value>
+    <value>Nochtacht nó foréigean</value>
   </data>
   <data name="TextAdditionalNotes.Text" xml:space="preserve">
-    <value>Додаткова інформація</value>
+    <value>Nótaí breise</value>
   </data>
   <data name="TextReportWallpaper.Text" xml:space="preserve">
-    <value>Скарга</value>
+    <value>Tuairiscigh</value>
   </data>
   <data name="TitleReportWallpaper.Text" xml:space="preserve">
-    <value>Скарга про шпалери</value>
+    <value>Tuairiscigh an cúlbhrat</value>
   </data>
   <data name="Send.Content" xml:space="preserve">
-    <value>Надіслати</value>
+    <value>Seol</value>
   </data>
   <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
-    <value>Підтвердьте цю дію, оскільки її НЕ МОЖНА скасувати</value>
+    <value>Ní féidir an gníomh seo a chealú ina dhiaidh</value>
   </data>
   <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
-    <value>Не вдалося видалити обліковий запис, повторіть спробу пізніше</value>
+    <value>Níor scriosadh an cuntas, bain triail eile as ar ball</value>
   </data>
   <data name="TextConfirmCancel.Text" xml:space="preserve">
-    <value>Ви хочете скасувати це?</value>
+    <value>An bhfuil fonn ort í a chur ar ceal?</value>
   </data>
   <data name="TextWait.Text" xml:space="preserve">
-    <value>Зачекати</value>
+    <value>Fan</value>
   </data>
   <data name="TitleDownloadProgress.Text" xml:space="preserve">
-    <value>Триває завантаження</value>
+    <value>Íoslódáil ar siúl</value>
   </data>
   <data name="TextContributors.Text" xml:space="preserve">
-    <value>Учасники</value>
+    <value>Rannpháirtithe</value>
   </data>
   <data name="TextShare.Text" xml:space="preserve">
-    <value>Поділитися</value>
+    <value>Comhroinn</value>
   </data>
   <data name="TitleShareWallpaper.Text" xml:space="preserve">
-    <value>Поділитися шпалерами</value>
+    <value>Comhroinn an cúlbhrat</value>
   </data>
   <data name="ExportWallpaperGallery.Text" xml:space="preserve">
-    <value>Завантажити галереї</value>
+    <value>Uaslódáil ghailearaí</value>
   </data>
   <data name="ExportWallpaperLink.Text" xml:space="preserve">
-    <value>Копіювати посилання</value>
+    <value>Cóipeáil an nasc</value>
   </data>
   <data name="TextCustomiseWallpaper" xml:space="preserve">
-    <value>Налаштувати шпалер</value>
+    <value>Pearsantaigh an cúlbhrat</value>
   </data>
   <data name="TextCloseWallpapers" xml:space="preserve">
-    <value>Закрити шпалери</value>
+    <value>Dún cúlbhrait</value>
   </data>
   <data name="TitleChooseApplication.Text" xml:space="preserve">
-    <value>Виберіть додаток</value>
+    <value>Roghnaigh feidhmchlár</value>
   </data>
   <data name="WallpaperInstallSize.Text" xml:space="preserve">
-    <value>Розмір</value>
+    <value>Méid</value>
   </data>
   <data name="PluginNotFound.Message" xml:space="preserve">
-    <value>Будь ласка, встановіть необхідний плагін</value>
+    <value>Suiteáil an breiseán atá ag teastáil</value>
   </data>
   <data name="PluginNotFound.Title" xml:space="preserve">
-    <value>Плагін не знайдено.</value>
+    <value>Níor aimsíodh an breiseán</value>
   </data>
   <data name="UpdateCompleted.Text" xml:space="preserve">
-    <value>Оновлення завершено</value>
+    <value>Críochnaíodh an nuashonrú</value>
   </data>
   <data name="UpdateWhatsNew.Text" xml:space="preserve">
-    <value>Перевірте, що нового</value>
+    <value>Féach cad atá nua</value>
   </data>
   <data name="AppThemeColor.Header" xml:space="preserve">
-    <value>Колір</value>
+    <value>Dath</value>
   </data>
   <data name="DescriptionDefault.Text" xml:space="preserve">
-    <value>Використовувати системні налаштування за замовчуванням</value>
+    <value>Bain úsáid as réamhshocrú an chórais</value>
   </data>
   <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
-    <value>Адаптувати до фону</value>
+    <value>Oiriúnaigh don chúlbhrat</value>
   </data>
   <data name="TextDefault.Text" xml:space="preserve">
-    <value>За умовчанням</value>
+    <value>Réamhshocraithe</value>
   </data>
   <data name="TextDynamicTheme.Text" xml:space="preserve">
-    <value>Динамічний</value>
+    <value>Dinimiciúil</value>
   </data>
   <data name="Theme.Label" xml:space="preserve">
-    <value>Тема</value>
+    <value>Téama</value>
   </data>
   <data name="IconsHidden.Message" xml:space="preserve">
-    <value>Щоб запобігти випадковому вибору, значки на робочому столі наразі приховані</value>
+    <value>Tá deilbhíní deisce folaithe fé láthair chun roghnú teagmhasach a sheachaint</value>
   </data>
   <data name="IconsHidden.Title" xml:space="preserve">
-    <value>Іконки робочого столу</value>
+    <value>Deilbhíní deisce</value>
   </data>
   <data name="TextEndOfItems.Text" xml:space="preserve">
-    <value>Це все, що на даний момент..</value>
+    <value>Sin é fé láthair...</value>
   </data>
   <data name="DevelopmentOnHold.Message" xml:space="preserve">
-    <value>Розробка цієї функції призупинена</value>
+    <value>Cuireadh forbairt na gné seo go hathlá</value>
   </data>
   <data name="WallpaperPluginGroup.Text" xml:space="preserve">
-    <value>Плагіни</value>
+    <value>Breiseáin</value>
   </data>
   <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
-    <value>Створити динамічні шпалери</value>
+    <value>Cruthaigh cúlbhrat dinimiciúil</value>
   </data>
   <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
-    <value>Додаткові налаштування</value>
+    <value>Ardsocruithe</value>
   </data>
   <data name="DescriptionDepthApprox.Content" xml:space="preserve">
-    <value>Визначення глибини..</value>
+    <value>Doimhneacht á meas...</value>
   </data>
   <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Використання ШІ для перетворення фотографій у 3D</value>
+    <value>Grianghraif á dtiontú go 3T le hintleacht shaorga</value>
   </data>
   <data name="TextContinue.Content" xml:space="preserve">
-    <value>Продовжити</value>
+    <value>Lean ar aghaidh</value>
   </data>
   <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
-    <value>Створити прості шпалери</value>
+    <value>Cruthaigh cúlbhrat simplí</value>
   </data>
   <data name="TitleDepthWallpaper.Content" xml:space="preserve">
-    <value>ШІ шпалери з глибиною</value>
+    <value>Cúlbhrat doimhneachta intleachta saorga</value>
   </data>
   <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
-    <value>Шпалери з глибиною</value>
+    <value>Cúlbhrat doimhneachta</value>
   </data>
   <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
-    <value>Шпалери з глибиною згенеровані ШІ</value>
+    <value>Cúlbhrat doimhneachta a gineadh le hintleacht shaorga</value>
   </data>
   <data name="TitleCreateWallpaper.Content" xml:space="preserve">
-    <value>Створити шпалери</value>
+    <value>Cruthaigh cúlbhrat</value>
   </data>
   <data name="RunningAsAdminWarning.Message" xml:space="preserve">
-    <value>Деякі функції можуть бути недоступними при запуску з правами адміністратора</value>
+    <value>Seans ná beidh fáil ar roinnt feidhmiúlachtaí agus an feidhmchlár á rith agat mar riarthóir</value>
   </data>
   <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
-    <value>Необхідно завантажити додаткові файли</value>
+    <value>Ní mór duit comhaid bhreise a íoslódáil chun úsáid a bhaint as an ngné seo</value>
   </data>
   <data name="TitleDownloadRequired.Text" xml:space="preserve">
-    <value>Потрібне завантаження</value>
+    <value>Íoslódáil de dhíth</value>
   </data>
   <data name="TitleDownload.Content" xml:space="preserve">
-    <value>Завантажити</value>
+    <value>Íoslódáil</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Стати підписником Patreon</value>
+    <value>Téigh isteach sa lucht tacaithe ar Patreon</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Дякуємо всім членам, які підтримують цей проект.</value>
+    <value>Buíochas do gach aon bhall atá ag tabhairt tacaíocht don tionscadal so.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Підписники Patreon</value>
+    <value>Lucht tacaithe ar Patreon</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
-    <value>Виберіть заставку екрану</value>
+    <value>Roghnaigh spárálaí scáileáin</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Для перегляду цього вмісту потрібен Microsoft WebView2</value>
+    <value>Tá Microsoft WebView2 ag teastáil le hamharc ar an inneachar so</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
-    <value>Потрібно доповнення</value>
+    <value>Breiseán de dhíth</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Виберіть програми, які потрібно виключити з зображенням деталей музики</value>
+    <value>Roghnaigh feidhmchláir le fágaint ar lár le haghaidh taispeána sonraí an cheoil</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>Вимкнення додатку</value>
+    <value>Eisiamh feidhmchlár</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Перезавантаження</value>
+    <value>Atosnaigh</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Музика</value>
+    <value>Ceol</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Щоб налаштування набрали чинності, потрібно перезавантажити шпалери</value>
+    <value>Tá atosnú cúlbhrait de dhíth le socruithe a chur i bhfiedhm</value>
   </data>
 </root>
