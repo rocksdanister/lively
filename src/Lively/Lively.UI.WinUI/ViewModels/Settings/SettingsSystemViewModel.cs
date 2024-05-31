@@ -34,24 +34,7 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             //MainWindow dispatcher may not be ready yet, creating our own instead..
             dispatcherQueue = DispatcherQueue.GetForCurrentThread() ?? DispatcherQueueController.CreateOnCurrentThread().DispatcherQueue;
 
-            IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
             SelectedTaskbarThemeIndex = (int)userSettings.Settings.SystemTaskbarTheme;
-            //IsLockScreenAutoWallpaper = userSettings.Settings.LockScreenAutoWallpaper;
-        }
-
-        private bool _isDesktopAutoWallpaper;
-        public bool IsDesktopAutoWallpaper
-        {
-            get => _isDesktopAutoWallpaper;
-            set
-            {
-                if (userSettings.Settings.DesktopAutoWallpaper != value)
-                {
-                    userSettings.Settings.DesktopAutoWallpaper = value;
-                    UpdateSettingsConfigFile();
-                }
-                SetProperty(ref _isDesktopAutoWallpaper, value);
-            }
         }
 
         private int _selectedTaskbarThemeIndex;
