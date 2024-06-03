@@ -116,6 +116,8 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append("--stop-screensaver=no ");
             //disable mpv default (built-in) key bindings
             cmdArgs.Append("--input-default-bindings=no ");
+            //Permit mpv to receive pointer events reported by the video output driver. Necessary to use the OSC, or to select the buttons in DVD menus. 
+            cmdArgs.Append(!onScreenControl ? "--input-cursor=no " : " ");
             //on-screen-controller visibility
             cmdArgs.Append(!onScreenControl ? "--no-osc " : " ");
             //alternative: --input-ipc-server=\\.\pipe\
