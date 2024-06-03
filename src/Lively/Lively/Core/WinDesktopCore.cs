@@ -578,11 +578,25 @@ namespace Lively.Core
             }
         }
 
-        public async Task ReloadWallpaperAsync()
+        public async Task RestartWallpaper()
         {
             // Copy existing wallpapers
             var originalWallpapers = Wallpapers.ToList();
             CloseAllWallpapers(true);
+            foreach (var item in originalWallpapers)
+            {
+                await SetWallpaperAsync(item.Model, item.Screen);
+                if (userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
+                    break;
+            }
+
+        }
+
+        public async Task RestartWallpaper(DisplayMonitor display)
+        {
+            // Copy existing wallpapers
+            var originalWallpapers = Wallpapers.Where(x => x.Screen.Equals(display)).ToList();
+            CloseWallpaper(display, true);
             foreach (var item in originalWallpapers)
             {
                 await SetWallpaperAsync(item.Model, item.Screen);

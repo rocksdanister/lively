@@ -157,7 +157,11 @@ namespace Lively.Automation
             {
                 if (opts.IsReload)
                 {
-                    _ = desktopCore.ReloadWallpaperAsync();
+                    var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
+                    if (screen != null)
+                        _ = desktopCore.RestartWallpaper(screen);
+                    else
+                        _ = desktopCore.RestartWallpaper();
                 }
                 else if (opts.IsRandom)
                 {
