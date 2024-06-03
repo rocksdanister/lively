@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AudioFocused.Content" xml:space="preserve">
-    <value>Redă audio numai când desktopul este focalizat</value>
+    <value>Redați audio numai când desktopul este focalizat</value>
   </data>
   <data name="Audio.Description" xml:space="preserve">
     <value>Volumul tuturor fundalurilor.</value>
@@ -138,26 +138,26 @@
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively a întâmpinat o eroare critică.
 
-Windows Explorer a repornit de două ori în ultimele 30 de secunde! Acesta poate fi un conflict între Lively și alt software de personalizare desktop sau Windows. Pentru a evita alte probleme, toate fundalurile au fost oprite.</value>
+Explorer a repornit de două ori în ultimele 30 de secunde! Acesta poate fi un conflict între Lively și alt software de personalizare desktop sau Windows. Pentru a evita alte probleme, toate fundalurile au fost oprite.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Program incompatibil găsit, tematica din bara de activități dezactivată.</value>
   </data>
   <data name="Website.Description" xml:space="preserve">
-    <value>Pagina oficială Lively Wallpaper</value>
+    <value>Pagina web oficială a Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Majoritatea ecranelor LCD și LED moderne nu suferă de probleme de ardere și, prin urmare, orice fundal poate fi folosit ca screensaver.
+    <value>Majoritatea ecranelor LCD și LED moderne nu suferă de probleme de ardere și, prin urmare, orice fundal poate fi folosit ca economizor de ecran.
 
-Pentru afișajele OLED, cu plasmă sau CRT care sunt susceptibile de a arde, se recomandă utilizarea fundalelor cu mișcare regulată și o temă generală întunecată care ar trebui să atenueze arderea, dar această caracteristică nu este testată și eficacitatea ei nu poate fi garantată.
+Pentru ecranele OLED, cu plasmă sau CRT care sunt susceptibile de a arde, se recomandă utilizarea fundalelor cu mișcare regulată și o temă generală întunecată care ar trebui să atenueze arderea, dar această caracteristică nu este testată și eficacitatea ei nu poate fi garantată.
 
-Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel de personalizare la computerul tău, folosește screensaverele ca protecție împotriva arderii pe propriu tău risc!</value>
+Scopul principal al economizoarelor de ecran de la Lively este de a adăuga un alt nivel de personalizare computerului tău, folosește economizoarele de ecran ca protecție împotriva arderii pe propriu tău risc!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
-    <value>Raportează o problemă cu software-ul</value>
+    <value>Raportați o problemă cu programul softwear</value>
   </data>
   <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
-    <value>Selectează un fișier</value>
+    <value>Selectați un fișier</value>
   </data>
   <data name="DescriptionAppRules" xml:space="preserve">
     <value>Comportamentul de redare a imaginii de fundal bazat pe rularea aplicației.</value>
@@ -172,30 +172,30 @@ Scopul principal al screensaverelor de la Lively este de a adăuga un alt nivel 
     <value>Sigur ștergi acest fundal din Bibliotecă?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Pur și simplu tragi și plasezi fișierele aici</value>
+    <value>Pur și simplu trageți și fixați fișierele aici</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Deschizi o aplicație externă ca fundal.
-Aplicațiile rău intenționate pot găzdui malware, viruși... și pot dăuna sistemul tău.
-Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</value>
+    <value>Deschideți o aplicație externă ca fundal.
+Aplicațiile rău intenționate pot găzdui malware, viruși... și pot dăuna sistemului dvs.
+Continuați doar dacă această aplicație provine dintr-o sursă de încredere.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively este minimizat în bara de sistem, fă clic dreapta pe pictograma lively pentru a continua.</value>
+    <value>Lively este minimizat în bara de sistem, faceți clic dreapta pe pictograma lively pentru a continua.</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Te rog repornește Lively pentru ca setările să aibă efect</value>
+    <value>Vă rugăm să reporniți Lively pentru ca setările să aibă efect</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Te rog oprește înainte să procedezi</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Apasă pentru a începe înregistrarea</value>
+    <value>Apăsați pentru a începe înregistrarea</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
-    <value>Se restaurează fundalurile, așteaptă...</value>
+    <value>Acum se restaurează fundalurile, așteptați...</value>
   </data>
   <data name="DescriptionScreenLayout" xml:space="preserve">
-    <value>Alege Ecran</value>
+    <value>Alegere Afișaj</value>
   </data>
   <data name="DescriptionUpdateAvailable" xml:space="preserve">
     <value>O nouă versiune este disponibilă!</value>
@@ -204,46 +204,46 @@ Continuă doar dacă această aplicație provine dintr-o sursă de încredere.</
     <value>Introdu linkul site-ului pentru a încărca, linkurile shadertoy.com sunt acceptate</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Acest asistent o să te ajute să configurezi Lively</value>
+    <value>Acest asistent vă va ajuta să configurați Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Versiunea ta Windows N/KN va necesita descărcarea de codec uri suplimentare pentru a suporta redarea video în imagini de fundal</value>
+    <value>Versiunea dvs. Windows N/KN va necesita descărcarea de codec-uri suplimentare pentru a suporta redarea videoclipurilor în imagini de fundal</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Arată suportul cu o cafea pentru dezvoltator</value>
+    <value>Arătați-vă suportul cumpărând o cafea dezvoltatorului</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Ești pe cale să treci la versiunea beta (dezvoltator) a Lively.
-Actualizările vor fi frecvente și poate să nu meargă stabil!</value>
+    <value>Sunteți pe punctul de a trece la versiunea beta (dezvoltator) a Lively.
+Actualizările vor fi frecvente și pot apărea probleme!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Vizibilitatea iconiței, Lively va continua să meargă cu iconița ascunsă</value>
+    <value>Vizibilitatea pictogramei în bara de sistem, Lively va continua să ruleze cu pictograma ascunsă</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Iconiță din bară</value>
+    <value>Pictograma din bara de sistem</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
     <value>Lively va reporni pentru a aplica o nouă limbă</value>
   </data>
   <data name="Language.Header" xml:space="preserve">
-    <value>Limbă romana</value>
+    <value>Limbă</value>
   </data>
   <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
-    <value>Actualizare eșuată; încearcă să descarci programul de instalare de la:
+    <value>Actualizare eșuată; încercați să descărcați programul de instalare de la:
 https://github.com/rocksdanister/lively/releases</value>
   </data>
   <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
-    <value>Fișier de fundal corupt, încearcă să îl redescarci</value>
+    <value>Fișier de fundal deteriorat, încercați sa îl redescărcați</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>Ups... Se pare că ceva nu funcționează perfect :(
-Pentru a înțelege mai bine această eroare și de a remedia problema, trimite fișierul  "log" cu dezvoltatorul.
-Instrucțiuni pentru partajarea fișierului "log":
+    <value>Ups... Se pare că ceva nu a mers bine :(
+Pentru a înțelege mai bine această eroare și de a remedia problema, partajați fișierul jurnal cu dezvoltatorul.
+Instrucțiuni pentru partajarea fișierului jurnal:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
-    <value>Lively nu poate funcționa corect cu modul Windows Contrast ridicat activat!
-Dezactivează modul Contrast ridicat și încearcă din nou.</value>
+    <value>Lively nu poate funcționa corect cu modul Contrast Înalt Windows activat!
+Dezactivați modul Contrast Înalt și încercați din nou</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>Redarea media a eșuat :(
@@ -252,11 +252,11 @@ Instrucțiuni pentru partajarea fișierului "log":
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>Nu este un fișier de fundal Lively.</value>
+    <value>Nu este un fișier de fundal Lively</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively nu a fost închis corect, se pornește în safe mode.
-Vrei să restaurezi fundalurile care rulau anterior?</value>
+    <value>Lively nu a fost închis corect, se pornește în modul de siguranță.
+Doriți să restaurați fundalurile care rulau anterior?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Se pare că unele setări trebuie setate pentru ca Lively să funcționeze:
@@ -643,7 +643,7 @@ Când ești gata, navigează la http://localhost:portnumber pentru a accesa cons
     <value>Selectează playerul folosit pentru imaginea de fundal gif.</value>
   </data>
   <data name="TipLivelySetupOnClose" xml:space="preserve">
-    <value>Finalizează setup-ul pentru a continua.</value>
+    <value>Finalizați configurarea pentru a continua</value>
   </data>
   <data name="LockscreenPicture.Description" xml:space="preserve">
     <value>Setează o imagine a fundalului animat ca imagine de fundal pentru ecranul de blocare.</value>
@@ -755,7 +755,7 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Poză desktop</value>
   </data>
   <data name="DisplayPauseRule.Header" xml:space="preserve">
-    <value>Display Pause Rule</value>
+    <value>Regulă pauză afișaj</value>
   </data>
   <data name="Documentation.Header" xml:space="preserve">
     <value>Documentație</value>
@@ -1236,24 +1236,24 @@ Edge este vizualizarea web integrată a Windows 10.</value>
     <value>Selectaţi ecranul</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Microsoft WebView2 este necesar pentru a vizualiza acest conținut</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Plugin necesar</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Selectați aplicații pentru a le exclude de la afișarea detaliilor muzicii</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Excludere aplicație</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Repornire</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Muzică</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Este necesară repornirea imaginii de fundal pentru ca setările să aibă efect</value>
   </data>
 </root>

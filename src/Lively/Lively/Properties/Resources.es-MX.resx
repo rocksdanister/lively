@@ -563,7 +563,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Opciones de lanzamiento</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Rellenar</value>
@@ -1242,24 +1242,24 @@ Espejo de Fondo de pantalla</value>
     <value>Seleccione salvapantallas</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Necesitas tener Microsoft WebView2 instalado para ver este contenido</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Plug-in requerido</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Seleccionar aplicaciones para excluir de mostrar detalles de música</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Exclusión de aplicación</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Reiniciar</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Música</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Es necesario reiniciar el fondo de pantalla para que la configuración surta efecto</value>
   </data>
 </root>

@@ -1248,18 +1248,18 @@ Edge es la vista web integrada en Windows 10.</value>
     <value>Plugin requerido</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Seleccione aplicaciones a excluir de mostrar detalles de música</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Exclusión de aplicaciones</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Reiniciar</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Música</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Es necesario reiniciar el fondo de pantalla para que la configuración surta efecto</value>
   </data>
 </root>

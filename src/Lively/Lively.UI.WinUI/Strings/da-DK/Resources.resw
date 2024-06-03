@@ -563,7 +563,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
     <value>Video</value>
   </data>
   <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
-    <value>Launch Options</value>
+    <value>Indstillinger for opstart</value>
   </data>
   <data name="WallpaperFitFill.Content" xml:space="preserve">
     <value>Fyld</value>
@@ -578,7 +578,7 @@ Hvis det stadig ikke virker, luk &amp; start livligt igen/genstart vinduer.
     <value>Uniform Fyld</value>
   </data>
   <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
-    <value>Duplicate</value>
+    <value>Duplikér</value>
   </data>
   <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
     <value>Skærm</value>

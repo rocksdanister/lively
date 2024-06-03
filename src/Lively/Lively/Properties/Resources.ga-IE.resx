@@ -210,7 +210,7 @@ Ná lean ar aghaidh ach amháin má thagann an feidhmchlár so ó fhoinse iontao
     <value>Beidh comhbhrúnna breise ag teastáil ó leagan N/KN Windows chun tacú le hathsheinnt físeán i gcúlbhrait</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Taispeáin tacaíocht don bhforbróir agus ceannaigh caife dhó</value>
+    <value>Ceannaigh caife don bhforbróir agus taispeáin tacaíocht dó</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
     <value>Tá tú ar tí athrú go dtí an leagan béite (forbróra) de Lively.
@@ -257,8 +257,8 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Ní comhad cúlbhrait Lively é seo</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively was not closed properly, starting in safe mode.
-Do you wish to restore previously running wallpapers?</value>
+    <value>Níor dúnadh Lively i gceart. Mód sábháilte á thosnú.
+An bhfuil fonn ort na cúlbhrait a bhí á rith agat roimhe seo a chur thar n-ais?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
     <value>Is cosúil go gcaithfidh tú cúpla socruithe a athrú chun Lively a rith i gceart:
@@ -275,7 +275,7 @@ Mura bhfuil sé ag feidhmiú go fóill, déan Lively a dhúnadh agus a atosnú a
     <value>Ní mór do Lively a bheith ag rith sa chúlra le haghaidh athsheinnt na gcúlbhrat</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Tosnaigh le Windows</value>
+    <value>Tosnaigh in éineacht le Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Cuir leis</value>
@@ -458,7 +458,7 @@ Mura bhfuil sé ag feidhmiú go fóill, déan Lively a dhúnadh agus a atosnú a
     <value>Beartas Príobháideachais</value>
   </data>
   <data name="TextProcessingWallpaper" xml:space="preserve">
-    <value>Processing</value>
+    <value>Á bpróiseáil</value>
   </data>
   <data name="TextRemove" xml:space="preserve">
     <value>Bain</value>
@@ -503,7 +503,7 @@ Mura bhfuil sé ag feidhmiú go fóill, déan Lively a dhúnadh agus a atosnú a
     <value>Clibeanna</value>
   </data>
   <data name="TaskbarThemeBlur.Content" xml:space="preserve">
-    <value>Geamhú</value>
+    <value>Geamhaigh</value>
   </data>
   <data name="TaskbarThemeClear.Content" xml:space="preserve">
     <value>Trédhearcach</value>
@@ -1254,6 +1254,6 @@ Mura bhfuil sé ag feidhmiú go fóill, déan Lively a dhúnadh agus a atosnú a
     <value>Ceol</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Tá atosnú cúlbhrait de dhíth le socruithe a chur i bhfiedhm</value>
+    <value>Tá atosnú cúlbhrait de dhíth le socruithe a chur i bhfeidhm</value>
   </data>
 </root>

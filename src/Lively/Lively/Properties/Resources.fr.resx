@@ -1242,24 +1242,24 @@ Edge est la vue Web intégrée de Windows 10.</value>
     <value>Sélectionner un économiseur d'écran</value>
   </data>
   <data name="WebViewRequired.Message" xml:space="preserve">
-    <value>Microsoft WebView2 is required to view this content</value>
+    <value>Microsoft WebView2 est nécessaire pour visualiser ce contenu</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
     <value>Extension requise</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Sélectionnez les applications à exclure de l'affichage des détails de la musique</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Exclusion des applications</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Redémarrer</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Musique</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Un redémarrage du fond d'écran est nécessaire pour que les paramètres prennent effet</value>
   </data>
 </root>
