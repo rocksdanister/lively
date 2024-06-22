@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="NPSMLib" Version="0.9.14" />
   </ItemGroup>

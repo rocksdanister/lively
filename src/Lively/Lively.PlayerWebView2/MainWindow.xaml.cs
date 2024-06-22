@@ -126,28 +126,26 @@ namespace Lively.PlayerWebView2
                 }
             };
 
-            if (startArgs.Type.Equals("online", StringComparison.OrdinalIgnoreCase))
+            switch (startArgs.Type)
             {
-                string tmp = null;
-                if (StreamUtil.TryParseShadertoy(startArgs.Url, ref tmp))
-                {
-                    webView.CoreWebView2.NavigateToString(tmp);
-                }
-                else if (StreamUtil.TryParseYouTubeVideoIdFromUrl(startArgs.Url, ref tmp))
-                {
-                    //fullscreen yt embed player with looping enabled.
-                    webView.CoreWebView2.Navigate("https://www.youtube.com/embed/" + tmp +
-                        "?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist=" + tmp);
-                }
-                else
-                {
-                    webView.CoreWebView2.Navigate(startArgs.Url);
-                }
-            }
-            else
-            {
-                //webView.CoreWebView2.SetVirtualHostNameToFolderMapping(Path.GetFileName(startArgs.Url), Path.GetDirectoryName(startArgs.Url), CoreWebView2HostResourceAccessKind.Allow);
-                webView.CoreWebView2.Navigate(startArgs.Url);
+                case "online":
+                    {
+                        string tmp = null;
+                        if (StreamUtil.TryParseShadertoy(startArgs.Url, ref tmp))
+                            webView.CoreWebView2.NavigateToString(tmp);
+                        else if (StreamUtil.TryParseYouTubeVideoIdFromUrl(startArgs.Url, ref tmp))
+                            webView.CoreWebView2.Navigate($"https://www.youtube.com/embed/{tmp}?version=3&rel=0&autoplay=1&loop=1&controls=0&playlist={tmp}");
+                        else
+                            webView.CoreWebView2.Navigate(startArgs.Url);
+                    }
+                    break;
+                case "local":
+                    {
+                        NavigateToLocalPath(startArgs.Url);
+                    }
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
         }
 
@@ -473,6 +471,23 @@ namespace Lively.PlayerWebView2
             }
             script.Append(");");
             return await webView?.ExecuteScriptAsync(script.ToString());
+        }
+
+        public void NavigateToLocalPath(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            var fileName = Path.GetFileName(filePath);
+            // Use unique hostname to avoid webview cache issues.
+            var hostName = new DirectoryInfo(filePath).Parent.Name;
+            var directoryPath = Path.GetDirectoryName(filePath);
+            webView.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                hostName,
+                directoryPath,
+                CoreWebView2HostResourceAccessKind.Allow);
+
+            webView.CoreWebView2.Navigate($"https://{hostName}/{fileName}");
         }
 
         //ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/529
