@@ -81,7 +81,7 @@ namespace Lively.Automation
             {
                 if ((bool)opts.ShowApp)
                 {
-                    //process so dispatcher not required.
+                    // Since it is separate process dispatcher not required.
                     runner.ShowUI();
                 }
                 else
@@ -89,18 +89,19 @@ namespace Lively.Automation
                     runner.CloseUI();
                 }
             }
-            /*
-            _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+
+            if (!string.IsNullOrEmpty(opts.Volume) && float.TryParse(opts.Volume, out float val))
             {
-                if (opts.ShowTray != null)
+                if ((opts.Volume.StartsWith('+') || opts.Volume.StartsWith('-')))
                 {
-                    systray.Visibility((bool)opts.ShowTray);
+                    var clampedValue = Clamp((int)val, -100, 100);
+                    var newVolume = Clamp(userSettings.Settings.AudioVolumeGlobal + clampedValue, 0, 100);
+                    userSettings.Settings.AudioVolumeGlobal = newVolume;
                 }
-            }));
-            */
-            if (opts.Volume != null)
-            {
-                userSettings.Settings.AudioVolumeGlobal = Clamp((int)opts.Volume, 0, 100);
+                else
+                {
+                    userSettings.Settings.AudioVolumeGlobal = Clamp((int)val, 0, 100);
+                }
             }
 
             if (opts.Play != null)

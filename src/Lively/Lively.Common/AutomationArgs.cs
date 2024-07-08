@@ -29,8 +29,8 @@ namespace Lively.Common
 
             [Option("volume",
             Required = false,
-            HelpText = "Wallpaper audio level (0-100).")]
-            public int? Volume { get; set; }
+            HelpText = "Wallpaper audio level (0-100) or +/- for increment/decrement resp.")]
+            public string Volume { get; set; }
 
             [Option("play",
             Required = false,
