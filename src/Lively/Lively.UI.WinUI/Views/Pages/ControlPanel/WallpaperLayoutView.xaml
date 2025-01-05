@@ -64,24 +64,20 @@
             </controls:SettingsExpander.HeaderIcon>
             <controls:SettingsExpander.Items>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <Grid
-                        BorderBrush="{ThemeResource ControlElevationBorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="5">
-                        <ListBox Padding="-2.5" SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
+                    <controls:Segmented SelectedIndex="{Binding SelectedWallpaperLayoutIndex, Mode=TwoWay}">
+                        <controls:SegmentedItem>
                             <TextBlock>
                                 <Run x:Uid="WallpaperLayoutPerScreen" />
                                 <Run Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Text="{Binding SelectedItem.Screen.Index, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='({0})'}" />
                             </TextBlock>
+                        </controls:SegmentedItem>
+                        <controls:SegmentedItem>
                             <TextBlock x:Uid="WallpaperLayoutSpan" />
+                        </controls:SegmentedItem>
+                        <controls:SegmentedItem>
                             <TextBlock x:Uid="WallpaperLayoutDuplicate" />
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <VirtualizingStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                        </ListBox>
-                    </Grid>
+                        </controls:SegmentedItem>
+                    </controls:Segmented>
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox x:Uid="WallpaperLayoutScreenPicker" IsChecked="{Binding IsRememberSelectedScreen, Mode=TwoWay, Converter={StaticResource BoolNegationConverter}}" />
