@@ -173,20 +173,47 @@ namespace Lively.Automation
                                 var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
                                 if (screen != null)
                                 {
-                                    _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), screen);
+                                    var wallpapers = GetRandomWallpaper().Take(2);
+                                    using var enumerator = wallpapers.GetEnumerator();
+                                    var firstWallpaper = enumerator.MoveNext() ? enumerator.Current : null;
+                                    if (firstWallpaper is null)
+                                        return 0;
+
+                                    var secondWallpaper = enumerator.MoveNext() ? enumerator.Current : null;
+                                    var currentWallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
+
+                                    // Select different wallpaper if current is same.
+                                    var newWallpaper = secondWallpaper != null && currentWallpaper?.Model.LivelyInfoFolderPath == firstWallpaper.LivelyInfoFolderPath ?
+                                        secondWallpaper : firstWallpaper;
+
+                                    _ = desktopCore.SetWallpaperAsync(newWallpaper, screen);
                                 }
                                 else
                                 {
                                     // Apply wallpaper to all screens.
                                     var screenCount = displayManager.DisplayMonitors.Count;
-                                    var wallpapersRandom = GetRandomWallpaper().Take(screenCount);
-                                    var wallpapersCount = wallpapersRandom.Count();
-                                    if (wallpapersCount > 0)
+                                    // Fetch additional wallpaper for more randomness.
+                                    var wallpapers = GetRandomWallpaper().Take(screenCount * 2);
+                                    if (!wallpapers.Any())
+                                        return 0;
+
+                                    var usedWallpapers = new List<LibraryModel>();
+                                    for (int i = 0; i < screenCount; i++)
                                     {
-                                        for (int i = 0; i < screenCount; i++)
-                                        {
-                                            _ = desktopCore.SetWallpaperAsync(wallpapersRandom.ElementAt(i > wallpapersCount - 1 ? 0 : i), displayManager.DisplayMonitors[i]);
-                                        }
+                                        var currentScreen = displayManager.DisplayMonitors[i];
+                                        var currentWallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(currentScreen));
+
+                                        // Select a random wallpaper that is Not already used and Not the same as the current wallpaper on this screen.
+                                        var newWallpaper =
+                                            wallpapers.FirstOrDefault(x => (currentWallpaper == null || x.LivelyInfoFolderPath != currentWallpaper.Model.LivelyInfoFolderPath) && !usedWallpapers.Contains(x))
+                                            // Fallback if all match currentWallpaper
+                                            ?? wallpapers.FirstOrDefault(x => !usedWallpapers.Contains(x))
+                                            // Fallback to the first wallpaper if all are used
+                                            ?? wallpapers.First();
+
+                                        usedWallpapers.Add(newWallpaper);
+
+                                        _ = desktopCore.SetWallpaperAsync(newWallpaper, currentScreen);
                                     }
                                 }
                             }
@@ -194,14 +221,20 @@ namespace Lively.Automation
                         case WallpaperArrangement.span:
                         case WallpaperArrangement.duplicate:
                             {
-                                try
-                                {
-                                    _ = desktopCore.SetWallpaperAsync(GetRandomWallpaper().First(), displayManager.PrimaryDisplayMonitor);
-                                }
-                                catch (InvalidOperationException)
-                                {
-                                    //No wallpapers present.
-                                }
+                                var wallpapers = GetRandomWallpaper().Take(2);
+                                using var enumerator = wallpapers.GetEnumerator();
+                                var firstWallpaper = enumerator.MoveNext() ? enumerator.Current : null;
+                                if (firstWallpaper is null)
+                                    return 0;
+
+                                var secondWallpaper = enumerator.MoveNext() ? enumerator.Current : null;
+                                var currentWallpaper = desktopCore.Wallpapers.FirstOrDefault();
+
+                                // Select different wallpaper if current is same.
+                                var newWallpaper = secondWallpaper != null && currentWallpaper?.Model.LivelyInfoFolderPath == firstWallpaper.LivelyInfoFolderPath ?
+                                    secondWallpaper : firstWallpaper;
+
+                                _ = desktopCore.SetWallpaperAsync(newWallpaper, displayManager.PrimaryDisplayMonitor);
                             }
                             break;
                     }
