@@ -14,7 +14,7 @@ namespace Lively.ML.Helpers
         /// </summary>
         public static MagickImage FloatArrayToMagickImage(float[] floatArray, int width, int height)
         {
-            var image = new MagickImage(MagickColor.FromRgb(0, 0, 0), width, height);
+            var image = new MagickImage(MagickColor.FromRgb(0, 0, 0), (uint)width, (uint)height);
             var pixels = image.GetPixels();
             for (int i = 0; i < floatArray.Length; i++)
             {
@@ -29,7 +29,7 @@ namespace Lively.ML.Helpers
         public static MagickImage FloatArrayToMagickImageResize(float[] floatArray, int width, int height, int widthResize, int heightResize)
         {
             var image = FloatArrayToMagickImage(floatArray, width, height);
-            image.Resize(new MagickGeometry(widthResize, heightResize) { IgnoreAspectRatio = true });
+            image.Resize(new MagickGeometry((uint)widthResize, (uint)heightResize) { IgnoreAspectRatio = true });
             return image;
         }
     }

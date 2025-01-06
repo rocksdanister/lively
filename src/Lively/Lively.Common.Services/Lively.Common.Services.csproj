@@ -9,7 +9,7 @@
     <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="NPSMLib" Version="0.9.14" />
-    <PackageReference Include="Downloader" Version="3.0.6" />
+    <PackageReference Include="Downloader" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -43,8 +43,8 @@ namespace Lively.ML.DepthEstimate
                 throw new FileNotFoundException(imagePath);
 
             using var inputImage = new MagickImage(imagePath);
-            var inputModel = new ModelInput(imagePath, inputImage.Width, inputImage.Height);
-            inputImage.Resize(new MagickGeometry(width, height) { IgnoreAspectRatio = true });
+            var inputModel = new ModelInput(imagePath, (int)inputImage.Width, (int)inputImage.Height);
+            inputImage.Resize(new MagickGeometry((uint)width, (uint)height) { IgnoreAspectRatio = true });
 
             var t1 = new DenseTensor<float>(new[] { 1, 3, height, width });
             for (var y = 0; y < height; y++)

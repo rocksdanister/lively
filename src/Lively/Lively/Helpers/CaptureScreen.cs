@@ -124,7 +124,7 @@ namespace Lively.Helpers
                         for (int i = 0; i < totalFrames; i++)
                         {
                             collection.Add(miArray[i]);
-                            collection[i].AnimationDelay = animeDelay;
+                            collection[i].AnimationDelay = (uint)animeDelay;
                         }
 
                         // Optionally reduce colors
@@ -178,7 +178,7 @@ namespace Lively.Helpers
                 // the height will be calculated with the aspect ratio.
                 foreach (var image in collection)
                 {
-                    image.Resize(width, height);
+                    image.Resize((uint)width, (uint)height);
                 }
 
                 // Save the result

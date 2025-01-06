@@ -14,17 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.26.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.29.2" />
     <PackageReference Include="Grpc" Version="2.46.6" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
-    <PackageReference Include="Grpc.Core.Api" Version="2.62.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.62.0">
+    <PackageReference Include="Grpc.Core.Api" Version="2.67.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.68.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.Memory" Version="4.5.5" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Buffers" Version="4.6.0" />
+    <PackageReference Include="System.Memory" Version="4.6.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
