@@ -76,6 +76,7 @@ message SettingsDataModel {
     WallpaperArrangementRule screensaver_arrangement = 64;
     ScreensaverTypeRule screensaver_type = 65;
     bool updatedNotify = 66;
+    bool screensaver_plugin_notify = 67;
 }
 
 message AppRulesSettings {

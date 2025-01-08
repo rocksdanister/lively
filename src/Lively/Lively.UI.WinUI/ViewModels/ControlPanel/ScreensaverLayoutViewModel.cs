@@ -43,6 +43,7 @@ namespace Lively.UI.WinUI.ViewModels.ControlPanel
             SelectedScreensaverTypeIndex = (int)userSettings.Settings.ScreensaverType;
             SelectedDisplay = userSettings.Settings.SelectedDisplay;
             screenSaverLayout = GetScreensaverConfigFile();
+            IsScreensaverPluginNotify = !IsScreensaverPluginExists() && userSettings.Settings.IsScreensaverPluginNotify;
             UpdateLayout();
 
             // This event is also fired when monitor configuration changed.
@@ -248,21 +249,6 @@ namespace Lively.UI.WinUI.ViewModels.ControlPanel
         [NotifyCanExecuteChangedFor(nameof(AddScreensaverCommand))]
         private bool isScreensaverLayout;
 
-        public bool IsScreensaverPluginNotify
-        {
-            get
-            {
-                try
-                {
-                    return !File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Lively.scr"));
-                }
-                catch
-                {
-                    return true;
-                }
-            }
-        }
-
         private bool _isScreensaverLockOnResume;
         public bool IsScreensaverLockOnResume
         {
@@ -276,6 +262,17 @@ namespace Lively.UI.WinUI.ViewModels.ControlPanel
                 }
                 SetProperty(ref _isScreensaverLockOnResume, value);
             }
+        }
+
+        [ObservableProperty]
+        private bool isScreensaverPluginNotify;
+
+        [RelayCommand]
+        private void CloseScreensaverPluginNotify()
+        {
+            IsScreensaverPluginNotify = false;
+            userSettings.Settings.IsScreensaverPluginNotify = false;
+            UpdateSettingsConfigFile();
         }
 
         public void OnWindowClosing()
@@ -395,6 +392,19 @@ namespace Lively.UI.WinUI.ViewModels.ControlPanel
             {
                 userSettings.Save<SettingsModel>();
             });
+        }
+
+        private static bool IsScreensaverPluginExists()
+        {
+            try
+            {
+                return File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Lively.scr"));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+            return false;
         }
     }
 }

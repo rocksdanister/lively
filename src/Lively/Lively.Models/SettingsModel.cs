@@ -118,6 +118,11 @@ namespace Lively.Models
         public bool RememberSelectedScreen { get; set; }
         public bool IsUpdated { get; set; }
         public bool IsUpdatedNotify { get; set; }
+
+        /// <summary>
+        /// Notify user if plugin is missing.
+        /// </summary>
+        public bool IsScreensaverPluginNotify { get; set; }
         public string ApplicationThemeBackgroundPath { get; set; }
         public AppThemeBackground ApplicationThemeBackground { get; set; }
         public int ThemeBundleVersion { get; set; }
@@ -199,6 +204,7 @@ namespace Lively.Models
             RememberSelectedScreen = true;
             IsUpdated = false;
             IsUpdatedNotify = false;
+            IsScreensaverPluginNotify = true;
             ApplicationThemeBackgroundPath = null;
             ApplicationThemeBackground = AppThemeBackground.default_mica;
             TaskbarCrashTimeOutDelay = 30;

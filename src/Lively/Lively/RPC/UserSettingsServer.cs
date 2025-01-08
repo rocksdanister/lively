@@ -181,6 +181,7 @@ namespace Lively.RPC
             userSettings.Settings.ApplicationThemeBackground = (Common.AppThemeBackground)req.ApplicationThemeBackground;
             userSettings.Settings.ApplicationThemeBackgroundPath = req.ApplicationThemeBackgroundPath;
             userSettings.Settings.ThemeBundleVersion = req.ThemeBundleVersion;
+            userSettings.Settings.IsScreensaverPluginNotify = req.ScreensaverPluginNotify;
 
             try
             {
@@ -291,6 +292,7 @@ namespace Lively.RPC
                 ApplicationThemeBackground = (Grpc.Common.Proto.Settings.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath ?? string.Empty,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
+                ScreensaverPluginNotify = settings.IsScreensaverPluginNotify,
             };
             return Task.FromResult(resp);
         }

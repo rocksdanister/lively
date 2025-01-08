@@ -259,6 +259,7 @@ namespace Lively.Grpc.Client
                 ApplicationThemeBackground = (Common.Proto.Settings.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
+                ScreensaverPluginNotify = settings.IsScreensaverPluginNotify,
             };
         }
 
@@ -349,6 +350,7 @@ namespace Lively.Grpc.Client
                 ApplicationThemeBackground = (Lively.Common.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
+                IsScreensaverPluginNotify = settings.ScreensaverPluginNotify,
             };
         }
 
