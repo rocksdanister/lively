@@ -1,11 +1,6 @@
 ﻿using CommandLine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lively.PlayerWmf
+namespace Lively.Player.Wmf
 {
     public class StartArgs
     {

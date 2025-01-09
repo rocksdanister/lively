@@ -3,7 +3,6 @@ using Lively.Common;
 using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Storage;
-using Lively.Common.Services;
 using Lively.Common.Services.Audio;
 using Lively.Common.Services.Hardware;
 using Microsoft.Web.WebView2.Core;
@@ -11,20 +10,17 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace Lively.PlayerWebView2
+namespace Lively.Player.WebView2
 {
     //ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/gettingstarted/wpf
     public partial class MainWindow : Window

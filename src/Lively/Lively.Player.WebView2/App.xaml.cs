@@ -1,14 +1,11 @@
 ﻿using Lively.Common.API;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Lively.PlayerWmf
+namespace Lively.Player.WebView2
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -53,7 +50,10 @@ namespace Lively.PlayerWmf
 
         public static void WriteToParent(IpcMessage obj)
         {
+#if DEBUG != true
             Console.WriteLine(JsonConvert.SerializeObject(obj));
+#endif
+            Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
     }
 }

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Watchdog", "Lively.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Models", "Lively.Models\Lively.Models.csproj", "{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.PlayerWmf", "Lively.PlayerWmf\Lively.PlayerWmf.csproj", "{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.Wmf", "Lively.Player.Wmf\Lively.Player.Wmf.csproj", "{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Common", "Lively.Grpc.Common\Lively.Grpc.Common.csproj", "{F3E38E78-1670-4E6F-A9FB-041AC30E61E8}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.ConsoleDemo", "Livel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Grpc.Client", "Lively.Grpc.Client\Lively.Grpc.Client.csproj", "{E2DD302F-D4EA-45EF-9F79-46BFAB8A3A1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.PlayerWebView2", "Lively.PlayerWebView2\Lively.PlayerWebView2.csproj", "{0A3C922E-3CE4-4676-AD1E-891D195EE74A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Player.WebView2", "Lively.Player.WebView2\Lively.Player.WebView2.csproj", "{0A3C922E-3CE4-4676-AD1E-891D195EE74A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.UI.WinUI", "Lively.UI.WinUI\Lively.UI.WinUI.csproj", "{418B6EB5-1874-4681-89F8-6BC393AB2DC0}"
 EndProject

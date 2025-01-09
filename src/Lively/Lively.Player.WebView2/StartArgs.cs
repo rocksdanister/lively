@@ -1,11 +1,6 @@
 ﻿using CommandLine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lively.PlayerWebView2
+namespace Lively.Player.WebView2
 {
     public class StartArgs
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{95A2CE21-5CF3-4432-8BE5-33B71C2C7A82}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lively.PlayerWmf</RootNamespace>
-    <AssemblyName>Lively.PlayerWmf</AssemblyName>
+    <RootNamespace>Lively.Player.Wmf</RootNamespace>
+    <AssemblyName>Lively.Player.Wmf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

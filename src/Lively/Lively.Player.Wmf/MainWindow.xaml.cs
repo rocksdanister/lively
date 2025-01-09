@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace Lively.PlayerWmf
+namespace Lively.Player.Wmf
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

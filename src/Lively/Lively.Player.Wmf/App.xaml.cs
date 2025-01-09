@@ -4,12 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Lively.PlayerWebView2
+namespace Lively.Player.Wmf
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -54,10 +53,7 @@ namespace Lively.PlayerWebView2
 
         public static void WriteToParent(IpcMessage obj)
         {
-#if DEBUG != true
             Console.WriteLine(JsonConvert.SerializeObject(obj));
-#endif
-            Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
     }
 }
