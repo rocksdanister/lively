@@ -1,17 +1,10 @@
-﻿using System;
+﻿using Lively.Common.Helpers;
 using Lively.Grpc.Client;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using Lively.Models;
-using Lively.Common.Helpers;
-using System.IO;
-using Lively.Common.Helpers.Storage;
-using Lively.Common;
-using Lively.Common.API;
-using Lively.Grpc.Common.Proto.Commands;
-using GrpcDotNetNamedPipes;
+using System;
+using System.Threading.Tasks;
 
-namespace Lively.ConsoleDemo
+namespace Lively.Utility.ConsoleDemo
 {
     class Program
     {
