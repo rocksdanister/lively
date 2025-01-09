@@ -1,6 +1,6 @@
 ﻿using Lively.Models;
 
-namespace Lively.Helpers
+namespace Lively.Common.Factories
 {
     public interface IWallpaperLibraryFactory
     {

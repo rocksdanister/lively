@@ -31,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Common.Services", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.ML", "Lively.ML\Lively.ML.csproj", "{DD803B4B-E0A1-4C28-8473-9A7EB17D58B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Common.Factories", "Lively.Common.Factories\Lively.Common.Factories.csproj", "{7D667374-E7CA-46FF-B538-E331663A1D1E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Screensaver.Minimal", "Lively.Screensaver.Minimal\Lively.Screensaver.Minimal.csproj", "{DE3A7521-77D2-462A-A25D-BF020EA5A77B}"
 EndProject
 Global
@@ -277,22 +275,6 @@ Global
 		{DD803B4B-E0A1-4C28-8473-9A7EB17D58B2}.Release|x64.Build.0 = Release|Any CPU
 		{DD803B4B-E0A1-4C28-8473-9A7EB17D58B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{DD803B4B-E0A1-4C28-8473-9A7EB17D58B2}.Release|x86.Build.0 = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|arm64.Build.0 = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|x64.Build.0 = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Debug|x86.Build.0 = Debug|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|arm64.ActiveCfg = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|arm64.Build.0 = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|x64.ActiveCfg = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|x64.Build.0 = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|x86.ActiveCfg = Release|Any CPU
-		{7D667374-E7CA-46FF-B538-E331663A1D1E}.Release|x86.Build.0 = Release|Any CPU
 		{DE3A7521-77D2-462A-A25D-BF020EA5A77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE3A7521-77D2-462A-A25D-BF020EA5A77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3A7521-77D2-462A-A25D-BF020EA5A77B}.Debug|arm64.ActiveCfg = Debug|Any CPU

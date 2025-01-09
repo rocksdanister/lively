@@ -39,6 +39,7 @@ using System.Collections.Generic;
 using Lively.Common.Extensions;
 using CommandLine;
 using static Lively.Common.AutomationArgs;
+using Lively.Common.Factories;
 
 namespace Lively
 {

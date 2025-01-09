@@ -2,6 +2,7 @@
 using Lively.Common.API;
 using Lively.Common.Com;
 using Lively.Common.Extensions;
+using Lively.Common.Factories;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;

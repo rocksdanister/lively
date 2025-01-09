@@ -1,10 +1,9 @@
-﻿using Lively.Common;
-using Lively.Common.Extensions;
+﻿using Lively.Common.Extensions;
 using Lively.Common.Helpers.Storage;
 using Lively.Models;
 using System.IO;
 
-namespace Lively.Helpers
+namespace Lively.Common.Factories
 {
     public class WallpaperLibraryFactory : IWallpaperLibraryFactory
     {

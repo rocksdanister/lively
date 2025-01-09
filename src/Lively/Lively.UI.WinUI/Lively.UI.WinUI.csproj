@@ -149,7 +149,6 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lively.Common.Factories\Lively.Common.Factories.csproj" />
     <ProjectReference Include="..\Lively.Common.Services\Lively.Common.Services.csproj" />
     <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Client\Lively.Grpc.Client.csproj" />

@@ -1,4 +1,5 @@
 using Lively.Common;
+using Lively.Common.Factories;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;

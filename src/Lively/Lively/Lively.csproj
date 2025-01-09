@@ -55,7 +55,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lively.Common.Factories\Lively.Common.Factories.csproj" />
     <ProjectReference Include="..\Lively.Common.Services\Lively.Common.Services.csproj" />
     <ProjectReference Include="..\Lively.Grpc.Common\Lively.Grpc.Common.csproj" />
     <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
