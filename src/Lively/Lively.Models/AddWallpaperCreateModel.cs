@@ -1,8 +1,5 @@
-﻿using Lively.Common;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Lively.Models.Enums;
 
 namespace Lively.Models
 {

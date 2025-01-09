@@ -6,6 +6,7 @@ using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using Lively.Themes;
 using Lively.Views;
@@ -41,7 +42,7 @@ namespace Lively
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
-        private Common.AppTheme? currentTheme = null;
+        private AppTheme? currentTheme = null;
 
         public Systray(IRunnerService runner,
             IUserSettingsService userSettings,
@@ -145,9 +146,9 @@ namespace Lively
             _notifyIcon.ShowBalloonTip(timeout, title, msg, ToolTipIcon.None);
         }
 
-        public void SetTheme(Common.AppTheme theme)
+        public void SetTheme(AppTheme theme)
         {
-            theme = theme == Common.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
+            theme = theme == AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
             if (currentTheme != null && currentTheme == theme)
                 return;
 

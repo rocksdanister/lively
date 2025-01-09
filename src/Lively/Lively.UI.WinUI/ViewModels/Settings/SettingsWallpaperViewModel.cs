@@ -6,6 +6,7 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Services;
 using Microsoft.UI.Dispatching;
 using System;

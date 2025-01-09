@@ -4,14 +4,12 @@ using Lively.Common;
 using Lively.Common.Helpers.Storage;
 using Lively.Core;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using Lively.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Lively.ViewModels

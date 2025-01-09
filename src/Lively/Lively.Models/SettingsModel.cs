@@ -1,4 +1,4 @@
-﻿using Lively.Common;
+﻿using Lively.Models.Enums;
 using System;
 using System.Globalization;
 using System.IO;
@@ -176,7 +176,7 @@ namespace Lively.Models
             DisplayIdentification = DisplayIdentificationMode.deviceId;
             //SelectedDisplay = ScreenHelper.GetPrimaryScreen();
             UIMode = LivelyGUIState.normal;
-            WallpaperDir = Path.Combine(Constants.CommonPaths.AppDataDir, "Library");
+            WallpaperDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Lively Wallpaper", "Library");
             WallpaperDirMoveExistingWallpaperNewDir = true;
             SysTrayIcon = true;
             WebDebugPort = string.Empty;

@@ -1,13 +1,11 @@
 ﻿using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
 using Lively.Grpc.Common.Proto.Settings;
 using Lively.Models;
+using Lively.Models.Enums;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Lively.Grpc.Client
@@ -306,7 +304,7 @@ namespace Lively.Grpc.Client
                 PicturePlayer = (LivelyPicturePlayer)((int)settings.PicturePlayer),
                 WallpaperWaitTime = settings.WallpaperWaitTime,
                 ProcessTimerInterval = settings.ProcessTimerInterval,
-                StreamQuality = (Lively.Common.StreamQualitySuggestion)((int)settings.StreamQuality),
+                StreamQuality = (Models.Enums.StreamQualitySuggestion)((int)settings.StreamQuality),
                 LivelyZipGenerate = settings.LivelyZipGenerate,
                 ScalerVideo = (WallpaperScaler)((int)settings.ScalerVideo),
                 ScalerGif = (WallpaperScaler)((int)settings.ScalerGif),
@@ -314,7 +312,7 @@ namespace Lively.Grpc.Client
                 MultiFileAutoImport = settings.MultiFileAutoImport,
                 SafeShutdown = settings.SafeShutdown,
                 IsRestart = settings.IsRestart,
-                InputForward = (Lively.Common.InputForwardMode)settings.InputForward,
+                InputForward = (Models.Enums.InputForwardMode)settings.InputForward,
                 MouseInputMovAlways = settings.MouseInputMovAlways,
                 TileSize = settings.TileSize,
                 UIMode = (LivelyGUIState)((int)settings.LivelyGuiRendering),
@@ -331,13 +329,13 @@ namespace Lively.Grpc.Client
                 CefDiskCache = settings.CefDiskCache,
                 DebugMenu = settings.DebugMenu,
                 TestBuild = settings.TestBuild,
-                ApplicationTheme = (Lively.Common.AppTheme)settings.ApplicationTheme,
+                ApplicationTheme = (Models.Enums.AppTheme)settings.ApplicationTheme,
                 RemoteDesktopPause = (AppRulesEnum)settings.RemoteDesktopPause,
                 PowerSaveModePause = (AppRulesEnum)settings.PowerSaveModePause,
                 LockScreenAutoWallpaper = settings.LockScreenAutoWallpaper,
                 DesktopAutoWallpaper = settings.DesktopAutoWallpaper,
-                SystemTaskbarTheme = (Lively.Common.TaskbarTheme)settings.SystemTaskbarTheme,
-                ScreensaverIdleDelay = (Lively.Common.ScreensaverIdleTime)((int)settings.ScreensaverIdleWait),
+                SystemTaskbarTheme = (Models.Enums.TaskbarTheme)settings.SystemTaskbarTheme,
+                ScreensaverIdleDelay = (Models.Enums.ScreensaverIdleTime)((int)settings.ScreensaverIdleWait),
                 ScreensaverOledWarning = settings.ScreensaverOledWarning,
                 ScreensaverEmptyScreenShowBlack = settings.ScreensaverEmptyScreenShowBlack,
                 ScreensaverLockOnResume = settings.ScreensaverLockOnResume,
@@ -347,7 +345,7 @@ namespace Lively.Grpc.Client
                 RememberSelectedScreen = settings.RememberSelectedScreen,
                 IsUpdated = settings.Updated,
                 IsUpdatedNotify = settings.UpdatedNotify,
-                ApplicationThemeBackground = (Lively.Common.AppThemeBackground)settings.ApplicationThemeBackground,
+                ApplicationThemeBackground = (Models.Enums.AppThemeBackground)settings.ApplicationThemeBackground,
                 ApplicationThemeBackgroundPath = settings.ApplicationThemeBackgroundPath,
                 ThemeBundleVersion = settings.ThemeBundleVersion,
                 IsScreensaverPluginNotify = settings.ScreensaverPluginNotify,

@@ -1,13 +1,12 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers;
+﻿using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Helpers;
+using Lively.Models.Enums;
 using Lively.Services;
 using Lively.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;

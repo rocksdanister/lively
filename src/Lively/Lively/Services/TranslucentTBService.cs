@@ -1,6 +1,6 @@
 ﻿using ImageMagick;
-using Lively.Common;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Models.Enums;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 
 namespace Lively.Services

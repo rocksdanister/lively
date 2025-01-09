@@ -19,4 +19,8 @@
     <PackageReference Include="UACHelper" Version="1.3.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
+  </ItemGroup>
+
 </Project>

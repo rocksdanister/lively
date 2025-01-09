@@ -1,12 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Lively.Common;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using static Lively.UI.WinUI.ViewModels.ControlPanelViewModel;

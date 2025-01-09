@@ -1,15 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Interop;
-using Linearstar.Windows.RawInput;
-using Lively.Common;
+﻿using Linearstar.Windows.RawInput;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
+using System;
+using System.Windows;
+using System.Windows.Interop;
 using Point = System.Drawing.Point;
 
 namespace Lively.Views.WindowMsg

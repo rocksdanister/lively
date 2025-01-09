@@ -1,11 +1,11 @@
-﻿using Lively.Common;
-using Lively.Common.API;
+﻿using Lively.Common.API;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using Lively.Factories;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;

@@ -1,6 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Files;
 using Lively.Models;
+using Lively.Models.Enums;
 using System;
 
 namespace Lively.UI.WinUI.ViewModels

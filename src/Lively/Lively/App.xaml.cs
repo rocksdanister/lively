@@ -266,9 +266,9 @@ namespace Lively
             SystemEvents.UserPreferenceChanged += (s, e) => {
                 if (e.Category == UserPreferenceCategory.General)
                 {
-                    if (userSettings.Settings.ApplicationTheme == Common.AppTheme.Auto)
+                    if (userSettings.Settings.ApplicationTheme == Models.Enums.AppTheme.Auto)
                     {
-                        ChangeTheme(Common.AppTheme.Auto);
+                        ChangeTheme(Models.Enums.AppTheme.Auto);
                     }
                 }
             };
@@ -357,17 +357,17 @@ namespace Lively
         /// <summary>
         /// Actual apptheme, no Auto allowed.
         /// </summary>
-        private static Common.AppTheme currentTheme = Common.AppTheme.Dark;
-        public static void ChangeTheme(Common.AppTheme theme)
+        private static Models.Enums.AppTheme currentTheme = Models.Enums.AppTheme.Dark;
+        public static void ChangeTheme(Models.Enums.AppTheme theme)
         {
-            theme = theme == Common.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
+            theme = theme == Models.Enums.AppTheme.Auto ? ThemeUtil.GetWindowsTheme() : theme;
             if (currentTheme == theme)
                 return;
 
             Uri uri = theme switch
             {
-                Common.AppTheme.Light => new Uri("Themes/Light.xaml", UriKind.Relative),
-                Common.AppTheme.Dark => new Uri("Themes/Dark.xaml", UriKind.Relative),
+                Models.Enums.AppTheme.Light => new Uri("Themes/Light.xaml", UriKind.Relative),
+                Models.Enums.AppTheme.Dark => new Uri("Themes/Dark.xaml", UriKind.Relative),
                 _ => new Uri("Themes/Dark.xaml", UriKind.Relative)
             };
 

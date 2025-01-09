@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Windows;
-using System.Windows.Threading;
-using CommandLine;
+﻿using CommandLine;
 using Lively.Common;
 using Lively.Common.API;
 using Lively.Common.Extensions;
@@ -17,8 +10,16 @@ using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Windows;
+using System.Windows.Threading;
 using static Lively.Common.AutomationArgs;
 
 namespace Lively.Automation

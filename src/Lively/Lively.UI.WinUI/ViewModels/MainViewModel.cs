@@ -34,7 +34,7 @@ namespace Lively.UI.WinUI.ViewModels
 
             desktopCore.WallpaperChanged += (_, _) =>
             {
-                if (userSettings.Settings.ApplicationThemeBackground == Common.AppThemeBackground.dynamic)
+                if (userSettings.Settings.ApplicationThemeBackground == Models.Enums.AppThemeBackground.dynamic)
                 {
                     _ = dispatcherQueue.TryEnqueue(() =>
                     {
@@ -56,13 +56,13 @@ namespace Lively.UI.WinUI.ViewModels
         {
             switch (userSettings.Settings.ApplicationThemeBackground)
             {
-                case Common.AppThemeBackground.default_mica:
-                case Common.AppThemeBackground.default_acrylic:
+                case Models.Enums.AppThemeBackground.default_mica:
+                case Models.Enums.AppThemeBackground.default_acrylic:
                     {
                         AppThemeBackground = string.Empty;
                     }
                     break;
-                case Common.AppThemeBackground.dynamic:
+                case Models.Enums.AppThemeBackground.dynamic:
                     {
                         if (desktopCore.Wallpapers.Any())
                         {
@@ -102,7 +102,7 @@ namespace Lively.UI.WinUI.ViewModels
                         }
                     }
                     break;
-                case Common.AppThemeBackground.custom:
+                case Models.Enums.AppThemeBackground.custom:
                     {
                         if (!string.IsNullOrWhiteSpace(userSettings.Settings.ApplicationThemeBackgroundPath))
                         {

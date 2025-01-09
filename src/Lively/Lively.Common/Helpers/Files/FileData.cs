@@ -1,4 +1,6 @@
-﻿namespace Lively.Common.Helpers.Files
+﻿using Lively.Models.Enums;
+
+namespace Lively.Common.Helpers.Files
 {
     public class FileData
     {

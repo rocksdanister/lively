@@ -1,4 +1,5 @@
 ﻿using Lively.Models;
+using Lively.Models.Enums;
 using System.IO;
 
 namespace Lively.Common.Factories

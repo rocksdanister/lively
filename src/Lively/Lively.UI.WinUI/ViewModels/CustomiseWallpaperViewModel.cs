@@ -4,19 +4,17 @@ using Lively.Common;
 using Lively.Common.API;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Models.LivelyControls;
 using Lively.UI.WinUI.Helpers;
+using Microsoft.UI.Dispatching;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Microsoft.UI.Dispatching;
 using Windows.ApplicationModel.Resources;
-using Lively.Models.Gallery.API;
 
 namespace Lively.UI.WinUI.ViewModels
 {

@@ -1,10 +1,5 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers.MVVM;
-using System;
+﻿using Lively.Models.Enums;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lively.Models.Gallery.API
 {

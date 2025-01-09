@@ -1,6 +1,6 @@
-﻿using Lively.Common;
-using Lively.Core;
+﻿using Lively.Core;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using System;
 using System.Drawing;

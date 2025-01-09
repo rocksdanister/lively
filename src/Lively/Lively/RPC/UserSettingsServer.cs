@@ -2,19 +2,17 @@
 using Grpc.Core;
 using Lively.Core.Display;
 using Lively.Grpc.Common.Proto.Settings;
+using Lively.Helpers;
+using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Lively.Common;
-using Lively.Models;
 using System.Linq;
-using System.Diagnostics;
-using Lively.Helpers;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using System.Threading;
 
 namespace Lively.RPC
 {
@@ -79,7 +77,7 @@ namespace Lively.RPC
 
         public override Task<Empty> SetSettings(SettingsDataModel req, ServerCallContext context)
         {
-            bool restartRequired = (Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme;// || req.Language != userSettings.Settings.Language;
+            bool restartRequired = (Models.Enums.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme;// || req.Language != userSettings.Settings.Language;
             if (req.Startup != userSettings.Settings.Startup)
             {
                 userSettings.Settings.Startup = req.Startup;
@@ -102,17 +100,17 @@ namespace Lively.RPC
                 }));
             }
 
-            if ((Common.TaskbarTheme)req.SystemTaskbarTheme != userSettings.Settings.SystemTaskbarTheme)
+            if ((Models.Enums.TaskbarTheme)req.SystemTaskbarTheme != userSettings.Settings.SystemTaskbarTheme)
             {
-                userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
+                userSettings.Settings.SystemTaskbarTheme = (Models.Enums.TaskbarTheme)req.SystemTaskbarTheme;
                 ttbService.Start(userSettings.Settings.SystemTaskbarTheme);
             }
 
-            if ((Common.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme)
+            if ((Models.Enums.AppTheme)req.ApplicationTheme != userSettings.Settings.ApplicationTheme)
             {
                 _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                 {
-                    App.ChangeTheme((Common.AppTheme)req.ApplicationTheme);
+                    App.ChangeTheme((Models.Enums.AppTheme)req.ApplicationTheme);
                 }));
             }
 
@@ -137,7 +135,7 @@ namespace Lively.RPC
             userSettings.Settings.PicturePlayer = (LivelyPicturePlayer)((int)req.PicturePlayer);
             userSettings.Settings.WallpaperWaitTime = req.WallpaperWaitTime;
             userSettings.Settings.ProcessTimerInterval = req.ProcessTimerInterval;
-            userSettings.Settings.StreamQuality = (Common.StreamQualitySuggestion)((int)req.StreamQuality);
+            userSettings.Settings.StreamQuality = (Models.Enums.StreamQualitySuggestion)((int)req.StreamQuality);
             userSettings.Settings.LivelyZipGenerate = req.LivelyZipGenerate;
             userSettings.Settings.ScalerVideo = (WallpaperScaler)((int)req.ScalerVideo);
             userSettings.Settings.ScalerGif = (WallpaperScaler)((int)req.ScalerGif);
@@ -145,7 +143,7 @@ namespace Lively.RPC
             userSettings.Settings.MultiFileAutoImport = req.MultiFileAutoImport;
             userSettings.Settings.SafeShutdown = req.SafeShutdown;
             userSettings.Settings.IsRestart = req.IsRestart;
-            userSettings.Settings.InputForward = (Common.InputForwardMode)req.InputForward;
+            userSettings.Settings.InputForward = (Models.Enums.InputForwardMode)req.InputForward;
             userSettings.Settings.MouseInputMovAlways = req.MouseInputMovAlways;
             userSettings.Settings.TileSize = req.TileSize;
             userSettings.Settings.UIMode = (LivelyGUIState)((int)req.LivelyGuiRendering);
@@ -162,13 +160,13 @@ namespace Lively.RPC
             userSettings.Settings.CefDiskCache = req.CefDiskCache;
             userSettings.Settings.DebugMenu = req.DebugMenu;
             userSettings.Settings.TestBuild = req.TestBuild;
-            userSettings.Settings.ApplicationTheme = (Common.AppTheme)req.ApplicationTheme;
+            userSettings.Settings.ApplicationTheme = (Models.Enums.AppTheme)req.ApplicationTheme;
             userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)req.RemoteDesktopPause;
             userSettings.Settings.PowerSaveModePause = (AppRulesEnum)req.PowerSaveModePause;
             userSettings.Settings.LockScreenAutoWallpaper = req.LockScreenAutoWallpaper;
             userSettings.Settings.DesktopAutoWallpaper = req.DesktopAutoWallpaper;
             //userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
-            userSettings.Settings.ScreensaverIdleDelay = (Common.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
+            userSettings.Settings.ScreensaverIdleDelay = (Models.Enums.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
             userSettings.Settings.ScreensaverOledWarning = req.ScreensaverOledWarning;
             userSettings.Settings.ScreensaverEmptyScreenShowBlack = req.ScreensaverEmptyScreenShowBlack;
             userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
@@ -178,7 +176,7 @@ namespace Lively.RPC
             userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
             userSettings.Settings.IsUpdated = req.Updated;
             userSettings.Settings.IsUpdatedNotify = req.UpdatedNotify;
-            userSettings.Settings.ApplicationThemeBackground = (Common.AppThemeBackground)req.ApplicationThemeBackground;
+            userSettings.Settings.ApplicationThemeBackground = (Models.Enums.AppThemeBackground)req.ApplicationThemeBackground;
             userSettings.Settings.ApplicationThemeBackgroundPath = req.ApplicationThemeBackgroundPath;
             userSettings.Settings.ThemeBundleVersion = req.ThemeBundleVersion;
             userSettings.Settings.IsScreensaverPluginNotify = req.ScreensaverPluginNotify;

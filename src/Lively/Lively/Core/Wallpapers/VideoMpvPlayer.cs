@@ -1,12 +1,13 @@
 ﻿using ImageMagick;
 using Lively.Common;
 using Lively.Common.API;
+using Lively.Common.Extensions;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.IPC;
-using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Models;
+using Lively.Models.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -17,8 +18,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Lively.Common.Extensions;
-using System.Windows.Interop;
 
 namespace Lively.Core.Wallpapers
 {

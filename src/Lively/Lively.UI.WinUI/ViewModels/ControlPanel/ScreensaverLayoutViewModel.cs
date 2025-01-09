@@ -5,6 +5,7 @@ using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Client;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

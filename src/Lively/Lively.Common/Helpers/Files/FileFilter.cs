@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Lively.Models.Enums;
+using System;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Lively.Common.Helpers.Files
 {

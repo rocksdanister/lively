@@ -8,6 +8,7 @@ using Lively.Core.Display;
 using Lively.Extensions;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Views;
 using Lively.Views.WindowMsg;
 using System;

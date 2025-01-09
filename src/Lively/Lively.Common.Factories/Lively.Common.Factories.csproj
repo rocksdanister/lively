@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lively.Models\Lively.Models.csproj" />
+    <ProjectReference Include="..\Lively.Common\Lively.Common.csproj" />
   </ItemGroup>
 
 </Project>

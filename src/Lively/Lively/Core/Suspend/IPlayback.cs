@@ -1,4 +1,4 @@
-﻿using Lively.Common;
+﻿using Lively.Models.Enums;
 using System;
 
 namespace Lively.Core.Suspend

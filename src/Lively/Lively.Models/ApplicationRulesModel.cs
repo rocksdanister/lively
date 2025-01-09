@@ -1,7 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Lively.Common;
-using Newtonsoft.Json;
-using System;
+using Lively.Models.Enums;
 
 namespace Lively.Models
 {

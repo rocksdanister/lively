@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Lively.Common;
 using Lively.Common.Helpers;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;

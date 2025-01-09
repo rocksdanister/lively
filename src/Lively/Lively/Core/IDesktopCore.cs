@@ -1,6 +1,6 @@
-﻿using Lively.Common;
-using Lively.Common.API;
+﻿using Lively.Common.API;
 using Lively.Models;
+using Lively.Models.Enums;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;

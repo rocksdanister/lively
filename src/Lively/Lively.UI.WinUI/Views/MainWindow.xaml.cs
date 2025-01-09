@@ -38,6 +38,7 @@ using Lively.Common.Helpers.Files;
 using static Lively.Common.Errors;
 using Lively.Common.Extensions;
 using Lively.UI.WinUI.Extensions;
+using Lively.Models.Enums;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

@@ -11,6 +11,7 @@ using Lively.Extensions;
 using Lively.Factories;
 using Lively.Helpers;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.Services;
 using Lively.ViewModels;
 using Lively.Views;

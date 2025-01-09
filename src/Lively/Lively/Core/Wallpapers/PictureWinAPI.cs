@@ -1,13 +1,10 @@
-﻿using Lively.Common;
-using Lively.Common.API;
+﻿using Lively.Common.API;
 using Lively.Common.Com;
-using Lively.Core;
 using Lively.Models;
+using Lively.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Lively.Core.Wallpapers

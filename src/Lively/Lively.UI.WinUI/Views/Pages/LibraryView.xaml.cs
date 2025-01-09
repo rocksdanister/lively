@@ -1,6 +1,6 @@
-﻿using Lively.Common;
-using Lively.Grpc.Client;
+﻿using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;

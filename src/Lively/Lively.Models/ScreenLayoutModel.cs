@@ -1,7 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Lively.Models;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 
 namespace Lively.Models

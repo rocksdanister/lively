@@ -1,5 +1,4 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers.Files;
+﻿using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -7,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using UAC = UACHelper.UACHelper;

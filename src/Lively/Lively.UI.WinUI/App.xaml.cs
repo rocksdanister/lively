@@ -194,17 +194,17 @@ namespace Lively.UI.WinUI
 
         //Cannot change runtime.
         //Issue: https://github.com/microsoft/microsoft-ui-xaml/issues/4474
-        private void SetAppTheme(Common.AppTheme theme)
+        private void SetAppTheme(Models.Enums.AppTheme theme)
         {
             switch (theme)
             {
-                case Common.AppTheme.Auto:
+                case Models.Enums.AppTheme.Auto:
                     //Nothing
                     break;
-                case Common.AppTheme.Light:
+                case Models.Enums.AppTheme.Light:
                     this.RequestedTheme = ApplicationTheme.Light;
                     break;
-                case Common.AppTheme.Dark:
+                case Models.Enums.AppTheme.Dark:
                     this.RequestedTheme = ApplicationTheme.Dark;
                     break;
             }

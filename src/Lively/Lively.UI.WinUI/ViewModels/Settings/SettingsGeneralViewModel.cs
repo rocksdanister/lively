@@ -5,6 +5,7 @@ using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Localization;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Helpers;
 using Lively.UI.WinUI.Services;

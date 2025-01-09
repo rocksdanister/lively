@@ -1,14 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Collections;
-using Lively.Common;
-using Lively.Common.Helpers.Files;
 using Lively.Models;
-using System;
-using System.Collections.Generic;
+using Lively.Models.Enums;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.ViewModels

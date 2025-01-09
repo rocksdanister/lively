@@ -1,7 +1,5 @@
-﻿using Lively.Common;
-using System;
+﻿using Lively.Models.Enums;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Lively.Models
 {

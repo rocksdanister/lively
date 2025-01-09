@@ -1,19 +1,10 @@
 ﻿using Lively.Common;
 using Lively.Gallery.Client.Interfaces;
+using Lively.Models.Gallery;
 using Lively.Models.Gallery.API;
 using Newtonsoft.Json;
-using OperationResult;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using static OperationResult.Helpers;
-using Lively.Models.Gallery;
 
 namespace Lively.Gallery.Client
 {

@@ -4,6 +4,7 @@ using Lively.Common;
 using Lively.Common.Helpers.Files;
 using Lively.Grpc.Client;
 using Lively.Models;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Helpers;

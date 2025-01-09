@@ -1,13 +1,11 @@
 using Lively.Common;
 using Lively.Grpc.Client;
+using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Web.WebView2.Core;
 using System;
