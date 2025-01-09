@@ -48,6 +48,8 @@ namespace Lively.UI.WinUI.ViewModels
 
         public void Load(LibraryModel model)
         {
+            ErrorText = InfoText = null;
+
             try
             {
                 this.Model = model;
@@ -62,7 +64,7 @@ namespace Lively.UI.WinUI.ViewModels
                 this.livelyControlsCopy = JsonConvert.DeserializeObject<Dictionary<string, ControlModel>>(file, this.jsonSerializerSettings);
 
                 if (livelyControls.Count == 0)
-                    throw new ArgumentException("No control(s) defined.");
+                    InfoText = "No control(s) defined.";
             }
             catch (Exception ex)
             {
@@ -79,6 +81,9 @@ namespace Lively.UI.WinUI.ViewModels
 
         [ObservableProperty]
         private string errorText;
+
+        [ObservableProperty]
+        private string infoText;
 
         [RelayCommand]
         private void Button(ControlModel control)

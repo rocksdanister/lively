@@ -155,39 +155,43 @@
             SelectionMode="None"
             Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}" />
         <!--  Error  -->
-        <StackPanel
-            Grid.Row="0"
-            Margin="25"
-            HorizontalAlignment="Center"
+        <InfoBar
             VerticalAlignment="Top"
-            Spacing="5"
+            IsClosable="False"
+            IsOpen="True"
+            Message="{Binding ErrorText, Mode=OneWay}"
+            Severity="Error"
             Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
-            <FontIcon
-                FontSize="75"
-                Foreground="Red"
-                Glyph="&#xEA39;" />
-            <TextBlock
-                FontSize="14"
-                Text="{Binding ErrorText}"
-                TextAlignment="Start"
-                TextWrapping="Wrap" />
-            <HyperlinkButton
-                HorizontalAlignment="Center"
-                NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems"
-                ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Common-Problems">
-                <HyperlinkButton.Content>
-                    <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
-                </HyperlinkButton.Content>
-            </HyperlinkButton>
-        </StackPanel>
+            <InfoBar.ActionButton>
+                <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Common-Problems" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Common-Problems">
+                    <HyperlinkButton.Content>
+                        <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                    </HyperlinkButton.Content>
+                </HyperlinkButton>
+            </InfoBar.ActionButton>
+        </InfoBar>
+        <!--  Informational  -->
+        <InfoBar
+            VerticalAlignment="Top"
+            IsOpen="True"
+            Message="{Binding InfoText, Mode=OneWay}"
+            Severity="Informational"
+            Visibility="{Binding InfoText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}}">
+            <InfoBar.ActionButton>
+                <HyperlinkButton NavigateUri="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction" ToolTipService.ToolTip="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction">
+                    <HyperlinkButton.Content>
+                        <TextBlock x:Uid="TextLearnMore" TextWrapping="Wrap" />
+                    </HyperlinkButton.Content>
+                </HyperlinkButton>
+            </InfoBar.ActionButton>
+        </InfoBar>
         <!--  Restore default  -->
         <Button
             Grid.Row="1"
             Margin="0,5,0,0"
             HorizontalAlignment="Right"
             Command="{Binding RestoreDefaultCommand}"
-            ToolTipService.ToolTip="Restore default"
-            Visibility="{Binding ErrorText, Mode=OneWay, Converter={StaticResource NullVisibilityConverter}, ConverterParameter=Reverse}">
+            ToolTipService.ToolTip="Restore default">
             <FontIcon Glyph="&#xE777;" />
         </Button>
     </Grid>
