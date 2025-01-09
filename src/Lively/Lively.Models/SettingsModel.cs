@@ -22,13 +22,13 @@ namespace Lively.Models
         public bool WaterMarkTile { get; set; }
         public bool IsFirstRun { get; set; }
         public bool ControlPanelOpened { get; set; }
-        public AppRulesEnum AppFocusPause { get; set; }
+        public AppRules AppFocusPause { get; set; }
 
-        public AppRulesEnum AppFullscreenPause { get; set; }
-        public AppRulesEnum BatteryPause { get; set; }
-        public AppRulesEnum RemoteDesktopPause { get; set; }
-        public AppRulesEnum PowerSaveModePause { get; set; }
-        public DisplayPauseEnum DisplayPauseSettings { get; set; }
+        public AppRules AppFullscreenPause { get; set; }
+        public AppRules BatteryPause { get; set; }
+        public AppRules RemoteDesktopPause { get; set; }
+        public AppRules PowerSaveModePause { get; set; }
+        public DisplayPause DisplayPauseSettings { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
         /// Show animatd library tiles.
@@ -143,9 +143,9 @@ namespace Lively.Models
             Startup = true;
             IsFirstRun = true;
             ControlPanelOpened = false;
-            AppFocusPause = AppRulesEnum.ignore;
-            AppFullscreenPause = AppRulesEnum.pause;
-            BatteryPause = AppRulesEnum.ignore;
+            AppFocusPause = AppRules.ignore;
+            AppFullscreenPause = AppRules.pause;
+            BatteryPause = AppRules.ignore;
             VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.cef;
@@ -191,8 +191,8 @@ namespace Lively.Models
             DebugMenu = false;
             TestBuild = false;
             ApplicationTheme = AppTheme.Dark;
-            RemoteDesktopPause = AppRulesEnum.pause;
-            PowerSaveModePause = AppRulesEnum.ignore;
+            RemoteDesktopPause = AppRules.pause;
+            PowerSaveModePause = AppRules.ignore;
             LockScreenAutoWallpaper = false;
             DesktopAutoWallpaper = false;
             SystemTaskbarTheme = TaskbarTheme.none;

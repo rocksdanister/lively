@@ -5,7 +5,7 @@ namespace Lively.Models
 {
     public partial class ApplicationRulesModel : ObservableObject
     {
-        public ApplicationRulesModel(string appName, AppRulesEnum rule)
+        public ApplicationRulesModel(string appName, AppRules rule)
         {
             AppName = appName;
             Rule = rule;
@@ -15,6 +15,6 @@ namespace Lively.Models
         private string appName;
 
         [ObservableProperty]
-        private AppRulesEnum rule;
+        private AppRules rule;
     }
 }

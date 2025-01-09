@@ -1,6 +1,6 @@
 ﻿namespace Lively.Models.Enums;
 
-public enum DisplayPauseEnum
+public enum DisplayPause
 {
     perdisplay,
     all

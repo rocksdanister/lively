@@ -181,16 +181,16 @@ namespace Lively.Core.Suspend
                 }
             }
             else if (WallpaperPlayback == PlaybackState.paused || _isLockScreen ||
-                (_isRemoteSession && userSettings.Settings.RemoteDesktopPause == AppRulesEnum.pause))
+                (_isRemoteSession && userSettings.Settings.RemoteDesktopPause == AppRules.pause))
             {
                 PauseWallpapers();
             }
-            else if (userSettings.Settings.BatteryPause == AppRulesEnum.pause &&
+            else if (userSettings.Settings.BatteryPause == AppRules.pause &&
                 PowerUtil.GetACPowerStatus() == PowerUtil.ACLineStatus.Offline)
             {
                 PauseWallpapers();
             }
-            else if (userSettings.Settings.PowerSaveModePause == AppRulesEnum.pause &&
+            else if (userSettings.Settings.PowerSaveModePause == AppRules.pause &&
                 PowerUtil.GetBatterySaverStatus() == PowerUtil.SystemStatusFlag.On)
             {
                 PauseWallpapers();
@@ -294,14 +294,14 @@ namespace Lively.Core.Suspend
                     {
                         switch (item.Rule)
                         {
-                            case AppRulesEnum.pause:
+                            case AppRules.pause:
                                 PauseWallpapers();
                                 break;
-                            case AppRulesEnum.ignore:
+                            case AppRules.ignore:
                                 PlayWallpapers();
                                 SetWallpaperVolume(userSettings.Settings.AudioOnlyOnDesktop ? 0 : userSettings.Settings.AudioVolumeGlobal);
                                 break;
-                            case AppRulesEnum.kill:
+                            case AppRules.kill:
                                 //todo
                                 break;
                         }
@@ -321,7 +321,7 @@ namespace Lively.Core.Suspend
                 if (!(fHandle.Equals(NativeMethods.GetDesktopWindow()) || fHandle.Equals(NativeMethods.GetShellWindow())))
                 {
                     if (!displayManager.IsMultiScreen() ||
-                        userSettings.Settings.DisplayPauseSettings == DisplayPauseEnum.all)
+                        userSettings.Settings.DisplayPauseSettings == DisplayPause.all)
                     //userSettings.Settings.WallpaperArrangement == WallpaperArrangement.duplicate)
                     {
                         if (IntPtr.Equals(fHandle, workerWOrig) || IntPtr.Equals(fHandle, progman))
@@ -333,7 +333,7 @@ namespace Lively.Core.Suspend
                         else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
                         {
                             //maximised window or window covering whole screen.
-                            if (userSettings.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                            if (userSettings.Settings.AppFullscreenPause == AppRules.ignore)
                             {
                                 PlayWallpapers();
                             }
@@ -345,7 +345,7 @@ namespace Lively.Core.Suspend
                         else
                         {
                             //window is just in focus, not covering screen.
-                            if (userSettings.Settings.AppFocusPause == AppRulesEnum.pause)
+                            if (userSettings.Settings.AppFocusPause == AppRules.pause)
                             {
                                 PauseWallpapers();
                             }
@@ -393,7 +393,7 @@ namespace Lively.Core.Suspend
                             }
                             else //window is not greater >90%
                             {
-                                if (userSettings.Settings.AppFocusPause == AppRulesEnum.pause)
+                                if (userSettings.Settings.AppFocusPause == AppRules.pause)
                                 {
                                     PauseWallpapers();
                                 }
@@ -406,7 +406,7 @@ namespace Lively.Core.Suspend
                         else if (NativeMethods.IsZoomed(fHandle) || IsZoomedCustom(fHandle))
                         {
                             //maximised window or window covering whole screen.
-                            if (userSettings.Settings.AppFullscreenPause == AppRulesEnum.ignore)
+                            if (userSettings.Settings.AppFullscreenPause == AppRules.ignore)
                             {
                                 PlayWallpaper(focusedScreen);
                             }
@@ -418,7 +418,7 @@ namespace Lively.Core.Suspend
                         else
                         {
                             //window is just in focus, not covering screen.
-                            if (userSettings.Settings.AppFocusPause == AppRulesEnum.pause)
+                            if (userSettings.Settings.AppFocusPause == AppRules.pause)
                             {
                                 PauseWallpaper(focusedScreen);
                             }

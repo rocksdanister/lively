@@ -6,7 +6,7 @@ namespace Lively.Common.Factories
 {
     public class ApplicationsRulesFactory : IApplicationsRulesFactory
     {
-        public ApplicationRulesModel CreateAppPauseRule(string appPath, AppRulesEnum rule)
+        public ApplicationRulesModel CreateAppPauseRule(string appPath, AppRules rule)
         {
             var fileName = Path.GetFileNameWithoutExtension(appPath);
             return new ApplicationRulesModel(fileName, rule);

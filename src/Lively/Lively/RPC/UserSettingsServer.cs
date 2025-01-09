@@ -48,7 +48,7 @@ namespace Lively.RPC
                 resp.AppRules.Add(new AppRulesDataModel
                 {
                     AppName = app.AppName,
-                    Rule = (AppRules)((int)app.Rule)
+                    Rule = (Grpc.Common.Proto.Settings.AppRules)((int)app.Rule)
                 });
             }
             return Task.FromResult(resp);
@@ -59,7 +59,7 @@ namespace Lively.RPC
             userSettings.AppRules.Clear();
             foreach (var item in req.AppRules)
             {
-                userSettings.AppRules.Add(new ApplicationRulesModel(item.AppName, (AppRulesEnum)(int)item.Rule));
+                userSettings.AppRules.Add(new ApplicationRulesModel(item.AppName, (Models.Enums.AppRules)(int)item.Rule));
             }
 
             try
@@ -125,9 +125,9 @@ namespace Lively.RPC
             //userSettings.Settings.Startup = req.Startup;
             userSettings.Settings.IsFirstRun = req.IsFirstRun;
             userSettings.Settings.ControlPanelOpened = req.ControlPanelOpened;
-            userSettings.Settings.AppFocusPause = (AppRulesEnum)((int)req.AppFocusPause);
-            userSettings.Settings.AppFullscreenPause = (AppRulesEnum)((int)req.AppFullscreenPause);
-            userSettings.Settings.BatteryPause = (AppRulesEnum)((int)req.BatteryPause);
+            userSettings.Settings.AppFocusPause = (Models.Enums.AppRules)((int)req.AppFocusPause);
+            userSettings.Settings.AppFullscreenPause = (Models.Enums.AppRules)((int)req.AppFullscreenPause);
+            userSettings.Settings.BatteryPause = (Models.Enums.AppRules)((int)req.BatteryPause);
             userSettings.Settings.VideoPlayer = (LivelyMediaPlayer)((int)req.VideoPlayer);
             userSettings.Settings.VideoPlayerHwAccel = req.VideoPlayerHwAccel;
             userSettings.Settings.WebBrowser = (LivelyWebBrowser)((int)req.WebBrowser);
@@ -161,8 +161,8 @@ namespace Lively.RPC
             userSettings.Settings.DebugMenu = req.DebugMenu;
             userSettings.Settings.TestBuild = req.TestBuild;
             userSettings.Settings.ApplicationTheme = (Models.Enums.AppTheme)req.ApplicationTheme;
-            userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)req.RemoteDesktopPause;
-            userSettings.Settings.PowerSaveModePause = (AppRulesEnum)req.PowerSaveModePause;
+            userSettings.Settings.RemoteDesktopPause = (Models.Enums.AppRules)req.RemoteDesktopPause;
+            userSettings.Settings.PowerSaveModePause = (Models.Enums.AppRules)req.PowerSaveModePause;
             userSettings.Settings.LockScreenAutoWallpaper = req.LockScreenAutoWallpaper;
             userSettings.Settings.DesktopAutoWallpaper = req.DesktopAutoWallpaper;
             //userSettings.Settings.SystemTaskbarTheme = (Common.TaskbarTheme)req.SystemTaskbarTheme;
@@ -172,7 +172,7 @@ namespace Lively.RPC
             userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
             userSettings.Settings.Language = req.Language;
             userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
-            userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)req.DisplayPauseSettings;
+            userSettings.Settings.DisplayPauseSettings = (DisplayPause)req.DisplayPauseSettings;
             userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
             userSettings.Settings.IsUpdated = req.Updated;
             userSettings.Settings.IsUpdatedNotify = req.UpdatedNotify;
@@ -236,9 +236,9 @@ namespace Lively.RPC
                 Startup = settings.Startup,
                 IsFirstRun = settings.IsFirstRun,
                 ControlPanelOpened = settings.ControlPanelOpened,
-                AppFocusPause = (AppRules)((int)settings.AppFocusPause),
-                AppFullscreenPause = (AppRules)((int)settings.AppFullscreenPause),
-                BatteryPause = (AppRules)((int)settings.BatteryPause),
+                AppFocusPause = (Grpc.Common.Proto.Settings.AppRules)((int)settings.AppFocusPause),
+                AppFullscreenPause = (Grpc.Common.Proto.Settings.AppRules)((int)settings.AppFullscreenPause),
+                BatteryPause = (Grpc.Common.Proto.Settings.AppRules)((int)settings.BatteryPause),
                 VideoPlayer = (MediaPlayer)((int)settings.VideoPlayer),
                 VideoPlayerHwAccel = settings.VideoPlayerHwAccel,
                 WebBrowser = (WebBrowser)((int)settings.WebBrowser),
@@ -272,8 +272,8 @@ namespace Lively.RPC
                 DebugMenu = settings.DebugMenu,
                 TestBuild = settings.TestBuild,
                 ApplicationTheme = (Grpc.Common.Proto.Settings.AppTheme)settings.ApplicationTheme,
-                RemoteDesktopPause = (AppRules)settings.RemoteDesktopPause,
-                PowerSaveModePause = (AppRules)settings.PowerSaveModePause,
+                RemoteDesktopPause = (Grpc.Common.Proto.Settings.AppRules)settings.RemoteDesktopPause,
+                PowerSaveModePause = (Grpc.Common.Proto.Settings.AppRules)settings.PowerSaveModePause,
                 LockScreenAutoWallpaper = settings.LockScreenAutoWallpaper,
                 DesktopAutoWallpaper = settings.DesktopAutoWallpaper,
                 SystemTaskbarTheme = (Grpc.Common.Proto.Settings.TaskbarTheme)((int)settings.SystemTaskbarTheme),

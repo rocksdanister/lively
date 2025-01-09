@@ -138,7 +138,7 @@ namespace Lively.Services
                     AppRules = new List<ApplicationRulesModel>
                     {
                         //defaults.
-                        new ApplicationRulesModel("Discord", AppRulesEnum.ignore)
+                        new ApplicationRulesModel("Discord", Models.Enums.AppRules.ignore)
                     };
                     Save<List<ApplicationRulesModel>>();
                 }

@@ -42,7 +42,7 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             SelectedDisplayPauseRuleIndex = (int)userSettings.Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)userSettings.Settings.ProcessMonitorAlgorithm;
             //Only pause rules are shown to user, rest is internal use.
-            AppRules = new ObservableCollection<ApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == AppRulesEnum.pause));
+            AppRules = new ObservableCollection<ApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == Models.Enums.AppRules.pause));
         }
 
         private int _selectedAppFullScreenIndex;
@@ -51,9 +51,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedAppFullScreenIndex;
             set
             {
-                if (userSettings.Settings.AppFullscreenPause != (AppRulesEnum)value)
+                if (userSettings.Settings.AppFullscreenPause != (AppRules)value)
                 {
-                    userSettings.Settings.AppFullscreenPause = (AppRulesEnum)value;
+                    userSettings.Settings.AppFullscreenPause = (AppRules)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedAppFullScreenIndex, value);
@@ -66,9 +66,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedAppFocusIndex;
             set
             {
-                if (userSettings.Settings.AppFocusPause != (AppRulesEnum)value)
+                if (userSettings.Settings.AppFocusPause != (AppRules)value)
                 {
-                    userSettings.Settings.AppFocusPause = (AppRulesEnum)value;
+                    userSettings.Settings.AppFocusPause = (AppRules)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedAppFocusIndex, value);
@@ -81,9 +81,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedBatteryPowerIndex;
             set
             {
-                if (userSettings.Settings.BatteryPause != (AppRulesEnum)value)
+                if (userSettings.Settings.BatteryPause != (AppRules)value)
                 {
-                    userSettings.Settings.BatteryPause = (AppRulesEnum)value;
+                    userSettings.Settings.BatteryPause = (AppRules)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedBatteryPowerIndex, value);
@@ -96,9 +96,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedPowerSaveModeIndex;
             set
             {
-                if (userSettings.Settings.PowerSaveModePause != (AppRulesEnum)value)
+                if (userSettings.Settings.PowerSaveModePause != (AppRules)value)
                 {
-                    userSettings.Settings.PowerSaveModePause = (AppRulesEnum)value;
+                    userSettings.Settings.PowerSaveModePause = (AppRules)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedPowerSaveModeIndex, value);
@@ -111,9 +111,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedRemoteDestopPowerIndex;
             set
             {
-                if (userSettings.Settings.RemoteDesktopPause != (AppRulesEnum)value)
+                if (userSettings.Settings.RemoteDesktopPause != (AppRules)value)
                 {
-                    userSettings.Settings.RemoteDesktopPause = (AppRulesEnum)value;
+                    userSettings.Settings.RemoteDesktopPause = (AppRules)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedRemoteDestopPowerIndex, value);
@@ -126,9 +126,9 @@ namespace Lively.UI.WinUI.ViewModels.Settings
             get => _selectedDisplayPauseRuleIndex;
             set
             {
-                if (userSettings.Settings.DisplayPauseSettings != (DisplayPauseEnum)value)
+                if (userSettings.Settings.DisplayPauseSettings != (DisplayPause)value)
                 {
-                    userSettings.Settings.DisplayPauseSettings = (DisplayPauseEnum)value;
+                    userSettings.Settings.DisplayPauseSettings = (DisplayPause)value;
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _selectedDisplayPauseRuleIndex, value);
@@ -175,7 +175,7 @@ namespace Lively.UI.WinUI.ViewModels.Settings
 
             try
             {
-                var rule = appRuleFactory.CreateAppPauseRule(result.AppPath, AppRulesEnum.pause);
+                var rule = appRuleFactory.CreateAppPauseRule(result.AppPath, Models.Enums.AppRules.pause);
                 if (AppRules.Any(x => x.AppName.Equals(rule.AppName, StringComparison.Ordinal)))
                     return;
 
