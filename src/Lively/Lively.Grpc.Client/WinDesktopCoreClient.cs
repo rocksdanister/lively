@@ -7,12 +7,12 @@ using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-using static Lively.Common.Errors;
 
 namespace Lively.Grpc.Client
 {

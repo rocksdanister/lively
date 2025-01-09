@@ -21,9 +21,9 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
-using static Lively.Common.AutomationArgs;
+using static Lively.Common.CommandlineArgs;
 
-namespace Lively.Automation
+namespace Lively.Commandline
 {
     //Doc: https://github.com/rocksdanister/lively/wiki/Command-Line-Controls
     //Note: No user settings should be saved here, changes are temporary only.
@@ -42,8 +42,8 @@ namespace Lively.Automation
         private readonly Random rng = new Random();
 
         public CommandHandler(IWallpaperLibraryFactory wallpaperLibraryFactory,
-            IUserSettingsService userSettings, 
-            IDesktopCore desktopCore, 
+            IUserSettingsService userSettings,
+            IDesktopCore desktopCore,
             IDisplayManager displayManager,
             IScreensaverService screenSaver,
             IPlayback playbackMonitor,
@@ -65,7 +65,7 @@ namespace Lively.Automation
             if (App.IsExclusiveScreensaverMode)
                 return;
 
-            _ = CommandLine.Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions, ScreenshotOptions>(args)
+            _ = Parser.Default.ParseArguments<AppOptions, SetWallpaperOptions, CustomiseWallpaperOptions, CloseWallpaperOptions, ScreenSaverOptions, SeekWallpaperOptions, ScreenshotOptions>(args)
                 .MapResult(
                     (AppOptions opts) => RunAppOptions(opts),
                     (SetWallpaperOptions opts) => RunSetWallpaperOptions(opts),
@@ -94,7 +94,7 @@ namespace Lively.Automation
 
             if (!string.IsNullOrEmpty(opts.Volume) && float.TryParse(opts.Volume, out float val))
             {
-                if ((opts.Volume.StartsWith('+') || opts.Volume.StartsWith('-')))
+                if (opts.Volume.StartsWith('+') || opts.Volume.StartsWith('-'))
                 {
                     var clampedValue = Clamp((int)val, -100, 100);
                     var newVolume = Clamp(userSettings.Settings.AudioVolumeGlobal + clampedValue, 0, 100);
@@ -160,7 +160,7 @@ namespace Lively.Automation
             {
                 if (opts.IsReload)
                 {
-                    var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
+                    var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : null;
                     if (screen != null)
                         _ = desktopCore.RestartWallpaper(screen);
                     else
@@ -172,7 +172,7 @@ namespace Lively.Automation
                     {
                         case WallpaperArrangement.per:
                             {
-                                var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : null;
+                                var screen = opts.Monitor != null ? displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : null;
                                 if (screen != null)
                                 {
                                     var wallpapers = GetRandomWallpaper().Take(2);
@@ -245,7 +245,7 @@ namespace Lively.Automation
                 {
                     //Folder containing LivelyInfo.json file.
                     var screen = opts.Monitor != null ?
-                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : displayManager.PrimaryDisplayMonitor;
                     try
                     {
                         var di = new DirectoryInfo(opts.File); //Verify path is wallpaper install location.
@@ -261,7 +261,7 @@ namespace Lively.Automation
                 else if (File.Exists(opts.File))
                 {
                     var screen = opts.Monitor != null ?
-                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                        displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : displayManager.PrimaryDisplayMonitor;
                     LibraryModel libraryItem = GetWallpapers().FirstOrDefault(x => x.FilePath != null && x.FilePath.Equals(opts.File, StringComparison.OrdinalIgnoreCase));
 
                     if (screen is null)
@@ -337,7 +337,7 @@ namespace Lively.Automation
         private int RunSeekWallpaperOptions(SeekWallpaperOptions opts)
         {
             var screen = opts.Monitor != null ?
-                displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : displayManager.PrimaryDisplayMonitor;
             if (screen != null)
             {
                 var wp = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));
@@ -345,18 +345,18 @@ namespace Lively.Automation
                 {
                     if (opts.Param != null)
                     {
-                        if ((opts.Param.StartsWith('+') || opts.Param.StartsWith('-')))
+                        if (opts.Param.StartsWith('+') || opts.Param.StartsWith('-'))
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                SeekWallpaper(Clamp(val, -100, 100), Core.PlaybackPosType.relativePercent, screen, wp.Model);
+                                SeekWallpaper(Clamp(val, -100, 100), PlaybackPosType.relativePercent, screen, wp.Model);
                             }
                         }
                         else
                         {
                             if (float.TryParse(opts.Param, out float val))
                             {
-                                SeekWallpaper(Clamp(val, 0, 100), Core.PlaybackPosType.absolutePercent, screen, wp.Model);
+                                SeekWallpaper(Clamp(val, 0, 100), PlaybackPosType.absolutePercent, screen, wp.Model);
                             }
                         }
                     }
@@ -365,7 +365,7 @@ namespace Lively.Automation
             return 0;
         }
 
-        private void SeekWallpaper(float seek, Core.PlaybackPosType type, DisplayMonitor screen, LibraryModel wp)
+        private void SeekWallpaper(float seek, PlaybackPosType type, DisplayMonitor screen, LibraryModel wp)
         {
             switch (userSettings.Settings.WallpaperArrangement)
             {
@@ -385,7 +385,7 @@ namespace Lively.Automation
             {
                 //use primary screen if none found..
                 var screen = opts.Monitor != null ?
-                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : displayManager.PrimaryDisplayMonitor;
 
                 if (screen != null)
                 {
@@ -413,7 +413,7 @@ namespace Lively.Automation
                         }
 
                         IpcMessage msg = null;
-                        ctype = (ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase)) ? "button" : ctype;
+                        ctype = ctype == null && name.Equals("lively_default_settings_reload", StringComparison.OrdinalIgnoreCase) ? "button" : ctype;
                         if (ctype != null)
                         {
                             if (ctype.Equals("button", StringComparison.OrdinalIgnoreCase))
@@ -434,8 +434,8 @@ namespace Lively.Automation
                             {
                                 if (ctype.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    msg = new LivelyCheckbox() { Name = name, Value = (val == "true") };
-                                    lp[name]["value"] = (val == "true");
+                                    msg = new LivelyCheckbox() { Name = name, Value = val == "true" };
+                                    lp[name]["value"] = val == "true";
                                 }
                                 else if (ctype.Equals("slider", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -522,7 +522,7 @@ namespace Lively.Automation
             {
                 if (opts.Preview != null)
                 {
-                    screenSaver.CreatePreview(new IntPtr((int)opts.Preview));
+                    screenSaver.CreatePreview(new nint((int)opts.Preview));
                 }
             }));
             return 0;
@@ -539,7 +539,7 @@ namespace Lively.Automation
 
                 //use primary screen if none found..
                 var screen = opts.Monitor != null ?
-                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == ((int)opts.Monitor)) : displayManager.PrimaryDisplayMonitor;
+                    displayManager.DisplayMonitors.FirstOrDefault(x => x.Index == (int)opts.Monitor) : displayManager.PrimaryDisplayMonitor;
                 if (screen is not null)
                 {
                     var wallpaper = desktopCore.Wallpapers.FirstOrDefault(x => x.Screen.Equals(screen));

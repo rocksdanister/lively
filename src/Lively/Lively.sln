@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively", "Lively\Lively.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Common", "Lively.Common\Lively.Common.csproj", "{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Watchdog", "Lively.Watchdog\Lively.Watchdog.csproj", "{BF10DB31-D594-4619-B058-E7DA3D2898D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Utility.Watchdog", "Lively.Utility.Watchdog\Lively.Utility.Watchdog.csproj", "{BF10DB31-D594-4619-B058-E7DA3D2898D9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Models", "Lively.Models\Lively.Models.csproj", "{1E3D9D5B-A1FD-4915-95F5-9A52D87FCDEC}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Player.WebView2", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.UI.WinUI", "Lively.UI.WinUI\Lively.UI.WinUI.csproj", "{418B6EB5-1874-4681-89F8-6BC393AB2DC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Commandline", "Lively.Commandline\Lively.Commandline.csproj", "{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Utility.Commandline", "Lively.Utility.Commandline\Lively.Utility.Commandline.csproj", "{CE0921CD-1236-41AA-BD1A-501BDF9C99AF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Gallery.Client", "Lively.Gallery.Client\Lively.Gallery.Client.csproj", "{B4A45D65-7AB7-434A-A59E-37FBB7C98ADA}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.Common.Services", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.ML", "Lively.ML\Lively.ML.csproj", "{DD803B4B-E0A1-4C28-8473-9A7EB17D58B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Screensaver.Minimal", "Lively.Screensaver.Minimal\Lively.Screensaver.Minimal.csproj", "{DE3A7521-77D2-462A-A25D-BF020EA5A77B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Utility.Screensaver", "Lively.Utility.Screensaver\Lively.Utility.Screensaver.csproj", "{DE3A7521-77D2-462A-A25D-BF020EA5A77B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

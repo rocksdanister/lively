@@ -1,6 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using Lively.Automation;
+using Lively.Commandline;
 using Lively.Grpc.Common.Proto.Commands;
 using Lively.Services;
 using Lively.Views;

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // The Microsoft Corporation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 // Ref: https://github.com/microsoft/PowerToys/blob/main/src/modules/launcher/Plugins/Microsoft.Plugin.Program/Programs/ApplicationActivationManager.cs
-namespace Lively.Screensaver.Minimal.Com
+namespace Lively.Utility.Screensaver.Com
 {
     [ComImport]
     [Guid("45BA127D-10A8-46EA-8AB7-56EA9078943C")]

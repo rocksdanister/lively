@@ -19,7 +19,6 @@ using System.Threading.Tasks;
 using Lively.Grpc.Common.Proto.Display;
 using Lively.Grpc.Common.Proto.Commands;
 using System.Linq;
-using Lively.Automation;
 using Lively.Views.WindowMsg;
 using System.Windows.Threading;
 using Lively.Views;
@@ -38,8 +37,9 @@ using Lively.ViewModels;
 using System.Collections.Generic;
 using Lively.Common.Extensions;
 using CommandLine;
-using static Lively.Common.AutomationArgs;
+using static Lively.Common.CommandlineArgs;
 using Lively.Common.Factories;
+using Lively.Commandline;
 
 namespace Lively
 {

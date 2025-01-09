@@ -13,6 +13,7 @@ using Lively.Factories;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Exceptions;
 using Lively.Services;
 using Lively.ViewModels;
 using Lively.Views;
@@ -28,7 +29,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using WinEventHook;
-using static Lively.Common.Errors;
 
 namespace Lively.Core
 {

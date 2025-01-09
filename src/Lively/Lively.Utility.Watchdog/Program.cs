@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lively.Watchdog
+namespace Lively.Utility.Watchdog
 {
     /// <summary>
     /// Kills external application type wallpapers in the event lively main pgm is killed by taskmanager/other programs.

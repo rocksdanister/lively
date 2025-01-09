@@ -1,4 +1,4 @@
-﻿namespace Lively.Automation
+﻿namespace Lively.Commandline
 {
     public interface ICommandHandler
     {

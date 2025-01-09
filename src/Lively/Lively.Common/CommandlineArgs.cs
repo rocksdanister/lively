@@ -7,7 +7,7 @@ namespace Lively.Common
 {
     //Note: Nullable bool is used because commandlineparser sets bool to true if argument is present regardless of user input.
     //Issue: https://github.com/commandlineparser/commandline/issues/702
-    public static class AutomationArgs
+    public static class CommandlineArgs
     {
         [Verb("app", isDefault: true, HelpText = "Application controls.")]
         public class AppOptions

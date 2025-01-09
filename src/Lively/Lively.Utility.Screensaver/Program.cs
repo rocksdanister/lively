@@ -1,4 +1,4 @@
-﻿using Lively.Screensaver.Minimal.Com;
+﻿using Lively.Utility.Screensaver.Com;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Lively.Screensaver.Minimal
+namespace Lively.Utility.Screensaver
 {
     /// <summary>
     /// Lightweight version of screensaver launcher.

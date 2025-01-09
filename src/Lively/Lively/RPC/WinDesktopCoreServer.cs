@@ -9,6 +9,7 @@ using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Exceptions;
 using Lively.Services;
 using Lively.Views;
 using Newtonsoft.Json;
@@ -21,7 +22,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using static Lively.Common.Errors;
 
 namespace Lively.RPC
 {

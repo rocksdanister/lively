@@ -1,13 +1,12 @@
-﻿using System;
-using CommandLine;
-using Lively.Grpc.Client;
-using System.Collections.Generic;
+﻿using CommandLine;
 using Lively.Common.Helpers;
-using Lively.Common.Helpers.Pinvoke;
+using Lively.Grpc.Client;
+using System;
+using System.Collections.Generic;
+using static Lively.Common.CommandlineArgs;
 using static Lively.Common.Constants;
-using static Lively.Common.AutomationArgs;
 
-namespace Lively.Commandline
+namespace Lively.Utility.Commandline
 {
     class Program
     {
