@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.API;
+using Lively.Common.Message;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;

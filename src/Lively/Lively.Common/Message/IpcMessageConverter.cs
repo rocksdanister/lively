@@ -2,13 +2,13 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Lively.Common.API
+namespace Lively.Common.Message
 {
     public class IpcMessageConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
-            return (objectType == typeof(IpcMessage));
+            return objectType == typeof(IpcMessage);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -37,7 +37,7 @@ namespace Lively.Common.API
                 MessageType.msg_wploaded => jo.ToObject<LivelyMessageWallpaperLoaded>(serializer),
                 MessageType.lp_dropdown_scaler => jo.ToObject<LivelyDropdownScaler>(serializer),
                 _ => null,
-             };
+            };
         }
 
         public override bool CanWrite

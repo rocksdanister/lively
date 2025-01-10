@@ -1,5 +1,5 @@
-﻿using Lively.Common.API;
-using Lively.Common.Com;
+﻿using Lively.Common.Com;
+using Lively.Common.Message;
 using Lively.Models;
 using Lively.Models.Enums;
 using System;

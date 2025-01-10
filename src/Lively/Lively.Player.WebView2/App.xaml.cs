@@ -1,4 +1,4 @@
-﻿using Lively.Common.API;
+﻿using Lively.Common.Message;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;

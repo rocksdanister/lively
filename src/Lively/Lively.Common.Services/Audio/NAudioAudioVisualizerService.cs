@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Lively.Common.API;
+using Lively.Common.Message;
 using MathNet.Numerics.IntegralTransforms;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;

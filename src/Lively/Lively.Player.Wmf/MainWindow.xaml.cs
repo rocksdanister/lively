@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using Lively.Common.API;
 using Lively.Common.Helpers;
+using Lively.Common.Message;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

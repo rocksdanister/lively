@@ -1,4 +1,4 @@
-﻿using Lively.Common.API;
+﻿using Lively.Common.Message;
 using Lively.Models;
 using Lively.Models.Enums;
 using System;

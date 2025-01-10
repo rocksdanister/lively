@@ -1,7 +1,7 @@
-﻿using Lively.Common.API;
-using Lively.Common.Helpers;
+﻿using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
+using Lively.Common.Message;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Views;

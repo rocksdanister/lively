@@ -1,11 +1,11 @@
 ﻿using CommandLine;
 using Lively.Common;
-using Lively.Common.API;
 using Lively.Common.Extensions;
 using Lively.Common.Factories;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
+using Lively.Common.Message;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;

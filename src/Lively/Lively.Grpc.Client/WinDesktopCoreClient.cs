@@ -2,8 +2,8 @@
 using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
-using Lively.Common.API;
 using Lively.Common.Helpers.Storage;
+using Lively.Common.Message;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using Lively.Models.Enums;
