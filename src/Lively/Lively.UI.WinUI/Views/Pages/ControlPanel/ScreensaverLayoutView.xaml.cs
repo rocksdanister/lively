@@ -1,5 +1,4 @@
-﻿using Lively.UI.WinUI.ViewModels;
-using Lively.UI.WinUI.ViewModels.ControlPanel;
+﻿using Lively.UI.Shared.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 

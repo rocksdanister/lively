@@ -1,4 +1,4 @@
-﻿using Lively.UI.WinUI.ViewModels.Settings;
+﻿using Lively.UI.Shared.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

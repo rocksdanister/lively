@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lively.ML", "Lively.ML\Live
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Utility.Screensaver", "Lively.Utility.Screensaver\Lively.Utility.Screensaver.csproj", "{DE3A7521-77D2-462A-A25D-BF020EA5A77B}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Lively.UI.Shared", "Lively.UI.Shared\Lively.UI.Shared.shproj", "{0C64467B-8EF0-4896-85B1-0D8020ECEAB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -297,5 +299,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {96586925-06A4-4201-84E5-DD8ED237CC7E}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Lively.UI.Shared\Lively.UI.Shared.projitems*{0c64467b-8ef0-4896-85b1-0d8020eceab3}*SharedItemsImports = 13
+		Lively.UI.Shared\Lively.UI.Shared.projitems*{418b6eb5-1874-4681-89f8-6bc393ab2dc0}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

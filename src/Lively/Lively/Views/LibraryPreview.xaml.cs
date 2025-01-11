@@ -1,9 +1,9 @@
 ﻿using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services;
 using Lively.Core;
 using Lively.Helpers;
 using Lively.Models.Enums;
-using Lively.Services;
 using Lively.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;

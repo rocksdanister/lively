@@ -40,6 +40,7 @@ using CommandLine;
 using static Lively.Common.CommandlineArgs;
 using Lively.Common.Factories;
 using Lively.Commandline;
+using Lively.Common.Services;
 
 namespace Lively
 {
@@ -314,7 +315,6 @@ namespace Lively
                 .AddSingleton<CommandsServer>()
                 .AddSingleton<AppUpdateServer>()
                 .AddSingleton<WallpaperPlaylistServer>()
-                .AddSingleton<IDialogService, DialogService>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()

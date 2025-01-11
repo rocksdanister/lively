@@ -1,30 +1,29 @@
-﻿using Lively.Common;
-using Lively.Common.Helpers;
+﻿using Lively.Common.Extensions;
+using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Models;
+using Lively.Common.Services;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
-using Lively.UI.WinUI.Helpers;
+using Lively.Models.Enums;
+using Lively.Models.Exceptions;
+using Lively.UI.Shared.ViewModels;
+using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Services;
-using Lively.UI.WinUI.ViewModels;
-using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages;
-using Lively.UI.WinUI.Views.Pages.ControlPanel;
 using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Windowing;
 using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -34,11 +33,6 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
-using Lively.Common.Helpers.Files;
-using Lively.Common.Extensions;
-using Lively.UI.WinUI.Extensions;
-using Lively.Models.Enums;
-using Lively.Models.Exceptions;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -70,6 +64,7 @@ namespace Lively.UI.WinUI
         private readonly AppUpdateViewModel appUpdateVm;
         private readonly IDialogService dialogService;
         private readonly ICommandsClient commands;
+        private readonly IFileService fileService;
         private readonly ResourceLoader i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore,
@@ -80,6 +75,7 @@ namespace Lively.UI.WinUI
             LibraryViewModel libraryVm,
             IAppUpdaterClient appUpdater,
             AppUpdateViewModel appUpdateVm,
+            IFileService fileService,
             GalleryClient galleryClient)
         {
             this.desktopCore = desktopCore;
@@ -90,6 +86,7 @@ namespace Lively.UI.WinUI
             this.commands = commands;
             this.appUpdater = appUpdater;
             this.appUpdateVm = appUpdateVm;
+            this.fileService = fileService;
 
             this.InitializeComponent();
             this.SystemBackdrop = new MicaBackdrop();
@@ -327,7 +324,7 @@ namespace Lively.UI.WinUI
                     break;
                 case WallpaperCreateType.depthmap:
                     {
-                        filePath ??= await FilePickerUtil.PickSingleFile(WallpaperType.picture);
+                        filePath ??= (await fileService.PickFileAsync(WallpaperType.picture)).FirstOrDefault();
                         if (filePath is not null)
                         {
                             var result = await dialogService.ShowDepthWallpaperDialogAsync(filePath);
@@ -525,7 +522,7 @@ namespace Lively.UI.WinUI
                                                             i18n.GetString("TextYes"),
                                                             i18n.GetString("TextWait/Text"),
                                                             false);
-                if (result == IDialogService.DialogResult.primary)
+                if (result == DialogResult.primary)
                 {
                     appUpdateVm.CancelDownload();
                     libraryVm.CancelAllDownloads();

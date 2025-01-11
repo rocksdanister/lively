@@ -1,8 +1,8 @@
 using Lively.Common;
 using Lively.Grpc.Client;
 using Lively.Models.Enums;
+using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Extensions;
-using Lively.UI.WinUI.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

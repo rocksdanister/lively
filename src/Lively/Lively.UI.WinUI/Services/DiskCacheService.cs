@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using Lively.Common.Services;
 
 namespace Lively.UI.WinUI.Services
 {
     public class DiskCacheService : ICacheService
     {
-        private readonly IHttpClientFactory httpClientFactory;
         private readonly TimeSpan duration = TimeSpan.FromHours(12);
         private readonly HttpClient httpClient;
         private readonly string cacheDir;
@@ -19,7 +15,6 @@ namespace Lively.UI.WinUI.Services
         public DiskCacheService(IHttpClientFactory httpClientFactory, string cacheDir)
         {
             this.cacheDir = cacheDir;
-            this.httpClientFactory = httpClientFactory;
             this.httpClient = httpClientFactory.CreateClient();
             InitializeInternal();
         }

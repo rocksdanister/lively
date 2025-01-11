@@ -1,16 +1,11 @@
 ﻿using Lively.Common.Models;
 using NPSMLib;
 using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
-using System.Threading;
-using Lively.Common.Services.Audio;
 
 namespace Lively.Common.Services.Audio
 {

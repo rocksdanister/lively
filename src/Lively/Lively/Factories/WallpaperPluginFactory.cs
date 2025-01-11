@@ -1,9 +1,9 @@
 ﻿using Lively.Common;
+using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Wallpapers;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Services;
 using System;
 using System.Drawing;
 using System.IO;

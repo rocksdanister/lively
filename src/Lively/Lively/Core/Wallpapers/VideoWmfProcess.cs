@@ -1,5 +1,4 @@
-﻿using Lively.Common.API;
-using Lively.Common.Helpers.Shell;
+﻿using Lively.Common.Helpers.Shell;
 using Lively.Common.Message;
 using Lively.Helpers;
 using Lively.Models;

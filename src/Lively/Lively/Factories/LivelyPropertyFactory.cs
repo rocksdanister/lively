@@ -1,7 +1,7 @@
 ﻿using Lively.Common;
+using Lively.Common.Services;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Services;
 using System.IO;
 
 namespace Lively.Factories

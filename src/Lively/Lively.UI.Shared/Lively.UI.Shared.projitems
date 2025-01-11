@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0c64467b-8ef0-4896-85b1-0d8020eceab3</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Lively.UI.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AboutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddWallpaperCreateViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddWallpaperDataViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AppUpdateViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ChooseDisplayViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ControlPanel\ControlPanelViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ControlPanel\ScreensaverLayoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ControlPanel\WallpaperLayoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CustomiseWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DepthEstimateWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GalleryLoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GallerySubscriptionViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\GalleryViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\ManageAccountViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\ReportWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Gallery\RestoreWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryAboutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PatreonSupportersViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\AppThemeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\FindMoreAppsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsGeneralViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsPerformanceViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsSystemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsWallpaperViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ShareWallpaperViewModel.cs" />
+  </ItemGroup>
+</Project>

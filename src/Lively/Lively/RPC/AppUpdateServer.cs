@@ -2,17 +2,11 @@
 using Grpc.Core;
 using Lively.Common;
 using Lively.Common.Models;
-using Lively.Common.Services.Update;
+using Lively.Common.Services;
 using Lively.Grpc.Common.Proto.Update;
-using Lively.Services;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,12 +18,10 @@ namespace Lively.RPC
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IAppUpdaterService updater;
-        private readonly IDialogService dialogService;
 
-        public AppUpdateServer(IAppUpdaterService updater, IDialogService dialogService)
+        public AppUpdateServer(IAppUpdaterService updater)
         {
             this.updater = updater;
-            this.dialogService = dialogService;
         }
 
         public override async Task<Empty> CheckUpdate(Empty _, ServerCallContext context)
@@ -64,7 +56,7 @@ namespace Lively.RPC
                     {
                         Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
                         {
-                            dialogService.ShowErrorDialog(Properties.Resources.TextError, $"{Properties.Resources.LivelyExceptionAppUpdateFail}\n\nException:\n{ex}");
+                            MessageBox.Show($"{Properties.Resources.LivelyExceptionAppUpdateFail}\n\nException:\n{ex}", Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Error);
                         }));
                     }
                 }

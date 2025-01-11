@@ -1,9 +1,11 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Files;
+using Lively.Common.Services;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Gallery.API;
+using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Extensions;
-using Lively.UI.WinUI.ViewModels;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.ControlPanel;
@@ -13,9 +15,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using static Lively.UI.WinUI.Services.IDialogService;
 
 namespace Lively.UI.WinUI.Services
 {
@@ -331,12 +334,14 @@ namespace Lively.UI.WinUI.Services
 
         public async Task ShowShareWallpaperDialogAsync(LibraryModel obj)
         {
+            var vm = App.Services.GetRequiredService<ShareWallpaperViewModel>();
+            vm.Model = obj;
             await new ContentDialog()
             {
                 Title = i18n.GetString("TitleShareWallpaper/Text"),
                 Content = new ShareWallpaperView()
                 {
-                    DataContext = new ShareWallpaperViewModel(obj),
+                    DataContext = vm,
                 },
                 PrimaryButtonText = i18n.GetString("TextOK"),
                 DefaultButton = ContentDialogButton.Primary,
@@ -364,7 +369,7 @@ namespace Lively.UI.WinUI.Services
             return await new ContentDialog()
             {
                 Title = obj.LivelyInfo.IsAbsolutePath ?
-              i18n.GetString("DescriptionDeleteConfirmationLibrary") : i18n.GetString("DescriptionDeleteConfirmation"),
+                i18n.GetString("DescriptionDeleteConfirmationLibrary") : i18n.GetString("DescriptionDeleteConfirmation"),
                 Content = new LibraryAboutView() { DataContext = new LibraryAboutViewModel(obj) },
                 PrimaryButtonText = i18n.GetString("TextYes"),
                 SecondaryButtonText = i18n.GetString("TextNo"),
@@ -387,6 +392,24 @@ namespace Lively.UI.WinUI.Services
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
             }.ShowAsyncQueue();
+        }
+
+        public async Task<IEnumerable<GalleryModel>> ShowGalleryRestoreWallpaperDialogAsync(IEnumerable<WallpaperDto> wallpapers)
+        {
+            if (!wallpapers.Any())
+                return null;
+
+            var vm = App.Services.GetRequiredService<RestoreWallpaperViewModel>();
+            foreach (var item in wallpapers)
+                vm.Wallpapers.Add(new GalleryModel(item, false) { IsSelected = true });
+
+            var result = await ShowDialogAsync(
+                new RestoreWallpaperView(vm),
+                i18n.GetString("TitleWelcomeback/Text"),
+                i18n.GetString("TextDownloadNow/Content"),
+                i18n.GetString("TextMaybeLater/Content"));
+
+            return result == DialogResult.primary ? vm.SelectedItems : null;
         }
     }
 }

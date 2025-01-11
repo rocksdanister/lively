@@ -1,6 +1,6 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
 using Lively.Grpc.Client;
-using Lively.UI.WinUI.ViewModels;
+using Lively.UI.Shared.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Media;
 using WinUIEx;

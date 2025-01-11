@@ -1,12 +1,7 @@
-﻿using Lively.Gallery.Client;
-using Lively.UI.WinUI.ViewModels;
+﻿using Lively.UI.Shared.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
 using System;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.

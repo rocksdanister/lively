@@ -1,9 +1,9 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services;
 using Lively.Core.Display;
 using Lively.Helpers.Hardware;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Services;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -170,7 +170,7 @@ namespace Lively.Core.Suspend
             if (screenSaver.IsRunning)
             {
                 // Pause running wallpaper if screensaver is using a separate instance of wallpaper.
-                if (screenSaver.Mode == Services.ScreensaverApplyMode.process)
+                if (screenSaver.Mode == ScreensaverApplyMode.process)
                 {
                     PauseWallpapers();
                 }

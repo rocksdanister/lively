@@ -2,16 +2,14 @@
 using Lively.Common.Factories;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services;
 using Lively.Common.Services.Downloader;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
-using Lively.Helpers;
 using Lively.ML.DepthEstimate;
+using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Services;
-using Lively.UI.WinUI.ViewModels;
-using Lively.UI.WinUI.ViewModels.ControlPanel;
-using Lively.UI.WinUI.ViewModels.Settings;
 using Lively.UI.WinUI.Views.LivelyProperty;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -147,6 +145,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<ICommandsClient, CommandsClient>()
                 .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
                 .AddSingleton<IDialogService, DialogService>()
+                .AddSingleton<IDispatcherService, DispatcherService>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
                 .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",
@@ -180,6 +179,9 @@ namespace Lively.UI.WinUI
                 .AddTransient<SettingsPerformanceViewModel>()
                 .AddTransient<SettingsWallpaperViewModel>()
                 .AddTransient<SettingsSystemViewModel>()
+                .AddTransient<ShareWallpaperViewModel>()
+                .AddTransient<AddWallpaperDataViewModel>()
+                .AddTransient<IFileService, FileService>()
                 .AddTransient<IApplicationsFactory, ApplicationsFactory>()
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()

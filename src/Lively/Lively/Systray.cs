@@ -1,7 +1,7 @@
 ﻿using Lively.Common;
 using Lively.Common.Factories;
 using Lively.Common.Models;
-using Lively.Common.Services.Update;
+using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
@@ -16,10 +16,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -39,7 +37,6 @@ namespace Lively
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
         private readonly IPlayback playbackMonitor;
-        private readonly IDialogService dialogService;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
@@ -51,7 +48,6 @@ namespace Lively
             IAppUpdaterService appUpdater,
             IDisplayManager displayManager,
             IPlayback playbackMonitor,
-            IDialogService dialogService,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
             this.runner = runner;

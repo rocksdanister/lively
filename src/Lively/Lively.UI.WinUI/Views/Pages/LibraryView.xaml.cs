@@ -1,8 +1,8 @@
-﻿using Lively.Grpc.Client;
+﻿using Lively.Common.Services;
+using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.UI.WinUI.Services;
-using Lively.UI.WinUI.ViewModels;
+using Lively.UI.Shared.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -152,21 +152,13 @@ namespace Lively.UI.WinUI.Views.Pages
                     {
                         libItem.DataType = LibraryItemType.processing;
                         await desktopCore.SetWallpaper(libItem, userSettings.Settings.SelectedDisplay);
-                        /*
-                        var inputVm = new AddWallpaperDataViewModel(libItem);
-                        var inputDialog = new ContentDialog()
-                        {
-                            Title = i18n.GetString("AddWallpaper/Label"),
-                            Content = new AddWallpaperDataView(inputVm),
-                            PrimaryButtonText = i18n.GetString("TextOk"),
-                            SecondaryButtonText = i18n.GetString("Cancel/Content"),
-                            DefaultButton = ContentDialogButton.Primary,
-                            XamlRoot = this.Content.XamlRoot,
-                            SecondaryButtonCommand = inputVm.CancelCommand,
-                            PrimaryButtonCommand = inputVm.ProceedCommand,
-                        };
-                        await inputDialog.ShowAsyncQueue();
-                        */
+
+                        //var inputVm = App.Services.GetRequiredService<AddWallpaperDataViewModel>();
+                        //inputVm.Model = libItem;
+                        //await dialogService.ShowDialogAsync(new AddWallpaperDataView(inputVm),
+                        //    i18n.GetString("AddWallpaper/Label"),
+                        //    i18n.GetString("TextOk"),
+                        //    i18n.GetString("Cancel/Content"));
                     }
                 }
                 catch (Exception ie)

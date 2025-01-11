@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
-using Lively.Common.Message;
-using MathNet.Numerics.IntegralTransforms;
+﻿using MathNet.Numerics.IntegralTransforms;
 using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 using NAudio.Wave;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Numerics;
 
 namespace Lively.Common.Services.Audio
 {

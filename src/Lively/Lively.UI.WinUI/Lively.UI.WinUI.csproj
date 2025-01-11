@@ -373,4 +373,5 @@
   <ItemGroup>
     <Resource Remove="UserControls\DisplaySelector.xaml" />
   </ItemGroup>
+  <Import Project="..\Lively.UI.Shared\Lively.UI.Shared.projitems" Label="Shared" />
 </Project>

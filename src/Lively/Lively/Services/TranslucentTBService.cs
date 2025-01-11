@@ -1,5 +1,6 @@
 ﻿using ImageMagick;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services;
 using Lively.Models.Enums;
 using Microsoft.Win32;
 using System;

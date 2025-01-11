@@ -1,10 +1,10 @@
 ﻿using Linearstar.Windows.RawInput;
 using Lively.Common.Helpers.Pinvoke;
+using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Services;
 using System;
 using System.Windows;
 using System.Windows.Interop;

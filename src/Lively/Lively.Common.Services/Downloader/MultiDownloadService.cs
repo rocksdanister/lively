@@ -1,7 +1,5 @@
-﻿using System;
-using Downloader;
-using System.Collections.Generic;
-using System.Text;
+﻿using Downloader;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 

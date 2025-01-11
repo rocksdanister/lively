@@ -1,7 +1,5 @@
-﻿using System;
-using Lively.Models;
+﻿using Lively.UI.Shared.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using Lively.UI.WinUI.ViewModels;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace Lively.UI.WinUI.Views.LivelyProperty
