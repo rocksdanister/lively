@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 
-namespace Lively.Common.Services.Audio
+namespace Lively.Common.Services
 {
     public class NpsmNowPlayingService : INowPlayingService
     {
@@ -82,9 +82,9 @@ namespace Lively.Common.Services.Audio
                                     //Thumbnail available (stream becomes available.)
                                     //Thumbnail updated (stream updated to latest art.)
                                     if (model is null
-                                        || (media.Title != model.Title || media.Artist != model.Artist)
-                                        || (model.Thumbnail is null && thumbnailString != null)
-                                        || (model.Thumbnail != null && thumbnailString != null && !thumbnailString.Equals(model.Thumbnail)))
+                                        || media.Title != model.Title || media.Artist != model.Artist
+                                        || model.Thumbnail is null && thumbnailString != null
+                                        || model.Thumbnail != null && thumbnailString != null && !thumbnailString.Equals(model.Thumbnail))
                                     {
                                         model = new NowPlayingEventArgs
                                         {
@@ -156,6 +156,6 @@ namespace Lively.Common.Services.Audio
             return Convert.ToBase64String(byteImage);
         }
 
-        private static bool IsPixelAlpha(Bitmap bmp, int x, int y) => bmp.GetPixel(x, y).A == (byte)0;
+        private static bool IsPixelAlpha(Bitmap bmp, int x, int y) => bmp.GetPixel(x, y).A == 0;
     }
 }

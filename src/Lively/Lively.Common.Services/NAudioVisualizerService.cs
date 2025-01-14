@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 
-namespace Lively.Common.Services.Audio
+namespace Lively.Common.Services
 {
     //Ref: https://github.com/Quozul/Audio-Visualizer
     //MIT License Copyright (c) 2019 Erwan Le Gloannec.
-    public class NAudioAudioVisualizerService : IAudioVisualizerService, IMMNotificationClient
+    public class NAudioVisualizerService : IAudioVisualizerService, IMMNotificationClient
     {
         public event EventHandler<double[]> AudioDataAvailable;
 
@@ -22,7 +22,7 @@ namespace Lively.Common.Services.Audio
         private readonly static int horizontal_smoothness = 1;
         private readonly MMDeviceEnumerator deviceEnum = new();
 
-        public NAudioAudioVisualizerService()
+        public NAudioVisualizerService()
         {
             try
             {
