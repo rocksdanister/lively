@@ -2,30 +2,28 @@
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common.Services;
 using Lively.Gallery.Client;
-using Lively.Models;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
     public partial class GalleryLoginViewModel : ObservableObject
     {
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private readonly GalleryClient galleryClient;
         private readonly IDialogService dialogService;
         private readonly LibraryViewModel libraryVm;
 
         public GalleryLoginViewModel(GalleryClient galleryClient,
             IDialogService dialogService,
-            LibraryViewModel libraryVm)
+            LibraryViewModel libraryVm,
+            IResourceService i18n)
         {
             this.galleryClient = galleryClient;
             this.dialogService = dialogService;
             this.libraryVm = libraryVm;
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             Message = i18n.GetString("GalleryPleaseLogin/Text");
 #if DEBUG

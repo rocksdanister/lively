@@ -140,7 +140,7 @@ namespace Lively.UI.WinUI.UserControls
             this.InitializeComponent();
             OpenFileCommand = new RelayCommand(OpenFile);
             OpenFileCommand.CanExecute(isInitialized);
-            this.imageExtensions = FileFilter.LivelySupportedFormats.Where(x => x.Type == WallpaperType.picture || x.Type == WallpaperType.gif)
+            this.imageExtensions = FileTypes.SupportedFormats.Where(x => x.Type == WallpaperType.picture || x.Type == WallpaperType.gif)
                                                              .SelectMany(x => x.Extentions);
         }
 

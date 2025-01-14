@@ -2,7 +2,6 @@
 using Lively.Common;
 using Lively.Common.Extensions;
 using Lively.Common.Factories;
-using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Message;
@@ -276,7 +275,7 @@ namespace Lively.Commandline
                         try
                         {
                             Logger.Info("Wallpaper not found in library, importing as new file..");
-                            var type = FileFilter.GetLivelyFileType(opts.File);
+                            var type = FileTypes.GetFileType(opts.File);
                             if (type.IsMediaWallpaper())
                             {
                                 var dir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallTempDir, Path.GetRandomFileName());

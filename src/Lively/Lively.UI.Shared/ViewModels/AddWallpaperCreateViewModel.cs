@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Collections;
+using Lively.Common.Services;
 using Lively.Models;
 using Lively.Models.Enums;
 using System.Collections.ObjectModel;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
     public partial class AddWallpaperCreateViewModel : ObservableObject
     {
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
 
         [ObservableProperty]
         private ObservableCollection<AddWallpaperCreateModel> wallpaperCategories = new();
@@ -18,9 +18,9 @@ namespace Lively.UI.Shared.ViewModels
         [ObservableProperty]
         private AddWallpaperCreateModel selectedItem;
 
-        public AddWallpaperCreateViewModel()
+        public AddWallpaperCreateViewModel(IResourceService i18n)
         {
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             WallpaperCategoriesFiltered = new AdvancedCollectionView(WallpaperCategories, true);
 

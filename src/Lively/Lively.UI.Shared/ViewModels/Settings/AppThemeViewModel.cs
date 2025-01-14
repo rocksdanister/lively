@@ -13,14 +13,13 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
     //TODO: https://github.com/microsoft/microsoft-ui-xaml/issues/6394 (accent color.)
     public partial class AppThemeViewModel : ObservableObject
     {
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private readonly IUserSettingsClient userSettings;
         private readonly IAppThemeFactory themeFactory;
         private readonly MainViewModel mainVm;
@@ -31,6 +30,7 @@ namespace Lively.UI.Shared.ViewModels
             IAppThemeFactory themeFactory,
             MainViewModel mainVm,
             IFileService fileService,
+            IResourceService i18n,
             IDispatcherService dispatcher)
         {
             this.userSettings = userSettings;
@@ -38,7 +38,7 @@ namespace Lively.UI.Shared.ViewModels
             this.mainVm = mainVm;
             this.fileService = fileService;
             this.dispatcher = dispatcher;
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             //Defaults
             Themes.Add(new ThemeModel() { Name = i18n.GetString("TextDefault/Text"), Description = i18n.GetString("DescriptionDefault/Text"), Preview = "ms-appx:///Assets/icons8-application-window-96.png", IsEditable = false });

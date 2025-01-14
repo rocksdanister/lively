@@ -1,4 +1,6 @@
-﻿using Lively.Models.Enums;
+﻿using Lively.Common.Services;
+using Lively.Models.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml.Data;
 using System;
 
@@ -12,7 +14,7 @@ namespace Lively.UI.WinUI.Helpers.Converters
             try
             {
                 var type = (WallpaperType)value;
-                targetValue = LocalizationUtil.LocalizeWallpaperCategory(type);
+                targetValue = App.Services.GetRequiredService<IResourceService>().GetString(type);
             }
             catch { }
             return targetValue;

@@ -10,7 +10,6 @@ using Lively.Models.Enums;
 using Lively.Models.Exceptions;
 using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Extensions;
-using Lively.UI.WinUI.Services;
 using Lively.UI.WinUI.Views.Pages;
 using Lively.UI.WinUI.Views.Pages.Gallery;
 using Lively.UI.WinUI.Views.Pages.Settings;
@@ -30,18 +29,11 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 using WinRT.Interop;
 using WinUIEx;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Lively.UI.WinUI
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainWindow : WindowEx
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -65,7 +57,7 @@ namespace Lively.UI.WinUI
         private readonly IDialogService dialogService;
         private readonly ICommandsClient commands;
         private readonly IFileService fileService;
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
 
         public MainWindow(IDesktopCoreClient desktopCore,
             MainViewModel mainViewModel,
@@ -76,6 +68,7 @@ namespace Lively.UI.WinUI
             IAppUpdaterClient appUpdater,
             AppUpdateViewModel appUpdateVm,
             IFileService fileService,
+            IResourceService i18n,
             GalleryClient galleryClient)
         {
             this.desktopCore = desktopCore;
@@ -87,11 +80,11 @@ namespace Lively.UI.WinUI
             this.appUpdater = appUpdater;
             this.appUpdateVm = appUpdateVm;
             this.fileService = fileService;
+            this.i18n = i18n;
 
             this.InitializeComponent();
             this.SystemBackdrop = new MicaBackdrop();
             Root.DataContext = mainViewModel;
-            i18n = ResourceLoader.GetForViewIndependentUse();
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             this.controlPanelTooltip.Text = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
             controlPanelMonitor.Glyph = monitorGlyphs[desktopCore.Wallpapers.Count >= monitorGlyphs.Length ? monitorGlyphs.Length - 1 : desktopCore.Wallpapers.Count];

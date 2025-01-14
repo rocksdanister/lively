@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Helpers.Files;
-using Lively.Common.Helpers.Localization;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
@@ -44,7 +43,7 @@ namespace Lively.UI.Shared.ViewModels
             this.fileService = fileService;
 
             //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            LanguageItems = new ObservableCollection<LanguagesModel>(SupportedLanguages.Languages);
+            LanguageItems = new ObservableCollection<LanguagesModel>(Languages.SupportedLanguages);
 
             IsStartup = userSettings.Settings.Startup;
             WallpaperDirectory = userSettings.Settings.WallpaperDir;
@@ -52,7 +51,7 @@ namespace Lively.UI.Shared.ViewModels
             GlobalWallpaperVolume = userSettings.Settings.AudioVolumeGlobal;
             IsAudioOnlyOnDesktop = userSettings.Settings.AudioOnlyOnDesktop;
             IsReducedMotion = userSettings.Settings.UIMode != LivelyGUIState.normal;
-            SelectedLanguageItem = SupportedLanguages.GetLanguage(userSettings.Settings.Language);
+            SelectedLanguageItem = Languages.GetLanguage(userSettings.Settings.Language);
             MoveExistingWallpaperNewDir = userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir;
         }
 

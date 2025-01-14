@@ -13,10 +13,8 @@ using Lively.ML.Helpers;
 using Lively.Models;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -26,7 +24,7 @@ namespace Lively.UI.Shared.ViewModels
         public LibraryModel NewWallpaper { get; private set; }
         public event EventHandler OnRequestClose;
 
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private readonly string modelPath = Path.Combine(Constants.MachineLearning.MiDaSDir, "model.onnx");
         private readonly string templateDir = Path.Combine(Constants.MachineLearning.MiDaSDir, "Templates", "0");
         private CancellationTokenSource downloadCts;
@@ -43,6 +41,7 @@ namespace Lively.UI.Shared.ViewModels
             LibraryViewModel libraryVm,
             IUserSettingsClient userSettings,
             IDispatcherService dispatcher,
+            IResourceService i18n,
             IDesktopCoreClient desktopCore)
         {
             this.depthEstimate = depthEstimate;
@@ -52,7 +51,7 @@ namespace Lively.UI.Shared.ViewModels
             this.desktopCore = desktopCore;
             this.dispatcher = dispatcher;
 
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             IsModelExists = CheckModel();
             CanRunCommand = IsModelExists;

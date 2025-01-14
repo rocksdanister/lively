@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Lively.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using Lively.Common.Helpers.Localization;
 
 namespace Lively.Common
 {
-    public static class SupportedLanguages
+    public static class Languages
     {
-        private readonly static LanguagesModel[] languages = {
+        private readonly static LanguagesModel[] supportedLanguages = {
             new LanguagesModel("English(en)", new string[]{"en", "en-US"}), //default
             new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
             new LanguagesModel("中文(zh-CN)", new string[] { "zh", "zh-Hans", "zh-CN", "zh-SG" }),
@@ -57,7 +55,7 @@ namespace Lively.Common
             new LanguagesModel("Gaelic(ga-IE)", new string[] { "ga", "ga-IE" }),
         };
 
-        public static ReadOnlyCollection<LanguagesModel> Languages => Array.AsReadOnly(languages);
+        public static ReadOnlyCollection<LanguagesModel> SupportedLanguages => Array.AsReadOnly(supportedLanguages);
 
         /// <summary>
         /// Returns language code if exists, default language(en) otherwise.
@@ -65,6 +63,6 @@ namespace Lively.Common
         /// <param name="langCode"></param>
         /// <returns></returns>
         public static LanguagesModel GetLanguage(string langCode) =>
-            Languages.FirstOrDefault(lang => lang.Codes.Contains(langCode, StringComparer.OrdinalIgnoreCase)) ?? Languages[0];
+            SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode, StringComparer.OrdinalIgnoreCase)) ?? SupportedLanguages[0];
     }
 }

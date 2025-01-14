@@ -1,5 +1,4 @@
 ﻿using Lively.Common;
-using Lively.Common.Helpers.Files;
 using Lively.Common.Services;
 using Lively.Models;
 using Lively.Models.Enums;
@@ -18,7 +17,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.WinUI.Services
 {
@@ -26,11 +24,11 @@ namespace Lively.UI.WinUI.Services
     {
         public bool IsWorking { get; private set; }
 
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
 
-        public DialogService()
+        public DialogService(IResourceService i18n)
         {
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
         }
 
         public async Task<DisplayMonitor> ShowDisplayChooseDialogAsync()
@@ -205,7 +203,7 @@ namespace Lively.UI.WinUI.Services
                 return await InnerShowWallpaperCreateDialog(null);
 
             //For now only pictures..
-            var filter = FileFilter.GetLivelyFileType(filePath);
+            var filter = FileTypes.GetFileType(filePath);
             if (filter != WallpaperType.picture)
                 return WallpaperCreateType.none;
 

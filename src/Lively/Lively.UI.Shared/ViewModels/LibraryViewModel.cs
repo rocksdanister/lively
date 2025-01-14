@@ -11,12 +11,9 @@ using Lively.Common.Helpers.Storage;
 using Lively.Common.Services;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
-using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.UI.WinUI.Helpers;
-using Lively.UI.WinUI.Services;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,7 +21,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -49,7 +45,7 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDialogService dialogService;
         private readonly GalleryClient galleryClient;
 
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private TaskCompletionSource<LibraryModel> selectionTaskCompletionSource;
 
         public LibraryViewModel(IWallpaperLibraryFactory wallpaperLibraryFactory, 
@@ -58,6 +54,7 @@ namespace Lively.UI.Shared.ViewModels
             IUserSettingsClient userSettings,
             IDialogService dialogService,
             IDispatcherService dispatcher,
+            IResourceService i18n,
             GalleryClient galleryClient)
         {
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
@@ -68,7 +65,7 @@ namespace Lively.UI.Shared.ViewModels
             this.dispatcher = dispatcher;
             this.galleryClient = galleryClient;
 
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             wallpaperScanFolders = new List<string>
             {
@@ -581,7 +578,7 @@ namespace Lively.UI.Shared.ViewModels
         public async Task<LibraryModel> AddWallpaperFile(string filePath)
         {
             WallpaperType type;
-            if ((type = FileFilter.GetLivelyFileType(filePath)) != (WallpaperType)(-1))
+            if ((type = FileTypes.GetFileType(filePath)) != (WallpaperType)(-1))
             {
                 if (type == (WallpaperType)100)
                 {

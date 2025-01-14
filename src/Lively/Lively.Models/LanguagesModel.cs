@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lively.Common.Helpers.Localization
+﻿namespace Lively.Models
 {
     public class LanguagesModel
     {
@@ -9,8 +7,8 @@ namespace Lively.Common.Helpers.Localization
 
         public LanguagesModel(string language, string[] codes)
         {
-            this.Language = language;
-            this.Codes = codes;
+            Language = language;
+            Codes = codes;
         }
     }
 }

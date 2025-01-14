@@ -5,21 +5,20 @@ using Lively.Gallery.Client;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
     public partial class ManageAccountViewModel : ObservableObject
     {
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private readonly GalleryClient galleryClient;
         private readonly IDialogService dialogService;
 
-        public ManageAccountViewModel(GalleryClient galleryClient, IDialogService dialogService)
+        public ManageAccountViewModel(GalleryClient galleryClient, IDialogService dialogService, IResourceService i18n)
         {
             this.galleryClient = galleryClient;
             this.dialogService = dialogService;
-            i18n = ResourceLoader.GetForViewIndependentUse();
+            this.i18n = i18n;
 
             if (!galleryClient.IsLoggedIn)
                 return;

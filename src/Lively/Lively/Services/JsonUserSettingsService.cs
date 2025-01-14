@@ -56,7 +56,7 @@ namespace Lively.Services
             }
 
             //Ensure if the locale is supported..
-            var lang = SupportedLanguages.GetLanguage(Settings.Language);
+            var lang = Languages.GetLanguage(Settings.Language);
             if (lang.Codes.FirstOrDefault(x => x == Settings.Language) == null)
             {
                 Settings.Language = lang.Codes[0];

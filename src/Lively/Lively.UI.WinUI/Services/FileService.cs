@@ -1,4 +1,4 @@
-﻿using Lively.Common.Helpers.Files;
+﻿using Lively.Common;
 using Lively.Common.Services;
 using Lively.Models.Enums;
 using Lively.UI.WinUI.Extensions;
@@ -25,6 +25,13 @@ namespace Lively.UI.WinUI.Services
     //https://learn.microsoft.com/en-us/windows/win32/api/commdlg/ns-commdlg-openfilenamea
     public class FileService : IFileService
     {
+        private readonly IResourceService i18n;
+
+        public FileService(IResourceService i18n)
+        {
+            this.i18n = i18n;
+        }
+
         public async Task<IReadOnlyList<string>> PickFileAsync(string[] filters, bool multipleFile = false)
         {
             if (multipleFile)
@@ -49,15 +56,15 @@ namespace Lively.UI.WinUI.Services
             if (multipleFile)
             {
                 var file = UAC.IsElevated ?
-                    PickSingleFileNative(LocalizationUtil.FileDialogFilterNative(type)) :
-                    await PickSingleFileUwp(LocalizationUtil.FileDialogFilter(type));
+                    PickSingleFileNative(FileDialogFilterNative(type)) :
+                    await PickSingleFileUwp(FileDialogFilter(type));
                 return file != null ? [file] : [];
             }
             else
             {
                 return UAC.IsElevated ?
-                  PickMultipleFileNative(LocalizationUtil.FileDialogFilterNative(type)) :
-                  await PickMultipleFileUwp(LocalizationUtil.FileDialogFilter(type));
+                  PickMultipleFileNative(FileDialogFilterNative(type)) :
+                  await PickMultipleFileUwp(FileDialogFilter(type));
             }
         }
 
@@ -66,15 +73,15 @@ namespace Lively.UI.WinUI.Services
             if (multipleFile)
             {
                 var file = UAC.IsElevated ?
-                    PickSingleFileNative(LocalizationUtil.FileDialogFilterAllNative(true)) :
-                    await PickSingleFileUwp(LocalizationUtil.FileDialogFilterAll(true).ToArray());
+                    PickSingleFileNative(FileDialogFilterAllNative(true)) :
+                    await PickSingleFileUwp(FileDialogFilterAll(true).ToArray());
                 return file != null ? [file] : [];
             }
             else
             {
                 return UAC.IsElevated ?
-                  PickMultipleFileNative(LocalizationUtil.FileDialogFilterAllNative(true)) :
-                  await PickMultipleFileUwp(LocalizationUtil.FileDialogFilterAll(true).ToArray());
+                  PickMultipleFileNative(FileDialogFilterAllNative(true)) :
+                  await PickMultipleFileUwp(FileDialogFilterAll(true).ToArray());
             }
         }
 
@@ -132,6 +139,60 @@ namespace Lively.UI.WinUI.Services
         private static IReadOnlyList<string> PickMultipleFileNative(string filter)
         {
             return ShowOpenFileDialog(filter, true);
+        }
+
+        private static List<string> FileDialogFilterAll(bool anyFile = false)
+        {
+            var filterCollection = new List<string>();
+            if (anyFile)
+            {
+                filterCollection.Add("*");
+            }
+            foreach (var item in FileTypes.SupportedFormats)
+            {
+                foreach (var extension in item.Extentions)
+                {
+                    filterCollection.Add(extension);
+                }
+            }
+            return filterCollection.Distinct().ToList();
+        }
+
+        private string[] FileDialogFilter(WallpaperType wallpaperType) =>
+            FileTypes.SupportedFormats.First(x => x.Type == wallpaperType).Extentions;
+
+        private string FileDialogFilterNative(WallpaperType wallpaperType)
+        {
+            var filterString = new StringBuilder();
+            var selection = FileTypes.SupportedFormats.First(x => x.Type == wallpaperType);
+            filterString.Append(i18n.GetString(selection.Type)).Append('\0');
+            foreach (var extension in selection.Extentions)
+            {
+                filterString.Append('*').Append(extension).Append(';');
+            }
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            return filterString.ToString();
+        }
+
+        private string FileDialogFilterAllNative(bool anyFile = false)
+        {
+            var filterString = new StringBuilder();
+            if (anyFile)
+            {
+                filterString.Append(i18n.GetString("TextAllFiles")).Append("\0*.*\0");
+            }
+            foreach (var item in FileTypes.SupportedFormats)
+            {
+                filterString.Append(i18n.GetString(item.Type)).Append('\0');
+                foreach (var extension in item.Extentions)
+                {
+                    filterString.Append('*').Append(extension).Append(';');
+                }
+                filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            }
+            filterString.Remove(filterString.Length - 1, 1).Append('\0');
+            return filterString.ToString();
         }
 
         #region openfiledialog pinvoke

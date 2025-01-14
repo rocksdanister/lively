@@ -145,6 +145,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IAppUpdaterClient, AppUpdaterClient>()
                 .AddSingleton<IDialogService, DialogService>()
                 .AddSingleton<IDispatcherService, DispatcherService>()
+                .AddSingleton<IResourceService, ResourceService>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
                 .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",

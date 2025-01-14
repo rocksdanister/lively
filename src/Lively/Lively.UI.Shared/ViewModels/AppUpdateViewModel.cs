@@ -16,6 +16,8 @@ namespace Lively.UI.Shared.ViewModels
     public partial class AppUpdateViewModel : ObservableObject
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
+        private readonly IResourceService i18n;
         private readonly IAppUpdaterClient appUpdater;
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDownloadService downloader;
@@ -31,7 +33,8 @@ namespace Lively.UI.Shared.ViewModels
             IDownloadService downloader,
             ICommandsClient commandsClient,
             IDispatcherService dispatcher,
-            IDialogService dialogService)
+            IDialogService dialogService,
+            IResourceService i18n)
         {
             this.appUpdater = appUpdater;
             this.desktopCore = desktopCore;
@@ -39,6 +42,7 @@ namespace Lively.UI.Shared.ViewModels
             this.dialogService = dialogService;
             this.commandsClient = commandsClient;
             this.dispatcher = dispatcher;
+            this.i18n = i18n;
 
             languageResource = ResourceLoader.GetForViewIndependentUse();
 

@@ -11,7 +11,6 @@ using System;
 using System.IO;
 using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 
 namespace Lively.UI.WinUI.Views.Pages
@@ -21,7 +20,7 @@ namespace Lively.UI.WinUI.Views.Pages
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private LibraryModel selectedTile;
 
-        private readonly ResourceLoader i18n;
+        private readonly IResourceService i18n;
         private readonly IUserSettingsClient userSettings;
         private readonly IDesktopCoreClient desktopCore;
         private readonly LibraryViewModel libraryVm;
@@ -35,9 +34,9 @@ namespace Lively.UI.WinUI.Views.Pages
             this.userSettings = App.Services.GetRequiredService<IUserSettingsClient>();
             this.dialogService = App.Services.GetRequiredService<IDialogService>();
             this.displayManager = App.Services.GetRequiredService<IDisplayManagerClient>();
+            this.i18n = App.Services.GetRequiredService<IResourceService>();
 
             this.InitializeComponent();
-            i18n = ResourceLoader.GetForViewIndependentUse();
             this.DataContext = libraryVm;
         }
 
