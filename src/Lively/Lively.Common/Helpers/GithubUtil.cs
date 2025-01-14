@@ -23,10 +23,8 @@ namespace Lively.Common.Helpers
 
         public static (string fileName, string url) GetAssetUrl(Release release, string assetName)
         {
-            var asset = release.Assets.FirstOrDefault(x => Contains(x.Name, assetName, StringComparison.OrdinalIgnoreCase)) 
-                ?? throw new FileNotFoundException("Asset not found.");
-
-            return (asset.Name, asset.Url);
+            var asset = release.Assets.FirstOrDefault(x => Contains(x.Name, assetName, StringComparison.OrdinalIgnoreCase));
+            return (asset?.Name, asset?.Url);
         }
 
         public static Version GetVersion(Release release)

@@ -113,17 +113,17 @@ namespace Lively.Common.Services
 
             // Get latest installer file
             var arch = GetArchSetupString(ProcessArch);
-            var (FileName, Url) = GithubUtil.GetAssetUrl(gitRelease, $"lively_setup_{arch}_full");
             // Format: lively_setup_ARCH_full_vXXXX.exe, XXXX - 4 digit version no and ARCH - x86, arm64
-            if (FileName == null && ProcessArch == Architecture.X64)
+            var (fileName, url) = GithubUtil.GetAssetUrl(gitRelease, $"lively_setup_{arch}_full");
+            if (fileName == null && ProcessArch == Architecture.X64)
             {
                 // Fallback, old updater has hardcoded arch value so for backward compatibility initially x64 setup will be named x86.
                 // In the future make an x86 installer that downloads x64 installer and installs.
                 // Lively v2.1 onwards only x64 version is available.
-                (FileName, Url) = GithubUtil.GetAssetUrl(gitRelease, $"lively_setup_x86_full");
+                (fileName, url) = GithubUtil.GetAssetUrl(gitRelease, $"lively_setup_x86_full");
             }
 
-            return (Url is null ? null : new Uri(Url), FileName, version);
+            return (url is null ? null : new Uri(url), fileName, version);
         }
 
         private static string GetArchSetupString(Architecture arch)
