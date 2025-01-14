@@ -1,46 +1,43 @@
-﻿using GrpcDotNetNamedPipes;
+﻿using CommandLine;
+using GrpcDotNetNamedPipes;
+using Lively.Commandline;
 using Lively.Common;
+using Lively.Common.Extensions;
+using Lively.Common.Factories;
+using Lively.Common.Helpers;
+using Lively.Common.Helpers.Archive;
+using Lively.Common.Helpers.Files;
+using Lively.Common.Models;
+using Lively.Common.Services;
+using Lively.Common.Services.Update;
 using Lively.Core;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Core.Watchdog;
 using Lively.Factories;
+using Lively.Grpc.Common.Proto.Commands;
 using Lively.Grpc.Common.Proto.Desktop;
+using Lively.Grpc.Common.Proto.Display;
+using Lively.Grpc.Common.Proto.Settings;
+using Lively.Grpc.Common.Proto.Update;
+using Lively.Helpers;
+using Lively.Models;
 using Lively.RPC;
 using Lively.Services;
+using Lively.Views;
+using Lively.Views.WindowMsg;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
-using System.Windows;
-using Lively.Grpc.Common.Proto.Settings;
-using System.Threading.Tasks;
-using Lively.Grpc.Common.Proto.Display;
-using Lively.Grpc.Common.Proto.Commands;
 using System.Linq;
-using Lively.Views.WindowMsg;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
-using Lively.Views;
-using Lively.Grpc.Common.Proto.Update;
-using Lively.Common.Helpers.Files;
-using Lively.Common.Helpers.Archive;
-using Lively.Models;
-using Lively.Common.Helpers;
-using Microsoft.Win32;
-using System.Reflection;
-using Lively.Common.Models;
-using Lively.Common.Services.Update;
-using Lively.Helpers;
-using Lively.Common.Services.Downloader;
-using Lively.ViewModels;
-using System.Collections.Generic;
-using Lively.Common.Extensions;
-using CommandLine;
 using static Lively.Common.CommandlineArgs;
-using Lively.Common.Factories;
-using Lively.Commandline;
-using Lively.Common.Services;
 
 namespace Lively
 {
@@ -322,7 +319,7 @@ namespace Lively
                 .AddTransient<ILivelyPropertyFactory, LivelyPropertyFactory>()
                 //.AddTransient<IScreenRecorder, ScreenRecorderlibScreen>()
                 .AddTransient<ICommandHandler, CommandHandler>()
-                .AddTransient<IDownloadService, SimpleDownloadService>()
+                .AddTransient<IDownloadService, HttpDownloadService>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 //.AddTransient<SetupView>()

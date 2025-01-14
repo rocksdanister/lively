@@ -3,14 +3,11 @@ using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
 using Lively.Common.Models;
 using Lively.Common.Services;
-using Lively.Common.Services.Downloader;
 using Lively.Grpc.Client;
 using Lively.UI.WinUI.Helpers;
-using Lively.UI.WinUI.Services;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -26,6 +23,7 @@ namespace Lively.UI.Shared.ViewModels
         private readonly ICommandsClient commandsClient;
         private readonly IDispatcherService dispatcher;
 
+        private CancellationTokenSource downloadCts;
         private readonly ResourceLoader languageResource;
 
         public AppUpdateViewModel(IAppUpdaterClient appUpdater,
@@ -46,9 +44,6 @@ namespace Lively.UI.Shared.ViewModels
 
             UpdateState(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
-
-            downloader.DownloadProgressChanged += UpdateDownload_DownloadProgressChanged;
-            downloader.DownloadFileCompleted += UpdateDownload_DownloadFileCompleted;
 
             // This is only run once if the main interface is opened before the initial fetchDelay in Core for update check.
             if (appUpdater.Status == AppUpdateStatus.notchecked)
@@ -151,8 +146,16 @@ namespace Lively.UI.Shared.ViewModels
 
                 var fileName = appUpdater.LastCheckFileName;
                 var filePath = Path.Combine(Constants.CommonPaths.TempDir, fileName);
+                downloadCts = new CancellationTokenSource();
+
                 Logger.Info($"Downloading update: {filePath}");
-                await downloader.DownloadFile(appUpdater.LastCheckUri, filePath);
+                await downloader.DownloadFile(appUpdater.LastCheckUri, filePath, new Progress<(double downloaded, double total)>(progress =>
+                {
+                    CurrentProgress = (float)(progress.downloaded * 100 / progress.total);
+                }), downloadCts.Token);
+
+                if (!downloadCts.Token.IsCancellationRequested)
+                    IsUpdateDownloaded = true;
             }
             catch (Exception ex)
             {
@@ -191,26 +194,10 @@ namespace Lively.UI.Shared.ViewModels
             }
         }
 
-        public void CancelDownload()
+        [RelayCommand]
+        private void Cancel()
         {
-            downloader.Cancel();
-        }
-
-        private void UpdateDownload_DownloadProgressChanged(object sender, DownloadProgressEventArgs e)
-        {
-            dispatcher.TryEnqueue(() =>
-            {
-                CurrentProgress = e.Percentage;
-            });
-        }
-
-        private void UpdateDownload_DownloadFileCompleted(object sender, bool success)
-        {
-            dispatcher.TryEnqueue(() =>
-            {
-                if (success)
-                    IsUpdateDownloaded = true;
-            });
+            downloadCts?.Cancel();
         }
 
         private void AppUpdater_UpdateChecked(object sender, AppUpdaterEventArgs e)

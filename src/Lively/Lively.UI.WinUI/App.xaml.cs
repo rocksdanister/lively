@@ -3,7 +3,6 @@ using Lively.Common.Factories;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Services;
-using Lively.Common.Services.Downloader;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
@@ -186,7 +185,7 @@ namespace Lively.UI.WinUI
                 .AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()
                 .AddTransient<IAppThemeFactory, AppThemeFactory>()
-                .AddTransient<IDownloadService, SimpleDownloadService>()
+                .AddTransient<IDownloadService, HttpDownloadService>()
                 //https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                 .AddHttpClient()
                 .BuildServiceProvider();

@@ -1,43 +1,27 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lively.Common.Services
 {
-    public class DownloadProgressEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Total size of file in megabytes.
-        /// </summary>
-        public double TotalSize { get; set; }
-        /// <summary>
-        /// Currently downloaded file size in megabytes.
-        /// </summary>
-        public double DownloadedSize { get; set; }
-        /// <summary>
-        /// Download progress.
-        /// </summary>
-        public double Percentage { get; set; }
-    }
-
-    public class DownloadEventArgs : EventArgs
-    {
-        /// <summary>
-        /// Total size of file in megabytes.
-        /// </summary>
-        public double TotalSize { get; set; }
-        /// <summary>
-        /// Name of the file.
-        /// </summary>
-        public string FileName { get; set; }
-    }
-
     public interface IDownloadService
     {
-        event EventHandler<bool> DownloadFileCompleted;
-        event EventHandler<DownloadProgressEventArgs> DownloadProgressChanged;
-        event EventHandler<DownloadEventArgs> DownloadStarted;
+        /// <summary>
+        /// Downloads a file from the specified URL to the given file path.
+        /// </summary>
+        /// <param name="url">The file download uri.</param>
+        /// <param name="filePath">The destination file path.</param>
+        /// <param name="progress">Reports progress. 
+        /// The first parameter is the downloaded size in MB, and the second is the total size in MB.</param>
+        /// <param name="cancellationToken">A token to cancel the download operation.</param>
+        /// <returns>A Task that completes when the download is finished, or throws an exception on failure.</returns>
+        Task DownloadFile(Uri url, string filePath, IProgress<(double downloaded, double total)> progress, CancellationToken cancellationToken);
 
+        /// <summary>
+        /// Downloads a file from the specified URL to the given file path.
+        /// </summary>
+        /// <param name="url">The file download uri.</param>
+        /// <param name="filePath">The destination file path.</param>
         Task DownloadFile(Uri url, string filePath);
-        void Cancel();
     }
 }

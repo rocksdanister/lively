@@ -524,7 +524,7 @@ namespace Lively.UI.WinUI
                                                             false);
                 if (result == DialogResult.primary)
                 {
-                    appUpdateVm.CancelDownload();
+                    appUpdateVm.CancelCommand.Execute(null);
                     libraryVm.CancelAllDownloads();
                     libraryVm.IsBusy = true;
 

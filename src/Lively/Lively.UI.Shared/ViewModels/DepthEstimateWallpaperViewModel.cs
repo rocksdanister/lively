@@ -7,19 +7,14 @@ using Lively.Common.Helpers.Archive;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Storage;
 using Lively.Common.Services;
-using Lively.Common.Services.Downloader;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
 using Lively.ML.Helpers;
 using Lively.Models;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
@@ -34,6 +29,7 @@ namespace Lively.UI.Shared.ViewModels
         private readonly ResourceLoader i18n;
         private readonly string modelPath = Path.Combine(Constants.MachineLearning.MiDaSDir, "model.onnx");
         private readonly string templateDir = Path.Combine(Constants.MachineLearning.MiDaSDir, "Templates", "0");
+        private CancellationTokenSource downloadCts;
 
         private readonly IDepthEstimate depthEstimate;
         private readonly IDownloadService downloader;
@@ -59,7 +55,7 @@ namespace Lively.UI.Shared.ViewModels
             i18n = ResourceLoader.GetForViewIndependentUse();
 
             IsModelExists = CheckModel();
-            _canRunCommand = IsModelExists;
+            CanRunCommand = IsModelExists;
             RunCommand.NotifyCanExecuteChanged();
         }
 
@@ -99,19 +95,15 @@ namespace Lively.UI.Shared.ViewModels
             }
         }
 
-        private bool _canRunCommand = false;
-        private RelayCommand _runCommand;
-        public RelayCommand RunCommand => _runCommand ??= new RelayCommand(async() => await CreateDepthWallpaper(), () => _canRunCommand);
+        private bool CanRunCommand { get; set; } = false;
 
-        private bool _canDownloadModelCommand = true;
-        private RelayCommand _downloadModelCommand;
-        public RelayCommand DownloadModelCommand => _downloadModelCommand ??= new RelayCommand(async() => await DownloadModel(), () => _canDownloadModelCommand);
+        private bool CanCancelCommand { get; set; } = true;
 
-        private bool _canCancelCommand = true;
-        private RelayCommand _cancelCommand;
-        public RelayCommand CancelCommand => _cancelCommand ??= new RelayCommand(CancelOperations, () => _canCancelCommand);
+        private bool CanDownloadModelCommand { get; set; } = true;
 
-        private async Task CreateDepthWallpaper()
+
+        [RelayCommand(CanExecute = nameof(CanRunCommand))]
+        private async Task Run()
         {
             var destDir = Path.Combine(userSettings.Settings.WallpaperDir, Constants.CommonPartialPaths.WallpaperInstallDir, Path.GetRandomFileName());
             var depthImagePath = Path.Combine(destDir, "media", "depth.jpg");
@@ -121,9 +113,9 @@ namespace Lively.UI.Shared.ViewModels
             try
             {
                 IsRunning = true;
-                _canRunCommand = false;
+                CanRunCommand = false;
                 RunCommand.NotifyCanExecuteChanged();
-                _canCancelCommand = false;
+                CanCancelCommand = false;
                 CancelCommand.NotifyCanExecuteChanged();
                 PreviewText = i18n.GetString("DescriptionDepthApprox/Content");
 
@@ -193,54 +185,45 @@ namespace Lively.UI.Shared.ViewModels
             finally
             {
                 IsRunning = false;
-                _canCancelCommand = true;
+                CanCancelCommand = true;
                 CancelCommand.NotifyCanExecuteChanged();
             }
         }
 
+        [RelayCommand(CanExecute = nameof(CanDownloadModelCommand))]
         private async Task DownloadModel()
         {
             try
             {
-                _canDownloadModelCommand = false;
+                CanDownloadModelCommand = false;
                 DownloadModelCommand.NotifyCanExecuteChanged();
 
                 var uri = await GetModelUrl();
                 Directory.CreateDirectory(Constants.MachineLearning.MiDaSDir);
                 var tempPath = Path.Combine(Constants.CommonPaths.TempDir, Path.GetRandomFileName() + ".zip");
-                downloader.DownloadProgressChanged += (s, e) =>
+                downloadCts = new CancellationTokenSource();
+
+                await downloader.DownloadFile(uri, tempPath, new Progress<(double downloaded, double total)>(progress =>
                 {
-                    dispatcher.TryEnqueue(() =>
-                    {
-                        ModelDownloadProgressText = $"{e.DownloadedSize}/{e.TotalSize} MB";
-                        ModelDownloadProgress = (float)e.Percentage;
-                    });
-                };
-                downloader.DownloadFileCompleted += async(s, success) =>
+                    ModelDownloadProgressText = $"{progress.downloaded}/{progress.total} MB";
+                    ModelDownloadProgress = (float)(progress.downloaded * 100 / progress.total);
+                }), downloadCts.Token);
+
+                if (!downloadCts.Token.IsCancellationRequested)
                 {
-                    dispatcher.TryEnqueue(async() =>
-                    {
-                        if (success)
-                        {
-                            await Task.Run(() => ZipExtract.ZipExtractFile(tempPath, Constants.MachineLearning.MiDaSDir, false));
-                            IsModelExists = CheckModel();
-                            BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
+                    await Task.Run(() => ZipExtract.ZipExtractFile(tempPath, Constants.MachineLearning.MiDaSDir, false));
+                    IsModelExists = CheckModel();
+                    BackgroundImage = IsModelExists ? SelectedImage : BackgroundImage;
+                }
 
-                            //try
-                            //{
-                            //    File.Delete(tempPath);
-                            //}
-                            //catch { }
+                //try
+                //{
+                //    File.Delete(tempPath);
+                //}
+                //catch { }
 
-                            _canRunCommand = IsModelExists;
-                            RunCommand.NotifyCanExecuteChanged();
-                        }
-                        else
-                            ErrorText = $"{i18n.GetString("TextError")}: Download failed.";
-                    });
-                };
-
-                await downloader.DownloadFile(uri, tempPath);
+                CanRunCommand = IsModelExists;
+                RunCommand.NotifyCanExecuteChanged();
             }
             catch(Exception ex)
             {
@@ -254,9 +237,10 @@ namespace Lively.UI.Shared.ViewModels
             //}
         }
 
-        private void CancelOperations()
+        [RelayCommand(CanExecute = nameof(CanCancelCommand))]
+        private void Cancel()
         {
-            downloader?.Cancel();
+            downloadCts?.Cancel();
         }
 
         private static async Task<Uri> GetModelUrl()
