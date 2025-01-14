@@ -247,9 +247,8 @@ namespace Lively.UI.Shared.ViewModels
         {
             var userName = "rocksdanister";
             var repositoryName = "lively-ml-models";
-            var gitRelease = await GithubUtil.GetLatestRelease(repositoryName, userName, 0);
-            var assets = await GithubUtil.GetAssetUrl(gitRelease, repositoryName, userName);
-            var (_, Url) = assets.FirstOrDefault(x => x.Name.Contains("midas_small.zip", StringComparison.OrdinalIgnoreCase));
+            var gitRelease = await GithubUtil.GetLatestRelease(userName, repositoryName);
+            var (_, Url) = GithubUtil.GetAssetUrl(gitRelease, "midas_small.zip");
 
             return new Uri(Url);
         }
