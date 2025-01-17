@@ -75,7 +75,7 @@ namespace Lively.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "Lively.PlayerCefSharp.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "cef", "Lively.Player.CefSharp.exe"),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = false,
@@ -187,7 +187,7 @@ namespace Lively.Core.Wallpapers
                             //CefBrowserWindow
                             var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
                             //WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-                            InputHandle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
+                            InputHandle = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_1", null);
                             Handle = Proc.GetProcessWindow(true);//FindWindowByProcessId(Proc.Id);
 
                             if (IntPtr.Equals(InputHandle, IntPtr.Zero) || IntPtr.Equals(Handle, IntPtr.Zero))
