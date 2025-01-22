@@ -28,20 +28,35 @@ namespace Lively.Common
             public static string TokensPath { get; } = Path.Combine(AppDataDir, "Tokens.dat");
         }
 
+        /// <summary>
+        /// To be combined with dynamic path Settings.WallpaperDir
+        /// </summary>
         public static class CommonPartialPaths
         {
-            /// <summary>
-            /// To be combined with dynamic path Settings.WallpaperDir
-            /// </summary>
             public static string WallpaperInstallDir { get; } = "wallpapers";
-            /// <summary>
-            /// To be combined with dynamic path Settings.WallpaperDir
-            /// </summary>
             public static string WallpaperInstallTempDir { get; } = Path.Combine("SaveData", "wptmp");
-            /// <summary>
-            /// To be combined with dynamic path Settings.WallpaperDir
-            /// </summary>
             public static string WallpaperSettingsDir { get; } = Path.Combine("SaveData", "wpdata");
+        }
+
+        /// <summary>
+        /// To be combined with Core base directory.
+        /// </summary>
+        public static class PlayerPartialPaths
+        {
+            public static string MpvDir { get; } = Path.Combine("plugins", "mpv");
+            public static string MpvPath { get; } = Path.Combine(MpvDir, "mpv.exe");
+            public static string CefSharpDir { get; } = Path.Combine("plugins", "cef");
+            public static string CefSharpPath { get; } = Path.Combine(CefSharpDir, "Lively.Player.CefSharp.exe");
+            public static string WebView2Dir { get; } = Path.Combine("plugins", "webview2");
+            public static string WebView2Path { get; } = Path.Combine(WebView2Dir, "Lively.Player.WebView2.exe");
+            public static string WmfDir { get; } = Path.Combine("plugins", "wmf");
+            public static string WmfPath { get; } = Path.Combine(WmfDir, "Lively.PlayerWmf.exe");
+            public static string VlcDir { get; } = Path.Combine("plugins", "vlc");
+            public static string VlcPath { get; } = Path.Combine(VlcDir, "vlc.exe");
+            //public static string LibVlcExtDir { get; } = Path.Combine("plugins", "libVLCPlayer");
+            //public static string LibVlcExtPath { get; } = Path.Combine(LibVlcExtDir, "libVLCPlayer.exe");
+            //public static string LibMpvExtDir { get; } = Path.Combine("plugins", "libMPVPlayer");
+            //public static string LibMpvExtPath { get; } = Path.Combine(LibMpvExtDir, "libMPVPlayer.exe");
         }
 
         public static class MachineLearning

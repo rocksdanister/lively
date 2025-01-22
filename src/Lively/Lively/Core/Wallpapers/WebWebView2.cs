@@ -1,4 +1,5 @@
-﻿using Lively.Common.Extensions;
+﻿using Lively.Common;
+using Lively.Common.Extensions;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Message;
@@ -66,12 +67,14 @@ namespace Lively.Core.Wallpapers
             ProcessStartInfo start = new ProcessStartInfo
             {
                 Arguments = cmdArgs.ToString(),
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wv2", "Lively.PlayerWebView2.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.WebView2Path),
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = false,
                 UseShellExecute = false,
-                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wv2")
+                StandardInputEncoding = Encoding.UTF8,
+                //StandardOutputEncoding = Encoding.UTF8,
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.WebView2Dir)
             };
 
             Process webProcess = new Process
@@ -117,7 +120,11 @@ namespace Lively.Core.Wallpapers
         {
             try
             {
+                // Setting process StandardInputEncoding to UTF8.
                 Proc?.StandardInput.WriteLine(msg);
+                // Or convert message to UTF8.
+                //byte[] bytes = Encoding.UTF8.GetBytes(msg);
+                //Proc.StandardInput.BaseStream.Write(bytes, 0, bytes.Length);
             }
             catch (Exception e)
             {

@@ -1,21 +1,19 @@
 using CefSharp;
+using Lively.Common.Message;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lively.Player.CefSharp.Extensions.CefSharp.DevTools
 {
-    public static class DevToolsExtensions
+    public static partial class DevToolsExtensions
     {
-        public enum CaptureFormat
-        {
-            jpeg,
-            webp,
-            png
-        }
 
         private static int LastMessageId = 600000;
         /// <summary>
@@ -25,8 +23,11 @@ namespace Lively.Player.CefSharp.Extensions.CefSharp.DevTools
         /// </summary>
         /// <param name="browser">the ChromiumWebBrowser</param>
         /// <returns>png encoded image as byte[]</returns>
-        public static async Task<byte[]> CaptureScreenShotAsPng(this IWebBrowser chromiumWebBrowser, CaptureFormat format)
+        public static async Task<byte[]> CaptureScreenshot(this IWebBrowser chromiumWebBrowser, ScreenshotFormat format)
         {
+            if (chromiumWebBrowser is null)
+                return null;
+
             //if (!browser.HasDocument)
             //{
             //    throw new System.Exception("Page hasn't loaded");
@@ -60,13 +61,17 @@ namespace Lively.Player.CefSharp.Extensions.CefSharp.DevTools
                 Dictionary<string, object> param = null;
                 switch (format)
                 {
-                    case CaptureFormat.jpeg:
+                    case ScreenshotFormat.jpeg:
                         param = new Dictionary<string, object> { { "format", "jpeg" } };
                         break;
-                    case CaptureFormat.webp:
+                    case ScreenshotFormat.png:
+                        param = null; // Default
+                        break;
+                    case ScreenshotFormat.webp:
                         param = new Dictionary<string, object> { { "format", "webp" } };
                         break;
-                    case CaptureFormat.png:
+                    case ScreenshotFormat.bmp:
+                        // CEF unsupported
                         param = null; // Default
                         break;
                 }
@@ -105,6 +110,33 @@ namespace Lively.Player.CefSharp.Extensions.CefSharp.DevTools
                 var message = (string)response.message;
 
                 throw new Exception(code + ":" + message);
+            }
+        }
+
+        public static async Task CaptureScreenshot(this IWebBrowser chromeBrowser, ScreenshotFormat format, string filePath)
+        {
+            byte[] imageBytes = await CaptureScreenshot(chromeBrowser, format);
+            if (imageBytes == null)
+                return;
+
+            switch (format)
+            {
+                case ScreenshotFormat.jpeg:
+                case ScreenshotFormat.png:
+                case ScreenshotFormat.webp:
+                    {
+                        // Write to disk
+                        File.WriteAllBytes(filePath, imageBytes);
+                    }
+                    break;
+                case ScreenshotFormat.bmp:
+                    {
+                        // Convert byte[] to Image
+                        using var ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+                        using var image = Image.FromStream(ms, true);
+                        image.Save(filePath, ImageFormat.Bmp);
+                    }
+                    break;
             }
         }
     }

@@ -33,10 +33,6 @@ namespace Lively.Services
                 displayManager.DisplayMonitors.FirstOrDefault(x => x.Equals(Settings.SelectedDisplay)) ?? displayManager.PrimaryDisplayMonitor :
                 displayManager.PrimaryDisplayMonitor;
 
-            Settings.VideoPlayer = IsVideoPlayerAvailable(Settings.VideoPlayer) ? Settings.VideoPlayer : LivelyMediaPlayer.mpv;
-            Settings.GifPlayer = IsGifPlayerAvailable(Settings.GifPlayer) ? Settings.GifPlayer : LivelyGifPlayer.mpv;
-            Settings.WebBrowser = IsWebPlayerAvailable(Settings.WebBrowser) ? Settings.WebBrowser : LivelyWebBrowser.cef;
-
             // Previous installed version is different from current instance.  
             if (!Settings.AppVersion.Equals(Assembly.GetExecutingAssembly().GetName().Version.ToString(), StringComparison.OrdinalIgnoreCase))
             {
@@ -177,45 +173,5 @@ namespace Lively.Services
                 throw new InvalidCastException($"Type not found: {typeof(T)}");
             }
         }
-
-        #region helpers
-
-        private bool IsVideoPlayerAvailable(LivelyMediaPlayer mp)
-        {
-            return mp switch
-            {
-                LivelyMediaPlayer.libvlc => false, //depreciated
-                LivelyMediaPlayer.libmpv => false, //depreciated
-                LivelyMediaPlayer.wmf => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe")),
-                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
-                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
-                LivelyMediaPlayer.vlc => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc", "vlc.exe")),
-                _ => false,
-            };
-        }
-
-        private bool IsGifPlayerAvailable(LivelyGifPlayer gp)
-        {
-            return gp switch
-            {
-                LivelyGifPlayer.win10Img => false, //xaml island
-                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyGifPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe")),
-                _ => false,
-            };
-        }
-
-        private bool IsWebPlayerAvailable(LivelyWebBrowser wp)
-        {
-            return wp switch
-            {
-                LivelyWebBrowser.cef => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "Cef", "Lively.PlayerCefSharp.exe")),
-                LivelyWebBrowser.webview2 => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "Wv2", "Lively.PlayerWebView2.exe")),
-                _ => false,
-            };
-        }
-
-        #endregion //helpers
     }
 }

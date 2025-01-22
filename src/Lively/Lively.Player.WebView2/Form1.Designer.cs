@@ -1,4 +1,4 @@
-﻿namespace Lively.Player.CefSharp
+﻿namespace Lively.Player.WebView2
 {
     partial class Form1
     {

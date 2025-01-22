@@ -1,4 +1,5 @@
-﻿using Lively.Common.Extensions;
+﻿using Lively.Common;
+using Lively.Common.Extensions;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Shell;
 using Lively.Common.Message;
@@ -73,9 +74,9 @@ namespace Lively.Core.Wallpapers
 
             ProcessStartInfo start = new ProcessStartInfo
             {
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc", "vlc.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.VlcPath),
                 UseShellExecute = false,
-                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "vlc"),
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.VlcDir),
                 Arguments = cmdArgs.ToString(),
             };
 

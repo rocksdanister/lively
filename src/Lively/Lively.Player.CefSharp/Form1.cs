@@ -8,18 +8,17 @@ using Lively.Common.Message;
 using Lively.Common.Services;
 using Lively.Models.Enums;
 using Lively.Player.CefSharp.Extensions.CefSharp;
+using Lively.Player.CefSharp.Extensions.CefSharp.DevTools;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Lively.Player.CefSharp.Extensions.CefSharp.DevTools.DevToolsExtensions;
 
 namespace Lively.Player.CefSharp
 {
@@ -184,7 +183,7 @@ namespace Lively.Player.CefSharp
                                         var scr = (LivelyScreenshotCmd)obj;
                                         try
                                         {
-                                            await CaptureScreenshot(scr.FilePath, scr.Format);
+                                            await chromeBrowser.CaptureScreenshot(scr.Format, scr.FilePath);
                                         }
                                         catch (Exception ie)
                                         {
@@ -597,53 +596,6 @@ namespace Lively.Player.CefSharp
 
         #endregion //cef
 
-        #region helpers
-
-        private async Task CaptureScreenshot(string filePath, ScreenshotFormat format)
-        {
-            if (chromeBrowser is null)
-                return;
-
-            var captureFormat = CaptureFormat.png;
-            switch (format)
-            {
-                case ScreenshotFormat.jpeg:
-                    captureFormat = CaptureFormat.jpeg;
-                    break;
-                case ScreenshotFormat.png:
-                    captureFormat = CaptureFormat.png;
-                    break;
-                case ScreenshotFormat.webp:
-                    captureFormat = CaptureFormat.webp;
-                    break;
-                case ScreenshotFormat.bmp:
-                    // Not supported by cef
-                    captureFormat = CaptureFormat.png;
-                    break;
-            }
-            byte[] imageBytes = await Extensions.CefSharp.DevTools.DevToolsExtensions.CaptureScreenShotAsPng(chromeBrowser, captureFormat);
-
-            switch (format)
-            {
-                case ScreenshotFormat.jpeg:
-                case ScreenshotFormat.png:
-                case ScreenshotFormat.webp:
-                    {
-                        // Write to disk
-                        File.WriteAllBytes(filePath, imageBytes);
-                    }
-                    break;
-                case ScreenshotFormat.bmp:
-                    {
-                        // Convert byte[] to Image
-                        using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
-                        using (var image = Image.FromStream(ms, true))
-                            image.Save(filePath, ImageFormat.Bmp);
-                    }
-                    break;
-            }
-        }
-
         /// <summary>
         /// Supports arrays
         /// </summary>
@@ -665,7 +617,5 @@ namespace Lively.Player.CefSharp
             script.Append(");");
             chromeBrowser?.ExecuteScriptAsync(script.ToString());
         }
-
-        #endregion //helpers
     }
 }

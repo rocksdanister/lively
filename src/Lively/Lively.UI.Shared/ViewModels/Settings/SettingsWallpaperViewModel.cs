@@ -384,11 +384,11 @@ namespace Lively.UI.Shared.ViewModels
             {
                 LivelyMediaPlayer.libvlc => false, //depreciated
                 LivelyMediaPlayer.libmpv => false, //depreciated
-                LivelyMediaPlayer.wmf => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "wmf", "Lively.PlayerWmf.exe")),
-                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libVLCPlayer", "libVLCPlayer.exe")),
-                LivelyMediaPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
-                LivelyMediaPlayer.vlc => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "vlc", "vlc.exe")),
+                LivelyMediaPlayer.wmf => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.WmfPath)),
+                LivelyMediaPlayer.libvlcExt => false,
+                LivelyMediaPlayer.libmpvExt => false,
+                LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.MpvPath)),
+                LivelyMediaPlayer.vlc => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.VlcPath)),
                 _ => false,
             };
         }
@@ -398,8 +398,8 @@ namespace Lively.UI.Shared.ViewModels
             return gp switch
             {
                 LivelyGifPlayer.win10Img => false, //xaml island
-                LivelyGifPlayer.libmpvExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "libMPVPlayer", "libMPVPlayer.exe")),
-                LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "mpv.exe")),
+                LivelyGifPlayer.libmpvExt => false,
+                LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.MpvPath)),
                 _ => false,
             };
         }
@@ -408,8 +408,8 @@ namespace Lively.UI.Shared.ViewModels
         {
             return wp switch
             {
-                LivelyWebBrowser.cef => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Cef", "Lively.PlayerCefSharp.exe")),
-                LivelyWebBrowser.webview2 => File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "Wv2", "Lively.PlayerWebView2.exe")),
+                LivelyWebBrowser.cef => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.CefSharpPath)),
+                LivelyWebBrowser.webview2 => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.WebView2Path)),
                 _ => false,
             };
         }

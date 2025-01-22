@@ -134,14 +134,14 @@ namespace Lively.Core.Wallpapers
             //file or online video stream path
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? GetYtDlMpvArg(streamQuality, path) : "\"" + path + "\"");
 
-            ProcessStartInfo start = new ProcessStartInfo
+            var start = new ProcessStartInfo
             {
-                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "mpv.exe"),
+                FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.MpvPath),
                 UseShellExecute = false,
                 RedirectStandardError = false,
                 RedirectStandardInput = false,
                 RedirectStandardOutput = true,
-                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv"),
+                WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.MpvDir),
                 Arguments = cmdArgs.ToString(),
             };
 
