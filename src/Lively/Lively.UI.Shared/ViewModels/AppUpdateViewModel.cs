@@ -9,7 +9,6 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -26,7 +25,6 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDispatcherService dispatcher;
 
         private CancellationTokenSource downloadCts;
-        private readonly ResourceLoader languageResource;
 
         public AppUpdateViewModel(IAppUpdaterClient appUpdater,
             IDesktopCoreClient desktopCore,
@@ -43,8 +41,6 @@ namespace Lively.UI.Shared.ViewModels
             this.commandsClient = commandsClient;
             this.dispatcher = dispatcher;
             this.i18n = i18n;
-
-            languageResource = ResourceLoader.GetForViewIndependentUse();
 
             UpdateState(appUpdater.Status, appUpdater.LastCheckTime, appUpdater.LastCheckVersion);
             appUpdater.UpdateChecked += AppUpdater_UpdateChecked;
@@ -83,7 +79,7 @@ namespace Lively.UI.Shared.ViewModels
                 if (IsBetaBuild)
                     ver += "(b)";
                 else if (IsWinStore)
-                    ver += $" {languageResource.GetString("Store/Header")}";
+                    ver += $" {i18n.GetString("Store/Header")}";
                 return ver;
             }
         }
@@ -164,9 +160,9 @@ namespace Lively.UI.Shared.ViewModels
             catch (Exception ex)
             {
                 Logger.Error(ex);
-                await dialogService.ShowDialogAsync($"{languageResource.GetString("LivelyExceptionAppUpdateFail")}\n\nException:\n{ex}",
-                    languageResource.GetString("TextError"),
-                    languageResource.GetString("TextOK"));
+                await dialogService.ShowDialogAsync($"{i18n.GetString("LivelyExceptionAppUpdateFail")}\n\nException:\n{ex}",
+                    i18n.GetString("TextError"),
+                    i18n.GetString("TextOK"));
             }
             finally
             {
@@ -219,12 +215,12 @@ namespace Lively.UI.Shared.ViewModels
                 case AppUpdateStatus.uptodate:
                     IsUpdateAvailable = false;
                     UpdateStatusSeverity = "Informational";
-                    UpdateStatusText = languageResource.GetString("TextUpdateUptodate");
+                    UpdateStatusText = i18n.GetString("TextUpdateUptodate");
                     break;
                 case AppUpdateStatus.available:
                     IsUpdateAvailable = true;
                     UpdateStatusSeverity = "Success";
-                    UpdateStatusText = languageResource.GetString("DescriptionUpdateAvailable");
+                    UpdateStatusText = i18n.GetString("DescriptionUpdateAvailable");
                     break;
                 case AppUpdateStatus.invalid:
                     IsUpdateAvailable = false;
@@ -234,16 +230,16 @@ namespace Lively.UI.Shared.ViewModels
                 case AppUpdateStatus.notchecked:
                     IsUpdateAvailable = false;
                     UpdateStatusSeverity = IsWinStore ? "Informational" : "Warning";
-                    UpdateStatusText = languageResource.GetString("TextUpdateChecking");
+                    UpdateStatusText = i18n.GetString("TextUpdateChecking");
                     break;
                 case AppUpdateStatus.error:
                     IsUpdateAvailable = false;
                     UpdateStatusSeverity = "Error";
-                    UpdateStatusText = languageResource.GetString("TextupdateCheckFail");
+                    UpdateStatusText = i18n.GetString("TextupdateCheckFail");
                     break;
             }
             UpdateStatus = status;
-            UpdateDateText = status == AppUpdateStatus.notchecked ? $"{languageResource.GetString("TextLastChecked")}: ---" : $"{languageResource.GetString("TextLastChecked")}: {date}";
+            UpdateDateText = status == AppUpdateStatus.notchecked ? $"{i18n.GetString("TextLastChecked")}: ---" : $"{i18n.GetString("TextLastChecked")}: {date}";
         }
     }
 }

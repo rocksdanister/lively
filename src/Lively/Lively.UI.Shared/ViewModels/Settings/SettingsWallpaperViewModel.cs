@@ -8,6 +8,7 @@ using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.UI.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,17 +25,20 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDialogService dialogService;
         private readonly IDispatcherService dispatcher;
         private readonly IApplicationsRulesFactory appRuleFactory;
+        private readonly ICommandsClient commandsClient;
 
         public SettingsWallpaperViewModel(IUserSettingsClient userSettings,
             IDesktopCoreClient desktopCore,
             IDialogService dialogService,
             IDispatcherService dispatcher,
+            ICommandsClient commandsClient,
             IApplicationsRulesFactory appRuleFactory)
         {
             this.userSettings = userSettings;
             this.desktopCore = desktopCore;
             this.dialogService = dialogService;
             this.appRuleFactory = appRuleFactory;
+            this.commandsClient = commandsClient;
             this.dispatcher = dispatcher;
 
             AppMusicExclusionRules = new ObservableCollection<AppMusicExclusionRuleModel>(GetAppMusicExclusionRule());
@@ -213,6 +217,7 @@ namespace Lively.UI.Shared.ViewModels
             set
             {
                 IsSelectedWebBrowserAvailable = IsWebPlayerAvailable((LivelyWebBrowser)value);
+                IsWebView2Required = !WebViewUtil.IsWebView2Available() && IsSelectedWebBrowserAvailable && ((LivelyWebBrowser)value) == LivelyWebBrowser.webview2;
                 if (userSettings.Settings.WebBrowser != (LivelyWebBrowser)value && IsSelectedWebBrowserAvailable)
                 {
                     userSettings.Settings.WebBrowser = (LivelyWebBrowser)value;
@@ -220,6 +225,37 @@ namespace Lively.UI.Shared.ViewModels
                     _ = WallpaperRestart([WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream]);
                 }
                 SetProperty(ref _selectedWebBrowserIndex, value);
+            }
+        }
+
+        [ObservableProperty]
+        private bool isWebView2Required;
+
+        [ObservableProperty]
+        private bool isWebView2Installing;
+
+        [RelayCommand]
+        private async Task InstallWebView2()
+        {
+            try
+            {
+                IsWebView2Installing = true;
+
+                if (await WebViewUtil.InstallWebView2())
+                {
+                    // Restart wallpaper
+                    _ = WallpaperRestart([WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream]);
+                    // Restart to reload WebView2 (Update changelog page.)
+                    _ = commandsClient.RestartUI();
+                }
+                else
+                {
+                    LinkUtil.OpenBrowser(WebViewUtil.DownloadUrl);
+                }
+            }
+            finally
+            {
+                IsWebView2Installing = false;
             }
         }
 

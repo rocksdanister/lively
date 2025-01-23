@@ -166,6 +166,24 @@
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
+                    <!--  WebView2 install required  -->
+                    <InfoBar
+                        x:Uid="WebViewRequired"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Top"
+                        IsClosable="False"
+                        IsOpen="True"
+                        Severity="Error"
+                        Visibility="{Binding IsWebView2Required, Mode=OneWay}">
+                        <InfoBar.ActionButton>
+                            <Button x:Uid="TitleDownload" Command="{Binding InstallWebView2Command}" />
+                        </InfoBar.ActionButton>
+                        <ProgressBar
+                            Margin="-50,0,0,0"
+                            IsIndeterminate="True"
+                            Visibility="{Binding IsWebView2Installing, Mode=OneWay}" />
+                    </InfoBar>
+                    <!--  Plugin not found  -->
                     <InfoBar
                         x:Uid="PluginNotFound"
                         Margin="0,0,0,0"
