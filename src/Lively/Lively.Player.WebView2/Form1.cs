@@ -33,69 +33,66 @@ namespace Lively.Player.WebView2
         private IHardwareUsageService hardwareUsageService;
         private INowPlayingService nowPlayingService;
 
+        private bool IsDebugging { get; } = BuildInfoUtil.IsDebugBuild();
+
         public Form1()
         {
             InitializeComponent();
-#if DEBUG
-            startArgs = new StartArgs
+            if (IsDebugging)
             {
-                // .html fullpath
-                Url = "https://google.com",
-                //online or local(file)
-                Type = "online",
-                // LivelyProperties.json path if any
-                Properties = @"",
-                SysInfo = false,
-                NowPlaying = false,
-                AudioVisualizer = false,
-            };
-
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.WindowState = FormWindowState.Normal;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Size = new Size(1920, 1080);
-            this.ShowInTaskbar = true;
-            this.MaximizeBox = true;
-            this.MinimizeBox = true;
-#endif
-
-#if DEBUG != true
-            Parser.Default.ParseArguments<StartArgs>(Environment.GetCommandLineArgs())
-                .WithParsed((x) => startArgs = x)
-                .WithNotParsed(HandleParseError);
-
-            this.WindowState = FormWindowState.Minimized;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(-9999, 0);
-
-            if (startArgs.Geometry != null)
-            {
-                var msg = startArgs.Geometry.Split('x');
-                if (msg.Length >= 2 && int.TryParse(msg[0], out int width) && int.TryParse(msg[1], out int height))
+                startArgs = new StartArgs
                 {
-                    this.Size = new Size(width, height);
+                    // .html fullpath
+                    Url = "https://google.com/",
+                    //online or local(file)
+                    Type = "online",
+                    // LivelyProperties.json path if any
+                    Properties = @"",
+                    SysInfo = false,
+                    NowPlaying = false,
+                    AudioVisualizer = false,
+                    PauseEvent = false
+                };
+
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.WindowState = FormWindowState.Normal;
+                this.StartPosition = FormStartPosition.Manual;
+                this.Size = new Size(1920, 1080);
+                this.ShowInTaskbar = true;
+                this.MaximizeBox = true;
+                this.MinimizeBox = true;
+            }
+            else
+            {
+                Parser.Default.ParseArguments<StartArgs>(Environment.GetCommandLineArgs())
+                    .WithParsed((x) => startArgs = x)
+                    .WithNotParsed(HandleParseError);
+
+                this.WindowState = FormWindowState.Minimized;
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(-9999, 0);
+
+                if (startArgs.Geometry != null)
+                {
+                    var msg = startArgs.Geometry.Split('x');
+                    if (msg.Length >= 2 && int.TryParse(msg[0], out int width) && int.TryParse(msg[1], out int height))
+                    {
+                        this.Size = new Size(width, height);
+                    }
                 }
             }
-#endif
 
-            try
-            {
-                InitializeWebView2().Await(() => { }, (err) =>
+
+            InitializeWebView2Async().Await(() => {
+                _ = ListenToParent();
+            }, 
+            (err) => {
+                WriteToParent(new LivelyMessageConsole()
                 {
-                    WriteToParent(new LivelyMessageConsole()
-                    {
-                        Category = ConsoleMessageType.error,
-                        Message = $"InitializeWebView2 fail: {err.Message}"
-                    });
-
+                    Category = ConsoleMessageType.error,
+                    Message = $"InitializeWebView2 fail: {err.Message}"
                 });
-            }
-            finally
-            {
-#if DEBUG != true
-                _ = StdInListener();
-#endif
-            }
+            });
         }
 
         private void HandleParseError(IEnumerable<Error> errs)
@@ -112,7 +109,7 @@ namespace Lively.Player.WebView2
                 Environment.Exit(1);
         }
 
-        public async Task InitializeWebView2()
+        public async Task InitializeWebView2Async()
         {
             webView = new WebView();
             webView.NavigationCompleted += WebView_NavigationCompleted;
@@ -124,9 +121,12 @@ namespace Lively.Player.WebView2
             var env = await CoreWebView2Environment.CreateAsync(null, userDataPath, options);
             await webView.EnsureCoreWebView2Async(env);
 
-            // Don't allow contextmenu and devtools.
-            webView.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            webView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            if (!IsDebugging)
+            {
+                // Don't allow contextmenu and devtools.
+                webView.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+                webView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            }
 
             webView.CoreWebView2.ProcessFailed += CoreWebView2_ProcessFailed;
             webView.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
@@ -278,8 +278,11 @@ namespace Lively.Player.WebView2
             public bool IsPaused { get; set; }
         }
 
-        public async Task StdInListener()
+        public async Task ListenToParent()
         {
+            if (IsDebugging)
+                return;
+
             var reader = new StreamReader(Console.OpenStandardInput(), Encoding.UTF8);
 
             try
@@ -309,19 +312,18 @@ namespace Lively.Player.WebView2
                                     switch (obj.Type)
                                     {
                                         case MessageType.cmd_reload:
-                                            // Failing in some cases, blank page on startup.
-                                            //try
-                                            //{
-                                            //    webView?.Reload();
-                                            //}
-                                            //catch (Exception ie)
-                                            //{
-                                            //    WriteToParent(new LivelyMessageConsole()
-                                            //    {
-                                            //        Category = ConsoleMessageType.error,
-                                            //        Message = $"Reload failed: {ie.Message}"
-                                            //    });
-                                            //}
+                                            try
+                                            {
+                                                webView?.Reload();
+                                            }
+                                            catch (Exception ie)
+                                            {
+                                                WriteToParent(new LivelyMessageConsole()
+                                                {
+                                                    Category = ConsoleMessageType.error,
+                                                    Message = $"Reload failed: {ie.Message}"
+                                                });
+                                            }
                                             break;
                                         case MessageType.cmd_suspend:
                                             if (startArgs.PauseEvent && !isPaused)
@@ -413,7 +415,6 @@ namespace Lively.Player.WebView2
                                                 await RestoreLivelyProperties(startArgs.Properties);
                                             else
                                                 await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", btn.Name, true);
-
                                             break;
                                         case MessageType.lsp_perfcntr:
                                             await webView.ExecuteScriptFunctionAsync("livelySystemInformation", JsonConvert.SerializeObject(((LivelySystemInformation)obj).Info, Formatting.Indented));
@@ -469,10 +470,13 @@ namespace Lively.Player.WebView2
                     string uiElementType = item.Value["type"].ToString();
                     if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
                     {
-                        if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase) ||
-                            uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
+                        if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
                         {
                             await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
+                        }
+                        else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
+                        {
+                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (double)item.Value["value"]);
                         }
                         else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
                         {
@@ -505,11 +509,11 @@ namespace Lively.Player.WebView2
             webView?.Dispose();
         }
 
-        public static void WriteToParent(IpcMessage obj)
+        public void WriteToParent(IpcMessage obj)
         {
-#if DEBUG != true
-            Console.WriteLine(JsonConvert.SerializeObject(obj));
-#endif
+            if (!IsDebugging)
+                Console.WriteLine(JsonConvert.SerializeObject(obj));
+
             Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
     }

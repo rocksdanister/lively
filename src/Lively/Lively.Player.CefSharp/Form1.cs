@@ -33,61 +33,62 @@ namespace Lively.Player.CefSharp
         private IAudioVisualizerService audioVisualizerService;
         private INowPlayingService nowPlayingService;
 
+        private bool IsDebugging { get; } = BuildInfoUtil.IsDebugBuild();
+
         public Form1()
         {
             InitializeComponent();
-#if DEBUG
-            startArgs = new StartArgs
+            if (IsDebugging)
             {
-                // .html fullpath
-                Url = "chrome://version",
-                //online or local(file)
-                Type = "online",
-                // LivelyProperties.json path if any
-                Properties = @"",
-                SysInfo = false,
-                NowPlaying = false,
-                AudioVisualizer = false,
-            };
-
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.WindowState = FormWindowState.Normal;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Size = new Size(1920, 1080);
-            this.ShowInTaskbar = true;
-            this.MaximizeBox = true;
-            this.MinimizeBox = true;
-#endif
-
-#if DEBUG != true
-            Parser.Default.ParseArguments<StartArgs>(Environment.GetCommandLineArgs())
-                .WithParsed((x) => startArgs = x)
-                .WithNotParsed(HandleParseError);
-
-            this.WindowState = FormWindowState.Minimized;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(-9999, 0);
-
-            if (startArgs.Geometry != null)
-            {
-                var msg = startArgs.Geometry.Split('x');
-                if (msg.Length >= 2 && int.TryParse(msg[0], out int width) && int.TryParse(msg[1], out int height))
+                startArgs = new StartArgs
                 {
-                    this.Size = new Size(width, height);
+                    // .html fullpath
+                    Url = "chrome://version",
+                    //online or local(file)
+                    Type = "online",
+                    // LivelyProperties.json path if any
+                    Properties = @"",
+                    SysInfo = false,
+                    NowPlaying = false,
+                    AudioVisualizer = false,
+                    PauseEvent = false
+                };
+
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.WindowState = FormWindowState.Normal;
+                this.StartPosition = FormStartPosition.Manual;
+                this.Size = new Size(1920, 1080);
+                this.ShowInTaskbar = true;
+                this.MaximizeBox = true;
+                this.MinimizeBox = true;
+            }
+            else
+            {
+                Parser.Default.ParseArguments<StartArgs>(Environment.GetCommandLineArgs())
+                    .WithParsed((x) => startArgs = x)
+                    .WithNotParsed(HandleParseError);
+
+                this.WindowState = FormWindowState.Minimized;
+                this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(-9999, 0);
+
+                if (startArgs.Geometry != null)
+                {
+                    var msg = startArgs.Geometry.Split('x');
+                    if (msg.Length >= 2 && int.TryParse(msg[0], out int width) && int.TryParse(msg[1], out int height))
+                    {
+                        this.Size = new Size(width, height);
+                    }
                 }
             }
-#endif
 
             try
             {
-                //CEF init
                 InitializeCefSharp();
             }
             finally
             {
-#if DEBUG != true
-                _ = StdInListener();
-#endif
+                _ = ListenToParent();
             }
         }
 
@@ -114,8 +115,11 @@ namespace Lively.Player.CefSharp
         /// <summary>
         /// std I/O redirect, used to communicate with lively. 
         /// </summary>
-        public async Task StdInListener()
+        public async Task ListenToParent()
         {
+            if (IsDebugging)
+                return;
+
             var reader = new StreamReader(Console.OpenStandardInput(), Encoding.UTF8);
 
             try
@@ -297,11 +301,11 @@ namespace Lively.Player.CefSharp
             Cef.Shutdown();
         }
 
-        public static void WriteToParent(IpcMessage obj)
+        public void WriteToParent(IpcMessage obj)
         {
-#if DEBUG != true
-            Console.WriteLine(JsonConvert.SerializeObject(obj));
-#endif
+            if (!IsDebugging)
+                Console.WriteLine(JsonConvert.SerializeObject(obj));
+
             Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
 
