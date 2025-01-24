@@ -313,18 +313,19 @@ namespace Lively.Player.WebView2
                                     switch (obj.Type)
                                     {
                                         case MessageType.cmd_reload:
-                                            try
-                                            {
-                                                webView?.Reload();
-                                            }
-                                            catch (Exception ie)
-                                            {
-                                                WriteToParent(new LivelyMessageConsole()
-                                                {
-                                                    Category = ConsoleMessageType.error,
-                                                    Message = $"Reload failed: {ie.Message}"
-                                                });
-                                            }
+                                            // ConnectionAborted issue.
+                                            //try
+                                            //{
+                                            //    webView?.Reload();
+                                            //}
+                                            //catch (Exception ie)
+                                            //{
+                                            //    WriteToParent(new LivelyMessageConsole()
+                                            //    {
+                                            //        Category = ConsoleMessageType.error,
+                                            //        Message = $"Reload failed: {ie.Message}"
+                                            //    });
+                                            //}
                                             break;
                                         case MessageType.cmd_suspend:
                                             if (startArgs.PauseEvent && !isPaused)
@@ -459,47 +460,23 @@ namespace Lively.Player.WebView2
             }
         }
 
-        private async Task RestoreLivelyProperties(string path)
+        private async Task RestoreLivelyProperties(string propertyPath)
         {
             try
             {
-                if (path == null)
-                    return;
-
-                foreach (var item in JsonUtil.ReadJObject(path))
+                await LivelyPropertyUtil.LoadProperty(propertyPath, Path.GetDirectoryName(startArgs.Url), async (key, value) =>
                 {
-                    string uiElementType = item.Value["type"].ToString();
-                    if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
-                    {
-                        if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-                        {
-                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
-                        }
-                        else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
-                        {
-                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (double)item.Value["value"]);
-                        }
-                        else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-                        {
-                            var fileName = item.Value["value"].ToString();
-                            var folderName = item.Value["folder"].ToString();
-                            var filePath = fileName is null || folderName is null ? null : Path.Combine(Path.GetDirectoryName(startArgs.Url), folderName, fileName);
-                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener",
-                              item.Key,
-                              File.Exists(filePath) ? Path.Combine(folderName, fileName) : null);
-                        }
-                        else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-                        {
-                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
-                        }
-                        else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
-                        {
-                            await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
-                        }
-                    }
-                }
+                    await webView.ExecuteScriptFunctionAsync("livelyPropertyListener", key, value);
+                });
             }
-            catch { /* TODO */ }
+            catch (Exception ex)
+            {
+                WriteToParent(new LivelyMessageConsole()
+                {
+                    Category = ConsoleMessageType.error,
+                    Message = ex.Message
+                });
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -58,7 +58,7 @@ namespace Lively.UI.WinUI
         /// </summary>
         public App()
         {
-            if (!SingleInstanceUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
+            if (!AppLifeCycleUtil.IsAppMutexRunning(SingleInstance.UniqueAppName))
             {
                 _ = NativeMethods.MessageBox(IntPtr.Zero, "Wallpaper core is not running, run Lively.exe first before opening UI.", "Lively Wallpaper", 16);
                 //Sad dev noises.. this.Exit() does not work without Window: https://github.com/microsoft/microsoft-ui-xaml/issues/5931

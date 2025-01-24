@@ -9,7 +9,7 @@ using static Lively.Common.Constants;
 
 namespace Lively.Common.Helpers
 {
-    public static class SingleInstanceUtil
+    public static class AppLifeCycleUtil
     {
         public static bool IsAppMutexRunning(string mutexName)
         {

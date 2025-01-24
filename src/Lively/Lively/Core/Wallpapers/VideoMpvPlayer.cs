@@ -7,9 +7,9 @@ using Lively.Common.Helpers.Shell;
 using Lively.Common.Helpers.Storage;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.LivelyControls;
 using Lively.Models.Message;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -44,7 +44,6 @@ namespace Lively.Core.Wallpapers
         private readonly int timeOut;
         private readonly string ipcServerName;
         private bool _isVideoStopped;
-        private JObject livelyPropertiesData;
         private static int globalCount;
         private readonly int uniqueId;
 
@@ -76,18 +75,6 @@ namespace Lively.Core.Wallpapers
             StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
         {
             LivelyPropertyCopyPath = livelyPropertyPath;
-
-            if (LivelyPropertyCopyPath != null)
-            {
-                try
-                {
-                    livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
-                }
-                catch (Exception e)
-                {
-                    Logger.Error(e.ToString());
-                }
-            }
 
             ipcServerName = "mpvsocket" + Path.GetRandomFileName();
             var configDir = GetConfigDir();
@@ -240,6 +227,33 @@ namespace Lively.Core.Wallpapers
             }
         }
 
+        private void SetLivelyProperties(string propertyPath)
+        {
+            try
+            {
+                LivelyPropertyUtil.LoadProperty(propertyPath, (control) =>
+                {
+                    switch (control)
+                    {
+                        case SliderModel sliderModel:
+                            SendMessage(GetMpvCommand("set_property", sliderModel.Name, sliderModel.Value.ToString()));
+                            break;
+                        case CheckboxModel checkbox:
+                            SendMessage(GetMpvCommand("set_property", checkbox.Name, checkbox.Value));
+                            break;
+                        case ScalerDropdownModel scalerDropdown:
+                            var scaler = (WallpaperScaler)scalerDropdown.Value;
+                            UpdateScaler(scaler);
+                            break;
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
         public async Task ScreenCapture(string filePath)
         {
             if (Category == WallpaperType.gif)
@@ -293,45 +307,6 @@ namespace Lively.Core.Wallpapers
             }
         }
 
-        private void SetPlaybackProperties(JObject livelyProperty)
-        {
-            try
-            {
-                string msg;
-                foreach (var item in livelyProperty)
-                {
-                    string uiElement = item.Value["type"].ToString();
-                    if (!uiElement.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElement.Equals("label", StringComparison.OrdinalIgnoreCase))
-                    {
-                        msg = null;
-                        if (uiElement.Equals("slider", StringComparison.OrdinalIgnoreCase))
-                        {
-                            msg = GetMpvCommand("set_property", item.Key, (string)item.Value["value"]);
-                        }
-                        else if (uiElement.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-                        {
-                            msg = GetMpvCommand("set_property", item.Key, (bool)item.Value["value"]);
-                        }
-                        else if (uiElement.Equals("scalerDropdown", StringComparison.OrdinalIgnoreCase))
-                        {
-                            var scaler = (WallpaperScaler)(int)item.Value["value"];
-                            UpdateScaler(scaler);
-                            continue;
-                        }
-
-                        if (msg != null)
-                        {
-                            PipeClient.SendMessage(ipcServerName, msg);
-                        }
-                    }
-                }
-            }
-            catch 
-            { 
-                //todo
-            }
-        }
-
         public async Task ShowAsync()
         {
             if (Proc is null)
@@ -356,7 +331,7 @@ namespace Lively.Core.Wallpapers
                     WindowUtil.RemoveWindowFromTaskbar(Handle);
 
                     //Restore livelyproperties.json settings
-                    SetPlaybackProperties(livelyPropertiesData);
+                    SetLivelyProperties(LivelyPropertyCopyPath);
                     //Wait a bit for properties to apply.
                     //Todo: check ipc mgs and do this properly.
                     await Task.Delay(69);
@@ -441,17 +416,7 @@ namespace Lively.Core.Wallpapers
                             var btn = (LivelyButton)obj;
                             if (btn.IsDefault)
                             {
-                                try
-                                {
-                                    //load new file.
-                                    livelyPropertiesData = JsonUtil.ReadJObject(LivelyPropertyCopyPath);
-                                    //restore new property values.
-                                    SetPlaybackProperties(livelyPropertiesData);
-                                }
-                                catch (Exception e)
-                                {
-                                    Logger.Error(e.ToString());
-                                }
+                                SetLivelyProperties(LivelyPropertyCopyPath);
                             }
                             else { } //unused
                         }

@@ -448,9 +448,7 @@ namespace Lively.Player.CefSharp
         private void ChromeBrowser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
             if (e.IsLoading)
-            {
                 return;
-            }
 
             RestoreLivelyProperties(startArgs.Properties);
             WriteToParent(new LivelyMessageWallpaperLoaded() { Success = true });
@@ -529,50 +527,26 @@ namespace Lively.Player.CefSharp
             }
         }
 
-        private void RestoreLivelyProperties(string path)
+        private void RestoreLivelyProperties(string propertyPath)
         {
             try
             {
-                if (path == null)
-                    return;
-
-                if (chromeBrowser.CanExecuteJavascriptInMainFrame) //if js context ready
+                _ = LivelyPropertyUtil.LoadProperty(propertyPath, Path.GetDirectoryName(startArgs.Url), (key, value) =>
                 {
-                    foreach (var item in JsonUtil.ReadJObject(path))
-                    {
-                        string uiElementType = item.Value["type"].ToString();
-                        if (!uiElementType.Equals("button", StringComparison.OrdinalIgnoreCase) && !uiElementType.Equals("label", StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (uiElementType.Equals("dropdown", StringComparison.OrdinalIgnoreCase))
-                            {
-                                chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Key, (int)item.Value["value"]);
-                            }
-                            else if (uiElementType.Equals("slider", StringComparison.OrdinalIgnoreCase))
-                            {
-                                chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Key, (double)item.Value["value"]);
-                            }
-                            else if (uiElementType.Equals("folderDropdown", StringComparison.OrdinalIgnoreCase))
-                            {
-                                var fileName = item.Value["value"].ToString();
-                                var folderName = item.Value["folder"].ToString();
-                                var filePath = fileName is null || folderName is null ? null : Path.Combine(Path.GetDirectoryName(startArgs.Url), folderName, fileName);
-                                chromeBrowser.ExecuteScriptAsync("livelyPropertyListener",
-                                  item.Key,
-                                  File.Exists(filePath) ? Path.Combine(folderName, fileName) : null);
-                            }
-                            else if (uiElementType.Equals("checkbox", StringComparison.OrdinalIgnoreCase))
-                            {
-                                chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Key, (bool)item.Value["value"]);
-                            }
-                            else if (uiElementType.Equals("color", StringComparison.OrdinalIgnoreCase) || uiElementType.Equals("textbox", StringComparison.OrdinalIgnoreCase))
-                            {
-                                chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", item.Key, (string)item.Value["value"]);
-                            }
-                        }
-                    }
-                }
+                    if (chromeBrowser.CanExecuteJavascriptInMainFrame)
+                        chromeBrowser.ExecuteScriptAsync("livelyPropertyListener", key, value);
+
+                    return Task.FromResult(0);
+                });
             }
-            catch { }
+            catch (Exception ex)
+            {
+                WriteToParent(new LivelyMessageConsole()
+                {
+                    Category = ConsoleMessageType.error,
+                    Message = ex.Message
+                });
+            }
         }
 
         private void ChromeBrowser_IsBrowserInitializedChanged1(object sender, EventArgs e)

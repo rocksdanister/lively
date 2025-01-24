@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.JsonConverters;
+using Lively.Common.Helpers;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
@@ -25,9 +25,6 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IUserSettingsClient userSettings;
         private readonly IDispatcherService dispatcher;
 
-        private readonly JsonSerializerSettings jsonSerializerSettings;
-
-
         private Dictionary<string, ControlModel> livelyControlsCopy;
         private DisplayMonitor currentScreen;
         private string currentFilePath;
@@ -41,8 +38,6 @@ namespace Lively.UI.Shared.ViewModels
             this.displayManager = displayManager;
             this.userSettings = userSettings;
             this.dispatcher = dispatcher;
-
-            this.jsonSerializerSettings = new JsonSerializerSettings { Converters = new List<JsonConverter> { new LivelyControlModelConverter() } };
         }
 
         public void Load(LibraryModel model)
@@ -55,12 +50,11 @@ namespace Lively.UI.Shared.ViewModels
                 // We create a copy of the LivelyProperties.json file and modify it instead.
                 (this.currentFilePath, this.currentScreen) = CreatePropertyCopy(model, userSettings.Settings.WallpaperArrangement, userSettings.Settings.SelectedDisplay);
 
-                var file = File.ReadAllText(this.currentFilePath);
-                var livelyControls = JsonConvert.DeserializeObject<Dictionary<string, ControlModel>>(file, this.jsonSerializerSettings);
+                var livelyControls = LivelyPropertyUtil.GetControls(this.currentFilePath);
                 this.Controls = new ObservableCollection<ControlModel>(livelyControls.Values);
 
                 // For checking value change and updating storage file.
-                this.livelyControlsCopy = JsonConvert.DeserializeObject<Dictionary<string, ControlModel>>(file, this.jsonSerializerSettings);
+                this.livelyControlsCopy = LivelyPropertyUtil.GetControls(this.currentFilePath);
 
                 if (livelyControls.Count == 0)
                     InfoText = "No control(s) defined.";
@@ -189,7 +183,7 @@ namespace Lively.UI.Shared.ViewModels
                             return;
 
                         // It is null when no item is selected or file missing.
-                        var relativeFilePath = folderDropdown.Value is null ? null : Path.Combine(folderDropdown.Folder, folderDropdown.Value);
+                        var relativeFilePath = folderDropdown.Value is null || folderDropdown.Folder is null ? null : Path.Combine(folderDropdown.Folder, folderDropdown.Value);
                         WallpaperSendMsg(new LivelyFolderDropdown() { Name = folderDropdown.Name, Value = relativeFilePath });
                         copy.Value = folderDropdown.Value;
                     }
