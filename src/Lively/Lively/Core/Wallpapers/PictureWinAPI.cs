@@ -1,7 +1,7 @@
 ﻿using Lively.Common.Com;
-using Lively.Common.Message;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Message;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

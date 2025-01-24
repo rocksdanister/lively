@@ -1,8 +1,8 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
-using Lively.Common.Models;
 using Lively.Grpc.Common.Proto.Update;
+using Lively.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;

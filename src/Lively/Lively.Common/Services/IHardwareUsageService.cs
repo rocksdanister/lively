@@ -1,4 +1,4 @@
-﻿using Lively.Common.Models;
+﻿using Lively.Models.Services;
 using System;
 
 namespace Lively.Common.Services

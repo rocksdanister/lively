@@ -6,17 +6,12 @@ using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.UI.WinUI.Extensions;
-using Lively.UI.WinUI.Helpers;
-using Lively.UI.WinUI.Services;
-using Microsoft.Extensions.DependencyInjection;
+using Lively.UI.Shared.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 
 namespace Lively.UI.Shared.ViewModels
 {

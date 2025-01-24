@@ -1,4 +1,4 @@
-﻿using Lively.Common.Message;
+﻿using Lively.Models.Message;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Drawing;

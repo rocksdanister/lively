@@ -8,7 +8,7 @@ using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.UI.WinUI.Helpers;
+using Lively.UI.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +24,7 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDialogService dialogService;
         private readonly IDispatcherService dispatcher;
+        private readonly IDownloadService downloader;
         private readonly IApplicationsRulesFactory appRuleFactory;
         private readonly ICommandsClient commandsClient;
 
@@ -32,6 +33,7 @@ namespace Lively.UI.Shared.ViewModels
             IDialogService dialogService,
             IDispatcherService dispatcher,
             ICommandsClient commandsClient,
+            IDownloadService downloader,
             IApplicationsRulesFactory appRuleFactory)
         {
             this.userSettings = userSettings;
@@ -40,6 +42,7 @@ namespace Lively.UI.Shared.ViewModels
             this.appRuleFactory = appRuleFactory;
             this.commandsClient = commandsClient;
             this.dispatcher = dispatcher;
+            this.downloader = downloader;
 
             AppMusicExclusionRules = new ObservableCollection<AppMusicExclusionRuleModel>(GetAppMusicExclusionRule());
             IsDesktopAutoWallpaper = userSettings.Settings.DesktopAutoWallpaper;
@@ -241,7 +244,7 @@ namespace Lively.UI.Shared.ViewModels
             {
                 IsWebView2Installing = true;
 
-                if (await WebViewUtil.InstallWebView2())
+                if (await WebViewUtil.InstallWebView2(downloader))
                 {
                     // Restart wallpaper
                     _ = WallpaperRestart([WallpaperType.web, WallpaperType.webaudio, WallpaperType.url, WallpaperType.videostream]);

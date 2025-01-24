@@ -13,7 +13,7 @@ using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.UI.WinUI.Helpers;
+using Lively.UI.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

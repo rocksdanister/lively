@@ -9,6 +9,8 @@
     <Import_RootNamespace>Lively.UI.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DesktopBridgeUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WebViewUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddWallpaperCreateViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AddWallpaperDataViewModel.cs" />

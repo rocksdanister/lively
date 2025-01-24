@@ -129,6 +129,10 @@
       <Project>{FCC8AE2F-3B96-4BC3-ADCA-7A785F4821C6}</Project>
       <Name>Lively.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Lively.Models\Lively.Models.csproj">
+      <Project>{1e3d9d5b-a1fd-4915-95f5-9a52d87fcdec}</Project>
+      <Name>Lively.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

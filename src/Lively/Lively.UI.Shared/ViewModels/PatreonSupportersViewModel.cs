@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
+using Lively.Common.Services;
 using Lively.Grpc.Client;
-using Lively.UI.WinUI.Helpers;
+using Lively.UI.Shared.Helpers;
 using System.Threading.Tasks;
 
 namespace Lively.UI.Shared.ViewModels
@@ -10,10 +11,12 @@ namespace Lively.UI.Shared.ViewModels
     public partial class PatreonSupportersViewModel : ObservableObject
     {
         private readonly ICommandsClient commandsClient;
+        private readonly IDownloadService downloader;
 
-        public PatreonSupportersViewModel(ICommandsClient commandsClient)
+        public PatreonSupportersViewModel(ICommandsClient commandsClient, IDownloadService downloader)
         {
             this.commandsClient = commandsClient;
+            this.downloader = downloader;
         }
 
         public bool IsBetaBuild => Constants.ApplicationType.IsTestBuild;
@@ -33,7 +36,7 @@ namespace Lively.UI.Shared.ViewModels
             {
                 IsWebView2Installing = true;
 
-                if (await WebViewUtil.InstallWebView2())
+                if (await WebViewUtil.InstallWebView2(downloader))
                     _ = commandsClient.RestartUI();
                 else
                     LinkUtil.OpenBrowser(WebViewUtil.DownloadUrl);

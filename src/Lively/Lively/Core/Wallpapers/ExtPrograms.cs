@@ -1,10 +1,10 @@
 ﻿using Lively.Common.Extensions;
 using Lively.Common.Helpers;
 using Lively.Common.Helpers.Shell;
-using Lively.Common.Message;
 using Lively.Core.Suspend;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Message;
 using System;
 using System.Diagnostics;
 using System.Threading;

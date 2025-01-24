@@ -1,13 +1,13 @@
 ﻿using Lively.Common.Extensions;
 using Lively.Common.Helpers.Files;
 using Lively.Common.Helpers.Pinvoke;
-using Lively.Common.Models;
 using Lively.Common.Services;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Models.Exceptions;
+using Lively.Models.Services;
 using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Extensions;
 using Lively.UI.WinUI.Views.Pages;

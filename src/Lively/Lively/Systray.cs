@@ -1,6 +1,5 @@
 ﻿using Lively.Common;
 using Lively.Common.Factories;
-using Lively.Common.Models;
 using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
@@ -8,6 +7,7 @@ using Lively.Core.Suspend;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Services;
 using Lively.Services;
 using Lively.Themes;
 using Lively.Views;

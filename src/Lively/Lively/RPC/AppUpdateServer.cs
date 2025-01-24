@@ -1,9 +1,9 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Lively.Common;
-using Lively.Common.Models;
 using Lively.Common.Services;
 using Lively.Grpc.Common.Proto.Update;
+using Lively.Models.Services;
 using System;
 using System.Diagnostics;
 using System.IO;

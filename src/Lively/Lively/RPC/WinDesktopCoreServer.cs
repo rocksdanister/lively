@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Lively.Common.Factories;
-using Lively.Common.Message;
+using Lively.Common.JsonConverters;
 using Lively.Common.Services;
 using Lively.Core;
 using Lively.Core.Display;
@@ -10,6 +10,7 @@ using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Models.Exceptions;
+using Lively.Models.Message;
 using Lively.Views;
 using Newtonsoft.Json;
 using NLog;

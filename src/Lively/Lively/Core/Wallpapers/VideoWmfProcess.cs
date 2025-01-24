@@ -1,9 +1,10 @@
 ﻿using Lively.Common;
 using Lively.Common.Helpers.Shell;
-using Lively.Common.Message;
+using Lively.Common.JsonConverters;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Message;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;

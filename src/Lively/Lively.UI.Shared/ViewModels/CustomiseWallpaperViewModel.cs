@@ -1,20 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Message;
+using Lively.Common.JsonConverters;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Models.LivelyControls;
-using Lively.UI.WinUI.Helpers;
+using Lively.Models.Message;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -27,7 +26,6 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDispatcherService dispatcher;
 
         private readonly JsonSerializerSettings jsonSerializerSettings;
-        private readonly ResourceLoader languageResource;
 
 
         private Dictionary<string, ControlModel> livelyControlsCopy;
@@ -45,7 +43,6 @@ namespace Lively.UI.Shared.ViewModels
             this.dispatcher = dispatcher;
 
             this.jsonSerializerSettings = new JsonSerializerSettings { Converters = new List<JsonConverter> { new LivelyControlModelConverter() } };
-            this.languageResource = ResourceLoader.GetForViewIndependentUse();
         }
 
         public void Load(LibraryModel model)

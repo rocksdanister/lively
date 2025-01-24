@@ -1,5 +1,5 @@
-﻿using Lively.Common.Models;
-using Lively.Helpers.Hardware;
+﻿using Lively.Helpers.Hardware;
+using Lively.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

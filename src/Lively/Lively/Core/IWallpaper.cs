@@ -1,6 +1,6 @@
-﻿using Lively.Common.Message;
-using Lively.Models;
+﻿using Lively.Models;
 using Lively.Models.Enums;
+using Lively.Models.Message;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;

@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Models;
 using Lively.Common.Services;
 using Lively.Grpc.Client;
-using Lively.UI.WinUI.Helpers;
+using Lively.Models.Services;
+using Lively.UI.Shared.Helpers;
 using System;
 using System.IO;
 using System.Threading;
@@ -183,7 +183,7 @@ namespace Lively.UI.Shared.ViewModels
             {
                 IsWebView2Installing = true;
 
-                if (await WebViewUtil.InstallWebView2())
+                if (await WebViewUtil.InstallWebView2(downloader))
                     _ = commandsClient.RestartUI("--appUpdate true");
                 else
                     LinkUtil.OpenBrowser(WebViewUtil.DownloadUrl);

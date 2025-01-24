@@ -1,5 +1,5 @@
 using CefSharp;
-using Lively.Common.Message;
+using Lively.Models.Message;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

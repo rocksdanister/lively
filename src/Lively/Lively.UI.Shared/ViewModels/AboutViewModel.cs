@@ -1,14 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Lively.Common;
-using Lively.Common.Models;
-using Lively.Grpc.Client;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Lively.UI.Shared.ViewModels
 {
