@@ -58,17 +58,16 @@
                         </controls:SettingsCard.ActionIcon>
                     </controls:SettingsCard>
 
-                    <controls:SettingsCard x:Uid="Language" IsEnabled="False">
+                    <controls:SettingsCard x:Uid="Language">
                         <controls:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xF2B7;" />
                         </controls:SettingsCard.HeaderIcon>
                         <StackPanel>
                             <ComboBox
                                 MinWidth="{StaticResource SettingActionControlMinWidth}"
-                                DisplayMemberPath="Language"
-                                ItemsSource="{Binding LanguageItems}"
-                                SelectedIndex="0"
-                                SelectedItem="{Binding SelectedLanguageItem, Mode=TwoWay}" />
+                                DisplayMemberPath="DisplayName"
+                                ItemsSource="{Binding Languages, Mode=OneWay}"
+                                SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
                         </StackPanel>
                     </controls:SettingsCard>
                     <InfoBar

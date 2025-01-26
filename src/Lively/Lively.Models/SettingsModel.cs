@@ -208,15 +208,7 @@ namespace Lively.Models
             ApplicationThemeBackgroundPath = null;
             ApplicationThemeBackground = AppThemeBackground.default_mica;
             TaskbarCrashTimeOutDelay = 30;
-
-            try
-            {
-                Language = CultureInfo.CurrentUICulture.Name;
-            }
-            catch (ArgumentNullException)
-            {
-                Language = "en";
-            }
+            Language = string.Empty;
         }
     }
 }

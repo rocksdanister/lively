@@ -69,7 +69,6 @@ namespace Lively.UI.WinUI
             _serviceProvider = ConfigureServices();
             var userSettings = Services.GetRequiredService<IUserSettingsClient>();
             SetAppTheme(userSettings.Settings.ApplicationTheme);
-            //SetAppLanguage(userSettings.Settings.Language);
             //Services.GetRequiredService<SettingsViewModel>().AppThemeChanged += (s, e) => SetAppTheme(e);
 
             SetupUnhandledExceptionLogging();
@@ -210,22 +209,6 @@ namespace Lively.UI.WinUI
                     this.RequestedTheme = ApplicationTheme.Dark;
                     break;
             }
-        }
-
-        //Cannot set custom language on unpackaged, issues:
-        //https://github.com/microsoft/microsoft-ui-xaml/issues/5940
-        //https://github.com/microsoft/WindowsAppSDK/issues/1687
-        //https://github.com/microsoft/WindowsAppSDK-Samples/issues/138
-        private void SetAppLanguage(string cult = "en-US")
-        {
-            ApplicationLanguages.PrimaryLanguageOverride = cult;
-            CultureInfo culture = new CultureInfo(cult);
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-            //ResourceContext.GetForCurrentView().Reset();
-            ResourceContext.GetForViewIndependentUse().Reset();
         }
 
         //Not working ugh..

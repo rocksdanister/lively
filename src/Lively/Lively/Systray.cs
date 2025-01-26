@@ -13,6 +13,7 @@ using Lively.Themes;
 using Lively.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,22 +28,30 @@ namespace Lively
     {
         private readonly Random rng = new Random();
         private readonly NotifyIcon _notifyIcon = new NotifyIcon();
-        private readonly ToolStripMenuItem pauseTrayBtn;
-        private readonly ToolStripMenuItem customiseWallpaperBtn;
-        private readonly ToolStripMenuItem updateTrayBtn;
         private bool disposedValue;
 
+        private readonly ToolStripMenuItem openAppTrayMenu;
+        private readonly ToolStripMenuItem closeWallpaperTrayMenu;
+        private readonly ToolStripMenuItem changeWallpaperTrayMenu;
+        private readonly ToolStripMenuItem reportBugTrayMenu;
+        private readonly ToolStripMenuItem exitAppTrayMenu;
+        private readonly ToolStripMenuItem pauseTrayMenu;
+        private readonly ToolStripMenuItem customiseWallpaperMenu;
+        private readonly ToolStripMenuItem updateTrayMenu;
+
         private readonly IRunnerService runner;
+        private readonly IResourceService i18n;
         private readonly IDesktopCore desktopCore;
         private readonly IDisplayManager displayManager;
         private readonly IUserSettingsService userSettings;
-        private readonly IPlayback playbackMonitor;
+        private readonly IAppUpdaterService appUpdater;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
 
         private DiagnosticMenu diagnosticMenu;
         private AppTheme? currentTheme = null;
 
-        public Systray(IRunnerService runner,
+        public Systray(IResourceService i18n,
+            IRunnerService runner,
             IUserSettingsService userSettings,
             IDesktopCore desktopCore,
             IAppUpdaterService appUpdater,
@@ -50,20 +59,21 @@ namespace Lively
             IPlayback playbackMonitor,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
+            this.i18n = i18n;
             this.runner = runner;
             this.desktopCore = desktopCore;
             this.userSettings = userSettings;
             this.displayManager = displayManager;
-            this.playbackMonitor = playbackMonitor;
+            this.appUpdater = appUpdater;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
-            //NotifyIcon Fix: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
-            //Error: "The root Visual of a VisualTarget cannot have a parent.."
+            // NotifyIcon Issue: "The root Visual of a VisualTarget cannot have a parent.."
+            // Ref: https://stackoverflow.com/questions/28833702/wpf-notifyicon-crash-on-first-run-the-root-visual-of-a-visualtarget-cannot-hav/29116917
             System.Windows.Controls.ToolTip tt = new System.Windows.Controls.ToolTip();
             tt.IsOpen = true;
             tt.IsOpen = false;
 
-            //Notifyicon properties
+            // Properties
             _notifyIcon.DoubleClick += (s, args) => runner.ShowUI();
             _notifyIcon.ContextMenuStrip = new ContextMenuStrip();
             _notifyIcon.Icon = Properties.Icons.appicon;
@@ -79,42 +89,49 @@ namespace Lively
             SetTheme(userSettings.Settings.ApplicationTheme);
             _notifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
 
-            //Show UI
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextOpenLively, Properties.Icons.icons8_application_window_96).Click += (s, e) => runner.ShowUI();
-            //Close wallpaper
+            // Menu registrations
+            openAppTrayMenu = new ToolStripMenuItem(i18n.GetString("TextOpenLively"), Properties.Icons.icons8_application_window_96);
+            openAppTrayMenu.Click += (s, e) => runner.ShowUI();
+            _notifyIcon.ContextMenuStrip.Items.Add(openAppTrayMenu);
+
+            closeWallpaperTrayMenu = new ToolStripMenuItem(i18n.GetString("TextCloseWallpapers"), null);
+            closeWallpaperTrayMenu.Click += (s, e) => desktopCore.CloseAllWallpapers(true);
             _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextCloseWallpapers, null).Click += (s, e) => desktopCore.CloseAllWallpapers(true);
-            //Wallpaper playback
-            pauseTrayBtn = new ToolStripMenuItem(Properties.Resources.TextPauseWallpapers, null);
-            pauseTrayBtn.Click += (s, e) =>
+            _notifyIcon.ContextMenuStrip.Items.Add(closeWallpaperTrayMenu);
+
+            pauseTrayMenu = new ToolStripMenuItem(i18n.GetString("TextPauseWallpapers"), null);
+            pauseTrayMenu.Click += (s, e) =>
             {
                 playbackMonitor.WallpaperPlayback = (playbackMonitor.WallpaperPlayback == PlaybackState.play) ? PlaybackState.paused : PlaybackState.play;
             };
-            _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayBtn);
-            //Random Wallpaper
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextChangeWallpaper, null).Click += async(s, e) => await SetRandomWallpapers();
-            //Customise wallpaper
-            customiseWallpaperBtn = new ToolStripMenuItem(Properties.Resources.TextCustomiseWallpaper, null)
+            _notifyIcon.ContextMenuStrip.Items.Add(pauseTrayMenu);
+
+            changeWallpaperTrayMenu = new ToolStripMenuItem(i18n.GetString("TextChangeWallpaper"), null);
+            changeWallpaperTrayMenu.Click += async (s, e) => await SetRandomWallpapers();
+            _notifyIcon.ContextMenuStrip.Items.Add(changeWallpaperTrayMenu);
+
+            customiseWallpaperMenu = new ToolStripMenuItem(i18n.GetString("TextCustomiseWallpaper"), null)
             {
                 //Systray is initialized first before restoring wallpaper
                 Enabled = false,
             };
-            customiseWallpaperBtn.Click += CustomiseWallpaper;
-            _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperBtn);
-            //Update check
+            customiseWallpaperMenu.Click += CustomiseWallpaper;
+            _notifyIcon.ContextMenuStrip.Items.Add(customiseWallpaperMenu);
+
+            // Update check, only create on installer build.
             if (!Constants.ApplicationType.IsMSIX)
             {
-                _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
-                updateTrayBtn = new ToolStripMenuItem(Properties.Resources.TextUpdateChecking, null)
+                updateTrayMenu = new ToolStripMenuItem(i18n.GetString("TextUpdateChecking"), null)
                 {
                     Enabled = false
                 };
-                updateTrayBtn.Click += (s, e) => runner.ShowAppUpdatePage();
-                _notifyIcon.ContextMenuStrip.Items.Add(updateTrayBtn);
+                updateTrayMenu.Click += (s, e) => runner.ShowAppUpdatePage();
+                _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
+                _notifyIcon.ContextMenuStrip.Items.Add(updateTrayMenu);
             }
-            //Report bug
-            _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.ReportBug_Header, Properties.Icons.icons8_website_bug_96).Click += (s, e) => 
+
+            reportBugTrayMenu = new ToolStripMenuItem(i18n.GetString("ReportBug/Header"), Properties.Icons.icons8_website_bug_96);
+            reportBugTrayMenu.Click += (s, e) =>
             {
                 if (diagnosticMenu is null)
                 {
@@ -123,14 +140,18 @@ namespace Lively
                     diagnosticMenu.Show();
                 }
             };
-            //Exit app
             _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
-            _notifyIcon.ContextMenuStrip.Items.Add(Properties.Resources.TextExit, Properties.Icons.icons8_close_96).Click += (s, e) => App.QuitApp();
+            _notifyIcon.ContextMenuStrip.Items.Add(reportBugTrayMenu);
 
-            //Change events
+            exitAppTrayMenu = new ToolStripMenuItem(i18n.GetString("TextExit"), Properties.Icons.icons8_close_96);
+            exitAppTrayMenu.Click += (s, e) => App.QuitApp();
+            _notifyIcon.ContextMenuStrip.Items.Add(CreateToolStripSeparator(toolStripColor));
+            _notifyIcon.ContextMenuStrip.Items.Add(exitAppTrayMenu);
+
             playbackMonitor.PlaybackStateChanged += Playback_PlaybackStateChanged;
             desktopCore.WallpaperChanged += DesktopCore_WallpaperChanged;
             appUpdater.UpdateChecked += (s, e) => { SetUpdateMenu(e.UpdateStatus); };
+            i18n.CultureChanged += I18n_CultureChanged;
         }
 
         public void Visibility(bool visible)
@@ -220,7 +241,7 @@ namespace Lively
         {
             _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                pauseTrayBtn.Checked = e == PlaybackState.paused;
+                pauseTrayMenu.Checked = e == PlaybackState.paused;
                 //_notifyIcon.Icon = (e == PlaybackState.paused) ? Properties.Icons.appicon_gray : Properties.Icons.appicon;
             }));
         }
@@ -229,7 +250,7 @@ namespace Lively
         {
             _ = System.Windows.Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new ThreadStart(delegate
             {
-                customiseWallpaperBtn.Enabled = desktopCore.Wallpapers.Any(x => x.LivelyPropertyCopyPath != null);
+                customiseWallpaperMenu.Enabled = desktopCore.Wallpapers.Any(x => x.LivelyPropertyCopyPath != null);
             }));
         }
 
@@ -247,25 +268,38 @@ namespace Lively
             switch (status)
             {
                 case AppUpdateStatus.uptodate:
-                    updateTrayBtn.Enabled = false;
-                    updateTrayBtn.Text = Properties.Resources.TextUpdateUptodate;
+                    updateTrayMenu.Enabled = false;
+                    updateTrayMenu.Text = i18n.GetString("TextUpdateUptodate");
                     break;
                 case AppUpdateStatus.available:
-                    updateTrayBtn.Enabled = true;
-                    updateTrayBtn.Text = Properties.Resources.TextUpdateAvailable;
+                    updateTrayMenu.Enabled = true;
+                    updateTrayMenu.Text = i18n.GetString("TextUpdateAvailable");
                     break;
                 case AppUpdateStatus.invalid:
-                    updateTrayBtn.Enabled = false;
-                    updateTrayBtn.Text = "Fancy~";
+                    updateTrayMenu.Enabled = false;
+                    updateTrayMenu.Text = "Fancy~";
                     break;
                 case AppUpdateStatus.notchecked:
-                    updateTrayBtn.Enabled = false;
+                    updateTrayMenu.Enabled = false;
+                    updateTrayMenu.Text = i18n.GetString("TextUpdateChecking");
                     break;
                 case AppUpdateStatus.error:
-                    updateTrayBtn.Enabled = true;
-                    updateTrayBtn.Text = Properties.Resources.TextupdateCheckFail;
+                    updateTrayMenu.Enabled = true;
+                    updateTrayMenu.Text = i18n.GetString("TextupdateCheckFail");
                     break;
             }
+        }
+
+        private void I18n_CultureChanged(object sender, string e)
+        {
+            openAppTrayMenu.Text = i18n.GetString("TextOpenLively");
+            closeWallpaperTrayMenu.Text = i18n.GetString("TextCloseWallpapers");
+            pauseTrayMenu.Text = i18n.GetString("TextPauseWallpapers");
+            changeWallpaperTrayMenu.Text = i18n.GetString("TextChangeWallpaper");
+            customiseWallpaperMenu.Text = i18n.GetString("TextCustomiseWallpaper");
+            SetUpdateMenu(appUpdater.Status);
+            reportBugTrayMenu.Text = i18n.GetString("ReportBug/Header");
+            exitAppTrayMenu.Text = i18n.GetString("TextExit");
         }
 
         /// <summary>

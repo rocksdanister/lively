@@ -115,6 +115,9 @@ namespace Lively
 
             //App() -> OnStartup() -> App.Startup event.
             _serviceProvider = ConfigureServices();
+            var userSettings = Services.GetRequiredService<IUserSettingsService>();
+            // Set application language.
+            Services.GetRequiredService<IResourceService>().SetCulture(userSettings.Settings.Language);
             grpcServer = ConfigureGrpcServer();
 
             try
@@ -157,7 +160,6 @@ namespace Lively
             }
             catch { /* TODO */ }
 
-            var userSettings = Services.GetRequiredService<IUserSettingsService>();
             try
             {
                 CreateWallpaperDir(userSettings.Settings.WallpaperDir);
@@ -174,7 +176,7 @@ namespace Lively
             Services.GetRequiredService<RawInputMsgWindow>().Show();
             Services.GetRequiredService<IPlayback>().Start();
             Services.GetRequiredService<ISystray>();
-
+            
             //Install any new asset collection if present, do this before restoring wallpaper incase wallpaper is updated.
             if (userSettings.Settings.IsUpdated || userSettings.Settings.IsFirstRun)
             {
@@ -293,7 +295,7 @@ namespace Lively
             //TODO: Logger abstraction.
             var provider = new ServiceCollection()
                 //singleton
-                .AddSingleton<IUserSettingsService, JsonUserSettingsService>()
+                .AddSingleton<IUserSettingsService, UserSettingsService>()
                 .AddSingleton<IDesktopCore, WinDesktopCore>()
                 .AddSingleton<IWatchdogService, WatchdogProcess>()
                 .AddSingleton<IDisplayManager, DisplayManager>()
@@ -311,6 +313,7 @@ namespace Lively
                 .AddSingleton<CommandsServer>()
                 .AddSingleton<AppUpdateServer>()
                 .AddSingleton<WallpaperPlaylistServer>()
+                .AddSingleton<IResourceService, ResourceService>()
                 //transient
                 //.AddTransient<IApplicationsRulesFactory, ApplicationsRulesFactory>()
                 .AddTransient<IWallpaperLibraryFactory, WallpaperLibraryFactory>()

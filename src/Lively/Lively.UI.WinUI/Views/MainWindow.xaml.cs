@@ -83,6 +83,15 @@ namespace Lively.UI.WinUI
             this.i18n = i18n;
 
             this.InitializeComponent();
+            i18n.SetCulture(userSettings.Settings.Language);
+            i18n.CultureChanged += (s, e) =>
+            {
+                navView.MenuItems.Clear();
+                CreateMainMenu();
+                CreateSettingsMenu();
+                ShowSettingsMenu();
+                NavigatePageReload();
+            };
             this.SystemBackdrop = new MicaBackdrop();
             Root.DataContext = mainViewModel;
             this.controlPanelLabel.Label = $"{desktopCore.Wallpapers.Count} {i18n.GetString("ActiveWallpapers/Label")}";
@@ -251,6 +260,15 @@ namespace Lively.UI.WinUI
                 contentFrame.Navigate(_page, null, new DrillInNavigationTransitionInfo());
                 UpdateSuggestBoxState();
             }
+        }
+
+        private void NavigatePageReload()
+        {
+            var pageType = contentFrame.CurrentSourcePageType;
+            var item = _pages.FirstOrDefault(p => p.Page == pageType);
+            contentFrame.Navigate(pageType, null, new DrillInNavigationTransitionInfo());
+            navView.SelectedItem = navView.MenuItems.First(x => ((NavigationViewItem)x).Tag.ToString() == item.NavPage.GetAttrValue());
+            UpdateSuggestBoxState();
         }
 
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)

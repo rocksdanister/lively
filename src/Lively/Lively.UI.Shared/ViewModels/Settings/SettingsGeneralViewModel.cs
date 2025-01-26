@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Lively.UI.Shared.ViewModels
 {
@@ -21,6 +22,7 @@ namespace Lively.UI.Shared.ViewModels
         private readonly IDesktopCoreClient desktopCore;
         private readonly IDialogService dialogService;
         private readonly LibraryViewModel libraryVm;
+        private readonly IResourceService i18n;
         private readonly IDispatcherService dispatcher;
         private readonly IFileService fileService;
 
@@ -28,6 +30,7 @@ namespace Lively.UI.Shared.ViewModels
             IUserSettingsClient userSettings,
             IDispatcherService dispatcher,
             IFileService fileService,
+            IResourceService i18n,
             IDialogService dialogService)
         {
             this.libraryVm = libraryVm;
@@ -36,9 +39,12 @@ namespace Lively.UI.Shared.ViewModels
             this.dialogService = dialogService;
             this.dispatcher = dispatcher;
             this.fileService = fileService;
+            this.i18n = i18n;
 
-            //lang-codes: https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c
-            LanguageItems = new ObservableCollection<LanguagesModel>(Languages.SupportedLanguages);
+            Languages = new ObservableCollection<LanguageModel>(Common.Languages.SupportedLanguages);
+            Languages.Insert(0, new("Same as System", string.Empty));
+            SelectedLanguage = string.IsNullOrWhiteSpace(userSettings.Settings.Language) ? 
+                Languages[0] : Languages.FirstOrDefault(x => x.Code == userSettings.Settings.Language) ?? Languages[0];
 
             IsStartup = userSettings.Settings.Startup;
             WallpaperDirectory = userSettings.Settings.WallpaperDir;
@@ -46,7 +52,6 @@ namespace Lively.UI.Shared.ViewModels
             GlobalWallpaperVolume = userSettings.Settings.AudioVolumeGlobal;
             IsAudioOnlyOnDesktop = userSettings.Settings.AudioOnlyOnDesktop;
             IsReducedMotion = userSettings.Settings.UIMode != LivelyGUIState.normal;
-            SelectedLanguageItem = Languages.GetLanguage(userSettings.Settings.Language);
             MoveExistingWallpaperNewDir = userSettings.Settings.WallpaperDirMoveExistingWallpaperNewDir;
         }
 
@@ -65,21 +70,26 @@ namespace Lively.UI.Shared.ViewModels
             }
         }
 
-        [ObservableProperty]
-        private ObservableCollection<LanguagesModel> languageItems;
+        public ObservableCollection<LanguageModel> Languages { get; }
 
-        private LanguagesModel _selectedLanguageItem;
-        public LanguagesModel SelectedLanguageItem
+        [ObservableProperty]
+        private bool isLanguageChanged;
+
+        private LanguageModel _selectedLanguage;
+        public LanguageModel SelectedLanguage
         {
-            get => _selectedLanguageItem;
+            get => _selectedLanguage;
             set
             {
-                if (value.Codes.FirstOrDefault(x => x == userSettings.Settings.Language) == null)
+                string code = value == Languages[0] ?  string.Empty : value?.Code;
+                if (code != null && userSettings.Settings.Language != code)
                 {
-                    userSettings.Settings.Language = value.Codes[0];
+                    userSettings.Settings.Language = code;
+                    IsLanguageChanged = true;
+                    i18n.SetCulture(code);
                     UpdateSettingsConfigFile();
                 }
-                SetProperty(ref _selectedLanguageItem, value);
+                SetProperty(ref _selectedLanguage, value);
             }
         }
 

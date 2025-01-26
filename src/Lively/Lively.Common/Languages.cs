@@ -7,62 +7,55 @@ namespace Lively.Common
 {
     public static class Languages
     {
-        private readonly static LanguagesModel[] supportedLanguages = {
-            new LanguagesModel("English(en)", new string[]{"en", "en-US"}), //default
-            new LanguagesModel("日本語(ja)", new string[]{"ja", "ja-JP"}),
-            new LanguagesModel("中文(zh-CN)", new string[] { "zh", "zh-Hans", "zh-CN", "zh-SG" }),
-            new LanguagesModel("繁體中文(zh-Hant)", new string[] { "zh-HK", "zh-MO", "zh-TW" }),
-            new LanguagesModel("한국어(ko-KR)", new string[] { "ko", "ko-KR", "ko-KP" }),
-            new LanguagesModel("Pусский(ru)", new string[] { "ru", "ru-BY", "ru-KZ", "ru-KG", "ru-MD", "ru-RU", "ru-UA" }),
-            new LanguagesModel("Українська(uk)", new string[] { "uk", "uk-UA" }),
-            new LanguagesModel("Español(es)", new string[] { "es", "es-ES" }),
-            new LanguagesModel("Español(es-MX)", new string[] { "es-MX" }),
-            new LanguagesModel("Italian(it)", new string[] { "it", "it-IT", "it-SM", "it-CH", "it-VA" }),
-            new LanguagesModel("عربى(ar-AE)", new string[] { "ar", "ar-AE" }),
-            new LanguagesModel("فارسی(fa-IR)", new string[] { "fa", "fa-IR" }),
-            new LanguagesModel("עִברִית(he-IL)", new string[] { "he", "he-IL" }),
-            new LanguagesModel("Française(fr)", new string[] { "fr", "fr-FR" }),
-            new LanguagesModel("Deutsch(de)", new string[] { "de", "de-DE" }),
-            new LanguagesModel("język polski(pl)", new string[] { "pl", "pl-PL" }),
-            new LanguagesModel("Português(pt)", new string[] { "pt", "pt-PT" }),
-            new LanguagesModel("Português(pt-BR)", new string[] { "pt-BR" }),
-            new LanguagesModel("Filipino(fil)", new string[] { "fil", "fil-PH" }),
-            new LanguagesModel("Finnish(fi)", new string[] { "fi", "fi-FI" }),
-            new LanguagesModel("Bahasa Indonesia(id)", new string[] { "id", "id-ID" }),
-            new LanguagesModel("Magyar(hu)", new string[] { "hu", "hu-HU" }),
-            new LanguagesModel("Svenska(sv)", new string[] { "sv", "sv-AX", "sv-FI", "sv-SE" }),
-            new LanguagesModel("Bahasa Melayu(ms)", new string[] { "ms", "ms-BN", "ms-MY" }),
-            new LanguagesModel("Nederlands(nl-NL)", new string[] { "nl", "nl-NL" }),
-            new LanguagesModel("Tiếng Việt(vi)", new string[] { "vi", "vi-VN" }),
-            new LanguagesModel("Català(ca)", new string[] { "ca", "ca-AD", "ca-FR", "ca-IT", "ca-ES" }),
-            new LanguagesModel("Türkçe(tr)", new string[] { "tr", "tr-CY", "tr-TR" }),
-            new LanguagesModel("Cрпски језик(sr)", new string[] { "sr", "sr-Latn", "sr-Latn-BA", "sr-Latn-ME", "sr-Latn-RS", "sr-Latn-CS" }),
-            new LanguagesModel("Српска ћирилица(sr-Cyrl)", new string[] { "sr-Cyrl", "sr-Cyrl-BA", "sr-Cyrl-ME", "sr-Cyrl-RS", "sr-Cyrl-CS" }),
-            new LanguagesModel("Ελληνικά(el)", new string[] { "el", "el-GR", "el-CY" }),
-            new LanguagesModel("हिन्दी(hi)", new string[] { "hi", "hi-IN" }),
-            new LanguagesModel("Azərbaycan(az)", new string[] { "az", "az-Cyrl", "az-Cyrl-AZ" }),
-            new LanguagesModel("Čeština(cs)", new string[] { "cs", "cs-CZ" }),
-            new LanguagesModel("български(bg)", new string[] { "bg", "bg-BG" }),
-            new LanguagesModel("Norwegian Bokmål(nb)", new string[] { "nb", "nb-NO" }),
-            new LanguagesModel("lietuvių kalba(lt)", new string[] { "lt", "lt-LT" }),
-            new LanguagesModel("Afrikaans(af)", new string[] { "af", "af-ZA" }),
-            new LanguagesModel("Dansk(da)", new string[] { "da", "da-DK" }),
-            new LanguagesModel("беларуская мова(be-BY)", new string[] { "be", "be-BY" }),
-            new LanguagesModel("galego(gl-ES)", new string[] { "gl", "gl-ES" }),
-            new LanguagesModel("қазақ тілі(kk-KZ)", new string[] { "kk", "kk-KZ" }),
-            new LanguagesModel("မြန်မာဘာသာ(my-MM)", new string[] { "my", "my-MM" }),
-            new LanguagesModel("slovenčina(sk-SK)", new string[] { "sk", "sk-SK" }),
-            new LanguagesModel("Gaelic(ga-IE)", new string[] { "ga", "ga-IE" }),
+        private readonly static LanguageModel[] supportedLanguages = {
+            new LanguageModel("English", "en-US"),
+            new LanguageModel("日本語", "ja-JP"), // Japanese
+            new LanguageModel("中文", "zh-CN"), // Chinese (Simplified)
+            new LanguageModel("中文 (繁體)", "zh-Hant"), // Chinese (Traditional)
+            new LanguageModel("한국어", "ko-KR"), // Korean
+            new LanguageModel("Pусский", "ru-RU"), // Russian
+            new LanguageModel("Українська", "uk-UA"), // Ukrainian
+            new LanguageModel("Español", "es-ES"), // Spanish
+            new LanguageModel("Español (México)", "es-MX"), // Spanish (Mexico)
+            new LanguageModel("Italiano", "it-IT"), // Italian
+            new LanguageModel("عربى", "ar-AE"), // Arabic (United Arab Emirates)
+            new LanguageModel("فارسی", "fa-IR"), // Persian
+            new LanguageModel("עִברִית", "he-IL"), // Hebrew
+            new LanguageModel("Française", "fr-FR"), // French
+            new LanguageModel("Deutsch", "de-DE"), // German
+            new LanguageModel("Polski", "pl-PL"), // Polish
+            new LanguageModel("Português", "pt-PT"),// Portuguese (Portugal)
+            new LanguageModel("Português", "pt-BR"), // Portuguese (Brazil)
+            new LanguageModel("Filipino", "fil-PH"), // Filipino
+            new LanguageModel("Finnish", "fi-FI"), // Finnish
+            new LanguageModel("Bahasa Indonesia", "id-ID"), // Indonesian
+            new LanguageModel("Magyar", "hu-HU"), // Hungarian
+            new LanguageModel("Svenska", "sv-SE"), // Swedish
+            new LanguageModel("Bahasa Melayu", "ms-MY"), // Malay
+            new LanguageModel("Nederlands", "nl-NL"), // Dutch
+            new LanguageModel("Tiếng Việt", "vi-VN"), // Vietnamese
+            new LanguageModel("Català", "ca-ES"), // Catalan
+            new LanguageModel("Türkçe", "tr-TR"), // Turkish
+            new LanguageModel("Cрпски језик", "sr-Latn"), // Serbian (Latin)
+            new LanguageModel("Српска ћирилица", "sr-Cyrl"), //Serbian (Cyrillic)
+            new LanguageModel("Ελληνικά", "el-GR"), // Greek
+            new LanguageModel("हिन्दी", "hi-IN"), // Hindi
+            new LanguageModel("Azərbaycan", "az-Latn"), // Azerbaijani (Latin)
+            new LanguageModel("Čeština", "cs-CZ"), // Czech
+            new LanguageModel("Български", "bg-BG"), // Bulgarian
+            new LanguageModel("Norwegian Bokmål", "nb-NO"), //Norwegian
+            new LanguageModel("lietuvių kalba", "lt-LT"), //Lithuanian
+            new LanguageModel("Afrikaans", "af-ZA"), // Afrikaans
+            new LanguageModel("Dansk", "da-DK"), // Danish
+            new LanguageModel("беларуская мова", "be-BY"), // Belarusian
+            new LanguageModel("galego", "gl-ES"), // Galician (Spain)
+            new LanguageModel("қазақ тілі", "kk-KZ"), // Kazakh (Kazakhstan)
+            new LanguageModel("မြန်မာဘာသာ", "my-MM"), // Burmese
+            new LanguageModel("slovenčina", "sk-SK"), // Slovak (Slovakia)
+            new LanguageModel("Gaelic", "ga-IE"), // Irish
+            new LanguageModel("română", "ro-RO"), // Romanian
         };
 
-        public static ReadOnlyCollection<LanguagesModel> SupportedLanguages => Array.AsReadOnly(supportedLanguages);
-
-        /// <summary>
-        /// Returns language code if exists, default language(en) otherwise.
-        /// </summary>
-        /// <param name="langCode"></param>
-        /// <returns></returns>
-        public static LanguagesModel GetLanguage(string langCode) =>
-            SupportedLanguages.FirstOrDefault(lang => lang.Codes.Contains(langCode, StringComparer.OrdinalIgnoreCase)) ?? SupportedLanguages[0];
+        public static ReadOnlyCollection<LanguageModel> SupportedLanguages => Array.AsReadOnly(supportedLanguages);
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace Lively.Services
 {
-    public class JsonUserSettingsService : IUserSettingsService
+    public class UserSettingsService : IUserSettingsService
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -22,7 +22,7 @@ namespace Lively.Services
         private readonly string wallpaperLayoutPath = Constants.CommonPaths.WallpaperLayoutPath;
         //private readonly string weatherPath = Constants.CommonPaths.WeatherSettingsPath;
 
-        public JsonUserSettingsService(IDisplayManager displayManager, ITransparentTbService ttbService)
+        public UserSettingsService(IDisplayManager displayManager, ITransparentTbService ttbService)
         {
             Load<SettingsModel>();
             //Load<IWeatherModel>();
@@ -51,12 +51,8 @@ namespace Lively.Services
                 Save<SettingsModel>();
             }
 
-            //Ensure if the locale is supported..
-            var lang = Languages.GetLanguage(Settings.Language);
-            if (lang.Codes.FirstOrDefault(x => x == Settings.Language) == null)
-            {
-                Settings.Language = lang.Codes[0];
-            }
+            // Reject unsupported language.
+            Settings.Language = Languages.SupportedLanguages.FirstOrDefault(x => x.Code == Settings.Language)?.Code ?? string.Empty;
 
             //Restrictions on msix..
             //Settings.DesktopAutoWallpaper = Settings.DesktopAutoWallpaper && !Common.Constants.ApplicationType.IsMSIX;

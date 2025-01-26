@@ -23,7 +23,9 @@ namespace Lively.RPC
         private readonly ITransparentTbService ttbService;
         private readonly IUserSettingsService userSettings;
         private readonly IRunnerService runner;
+        private readonly IResourceService i18n;
         private readonly ISystray sysTray;
+
         private readonly object appRulesWriteLock = new object();
         private readonly object settingsWriteLock = new object();
 
@@ -31,6 +33,7 @@ namespace Lively.RPC
             IUserSettingsService userSettings,
             IRunnerService runner,
             ISystray sysTray,
+            IResourceService i18n,
             ITransparentTbService ttbService)
         {
             this.displayManager = displayManager;
@@ -38,6 +41,7 @@ namespace Lively.RPC
             this.ttbService = ttbService;
             this.sysTray = sysTray;
             this.runner = runner;
+            this.i18n = i18n;
         }
 
         public override Task<AppRulesSettings> GetAppRulesSettings(Empty _, ServerCallContext context)
@@ -89,6 +93,15 @@ namespace Lively.RPC
                 {
                     Logger.Error(e);
                 }
+            }
+
+            if (req.Language != userSettings.Settings.Language)
+            {
+                userSettings.Settings.Language = req.Language;
+                _ = Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new ThreadStart(delegate
+                {
+                    i18n.SetCulture(userSettings.Settings.Language);
+                }));
             }
 
             if (req.SysTrayIcon != userSettings.Settings.SysTrayIcon)
@@ -170,7 +183,6 @@ namespace Lively.RPC
             userSettings.Settings.ScreensaverOledWarning = req.ScreensaverOledWarning;
             userSettings.Settings.ScreensaverEmptyScreenShowBlack = req.ScreensaverEmptyScreenShowBlack;
             userSettings.Settings.ScreensaverLockOnResume = req.ScreensaverLockOnResume;
-            userSettings.Settings.Language = req.Language;
             userSettings.Settings.KeepAwakeUI = req.KeepAwakeUi;
             userSettings.Settings.DisplayPauseSettings = (DisplayPause)req.DisplayPauseSettings;
             userSettings.Settings.RememberSelectedScreen = req.RememberSelectedScreen;
