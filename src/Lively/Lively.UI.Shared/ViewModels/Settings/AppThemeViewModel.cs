@@ -97,7 +97,7 @@ namespace Lively.UI.Shared.ViewModels
                 if (prevPath != userSettings.Settings.ApplicationThemeBackgroundPath || prevTheme != userSettings.Settings.ApplicationThemeBackground)
                 {
                     UpdateSettingsConfigFile();
-                    _ = mainVm.UpdateTheme();
+                    _ = mainVm.SetAppTheme(userSettings.Settings.ApplicationThemeBackground);
                 }
             }
         }

@@ -1,4 +1,6 @@
 ﻿using Lively.Common.Helpers.Pinvoke;
+using Microsoft.UI.Windowing;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using WinRT;
+using WinRT.Interop;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Lively.UI.WinUI.Extensions
 {
@@ -70,7 +74,85 @@ namespace Lively.UI.WinUI.Extensions
             return status;
         }
 
-        #region helpers
+        public static void SetDragRegionForCustomTitleBar(this Window window,
+            ColumnDefinition rightPaddingColumn,
+            ColumnDefinition leftPaddingColumn,
+            ColumnDefinition iconColumn,
+            ColumnDefinition titleColumn,
+            ColumnDefinition leftDragColumn,
+            ColumnDefinition rightDragColumn,
+            ColumnDefinition searchColumn,
+            TextBlock titleTextBlock,
+            Grid appTitleBar)
+        {
+            if (!AppWindowTitleBar.IsCustomizationSupported())
+                return;
+
+            var appWindow = window.AppWindow;
+            if (AppWindowTitleBar.IsCustomizationSupported()
+                && appWindow.TitleBar.ExtendsContentIntoTitleBar)
+            {
+                double scaleAdjustment = window.GetScaleAdjustment();
+
+                rightPaddingColumn.Width = new GridLength(appWindow.TitleBar.RightInset / scaleAdjustment);
+                leftPaddingColumn.Width = new GridLength(appWindow.TitleBar.LeftInset / scaleAdjustment);
+
+                List<Windows.Graphics.RectInt32> dragRectsList = new();
+
+                Windows.Graphics.RectInt32 dragRectL;
+                dragRectL.X = (int)((leftPaddingColumn.ActualWidth) * scaleAdjustment);
+                dragRectL.Y = 0;
+                dragRectL.Height = (int)(appTitleBar.ActualHeight * scaleAdjustment);
+                dragRectL.Width = (int)((iconColumn.ActualWidth
+                                        + titleColumn.ActualWidth
+                                        + leftDragColumn.ActualWidth) * scaleAdjustment);
+                dragRectsList.Add(dragRectL);
+
+                Windows.Graphics.RectInt32 dragRectR;
+                dragRectR.X = (int)((leftPaddingColumn.ActualWidth
+                                    + iconColumn.ActualWidth
+                                    + titleTextBlock.ActualWidth
+                                    + leftDragColumn.ActualWidth
+                                    + searchColumn.ActualWidth) * scaleAdjustment);
+                dragRectR.Y = 0;
+                dragRectR.Height = (int)(appTitleBar.ActualHeight * scaleAdjustment);
+                dragRectR.Width = (int)(rightDragColumn.ActualWidth * scaleAdjustment);
+                dragRectsList.Add(dragRectR);
+
+                Windows.Graphics.RectInt32[] dragRects = dragRectsList.ToArray();
+
+                appWindow.TitleBar.SetDragRectangles(dragRects);
+            }
+        }
+
+        private static double GetScaleAdjustment(this Window window)
+        {
+            IntPtr hWnd = WindowNative.GetWindowHandle(window);
+            WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            DisplayArea displayArea = DisplayArea.GetFromWindowId(wndId, DisplayAreaFallback.Primary);
+            IntPtr hMonitor = Win32Interop.GetMonitorFromDisplayId(displayArea.DisplayId);
+
+            // Get DPI.
+            int result = GetDpiForMonitor(hMonitor, Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint _);
+            if (result != 0)
+            {
+                throw new Exception("Could not get DPI for monitor.");
+            }
+
+            uint scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
+            return scaleFactorPercent / 100.0;
+        }
+
+        [DllImport("Shcore.dll", SetLastError = true)]
+        internal static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
+
+        internal enum Monitor_DPI_Type : int
+        {
+            MDT_Effective_DPI = 0,
+            MDT_Angular_DPI = 1,
+            MDT_Raw_DPI = 2,
+            MDT_Default = MDT_Effective_DPI
+        }
 
         private const int IMAGE_ICON = 1;
         private const int LR_LOADFROMFILE = 0x0010;
@@ -97,7 +179,5 @@ namespace Lively.UI.WinUI.Extensions
         {
             return Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= build;
         }
-
-        #endregion //helpers
     }
 }

@@ -6,6 +6,7 @@ using Lively.Common.Services;
 using Lively.Gallery.Client;
 using Lively.Grpc.Client;
 using Lively.ML.DepthEstimate;
+using Lively.Models.Enums;
 using Lively.UI.Shared.ViewModels;
 using Lively.UI.WinUI.Factories;
 using Lively.UI.WinUI.Services;
@@ -119,7 +120,7 @@ namespace Lively.UI.WinUI
                 {
                     var m_window = Services.GetRequiredService<MainWindow>();
                     m_window.Activate();
-                    m_window.NavViewNavigate(MainWindow.NavPages.appUpdate);
+                    Services.GetRequiredService<INavigator>().NavigateTo(ContentPageType.appupdate);
                 }
                 else
                 {
@@ -145,6 +146,7 @@ namespace Lively.UI.WinUI
                 .AddSingleton<IDialogService, DialogService>()
                 .AddSingleton<IDispatcherService, DispatcherService>()
                 .AddSingleton<IResourceService, ResourceService>()
+                .AddSingleton<INavigator, Navigator>()
                 .AddSingleton<MainWindow>()
                 .AddSingleton<MainViewModel>()
                 .AddSingleton<GalleryClient>((e) => new GalleryClient(e.GetRequiredService<IHttpClientFactory>(), "http://api.livelywallpaper.net/api/",

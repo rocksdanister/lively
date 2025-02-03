@@ -218,7 +218,7 @@ namespace Lively.UI.WinUI.Views.Pages
                 }
                 else if (items.Count > 1)
                 {
-                    await App.Services.GetRequiredService<MainWindow>().AddWallpapers(items.Select(x => x.Path).ToList());
+                    await App.Services.GetRequiredService<MainViewModel>().AddWallpapers(items.Select(x => x.Path).ToList());
                 }
             }
         }

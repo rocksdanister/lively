@@ -34,7 +34,7 @@ namespace Lively.UI.WinUI.Services
 
         public async Task<IReadOnlyList<string>> PickFileAsync(string[] filters, bool multipleFile = false)
         {
-            if (multipleFile)
+            if (!multipleFile)
             {
                 //var file = UAC.IsElevated ?
                 //    PickSingleFileNative(filters) :
@@ -53,7 +53,7 @@ namespace Lively.UI.WinUI.Services
 
         public async Task<IReadOnlyList<string>> PickFileAsync(WallpaperType type, bool multipleFile = false)
         {
-            if (multipleFile)
+            if (!multipleFile)
             {
                 var file = UAC.IsElevated ?
                     PickSingleFileNative(FileDialogFilterNative(type)) :
@@ -70,7 +70,7 @@ namespace Lively.UI.WinUI.Services
 
         public async Task<IReadOnlyList<string>> PickWallpaperFile(bool multipleFile = false)
         {
-            if (multipleFile)
+            if (!multipleFile)
             {
                 var file = UAC.IsElevated ?
                     PickSingleFileNative(FileDialogFilterAllNative(true)) :
