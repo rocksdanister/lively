@@ -310,6 +310,7 @@
                     </AppBarButton>
                     <!--  Secondary Menu  -->
                     <CommandBar.SecondaryCommands>
+                        <!--  Issue: Language culture not changing?  -->
                         <AppBarButton x:Uid="Theme" Command="{Binding OpenAppThemeCommand}">
                             <AppBarButton.Icon>
                                 <FontIcon Glyph="&#xE790;" />

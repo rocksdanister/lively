@@ -42,7 +42,7 @@ namespace Lively.UI.Shared.ViewModels
             this.i18n = i18n;
 
             Languages = new ObservableCollection<LanguageModel>(Common.Languages.SupportedLanguages);
-            Languages.Insert(0, new("Same as System", string.Empty));
+            Languages.Insert(0, new(i18n.GetString("LanguageSettingsItemSystemDefault/Content"), string.Empty));
             SelectedLanguage = string.IsNullOrWhiteSpace(userSettings.Settings.Language) ? 
                 Languages[0] : Languages.FirstOrDefault(x => x.Code == userSettings.Settings.Language) ?? Languages[0];
 
@@ -72,9 +72,6 @@ namespace Lively.UI.Shared.ViewModels
 
         public ObservableCollection<LanguageModel> Languages { get; }
 
-        [ObservableProperty]
-        private bool isLanguageChanged;
-
         private LanguageModel _selectedLanguage;
         public LanguageModel SelectedLanguage
         {
@@ -85,9 +82,9 @@ namespace Lively.UI.Shared.ViewModels
                 if (code != null && userSettings.Settings.Language != code)
                 {
                     userSettings.Settings.Language = code;
-                    IsLanguageChanged = true;
-                    i18n.SetCulture(code);
                     UpdateSettingsConfigFile();
+                    // This will reload the page and vm (transient) via INavigator.
+                    i18n.SetCulture(code);
                 }
                 SetProperty(ref _selectedLanguage, value);
             }

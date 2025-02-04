@@ -26,7 +26,7 @@ namespace Lively.UI.WinUI.Services
             if (CurrentPage == contentPage)
                 return;
 
-            InternalNavigateTo(contentPage, navArgs);
+            InternalNavigateTo(contentPage, new DrillInNavigationTransitionInfo(), navArgs);
         }
 
         public void Reload()
@@ -34,10 +34,10 @@ namespace Lively.UI.WinUI.Services
             if (CurrentPage == null)
                 return;
 
-            InternalNavigateTo(CurrentPage.Value);
+            InternalNavigateTo(CurrentPage.Value, new EntranceNavigationTransitionInfo());
         }
 
-        private void InternalNavigateTo(ContentPageType contentPage, object navArgs = null)
+        private void InternalNavigateTo(ContentPageType contentPage, NavigationTransitionInfo transition, object navArgs = null)
         {
             Type pageType = contentPage switch
             {
@@ -53,7 +53,7 @@ namespace Lively.UI.WinUI.Services
 
             if (Frame is Frame f)
             {
-                f.Navigate(pageType, navArgs, new DrillInNavigationTransitionInfo());
+                f.Navigate(pageType, navArgs, transition);
 
                 CurrentPage = contentPage;
                 ContentPageChanged?.Invoke(this, contentPage);

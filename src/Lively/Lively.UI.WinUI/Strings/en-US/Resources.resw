@@ -1256,4 +1256,10 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
     <value>Wallpaper restart is required for the settings to take effect</value>
   </data>
+  <data name="LanguageSettingsItemSystemDefault.Content" xml:space="preserve">
+    <value>Same as System</value>
+  </data>
+  <data name="InfoSettingsRestartRequest.Message" xml:space="preserve">
+    <value>Please restart application for settings to take effect.</value>
+  </data>
 </root>

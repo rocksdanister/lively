@@ -1,7 +1,7 @@
 ﻿using Lively.Models.Enums;
 using System;
 
-namespace Lively
+namespace Lively.Common.Services
 {
     public interface ISystray : IDisposable
     {

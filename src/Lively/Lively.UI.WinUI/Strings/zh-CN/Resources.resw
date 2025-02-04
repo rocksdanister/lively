@@ -1261,4 +1261,10 @@ Edge 是 Windows 10 内置的浏览器。</value>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
     <value>重启壁纸使设置生效</value>
   </data>
+    <data name="LanguageSettingsItemSystemDefault.Content" xml:space="preserve">
+    <value>系统语言</value>
+  </data>
+  <data name="InfoSettingsRestartRequest.Message" xml:space="preserve">
+    <value>请重新启动应用以使设置生效。</value>
+  </data>
 </root>
