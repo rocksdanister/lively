@@ -273,8 +273,43 @@ namespace Lively.Core.Wallpapers
 
         public async Task ScreenCapture(string filePath)
         {
-            //TODO
-            //await player?.CaptureScreenshot(Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath, ScreenshotFormat.jpeg);
+            var tcs = new TaskCompletionSource<bool>();
+            void OutputDataReceived(object sender, DataReceivedEventArgs e)
+            {
+                if (string.IsNullOrEmpty(e.Data))
+                {
+                    //process exiting..
+                    tcs.SetResult(false);
+                }
+                else
+                {
+                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    if (obj.Type == MessageType.msg_screenshot)
+                    {
+                        var msg = (LivelyMessageScreenshot)obj;
+                        if (msg.FileName == Path.GetFileName(filePath))
+                        {
+                            tcs.SetResult(msg.Success);
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                Proc.OutputDataReceived += OutputDataReceived;
+                SendMessage(new LivelyScreenshotCmd()
+                {
+                    FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
+                    Format = ScreenshotFormat.jpeg,
+                    Delay = 0 //unused
+                });
+                await tcs.Task;
+            }
+            finally
+            {
+                Proc.OutputDataReceived -= OutputDataReceived;
+            }
         }
 
         /// <summary>
