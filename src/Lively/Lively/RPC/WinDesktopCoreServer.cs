@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Lively.Common.Exceptions;
 using Lively.Common.Factories;
 using Lively.Common.JsonConverters;
 using Lively.Common.Services;
@@ -9,7 +10,6 @@ using Lively.Extensions;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Models.Exceptions;
 using Lively.Models.Message;
 using Lively.Views;
 using Newtonsoft.Json;
@@ -289,6 +289,7 @@ namespace Lively.RPC
                             WallpaperPluginNotFoundException _ => ErrorCategory.WallpaperPluginNotFound,
                             WallpaperPluginMediaCodecException _ => ErrorCategory.WallpaperPluginMediaCodecMissing,
                             ScreenNotFoundException _ => ErrorCategory.ScreenNotFound,
+                            WallpaperWebView2NotFoundException _ => ErrorCategory.WallpaperWebview2NotFound,
                             _ => ErrorCategory.General,
                         };
                         tcs.TrySetResult(true);

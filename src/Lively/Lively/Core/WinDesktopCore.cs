@@ -1,5 +1,6 @@
 ﻿using Lively.Common;
 using Lively.Common.Com;
+using Lively.Common.Exceptions;
 using Lively.Common.Extensions;
 using Lively.Common.Factories;
 using Lively.Common.Helpers.Files;
@@ -13,7 +14,6 @@ using Lively.Factories;
 using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Models.Exceptions;
 using Lively.Models.Message;
 using Lively.ViewModels;
 using Lively.Views;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lively.Models.Exceptions;
+namespace Lively.Common.Exceptions;
 
 public class ScreenNotFoundException : Exception
 {

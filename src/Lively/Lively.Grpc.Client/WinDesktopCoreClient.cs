@@ -2,11 +2,11 @@
 using Grpc.Core;
 using GrpcDotNetNamedPipes;
 using Lively.Common;
+using Lively.Common.Exceptions;
 using Lively.Common.Helpers.Storage;
 using Lively.Grpc.Common.Proto.Desktop;
 using Lively.Models;
 using Lively.Models.Enums;
-using Lively.Models.Exceptions;
 using Lively.Models.Message;
 using System;
 using System.Collections.Generic;
@@ -237,6 +237,7 @@ namespace Lively.Grpc.Client
                         ErrorCategory.WallpaperPluginFail => new WallpaperPluginException(response.ErrorMsg),
                         ErrorCategory.WallpaperPluginMediaCodecMissing => new WallpaperPluginMediaCodecException(response.ErrorMsg),
                         ErrorCategory.ScreenNotFound => new ScreenNotFoundException(response.ErrorMsg),
+                        ErrorCategory.WallpaperWebview2NotFound => new WallpaperWebView2NotFoundException(response.ErrorMsg),
                         _ => new Exception(response.ErrorMsg),
                     };
                     WallpaperError?.Invoke(this, exp);
