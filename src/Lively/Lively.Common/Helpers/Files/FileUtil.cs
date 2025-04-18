@@ -168,7 +168,7 @@ namespace Lively.Common.Helpers.Files
         /// <param name="folderPath"></param>
         /// <param name="initialDelay"></param>
         /// <param name="retryDelay"></param>
-        /// <returns>True if deletion completed succesfully.</returns>
+        /// <returns>True if deletion completed successfully.</returns>
         public static async Task<bool> TryDeleteDirectoryAsync(string folderPath, int initialDelay, int retryDelay)
         {
             bool status = true;
