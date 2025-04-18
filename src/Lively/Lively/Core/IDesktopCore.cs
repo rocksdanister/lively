@@ -37,7 +37,7 @@ namespace Lively.Core
         /// </summary>
         public event EventHandler<WallpaperUpdateArgs> WallpaperUpdated;
         /// <summary>
-        /// Error occured in wallpaper core.
+        /// Error occurred in wallpaper core.
         /// </summary>
         public event EventHandler<Exception> WallpaperError;
         /// <summary>
