@@ -107,7 +107,7 @@ namespace Lively.UI.Shared.ViewModels
                     //sad
                 }
 
-                //Show restore dialog everytime user login and if any subbed wallpaper missing
+                //Show restore dialog every time on user login and if any subbed wallpaper is missing
                 await Task.Delay(3500);
                 if (galleryClient.IsLoggedIn)
                 {
