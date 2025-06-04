@@ -421,7 +421,7 @@ namespace Lively.Core
                 try
                 {
                     int maxIterations = 50;
-                    //upto ~5sec wait for wallpaper to get ready..
+                    //up to ~5 sec wait for wallpaper to get ready..
                     for (int i = 1; i <= maxIterations; i++)
                     {
                         if (i == maxIterations)

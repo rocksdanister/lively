@@ -263,7 +263,7 @@ namespace Lively.Views.WindowMsg
                                 uint lParam = 1u; //press
                                 lParam |= (uint)scanCode << 16; //oem code
                                 lParam |= 1u << 24; //extended key
-                                lParam |= 0u << 29; //context code; Note: Alt key combos wont't work
+                                lParam |= 0u << 29; //context code; Note: Alt key combos won't work
                                 /* Same as:
                                  * lParam = isPressed ? (lParam |= 0u << 30) : (lParam |= 1u << 30); //prev key state
                                  * lParam = isPressed ? (lParam |= 0u << 31) : (lParam |= 1u << 31); //transition state
