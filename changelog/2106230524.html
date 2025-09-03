@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lively Wallpaper Changelog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- styles -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <meta charset="utf-8" />
+    <noscript>
+      <style>
+        label.switch {
+          display: none;
+        }
+      </style>
+    </noscript>
+    <script src="./scripts/themeHandler.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <p class="subheader">23 May 2024 | Lively v2.1.0.6 - 2.1.0.8 Update</p>
+        <h1>Better Everything</h1>
+      </div>
+    </div>
+    <div class="media-border">
+      <img class="hero" src="assets/2106230524/hero_art.webp" />
+    </div>
+    <p>This update has been cooking for months.. lots of features and fixes🥳</p>
+    <p>This update also addresses issues identified in v2.1.0.6 based on bug reports.</p>
+    <h3 id="new-wallpapers">New "Music Tunnel" Wallpaper</h3>
+    <div class="media-border">
+      <video id="promo-new-wallpaper" class="video" loop muted>
+        <source src="assets/2106230524/music_tunnel.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Mesmerizing infinite music tunnel powered by shaders and Lively API with upto 7 customisation options.</p>
+    <a
+      class="menu__link"
+      title="https://www.youtube.com/watch?v=-0zJkmno8hs"
+      href="https://www.youtube.com/watch?v=-0zJkmno8hs"
+      target="_blank"
+      >See it in action</a
+    >
+
+    <h3 id="screensaver-enhancements">Better Screensavers</h3>
+    <div class="media-border">
+      <video id="promo-screensaver-enhancements" class="video" loop muted>
+        <source src="assets/2106230524/screensaver_ui.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>You can now select different screensavers independently of the running wallpaper.</p>
+    <p>Each screensaver can have a custom layout, such as span or duplicate, separate from the wallpaper settings.</p>
+    <p>Screensavers can now run without needing the Lively app to be open. You can use Lively exclusively as a screensaver app! <br>This feature is available only in the installer version of Lively.</br></p>
+    <p>Optimized and reduced Screensaver Plugin size from 30MB to just under 8kb 🪄</p>
+    <a
+    class="menu__link"
+    title="https://github.com/rocksdanister/lively/wiki/Screen-Saver#1-windows-screensaver-file"
+    href="https://github.com/rocksdanister/lively/wiki/Screen-Saver#1-windows-screensaver-file"
+    target="_blank"
+    >Requires new Screensaver Plugin</a
+  >
+
+    <h3 id="control-panel">Better Control Panel</h3>
+    <div class="media-border">
+      <video id="promo-control-panel" class="video" loop muted>
+        <source src="assets/2106230524/control_panel.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Introducing the new display selector interface that resembles Windows settings. This feature visually shows the positions, sizes and other details of connected displays.</p>
+    <p>Creating this custom control from scratch was quite a task, as there is no stock way to achieve this 😅</p>
+
+    <h3 id="performance">Better Performance - 100,000+ Controls!</h3>
+    <div class="media-border">
+      <video id="promo-performance" class="video" loop muted>
+        <source src="assets/2106230524/customise_performance.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>The wallpaper customization menu code has been completely rewritten for better performance and easier maintenance.</p>
+    <p>Thanks to virtualization and templating techniques, the new system has been tested to handle over 100,000 controls effortlessly.</p>
+
+    <h3 id="updater">Better Update Experience</h3>
+    <div class="media-border">
+      <video id="promo-updater" class="video" loop muted>
+        <source src="assets/2106230524/updater.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>The app updater (installer) has been better integrated into the main interface, featuring simple and non-distracting notifications.</p>
+    <p>The latest update information can now be viewed directly from within the app.</p>
+
+    <h3 id="scaler">Better Wallpaper Scaling</h3>
+    <div class="media-border">
+      <video id="promo-scaler" class="video" loop muted>
+        <source src="assets/2106230524/media_scaler.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>
+      For better flexibility and user control wallpaper scaler settings are now applied for individual media file and wallpaper layout like span and duplicate.
+    </p>
+    <p>This feature is only available when Mpv video player is selected.<br>
+      Previous media customization settings will be cleared to enable this feature.</br></p>
+    <h3 id="folderDropdown">Better FolderDropdown Control</h3>
+    <div class="media-border">
+      <video id="promo-folderDropdown" class="video" loop muted>
+        <source src="assets/2106230524/folderDropdown.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Redesigned FolderDropdown control with file preview and deletion support.</p>
+    <p>Preview is supported for most popular formats as it is generated from system shell.</p>
+
+    <h3 id="patreon">Patreon Supporters <3</h3>
+    <div class="media-border">
+      <video id="promo-patreon" class="video" loop muted>
+        <source src="assets/2106230524/patreon_supporters.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>Just a little something to show appreciation.</p>
+
+    <h3 id="misc">Miscellaneous</h3>
+    <div class="media-border">
+      <video id="promo-ui-ux" class="video" loop muted>
+        <source src="assets/2106230524/music_app_exclusion.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>(v2.1.0.8) Apps can now be excluded from displaying music information in the settings (Experimental.)</li>
+      <li>During application wallpaper installation now there is an option to add launch arguments.</li>
+      <li>New light themed system-tray menu and other interface enhancements.</li>
+      <li>New library item reorganizing animation.</li>
+    </ul>
+
+    <h3 id="24h2">Windows 24H2 Support</h3>
+    <ul>
+      <li>
+        Upgrades have been implemented to ensure compatibility with the upcoming Windows 11 24H2 release.
+        <br />Additionally, these enhancements are expected to function with insider versions of Windows; however,
+        please note that insider builds are not officially supported.<br />
+      </li>
+    </ul>
+
+    <h3 id="64bit">64-bit Architecture</h3>
+    <ul>
+      <li>Lively is transitioning from x86 (32-bit) to x64 (64-bit) process architecture.</li>
+      <li>
+        This change will enhance application performance by better utilizing system resources.<br />
+        If your current installation has admin privileges, you may receive a one-time prompt asking for the install
+        type. This is normal.<br />
+        A restart may be requested at the end of the installation process. While not strictly required, it is
+        recommended.<br />
+        For backward compatibility, the installer filename remains listed as x86.<br />
+      </li>
+    </ul>
+
+    <h3 id="commandline">Commandline</h3>
+    <ul>
+      <li>New <b>random</b> setwp option to randomly select a wallpaper from the library.</li>
+      <a class="menu__link" target="_blank" href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#set-wallpaper"
+        >Show documentation</a
+      >
+      <li>New <b>showExclusive</b> command,  allowing Lively to function as a standalone screensaver application.</li>
+      <a class="menu__link" target="_blank" href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#screen-saver"
+      >Show documentation</a
+    >
+      <li>Setting wallpaper not present in library will now get auto imported if its media file.</li>
+      <li>Sending commands directly through application executable is now instant, 1s delay is gone.</li>
+    </ul>
+
+    <h3 id="fixes">Fixes</h3>
+    <ul>
+      <li>Fixed close wallpaper button disabled in span layout when non-primary display was selected previously.</li>
+      <li>Fixed video wallpaper position not synchronized on startup in duplicate layout.</li>
+      <li>Fixed Customize wallpaper not applying to selected screen if wallpaper is not running.</li>
+      <li>Fixed application crashing when adding some program to wallpaper pause rules.</li>
+      <li>Fixed high system resource usage during update download.</li>
+      <li>
+        Added Unicode support for LivelyProperties Textbox and FolderDropdown. For example, now you can interact with
+        text and filenames with Chinese characters.
+      </li>
+      <li>
+        When a unique DeviceId is not available for display, a hashcode is generated which should resolve some
+        display-related wallpaper bugs.
+      </li>
+      <li>
+        Optional <code>TaskbarCrashTimeOutDelay</code> settings variable to configure the check time between Taskbar
+        Explorer process crash.
+      </li>
+      <li>(v2.1.0.8) Fixed Set as Wallpaper context menu not showing screen selector when required.</li>
+      <li>(v2.1.0.8) Fixed media properties resetting on restart in some systems.</li>
+      <li>(v2.1.0.8) Fixed splashscreen always showing in some systems.</li>
+      <li>(v2.1.0.8) Fixed Mpv player writing to log excessively.</li>
+    </ul>
+    <h3 id="translation">Translation</h3>
+    <ul>
+      <li>(v2.1.0.8) Added Irish language. Thanks to socbocs.</li>
+      <li>Added Belarusian, Galician, Kazakh, Burmese and Slovak languages.</li>
+      <li>Updated community translations.</li>
+    </ul>
+    <h3 id="updates">Updates</h3>
+    <ul>
+      <li>Upgraded .NET runtime to 8.0.5 (x64).</li>
+      <li>Updated WindowsAppSDK v1.5.240404000.</li>
+      <li>Upgraded Visual C++ Redistributable v2015-2022 (x64).</li>
+      <li>Updated Mpv player.</li>
+      <li>Updated CEF player.</li>
+      <li>Updated dependencies.</li>
+    </ul>
+  </body>
+  <div class="footer">
+    <a class="menu__link" href="home.html">Previous releases</a>
+  </div>
+  <script src="scripts/script.js"></script>
+</html>

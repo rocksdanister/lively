@@ -22,194 +22,279 @@
   <body>
     <div class="header">
       <div>
-        <p class="subheader">31 May 2024 | Lively v2.1.0.6 - 2.1.0.8 Update</p>
-        <h1>Better Everything</h1>
+        <p class="subheader">3 Sept 2025 | Lively v2.2.0.0 Update</p>
+        <h1>Big Update</h1>
       </div>
     </div>
     <div class="media-border">
       <img class="hero" src="assets/latest/hero_art.webp" />
     </div>
-    <p>This update has been cooking for months.. lots of features and fixes🥳</p>
-    <p>This update also addresses issues identified in v2.1.0.6 based on bug reports.</p>
-    <h3 id="new-wallpapers">New "Music Tunnel" Wallpaper</h3>
+    <p>
+      This is the biggest update in a long time and comes with better wallpaper pausing, better localization, better
+      screensavers and over 20+ fixes and improvements - including full compatibility with
+      <strong>Windows 11 24H2</strong>.
+    </p>
+
+    <h3 id="grid-pause">Grid Pause Algorithm</h3>
     <div class="media-border">
-      <video id="promo-new-wallpaper" class="video" loop muted>
-        <source src="assets/latest/music_tunnel.mp4" type="video/mp4" />
+      <video id="promo-grid-pause" class="video" loop muted>
+        <source src="assets/latest/grid_pause.mp4" type="video/mp4" />
       </video>
     </div>
-    <p>Mesmerizing infinite music tunnel powered by shaders and Lively API with upto 7 customisation options.</p>
-    <a
-      class="menu__link"
-      title="https://www.youtube.com/watch?v=-0zJkmno8hs"
-      href="https://www.youtube.com/watch?v=-0zJkmno8hs"
-      target="_blank"
-      >See it in action</a
-    >
+    <ul>
+      <li>
+        Replaced the default foreground window based pause detection with a grid based screen coverage algorithm - the
+        screen is now divided into a grid (tiles), and intersection calculation is used to check if windows are visually
+        covering the display (by default 95%.)
+      </li>
+      <p>Solves several edge cases where the previous logic failed:</p>
+      <ul>
+        <li>Multiple windows (example: side by side), now correctly trigger pause.</li>
+        <li>Works even if a background window, not the foreground one, is covering the wallpaper.</li>
+        <li>Each display can now pause independently in per-display mode.</li>
+        <li>Reliable desktop detection.</li>
+      </ul>
+      <p>To see the detection in real time, right-click the Lively tray icon and choose Report Bug → Grid Detection Overlay.</p>
+      <li>Now when duplicate layout is selected all wallpapers are paused.</li>
+      <li>New All Process algorithm available in settings - scans all windows and check for fullscreen.</li>
+      <a
+        class="menu__link"
+        target="_blank"
+        href="https://github.com/rocksdanister/lively/wiki/Performance#pause-algorithms"
+      >
+        Learn more
+      </a>
+    </ul>
+    <p>Note: Some performance related settings will be reset to default after this update.</p>
 
-    <h3 id="screensaver-enhancements">Better Screensavers</h3>
+    <h3 id="language">Animated WebP Support</h3>
+    <div class="media-border">
+      <video id="promo-webp" class="video" loop muted>
+        <source src="assets/latest/webp.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>Added support for animated WebP format.</li>
+      <li>WebP files are converted to WebM during import.</li>
+      <li>Wallpaper customisation is supported.</li>
+    </ul>
+    <p>This is an initial experiment, planning on adding conversion support for more formats in the future.</p>
+
+    <h3 id="language">Language Enhancements</h3>
+    <div class="media-border">
+      <video id="promo-localization" class="video" loop muted>
+        <source src="assets/latest/localization.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>Added custom language selection - preferred language can be selected from settings.</li>
+      <li>[Experimental] Language change applies instantly without requiring an app restart.</li>
+      <li>
+        Added localization support for:
+        <ul>
+          <li>LivelyProperties (wallpaper customization.)</li>
+          <li>LivelyInfo (wallpaper metadata.)</li>
+        </ul>
+      </li>
+      <a
+        class="menu__link"
+        target="_blank"
+        href="https://github.com/rocksdanister/lively/wiki/Web-Guide-IV-:-Interaction#localization"
+      >
+        Show documentation
+      </a>
+    </ul>
+
+    <h3 id="wallpaper-creation">Wallpaper Enhancements</h3>
+    <div class="media-border">
+      <video id="promo-wallpaper-creation" class="video" loop muted>
+        <source src="assets/latest/wallpaper_creation.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>
+        Changed wallpaper import system: now copies wallpaper file(s) to the wallpaper library location instead of just
+        referencing the original path.
+        <ul>
+          <li>Previously imported wallpapers remain unaffected - to migrate them to library location, use the Edit option in library.</li>
+          <li>
+            For wallpaper projects with multiple files, a confirmation dialog now shows the expected folder structure
+            before importing.
+          </li>
+          <li>From this version onward, newly imported wallpapers no longer depend on the original file - you can safely delete it without causing file not found errors.</li>
+        </ul>
+      </li>
+      <li>
+        Faster bulk imports: multiple media wallpapers are now imported faster by utilizing system thumbnail cache.
+      </li>
+    </ul>
+
+    <h3 id="webview2">WebView2 (Default)</h3>
+    <div class="media-border">
+      <video id="promo-webview2" class="video" loop muted>
+        <source src="assets/latest/webview2_install.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>WebView2 is now the default browser engine for website wallpapers.</li>
+      <li>Since WebView2 comes pre-installed with Windows, the app no longer needs to bundle a browser engine, reducing the install size by ~50%.</li>
+      <li>Now website wallpapers support H.264 media playback out of the box.</li>
+      <li>New debug DevTools, opens in a separate window.</li>
+      <li>
+        Improved handling of media elements - when a wallpaper is paused, any playing video or audio elements on the
+        page are also paused automatically.
+      </li>
+      <li>Previous CefSharp player is provided as additional download on release page.</li>
+    </ul>
+    <p>Note: Some browser related settings will be reset to default after this update.</p>
+
+    <h3 id="screensaver">Screensaver Enhancements</h3>
     <div class="media-border">
       <video id="promo-screensaver-enhancements" class="video" loop muted>
-        <source src="assets/latest/screensaver_ui.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>You can now select different screensavers independently of the running wallpaper.</p>
-    <p>Each screensaver can have a custom layout, such as span or duplicate, separate from the wallpaper settings.</p>
-    <p>Screensavers can now run without needing the Lively app to be open. You can use Lively exclusively as a screensaver app! <br>This feature is available only in the installer version of Lively.</br></p>
-    <p>Optimized and reduced Screensaver Plugin size from 30MB to just under 8kb 🪄</p>
-    <a
-    class="menu__link"
-    title="https://github.com/rocksdanister/lively/wiki/Screen-Saver#1-windows-screensaver-file"
-    href="https://github.com/rocksdanister/lively/wiki/Screen-Saver#1-windows-screensaver-file"
-    target="_blank"
-    >Requires new Screensaver Plugin</a
-  >
-
-    <h3 id="control-panel">Better Control Panel</h3>
-    <div class="media-border">
-      <video id="promo-control-panel" class="video" loop muted>
-        <source src="assets/latest/control_panel.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>Introducing the new display selector interface that resembles Windows settings. This feature visually shows the positions, sizes and other details of connected displays.</p>
-    <p>Creating this custom control from scratch was quite a task, as there is no stock way to achieve this 😅</p>
-
-    <h3 id="performance">Better Performance - 100,000+ Controls!</h3>
-    <div class="media-border">
-      <video id="promo-performance" class="video" loop muted>
-        <source src="assets/latest/customise_performance.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>The wallpaper customization menu code has been completely rewritten for better performance and easier maintenance.</p>
-    <p>Thanks to virtualization and templating techniques, the new system has been tested to handle over 100,000 controls effortlessly.</p>
-
-    <h3 id="updater">Better Update Experience</h3>
-    <div class="media-border">
-      <video id="promo-updater" class="video" loop muted>
-        <source src="assets/latest/updater.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>The app updater (installer) has been better integrated into the main interface, featuring simple and non-distracting notifications.</p>
-    <p>The latest update information can now be viewed directly from within the app.</p>
-
-    <h3 id="scaler">Better Wallpaper Scaling</h3>
-    <div class="media-border">
-      <video id="promo-scaler" class="video" loop muted>
-        <source src="assets/latest/media_scaler.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>
-      For better flexibility and user control wallpaper scaler settings are now applied for individual media file and wallpaper layout like span and duplicate.
-    </p>
-    <p>This feature is only available when Mpv video player is selected.<br>
-      Previous media customization settings will be cleared to enable this feature.</br></p>
-    <h3 id="folderDropdown">Better FolderDropdown Control</h3>
-    <div class="media-border">
-      <video id="promo-folderDropdown" class="video" loop muted>
-        <source src="assets/latest/folderDropdown.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>Redesigned FolderDropdown control with file preview and deletion support.</p>
-    <p>Preview is supported for most popular formats as it is generated from system shell.</p>
-
-    <h3 id="patreon">Patreon Supporters <3</h3>
-    <div class="media-border">
-      <video id="promo-patreon" class="video" loop muted>
-        <source src="assets/latest/patreon_supporters.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <p>Just a little something to show appreciation.</p>
-
-    <h3 id="misc">Miscellaneous</h3>
-    <div class="media-border">
-      <video id="promo-ui-ux" class="video" loop muted>
-        <source src="assets/latest/music_app_exclusion.mp4" type="video/mp4" />
+        <source src="assets/latest/screensaver_fadein.mp4" type="video/mp4" />
       </video>
     </div>
     <ul>
-      <li>(v2.1.0.8) Apps can now be excluded from displaying music information in the settings (Experimental.)</li>
-      <li>During application wallpaper installation now there is an option to add launch arguments.</li>
-      <li>New light themed system-tray menu and other interface enhancements.</li>
-      <li>New library item reorganizing animation.</li>
-    </ul>
-
-    <h3 id="24h2">Windows 24H2 Support</h3>
-    <ul>
+      <li>Fade-in animation when screensaver starts, any user input during this phase cancels activation.</li>
       <li>
-        Upgrades have been implemented to ensure compatibility with the upcoming Windows 11 24H2 release.
-        <br />Additionally, these enhancements are expected to function with insider versions of Windows; however,
-        please note that insider builds are not officially supported.<br />
+        Introduced a grace period: if input is received shortly after screensaver starts, system lock is skipped (when
+        "lock on resume" is enabled).
       </li>
+      <li>Screensaver settings have been reorganized and are now part of the main settings page for easier access.</li>
     </ul>
 
-    <h3 id="64bit">64-bit Architecture</h3>
+    <h3 id="video-enhancements">Video Enhancements</h3>
     <ul>
-      <li>Lively is transitioning from x86 (32-bit) to x64 (64-bit) process architecture.</li>
-      <li>
-        This change will enhance application performance by better utilizing system resources.<br />
-        If your current installation has admin privileges, you may receive a one-time prompt asking for the install
-        type. This is normal.<br />
-        A restart may be requested at the end of the installation process. While not strictly required, it is
-        recommended.<br />
-        For backward compatibility, the installer filename remains listed as x86.<br />
-      </li>
+      <li>Upgraded to MPV player’s new <code>gpu-next</code> video backend.</li>
+      <li>Better performance and improved video quality.</li>
+      <li>Enhances color accuracy and HDR passthrough support in settings.</li>
     </ul>
 
-    <h3 id="commandline">Commandline</h3>
+    <h3 id="win11">Windows 11 24H2 Compatibility</h3>
+    <p>Core components were fully rewritten to adapt to platform changes introduced in Windows 11 24H2.</p>
+
     <ul>
-      <li>New <b>random</b> setwp option to randomly select a wallpaper from the library.</li>
-      <a class="menu__link" target="_blank" href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#set-wallpaper"
-        >Show documentation</a
-      >
-      <li>New <b>showExclusive</b> command,  allowing Lively to function as a standalone screensaver application.</li>
-      <a class="menu__link" target="_blank" href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#screen-saver"
-      >Show documentation</a
-    >
-      <li>Setting wallpaper not present in library will now get auto imported if its media file.</li>
-      <li>Sending commands directly through application executable is now instant, 1s delay is gone.</li>
+      <li>Fixed a critical issue where wallpapers could enter a restart loop on this version of Windows.</li>
     </ul>
+    <p>Special thanks to Microsoft engineers and community members who reached out and helped.</p>
 
     <h3 id="fixes">Fixes</h3>
     <ul>
-      <li>Fixed close wallpaper button disabled in span layout when non-primary display was selected previously.</li>
-      <li>Fixed video wallpaper position not synchronized on startup in duplicate layout.</li>
-      <li>Fixed Customize wallpaper not applying to selected screen if wallpaper is not running.</li>
-      <li>Fixed application crashing when adding some program to wallpaper pause rules.</li>
-      <li>Fixed high system resource usage during update download.</li>
       <li>
-        Added Unicode support for LivelyProperties Textbox and FolderDropdown. For example, now you can interact with
-        text and filenames with Chinese characters.
+        Fixed unwanted border appearing on top-left of video wallpapers. If you previously added border=no to mpv.conf
+        as a workaround, it's recommended to remove it now.
       </li>
       <li>
-        When a unique DeviceId is not available for display, a hashcode is generated which should resolve some
-        display-related wallpaper bugs.
+        Fixed website login not persisting across wallpaper restarts, requires "Disk cache" to be enabled in settings.
       </li>
-      <li>
-        Optional <code>TaskbarCrashTimeOutDelay</code> settings variable to configure the check time between Taskbar
-        Explorer process crash.
-      </li>
-      <li>(v2.1.0.8) Fixed Set as Wallpaper context menu not showing screen selector when required.</li>
-      <li>(v2.1.0.8) Fixed media properties resetting on restart in some systems.</li>
-      <li>(v2.1.0.8) Fixed splashscreen always showing in some systems.</li>
-      <li>(v2.1.0.8) Fixed Mpv player writing to log excessively.</li>
+      <li>Fixed website wallpaper having wrong display scale.</li>
+      <li>Fixed screensaver plugin required message not updating.</li>
+      <li>Fixed missing wallpaper art in screensaver dialog when preview file is absent.</li>
+      <li>Fixed screensaver stopping early with "lock on resume" enabled.</li>
+      <li>Fixed on-screen controls showing in video screensavers.</li>
+      <li>Fixed local file wallpapers not loading in WebView2.</li>
+      <li>Fixed "Restore Default" button not visible when LivelyProperty is empty.</li>
+      <li>Fixed input issues in newer CefSharp player versions.</li>
+      <li>Fixed file picker allowing multiple selections where only one was expected.</li>
+      <li>Fixed screenshot capture, theme and desktop picture not working in WebView2 player.</li>
+      <li>Fixed webpage wallpaper briefly ignoring mute setting on startup.</li>
+      <li>Fixed incorrect layout in screensaver dialog when using mirror mode.</li>
+      <li>Fixed unnecessary error messages on first startup if config files are missing.</li>
+      <li>Fixed customize tray-menu not fitting on screen in some system configurations.</li>
+      <li>Fixed FileNotFound exception when using absolute path URL wallpapers.</li>
+      <li>Fixed MPV player screenshot feature crashing on some systems.</li>
+      <li>Fixed file save dialog not opening when app is run elevated.</li>
+      <li>Fixed missing app icon in WebView2 wallpaper player.</li>
+      <li>Fixed video not looping in VLC player.</li>
     </ul>
-    <h3 id="translation">Translation</h3>
+
+    <h3 id="misc">Enhancements</h3>
     <ul>
-      <li>(v2.1.0.8) Added Irish language. Thanks to socbocs.</li>
-      <li>Added Belarusian, Galician, Kazakh, Burmese and Slovak languages.</li>
-      <li>Updated community translations.</li>
+      <li>Improved MPV error messages for file loading and unknown arguments.</li>
+      <li>Added system tray tooltip for wallpaper errors when UI is closed.</li>
+      <li>Optimized page navigation for smoother and faster UI performance.</li>
+      <li>Website wallpapers now follow application theme (dark/light.)</li>
+      <li>Website wallpapers now show dark color instead of white while loading.</li>
+      <li>Made the screensaver setup message dismissible.</li>
+      <li>Reload command-line control now supports optional monitor argument.</li>
+      <a
+        class="menu__link"
+        target="_blank"
+        href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#set-wallpaper"
+        >Show documentation</a
+      >
+      <li>Volume command-line control now supports increment/decrement.</li>
+      <a
+        class="menu__link"
+        target="_blank"
+        href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#wallpaper-volume"
+        >Show documentation</a
+      >
+      <li>Added new <code>fadeIn</code> command-line argument for starting the screensaver with a fade effect.</li>
+      <a
+        class="menu__link"
+        target="_blank"
+        href="https://github.com/rocksdanister/lively/wiki/Command-Line-Controls#screen-saver"
+        >Show documentation</a
+      >
+      <li>
+        <code>set wallpaper</code> command-line control <code>random</code> argument now selects a different wallpaper
+        if the current one is already running.
+      </li>
+      <li>Improved error presentation in the wallpaper customize dialog.</li>
+      <li>Improved file downloader with better error handling and performance.</li>
+      <li>Improved performance of video wallpaper screenshot capture (app theme and desktop picture).</li>
+      <li>Added WebView2 install prompt when selecting it in settings if the runtime is missing.</li>
+      <li>Added in-app notification when WebView2 runtime is missing while selecting a wallpaper.</li>
+      <li>
+        Changed wallpaper directory UI: address bar now opens the folder, side button allows selecting a new folder.
+      </li>
+      <li>Switched from ListView to Segmented control in active wallpaper dialog.</li>
+      <li>New Grid visualizer debug tool in Diagnostic page.</li>
+      <li>Lots of code refactoring.</li>
     </ul>
+
     <h3 id="updates">Updates</h3>
     <ul>
-      <li>Upgraded .NET runtime to 8.0.5 (x64).</li>
-      <li>Updated WindowsAppSDK v1.5.240404000.</li>
-      <li>Upgraded Visual C++ Redistributable v2015-2022 (x64).</li>
-      <li>Updated Mpv player.</li>
-      <li>Updated CEF player.</li>
-      <li>Updated dependencies.</li>
+      <li>Updated MPV player.</li>
+      <li>Updated to .NET 9.</li>
+      <li>Updated WindowsAppSDK.</li>
+      <li>Updated dependencies (includes important security patches.)</li>
+      <li>Updated community translations.</li>
     </ul>
+
+    <h3 id="developer-message">From the Developer</h3>
+    <p>
+      It’s been a while since the last Lively update - I took a health break and have been gradually easing back into
+      development. During this time, I also worked on a few side projects.. cue self promotion 😁
+    </p>
+
+    <a class="menu__link" target="_blank" href="https://apps.microsoft.com/detail/9ntsnmsvcb5l">Screenbox</a>
+    <p>
+      An open-source media player based on VLC created by Tung Huynh. I contributed a real-time audio visualizer, based
+      on Lively’s own wallpaper visualizer.
+    </p>
+    <div class="media-border">
+      <video id="promo-screenbox" class="video" loop muted>
+        <source src="assets/latest/screenbox_15s_demo.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <p></p>
+    <a class="menu__link" target="_blank" href="https://www.rocksdanister.com/weather">Lively Weather</a>
+    <p>
+      A native DirectX powered animated weather app I’ve been building alongside. The latest update brings up to 50% performance
+      boost after rewriting to D2D1 shaders.
+    </p>
+    <div class="media-border">
+      <video id="promo-livelyweather" class="video" loop muted>
+        <source src="assets/latest/lw_renderer.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="footer">
+      <a class="menu__link" href="home.html">Previous releases</a>
+    </div>
+    <script src="scripts/script.js"></script>
   </body>
-  <div class="footer">
-    <a class="menu__link" href="home.html">Previous releases</a>
-  </div>
-  <script src="scripts/script.js"></script>
 </html>
