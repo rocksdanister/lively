@@ -54,7 +54,10 @@
         <li>Each display can now pause independently in per-display mode.</li>
         <li>Reliable desktop detection.</li>
       </ul>
-      <p>To see the detection in real time, right-click the Lively tray icon and choose Report Bug → Grid Detection Overlay.</p>
+      <p>
+        To see the detection in real time, right-click the Lively tray icon and choose Report Bug → Grid Detection
+        Overlay.
+      </p>
       <li>Now when duplicate layout is selected all wallpapers are paused.</li>
       <li>New All Process algorithm available in settings - scans all windows and check for fullscreen.</li>
       <a
@@ -116,12 +119,18 @@
         Changed wallpaper import system: now copies wallpaper file(s) to the wallpaper library location instead of just
         referencing the original path.
         <ul>
-          <li>Previously imported wallpapers remain unaffected - to migrate them to library location, use the Edit option in library.</li>
+          <li>
+            Previously imported wallpapers remain unaffected - to migrate them to library location, use the Edit option
+            in library.
+          </li>
           <li>
             For wallpaper projects with multiple files, a confirmation dialog now shows the expected folder structure
             before importing.
           </li>
-          <li>From this version onward, newly imported wallpapers no longer depend on the original file - you can safely delete it without causing file not found errors.</li>
+          <li>
+            From this version onward, newly imported wallpapers no longer depend on the original file - you can safely
+            delete it without causing file not found errors.
+          </li>
         </ul>
       </li>
       <li>
@@ -137,7 +146,10 @@
     </div>
     <ul>
       <li>WebView2 is now the default browser engine for website wallpapers.</li>
-      <li>Since WebView2 comes pre-installed with Windows, the app no longer needs to bundle a browser engine, reducing the install size by ~50%.</li>
+      <li>
+        Since WebView2 comes pre-installed with Windows, the app no longer needs to bundle a browser engine, reducing
+        the install size by ~50%.
+      </li>
       <li>Now website wallpapers support H.264 media playback out of the box.</li>
       <li>New debug DevTools, opens in a separate window.</li>
       <li>
@@ -177,36 +189,6 @@
       <li>Fixed a critical issue where wallpapers could enter a restart loop on this version of Windows.</li>
     </ul>
     <p>Special thanks to Microsoft engineers and community members who reached out and helped.</p>
-
-    <h3 id="fixes">Fixes</h3>
-    <ul>
-      <li>
-        Fixed unwanted border appearing on top-left of video wallpapers. If you previously added border=no to mpv.conf
-        as a workaround, it's recommended to remove it now.
-      </li>
-      <li>
-        Fixed website login not persisting across wallpaper restarts, requires "Disk cache" to be enabled in settings.
-      </li>
-      <li>Fixed website wallpaper having wrong display scale.</li>
-      <li>Fixed screensaver plugin required message not updating.</li>
-      <li>Fixed missing wallpaper art in screensaver dialog when preview file is absent.</li>
-      <li>Fixed screensaver stopping early with "lock on resume" enabled.</li>
-      <li>Fixed on-screen controls showing in video screensavers.</li>
-      <li>Fixed local file wallpapers not loading in WebView2.</li>
-      <li>Fixed "Restore Default" button not visible when LivelyProperty is empty.</li>
-      <li>Fixed input issues in newer CefSharp player versions.</li>
-      <li>Fixed file picker allowing multiple selections where only one was expected.</li>
-      <li>Fixed screenshot capture, theme and desktop picture not working in WebView2 player.</li>
-      <li>Fixed webpage wallpaper briefly ignoring mute setting on startup.</li>
-      <li>Fixed incorrect layout in screensaver dialog when using mirror mode.</li>
-      <li>Fixed unnecessary error messages on first startup if config files are missing.</li>
-      <li>Fixed customize tray-menu not fitting on screen in some system configurations.</li>
-      <li>Fixed FileNotFound exception when using absolute path URL wallpapers.</li>
-      <li>Fixed MPV player screenshot feature crashing on some systems.</li>
-      <li>Fixed file save dialog not opening when app is run elevated.</li>
-      <li>Fixed missing app icon in WebView2 wallpaper player.</li>
-      <li>Fixed video not looping in VLC player.</li>
-    </ul>
 
     <h3 id="misc">Enhancements</h3>
     <ul>
@@ -254,6 +236,36 @@
       <li>Lots of code refactoring.</li>
     </ul>
 
+    <h3 id="fixes">Fixes</h3>
+    <ul>
+      <li>
+        Fixed unwanted border appearing on top-left of video wallpapers. If you previously added border=no to mpv.conf
+        as a workaround, it's recommended to remove it now.
+      </li>
+      <li>
+        Fixed website login not persisting across wallpaper restarts, requires "Disk cache" to be enabled in settings.
+      </li>
+      <li>Fixed website wallpaper having wrong display scale.</li>
+      <li>Fixed screensaver plugin required message not updating.</li>
+      <li>Fixed missing wallpaper art in screensaver dialog when preview file is absent.</li>
+      <li>Fixed screensaver stopping early with "lock on resume" enabled.</li>
+      <li>Fixed on-screen controls showing in video screensavers.</li>
+      <li>Fixed local file wallpapers not loading in WebView2.</li>
+      <li>Fixed "Restore Default" button not visible when LivelyProperty is empty.</li>
+      <li>Fixed input issues in newer CefSharp player versions.</li>
+      <li>Fixed file picker allowing multiple selections where only one was expected.</li>
+      <li>Fixed screenshot capture, theme and desktop picture not working in WebView2 player.</li>
+      <li>Fixed webpage wallpaper briefly ignoring mute setting on startup.</li>
+      <li>Fixed incorrect layout in screensaver dialog when using mirror mode.</li>
+      <li>Fixed unnecessary error messages on first startup if config files are missing.</li>
+      <li>Fixed customize tray-menu not fitting on screen in some system configurations.</li>
+      <li>Fixed FileNotFound exception when using absolute path URL wallpapers.</li>
+      <li>Fixed MPV player screenshot feature crashing on some systems.</li>
+      <li>Fixed file save dialog not opening when app is run elevated.</li>
+      <li>Fixed missing app icon in WebView2 wallpaper player.</li>
+      <li>Fixed video not looping in VLC player.</li>
+    </ul>
+
     <h3 id="updates">Updates</h3>
     <ul>
       <li>Updated MPV player.</li>
@@ -261,6 +273,14 @@
       <li>Updated WindowsAppSDK.</li>
       <li>Updated dependencies (includes important security patches.)</li>
       <li>Updated community translations.</li>
+    </ul>
+
+    <h3 id="issues">Known Issues</h3>
+    <ul>
+      <li>
+        When keyboard input is enabled for wallpapers, key presses may be duplicated because the wallpaper also
+        captures input when focused. As a workaround, switch to mouse input mode when typing.
+      </li>
     </ul>
 
     <h3 id="developer-message">From the Developer</h3>
@@ -283,8 +303,8 @@
     <p></p>
     <a class="menu__link" target="_blank" href="https://www.rocksdanister.com/weather">Lively Weather</a>
     <p>
-      A native DirectX powered animated weather app I’ve been building alongside. The latest update brings up to 50% performance
-      boost after rewriting to D2D1 shaders.
+      A native DirectX powered animated weather app I’ve been building alongside. The latest update brings up to 50%
+      performance boost after rewriting to D2D1 shaders.
     </p>
     <div class="media-border">
       <video id="promo-livelyweather" class="video" loop muted>
