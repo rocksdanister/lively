@@ -187,16 +187,18 @@
 
     <ul>
       <li>Fixed a critical issue where wallpapers could enter a restart loop on this version of Windows.</li>
+      <li>No more wallpaper restarts during some system changes - a limitation of older versions has been removed.</li>
     </ul>
     <p>Special thanks to Microsoft engineers and community members who reached out and helped.</p>
 
     <h3 id="misc">Enhancements</h3>
     <ul>
+      <li>Added new Choose a Fit option for scaling desktop picture wallpaper.</li>
       <li>Improved MPV error messages for file loading and unknown arguments.</li>
       <li>Added system tray tooltip for wallpaper errors when UI is closed.</li>
       <li>Optimized page navigation for smoother and faster UI performance.</li>
       <li>Website wallpapers now follow application theme (dark/light.)</li>
-      <li>Website wallpapers now show dark color instead of white while loading.</li>
+      <li>Website wallpapers now show theme color (dark/light) while loading for the first time.</li>
       <li>Made the screensaver setup message dismissible.</li>
       <li>Reload command-line control now supports optional monitor argument.</li>
       <a
@@ -278,8 +280,8 @@
     <h3 id="issues">Known Issues</h3>
     <ul>
       <li>
-        When keyboard input is enabled for wallpapers, key presses may be duplicated because the wallpaper also
-        captures input when focused. As a workaround, switch to mouse input mode when typing.
+        When keyboard input is enabled for wallpapers, key presses may be duplicated because the wallpaper also captures
+        input when focused. As a workaround, switch to mouse input mode when typing.
       </li>
     </ul>
 
