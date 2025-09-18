@@ -22,7 +22,7 @@
   <body>
     <div class="header">
       <div>
-        <p class="subheader">3 Sept 2025 | Lively v2.2.0.0 Update</p>
+        <p class="subheader">18 Sept 2025 | Lively v2.2.0.0 - 2.2.1.0 Update</p>
         <h1>Big Update</h1>
       </div>
     </div>
@@ -34,6 +34,7 @@
       screensavers and over 20+ fixes and improvements - including full compatibility with
       <strong>Windows 11 24H2</strong>.
     </p>
+    <p>This follow-up update v2.2.1.0 builds on the previous release, bringing improvements and some bug fixes.</p>
 
     <h3 id="grid-pause">Grid Pause Algorithm</h3>
     <div class="media-border">
@@ -45,7 +46,7 @@
       <li>
         Replaced the default foreground window based pause detection with a grid based screen coverage algorithm - the
         screen is now divided into a grid (tiles), and intersection calculation is used to check if windows are visually
-        covering the display (by default 95%.)
+        covering the display.
       </li>
       <p>Solves several edge cases where the previous logic failed:</p>
       <ul>
@@ -175,9 +176,60 @@
       <li>Screensaver settings have been reorganized and are now part of the main settings page for easier access.</li>
     </ul>
 
+    <h3 id="audio-output">Audio by Display</h3>
+    <div class="media-border">
+      <video id="promo-audio-output" class="video" loop muted>
+        <source src="assets/latest/display_audio.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>You can now choose which display's wallpaper is allowed to play audio.</li>
+      <li>In Per-screen layout, only the wallpaper on the selected display will output sound.</li>
+    </ul>
+    <p>Note: This feature is only available when using the "Grid" or "All process" pause algorithm.</p>
+
+    <h3 id="visualizer-input">Visualizer Audio Source</h3>
+    <div class="media-border">
+      <video id="promo-visualizer-input" class="video" loop muted>
+        <source src="assets/latest/audio_input.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <ul>
+      <li>You can now choose which audio device the wallpaper visualizer uses.</li>
+      <li>
+        The Default option follows the system's default playback device and updates automatically if the system default
+        changes.
+      </li>
+      <li>If you pick a specific device, it will stay fixed and only switch if that device is disconnected.</li>
+    </ul>
+
+    <h3 id="beta-switcher">Join the Beta Channel</h3>
+    <div class="media-border">
+      <video id="promo-beta-switcher" class="video" loop muted>
+        <source src="assets/latest/beta_switcher.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>
+      Lively has grown so much over the years that it's no longer possible for me to personally test every feature or
+      account for every way people use it. Joining the beta and reporting any issues early is a great way to help.
+    </p>
+    <ul>
+      <li>You can now switch to Beta or Testing release directly from within the application.</li>
+      <li>
+        Test releases are updated more frequently and may contain bugs - join only if you're comfortable with potential
+        issues.
+      </li>
+    </ul>
+    <p>
+      Similarly you can switch back to the stable release, but because settings or configuration may change between
+      versions, you might occasionally need to delete the settings file to fully revert.
+    </p>
+    <p>When you encounter a problem, report it in the GitHub issues and mention that you're using the beta build.</p>
+    <p>Note: This feature is not available for Microsoft Store version.</p>
+
     <h3 id="video-enhancements">Video Enhancements</h3>
     <ul>
-      <li>Upgraded to MPV player’s new <code>gpu-next</code> video backend.</li>
+      <li>Upgraded to MPV player's new <code>gpu-next</code> video backend.</li>
       <li>Better performance and improved video quality.</li>
       <li>Enhances color accuracy and HDR passthrough support in settings.</li>
     </ul>
@@ -235,6 +287,11 @@
       </li>
       <li>Switched from ListView to Segmented control in active wallpaper dialog.</li>
       <li>New Grid visualizer debug tool in Diagnostic page.</li>
+      <li>(v2.2.1.0) In Span layout, wallpaper pausing depends on the "Display pause rule":</li>
+      <ul>
+        <li>Per screen: pauses only when windows cover all screens.</li>
+        <li>All screen: pauses when a window covers any screen.</li>
+      </ul>
       <li>Lots of code refactoring.</li>
     </ul>
 
@@ -266,6 +323,10 @@
       <li>Fixed file save dialog not opening when app is run elevated.</li>
       <li>Fixed missing app icon in WebView2 wallpaper player.</li>
       <li>Fixed video not looping in VLC player.</li>
+      <li>(v2.2.1.0) Fixed wallpapers not being cleaned up when a crash occurred during import.</li>
+      <li>(v2.2.1.0) Fixed incorrect update notifications inside the app.</li>
+      <li>(v2.2.1.0) Fixed application pause rules not applying correctly.</li>
+      <li>(v2.2.1.0) Fixed language translation link not working.</li>
     </ul>
 
     <h3 id="updates">Updates</h3>
@@ -275,6 +336,7 @@
       <li>Updated WindowsAppSDK.</li>
       <li>Updated dependencies (includes important security patches.)</li>
       <li>Updated community translations.</li>
+      <li>(v2.2.1.0) Updated CefSharp player.</li>
     </ul>
 
     <h3 id="issues">Known Issues</h3>
@@ -287,7 +349,7 @@
 
     <h3 id="developer-message">From the Developer</h3>
     <p>
-      It’s been a while since the last Lively update - I took a health break and have been gradually easing back into
+      It's been a while since the last Lively update - I took a health break and have been gradually easing back into
       development. During this time, I also worked on a few side projects.. cue self promotion 😁
     </p>
 
