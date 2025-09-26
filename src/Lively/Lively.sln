@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.CefSharp", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.WebView2", "Lively.Player.WebView2\Lively.Player.WebView2.csproj", "{1389A0F1-2E46-4E3D-91AD-F6572B0D744F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.Vlc", "Lively.Player.Vlc\Lively.Player.Vlc.csproj", "{62AF6652-6B8A-4A80-AF45-47BEEA335660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +313,22 @@ Global
 		{1389A0F1-2E46-4E3D-91AD-F6572B0D744F}.Release|x64.Build.0 = Release|x64
 		{1389A0F1-2E46-4E3D-91AD-F6572B0D744F}.Release|x86.ActiveCfg = Release|Any CPU
 		{1389A0F1-2E46-4E3D-91AD-F6572B0D744F}.Release|x86.Build.0 = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|arm64.Build.0 = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|x64.Build.0 = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Debug|x86.Build.0 = Debug|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|arm64.ActiveCfg = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|arm64.Build.0 = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x64.ActiveCfg = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x64.Build.0 = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x86.ActiveCfg = Release|Any CPU
+		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
