@@ -199,6 +199,11 @@ namespace Lively.Player.Vlc
             mediaPlayer.SetAdjustFloat(option, value);
         }
 
+        public bool CaptureScreenshot(string filePath)
+        {
+            return mediaPlayer.TakeSnapshot(0, filePath, 0, 0);
+        }
+
         public async Task ListenToParent()
         {
             if (IsDebugging)
@@ -232,6 +237,14 @@ namespace Lively.Player.Vlc
                                 {
                                     switch (obj.Type)
                                     {
+                                        case MessageType.cmd_screenshot:
+                                            var scr = (LivelyScreenshotCmd)obj;
+                                            var success = CaptureScreenshot(scr.FilePath);
+                                            SendToParent(new LivelyMessageScreenshot() {
+                                                FileName = Path.GetFileName(scr.FilePath),
+                                                Success = success
+                                            });
+                                            break;
                                         case MessageType.lp_slider:
                                             var sl = (LivelySlider)obj;
                                             SetLivelyProperty(sl.Name, sl.Value);
