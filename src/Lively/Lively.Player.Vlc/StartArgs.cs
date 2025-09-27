@@ -15,6 +15,11 @@ namespace Lively.Player.Vlc
         HelpText = "Audio volume")]
         public int Volume { get; set; }
 
+        [Option("hardware-decoding",
+        Default = true,
+        HelpText = "Use hardware-decoding.)")]
+        public bool HardwareDecoding { get; set; }
+
         [Option("property",
         Required = false,
         Default = null,

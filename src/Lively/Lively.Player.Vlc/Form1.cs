@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,7 @@ namespace Lively.Player.Vlc
         private LibVLC libVLC;
         private StartArgs startArgs;
         private MediaPlayer mediaPlayer;
+        private Media media;
 
         private bool IsDebugging { get; } = BuildInfoUtil.IsDebugBuild();
 
@@ -31,9 +33,10 @@ namespace Lively.Player.Vlc
             {
                 startArgs = new StartArgs()
                 {
-                    FilePath = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                    Properties = @"",
-                    Volume = 100
+                    FilePath = "",
+                    Properties = "",
+                    Volume = 100,
+                    HardwareDecoding = true
                 };
 
                 this.FormBorderStyle = FormBorderStyle.Sizable;
@@ -63,21 +66,6 @@ namespace Lively.Player.Vlc
                     }
                 }
             }
-
-            try
-            {
-                InitializeVLC();
-            }
-            catch (Exception ex)
-            {
-                ex.SendError(SendToParent, "Failed to initialize libVLC");
-                // Exit or display custom error page.
-                Environment.Exit(1);
-            }
-            finally
-            {
-                _ = ListenToParent();
-            }
         }
 
         // Hide from taskview and taskbar.
@@ -103,34 +91,113 @@ namespace Lively.Player.Vlc
             Environment.Exit(87);
         }
 
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                InitializeVLC();
+
+                media = new Media(libVLC, startArgs.FilePath, FromType.FromPath);
+                mediaPlayer.Play(media);
+
+                await RestoreLivelyProperties(startArgs.Properties);
+                SendToParent(new LivelyMessageWallpaperLoaded() { Success = true });
+            }
+            catch (Exception ex)
+            {
+                ex.SendError(SendToParent, "Failed to initialize player");
+                // Exit or display custom error page.
+                Environment.Exit(1);
+            }
+            finally
+            {
+                _ = ListenToParent();
+            }
+        }
+
         private void InitializeVLC()
         {
             Core.Initialize();
 
-            libVLC = new LibVLC();
+            // "--no-disable-screensaver" : Enable monitor sleep.
+            // "--no-stats" : Disable locally collect statistics.
+            // Ref: https://wiki.videolan.org/VLC_command-line_help
+            libVLC = new LibVLC("no-disable-screensaver",
+                "no-stats",
+                "no-sub-autodetect-file",
+                "no-snapshot-preview");
             mediaPlayer = new MediaPlayer(libVLC)
             {
-                Volume = startArgs.Volume
+                Volume = startArgs.Volume,
+                EnableHardwareDecoding = startArgs.HardwareDecoding,
+                EnableKeyInput = false,
+                EnableMouseInput = false
             };
+            mediaPlayer.Playing += MediaPlayer_Playing;
+            mediaPlayer.EndReached += MediaPlayer_EndReached;
+            mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
+            mediaPlayer.PositionChanged += MediaPlayer_PositionChanged;
             videoView1.MediaPlayer = mediaPlayer;
-            Load += Form1_Load;
-            FormClosed += Form1_FormClosed;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MediaPlayer_PositionChanged(object sender, MediaPlayerPositionChangedEventArgs e)
         {
-            var media = new Media(libVLC, new Uri(startArgs.FilePath));
-            mediaPlayer?.Play(media);
-            media.Dispose();
+            // --loop, --inpur-repeat does not work.
+            // e.Position and setting position value is not reliable, MediaPlayer_EndReached is fallback.
+            if (IsPlaying() && e.Position >= 0.9f)
+                mediaPlayer.Position = 0f;
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void MediaPlayer_EndReached(object sender, EventArgs e)
         {
-            mediaPlayer?.Stop();
-            mediaPlayer?.Dispose();
-            libVLC?.Dispose();
+            ThreadPool.QueueUserWorkItem(_ => mediaPlayer.Play(media));
         }
 
+        private void MediaPlayer_EncounteredError(object sender, EventArgs e)
+        {
+            "MediaPlayer_EncounteredError".SendError(SendToParent);
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            SendToParent(new LivelyMessageHwnd() {
+                Hwnd = this.Handle.ToInt32()
+            });
+        }
+
+        public void Play() => mediaPlayer.Play();
+
+        public void Pause() => mediaPlayer.SetPause(true);
+
+        public bool IsPlaying() => mediaPlayer.IsPlaying;
+
+        public void SetVolume(int volume) => mediaPlayer.Volume = volume;
+
+        private void SetPlaybackSpeed(float speed)
+        {
+            mediaPlayer.SetRate(speed);
+        }
+
+        private void SetMute(bool mute)
+        {
+            mediaPlayer.Mute = mute;
+        }
+
+        private void MediaPlayer_Playing(object sender, EventArgs e)
+        {
+            SetImageOption(VideoAdjustOption.Saturation, 0.01f);
+        }
+
+        private void SetImageOption(VideoAdjustOption option, float value)
+        {
+            // Crash with post-processing with disabled.
+            if (!mediaPlayer.EnableHardwareDecoding)
+                return;
+
+            // Ensure adjust filter is enabled
+            mediaPlayer.SetAdjustInt(VideoAdjustOption.Enable, 1);
+            mediaPlayer.SetAdjustFloat(option, value);
+        }
 
         public async Task ListenToParent()
         {
@@ -161,11 +228,40 @@ namespace Lively.Player.Vlc
                             {
                                 var close = false;
                                 var obj = JsonConvert.DeserializeObject<IpcMessage>(text, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
-                                this.Invoke((Action)(() =>
+                                this.Invoke((Action)(async () =>
                                 {
                                     switch (obj.Type)
                                     {
-                                        // TODO
+                                        case MessageType.lp_slider:
+                                            var sl = (LivelySlider)obj;
+                                            SetLivelyProperty(sl.Name, sl.Value);
+                                            break;
+                                        case MessageType.lp_chekbox:
+                                            var cb = (LivelyCheckbox)obj;
+                                            SetLivelyProperty(cb.Name, cb.Value);
+                                            break;
+                                        case MessageType.lp_dropdown_scaler:
+                                            var dds = (LivelyDropdownScaler)obj;
+                                            SetLivelyProperty(dds.Name, dds.Value);
+                                            break;
+                                        case MessageType.cmd_suspend:
+                                            Pause();
+                                            break;
+                                        case MessageType.cmd_resume:
+                                            Play();
+                                            break;
+                                        case MessageType.cmd_close:
+                                            close = true;
+                                            break;
+                                        case MessageType.cmd_volume:
+                                            var vc = (LivelyVolumeCmd)obj;
+                                            SetVolume(vc.Volume);
+                                            break;
+                                        case MessageType.lp_button:
+                                            var btn = (LivelyButton)obj;
+                                            if (btn.IsDefault)
+                                                await RestoreLivelyProperties(startArgs.Properties);
+                                            break;
                                     }
                                 }));
 
@@ -190,12 +286,144 @@ namespace Lively.Player.Vlc
             }
         }
 
+        private async Task RestoreLivelyProperties(string propertyPath)
+        {
+            try
+            {
+                await LivelyPropertyUtil.LoadProperty(propertyPath, Path.GetDirectoryName(startArgs.FilePath), async (key, value) =>
+                {
+                    SetLivelyProperty(key, value);
+                });
+            }
+            catch (Exception ex)
+            {
+                ex.SendError(SendToParent);
+            }
+        }
+
+        private void SetLivelyProperty(string key, object value)
+        {
+            // Image properties filter(adjust)
+            // --contrast =< float[0.000000..2.000000] >
+            //                           Image contrast(0 - 2)
+            //     Set the image contrast, between 0 and 2.Defaults to 1.
+            // --brightness =< float[0.000000..2.000000] >
+            //                            Image brightness(0 - 2)
+            //     Set the image brightness, between 0 and 2.Defaults to 1.
+            // --hue =< float[-180.000000..180.000000] >
+            //                            Image hue(-180..180)
+            //     Set the image hue, between -180 and 180.Defaults to 0.
+            // --saturation =< float[0.000000..3.000000] >
+            //                            Image saturation(0 - 3)
+            //     Set the image saturation, between 0 and 3.Defaults to 1.
+            // --gamma =< float[0.010000..10.000000] >
+            //                            Image gamma(0 - 10)
+            //     Set the image gamma, between 0.01 and 10.Defaults to 1.
+            // Ref: https://wiki.videolan.org/VLC_command-line_help
+
+            switch (key.ToLower())
+            {
+                case "saturation":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Map -100..100 to VLC range 0.0..3.0 (default 1.0)
+                        float saturation = MapRange(inputValue, -100f, 100f, 0f, 3f);
+                        SetImageOption(VideoAdjustOption.Saturation, saturation);
+                    }
+                    break;
+                case "brightness":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Map -100..100 to VLC range 0.0..2.0 (default 1.0)
+                        float brightness = MapRange(inputValue, -100f, 100f, 0f, 2f);
+                        SetImageOption(VideoAdjustOption.Brightness, brightness);
+                    }
+                    break;
+                case "contrast":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Map -100..100 to VLC range 0.0..2.0 (default 1.0)
+                        float contrast = MapRange(inputValue, -100f, 100f, 0f, 2f);
+                        SetImageOption(VideoAdjustOption.Contrast, contrast);
+                    }
+                    break;
+                case "hue":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Map -100..100 to VLC range -180..180 (default 0)
+                        float hue = MapRange(inputValue, -100f, 100f, -180f, 180f);
+                        SetImageOption(VideoAdjustOption.Hue, hue);
+                    }
+                    break;
+                case "gamma":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Map -100..100 to VLC range 0.01..10.0 (default 1.0)
+                        float gamma = MapRange(inputValue, -100f, 100f, 0.01f, 10f);
+                        SetImageOption(VideoAdjustOption.Gamma, gamma);
+                    }
+                    break;
+                case "speed":
+                    {
+                        float inputValue = Convert.ToSingle(value);
+                        // Speed is already in correct range (0.25 - 5.0).
+                        //  --rate=<float [-340282346638528859811704183484516925440.000000 .. 340282346638528859811704183484516925440.000000]>
+                        SetPlaybackSpeed(inputValue);
+                    }
+                    break;
+                case "scaler":
+                    {
+                        // TODO
+                    }
+                    break;
+                case "mute":
+                    {
+                        SetMute((bool)value);
+                    }
+                    break;
+                default:
+                    $"Unknown lively property: {key}".SendLog(SendToParent);
+                    break;
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            mediaPlayer?.Stop();
+            mediaPlayer?.Dispose();
+            libVLC?.Dispose();
+            media?.Dispose();
+        }
+
         private void SendToParent(IpcMessage obj)
         {
             if (!IsDebugging)
                 Console.WriteLine(JsonConvert.SerializeObject(obj));
 
             Debug.WriteLine(JsonConvert.SerializeObject(obj));
+        }
+
+        private float MapRange(float value, float fromMin, float fromMax, float toMin, float toMax)
+        {
+            // Clamp input to source range
+            value = Clamp(value, fromMin, fromMax);
+
+            // Map to target range
+            float fromRange = fromMax - fromMin;
+            float toRange = toMax - toMin;
+            float scaledValue = (value - fromMin) / fromRange;
+
+            return toMin + (scaledValue * toRange);
+        }
+
+        private static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+        {
+            if (value.CompareTo(min) < 0)
+                return min;
+            if (value.CompareTo(max) > 0)
+                return max;
+
+            return value;
         }
     }
 }
