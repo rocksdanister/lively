@@ -137,22 +137,15 @@ namespace Lively.Player.Vlc
             };
             mediaPlayer.EndReached += MediaPlayer_EndReached;
             mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
-            mediaPlayer.PositionChanged += MediaPlayer_PositionChanged;
             videoView1.MediaPlayer = mediaPlayer;
 
             SetScale(CurrentScaler);
         }
 
-        private void MediaPlayer_PositionChanged(object sender, MediaPlayerPositionChangedEventArgs e)
-        {
-            // --loop, --inpur-repeat does not work.
-            // e.Position and setting position value is not reliable, MediaPlayer_EndReached is fallback.
-            if (IsPlaying() && e.Position >= 0.9f)
-                mediaPlayer.Position = 0f;
-        }
-
         private void MediaPlayer_EndReached(object sender, EventArgs e)
         {
+            // --loop, --inpur-repeat does not work.
+            // Alternatively reset position after threshold.
             ThreadPool.QueueUserWorkItem(_ => mediaPlayer.Play(media));
         }
 
