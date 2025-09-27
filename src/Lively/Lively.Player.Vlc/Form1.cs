@@ -202,6 +202,11 @@ namespace Lively.Player.Vlc
             return mediaPlayer.TakeSnapshot(0, filePath, 0, 0);
         }
 
+        private string GetAspectRatio()
+        {
+            return this.videoView1.Width > 0 && this.videoView1.Height > 0 ? $"{this.videoView1.Width}:{this.videoView1.Height}" : null;
+        }
+
         private void SetScale(WallpaperScaler scaler)
         {
             if (mediaPlayer == null)
@@ -218,14 +223,14 @@ namespace Lively.Player.Vlc
                 case WallpaperScaler.fill:
                     // Stretch to fill window (may distort)
                     mediaPlayer.Scale = 0f;           // Auto-scale to window
-                    mediaPlayer.AspectRatio = $"{videoView1.Width}:{videoView1.Height}";
+                    mediaPlayer.AspectRatio = GetAspectRatio();
                     mediaPlayer.CropGeometry = null;
                     break;
                 case WallpaperScaler.uniformFill:
                     // Fill window keeping aspect ratio (crop sides)
                     mediaPlayer.Scale = 0f;           // Auto-scale to window
                     mediaPlayer.AspectRatio = null;   // Keep original aspect ratio  
-                    mediaPlayer.CropGeometry = $"{videoView1.Width}:{videoView1.Height}"; // Crop to window ratio
+                    mediaPlayer.CropGeometry = GetAspectRatio(); // Crop to window ratio
                     break;
                 case WallpaperScaler.uniform:
                 case WallpaperScaler.auto:
