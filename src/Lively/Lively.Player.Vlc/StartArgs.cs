@@ -1,26 +1,27 @@
 ﻿using CommandLine;
+using Lively.Models.Enums;
 
 namespace Lively.Player.Vlc
 {
     public class StartArgs
     {
-        [Option("path",
+        [Option("wallpaper-path",
         Required = true,
         HelpText = "The file/video stream path.")]
         public string FilePath { get; set; }
 
-        [Option("volume",
+        [Option("wallpaper-volume",
         Required = false,
         Default = 100,
         HelpText = "Audio volume")]
         public int Volume { get; set; }
 
-        [Option("hardware-decoding",
+        [Option("wallpaper-hardware-decoding",
         Default = true,
         HelpText = "Use hardware-decoding.)")]
         public bool HardwareDecoding { get; set; }
 
-        [Option("property",
+        [Option("wallpaper-property",
         Required = false,
         Default = null,
         HelpText = "LivelyProperties.json filepath.")]
@@ -31,7 +32,7 @@ namespace Lively.Player.Vlc
         HelpText = "Window size (WxH).")]
         public string Geometry { get; set; }
 
-        [Option("verbose-log",
+        [Option("wallpaper-verbose-log",
         Required = false,
         HelpText = "Verbose Logging")]
         public bool VerboseLog { get; set; }

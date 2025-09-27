@@ -3,6 +3,7 @@ using LibVLCSharp.Shared;
 using Lively.Common.Extensions;
 using Lively.Common.Helpers;
 using Lively.Common.JsonConverters;
+using Lively.Models.Enums;
 using Lively.Models.Message;
 using Newtonsoft.Json;
 using System;
@@ -24,6 +25,7 @@ namespace Lively.Player.Vlc
         private MediaPlayer mediaPlayer;
         private Media media;
 
+        private WallpaperScaler CurrentScaler { get; set; } = WallpaperScaler.uniform;
         private bool IsDebugging { get; } = BuildInfoUtil.IsDebugBuild();
 
         public Form1()
@@ -133,11 +135,12 @@ namespace Lively.Player.Vlc
                 EnableKeyInput = false,
                 EnableMouseInput = false
             };
-            mediaPlayer.Playing += MediaPlayer_Playing;
             mediaPlayer.EndReached += MediaPlayer_EndReached;
             mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
             mediaPlayer.PositionChanged += MediaPlayer_PositionChanged;
             videoView1.MediaPlayer = mediaPlayer;
+
+            SetScale(CurrentScaler);
         }
 
         private void MediaPlayer_PositionChanged(object sender, MediaPlayerPositionChangedEventArgs e)
@@ -183,11 +186,6 @@ namespace Lively.Player.Vlc
             mediaPlayer.Mute = mute;
         }
 
-        private void MediaPlayer_Playing(object sender, EventArgs e)
-        {
-            SetImageOption(VideoAdjustOption.Saturation, 0.01f);
-        }
-
         private void SetImageOption(VideoAdjustOption option, float value)
         {
             // Crash with post-processing with disabled.
@@ -202,6 +200,47 @@ namespace Lively.Player.Vlc
         public bool CaptureScreenshot(string filePath)
         {
             return mediaPlayer.TakeSnapshot(0, filePath, 0, 0);
+        }
+
+        private void SetScale(WallpaperScaler scaler)
+        {
+            if (mediaPlayer == null)
+                return;
+
+            switch (scaler)
+            {
+                case WallpaperScaler.none:
+                    // Original size, no scaling
+                    mediaPlayer.Scale = 1.0f;
+                    mediaPlayer.AspectRatio = null;
+                    mediaPlayer.CropGeometry = null;
+                    break;
+                case WallpaperScaler.fill:
+                    // Stretch to fill window (may distort)
+                    mediaPlayer.Scale = 0f;           // Auto-scale to window
+                    mediaPlayer.AspectRatio = $"{videoView1.Width}:{videoView1.Height}";
+                    mediaPlayer.CropGeometry = null;
+                    break;
+                case WallpaperScaler.uniformFill:
+                    // Fill window keeping aspect ratio (crop sides)
+                    mediaPlayer.Scale = 0f;           // Auto-scale to window
+                    mediaPlayer.AspectRatio = null;   // Keep original aspect ratio  
+                    mediaPlayer.CropGeometry = $"{videoView1.Width}:{videoView1.Height}"; // Crop to window ratio
+                    break;
+                case WallpaperScaler.uniform:
+                case WallpaperScaler.auto:
+                    // Fit inside window keeping aspect ratio (letterbox)
+                    mediaPlayer.Scale = 0f;           // Auto-scale to window
+                    mediaPlayer.AspectRatio = null;   // Keep original aspect ratio
+                    mediaPlayer.CropGeometry = null;  // No cropping
+                    break;
+            }
+            CurrentScaler = scaler;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            SetScale(CurrentScaler);
         }
 
         public async Task ListenToParent()
@@ -386,7 +425,7 @@ namespace Lively.Player.Vlc
                     break;
                 case "scaler":
                     {
-                        // TODO
+                        SetScale(CurrentScaler);
                     }
                     break;
                 case "mute":
