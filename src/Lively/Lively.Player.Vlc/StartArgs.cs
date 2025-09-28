@@ -32,6 +32,11 @@ namespace Lively.Player.Vlc
         HelpText = "Window size (WxH).")]
         public string Geometry { get; set; }
 
+        [Option("wallpaper-color-scheme",
+        Required = false,
+        HelpText = "Set preferred theme color.")]
+        public AppTheme Theme { get; set; }
+
         [Option("wallpaper-verbose-log",
         Required = false,
         HelpText = "Verbose Logging")]

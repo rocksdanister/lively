@@ -67,6 +67,16 @@ namespace Lively.Player.Vlc
                         this.Size = new Size(width, height);
                     }
                 }
+
+                var darkColor = Color.FromArgb(30, 30, 30);
+                var lightColor = Color.FromArgb(240, 240, 240);
+                this.BackColor = startArgs.Theme switch
+                {
+                    AppTheme.Auto => ThemeUtil.GetWindowsTheme() == AppTheme.Dark ? darkColor : lightColor,
+                    AppTheme.Light => lightColor,
+                    AppTheme.Dark => darkColor,
+                    _ => darkColor,
+                };
             }
         }
 
@@ -150,6 +160,7 @@ namespace Lively.Player.Vlc
             mediaPlayer.EndReached += MediaPlayer_EndReached;
             mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
             videoView1.MediaPlayer = mediaPlayer;
+            pictureBox1.Visible = false;
             videoView1.Visible = true;
             EnableImageOptions(mediaPlayer.EnableHardwareDecoding);
             SetScale(CurrentScaler);
