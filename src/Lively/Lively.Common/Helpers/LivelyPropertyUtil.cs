@@ -30,6 +30,7 @@ namespace Lively.Common.Helpers
                 {
                     SliderModel slider => slider.Value,
                     DropdownModel dropdown => dropdown.Value,
+                    ScalerDropdownModel scalerDropdown => scalerDropdown.Value,
                     FolderDropdownModel folderDropdown => GetFolderDropdownValue(folderDropdown, rootDir),
                     CheckboxModel checkbox => checkbox.Value,
                     TextboxModel textbox => textbox.Value,

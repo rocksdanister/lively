@@ -93,11 +93,20 @@ namespace Lively.Player.Vlc
             Environment.Exit(87);
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            // We are initializing Vlc in Shown() to avoid blocking.
+        }
+
+        private async void Form1_Shown(object sender, EventArgs e)
+        {
+            SendToParent(new LivelyMessageHwnd() {
+                Hwnd = this.Handle.ToInt32()
+            });
+
             try
             {
-                InitializeVLC();
+                await InitializeVlc();
 
                 media = new Media(libVLC, startArgs.FilePath, FromType.FromPath);
                 mediaPlayer.Play(media);
@@ -117,9 +126,10 @@ namespace Lively.Player.Vlc
             }
         }
 
-        private void InitializeVLC()
+        private async Task InitializeVlc()
         {
-            Core.Initialize();
+            // Blocking operation.
+            await Task.Run(() => Core.Initialize());
 
             // "--no-disable-screensaver" : Enable monitor sleep.
             // "--no-stats" : Disable locally collect statistics.
@@ -138,8 +148,16 @@ namespace Lively.Player.Vlc
             mediaPlayer.EndReached += MediaPlayer_EndReached;
             mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
             videoView1.MediaPlayer = mediaPlayer;
+            videoView1.Visible = true;
 
             SetScale(CurrentScaler);
+
+            if (mediaPlayer.EnableHardwareDecoding) {
+                mediaPlayer.SetAdjustInt(VideoAdjustOption.Enable, 1);
+            }
+            else {
+                "Hardware decoding disabled, filters turned off.".SendLog(SendToParent);
+            }
         }
 
         private void MediaPlayer_EndReached(object sender, EventArgs e)
@@ -152,13 +170,6 @@ namespace Lively.Player.Vlc
         private void MediaPlayer_EncounteredError(object sender, EventArgs e)
         {
             "MediaPlayer_EncounteredError".SendError(SendToParent);
-        }
-
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            SendToParent(new LivelyMessageHwnd() {
-                Hwnd = this.Handle.ToInt32()
-            });
         }
 
         public void Play() => mediaPlayer.Play();
@@ -185,8 +196,6 @@ namespace Lively.Player.Vlc
             if (!mediaPlayer.EnableHardwareDecoding)
                 return;
 
-            // Ensure adjust filter is enabled
-            mediaPlayer.SetAdjustInt(VideoAdjustOption.Enable, 1);
             mediaPlayer.SetAdjustFloat(option, value);
         }
 
@@ -274,6 +283,9 @@ namespace Lively.Player.Vlc
                                 {
                                     switch (obj.Type)
                                     {
+                                        case MessageType.cmd_reload:
+                                            mediaPlayer.Position = 0f;
+                                            break;
                                         case MessageType.cmd_screenshot:
                                             var scr = (LivelyScreenshotCmd)obj;
                                             var success = CaptureScreenshot(scr.FilePath);
@@ -423,7 +435,8 @@ namespace Lively.Player.Vlc
                     break;
                 case "scaler":
                     {
-                        SetScale(CurrentScaler);
+                        var newScale = (WallpaperScaler)value;
+                        SetScale(newScale);
                     }
                     break;
                 case "mute":

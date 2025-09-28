@@ -42,6 +42,7 @@
             this.videoView1.Size = new System.Drawing.Size(353, 329);
             this.videoView1.TabIndex = 0;
             this.videoView1.Text = "videoView1";
+            this.videoView1.Visible = false;
             // 
             // Form1
             // 
