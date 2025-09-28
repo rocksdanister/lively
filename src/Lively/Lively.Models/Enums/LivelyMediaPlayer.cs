@@ -3,12 +3,10 @@
 public enum LivelyMediaPlayer
 {
     wmf,
-    //depreciated
-    libvlc,
+    libvlc, //depreciated
     libvlcExt,
-    //depreciated
-    libmpv,
-    libmpvExt,
+    libmpv, //depreciated
+    libmpvExt, //depreciated
     mpv,
     vlc
 }

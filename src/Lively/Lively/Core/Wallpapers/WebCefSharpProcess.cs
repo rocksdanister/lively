@@ -78,9 +78,6 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append(diskCache && model.LivelyInfo.Type == WallpaperType.url ? " --wallpaper-cache " + "\"" + Path.Combine(Constants.CommonPaths.TempCefDir, "Lively.PlayerCefSharp", display.Index.ToString()) + "\"" : " ");
             if (TryParseUserCommandArgs(model.LivelyInfo.Arguments, out string parsedArgs))
                 cmdArgs.Append(" " + parsedArgs);
-#if DEBUG
-            //cmdArgs.Append(" --verbose-log true"); 
-#endif
 
             this.process = new Process
             {

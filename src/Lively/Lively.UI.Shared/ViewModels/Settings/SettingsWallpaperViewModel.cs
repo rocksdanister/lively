@@ -509,8 +509,8 @@ namespace Lively.UI.Shared.ViewModels
                 LivelyMediaPlayer.libvlc => false, //depreciated
                 LivelyMediaPlayer.libmpv => false, //depreciated
                 LivelyMediaPlayer.wmf => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.WmfPath)),
-                LivelyMediaPlayer.libvlcExt => false,
-                LivelyMediaPlayer.libmpvExt => false,
+                LivelyMediaPlayer.libvlcExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.LibVlcPath)),
+                LivelyMediaPlayer.libmpvExt => false, //depreciated
                 LivelyMediaPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.MpvPath)),
                 LivelyMediaPlayer.vlc => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.VlcPath)),
                 _ => false,

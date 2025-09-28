@@ -79,16 +79,20 @@ namespace Lively.Factories
                         case LivelyMediaPlayer.wmf:
                             return new VideoWmfProcess(model.FilePath, model,
                                 display, 0, userSettings.Settings.WallpaperScaling);
-                        case LivelyMediaPlayer.libvlc:
-                            //depreciated
-                            throw new DepreciatedException("libvlc depreciated player selected.");
                         case LivelyMediaPlayer.libmpv:
-                            //depreciated
                             throw new DepreciatedException("libmpv depreciated player selected.");
-                        case LivelyMediaPlayer.libvlcExt:
-                            throw new NotImplementedException();
                         case LivelyMediaPlayer.libmpvExt:
-                            throw new NotImplementedException();
+                            throw new DepreciatedException("libmpvExt depreciated player selected.");
+                        case LivelyMediaPlayer.libvlc:
+                            throw new DepreciatedException("libvlc depreciated player selected.");
+                        case LivelyMediaPlayer.libvlcExt:
+                            return new VideoLibVlcPlayer(model.FilePath,
+                                model,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
+                                userSettings.Settings.ApplicationTheme,
+                                userSettings.Settings.AudioVolumeGlobal,
+                                userSettings.Settings.VideoPlayerHwAccel);
                         case LivelyMediaPlayer.mpv:
                             return new VideoMpvPlayer(model.FilePath,
                                 model,

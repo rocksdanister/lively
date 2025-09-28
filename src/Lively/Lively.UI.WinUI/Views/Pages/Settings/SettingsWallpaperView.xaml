@@ -109,10 +109,11 @@
                     <controls:SettingsExpander x:Uid="VideoPlayer" IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedVideoPlayerIndex, Mode=TwoWay}">
                             <ComboBoxItem>wmf</ComboBoxItem>
-                            <ComboBoxItem Visibility="Collapsed">libVLC</ComboBoxItem>
-                            <ComboBoxItem Visibility="Collapsed">libVLC(External)</ComboBoxItem>
-                            <ComboBoxItem Visibility="Collapsed">libMPV</ComboBoxItem>
-                            <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libVlc</ComboBoxItem>
+                            <!--  Even though its libVlc (External) we are calling it libVlc to simplify things.  -->
+                            <ComboBoxItem>libVlc</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libMpv</ComboBoxItem>
+                            <ComboBoxItem Visibility="Collapsed">libMpv(External)</ComboBoxItem>
                             <ComboBoxItem>mpv</ComboBoxItem>
                             <ComboBoxItem>vlc</ComboBoxItem>
                         </ComboBox>

@@ -54,9 +54,6 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append(" --path " + "\"" + path + "\"");
             cmdArgs.Append(" --volume " + volume);
             cmdArgs.Append(" --stretch " + (int)scaler);
-#if DEBUG
-            cmdArgs.Append(" --verbose-log true");
-#endif
 
             this.process = new Process
             {

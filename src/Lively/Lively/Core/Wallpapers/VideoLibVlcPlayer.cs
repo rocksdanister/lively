@@ -1,8 +1,6 @@
-﻿using Lively.Common;
+﻿using Google.Protobuf.WellKnownTypes;
+using Lively.Common;
 using Lively.Common.Exceptions;
-using Lively.Common.Extensions;
-using Lively.Common.Helpers;
-using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.JsonConverters;
 using Lively.Models;
 using Lively.Models.Enums;
@@ -10,22 +8,23 @@ using Lively.Models.Message;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lively.Core.Wallpapers
 {
-    public class WebWebView2 : IWallpaper
+    public class VideoLibVlcPlayer : IWallpaper
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly TaskCompletionSource<Exception> tcsProcessWait = new();
         private readonly TaskCompletionSource contentReadyTcs = new();
         private bool IsContentReady => contentReadyTcs.Task.IsCompleted;
         private readonly Process process;
-        private int cefD3DRenderingSubProcessPid;
         private static int globalCount;
         private readonly int uniqueId;
         private int currentVolume = 0;
@@ -36,6 +35,8 @@ namespace Lively.Core.Wallpapers
         public event EventHandler Loaded;
 
         public bool IsLoaded { get; private set; } = false;
+
+        public bool IsExited { get; private set; }
 
         public WallpaperType Category => Model.LivelyInfo.Type;
 
@@ -51,39 +52,23 @@ namespace Lively.Core.Wallpapers
 
         public string LivelyPropertyCopyPath { get; }
 
-        public bool IsExited { get; private set; }
-
-        public WebWebView2(string path,
+        public VideoLibVlcPlayer(string path,
             LibraryModel model,
             DisplayMonitor display,
-            string debugPort,
             string livelyPropertyPath,
-            string userDataDir,
             AppTheme theme,
             int volume,
-            double? scale = null,
-            string audioVisualizerId = null)
+            bool isHwAccel = true)
         {
-            var filePath = ResolveFilePath(path, model);
             LivelyPropertyCopyPath = livelyPropertyPath;
 
-            var cmdArgs = new StringBuilder();
-            cmdArgs.Append(" --wallpaper-pause-media ");
-            cmdArgs.Append(" --wallpaper-volume " + volume);
-            cmdArgs.Append(scale != null ? " --wallpaper-scale " + JsonConvert.SerializeObject(scale.Value) : " ");
-            cmdArgs.Append(" --wallpaper-url " + "\"" + filePath + "\"");
-            cmdArgs.Append(" --wallpaper-color-scheme " + theme + " ");
-            cmdArgs.Append(" --wallpaper-user-data " + "\"" + userDataDir + "\"");
-            cmdArgs.Append(" --wallpaper-display " + "\"" + display.DeviceId + "\"");
+            StringBuilder cmdArgs = new();
+            cmdArgs.Append(" --wallpaper-path " + "\"" + path + "\"");
             cmdArgs.Append(" --wallpaper-property " + "\"" + LivelyPropertyCopyPath + "\"");
+            cmdArgs.Append(isHwAccel ? " --wallpaper-hardware-decoding true" :  " ");
+            cmdArgs.Append(" --wallpaper-color-scheme " + theme + " ");
             cmdArgs.Append(" --wallpaper-geometry " + display.Bounds.Width + "x" + display.Bounds.Height);
-            // --audio false Issue: https://github.com/commandlineparser/commandline/issues/702
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.webaudio ? " --wallpaper-audio true" : " ");
-            cmdArgs.Append(!string.IsNullOrEmpty(audioVisualizerId) ? " --wallpaper-audio-id " + audioVisualizerId : " ");
-            cmdArgs.Append(!string.IsNullOrWhiteSpace(debugPort) ? " --wallpaper-debug " + debugPort : " ");
-            cmdArgs.Append(model.LivelyInfo.Type.IsOnlineWallpaper() ? " --wallpaper-type online" : " --wallpaper-type local");
-            if (TryParseUserCommandArgs(model.LivelyInfo.Arguments, out string parsedArgs))
-                cmdArgs.Append(" " + parsedArgs);
+            cmdArgs.Append(" --wallpaper-volume 0");
 
             this.process = new Process
             {
@@ -91,14 +76,14 @@ namespace Lively.Core.Wallpapers
                 StartInfo = new ProcessStartInfo
                 {
                     Arguments = cmdArgs.ToString(),
-                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.WebView2Path),
+                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.LibVlcPath),
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     RedirectStandardError = false,
                     UseShellExecute = false,
                     StandardInputEncoding = Encoding.UTF8,
                     //StandardOutputEncoding = Encoding.UTF8,
-                    WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.WebView2Dir)
+                    WorkingDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.LibVlcDir)
                 },
             };
             this.Model = model;
@@ -116,24 +101,201 @@ namespace Lively.Core.Wallpapers
             SendMessage(new LivelyCloseCmd());
         }
 
-        public void Pause()
+        public void Terminate()
         {
-            // The "System Idle Process" is given process ID 0, Kernel is 1.
-            if (!IsContentReady || cefD3DRenderingSubProcessPid == 0)
+            if (IsExited)
                 return;
 
-            // Cef spawns multiple subprocess but "Intermediate D3D Window" seems to do the trick..
-            _ = NativeMethods.DebugActiveProcess((uint)cefD3DRenderingSubProcessPid);
-            SendMessage(new LivelySuspendCmd()); //"{\"Type\":7}"
+            try
+            {
+                process.Kill();
+            }
+            catch { }
         }
 
         public void Play()
         {
-            if (!IsContentReady || cefD3DRenderingSubProcessPid == 0)
+            SendMessage(new LivelyResumeCmd());
+        }
+
+        public void Pause()
+        {
+            SendMessage(new LivelySuspendCmd());
+        }
+
+        public async Task ShowAsync()
+        {
+            if (process is null)
                 return;
 
-            _ = NativeMethods.DebugActiveProcessStop((uint)cefD3DRenderingSubProcessPid);
-            SendMessage(new LivelyResumeCmd()); //"{\"Type\":8}"
+            try
+            {
+                process.Exited += Proc_Exited;
+                process.OutputDataReceived += Proc_OutputDataReceived;
+                process.Start();
+                Pid = process.Id;
+                process.BeginOutputReadLine();
+
+                await tcsProcessWait.Task;
+                if (tcsProcessWait.Task.Result is not null)
+                    throw tcsProcessWait.Task.Result;
+            }
+            catch (Exception)
+            {
+                Terminate();
+
+                throw;
+            }
+        }
+
+        private void Proc_Exited(object sender, EventArgs e)
+        {
+            Logger.Info($"libVlc{uniqueId}: Process exited with exit code: {process?.ExitCode}");
+            if (!isInitialized)
+            {
+                // 87 = ERROR_INVALID_PARAMETER
+                // Ref: <https://learn.microsoft.com/en-us/windows/win32/debug/system-error-codes--0-499->
+                if (process is not null && process.ExitCode == 87)
+                    tcsProcessWait.TrySetResult(new WallpaperPluginException("Error initializing. Unknown options are passed."));
+                else
+                    tcsProcessWait.TrySetResult(new InvalidOperationException(Properties.Resources.LivelyExceptionGeneral));
+            }
+            process.OutputDataReceived -= Proc_OutputDataReceived;
+            process?.Dispose();
+            IsExited = true;
+            Exited?.Invoke(this, EventArgs.Empty);
+        }
+
+        private async void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            //When the redirected stream is closed, a null line is sent to the event handler.
+            if (!string.IsNullOrEmpty(e.Data))
+            {
+                IpcMessage obj = null;
+                try
+                {
+                    obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"libVlc{uniqueId}: Ipc parse error: {e.Data}.\n\nException: {ex.Message}");
+                }
+
+                if (obj is null)
+                    return;
+
+                // Log message
+                switch (obj.Type)
+                {
+                    case MessageType.msg_console:
+                        var msg = obj as LivelyMessageConsole;
+                        switch (msg.Category)
+                        {
+                            case ConsoleMessageType.log:
+                                Logger.Info($"libVlc{uniqueId}: {msg.Message}");
+                                break;
+                            case ConsoleMessageType.error:
+                                Logger.Error($"libVlc{uniqueId}: {msg.Message}");
+                                break;
+                            case ConsoleMessageType.console:
+                                Logger.Info($"libVlc{uniqueId}: {msg.Message}");
+                                break;
+                        }
+                        break;
+                    default:
+                        Logger.Info($"libVlc{uniqueId}: {e.Data}");
+                        break;
+                }
+
+                // Process message
+                switch (obj.Type)
+                {
+                    case MessageType.msg_hwnd:
+                        if (!isInitialized)
+                        {
+                            Exception error = null;
+                            try
+                            {
+                                Handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
+                            }
+                            catch (Exception ie)
+                            {
+                                error = ie;
+                            }
+                            finally
+                            {
+                                isInitialized = true;
+                                tcsProcessWait.TrySetResult(error);
+                            }
+                        }
+                        break;
+                    case MessageType.msg_wploaded:
+                        if (!IsLoaded)
+                        {
+                            IsLoaded = true;
+                            Loaded?.Invoke(this, EventArgs.Empty);
+
+                            // Wait before pausing or other internal fn since some pages can have transition.
+                            await Task.Delay(1000);
+                            if (!IsExited)
+                                contentReadyTcs.TrySetResult();
+                            else
+                                contentReadyTcs.TrySetException(new InvalidOperationException("Process exited."));
+                        }
+                        break;
+                }
+            }
+        }
+
+        public async Task ScreenCapture(string filePath)
+        {
+            await WaitForContentReadyAsync(TimeSpan.FromSeconds(5));
+
+            var tcs = new TaskCompletionSource();
+            void LocalOutputDataReceived(object sender, DataReceivedEventArgs e)
+            {
+                if (string.IsNullOrEmpty(e.Data))
+                {
+                    tcs.TrySetException(new InvalidOperationException("Process exited unexpectedly."));
+                }
+                else
+                {
+                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
+                    if (obj.Type == MessageType.msg_screenshot)
+                    {
+                        var msg = (LivelyMessageScreenshot)obj;
+                        if (msg.FileName == Path.GetFileName(filePath))
+                        {
+                            process.OutputDataReceived -= LocalOutputDataReceived;
+                            if (msg.Success)
+                                tcs.TrySetResult();
+                            else
+                                tcs.TrySetException(new InvalidOperationException($"Failed to take screenshot."));
+                        }
+                    }
+                }
+            }
+            process.OutputDataReceived += LocalOutputDataReceived;
+
+            Logger.Info($"libVlc{uniqueId}: Taking screenshot: {filePath}");
+            SendMessage(new LivelyScreenshotCmd()
+            {
+                FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
+                Format = ScreenshotFormat.jpeg,
+                Delay = 0 //unused
+            });
+
+            // Timeout
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using (cts.Token.Register(() =>
+            {
+                if (!IsExited)
+                    process.OutputDataReceived -= LocalOutputDataReceived;
+
+                tcs.TrySetException(new TimeoutException($"Screenshot timed out."));
+            }))
+
+            await tcs.Task;
         }
 
         private void SendMessage(string msg)
@@ -170,233 +332,18 @@ namespace Lively.Core.Wallpapers
 
         public void SetMute(bool mute)
         {
+            // We use mute as part of LivelyProperties, so workaround.
             isMuted = mute;
-            // WebView2 does not have volume control, only IsMuted property, so we use that to set volume internally.
-            // Ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/41
             if (isMuted)
                 SendMessage(new LivelyVolumeCmd() { Volume = 0 });
             else
                 SendMessage(new LivelyVolumeCmd { Volume = currentVolume });
         }
 
-        public async Task ShowAsync()
-        {
-            if (process is null)
-                return;
-
-            try
-            {
-                process.Exited += Proc_Exited;
-                process.OutputDataReceived += Proc_OutputDataReceived;
-                process.Start();
-                Pid = process.Id;
-                process.BeginOutputReadLine();
-
-                await tcsProcessWait.Task;
-                if (tcsProcessWait.Task.Result is not null)
-                    throw tcsProcessWait.Task.Result;
-            }
-            catch (Exception)
-            {
-                Terminate();
-
-                throw;
-            }
-        }
-
-        private void Proc_Exited(object sender, EventArgs e)
-        {
-            Logger.Info($"Wv2{uniqueId}: Process exited with exit code: {process?.ExitCode}");
-            if (!isInitialized)
-            {
-                // 2 = ERROR_FILE_NOT_FOUND
-                // 87 = ERROR_INVALID_PARAMETER
-                // Ref: <https://learn.microsoft.com/en-us/windows/win32/debug/system-error-codes--0-499->
-                if (process is not null && process.ExitCode == 2)
-                    tcsProcessWait.TrySetResult(new WallpaperWebView2NotFoundException());
-                else if (process is not null && process.ExitCode == 87)
-                    tcsProcessWait.TrySetResult(new WallpaperPluginException("Error initializing. Unknown options are passed."));
-                else
-                    tcsProcessWait.TrySetResult(new InvalidOperationException(Properties.Resources.LivelyExceptionGeneral));
-            }
-            process.OutputDataReceived -= Proc_OutputDataReceived;
-            process?.Dispose();
-            IsExited = true;
-            Exited?.Invoke(this, EventArgs.Empty);
-        }
-
-        private async void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            //When the redirected stream is closed, a null line is sent to the event handler.
-            if (!string.IsNullOrEmpty(e.Data))
-            {
-                IpcMessage obj = null;
-                try
-                {
-                    obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error($"Wv2{uniqueId}: Ipc parse error: {e.Data}.\n\nException: {ex.Message}");
-                }
-
-                if (obj is null)
-                    return;
-
-                // Log message
-                switch (obj.Type)
-                {
-                    case MessageType.msg_console:
-                        var msg = obj as LivelyMessageConsole;
-                        switch (msg.Category)
-                        {
-                            case ConsoleMessageType.log:
-                                Logger.Info($"Wv2{uniqueId}: {msg.Message}");
-                                break;
-                            case ConsoleMessageType.error:
-                                Logger.Error($"Wv2{uniqueId}: {msg.Message}");
-                                break;
-                            case ConsoleMessageType.console:
-                                Logger.Info($"Wv2{uniqueId}: {msg.Message}");
-                                break;
-                        }
-                        break;
-                    default:
-                        Logger.Info($"Wv2{uniqueId}: {e.Data}");
-                        break;
-                }
-
-                // Process message
-                switch (obj.Type)
-                {
-                    case MessageType.msg_hwnd:
-                        if (!isInitialized)
-                        {
-                            Exception error = null;
-                            try
-                            {
-                                //CefBrowserWindow
-                                var handle = new IntPtr(((LivelyMessageHwnd)obj).Hwnd);
-                                //WindowsForms10.Window.8.app.0.141b42a_r9_ad1
-                                var chrome_WidgetWin_0 = NativeMethods.FindWindowEx(handle, IntPtr.Zero, "Chrome_WidgetWin_0", null);
-                                if (!chrome_WidgetWin_0.Equals(IntPtr.Zero))
-                                {
-                                    this.InputHandle = NativeMethods.FindWindowEx(chrome_WidgetWin_0, IntPtr.Zero, "Chrome_WidgetWin_1", null);
-                                }
-                                Handle = process.GetProcessWindow(true);
-
-                                if (IntPtr.Equals(Handle, IntPtr.Zero) || IntPtr.Equals(InputHandle, IntPtr.Zero))
-                                    throw new Exception("Browser input/window handle NULL.");
-
-                                // We are doing this player side.
-                                // WindowUtil.RemoveWindowFromTaskbar(Handle);
-                            }
-                            catch (Exception ie)
-                            {
-                                error = ie;
-                            }
-                            finally
-                            {
-                                isInitialized = true;
-                                tcsProcessWait.TrySetResult(error);
-                            }
-                        }
-                        break;
-                    case MessageType.msg_wploaded:
-                        if (!IsLoaded)
-                        {
-                            // CoreWebView2InitializationCompleted impl.
-                            _ = NativeMethods.GetWindowThreadProcessId(NativeMethods.FindWindowEx(InputHandle, IntPtr.Zero, "Intermediate D3D Window", null), out cefD3DRenderingSubProcessPid);
-                            IsLoaded = true;
-                            Loaded?.Invoke(this, EventArgs.Empty);
-
-                            // Wait before pausing or other internal fn since some pages can have transition.
-                            await Task.Delay(1000);
-                            if (!IsExited)
-                                contentReadyTcs.TrySetResult();
-                            else
-                                contentReadyTcs.TrySetException(new InvalidOperationException("Process exited."));
-                        }
-                        break;
-                }
-            }
-        }
-
-        public void Terminate()
-        {
-            if (IsExited)
-                return;
-
-            try
-            {
-                process.Kill();
-            }
-            catch { }
-        }
-
         public void SetPlaybackPos(float pos, PlaybackPosType type)
         {
             if (pos == 0 && type != PlaybackPosType.relativePercent)
-            {
                 SendMessage(new LivelyReloadCmd());
-            }
-        }
-
-        public async Task ScreenCapture(string filePath)
-        {
-            await WaitForContentReadyAsync(TimeSpan.FromSeconds(5));
-
-            var tcs = new TaskCompletionSource();
-            void LocalOutputDataReceived(object sender, DataReceivedEventArgs e)
-            {
-                if (string.IsNullOrEmpty(e.Data))
-                {
-                    tcs.TrySetException(new InvalidOperationException("Process exited unexpectedly."));
-                }
-                else
-                {
-                    var obj = JsonConvert.DeserializeObject<IpcMessage>(e.Data, new JsonSerializerSettings() { Converters = { new IpcMessageConverter() } });
-                    if (obj.Type == MessageType.msg_screenshot)
-                    {
-                        var msg = (LivelyMessageScreenshot)obj;
-                        if (msg.FileName == Path.GetFileName(filePath))
-                        {
-                            process.OutputDataReceived -= LocalOutputDataReceived;
-                            if (msg.Success)
-                                tcs.TrySetResult();
-                            else
-                                tcs.TrySetException(new InvalidOperationException($"Failed to take screenshot."));
-                        }
-                    }
-                }
-            }
-            process.OutputDataReceived += LocalOutputDataReceived;
-
-            Logger.Info($"Wv2{uniqueId}: Taking screenshot: {filePath}");
-            SendMessage(new LivelyScreenshotCmd()
-            {
-                FilePath = Path.GetExtension(filePath) != ".jpg" ? filePath + ".jpg" : filePath,
-                Format = ScreenshotFormat.jpeg,
-                Delay = 0 //unused
-            });
-
-            // Timeout
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-            using (cts.Token.Register(() =>
-            {
-                if (!IsExited)
-                    process.OutputDataReceived -= LocalOutputDataReceived;
-
-                tcs.TrySetException(new TimeoutException($"Screenshot timed out."));
-            }))
-
-            await tcs.Task;
-        }
-
-        public void Dispose()
-        {
-            // Process object is disposed in Exit event.
-            Terminate();
         }
 
         private async Task WaitForContentReadyAsync(TimeSpan timeout)
@@ -405,46 +352,10 @@ namespace Lively.Core.Wallpapers
             await contentReadyTcs.Task.WaitAsync(cts.Token);
         }
 
-        private static string ResolveFilePath(string path, LibraryModel model)
+        public void Dispose()
         {
-            var filePath = path;
-            if (PackageUtil.IsRunningAsPackaged)
-            {
-                try
-                {
-                    if (!model.LivelyInfo.Type.IsOnlineWallpaper())
-                        filePath = PackageUtil.ValidateAndResolvePath(path);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex);
-                }
-            }
-
-            return filePath;
-        }
-
-        /// <summary>
-        /// Backward compatibility, appends --wallpaper to arguments if required.
-        /// </summary>
-        private static bool TryParseUserCommandArgs(string args, out string result)
-        {
-            if (string.IsNullOrWhiteSpace(args))
-            {
-                result = null;
-                return false;
-            }
-
-            var words = args.Split(' ');
-            for (int i = 0; i < words.Length; i++)
-            {
-                if (words[i].StartsWith("--"))
-                {
-                    words[i] = string.Concat("--wallpaper-", words[i].AsSpan(2));
-                }
-            }
-            result = string.Join(" ", words);
-            return true;
+            // Process object is disposed in Exit event.
+            Terminate();
         }
     }
 }
