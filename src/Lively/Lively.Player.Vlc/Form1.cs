@@ -136,6 +136,8 @@ namespace Lively.Player.Vlc
             // Ref: https://wiki.videolan.org/VLC_command-line_help
             libVLC = new LibVLC("no-disable-screensaver",
                 "no-stats",
+                "no-osd",
+                "no-spu",
                 "no-sub-autodetect-file",
                 "no-snapshot-preview");
             mediaPlayer = new MediaPlayer(libVLC)
@@ -149,15 +151,8 @@ namespace Lively.Player.Vlc
             mediaPlayer.EncounteredError += MediaPlayer_EncounteredError;
             videoView1.MediaPlayer = mediaPlayer;
             videoView1.Visible = true;
-
+            EnableImageOptions(mediaPlayer.EnableHardwareDecoding);
             SetScale(CurrentScaler);
-
-            if (mediaPlayer.EnableHardwareDecoding) {
-                mediaPlayer.SetAdjustInt(VideoAdjustOption.Enable, 1);
-            }
-            else {
-                "Hardware decoding disabled, filters turned off.".SendLog(SendToParent);
-            }
         }
 
         private void MediaPlayer_EndReached(object sender, EventArgs e)
@@ -190,6 +185,16 @@ namespace Lively.Player.Vlc
             mediaPlayer.Mute = mute;
         }
 
+        private void EnableImageOptions(bool isEnable)
+        {
+            if (!mediaPlayer.EnableHardwareDecoding) {
+                "Hardware decoding is disabled, filters turned off for stability.".SendLog(SendToParent);
+                return;
+            }
+
+            mediaPlayer.SetAdjustInt(VideoAdjustOption.Enable, isEnable ? 1 : 0);
+        }
+
         private void SetImageOption(VideoAdjustOption option, float value)
         {
             // Crash with post-processing with disabled.
@@ -201,7 +206,19 @@ namespace Lively.Player.Vlc
 
         public bool CaptureScreenshot(string filePath)
         {
-            return mediaPlayer.TakeSnapshot(0, filePath, 0, 0);
+            try
+            {
+                // Issue: Solid green image.
+                // Issue: Unable to remove thumbnail.
+                // Ref: https://forum.videolan.org/viewtopic.php?f=14&t=144069&p=546844
+                // https://forum.videolan.org/viewtopic.php?f=32&t=146793
+                EnableImageOptions(false);
+                return mediaPlayer.TakeSnapshot(0, filePath, 0, 0);
+            }
+            finally
+            {
+                EnableImageOptions(true);
+            }
         }
 
         private string GetAspectRatio()
