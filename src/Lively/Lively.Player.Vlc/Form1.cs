@@ -453,14 +453,15 @@ namespace Lively.Player.Vlc
                         SetImageOption(VideoAdjustOption.Hue, hue);
                     }
                     break;
-                case "gamma":
-                    {
-                        float inputValue = Convert.ToSingle(value);
-                        // Map -100..100 to VLC range 0.01..10.0 (default 1.0)
-                        float gamma = MapWithPivot(inputValue, -100f, 100f, 0f, 0.01f, 10f, 1f);
-                        SetImageOption(VideoAdjustOption.Gamma, gamma);
-                    }
-                    break;
+                // This filter is not working?
+                //case "gamma":
+                //    {
+                //        float inputValue = Convert.ToSingle(value);
+                //        // Map -100..100 to VLC range 0.01..10.0 (default 1.0)
+                //        float gamma = MapWithPivot(inputValue, -100f, 100f, 0f, 0.01f, 10f, 1f);
+                //        SetImageOption(VideoAdjustOption.Gamma, gamma);
+                //    }
+                //    break;
                 case "speed":
                     {
                         float inputValue = Convert.ToSingle(value);
@@ -481,7 +482,7 @@ namespace Lively.Player.Vlc
                     }
                     break;
                 default:
-                    $"Unknown lively property: {key}".SendLog(SendToParent);
+                    $"Unknown livelyproperty: {key}".SendLog(SendToParent);
                     break;
             }
         }
