@@ -425,7 +425,7 @@ namespace Lively.Player.Vlc
                     {
                         float inputValue = Convert.ToSingle(value);
                         // Map -100..100 to VLC range 0.0..3.0 (default 1.0)
-                        float saturation = MapRange(inputValue, -100f, 100f, 0f, 3f);
+                        float saturation = MapWithPivot(inputValue, -100f, 100f, 0f, 0f, 3f, 1f);
                         SetImageOption(VideoAdjustOption.Saturation, saturation);
                     }
                     break;
@@ -433,7 +433,7 @@ namespace Lively.Player.Vlc
                     {
                         float inputValue = Convert.ToSingle(value);
                         // Map -100..100 to VLC range 0.0..2.0 (default 1.0)
-                        float brightness = MapRange(inputValue, -100f, 100f, 0f, 2f);
+                        float brightness = MapWithPivot(inputValue, -100f, 100f, 0f, 0f, 2f, 1f);
                         SetImageOption(VideoAdjustOption.Brightness, brightness);
                     }
                     break;
@@ -441,7 +441,7 @@ namespace Lively.Player.Vlc
                     {
                         float inputValue = Convert.ToSingle(value);
                         // Map -100..100 to VLC range 0.0..2.0 (default 1.0)
-                        float contrast = MapRange(inputValue, -100f, 100f, 0f, 2f);
+                        float contrast = MapWithPivot(inputValue, -100f, 100f, 0f, 0f, 2f, 1f);
                         SetImageOption(VideoAdjustOption.Contrast, contrast);
                     }
                     break;
@@ -449,7 +449,7 @@ namespace Lively.Player.Vlc
                     {
                         float inputValue = Convert.ToSingle(value);
                         // Map -100..100 to VLC range -180..180 (default 0)
-                        float hue = MapRange(inputValue, -100f, 100f, -180f, 180f);
+                        float hue = MapWithPivot(inputValue, -100f, 100f, 0f, -180f, 180f, 0f);
                         SetImageOption(VideoAdjustOption.Hue, hue);
                     }
                     break;
@@ -457,7 +457,7 @@ namespace Lively.Player.Vlc
                     {
                         float inputValue = Convert.ToSingle(value);
                         // Map -100..100 to VLC range 0.01..10.0 (default 1.0)
-                        float gamma = MapRange(inputValue, -100f, 100f, 0.01f, 10f);
+                        float gamma = MapWithPivot(inputValue, -100f, 100f, 0f, 0.01f, 10f, 1f);
                         SetImageOption(VideoAdjustOption.Gamma, gamma);
                     }
                     break;
@@ -502,27 +502,33 @@ namespace Lively.Player.Vlc
             Debug.WriteLine(JsonConvert.SerializeObject(obj));
         }
 
-        private float MapRange(float value, float fromMin, float fromMax, float toMin, float toMax)
+        float MapWithPivot(
+            float value,
+            float sourceMin, 
+            float sourceMax,
+            float sourcePivot, 
+            float targetMin, 
+            float targetMax,
+            float targetPivot)
         {
-            // Clamp input to source range
-            value = Clamp(value, fromMin, fromMax);
+            // Clamp so we don't extrapolate
+            if (value < sourceMin) 
+                value = sourceMin;
+            else if (value > sourceMax) 
+                value = sourceMax;
 
-            // Map to target range
-            float fromRange = fromMax - fromMin;
-            float toRange = toMax - toMin;
-            float scaledValue = (value - fromMin) / fromRange;
-
-            return toMin + (scaledValue * toRange);
-        }
-
-        private static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
-        {
-            if (value.CompareTo(min) < 0)
-                return min;
-            if (value.CompareTo(max) > 0)
-                return max;
-
-            return value;
+            if (value >= sourcePivot)
+            {
+                // Upper half
+                return targetPivot + (value - sourcePivot) /
+                       (sourceMax - sourcePivot) * (targetMax - targetPivot);
+            }
+            else
+            {
+                // Lower half
+                return targetPivot + (value - sourcePivot) /
+                       (sourceMin - sourcePivot) * (targetMin - targetPivot);
+            }
         }
     }
 }
