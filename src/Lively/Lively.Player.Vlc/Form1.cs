@@ -163,7 +163,7 @@ namespace Lively.Player.Vlc
             videoView1.MediaPlayer = mediaPlayer;
             pictureBox1.Visible = false;
             videoView1.Visible = true;
-            EnableImageOptions(mediaPlayer.EnableHardwareDecoding);
+            EnableImageOptions(true);
             SetScale(CurrentScaler);
         }
 
@@ -381,6 +381,8 @@ namespace Lively.Player.Vlc
         {
             try
             {
+                // Disable video adjust filter to prevent state corruption during bulk property updates.
+                EnableImageOptions(false);
                 await LivelyPropertyUtil.LoadProperty(propertyPath, Path.GetDirectoryName(startArgs.FilePath), async (key, value) =>
                 {
                     SetLivelyProperty(key, value);
@@ -389,6 +391,11 @@ namespace Lively.Player.Vlc
             catch (Exception ex)
             {
                 ex.SendError(SendToParent);
+            }
+            finally
+            {
+                // Re-enable the filter after all properties are set.
+                EnableImageOptions(true);
             }
         }
 
