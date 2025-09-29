@@ -138,8 +138,9 @@ namespace Lively.Player.Vlc
 
         private async Task InitializeVlc()
         {
-            // Blocking operation.
-            await Task.Run(() => Core.Initialize());
+            // Blocking operation, give time for the loading picturebox to be visible.
+            await Task.Delay(100);
+            Core.Initialize();
 
             // "--no-disable-screensaver" : Enable monitor sleep.
             // "--no-stats" : Disable locally collect statistics.
