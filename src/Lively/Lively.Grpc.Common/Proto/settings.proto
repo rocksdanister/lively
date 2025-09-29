@@ -168,6 +168,7 @@ enum GifPlayer {
     win10img = 0;
     libmpvExt_ = 1;
     mpv_ = 2;
+    _libvlcExt = 3;
 }
 
 enum PicturePlayer {

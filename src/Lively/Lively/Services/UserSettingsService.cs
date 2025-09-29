@@ -159,8 +159,9 @@ namespace Lively.Services
             var isAvailable = gp switch
             {
                 LivelyGifPlayer.win10Img => false, //xaml island
-                LivelyGifPlayer.libmpvExt => false,
+                LivelyGifPlayer.libmpvExt => false, //depreciated
                 LivelyGifPlayer.mpv => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.MpvPath)),
+                LivelyGifPlayer.libvlcExt => File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Constants.PlayerPartialPaths.LibVlcPath)),
                 _ => false,
             };
             return isAvailable ? gp : Constants.AppDefaults.GifPlayer;

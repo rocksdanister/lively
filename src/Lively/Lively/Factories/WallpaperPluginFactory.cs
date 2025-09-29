@@ -115,15 +115,23 @@ namespace Lively.Factories
                         case LivelyGifPlayer.win10Img:
                         throw new PluginNotFoundException("xaml island gif player not available.");
                         case LivelyGifPlayer.libmpvExt:
-                            throw new NotImplementedException();
+                            throw new DepreciatedException("libmpvExt depreciated player selected.");
                         case LivelyGifPlayer.mpv:
                             return new VideoMpvPlayer(model.FilePath,
-                                           model,
-                                           display,
-                                           lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
-                                           userSettings.Settings.VideoPlayerHwAccel,
-                                           isWindowed: isWindowed, 
-                                           userSettings.Settings.VideoTargetColorSpaceMode);
+                                model,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
+                                userSettings.Settings.VideoPlayerHwAccel,
+                                isWindowed: isWindowed, 
+                                userSettings.Settings.VideoTargetColorSpaceMode);
+                        case LivelyGifPlayer.libvlcExt:
+                            return new VideoLibVlcPlayer(model.FilePath,
+                                model,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
+                                userSettings.Settings.ApplicationTheme,
+                                userSettings.Settings.AudioVolumeGlobal,
+                                userSettings.Settings.VideoPlayerHwAccel);
                     }
                     break;
                 case WallpaperType.picture:
@@ -135,12 +143,12 @@ namespace Lively.Factories
                         return new PictureWinApi(model.FilePath, model, display, arrangement, userSettings.Settings.WallpaperScaling);
                         case LivelyPicturePlayer.mpv:
                             return new VideoMpvPlayer(model.FilePath,
-                                              model,
-                                              display,
-                                              lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
-                                              userSettings.Settings.VideoPlayerHwAccel,
-                                              isWindowed: isWindowed,
-                                              userSettings.Settings.VideoTargetColorSpaceMode);
+                                model,
+                                display,
+                                lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
+                                userSettings.Settings.VideoPlayerHwAccel,
+                                isWindowed: isWindowed,
+                                userSettings.Settings.VideoTargetColorSpaceMode);
                         case LivelyPicturePlayer.wmf:
                             return new VideoWmfProcess(model.FilePath, model, display, 0, userSettings.Settings.WallpaperScaling);
                     }

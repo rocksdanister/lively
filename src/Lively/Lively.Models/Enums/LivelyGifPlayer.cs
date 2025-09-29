@@ -4,5 +4,6 @@ public enum LivelyGifPlayer
 {
     win10Img,
     libmpvExt,
-    mpv
+    mpv,
+    libvlcExt
 }

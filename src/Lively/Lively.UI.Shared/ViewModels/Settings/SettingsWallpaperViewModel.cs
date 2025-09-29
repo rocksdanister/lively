@@ -524,6 +524,7 @@ namespace Lively.UI.Shared.ViewModels
                 LivelyGifPlayer.win10Img => false, //xaml island
                 LivelyGifPlayer.libmpvExt => false,
                 LivelyGifPlayer.mpv => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.MpvPath)),
+                LivelyGifPlayer.libvlcExt => File.Exists(Path.Combine(desktopCore.BaseDirectory, Constants.PlayerPartialPaths.LibVlcPath)),
                 _ => false,
             };
         }

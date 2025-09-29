@@ -243,7 +243,8 @@
                             <ComboBoxItem>Win10</ComboBoxItem>
                             <ComboBoxItem Visibility="Collapsed">libMPV(External)</ComboBoxItem>
                             <ComboBoxItem>mpv</ComboBoxItem>
-                        </ComboBox>
+                            <ComboBoxItem>libVlc (External)</ComboBoxItem>
+                    </ComboBox>
                     </controls:SettingsCard>
                     <InfoBar
                         x:Uid="PluginNotFound"
