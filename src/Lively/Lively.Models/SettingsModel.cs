@@ -54,6 +54,11 @@ namespace Lively.Models
         /// False: Only forward on desktop.
         /// </summary>
         public bool MouseInputMovAlways { get; set; }
+        /// <summary>
+        /// True: Only forward mouse click on desktop when Ctrl key is pressed.
+        /// False: Forward mouse click always.
+        /// </summary>
+        public bool MouseClickWithCtrlKey { get; set; }
         public int TileSize { get; set; }
         public DisplayIdentificationMode DisplayIdentification { get; set; }
         public LivelyMediaPlayer VideoPlayer { get; set; }
@@ -184,6 +189,7 @@ namespace Lively.Models
 
             InputForward = InputForwardMode.mouse;
             MouseInputMovAlways = true;
+            MouseClickWithCtrlKey = false;
 
             TileSize = 1;
             DisplayIdentification = DisplayIdentificationMode.deviceId;

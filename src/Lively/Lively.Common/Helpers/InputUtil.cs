@@ -90,5 +90,10 @@ namespace Lively.Common.Helpers
             y -= virtualScreenBounds.Location.Y;
             return new Point(x, y);
         }
+
+        public static bool IsCtrlKeyPressed()
+        {
+            return (NativeMethods.GetAsyncKeyState(NativeMethods.VK_CONTROL) & 0x8000) != 0;
+        }
     }
 }

@@ -1150,6 +1150,9 @@ namespace Lively.Core
             if (userSettings.Settings.InputForward == InputForwardMode.off || !IsDesktop())
                 return;
 
+            if (userSettings.Settings.MouseClickWithCtrlKey && !InputUtil.IsCtrlKeyPressed())
+                return;
+
             try
             {
                 switch (e.Button)

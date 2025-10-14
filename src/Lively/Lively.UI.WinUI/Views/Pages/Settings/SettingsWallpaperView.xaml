@@ -67,6 +67,9 @@
                             <controls:SettingsCard ContentAlignment="Left">
                                 <CheckBox x:Uid="MouseInteractOnDesktop" IsChecked="{Binding MouseMoveOnDesktop, Mode=TwoWay}" />
                             </controls:SettingsCard>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <CheckBox x:Uid="MouseClickWithCtrlKey" IsChecked="{Binding MouseClickWithCtrlKey, Mode=TwoWay}" />
+                            </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
                     <InfoBar

@@ -57,6 +57,7 @@ namespace Lively.UI.Shared.ViewModels
             SelectedWallpaperScalingIndex = (int)userSettings.Settings.WallpaperScaling;
             SelectedWallpaperInputMode = (int)userSettings.Settings.InputForward;
             MouseMoveOnDesktop = userSettings.Settings.MouseInputMovAlways;
+            MouseClickWithCtrlKey = userSettings.Settings.MouseClickWithCtrlKey;
             SelectedVideoPlayerIndex = (int)userSettings.Settings.VideoPlayer;
             VideoPlayerHWDecode = userSettings.Settings.VideoPlayerHwAccel;
             IsWindowsManageVideoColor = userSettings.Settings.VideoTargetColorSpaceMode == TargetColorspaceHintMode.source;
@@ -154,6 +155,21 @@ namespace Lively.UI.Shared.ViewModels
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _mouseMoveOnDesktop, value);
+            }
+        }
+
+        private bool _mouseClickWithCtrlKey;
+        public bool MouseClickWithCtrlKey
+        {
+            get => _mouseClickWithCtrlKey;
+            set
+            {
+                if (userSettings.Settings.MouseClickWithCtrlKey != value)
+                {
+                    userSettings.Settings.MouseClickWithCtrlKey = value;
+                    UpdateSettingsConfigFile();
+                }
+                SetProperty(ref _mouseClickWithCtrlKey, value);
             }
         }
 
