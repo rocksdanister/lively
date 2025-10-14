@@ -91,9 +91,15 @@ namespace Lively.Common.Helpers
             return new Point(x, y);
         }
 
+        // Add these constants and P/Invoke declaration to fix CS0117 errors.
+        private const int VK_CONTROL = 0x11;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern short GetAsyncKeyState(int vKey);
+
         public static bool IsCtrlKeyPressed()
         {
-            return (NativeMethods.GetAsyncKeyState(NativeMethods.VK_CONTROL) & 0x8000) != 0;
+            return (GetAsyncKeyState(VK_CONTROL) & 0x8000) != 0;
         }
     }
 }
