@@ -1298,4 +1298,7 @@ If still not working, close &amp; start Lively again/restart windows.
   <data name="RestartWallpaperAfterLockscreen.Header" xml:space="preserve">
     <value>Restart wallpaper when returning from lock screen</value>
   </data>
+  <data name="MouseClickWithCtrlKey.Content" xml:space="preserve">
+    <value>Require Ctrl key for mouse click interaction</value>
+  </data>
 </root>
