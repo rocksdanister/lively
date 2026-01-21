@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.23.2" />
-    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="14.9.1" />
+    <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="14.10.2" />
   </ItemGroup>
 
 </Project>
