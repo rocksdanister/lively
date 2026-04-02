@@ -40,5 +40,25 @@ namespace Lively.Models.Services
         /// Full system ram amount (MegaBytes)
         /// </summary>
         public long TotalRam { get; set; }
+        /// <summary>
+        /// Battery charge percentage (0-100). Returns 255 if no battery present.
+        /// </summary>
+        public byte BatteryPercent { get; set; }
+        /// <summary>
+        /// Estimated remaining battery life in seconds. Returns -1 if unknown or plugged in.
+        /// </summary>
+        public int BatteryLifeTimeSeconds { get; set; }
+        /// <summary>
+        /// AC power status: "Online", "Offline" or "Unknown"
+        /// </summary>
+        public string ACLineStatus { get; set; }
+        /// <summary>
+        /// Battery state flags as string: "Charging", "High", "Low", "Critical", "NoSystemBattery" or "Unknown"
+        /// </summary>
+        public string BatteryState { get; set; }
+        /// <summary>
+        /// Whether battery saver mode is active.
+        /// </summary>
+        public bool IsBatterySaverMode { get; set; }
     }
 }

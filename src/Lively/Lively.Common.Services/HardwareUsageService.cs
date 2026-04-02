@@ -106,6 +106,7 @@ namespace Lively.Common.Services
                         {
                             //todo: log error.
                         }
+                        UpdateBatteryStatus();
                         HWMonitor?.Invoke(this, perfData);
                     }
                 });
@@ -117,6 +118,35 @@ namespace Lively.Common.Services
                 netDownCounter?.Dispose();
                 netUpCounter?.Dispose();
             }
+        }
+
+        private void UpdateBatteryStatus()
+        {
+            try
+            {
+                var sps = new PowerUtil.SystemPowerStatus();
+                if (PowerUtil.GetSystemPowerStatus(ref sps))
+                {
+                    perfData.BatteryPercent = sps._BatteryLifePercent;
+                    perfData.BatteryLifeTimeSeconds = sps._BatteryLifeTime;
+                    perfData.ACLineStatus = sps._ACLineStatus.ToString();
+                    perfData.BatteryState = GetBatteryStateString(sps._BatteryFlag);
+                    perfData.IsBatterySaverMode = sps._SystemStatusFlag == PowerUtil.SystemStatusFlag.On;
+                }
+            }
+            catch { }
+        }
+
+        private static string GetBatteryStateString(PowerUtil.BatteryFlag flag)
+        {
+            if (flag == PowerUtil.BatteryFlag.Unknown) return "Unknown";
+            if (flag == PowerUtil.BatteryFlag.NoSystemBattery) return "NoSystemBattery";
+            var states = new List<string>();
+            if ((flag & PowerUtil.BatteryFlag.Charging) != 0) states.Add("Charging");
+            if ((flag & PowerUtil.BatteryFlag.High) != 0) states.Add("High");
+            if ((flag & PowerUtil.BatteryFlag.Low) != 0) states.Add("Low");
+            if ((flag & PowerUtil.BatteryFlag.Critical) != 0) states.Add("Critical");
+            return states.Count > 0 ? string.Join(",", states) : "Unknown";
         }
 
         #region public helpers
