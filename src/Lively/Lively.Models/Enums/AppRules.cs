@@ -4,5 +4,6 @@ public enum AppRules
 {
     pause,
     ignore,
-    kill
+    kill,
+    pauseFullscreen
 }

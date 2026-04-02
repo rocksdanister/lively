@@ -158,7 +158,8 @@ namespace Lively.Core.Suspend
             var hwnd = NativeMethods.GetForegroundWindow();
             var isValidWindow = WindowUtil.IsVisibleTopLevelWindows(hwnd);
             var foregroundDisplay = displayManager.PrimaryDisplayMonitor;
-            var isFullScreenPause = userSettings.Settings.AppFullscreenPause == AppRules.pause;
+            var fullscreenPauseRule = userSettings.Settings.AppFullscreenPause;
+            var isFullScreenPause = fullscreenPauseRule == AppRules.pause || fullscreenPauseRule == AppRules.pauseFullscreen;
             var isFocusedAppPause = userSettings.Settings.AppFocusPause == AppRules.pause;
 
             bool isDesktop;
@@ -166,7 +167,9 @@ namespace Lively.Core.Suspend
             {
                 isDesktop = WindowUtil.IsExcludedDesktopWindowClass(hwnd);
                 foregroundDisplay = displayManager.GetDisplayMonitorFromHWnd(hwnd);
-                isCovered = WindowUtil.IsDisplayCoveredByWindow(hwnd, foregroundDisplay.WorkingArea);
+                isCovered = fullscreenPauseRule == AppRules.pauseFullscreen
+                    ? WindowUtil.IsWindowTrueFullscreen(hwnd, foregroundDisplay.Bounds)
+                    : WindowUtil.IsDisplayCoveredByWindow(hwnd, foregroundDisplay.WorkingArea);
             }
             else
             {

@@ -15,6 +15,14 @@ namespace Lively.UI.Shared.ViewModels
 {
     public partial class SettingsPerformanceViewModel : ObservableObject
     {
+        // Order: pause (maximized+fullscreen) → pauseFullscreen (only) → ignore
+        private static readonly Models.Enums.AppRules[] FullscreenPauseOptions =
+        {
+            Models.Enums.AppRules.pause,
+            Models.Enums.AppRules.pauseFullscreen,
+            Models.Enums.AppRules.ignore
+        };
+
         private readonly IDialogService dialogService;
         private readonly IUserSettingsClient userSettings;
         private readonly IDispatcherService dispatcher;
@@ -31,7 +39,7 @@ namespace Lively.UI.Shared.ViewModels
             this.dispatcher = dispatcher;
             this.appRuleFactory = appRuleFactory;
 
-            SelectedAppFullScreenIndex = (int)userSettings.Settings.AppFullscreenPause;
+            SelectedAppFullScreenIndex = Array.IndexOf(FullscreenPauseOptions, userSettings.Settings.AppFullscreenPause) is int idx && idx >= 0 ? idx : 0;
             SelectedAppFocusIndex = (int)userSettings.Settings.AppFocusPause;
             SelectedBatteryPowerIndex = (int)userSettings.Settings.BatteryPause;
             SelectedRemoteDestopPowerIndex = (int)userSettings.Settings.RemoteDesktopPause;
@@ -52,12 +60,13 @@ namespace Lively.UI.Shared.ViewModels
             get => _selectedAppFullScreenIndex;
             set
             {
-                if (userSettings.Settings.AppFullscreenPause != (AppRules)value)
+                var rule = FullscreenPauseOptions[Math.Clamp(value, 0, FullscreenPauseOptions.Length - 1)];
+                if (userSettings.Settings.AppFullscreenPause != rule)
                 {
-                    userSettings.Settings.AppFullscreenPause = (AppRules)value;
+                    userSettings.Settings.AppFullscreenPause = rule;
                     UpdateSettingsConfigFile();
                 }
-                IsSelectedAppFocus = userSettings.Settings.AppFullscreenPause != Models.Enums.AppRules.ignore;
+                IsSelectedAppFocus = rule != Models.Enums.AppRules.ignore;
                 SetProperty(ref _selectedAppFullScreenIndex, value);
             }
         }

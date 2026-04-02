@@ -28,6 +28,7 @@
                             CornerRadius="5">
                             <ListBox Padding="-2.5,-2.5,-2.5,-5" SelectedIndex="{Binding SelectedAppFullScreenIndex, Mode=TwoWay}">
                                 <FontIcon FontSize="16" Glyph="&#xE769;" />
+                                <FontIcon FontSize="16" Glyph="&#xE7C4;" />
                                 <FontIcon FontSize="16" Glyph="&#xE768;" />
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>

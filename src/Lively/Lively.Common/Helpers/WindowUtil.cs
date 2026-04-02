@@ -73,6 +73,17 @@ namespace Lively.Common.Helpers
             return NativeMethods.IsZoomed(hwnd) || IsWindowCoveringTarget(hwnd, screenBounds, threshold);
         }
 
+        /// <summary>
+        /// Returns true only when the window is in true fullscreen (covers the full monitor including taskbar area),
+        /// does NOT count maximized windows.
+        /// </summary>
+        public static bool IsWindowTrueFullscreen(IntPtr hwnd, Rectangle monitorBounds, double threshold = 0.99)
+        {
+            if (NativeMethods.IsZoomed(hwnd))
+                return false;
+            return IsWindowCoveringTarget(hwnd, monitorBounds, threshold);
+        }
+
         public static List<IntPtr> GetVisibleTopLevelWindows()
         {
             var windows = new List<IntPtr>();
