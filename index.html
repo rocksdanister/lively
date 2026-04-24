@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gothic Spider Analog Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wallpaper">
+        <div class="ambient-glow"></div>
+        <div class="clock-container">
+            <div class="web-background"></div>
+            
+            <div class="numbers">
+                <span style="--i:1">1</span>
+                <span style="--i:2">2</span>
+                <span style="--i:3">3</span>
+                <span style="--i:4">4</span>
+                <span style="--i:5">5</span>
+                <span style="--i:6">6</span>
+                <span style="--i:7">7</span>
+                <span style="--i:8">8</span>
+                <span style="--i:9">9</span>
+                <span style="--i:10">10</span>
+                <span style="--i:11">11</span>
+                <span style="--i:12">12</span>
+            </div>
+            
+            <div class="hands">
+                <!-- Hour Hand: Segmented Spider Leg -->
+                <div class="hand hour" id="hour-hand">
+                    <svg viewBox="0 0 20 180">
+                        <path d="M10 180 L5 130 L15 80 L10 0" stroke="#ff6600" stroke-width="5" fill="none" stroke-linejoin="round" />
+                        <path d="M10 180 L5 130 L15 80 L10 0" stroke="#000" stroke-width="2" fill="none" opacity="0.5" />
+                        <circle cx="10" cy="180" r="6" fill="#ff6600" />
+                    </svg>
+                </div>
+                <!-- Minute Hand: Long Sharp Leg -->
+                <div class="hand minute" id="minute-hand">
+                    <svg viewBox="0 0 20 250">
+                        <path d="M10 250 L15 180 L5 100 L10 0" stroke="#ff6600" stroke-width="4" fill="none" stroke-linejoin="round" />
+                        <path d="M10 250 L15 180 L5 100 L10 0" stroke="#000" stroke-width="1.5" fill="none" opacity="0.5" />
+                        <circle cx="10" cy="250" r="4" fill="#ff6600" />
+                    </svg>
+                </div>
+                <!-- Second Hand: Thin Gothic Needle -->
+                <div class="hand second" id="second-hand">
+                    <svg viewBox="0 0 10 280">
+                        <line x1="5" y1="280" x2="5" y2="0" stroke="#ff3300" stroke-width="1.5" />
+                        <circle cx="5" cy="140" r="3" fill="#ff3300" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
