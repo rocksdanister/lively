@@ -160,6 +160,19 @@
                             <ComboBoxItem>Grid</ComboBoxItem>
                         </ComboBox>
                     </controls:SettingsCard>
+
+                    <controls:SettingsCard x:Uid="PauseSmoothingRange">
+                        <controls:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE8E5;" />
+                        </controls:SettingsCard.HeaderIcon>
+                        <StackPanel Spacing="8">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="SpaceBetween">
+                                <TextBlock x:Uid="PauseSmoothingRangeLabel" Text="Pause smoothing" />
+                                <TextBlock Text="{Binding PauseSmoothingRangeText, Mode=OneWay}" />
+                            </StackPanel>
+                            <Slider Minimum="0" Maximum="30" Value="{Binding PauseSmoothingRangePercent, Mode=TwoWay}" StepFrequency="1" />
+                        </StackPanel>
+                    </controls:SettingsCard>
                     <InfoBar
                         Title="?"
                         VerticalAlignment="Top"

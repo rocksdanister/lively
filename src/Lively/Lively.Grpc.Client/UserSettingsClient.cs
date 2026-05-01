@@ -287,6 +287,7 @@ namespace Lively.Grpc.Client
                     }
                 },
                 RestartAfterLockscreen = settings.IsRestartAfterLockscreen,
+                PauseSmoothingRange = settings.PauseSmoothingRange,
             };
         }
 
@@ -403,6 +404,7 @@ namespace Lively.Grpc.Client
                         settings.SelectedAudioOutputDisplay.WorkingArea.Height),
                 },
                 IsRestartAfterLockscreen = settings.RestartAfterLockscreen,
+                PauseSmoothingRange = settings.PauseSmoothingRange,
             };
         }
 

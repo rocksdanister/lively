@@ -38,6 +38,11 @@ namespace Lively.Core.Suspend
         private bool isLockScreen, isRemoteSession;
         private bool disposedValue;
 
+        private readonly Dictionary<string, double> displayPauseProgress = new();
+        private readonly Dictionary<string, bool> displayPauseState = new();
+        private double globalPauseProgress;
+        private bool globalPauseState;
+
         private readonly IUserSettingsService userSettings;
         private readonly IDisplayManager displayManager;
         private readonly IScreensaverService screenSaver;
@@ -132,13 +137,17 @@ namespace Lively.Core.Suspend
                             EvaluatePlaybackByForegroundWindow();
                             break;
                         case ProcessMonitorAlgorithm.all:
-                            EvaluatePlaybackByVisibleWindow((display, windows) => WindowUtil.IsDisplayCoveredByAnyWindow(windows, display.WorkingArea));
+                            EvaluatePlaybackByVisibleWindow((display, windows) => (
+                                coverage: WindowUtil.GetDisplayCoverageRatioByAnyWindow(windows, display.WorkingArea),
+                                threshold: 0.95));
                             break;
                         case ProcessMonitorAlgorithm.grid:
-                            EvaluatePlaybackByVisibleWindow((display, windows) => WindowUtil.IsDisplayCoveredByWindowGrid(windows,
-                                display.WorkingArea,
-                                userSettings.Settings.ProcessMonitorGridTileSize,
-                                userSettings.Settings.ProcessMonitorGridTileCoverageThreshold));
+                            EvaluatePlaybackByVisibleWindow((display, windows) => (
+                                coverage: WindowUtil.GetDisplayCoverageRatioByWindowGrid(windows,
+                                    display.WorkingArea,
+                                    userSettings.Settings.ProcessMonitorGridTileSize,
+                                    userSettings.Settings.ProcessMonitorGridTileCoverageThreshold),
+                                threshold: 1d - userSettings.Settings.ProcessMonitorGridTileCoverageThreshold));
                             break;
                         case ProcessMonitorAlgorithm.gamemode:
                             EvaluatePlaybackByGameMode();
@@ -221,7 +230,7 @@ namespace Lively.Core.Suspend
             }
         }
 
-        private void EvaluatePlaybackByVisibleWindow(Func<DisplayMonitor, List<IntPtr>, bool> coverageCheck)
+        private void EvaluatePlaybackByVisibleWindow(Func<DisplayMonitor, List<IntPtr>, (double coverage, double threshold)> coverageCalculator)
         {
             var windows = WindowUtil.GetVisibleTopLevelWindows();
             if (windows.Exists(IsPauseRuleApp))
@@ -251,12 +260,11 @@ namespace Lively.Core.Suspend
                                     foreach (var display in displayManager.DisplayMonitors)
                                     {
                                         var windowsOnDisplay = monitorWindowsMap.GetValueOrDefault(display) ?? [];
-                                        var shouldPause = ShouldPauseWallpaper(display, windowsOnDisplay, coverageCheck);
+                                        var (coverage, threshold) = coverageCalculator(display, windowsOnDisplay);
+                                        var pauseProgress = UpdatePauseProgress(display.DeviceId, coverage, threshold);
+                                        var shouldPause = pauseProgress >= 0.75;
 
-                                        if (shouldPause)
-                                            PauseWallpaper(display);
-                                        else
-                                            PlayWallpaper(display);
+                                        UpdateDisplayPauseState(display, shouldPause);
                                     }
                                 }
                                 break;
@@ -265,7 +273,9 @@ namespace Lively.Core.Suspend
                                     var shouldPause = displayManager.DisplayMonitors.All(display =>
                                     {
                                         var windowsOnDisplay = monitorWindowsMap.GetValueOrDefault(display) ?? [];
-                                        return ShouldPauseWallpaper(display, windowsOnDisplay, coverageCheck);
+                                        var (coverage, threshold) = coverageCalculator(display, windowsOnDisplay);
+                                        var pauseProgress = UpdatePauseProgress(display.DeviceId, coverage, threshold);
+                                        return pauseProgress >= 0.75;
                                     });
 
                                     if (shouldPause)
@@ -279,16 +289,17 @@ namespace Lively.Core.Suspend
                     break;
                 case DisplayPause.all:
                     {
-                        var shouldPauseAll = displayManager.DisplayMonitors.Any(display =>
+                        var maxWeight = displayManager.DisplayMonitors.Max(display =>
                         {
                             var windowsOnDisplay = monitorWindowsMap.GetValueOrDefault(display) ?? [];
-                            return ShouldPauseWallpaper(display, windowsOnDisplay, coverageCheck);
+                            var (coverage, threshold) = coverageCalculator(display, windowsOnDisplay);
+                            return GetPauseWeight(coverage, threshold);
                         });
 
-                        if (shouldPauseAll)
-                            PauseWallpapers();
-                        else
-                            PlayWallpapers();
+                        var pauseProgress = UpdateGlobalPauseProgress(maxWeight);
+                        var shouldPauseAll = pauseProgress >= 0.75;
+
+                        UpdateGlobalPauseState(shouldPauseAll);
                     }
                     break;
             }
@@ -355,16 +366,99 @@ namespace Lively.Core.Suspend
             SetWallpaperVolume(userSettings.Settings.AudioVolumeGlobal);
         }
 
-        private bool ShouldPauseWallpaper(DisplayMonitor display, List<IntPtr> windowsOnDisplay, Func<DisplayMonitor, List<IntPtr>, bool> coverageCheck)
+        private bool ShouldPauseWallpaper(DisplayMonitor display, List<IntPtr> windowsOnDisplay, double coverageRatio, double pauseThreshold)
         {
             var isFullScreenPause = userSettings.Settings.AppFullscreenPause == AppRules.pause;
             var isFocusedAppPause = userSettings.Settings.AppFocusPause == AppRules.pause;
             var isDesktop = windowsOnDisplay.Count == 0;
-            var isCovered = coverageCheck(display, windowsOnDisplay);
 
-            // IsFullScreenPause = false, always play wallpaper
-            // IsFocusedAppPause = true, only play on desktop.
-            return isFullScreenPause && ((isFocusedAppPause && !isDesktop) || isCovered);
+            if (!isFullScreenPause)
+                return false;
+
+            if (isFocusedAppPause && !isDesktop)
+                return true;
+
+            var smoothingRange = GetPauseSmoothingRange();
+            var lowerThreshold = Math.Max(0d, pauseThreshold - smoothingRange);
+
+            if (coverageRatio >= pauseThreshold)
+                return true;
+
+            if (coverageRatio <= lowerThreshold)
+                return false;
+
+            var pauseWeight = (coverageRatio - lowerThreshold) / (pauseThreshold - lowerThreshold);
+            return pauseWeight >= 0.5;
+        }
+
+        private double GetPauseWeight(double coverageRatio, double pauseThreshold)
+        {
+            if (coverageRatio >= pauseThreshold)
+                return 1d;
+
+            var smoothingRange = GetPauseSmoothingRange();
+            var lowerThreshold = Math.Max(0d, pauseThreshold - smoothingRange);
+            if (coverageRatio <= lowerThreshold)
+                return 0d;
+
+            return (coverageRatio - lowerThreshold) / (pauseThreshold - lowerThreshold);
+        }
+
+        private double GetPauseSmoothingRange()
+        {
+            return Math.Clamp(userSettings.Settings.PauseSmoothingRange, 0d, 0.5d);
+        }
+
+        private double UpdatePauseProgress(string key, double coverageRatio, double pauseThreshold)
+        {
+            return UpdatePauseProgress(key, GetPauseWeight(coverageRatio, pauseThreshold));
+        }
+
+        private double UpdatePauseProgress(string key, double targetWeight)
+        {
+            if (!displayPauseProgress.TryGetValue(key, out var currentProgress))
+                currentProgress = 0d;
+
+            const double transitionSeconds = 0.8;
+            var step = Math.Min(1d, dispatcherTimer.Interval.TotalSeconds / transitionSeconds);
+            currentProgress += (targetWeight - currentProgress) * step;
+            currentProgress = Math.Clamp(currentProgress, 0d, 1d);
+            displayPauseProgress[key] = currentProgress;
+            return currentProgress;
+        }
+
+        private double UpdateGlobalPauseProgress(double targetWeight)
+        {
+            const double transitionSeconds = 0.8;
+            var step = Math.Min(1d, dispatcherTimer.Interval.TotalSeconds / transitionSeconds);
+            globalPauseProgress += (targetWeight - globalPauseProgress) * step;
+            globalPauseProgress = Math.Clamp(globalPauseProgress, 0d, 1d);
+            return globalPauseProgress;
+        }
+
+        private void UpdateDisplayPauseState(DisplayMonitor display, bool shouldPause)
+        {
+            var key = display.DeviceId;
+            if (displayPauseState.TryGetValue(key, out var isPaused) && isPaused == shouldPause)
+                return;
+
+            displayPauseState[key] = shouldPause;
+            if (shouldPause)
+                PauseWallpaper(display);
+            else
+                PlayWallpaper(display);
+        }
+
+        private void UpdateGlobalPauseState(bool shouldPause)
+        {
+            if (globalPauseState == shouldPause)
+                return;
+
+            globalPauseState = shouldPause;
+            if (shouldPause)
+                PauseWallpapers();
+            else
+                PlayWallpapers();
         }
 
         private void PauseWallpapers()

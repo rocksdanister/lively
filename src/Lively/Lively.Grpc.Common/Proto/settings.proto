@@ -84,6 +84,7 @@ message SettingsDataModel {
     GetScreensResponse selected_audio_output_display = 72;
     string visualizer_audio_device_id = 73;
     bool restart_after_lockscreen = 74;
+    double pause_smoothing_range = 75;
 }
 
 message AppRulesSettings {

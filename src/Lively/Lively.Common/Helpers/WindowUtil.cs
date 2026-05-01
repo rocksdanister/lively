@@ -10,17 +10,17 @@ namespace Lively.Common.Helpers
 {
     public static class WindowUtil
     {
-        public static bool IsDisplayCoveredByWindowGrid(
+        public static double GetDisplayCoverageRatioByWindowGrid(
             List<IntPtr> topLevelWindows,
             Rectangle screenBounds,
             int tileSize = 50,
             double threshold = 0.05)
         {
             if (topLevelWindows is null || topLevelWindows.Count == 0)
-                return false;
+                return 0d;
 
             if (topLevelWindows.Exists(NativeMethods.IsZoomed))
-                return true;
+                return 1d;
 
             int width = screenBounds.Width;
             int height = screenBounds.Height;
@@ -36,7 +36,7 @@ namespace Lively.Common.Helpers
                     continue;
 
                 if (IsWindowCoveringTarget(rect, screenBounds, 0.95))
-                    return true;
+                    return 1d;
 
                 // Find overlapping tile indices
                 int xStart = Math.Max(0, (rect.Left - screenBounds.Left) / tileSize);
@@ -52,20 +52,64 @@ namespace Lively.Common.Helpers
                         {
                             covered[y, x] = true;
                             coveredCount++;
-
-                            if ((double)(totalTiles - coveredCount) / totalTiles <= threshold)
-                                return true;
                         }
                     }
                 }
             }
 
-            return false;
+            if (totalTiles == 0)
+                return 0d;
+
+            return coveredCount / (double)totalTiles;
+        }
+
+        public static bool IsDisplayCoveredByWindowGrid(
+            List<IntPtr> topLevelWindows,
+            Rectangle screenBounds,
+            int tileSize = 50,
+            double threshold = 0.05)
+        {
+            return GetDisplayCoverageRatioByWindowGrid(topLevelWindows, screenBounds, tileSize, threshold) >= 1d - threshold;
+        }
+
+        public static double GetDisplayCoverageRatioByAnyWindow(List<IntPtr> topLevelWindows, Rectangle screenBounds)
+        {
+            if (topLevelWindows is null || topLevelWindows.Count == 0)
+                return 0d;
+
+            double maxCoverage = 0d;
+            var targetAreaSize = (long)(screenBounds.Width * screenBounds.Height);
+            if (targetAreaSize <= 0)
+                return 0d;
+
+            foreach (var hwnd in topLevelWindows)
+            {
+                if (NativeMethods.IsZoomed(hwnd))
+                    return 1d;
+
+                if (NativeMethods.GetWindowRect(hwnd, out var rect) == 0 || IsEmpty(rect))
+                    continue;
+
+                var intersection = Rectangle.Intersect(ToRectangle(rect), screenBounds);
+                if (intersection.IsEmpty)
+                    continue;
+
+                var intersectionArea = (long)intersection.Width * intersection.Height;
+                var coverage = intersectionArea / (double)targetAreaSize;
+                if (coverage > maxCoverage)
+                {
+                    maxCoverage = coverage;
+                    if (maxCoverage >= 1d)
+                        return 1d;
+                }
+            }
+
+            return maxCoverage;
         }
 
         public static bool IsDisplayCoveredByAnyWindow(List<IntPtr> topLevelWindows, Rectangle screenBounds, double threshold = 0.95)
         {
-            return topLevelWindows.Exists(hwnd => IsDisplayCoveredByWindow(hwnd, screenBounds, threshold));
+            return GetDisplayCoverageRatioByAnyWindow(topLevelWindows, screenBounds) >= threshold;
         }
 
         public static bool IsDisplayCoveredByWindow(IntPtr hwnd, Rectangle screenBounds, double threshold = 0.95)

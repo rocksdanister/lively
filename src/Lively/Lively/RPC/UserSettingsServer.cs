@@ -179,6 +179,7 @@ namespace Lively.RPC
             userSettings.Settings.CefDiskCache = req.CefDiskCache;
             userSettings.Settings.DebugMenu = req.DebugMenu;
             userSettings.Settings.IsBetaOptIn = req.TestBuild;
+            userSettings.Settings.PauseSmoothingRange = req.PauseSmoothingRange;
             userSettings.Settings.ApplicationTheme = (Models.Enums.AppTheme)req.ApplicationTheme;
             userSettings.Settings.RemoteDesktopPause = (Models.Enums.AppRules)req.RemoteDesktopPause;
             userSettings.Settings.PowerSaveModePause = (Models.Enums.AppRules)req.PowerSaveModePause;
@@ -319,6 +320,7 @@ namespace Lively.RPC
                 ScreensaverFadeIn = settings.ScreensaverFadeIn,
                 VideoTargetColorSpaceMode = (TargetColorSpaceMode)settings.VideoTargetColorSpaceMode,
                 VisualizerAudioDeviceId = settings.VisualizerAudioDeviceId ?? string.Empty,
+                PauseSmoothingRange = settings.PauseSmoothingRange,
                 DisplayAudioOutput = (Grpc.Common.Proto.Settings.DisplayAudioMode)settings.DisplayAudioOutput,
                 SelectedAudioOutputDisplay = new GetScreensResponse()
                 {

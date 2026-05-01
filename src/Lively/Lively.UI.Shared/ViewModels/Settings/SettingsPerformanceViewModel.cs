@@ -39,6 +39,7 @@ namespace Lively.UI.Shared.ViewModels
             SelectedPowerSaveModeIndex = (int)userSettings.Settings.PowerSaveModePause;
             SelectedDisplayPauseRuleIndex = (int)userSettings.Settings.DisplayPauseSettings;
             SelectedPauseAlgorithmIndex = (int)userSettings.Settings.ProcessMonitorAlgorithm;
+            PauseSmoothingRangePercent = userSettings.Settings.PauseSmoothingRange * 100d;
             //Only pause rules are shown to user, rest is internal use.
             AppRules = new ObservableCollection<ApplicationRulesModel>(userSettings.AppRules.Where(x => x.Rule == Models.Enums.AppRules.pause));
         }
@@ -166,6 +167,29 @@ namespace Lively.UI.Shared.ViewModels
                 SetProperty(ref _selectedPauseAlgorithmIndex, value);
             }
         }
+
+        private double _pauseSmoothingRangePercent;
+        public double PauseSmoothingRangePercent
+        {
+            get => _pauseSmoothingRangePercent;
+            set
+            {
+                if (Math.Abs(_pauseSmoothingRangePercent - value) < 0.01)
+                    return;
+
+                var clamped = Math.Clamp(value, 0d, 30d);
+                if (userSettings.Settings.PauseSmoothingRange != clamped / 100d)
+                {
+                    userSettings.Settings.PauseSmoothingRange = clamped / 100d;
+                    UpdateSettingsConfigFile();
+                }
+
+                if (SetProperty(ref _pauseSmoothingRangePercent, clamped))
+                    OnPropertyChanged(nameof(PauseSmoothingRangeText));
+            }
+        }
+
+        public string PauseSmoothingRangeText => $"{PauseSmoothingRangePercent:0}%";
 
         #region apprules
 

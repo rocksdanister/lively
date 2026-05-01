@@ -28,6 +28,7 @@ namespace Lively.Models
         public AppRules RemoteDesktopPause { get; set; }
         public AppRules PowerSaveModePause { get; set; }
         public DisplayPause DisplayPauseSettings { get; set; }
+        public double PauseSmoothingRange { get; set; }
         public ProcessMonitorAlgorithm ProcessMonitorAlgorithm { get; set; }
         /// <summary>
         /// Show animatd library tiles.
@@ -157,6 +158,7 @@ namespace Lively.Models
             AppFocusPause = AppRules.ignore;
             AppFullscreenPause = AppRules.pause;
             BatteryPause = AppRules.ignore;
+            PauseSmoothingRange = 0.15;
             VideoPlayer = LivelyMediaPlayer.mpv;
             VideoPlayerHwAccel = true;
             WebBrowser = LivelyWebBrowser.webview2;
