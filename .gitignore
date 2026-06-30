@@ -23,6 +23,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+vcpkg_installed/
+src/Lively/packages/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

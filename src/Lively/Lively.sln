@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.WebView2", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Player.Vlc", "Lively.Player.Vlc\Lively.Player.Vlc.csproj", "{62AF6652-6B8A-4A80-AF45-47BEEA335660}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lively.Tests", "Lively.Tests\Lively.Tests.csproj", "{7AA83266-5B50-42DB-B357-207AE2C9F3C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,16 +55,16 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|arm64.Build.0 = Debug|Any CPU
+		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|arm64.ActiveCfg = Debug|arm64
+		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|arm64.Build.0 = Debug|arm64
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|x64.Build.0 = Debug|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Debug|x86.Build.0 = Debug|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|arm64.ActiveCfg = Release|Any CPU
-		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|arm64.Build.0 = Release|Any CPU
+		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|arm64.ActiveCfg = Release|arm64
+		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|arm64.Build.0 = Release|arm64
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|x64.ActiveCfg = Release|x64
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|x64.Build.0 = Release|x64
 		{8135BD37-5857-415F-AA7B-F58B284C6DDA}.Release|x86.ActiveCfg = Release|Any CPU
@@ -329,6 +331,22 @@ Global
 		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x64.Build.0 = Release|Any CPU
 		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x86.ActiveCfg = Release|Any CPU
 		{62AF6652-6B8A-4A80-AF45-47BEEA335660}.Release|x86.Build.0 = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|arm64.Build.0 = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|arm64.ActiveCfg = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|arm64.Build.0 = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|x64.Build.0 = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7AA83266-5B50-42DB-B357-207AE2C9F3C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -50,6 +50,8 @@ namespace Lively.Common
             public static string CefSharpPath { get; } = Path.Combine(CefSharpDir, "Lively.Player.CefSharp.exe");
             public static string WebView2Dir { get; } = Path.Combine("plugins", "webview2");
             public static string WebView2Path { get; } = Path.Combine(WebView2Dir, "Lively.Player.WebView2.exe");
+            public static string TaskbarDir { get; } = Path.Combine("plugins", "taskbar");
+            public static string TaskbarPath { get; } = Path.Combine(TaskbarDir, "Lively.Utility.Taskbar.exe");
             public static string WmfDir { get; } = Path.Combine("plugins", "wmf");
             public static string WmfPath { get; } = Path.Combine(WmfDir, "Lively.PlayerWmf.exe");
             public static string VlcDir { get; } = Path.Combine("plugins", "vlc");

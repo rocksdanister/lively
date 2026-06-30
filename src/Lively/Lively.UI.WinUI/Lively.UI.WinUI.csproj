@@ -39,6 +39,16 @@
     -->
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IsMsixRelease)' == 'true'">
+    <TaskbarUtilityMsixExe>Build\plugins\taskbar\Lively.Utility.Taskbar.exe</TaskbarUtilityMsixExe>
+    <TaskbarUtilityMsixBridgeDll>Build\plugins\taskbar\TaskbarBridge\$(Platform)\Lively.TaskbarBridge.dll</TaskbarUtilityMsixBridgeDll>
+  </PropertyGroup>
+
+  <Target Name="ValidateMsixTaskbarUtility" BeforeTargets="PrepareForBuild" Condition="'$(IsMsixRelease)' == 'true'">
+    <Error Condition="!Exists('$(TaskbarUtilityMsixExe)')" Text="Lively.Utility.Taskbar.exe was not found in the MSIX staging directory: $(TaskbarUtilityMsixExe)" />
+    <Error Condition="'$(Platform)' != 'x86' And !Exists('$(TaskbarUtilityMsixBridgeDll)')" Text="Lively.TaskbarBridge.dll was not found in the MSIX staging directory for $(Platform): $(TaskbarUtilityMsixBridgeDll)" />
+  </Target>
+
   <ItemGroup Condition="'$(IsMsixRelease)' == 'true'">
     <!-- Include self-contained core build here (excluding UI plugin.) -->
     <Folder Include="Build\" />
@@ -46,7 +56,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Remove="Assets\banner-lively-1080.jpg" />
     <None Remove="Assets\changelog-page-preview.jpg" />

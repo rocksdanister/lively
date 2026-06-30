@@ -10,6 +10,7 @@ namespace Lively.Common.Services
 
         string CheckIncompatiblePrograms();
         System.Drawing.Color GetAverageColor(string filePath);
+        void Refresh();
         void SetAccentColor(Color color);
         void Start(TaskbarTheme theme);
         void Stop();

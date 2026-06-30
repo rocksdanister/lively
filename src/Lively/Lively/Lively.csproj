@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -8,9 +8,18 @@
     <ApplicationIcon>appicon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AssemblyVersion>2.2.1.5</AssemblyVersion>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>AnyCPU;x64;arm64</Platforms>
     <!-- .NET 9 Win10 issue, ref: https://github.com/rocksdanister/lively/issues/3028 -->
     <CETCompat>false</CETCompat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TaskbarUtilityRequired Condition="'$(TaskbarUtilityRequired)' == '' And '$(IsMsixRelease)' == 'true'">true</TaskbarUtilityRequired>
+    <TaskbarUtilityRequired Condition="'$(TaskbarUtilityRequired)' == ''">false</TaskbarUtilityRequired>
+    <TaskbarUtilityBridgeArchitecture Condition="'$(TaskbarUtilityBridgeArchitecture)' == '' And '$(Platform)' == 'arm64'">arm64</TaskbarUtilityBridgeArchitecture>
+    <TaskbarUtilityBridgeArchitecture Condition="'$(TaskbarUtilityBridgeArchitecture)' == ''">x64</TaskbarUtilityBridgeArchitecture>
+    <TaskbarUtilityExe>$(TaskbarUtilityPublishDir)\Lively.Utility.Taskbar.exe</TaskbarUtilityExe>
+    <TaskbarUtilityBridgeDll>$(TaskbarUtilityPublishDir)\TaskbarBridge\$(TaskbarUtilityBridgeArchitecture)\Lively.TaskbarBridge.dll</TaskbarUtilityBridgeDll>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,10 +38,26 @@
     <Content Include="Plugins\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="$(TaskbarUtilityPublishDir)\**\*" Condition="'$(TaskbarUtilityPublishDir)' != '' And Exists('$(TaskbarUtilityPublishDir)')" Link="plugins\taskbar\%(RecursiveDir)%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Bundle\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <Target Name="ValidateTaskbarUtilityForMsixBuild" BeforeTargets="PrepareForBuild" Condition="'$(TaskbarUtilityRequired)' == 'true'">
+    <Error Condition="'$(TaskbarUtilityPublishDir)' == ''" Text="TaskbarUtilityPublishDir must point to the Lively.Utility.Taskbar publish directory for Release/MSIX builds." />
+    <Error Condition="'$(TaskbarUtilityPublishDir)' != '' And !Exists('$(TaskbarUtilityExe)')" Text="Lively.Utility.Taskbar.exe was not found in TaskbarUtilityPublishDir: $(TaskbarUtilityPublishDir)" />
+    <Error Condition="'$(TaskbarUtilityPublishDir)' != '' And !Exists('$(TaskbarUtilityBridgeDll)')" Text="Lively.TaskbarBridge.dll was not found for $(TaskbarUtilityBridgeArchitecture): $(TaskbarUtilityBridgeDll)" />
+  </Target>
+
+  <Target Name="ValidateTaskbarUtilityForPublish" BeforeTargets="Publish" Condition="'$(TaskbarUtilityRequired)' == 'true' Or '$(TaskbarUtilityPublishDir)' != ''">
+    <Error Condition="'$(TaskbarUtilityPublishDir)' == ''" Text="TaskbarUtilityPublishDir must point to the Lively.Utility.Taskbar publish directory for Release/MSIX builds." />
+    <Error Condition="'$(TaskbarUtilityPublishDir)' != '' And !Exists('$(TaskbarUtilityExe)')" Text="Lively.Utility.Taskbar.exe was not found in TaskbarUtilityPublishDir: $(TaskbarUtilityPublishDir)" />
+    <Error Condition="'$(TaskbarUtilityPublishDir)' != '' And !Exists('$(TaskbarUtilityBridgeDll)')" Text="Lively.TaskbarBridge.dll was not found for $(TaskbarUtilityBridgeArchitecture): $(TaskbarUtilityBridgeDll)" />
+  </Target>
 
   <ItemGroup>
     <None Remove="Assets\Plugins\Mpv\LivelyProperties.json" />
@@ -73,6 +98,7 @@
     <Resource Include="Resources\appicon_96.png" />
     <Resource Include="Resources\splash.png" />
   </ItemGroup>
+
 
   <ItemGroup>
     <Compile Update="Properties\Icons.Designer.cs">

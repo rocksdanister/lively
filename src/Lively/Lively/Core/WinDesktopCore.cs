@@ -663,6 +663,7 @@ namespace Lively.Core
                     RefreshWallpaper();
                     RestoreDisconnectedWallpapers();
                     EnsureWorkerWZOrder();
+                    ttbService.Refresh();
                 }
             }
             finally
@@ -1097,6 +1098,7 @@ namespace Lively.Core
                 prevExplorerPid = newExplorerPid;
             }
 
+            ttbService.Refresh();
         }
 
         private async void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
