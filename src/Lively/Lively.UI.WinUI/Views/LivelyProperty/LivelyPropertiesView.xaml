@@ -40,6 +40,7 @@
                 Header="{Binding Text, Mode=OneWay}"
                 Maximum="{Binding Max}"
                 Minimum="{Binding Min}"
+                PointerWheelChanged="SuppressControlWheel"
                 StepFrequency="{Binding Step}"
                 ToolTipService.ToolTip="{Binding Help}"
                 Value="{Binding Value, Mode=TwoWay}" />
@@ -70,6 +71,7 @@
                 behaviors:ComboBoxSelectionChangedBehavior.CommandParameter="{Binding}"
                 Header="{Binding Text}"
                 ItemsSource="{Binding Items}"
+                PointerWheelChanged="SuppressControlWheel"
                 SelectedIndex="{Binding Value, Mode=TwoWay}"
                 ToolTipService.ToolTip="{Binding Help}" />
         </DataTemplate>
