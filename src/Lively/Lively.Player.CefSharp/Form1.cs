@@ -359,6 +359,17 @@ namespace Lively.Player.CefSharp
             settings.CefCommandLineArgs.Add("autoplay-policy", "no-user-gesture-required");
             //disable smtc
             settings.CefCommandLineArgs.Add("disable-features", "HardwareMediaKeyHandling");
+            //Chromium's GPU process creates an "Intermediate D3D Window" for its DirectComposition
+            //presentation. When the wallpaper is reparented under the desktop (Progman/WorkerW)
+            //that window becomes a child in the shell's window tree, so Explorer's synchronous
+            //broadcasts during desktop switches / Start-menu / wallpaper-service ops reach it.
+            //While the GPU thread is compositing it does not pump, and Explorer's SendMessage
+            //hangs the whole shell (WER AppHangXProcB1; verified by a WCT wait chain:
+            //explorer desktop thread -> SendMessage -> blocked CefSharp.BrowserSubprocess GPU
+            //thread owning the "Intermediate D3D Window"). That window is a D3D11-presentation
+            //artifact; forcing ANGLE onto its OpenGL backend avoids it while keeping the surface
+            //GPU-rendered and repainting continuously.
+            settings.CefCommandLineArgs.Add("use-angle", "gl");
             settings.LogFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Lively Wallpaper", "Cef", "logfile.txt");
 
