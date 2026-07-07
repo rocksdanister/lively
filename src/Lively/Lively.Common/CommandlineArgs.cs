@@ -56,6 +56,11 @@ namespace Lively.Common
             Required = false,
             HelpText = "Set wallpaper placement method (per, span or duplicate).")]
             public string WallpaperArrangement { get; set; }
+
+            [Option("confine-desktop",
+            Required = false,
+            HelpText = "Only show wallpaper on one virtual desktop (desktop Guid, \"current\" or \"off\").")]
+            public string ConfineVirtualDesktop { get; set; }
         }
 
         [Verb("setwp", HelpText = "Apply wallpaper.")]

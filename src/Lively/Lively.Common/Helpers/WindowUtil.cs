@@ -316,6 +316,14 @@ namespace Lively.Common.Helpers
             NativeMethods.SetWindowLongPtr(new HandleRef(null, hwnd), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)newStyle);
         }
 
+        public static void RemoveWindowStyle(IntPtr hwnd, long styleToRemove)
+        {
+            long currentStyle = NativeMethods.GetWindowLongPtr(hwnd, (int)NativeMethods.GWL.GWL_STYLE).ToInt64();
+            long newStyle = currentStyle & ~styleToRemove;
+
+            NativeMethods.SetWindowLongPtr(new HandleRef(null, hwnd), (int)NativeMethods.GWL.GWL_STYLE, (IntPtr)newStyle);
+        }
+
         public static void SetWindowExStyle(IntPtr hwnd, long exStyleToAdd)
         {
             long currentExStyle = NativeMethods.GetWindowLongPtr(hwnd, (int)NativeMethods.GWL.GWL_EXSTYLE).ToInt64();

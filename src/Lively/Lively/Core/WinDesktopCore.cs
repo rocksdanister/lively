@@ -1,4 +1,4 @@
-﻿using Lively.Common;
+using Lively.Common;
 using Lively.Common.Com;
 using Lively.Common.Exceptions;
 using Lively.Common.Extensions;
@@ -57,6 +57,9 @@ namespace Lively.Core
         private readonly RawInputMsgWindow rawInput;
         private readonly WndProcMsgWindow WndProc;
         private readonly IDisplayManager displayManager;
+        private readonly IVirtualDesktopService virtualDesktop;
+        private readonly Timer desktopRefreshTimer;
+        private const int desktopRefreshDelayMs = 300;
         private readonly WindowEventHook workerWHook;
 
         public WinDesktopCore(IUserSettingsService userSettings,
@@ -66,6 +69,7 @@ namespace Lively.Core
             IWatchdogService watchdog,
             RawInputMsgWindow rawInput,
             WndProcMsgWindow wndProc,
+            IVirtualDesktopService virtualDesktop,
             IWallpaperPluginFactory wallpaperFactory,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
@@ -76,6 +80,7 @@ namespace Lively.Core
             this.playback = playback;
             this.rawInput = rawInput;
             this.WndProc = wndProc;
+            this.virtualDesktop = virtualDesktop;
             this.wallpaperFactory = wallpaperFactory;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
@@ -97,6 +102,20 @@ namespace Lively.Core
 
             // Initialize desktop and update handles.
             SetupDesktopLayer();
+
+            desktopRefreshTimer = new Timer(_ =>
+            {
+                try
+                {
+                    RefreshDesktop();
+                }
+                catch (Exception e)
+                {
+                    Logger.Error($"Deferred desktop refresh failed: {e}");
+                }
+            }, null, Timeout.Infinite, Timeout.Infinite);
+            this.virtualDesktop.CurrentDesktopChanged += (s, e) => UpdateVirtualDesktopVisibility();
+            this.virtualDesktop.Start();
 
             try
             {
@@ -366,6 +385,7 @@ namespace Lively.Core
                             }
                             break;
                     }
+                    UpdateVirtualDesktopVisibility();
                     WallpaperChanged?.Invoke(this, EventArgs.Empty);
                 }
                 catch (WallpaperPluginFactory.MsixNotAllowedException ex1)
@@ -615,6 +635,137 @@ namespace Lively.Core
         private void SetupDesktop_WallpaperChanged(object sender, EventArgs e)
         {
             SaveWallpaperLayout();
+        }
+
+        /// <summary>
+        /// Applies the WallpaperVirtualDesktopId confinement: while another virtual desktop
+        /// is active the wallpaper windows are hidden and detached from the desktop tree so
+        /// that desktop's own static wallpaper stays visible, and re-attached when the
+        /// confined desktop becomes active again.
+        /// </summary>
+        public void UpdateVirtualDesktopVisibility()
+        {
+            try
+            {
+                var confined = Guid.TryParse(userSettings.Settings.WallpaperVirtualDesktopId, out Guid targetId);
+                var current = virtualDesktop.CurrentDesktopId;
+                // When the active desktop is unknown always show.
+                var visible = !confined || current == Guid.Empty || current == targetId;
+
+                // Confinement DETACHES the wallpaper window from the desktop tree instead of
+                // hiding it in place. On the raised-desktop layout the wallpaper WorkerW is a
+                // child of Progman, inside the tree Explorer's desktop thread walks
+                // synchronously on desktop switches, Start-menu opens, and Desktop Wallpaper
+                // service operations. A hidden-in-place Chromium child stops pumping messages
+                // and those walks deadlock Explorer (WER AppHangXProcB1: explorer.exe blocked
+                // on CefSharp.BrowserSubprocess / the wallpaper service). Detached and hidden,
+                // the window is simply not in the tree to be waited on. Same SetParent idiom
+                // the wallpaper previews already use (WallpaperPreview.xaml.cs).
+                lock (parkedWallpapersLock)
+                {
+                    // Closed wallpapers never restore; drop their entries so a recycled HWND
+                    // can't inherit a stale parked state.
+                    foreach (var dead in parkedWallpapers.Keys.Where(h => !NativeMethods.IsWindow(h)).ToList())
+                        parkedWallpapers.Remove(dead);
+
+                    foreach (var wallpaper in Wallpapers)
+                    {
+                        if (visible)
+                            RestoreConfinedWallpaper(wallpaper.Handle);
+                        else
+                            ParkConfinedWallpaper(wallpaper.Handle);
+                    }
+                }
+
+                // Clear frames persisting on the desktop after hiding. SPI_SETDESKWALLPAPER
+                // is a heavyweight synchronous shell call, so defer it until the switch (and
+                // any rapid switch burst) settles rather than issuing it while Explorer is
+                // busy; becoming visible again first makes the cleanup moot and cancels it.
+                if (!visible && Wallpapers.Count > 0)
+                    desktopRefreshTimer?.Change(desktopRefreshDelayMs, Timeout.Infinite);
+                else
+                    desktopRefreshTimer?.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+            catch (Exception e)
+            {
+                Logger.Error($"Failed to update virtual desktop visibility: {e}");
+            }
+        }
+
+        // Wallpaper windows detached from the desktop tree by confinement, with the
+        // workerW-relative rect to restore on re-attach. Reached from the virtual-desktop
+        // watcher thread and the wallpaper-loading path, hence the lock.
+        private readonly object parkedWallpapersLock = new object();
+        private readonly Dictionary<IntPtr, NativeMethods.RECT> parkedWallpapers = new();
+
+        private void ParkConfinedWallpaper(IntPtr handle)
+        {
+            if (handle == IntPtr.Zero || parkedWallpapers.ContainsKey(handle))
+                return;
+
+            // Store the rect relative to the window's desktop parent (progman on the
+            // raised layout, workerW otherwise) so restore lands it back exactly.
+            var desktopParent = isRaisedDesktopWithLayeredShellView ? progman : workerW;
+            NativeMethods.GetWindowRect(handle, out NativeMethods.RECT rect);
+            NativeMethods.GetWindowRect(desktopParent, out NativeMethods.RECT parentRect);
+            rect.Left -= parentRect.Left; rect.Right -= parentRect.Left;
+            rect.Top -= parentRect.Top; rect.Bottom -= parentRect.Top;
+            // Hide BEFORE detaching so the window never paints as a top-level window.
+            // Synchronous is fine here: this runs on our watcher thread, so if the wallpaper
+            // process answers slowly WE wait, Explorer doesn't.
+            NativeMethods.ShowWindow(handle, (uint)NativeMethods.SHOWWINDOW.SW_HIDE);
+            if (WindowUtil.TrySetParent(handle, IntPtr.Zero))
+            {
+                if (isRaisedDesktopWithLayeredShellView)
+                {
+                    // Per the SetParent docs, un-parenting must also swap WS_CHILD for
+                    // WS_POPUP so the window is a coherent top-level window again. A
+                    // WS_CHILD window left parented to the desktop corrupts the DWM
+                    // redirection state the layered wallpaper child relies on, wedging the
+                    // wallpaper's GPU presentation thread - the next synchronous message
+                    // Explorer sends it then hangs the shell (confirmed by a WCT wait
+                    // chain: explorer SendMessage -> blocked wallpaper GPU thread).
+                    WindowUtil.RemoveWindowStyle(handle, NativeMethods.WindowStyles.WS_CHILD);
+                    WindowUtil.SetWindowStyle(handle, NativeMethods.WindowStyles.WS_POPUP);
+                }
+                parkedWallpapers[handle] = rect;
+                Logger.Info($"Confinement parked wallpaper {handle} out of the desktop tree.");
+            }
+            else
+            {
+                // Detach failed: a hidden window left in the desktop tree is the exact
+                // Explorer-hang hazard, so undo the hide rather than leave it parked in place.
+                NativeMethods.ShowWindow(handle, (uint)NativeMethods.SHOWWINDOW.SW_SHOWNA);
+                Logger.Error($"Confinement failed to detach wallpaper {handle}; left visible.");
+            }
+        }
+
+        private void RestoreConfinedWallpaper(IntPtr handle)
+        {
+            if (handle == IntPtr.Zero || !parkedWallpapers.TryGetValue(handle, out NativeMethods.RECT rect))
+                return;
+
+            // Undo the park-time style swap, then re-run the FULL attach ritual via
+            // TryAttachToDesktop (WS_CHILD + layered alpha applied BEFORE SetParent,
+            // correct parent per layout, z-ordered under SHELLDLL_DefView). A bare
+            // SetParent is not enough: it skips the layered/redirection setup the raised
+            // desktop requires and leaves the window in the wedged-GPU state above.
+            if (isRaisedDesktopWithLayeredShellView)
+                WindowUtil.RemoveWindowStyle(handle, NativeMethods.WindowStyles.WS_POPUP);
+            if (TryAttachToDesktop(handle))
+            {
+                parkedWallpapers.Remove(handle);
+                NativeMethods.SetWindowPos(handle, 0, rect.Left, rect.Top,
+                    rect.Right - rect.Left, rect.Bottom - rect.Top,
+                    (int)(NativeMethods.SetWindowPosFlags.SWP_NOZORDER
+                        | NativeMethods.SetWindowPosFlags.SWP_NOACTIVATE
+                        | NativeMethods.SetWindowPosFlags.SWP_SHOWWINDOW));
+                Logger.Info($"Confinement restored wallpaper {handle} to the desktop tree.");
+            }
+            else
+            {
+                Logger.Error($"Confinement failed to re-attach wallpaper {handle}; retrying next switch.");
+            }
         }
 
         readonly object layoutWriteLock = new object();
@@ -1296,6 +1447,7 @@ namespace Lively.Core
                 if (disposing)
                 {
                     WallpaperChanged -= SetupDesktop_WallpaperChanged;
+                    desktopRefreshTimer?.Dispose();
                     workerWHook?.Dispose();
                     CloseAllWallpapers(false);
                     RefreshDesktop();

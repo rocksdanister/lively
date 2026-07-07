@@ -232,6 +232,7 @@ namespace Lively
                 .AddSingleton<ISystray, Systray>()
                 .AddSingleton<IAppUpdaterService, GithubUpdaterService>()
                 .AddSingleton<ITransparentTbService, TranslucentTBService>()
+                .AddSingleton<IVirtualDesktopService, VirtualDesktopService>()
                 .AddSingleton<RawInputMsgWindow>()
                 .AddSingleton<WndProcMsgWindow>()
                 .AddSingleton<WinDesktopCoreServer>()

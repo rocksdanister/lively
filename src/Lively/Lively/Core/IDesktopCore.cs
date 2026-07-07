@@ -25,6 +25,10 @@ namespace Lively.Core
         void SendMessageWallpaper(string info_path, IpcMessage msg);
         void SendMessageWallpaper(DisplayMonitor display, string info_path, IpcMessage msg);
         Task SetWallpaperAsync(LibraryModel wallpaper, DisplayMonitor display);
+        /// <summary>
+        /// Apply the WallpaperVirtualDesktopId confinement setting to running wallpapers.
+        /// </summary>
+        void UpdateVirtualDesktopVisibility();
 
         /// <summary>
         /// Wallpaper set/removed.

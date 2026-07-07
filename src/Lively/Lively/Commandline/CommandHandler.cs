@@ -11,6 +11,7 @@ using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Models.Message;
+using Lively.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -140,6 +141,33 @@ namespace Lively.Commandline
                     _ => WallpaperArrangement.per,
                 };
                 userSettings.Save<SettingsModel>();
+            }
+
+            if (!string.IsNullOrEmpty(opts.ConfineVirtualDesktop))
+            {
+                var value = opts.ConfineVirtualDesktop.Trim();
+                if (value.Equals("off", StringComparison.OrdinalIgnoreCase))
+                {
+                    userSettings.Settings.WallpaperVirtualDesktopId = string.Empty;
+                }
+                else if (value.Equals("current", StringComparison.OrdinalIgnoreCase))
+                {
+                    var currentId = VirtualDesktopService.ReadCurrentDesktopId();
+                    if (currentId != Guid.Empty)
+                        userSettings.Settings.WallpaperVirtualDesktopId = currentId.ToString();
+                    else
+                        Logger.Error("Cannot confine wallpaper, active virtual desktop unknown.");
+                }
+                else if (Guid.TryParse(value, out Guid desktopId))
+                {
+                    userSettings.Settings.WallpaperVirtualDesktopId = desktopId.ToString();
+                }
+                else
+                {
+                    Logger.Error($"Invalid confine-desktop value: {value}");
+                }
+                userSettings.Save<SettingsModel>();
+                desktopCore.UpdateVirtualDesktopVisibility();
             }
         }
 
