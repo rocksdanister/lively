@@ -1,4 +1,4 @@
-﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Core;
 using System;
@@ -51,13 +51,23 @@ namespace Lively.Extensions
         /// <param name="element"></param>
         public static void SetProgramToFramework(this Window window, IntPtr pgmHandle, FrameworkElement element)
         {
+            if (pgmHandle == IntPtr.Zero || !NativeMethods.IsWindow(pgmHandle))
+            {
+                return;
+            }
+
             IntPtr previewHwnd = new WindowInteropHelper(window).Handle;
+            if (previewHwnd == IntPtr.Zero || !NativeMethods.IsWindow(previewHwnd))
+            {
+                return;
+            }
+
             NativeMethods.RECT prct = new NativeMethods.RECT();
             var reviewPanel = GetAbsolutePlacement(element, true);
 
             if (!NativeMethods.SetWindowPos(pgmHandle, 1, (int)reviewPanel.Left, (int)reviewPanel.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
             {
-                throw new Win32Exception(LogUtil.GetWin32Error("Failed to set parent (1)"));
+                return;
             }
 
             //ScreentoClient is no longer used, this supports windows mirrored mode also, calculate new relative position of window w.r.t parent.
@@ -65,10 +75,7 @@ namespace Lively.Extensions
             WindowUtil.TrySetParent(pgmHandle, previewHwnd);
 
             //Position the wp window relative to the new parent window(workerw).
-            if (!NativeMethods.SetWindowPos(pgmHandle, 1, prct.Left, prct.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010))
-            {
-                throw new Win32Exception(LogUtil.GetWin32Error("Failed to set parent (2)"));
-            }
+            _ = NativeMethods.SetWindowPos(pgmHandle, 1, prct.Left, prct.Top, (int)reviewPanel.Width, (int)reviewPanel.Height, 0 | 0x0010);
         }
 
         //https://stackoverflow.com/questions/386731/get-absolute-position-of-element-within-the-window-in-wpf

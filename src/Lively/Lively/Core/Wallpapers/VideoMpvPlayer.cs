@@ -1,4 +1,4 @@
-﻿using ImageMagick;
+using ImageMagick;
 using Lively.Common;
 using Lively.Common.Exceptions;
 using Lively.Common.Extensions;
@@ -120,8 +120,24 @@ namespace Lively.Core.Wallpapers
             cmdArgs.Append("--input-ipc-server=" + ipcServerName + " ");
             // Integer scaler for sharpness
             cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.gif ? "--scale=nearest " : " ");
-            // GPU decode preference
-            cmdArgs.Append(isHwAccel ? "--hwdec=auto-safe " : "--hwdec=no ");
+            // GPU decode preference and Vulkan API rendering
+            if (isHwAccel)
+            {
+                cmdArgs.Append("--hwdec=auto-safe ");
+                cmdArgs.Append("--gpu-api=vulkan ");
+                cmdArgs.Append("--vo=gpu-next ");
+                cmdArgs.Append("--swapchain-depth=2 ");
+            }
+            else
+            {
+                cmdArgs.Append("--hwdec=no ");
+            }
+            // RAM optimizations: reduce demuxer memory buffer, readahead duration, and enable direct rendering
+            cmdArgs.Append("--demuxer-max-bytes=15M ");
+            cmdArgs.Append("--demuxer-readahead-secs=2 ");
+            cmdArgs.Append("--demuxer-max-back-bytes=5M ");
+            cmdArgs.Append("--vd-lavc-dr=yes ");
+            cmdArgs.Append("--hr-seek=no ");
             // Select which metadata to use for the --target-colorspace-hint, requires gpu-next vo.
             cmdArgs.Append($"--target-colorspace-hint-mode={GetMpvTargetColorSpace(colorSpaceMode)} ");
             // Avoid global config file %APPDATA%\mpv\mpv.conf

@@ -1,4 +1,4 @@
-﻿using CefSharp;
+using CefSharp;
 using CefSharp.SchemeHandler;
 using CefSharp.WinForms;
 using CommandLine;
@@ -297,6 +297,7 @@ namespace Lively.Player.CefSharp
                     Formatting.Indented);
             }
             isPaused = true;
+            MemoryUtil.OptimizeMemory();
         }
 
         private void HandleResume()
@@ -359,6 +360,15 @@ namespace Lively.Player.CefSharp
             settings.CefCommandLineArgs.Add("autoplay-policy", "no-user-gesture-required");
             //disable smtc
             settings.CefCommandLineArgs.Add("disable-features", "HardwareMediaKeyHandling");
+            // Enable Vulkan GPU acceleration & ANGLE backend
+            settings.CefCommandLineArgs.Add("use-angle", "vulkan");
+            settings.CefCommandLineArgs.Add("enable-features", "Vulkan,VulkanFromANGLE,DefaultANGLEVulkan");
+            settings.CefCommandLineArgs.Add("enable-gpu-rasterization", "1");
+            settings.CefCommandLineArgs.Add("enable-zero-copy", "1");
+            settings.CefCommandLineArgs.Add("ignore-gpu-blocklist", "1");
+            // Constrain JavaScript heap RAM & process count
+            settings.CefCommandLineArgs.Add("js-flags", "--max-old-space-size=128");
+            settings.CefCommandLineArgs.Add("renderer-process-limit", "1");
             settings.LogFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Lively Wallpaper", "Cef", "logfile.txt");
 

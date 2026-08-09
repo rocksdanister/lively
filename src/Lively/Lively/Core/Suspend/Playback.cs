@@ -1,4 +1,4 @@
-﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Services;
 using Lively.Core.Display;
@@ -370,6 +370,7 @@ namespace Lively.Core.Suspend
         private void PauseWallpapers()
         {
             WallpaperControlChanged?.Invoke(this, new WallpaperControlEventArgs(WallpaperControlAction.Pause));
+            MemoryUtil.OptimizeMemory();
         }
 
         private void PlayWallpapers()
@@ -380,6 +381,7 @@ namespace Lively.Core.Suspend
         private void PauseWallpaper(DisplayMonitor display)
         {
             WallpaperControlChanged?.Invoke(this, new WallpaperControlEventArgs(WallpaperControlAction.Pause, display));
+            MemoryUtil.OptimizeMemory();
         }
 
         private void PlayWallpaper(DisplayMonitor display)

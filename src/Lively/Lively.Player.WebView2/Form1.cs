@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 using Lively.Common;
 using Lively.Common.Extensions;
 using Lively.Common.Helpers;
@@ -140,7 +140,16 @@ namespace Lively.Player.WebView2
                 // Allow media autoplay even if not muted.
                 "--autoplay-policy=no-user-gesture-required " +
                 // Disable SMTC.
-                "--disable-features=HardwareMediaKeyHandling ";
+                "--disable-features=HardwareMediaKeyHandling " +
+                // Enable Vulkan GPU acceleration & ANGLE backend
+                "--use-angle=vulkan " +
+                "--enable-features=Vulkan,VulkanFromANGLE,DefaultANGLEVulkan " +
+                "--enable-gpu-rasterization " +
+                "--enable-zero-copy " +
+                "--ignore-gpu-blocklist " +
+                // Constrain JavaScript heap RAM & process count for web wallpapers
+                "--js-flags=\"--max-old-space-size=128\" " +
+                "--renderer-process-limit=1 ";
             CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions(webViewStartArgs);
             // WebView2 does not have in-memory mode, ref: https://github.com/MicrosoftEdge/WebView2Feedback/issues/3637
             // Custom user data folder, ref: https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder
@@ -593,6 +602,7 @@ namespace Lively.Player.WebView2
                         Formatting.Indented);
             }
             isPaused = true;
+            MemoryUtil.OptimizeMemory();
         }
 
         private async Task HandleResume()
