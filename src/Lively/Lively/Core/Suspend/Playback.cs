@@ -1,4 +1,4 @@
-﻿using Lively.Common.Helpers;
+using Lively.Common.Helpers;
 using Lively.Common.Helpers.Pinvoke;
 using Lively.Common.Services;
 using Lively.Core.Display;
@@ -191,6 +191,11 @@ namespace Lively.Core.Suspend
                 {
                     case DisplayPause.perdisplay:
                         {
+                            var visibleWindows = WindowUtil.GetVisibleTopLevelWindows();
+                            var monitorWindowsMap = visibleWindows
+                                .GroupBy(hwnd => displayManager.GetDisplayMonitorFromHWnd(hwnd))
+                                .ToDictionary(g => g.Key, g => g.ToList());
+
                             foreach (var display in displayManager.DisplayMonitors)
                             {
                                 if (foregroundDisplay.Equals(display))
@@ -201,8 +206,15 @@ namespace Lively.Core.Suspend
                                         PlayWallpaper(foregroundDisplay);
                                 }
                                 else
-                                { 
-                                    PlayWallpaper(display); 
+                                {
+                                    var windowsOnDisplay = monitorWindowsMap.GetValueOrDefault(display) ?? [];
+                                    var isDisplayDesktop = windowsOnDisplay.Count == 0;
+                                    var isCoveredOther = WindowUtil.IsDisplayCoveredByAnyWindow(windowsOnDisplay, display.WorkingArea);
+
+                                    if (isFullScreenPause && ((isFocusedAppPause && !isDisplayDesktop) || isCoveredOther))
+                                        PauseWallpaper(display);
+                                    else
+                                        PlayWallpaper(display);
                                 }
                             }
                         }
@@ -235,7 +247,7 @@ namespace Lively.Core.Suspend
                 .ToDictionary(g => g.Key, g => g.ToList());
             var effectiveDisplayPauseSetting = userSettings.Settings.WallpaperArrangement switch
             {
-                WallpaperArrangement.duplicate => DisplayPause.all,
+                WallpaperArrangement.span => DisplayPause.all,
                 _ => userSettings.Settings.DisplayPauseSettings,
             };
 
