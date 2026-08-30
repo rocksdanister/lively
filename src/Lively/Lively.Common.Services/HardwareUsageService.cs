@@ -50,7 +50,7 @@ namespace Lively.Common.Services
                 //hw info
                 perfData.NameCpu = SystemInfo.GetCpu().Count != 0 ? SystemInfo.GetCpu()[0] : null;
                 perfData.NameGpu = SystemInfo.GetGpu().Count != 0 ? SystemInfo.GetGpu()[0] : null;
-                perfData.NameNetCard = GetNetworkCards().Count != 0 ? GetNetworkCards()[0] : null;
+                perfData.NameNetCard = GetPrimaryNetworkCard();
                 perfData.TotalRam = SystemInfo.GetTotalInstalledMemory();
 
                 //counters
@@ -62,7 +62,6 @@ namespace Lively.Common.Services
 
                 if (perfData.NameNetCard != null)
                 {
-                    //only considering the first card for now.
                     netDownCounter = new PerformanceCounter("Network Interface",
                                    "Bytes Received/sec", perfData.NameNetCard);
 
@@ -236,6 +235,44 @@ namespace Lively.Common.Services
             }
             catch { }
             return result;
+        }
+
+        /// <summary>
+        /// Network interface that is actually connected, null if there is none.
+        /// </summary>
+        /// <remarks>
+        /// The first instance is not necessarily a usable adapter. Disconnected cards are
+        /// listed as well, and an adapter whose description contains '#' (Windows appends
+        /// it to disambiguate duplicates) additionally produces a phantom base instance,
+        /// because '#' is the separator PDH itself uses for duplicate instance names.
+        /// Both always report zero, so pick by link speed instead of by position.
+        /// </remarks>
+        public static string GetPrimaryNetworkCard()
+        {
+            var cards = GetNetworkCards();
+            string primary = null;
+            var maxBandwidth = 0f;
+
+            foreach (var card in cards)
+            {
+                try
+                {
+                    using (var bandwidth = new PerformanceCounter("Network Interface",
+                                       "Current Bandwidth", card))
+                    {
+                        var value = bandwidth.NextValue();
+                        if (value > maxBandwidth)
+                        {
+                            maxBandwidth = value;
+                            primary = card;
+                        }
+                    }
+                }
+                catch { }
+            }
+
+            //no counter responded, keep the previous behaviour rather than showing nothing.
+            return primary ?? (cards.Count != 0 ? cards[0] : null);
         }
 
         #endregion // public regions
