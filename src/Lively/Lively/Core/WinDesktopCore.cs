@@ -10,7 +10,9 @@ using Lively.Common.Services;
 using Lively.Core.Display;
 using Lively.Core.Suspend;
 using Lively.Core.Watchdog;
+using Lively.Extensions;
 using Lively.Factories;
+using Lively.Helpers;
 using Lively.Models;
 using Lively.Models.Enums;
 using Lively.Models.Message;
@@ -26,6 +28,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using WinEventHook;
+using Timer = System.Timers.Timer;
 
 namespace Lively.Core
 {
@@ -48,12 +51,18 @@ namespace Lively.Core
         public event EventHandler WallpaperChanged;
         public event EventHandler WallpaperReset;
 
+        // Screensaver
+        private readonly Timer screensaverIdleTimer = new();
+        private readonly uint screensaverIdleWaitTimeMin = 300000;
+        private uint screensaverIdleWaitTime = 300000;
+
         private readonly IUserSettingsService userSettings;
         private readonly IWallpaperPluginFactory wallpaperFactory;
         private readonly IWallpaperLibraryFactory wallpaperLibraryFactory;
         private readonly ITransparentTbService ttbService;
         private readonly IWatchdogService watchdog;
         private readonly IPlayback playback;
+        private readonly IScreensaverService screensaver;
         private readonly RawInputMsgWindow rawInput;
         private readonly WndProcMsgWindow WndProc;
         private readonly IDisplayManager displayManager;
@@ -63,9 +72,11 @@ namespace Lively.Core
             IDisplayManager displayManager,
             ITransparentTbService ttbService,
             IPlayback playback,
+            IScreensaverService screensaver,
             IWatchdogService watchdog,
             RawInputMsgWindow rawInput,
             WndProcMsgWindow wndProc,
+            //IScreensaverService screensaver,
             IWallpaperPluginFactory wallpaperFactory,
             IWallpaperLibraryFactory wallpaperLibraryFactory)
         {
@@ -76,6 +87,7 @@ namespace Lively.Core
             this.playback = playback;
             this.rawInput = rawInput;
             this.WndProc = wndProc;
+            this.screensaver = screensaver;
             this.wallpaperFactory = wallpaperFactory;
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
@@ -94,6 +106,7 @@ namespace Lively.Core
             this.rawInput.MouseDownRaw += RawInput_MouseDownRaw;
             this.rawInput.MouseUpRaw += RawInput_MouseUpRaw;
             this.rawInput.KeyboardClickRaw += RawInput_KeyboardClickRaw;
+            screensaverIdleTimer.Elapsed += ScreensaverIdleTimer_Elapsed;
 
             // Initialize desktop and update handles.
             SetupDesktopLayer();
@@ -117,6 +130,11 @@ namespace Lively.Core
             {
                 Logger.Error($"WorkerW hook failed: {ex.Message}");
             }
+
+            // Screensaver
+            screensaverIdleTimer.Interval = screensaverIdleWaitTimeMin;
+            if (userSettings.Settings.ScreensaverIdleDelay != ScreensaverIdleTime.none)
+                StartScreensaverIdleTimer(userSettings.Settings.ScreensaverIdleDelay.ToMilliseconds());
         }
 
         private void SetupDesktopLayer()
@@ -1271,6 +1289,50 @@ namespace Lively.Core
             catch (Exception ex)
             {
                 Logger.Error(ex);
+            }
+        }
+
+        public void StartScreensaverIdleTimer(uint idleTime)
+        {
+            if (idleTime == 0)
+            {
+                StopScreensaverIdleTimer();
+            }
+            else
+            {
+                Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
+                screensaverIdleWaitTime = idleTime;
+                screensaverIdleTimer.Start();
+            }
+        }
+
+        public void StopScreensaverIdleTimer()
+        {
+            if (screensaverIdleTimer.Enabled)
+            {
+                Logger.Info("Stopping screensaver idle wait..");
+                screensaverIdleTimer.Stop();
+            }
+        }
+
+        private async void ScreensaverIdleTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            // Only start if input idle, non exclusive window and smtc media playback.
+            if (SystemIdleUtil.GetLastInputTime() >= screensaverIdleWaitTime
+                && !SystemIdleUtil.IsExclusiveFullScreenAppRunning()
+                && !await SystemIdleUtil.IsSmtcPlayingAsync())
+            {
+                // Check active audio session for application not supporting smtc (games and older media players.)
+                if (!userSettings.Settings.ScreensaverAudioIdleCheck ||
+                    SystemIdleUtil.GetActiveAudioSessionPids().All(p => Wallpapers.Any(w => w.Pid != null && w.Pid == p)))
+                {
+                    // All audio is from wallpapers.
+                    await screensaver.StartAsync(userSettings.Settings.ScreensaverFadeIn);
+                }
+                else
+                {
+                    // Audio session active, skipping screensaver.
+                }
             }
         }
 

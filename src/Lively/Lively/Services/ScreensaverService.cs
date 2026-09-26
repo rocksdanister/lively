@@ -37,9 +37,7 @@ namespace Lively.Services
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly List<Window> blankWindows = [];
         private readonly List<WallpaperPreview> screensaverWindows = [];
-        private readonly Timer idleTimer = new();
         private DwmThumbnailWindow dwmThumbnailWindow;
-        private uint idleWaitTime = 300000;
         private bool startAsyncExecuting, stopAsyncExecuting;
         private DateTime? startTime;
 
@@ -61,11 +59,6 @@ namespace Lively.Services
             this.wallpaperLibraryFactory = wallpaperLibraryFactory;
 
             displayManager.DisplayUpdated += DisplayManager_DisplayUpdated;
-            idleTimer.Elapsed += IdleCheckTimer;
-            idleTimer.Interval = 30000;
-
-            if (userSettings.Settings.ScreensaverIdleDelay != ScreensaverIdleTime.none)
-                StartIdleTimer(userSettings.Settings.ScreensaverIdleDelay.ToMilliseconds());
         }
 
         public async Task StartAsync(bool isFadeIn)
@@ -160,29 +153,6 @@ namespace Lively.Services
                     startTime = null;
                 }
             });
-        }
-
-        public void StartIdleTimer(uint idleTime)
-        {
-            if (idleTime == 0)
-            {
-                StopIdleTimer();
-            }
-            else
-            {
-                Logger.Info("Starting screensaver idle wait {0}ms..", idleTime);
-                idleWaitTime = idleTime;
-                idleTimer.Start();
-            }
-        }
-
-        public void StopIdleTimer()
-        {
-            if (idleTimer.Enabled)
-            {
-                Logger.Info("Stopping screensaver idle wait..");
-                idleTimer.Stop();
-            }
         }
 
         private async void DisplayManager_DisplayUpdated(object sender, EventArgs e)
@@ -442,26 +412,6 @@ namespace Lively.Services
             dwmThumbnailWindow = null;
         }
 
-        private async void IdleCheckTimer(object sender, ElapsedEventArgs e)
-        {
-            try
-            {
-                // Only start if input idle, non exclusive window and smtc media playback.
-                // For future improvement can also use naudio WASAPI to check for active audio sessions (skip wallpaper.)
-                if (GetLastInputTime() >= idleWaitTime 
-                    && !IsExclusiveFullScreenAppRunning() 
-                    && !await IsSmtcPlayingAsync())
-                {
-                    await StartAsync(userSettings.Settings.ScreensaverFadeIn);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex.ToString());
-                //StopIdleTimer();
-            }
-        }
-
         /// <summary>
         /// Attaches screensaver preview to preview region. <br>
         /// (To be run in UI thread.)</br>
@@ -572,73 +522,6 @@ namespace Lively.Services
             {
                 throw new Win32Exception(Marshal.GetLastWin32Error());
             }
-        }
-
-        // Fails after 50 days (uint limit.)
-        private static uint GetLastInputTime()
-        {
-            NativeMethods.LASTINPUTINFO lastInputInfo = new NativeMethods.LASTINPUTINFO();
-            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
-            lastInputInfo.dwTime = 0;
-
-            uint envTicks = (uint)Environment.TickCount;
-
-            if (NativeMethods.GetLastInputInfo(ref lastInputInfo))
-            {
-                uint lastInputTick = lastInputInfo.dwTime;
-
-                return (envTicks - lastInputTick);
-            }
-            else
-            {
-                throw new Win32Exception("GetLastInputTime fail.");
-            }
-        }
-
-        private static bool IsExclusiveFullScreenAppRunning()
-        {
-            if (NativeMethods.SHQueryUserNotificationState(out NativeMethods.QUERY_USER_NOTIFICATION_STATE state) == 0)
-            {
-                return state switch
-                {
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_NOT_PRESENT => false,
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_BUSY => false,
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_PRESENTATION_MODE => false,
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_ACCEPTS_NOTIFICATIONS => false,
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_QUIET_TIME => false,
-                    NativeMethods.QUERY_USER_NOTIFICATION_STATE.QUNS_RUNNING_D3D_FULL_SCREEN => true,
-                    _ => false,
-                };
-            }
-            else
-            {
-                throw new Win32Exception("SHQueryUserNotificationState fail.");
-            }
-        }
-
-        private static async Task<bool> IsSmtcPlayingAsync()
-        {
-            try
-            {
-                // GlobalSystemMediaTransportControlsSessionManager.RequestAsync() can hang due to system instability.
-                using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-                var manager = await GlobalSystemMediaTransportControlsSessionManager.RequestAsync().AsTask(cts.Token);
-
-                foreach (var session in manager.GetSessions())
-                {
-                    var status = session.GetPlaybackInfo()?.PlaybackStatus;
-                    if (status == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing)
-                        return true;
-                }
-            }
-            catch (OperationCanceledException ce) {
-                Logger.Warn($"GSMTC not responding, {ce}");
-            }
-            catch(Exception ex) {
-                Logger.Error(ex);
-            }
-
-            return false;
         }
     }
 }

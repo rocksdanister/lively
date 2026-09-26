@@ -26,6 +26,10 @@ namespace Lively.Core
         void SendMessageWallpaper(DisplayMonitor display, string info_path, IpcMessage msg);
         Task SetWallpaperAsync(LibraryModel wallpaper, DisplayMonitor display);
 
+        // Screensaver
+        void StartScreensaverIdleTimer(uint idleTime);
+        void StopScreensaverIdleTimer();
+
         /// <summary>
         /// Wallpaper set/removed.
         /// </summary>

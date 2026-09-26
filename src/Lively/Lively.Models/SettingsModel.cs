@@ -117,6 +117,7 @@ namespace Lively.Models
         public bool ScreensaverFadeIn { get; set; }
         public int ScreensaverGracePeriod { get; set; }
         public int ScreensaverLockWaitTimeout { get; set; }
+        public bool ScreensaverAudioIdleCheck { get; set; }
         public bool KeepAwakeUI { get; set; }
         public bool RememberSelectedScreen { get; set; }
         public bool IsUpdated { get; set; }
@@ -149,6 +150,7 @@ namespace Lively.Models
             ScreensaverType = ScreensaverType.wallpaper;
             ScreensaverGracePeriod = 5;
             ScreensaverLockWaitTimeout = 5;
+            ScreensaverAudioIdleCheck = true;
             AppVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
             AppPreviousVersion = string.Empty;
             Startup = true;
@@ -213,7 +215,7 @@ namespace Lively.Models
             ScreensaverEmptyScreenShowBlack = true;
             ScreensaverLockOnResume = false;
             ScreensaverGlobalVolume = 0;
-            ScreensaverFadeIn = true;
+            ScreensaverFadeIn = false;
             KeepAwakeUI = false;
             RememberSelectedScreen = true;
             IsUpdated = false;

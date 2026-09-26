@@ -10,9 +10,7 @@ namespace Lively.Common.Services
 
         void CreatePreview(IntPtr hwnd);
         Task StartAsync(bool isFadeIn);
-        void StartIdleTimer(uint idleTime);
         Task StopAsync();
-        void StopIdleTimer();
 
         event EventHandler Stopped;
     }

@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Lively.Common.Services;
+using Lively.Core;
 using Lively.Core.Display;
 using Lively.Extensions;
 using Lively.Grpc.Common.Proto.Settings;
@@ -20,7 +21,7 @@ namespace Lively.RPC
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IDisplayManager displayManager;
-        private readonly IScreensaverService screensaverService;
+        private readonly IDesktopCore desktopCore;
         private readonly ITransparentTbService ttbService;
         private readonly IUserSettingsService userSettings;
         private readonly IRunnerService runner;
@@ -32,7 +33,7 @@ namespace Lively.RPC
 
         public UserSettingsServer(IDisplayManager displayManager,
             IUserSettingsService userSettings,
-            IScreensaverService ScreensaverService,
+            IDesktopCore desktopCore,
             IRunnerService runner,
             ISystray sysTray,
             IResourceService i18n,
@@ -40,7 +41,7 @@ namespace Lively.RPC
         {
             this.displayManager = displayManager;
             this.userSettings = userSettings;
-            this.screensaverService = ScreensaverService;
+            this.desktopCore = desktopCore;
             this.ttbService = ttbService;
             this.sysTray = sysTray;
             this.runner = runner;
@@ -128,9 +129,9 @@ namespace Lively.RPC
                 userSettings.Settings.ScreensaverIdleDelay = (Models.Enums.ScreensaverIdleTime)((int)req.ScreensaverIdleWait);
 
                 if (userSettings.Settings.ScreensaverIdleDelay == Models.Enums.ScreensaverIdleTime.none)
-                    screensaverService.StopIdleTimer();
+                    desktopCore.StopScreensaverIdleTimer();
                 else
-                    screensaverService.StartIdleTimer(userSettings.Settings.ScreensaverIdleDelay.ToMilliseconds());
+                    desktopCore.StartScreensaverIdleTimer(userSettings.Settings.ScreensaverIdleDelay.ToMilliseconds());
             }
 
             userSettings.Settings.SavedURL = req.SavedUrl;
