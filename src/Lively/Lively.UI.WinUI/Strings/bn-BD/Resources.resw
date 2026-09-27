@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AudioFocused.Content" xml:space="preserve">
+    <value>অডিও চলবে শুধু যখন ডেস্কটপ ফোকাসে আছে</value>
+  </data>
+  <data name="Audio.Description" xml:space="preserve">
+    <value>সমস্ত ওয়ালপেপারের ভলিউম স্তর</value>
+  </data>
+  <data name="Audio.Header" xml:space="preserve">
+    <value>ভলিউম </value>
+  </data>
+  <data name="AudioGroup.Text" xml:space="preserve">
+    <value>অডিও</value>
+  </data>
+  <data name="Community.Description" xml:space="preserve">
+    <value>অনলাইন আলোচনা ফোরাম</value>
+  </data>
+  <data name="Documentation.Description" xml:space="preserve">
+    <value>এপিআই ডকুমেন্টেশন এবং সাহায্য</value>
+  </data>
+  <data name="DescExplorerCrash" xml:space="preserve">
+    <value>লাইভলি একটি মারাত্মক ত্রুটির সম্মুখীন হয়েছে৷
+
+উইন্ডোজ এক্সপ্লোরার গত ৩০ সেকেন্ডে দুবার রিস্টার্ট হয়েছে! এটি লাইভলি এবং অন্যান্য ডেস্কটপ কাস্টমাইজেশন সফ্টওয়্যার বা উইন্ডোজের মধ্যে একটি দ্বন্দ্ব হতে পারে। আরও সমস্যা এড়াতে, সমস্ত ওয়ালপেপার বন্ধ করা হয়।</value>
+  </data>
+  <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
+    <value>বেমানান প্রোগ্রাম পাওয়া গেছে, টাস্কবার থিমিং অক্ষম করা হয়েছে</value>
+  </data>
+  <data name="Website.Description" xml:space="preserve">
+    <value>Lively Wallpaper এর অফিসিয়াল ওয়েবপেজ</value>
+  </data>
+  <data name="DescOledScreensaverNotice" xml:space="preserve">
+    <value>বেশিরভাগ আধুনিক LCD এবং LED ডিসপ্লে burn-in সমস্যায় ভোগে না, তাই যে কোনও ওয়ালপেপা স্ক্রিনসেভার হিসাবে ব্যবহার করা যেতে পারে।
+
+OLED, Plasma বা CRT ডিসপ্লেগুলির জন্য যা burn-in সংবেদনশীল, এটিকে নিয়মিত গতির ওয়ালপেপার এবং একটি সামগ্রিক অন্ধকার থিম ব্যবহার করার পরামর্শ দেওয়া হয় যা burn-in হ্রাস করতে অনুমিত হয় তবে এই বৈশিষ্ট্যটি পরীক্ষিত নয় এবং এর কার্যকারিতা নিশ্চিত করা যায় না।
+
+Lively এর স্ক্রিনসেভারগুলির মূল উদ্দেশ্য হল আপনার পিসিতে কাস্টমাইজেশনের আরেকটি স্তর যুক্ত করা, আপনার নিজের ঝুঁকিতে burn-in সুরক্ষা হিসাবে স্ক্রিনসেভারগুলি ব্যবহার করা!</value>
+  </data>
+  <data name="ReportBug.Description" xml:space="preserve">
+    <value>সফ্টওয়্যারটির প্রসঙ্গে একটি সমস্যা রিপোর্ট করুন</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Header" xml:space="preserve">
+    <value>ফাইল নির্বাচন করুন</value>
+  </data>
+  <data name="DescriptionAppRules" xml:space="preserve">
+    <value>Wallpaper playback behaviour based on running application</value>
+  </data>
+  <data name="DescriptionCancelQuestion" xml:space="preserve">
+    <value>আপনি কি নিশ্চিতভাবে বাতিল করতে চান?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmation" xml:space="preserve">
+    <value>আপনি কি ডিস্ক থেকে এই ওয়ালপেপারটি স্থায়ীভাবে মুছে ফেলার বিষয়ে নিশ্চিত?</value>
+  </data>
+  <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
+    <value>আপনি কি লাইব্রেরি থেকে এই ওয়ালপেপারটি মুছে ফেলার বিষয়ে নিশ্চিত?</value>
+  </data>
+  <data name="DragDropFile.Text" xml:space="preserve">
+    <value>এখানে ফাইল টেনে আনুন এবং ড্রপ করুন</value>
+  </data>
+  <data name="DescriptionExternalAppWarning" xml:space="preserve">
+    <value>আপনি ওয়ালপেপার হিসাবে একটি বহিরাগত অ্যাপ্লিকেশন খুলছেন. ক্ষতিকারক অ্যাপ্লিকেশন ম্যালওয়্যার, ভাইরাস হোস্ট করতে পারে এবং আপনার সিস্টেমের ক্ষতি করতে পারে৷ যদি এই অ্যাপ্লিকেশনটি একটি বিশ্বস্ত উত্স থেকে আসে তবেই চালিয়ে যান.</value>
+  </data>
+  <data name="MinimizedTray.Text" xml:space="preserve">
+    <value>লাইভলি সিস্টেমট্রে মিনিমাইজ করা হয়েছে, চালিয়ে যাওয়ার জন্য লাইভলি আইকনে ডান ক্লিক করুন।.</value>
+  </data>
+  <data name="DescriptionPleaseRestartLively" xml:space="preserve">
+    <value>সেটিংস পরিবর্তনগুলো কার্যকর করার জন্য "লাইভলি" অ্যাপ্লিকেশনটি পুনরায় চালু করুন।</value>
+  </data>
+  <data name="DescriptionPleaseStop" xml:space="preserve">
+    <value>এগিয়ে যাওয়ার আগে দয়া করে থামুন</value>
+  </data>
+  <data name="DescriptionRecordStart" xml:space="preserve">
+    <value>রেকর্ডিং শুরু করতে চাপুন</value>
+  </data>
+  <data name="DescriptionRestoringWallpaper" xml:space="preserve">
+    <value>বর্তমানে পূর্ববর্তী ওয়ালপেপার (গুলি) পুনরুদ্ধার করা হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন...</value>
+  </data>
+  <data name="DescriptionScreenLayout" xml:space="preserve">
+    <value>ডিসপ্লে বাছুন</value>
+  </data>
+  <data name="DescriptionUpdateAvailable" xml:space="preserve">
+    <value>সফটওয়্যারটির একটি নতুন সংস্করণ পাওয়া যাচ্ছে।</value>
+  </data>
+  <data name="DescriptionWebpageLoad" xml:space="preserve">
+    <value>Enter website link to load, shadertoy.com shader links are supported</value>
+  </data>
+  <data name="DescriptionWelcomeWizard" xml:space="preserve">
+    <value>এই উইজার্ড আপনাকে লাইভলি সেট আপ করা শুরু করবে</value>
+  </data>
+  <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
+    <value>আপনার Windows N/KN সংস্করণে ওয়ালপেপারে ভিডিও প্লেব্যাক সমর্থন করার জন্য অতিরিক্ত কোডেক ডাউনলোডের প্রয়োজন হবে</value>
+  </data>
+  <data name="DescSupperDev" xml:space="preserve">
+    <value>ডেভেলপারকে একটি কফি কিনে সমর্থন করুন</value>
+  </data>
+  <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
+    <value>আপনি লাইভলির বিটা (ডেভেলপার) ভার্সনে পরিবর্তন করতে যাচ্ছেন। আপডেটগুলো প্রায়ই আসবে এবং এতে বাগ থাকতে পারে!</value>
+  </data>
+  <data name="HideSysTray.Description" xml:space="preserve">
+    <value>System-tray আইকন প্রদর্শন, লাইভ্লি চলতে থাকবে আইকন লুকানো অবস্থায়</value>
+  </data>
+  <data name="HideSysTray.Header" xml:space="preserve">
+    <value>সিস্টেম-ট্রে আইকন</value>
+  </data>
+  <data name="Language.Description" xml:space="preserve">
+    <value>নতুন ভাষা প্রয়োগ করতে লাইভলি পুনরায় চালু হবে</value>
+  </data>
+  <data name="Language.Header" xml:space="preserve">
+    <value>ভাষা</value>
+  </data>
+  <data name="LivelyExceptionAppUpdateFail" xml:space="preserve">
+    <value>আপডেট করতে ব্যর্থ; ইনস্টলার ডাউনলোড করার চেষ্টা করুন: https://github.com/rocksdanister/lively/releases</value>
+  </data>
+  <data name="LivelyExceptionDamagedZipFile" xml:space="preserve">
+    <value>ওয়ালপেপার ফাইলটি ক্ষতিগ্রস্ত, অনুগ্রহ করে আবার ডাউনলোড করার চেষ্টা করুন</value>
+  </data>
+  <data name="LivelyExceptionGeneral" xml:space="preserve">
+    <value>ওহো... মনে হচ্ছে কিছু ভুল হয়েছে :(
+এই ত্রুটিটি আরও ভালভাবে বুঝতে এবং সমস্যাটি সমাধান করার জন্য, নির্মাতাকে লগ ফাইলটি প্রদান করুন ৷
+লগ ফাইল শেয়ার করার জন্য নির্দেশাবলী: https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
+    <value>লাইভলি উইন্ডোজ হাই কনট্রাস্ট মোড চলমান অবস্থায় সঠিকভাবে কাজ করতে পারে না!
+উচ্চ কনট্রাস্ট মোড বন্ধ করুন এবং আবার চেষ্টা করুন।</value>
+  </data>
+  <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
+    <value>Media playback failed :(
+Try changing the videoplayer in lively settings.
+
+In order to better understand this error and fix the issue, share the log file with the developer.
+Instructions for sharing log file:
+https://github.com/rocksdanister/lively/wiki</value>
+  </data>
+  <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
+    <value>লাইভলি ওয়ালপেপার ফাইল নয়।</value>
+  </data>
+  <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
+    <value>লাইভলি সঠিকভাবে বন্ধ হয় নি, নিরাপদ কার্যপদ্ধতিতে শুরু করুন।
+আপনি কি পূর্বে চলমান ওয়ালপেপার পুনরুদ্ধার করতে চান?</value>
+  </data>
+  <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
+    <value>দেখে মনে হচ্ছে লাইভলি কাজ করার জন্য কিছু সেটিংস সেট করতে হবে:
+1. রান খুলতে Win + R কী টিপুন,
+2. Run এ SystemPropertiesPerformance.exe টাইপ করুন, পারফরমেন্স অপশন খুলতে "OK" এ ক্লিক করুন।
+3.  "Animate controls and elements inside windows" সক্ষম/চেক করুন (যদি ইতিমধ্যেই চেক করা থাকে, তাহলে আনচেক করুন এবং চেক করুন) এবং প্রয়োগ করুন।
+4. "Apply" ক্লিক করুন তারপর উইন্ডোটি বন্ধ করতে "OK" টিপুন।
+
+যদি Windows 7 হয় - Adjust for best appearance প্রয়োগ করুন; এবং "Apply" করুন।
+তারপরও কাজ না করলে, বন্ধ করে আবার Lively চালু  করুন/ উইন্ডোজ পুনরায় চালু করুন।
+(কিছু insider Windows 10 বিল্ডে কাজ করে না)</value>
+  </data>
+  <data name="Startup.Description" xml:space="preserve">
+    <value>ওয়ালপেপার প্লেব্যাকের জন্য লাইভলিকে ব্যাকগ্রাউন্ডে চালাতে হবে।</value>
+  </data>
+  <data name="Startup.Header" xml:space="preserve">
+    <value>উইন্ডোজ সঙ্গে শুরু হবে</value>
+  </data>
+  <data name="TextAdd" xml:space="preserve">
+    <value>যোগ করুন</value>
+  </data>
+  <data name="TextAllFiles" xml:space="preserve">
+    <value>সব ফাইল</value>
+  </data>
+  <data name="Application.Text" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন</value>
+  </data>
+  <data name="Attribution.Header" xml:space="preserve">
+    <value>কৃতিত্ব</value>
+  </data>
+  <data name="Author.Text" xml:space="preserve">
+    <value>প্রস্তুতকারক</value>
+  </data>
+  <data name="TextBack" xml:space="preserve">
+    <value>পিছনে</value>
+  </data>
+  <data name="TextBrowse" xml:space="preserve">
+    <value>ব্রাউজ করুন</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>বাতিল করুন</value>
+  </data>
+  <data name="TextChangeWallpaper" xml:space="preserve">
+    <value>ওয়ালপেপার পরিবর্তন করুন</value>
+  </data>
+  <data name="TextClose" xml:space="preserve">
+    <value>বন্ধ করুন</value>
+  </data>
+  <data name="CloseWallpapers.Label" xml:space="preserve">
+    <value>বন্ধ করুন</value>
+  </data>
+  <data name="TextCompleted" xml:space="preserve">
+    <value>সম্পন্ন হয়েছে!</value>
+  </data>
+  <data name="ControlPanel.Subtitle" xml:space="preserve">
+    <value>ওয়ালপেপার পরিচালনা করতে এখানে ক্লিক করুন</value>
+  </data>
+  <data name="TextConvertVideo" xml:space="preserve">
+    <value>ভিডিওতে রূপান্তর করুন।</value>
+  </data>
+  <data name="TextCreatePreview" xml:space="preserve">
+    <value>প্রিভিউ তৈরি করুন</value>
+  </data>
+  <data name="Customise.Text" xml:space="preserve">
+    <value>কাস্টমাইজ করুন</value>
+  </data>
+  <data name="CustomiseWallpaper.Label" xml:space="preserve">
+    <value>কাস্টমাইজ করুন</value>
+  </data>
+  <data name="DeleteWallpaper.Text" xml:space="preserve">
+    <value>মুছে ফেলুন</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>বিস্তারিত বর্ণনা</value>
+  </data>
+  <data name="DisplayPauseRuleAllScreen.Content" xml:space="preserve">
+    <value>সকল পর্দা(গুলি)</value>
+  </data>
+  <data name="DisplayPauseRulePerScreen.Content" xml:space="preserve">
+    <value>প্রতি পর্দায়</value>
+  </data>
+  <data name="TextDownload.Content" xml:space="preserve">
+    <value>ডাউনলোড করুন</value>
+  </data>
+  <data name="EditWallpaper.Text" xml:space="preserve">
+    <value>সম্পাদনা</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>ত্রুটি</value>
+  </data>
+  <data name="TextExit" xml:space="preserve">
+    <value>প্রস্থান করুন</value>
+  </data>
+  <data name="ExportWallpaperZip.Text" xml:space="preserve">
+    <value>ফাইল এ সেভ করুন</value>
+  </data>
+  <data name="TextFeatureMissing" xml:space="preserve">
+    <value>লাইভলির এই সংস্করণে কিছু ফীচার ব্যবহারযোগ্য নয়।</value>
+  </data>
+  <data name="TextFileNotFound" xml:space="preserve">
+    <value>ফাইল খুঁজে পাওয়া যায়নি</value>
+  </data>
+  <data name="TextGIF" xml:space="preserve">
+    <value>অ্যানিমেটেড GIF</value>
+  </data>
+  <data name="SourceCode.Description" xml:space="preserve">
+    <value>স্টার দিয়ে সমর্থন জানান</value>
+  </data>
+  <data name="TextGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="TextHelpTranslate.Title" xml:space="preserve">
+    <value>অনুবাদে সাহায্য করুন</value>
+  </data>
+  <data name="TextHours" xml:space="preserve">
+    <value>ঘণ্টা</value>
+  </data>
+  <data name="TextInstall.Content" xml:space="preserve">
+    <value>ইনস্টল করুন</value>
+  </data>
+  <data name="TextKeyboard.Content" xml:space="preserve">
+    <value>কীবোর্ড</value>
+  </data>
+  <data name="TextLastChecked" xml:space="preserve">
+    <value>সর্বশেষ চেক করা হয়েছে</value>
+  </data>
+  <data name="TextLearnMore.Text" xml:space="preserve">
+    <value>আরও জানুন</value>
+  </data>
+  <data name="License.Header" xml:space="preserve">
+    <value>লাইসেন্স</value>
+  </data>
+  <data name="TextMinutes" xml:space="preserve">
+    <value>মিনিট</value>
+  </data>
+  <data name="TextmoreInfo" xml:space="preserve">
+    <value>তথ্য</value>
+  </data>
+  <data name="TextMoreWallpapers" xml:space="preserve">
+    <value>আরো ওয়ালপেপার</value>
+  </data>
+  <data name="TextMouse.Content" xml:space="preserve">
+    <value>মাউস</value>
+  </data>
+  <data name="MouseInteractOnDesktop.Content" xml:space="preserve">
+    <value>যখন অ্যাপ্লিকেশন ফোকাস করা হয় তখন মাউসের প্রতিক্রিয়া</value>
+  </data>
+  <data name="TextNext" xml:space="preserve">
+    <value>পরবর্তী</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>না</value>
+  </data>
+  <data name="TextOff.Content" xml:space="preserve">
+    <value>বন্ধ</value>
+  </data>
+  <data name="TextOK" xml:space="preserve">
+    <value>ঠিক আছে</value>
+  </data>
+  <data name="TextOn.Content" xml:space="preserve">
+    <value>চালু</value>
+  </data>
+  <data name="TextOnline" xml:space="preserve">
+    <value>অনলাইন</value>
+  </data>
+  <data name="TextOpenLively" xml:space="preserve">
+    <value>Lively খুলুন</value>
+  </data>
+  <data name="PauseAlgorithmTypeAllProcess.Content" xml:space="preserve">
+    <value>সমস্ত প্রক্রিয়া</value>
+  </data>
+  <data name="PauseAlgorithmTypeExclusiveMode.Content" xml:space="preserve">
+    <value>Direct3D</value>
+  </data>
+  <data name="PauseAlgorithmTypeForegroundProcess.Content" xml:space="preserve">
+    <value>ফোরগ্রাউন্ড প্রক্রিয়া</value>
+  </data>
+  <data name="TextPauseWallpapers" xml:space="preserve">
+    <value>ওয়ালপেপার থামান</value>
+  </data>
+  <data name="TextPerformanceKill.Content" xml:space="preserve">
+    <value>খতম করুন</value>
+  </data>
+  <data name="TextPerformanceNone.Content" xml:space="preserve">
+    <value>কিছু না</value>
+  </data>
+  <data name="TextPerformancePause.Content" xml:space="preserve">
+    <value>স্থগিত</value>
+  </data>
+  <data name="TextPicture" xml:space="preserve">
+    <value>ছবি</value>
+  </data>
+  <data name="PreviewWallpaper.Text" xml:space="preserve">
+    <value>প্রিভিউ দেখুন</value>
+  </data>
+  <data name="PrivacyPolicy.Header" xml:space="preserve">
+    <value>গোপনীয়তা নীতি</value>
+  </data>
+  <data name="TextProcessingWallpaper" xml:space="preserve">
+    <value>প্রক্রিয়াকরণ</value>
+  </data>
+  <data name="TextRemove" xml:space="preserve">
+    <value>মুছে ফেলুন</value>
+  </data>
+  <data name="TextRule" xml:space="preserve">
+    <value>নিয়ম</value>
+  </data>
+  <data name="TextScreen" xml:space="preserve">
+    <value>স্ক্রিন</value>
+  </data>
+  <data name="SearchBox.PlaceholderText" xml:space="preserve">
+    <value>অনুসন্ধান করুন</value>
+  </data>
+  <data name="SetWallpaper.Text" xml:space="preserve">
+    <value>ওয়ালপেপার রূপে সেট করুন</value>
+  </data>
+  <data name="ShowOnDisk.Text" xml:space="preserve">
+    <value>ফাইল অবস্থান খুলুন</value>
+  </data>
+  <data name="WallpaperSource.Text" xml:space="preserve">
+    <value>সূত্র/উৎস</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>শুরু করুন</value>
+  </data>
+  <data name="TextStop" xml:space="preserve">
+    <value>থামান</value>
+  </data>
+  <data name="StoreReview.Content" xml:space="preserve">
+    <value>আপনি কি লাইভলি ব্যবহার উপভোগ করেন? একটি পর্যালোচনা ছেড়ে দিন :)</value>
+  </data>
+  <data name="TextSupport.Content" xml:space="preserve">
+    <value>সহায়তা</value>
+  </data>
+  <data name="TextTags" xml:space="preserve">
+    <value>ট্যাগসমূহ</value>
+  </data>
+  <data name="TaskbarThemeBlur.Content" xml:space="preserve">
+    <value>ঝাপসা</value>
+  </data>
+  <data name="TaskbarThemeClear.Content" xml:space="preserve">
+    <value>পরিষ্কার</value>
+  </data>
+  <data name="TaskbarThemeColor.Content" xml:space="preserve">
+    <value>রঙ</value>
+  </data>
+  <data name="TaskbarThemeFluent.Content" xml:space="preserve">
+    <value>সাবলীল</value>
+  </data>
+  <data name="TaskbarThemeWallpaper.Content" xml:space="preserve">
+    <value>ওয়ালপেপার</value>
+  </data>
+  <data name="TaskbarThemeWallpaperFluent.Content" xml:space="preserve">
+    <value>সাবলীল ওয়ালপেপার</value>
+  </data>
+  <data name="TextTileSizeLarge" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="TextTileSizeNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextTileSizeSmall" xml:space="preserve">
+    <value>Small</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>শিরোনাম</value>
+  </data>
+  <data name="TextUIHeadless" xml:space="preserve">
+    <value>Headless</value>
+  </data>
+  <data name="TextUILite" xml:space="preserve">
+    <value>Lite</value>
+  </data>
+  <data name="TextUINormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="TextUnsupportedFile" xml:space="preserve">
+    <value>ফাইল ফরম্যাটটি সমর্থিত নয়</value>
+  </data>
+  <data name="TextUpdateAvailable" xml:space="preserve">
+    <value>আপডেট পৌঁছেছে!</value>
+  </data>
+  <data name="TextUpdateCheck.Content" xml:space="preserve">
+    <value>আপডেটের জন্য চেক করুন</value>
+  </data>
+  <data name="TextupdateCheckFail" xml:space="preserve">
+    <value>সফ্টওয়্যার আপডেট পরীক্ষা করতে ব্যর্থ হয়েছে</value>
+  </data>
+  <data name="TextUpdateChecking" xml:space="preserve">
+    <value>আপডেটের জন্য পরীক্ষা করা হচ্ছে</value>
+  </data>
+  <data name="TextUpdateUptodate" xml:space="preserve">
+    <value>সফটওয়্যার আপ টু ডেট!</value>
+  </data>
+  <data name="TextVideo" xml:space="preserve">
+    <value>ভিডিও</value>
+  </data>
+  <data name="TextWallpaperCommandlineArgs" xml:space="preserve">
+    <value>অন্যান্য অপসন</value>
+  </data>
+  <data name="WallpaperFitFill.Content" xml:space="preserve">
+    <value>পূরণ করুন</value>
+  </data>
+  <data name="WallpaperFitNone.Content" xml:space="preserve">
+    <value>কোনটি নয়</value>
+  </data>
+  <data name="WallpaperFitUniform.Content" xml:space="preserve">
+    <value>ইউনিফর্ম</value>
+  </data>
+  <data name="WallpaperFitUniformToFill.Content" xml:space="preserve">
+    <value>ইউনিফর্ম ফিল</value>
+  </data>
+  <data name="WallpaperLayoutDuplicate.Text" xml:space="preserve">
+    <value>হুবহু আরেকটা</value>
+  </data>
+  <data name="WallpaperLayoutPerScreen.Text" xml:space="preserve">
+    <value>স্ক্রিন</value>
+  </data>
+  <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
+    <value>ব্যাপ্তি</value>
+  </data>
+  <data name="WallpaperType.Text" xml:space="preserve">
+    <value>ধরণ</value>
+  </data>
+  <data name="Website.Header" xml:space="preserve">
+    <value>ওয়েবসাইট</value>
+  </data>
+  <data name="TextWebStream" xml:space="preserve">
+    <value/>
+  </data>
+  <data name="TextWelcome" xml:space="preserve">
+    <value>স্বাগতম</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>হ্যাঁ</value>
+  </data>
+  <data name="VideoPlayer.Header" xml:space="preserve">
+    <value>ভিডিও প্লেয়ার</value>
+  </data>
+  <data name="AddWallpaperFileBrowse.Description" xml:space="preserve">
+    <value>সব সমর্থিত ফাইল ফরম্যাট থেকে ওয়ালপেপার বাছুন</value>
+  </data>
+  <data name="EnterUrl.Description" xml:space="preserve">
+    <value>প্রদত্ত URL-এর ওয়েব পেজটি ওয়ালপেপার হিসেবে নির্ধারণ করুন</value>
+  </data>
+  <data name="AppFocus.Description" xml:space="preserve">
+    <value>এপ্লিকেশন ফোকাস এ থাকাকালীন যা হবে নির্বাচন করুন</value>
+  </data>
+  <data name="AppFullScreen.Description" xml:space="preserve">
+    <value>গেমস/এপ্লিকেশন চলাকালীন কী ঘটবে বেছে নিন</value>
+  </data>
+  <data name="AppRules.Description" xml:space="preserve">
+    <value>ওয়ালপেপার থামান এইসব এপ্লিকেশন চলাকালীন</value>
+  </data>
+  <data name="TipAppTheme" xml:space="preserve">
+    <value>Lively adapts to system theme settings, to change appearance goto</value>
+  </data>
+  <data name="BatteryPower.Description" xml:space="preserve">
+    <value>প্লেব্যাক ধরণ পাল্টান যখন AC বিদ্যুৎ সংযোগ বিচ্ছিন্ন হয়</value>
+  </data>
+  <data name="BrowserDebuggingPort.Description" xml:space="preserve">
+    <value>ওয়েবপেজ ওয়ালপেপার ডিবাগ করতে পোর্ট লিখুন; লেখা হলে নেভিগেট করে http://localhost:portnumber এ যান ডেভেলপার কনসোল অ্যাক্সেস করতে</value>
+  </data>
+  <data name="Debug.Description" xml:space="preserve">
+    <value>ডেভেলপার মেনু দেখান</value>
+  </data>
+  <data name="DesktopPicture.Description" xml:space="preserve">
+    <value>এনিমেটেড ওয়ালপেপারের একটি ছবিকে ডেস্কটপ ওয়ালপেপার বানান</value>
+  </data>
+  <data name="DisplayPauseRule.Description" xml:space="preserve">
+    <value>সব স্ক্রিনে ওয়ালপেপার থামান অথবা শুধু যেই স্ক্রিনে এপ্লিকেশন ফোকাসে আছে</value>
+  </data>
+  <data name="ExportLogs.Description" xml:space="preserve">
+    <value>লগ রিপোর্ট ফাইল তৈরি করুন</value>
+  </data>
+  <data name="GifPlayer.Description" xml:space="preserve">
+    <value>Gif ওয়ালপেপারের জন্য ব্যবহৃত প্লেয়ারটি নির্বাচন করুন</value>
+  </data>
+  <data name="TipLivelySetupOnClose" xml:space="preserve">
+    <value>সামনে যেতে সেটআপ শেষ করুন</value>
+  </data>
+  <data name="LockscreenPicture.Description" xml:space="preserve">
+    <value>এনিমেটেড ওয়ালপেপারের একটি ছবিকে লকস্ক্রিন ওয়ালপেপার বানান</value>
+  </data>
+  <data name="PauseAlgorithm.Description" xml:space="preserve">
+    <value>ওয়ালপেপার থামানোর অ্যালগরিদম</value>
+  </data>
+  <data name="PowerSavingModePower.Description" xml:space="preserve">
+    <value>প্লেব্যাক ধরণ পাল্টান উইন্ডোজ পাওার সেভিং মোড চলাকালীন</value>
+  </data>
+  <data name="RemoteDesktopPower.Description" xml:space="preserve">
+    <value>প্লেব্যাক ধরণ পাল্টান রিমোট ডেস্কটপ চলাকালীন</value>
+  </data>
+  <data name="ScreensaverWaitTime.Header" xml:space="preserve">
+    <value>ইনএক্টিভিটি পিরিয়ড এর পর বর্তমান ওয়ালপেপারকে স্ক্রিনসেভার হিসেবে ব্যবহার করুন</value>
+  </data>
+  <data name="StreamWallpaperDetect.Description" xml:space="preserve">
+    <value>সাপোর্ট করা ভিডিও এর স্ট্রিম করার লিংক শনাক্ত হলে ভিডিও প্লেয়ার ব্যবহৃত হবে ওয়েবপেজ লোড করার বদলে</value>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Description" xml:space="preserve">
+    <value>অনলাইন ভিডিও স্ত্রিম করার কোয়ালিটি বেছে নিন</value>
+  </data>
+  <data name="TaskbarTheme.Description" xml:space="preserve">
+    <value>সিস্টেম টাস্কবারের রুপ পরিবর্তন করুন</value>
+  </data>
+  <data name="TipTileSize" xml:space="preserve">
+    <value>Size of the wallpaper tiles in Library</value>
+  </data>
+  <data name="TipUIMode" xml:space="preserve">
+    <value>For low-end systems select Lite mode</value>
+  </data>
+  <data name="VideoHardwareDecode.Description" xml:space="preserve">
+    <value>সম্ভব হলে হার্ডওয়্যার acceleration ব্যবহার করুন</value>
+  </data>
+  <data name="VideoPlayer.Description" xml:space="preserve">
+    <value>ভিডিও ওয়ালপেপারের জন্য ব্যবহৃত প্লেয়ারটি নির্বাচন করুন</value>
+  </data>
+  <data name="WallpaperDir.Description" xml:space="preserve">
+    <value>ওয়ালপেপার ফাইল সংরক্ষণ করতে ব্যবহৃত পথ</value>
+  </data>
+  <data name="WallpaperFit.Description" xml:space="preserve">
+    <value>ওয়ালপেপার আয়তন পরিবর্তনের অ্যালগরিদম</value>
+  </data>
+  <data name="WallpaperInput.Description" xml:space="preserve">
+    <value>ওয়ালপেপারের সাথে ইন্টারঅ্যাক্ট করার ধরণগুলি বেছে নিন</value>
+  </data>
+  <data name="WallpaperLayout.Description" xml:space="preserve">
+    <value>ওয়ালপেপার যেভাবে এপ্লাই করা হবে সংযুক্ত ডিস্প্লে ডিভাইসগুলিতে </value>
+  </data>
+  <data name="TipWallpaperPlayback" xml:space="preserve">
+    <value>ওয়ালপেপার প্লেব্যাক থামান যখন ডেস্কটপ ফোকাসে নেই</value>
+  </data>
+  <data name="WebBrowserDiskCache.Description" xml:space="preserve">
+    <value>অস্থায়ী ফাইলগুলোকে ডিস্কে সংরক্ষণ করুন র‍্যাম এর বদলে</value>
+  </data>
+  <data name="WebBrowser.Description" xml:space="preserve">
+    <value>এইচটিএমএল ওয়ালপেপার এর জন্য ব্যবহৃত প্লেয়ার বেছে নিন</value>
+  </data>
+  <data name="About.Label" xml:space="preserve">
+    <value>সম্পর্কে</value>
+  </data>
+  <data name="AddWallpaper.Label" xml:space="preserve">
+    <value>ওয়ালপেপার যোগ করুন</value>
+  </data>
+  <data name="AppFocus.Header" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন ফোকাসে থাকাকালীন</value>
+  </data>
+  <data name="AppFullScreen.Header" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন যখন ফুলস্ক্রিন</value>
+  </data>
+  <data name="TitleAppName" xml:space="preserve">
+    <value>লাইভলি ওয়ালপেপার</value>
+  </data>
+  <data name="AppRules.Header" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন এর রুলগুলি</value>
+  </data>
+  <data name="AppTheme.Header" xml:space="preserve">
+    <value>থিম</value>
+  </data>
+  <data name="TitleAudioPlayOnScreen" xml:space="preserve">
+    <value>অডিও স্ক্রিনে প্লে করুন</value>
+  </data>
+  <data name="BatteryPower.Header" xml:space="preserve">
+    <value>যখন ব্যাটারি পাওারে নির্ভরশিল</value>
+  </data>
+  <data name="TitleBrowseFile" xml:space="preserve">
+    <value>ব্রাউজ করে ভিডিও, জিফ, ওয়েবপেজ ফাইল নির্বাচন করুন ওয়াল্পেপার বানাতে</value>
+  </data>
+  <data name="BrowserDebuggingPort.Header" xml:space="preserve">
+    <value>ডিবাগিং পোর্ট</value>
+  </data>
+  <data name="TitleChangelog" xml:space="preserve">
+    <value>চেঞ্জলগ</value>
+  </data>
+  <data name="Community.Header" xml:space="preserve">
+    <value>কমিউনিটি</value>
+  </data>
+  <data name="Debug.Header" xml:space="preserve">
+    <value>ডিবাগ</value>
+  </data>
+  <data name="TitleDeleteConfirmation" xml:space="preserve">
+    <value>মুছে ফেলা নিশ্চিত করুন</value>
+  </data>
+  <data name="DesktopPicture.Header" xml:space="preserve">
+    <value>ডেস্কটপ ছবি</value>
+  </data>
+  <data name="DisplayPauseRule.Header" xml:space="preserve">
+    <value>ডিস্প্লে থামার রুল</value>
+  </data>
+  <data name="Documentation.Header" xml:space="preserve">
+    <value>ডকুমেন্টেশন</value>
+  </data>
+  <data name="EnterUrl.Header" xml:space="preserve">
+    <value>URL লিখুন</value>
+  </data>
+  <data name="ExportLogs.Header" xml:space="preserve">
+    <value>লগ ফাইল</value>
+  </data>
+  <data name="TitleGeneral" xml:space="preserve">
+    <value>সাধারণ</value>
+  </data>
+  <data name="GifPlayer.Header" xml:space="preserve">
+    <value>জিফ প্লেয়ার</value>
+  </data>
+  <data name="Help.Label" xml:space="preserve">
+    <value>সাহায্য</value>
+  </data>
+  <data name="TitleInteraction" xml:space="preserve">
+    <value>ইন্টারঅ্যাকশন</value>
+  </data>
+  <data name="TitleLibrary" xml:space="preserve">
+    <value>লাইব্রেরি</value>
+  </data>
+  <data name="TitleLivelySetup" xml:space="preserve">
+    <value>লাইভলি সেটআপ</value>
+  </data>
+  <data name="TitleLocation" xml:space="preserve">
+    <value>অবস্থান</value>
+  </data>
+  <data name="LockscreenPicture.Header" xml:space="preserve">
+    <value>লকস্ক্রিন ছবি</value>
+  </data>
+  <data name="TitleMisc" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="TitleMute" xml:space="preserve">
+    <value>মিউট</value>
+  </data>
+  <data name="PauseAlgorithm.Header" xml:space="preserve">
+    <value>অ্যালগরিদম স্থগিত করুন</value>
+  </data>
+  <data name="TitlePerformance" xml:space="preserve">
+    <value>পারফরম্যান্স</value>
+  </data>
+  <data name="TitlePlaylist" xml:space="preserve">
+    <value>প্লেলিস্ট</value>
+  </data>
+  <data name="PleaseWait.Text" xml:space="preserve">
+    <value>অনুগ্রহ করে অপেক্ষা করুন৷</value>
+  </data>
+  <data name="PowerSavingModePower.Header" xml:space="preserve">
+    <value>যখন ব্যাটারি পাওারে নির্ভরশিল</value>
+  </data>
+  <data name="RemoteDesktopPower.Header" xml:space="preserve">
+    <value>যখন রিমোট ডেস্কটপে</value>
+  </data>
+  <data name="ReportBug.Header" xml:space="preserve">
+    <value>বাগ রিপোর্ট করুন</value>
+  </data>
+  <data name="TitleScalingFit" xml:space="preserve">
+    <value>স্কেলিং/ফিট</value>
+  </data>
+  <data name="ControlPanel.Title" xml:space="preserve">
+    <value>কন্ট্রোল প্যানেল</value>
+  </data>
+  <data name="TitleScreensaver.Content" xml:space="preserve">
+    <value>স্ক্রিনসেভার</value>
+  </data>
+  <data name="TitleSelectFile" xml:space="preserve">
+    <value>ফাইল নির্বাচন করুন</value>
+  </data>
+  <data name="TitleSettings" xml:space="preserve">
+    <value>সেটিংস সমূহ</value>
+  </data>
+  <data name="TitleSkipConfirm" xml:space="preserve">
+    <value>Skip Confirmation</value>
+  </data>
+  <data name="SourceCode.Header" xml:space="preserve">
+    <value>সোর্স কোড</value>
+  </data>
+  <data name="Store.Header" xml:space="preserve">
+    <value>দোকান</value>
+    <comment>For different version of Lively, example: Microsoft Store</comment>
+  </data>
+  <data name="StreamWallpaperVideoQuality.Header" xml:space="preserve">
+    <value>স্ট্রিম</value>
+  </data>
+  <data name="StreamWallpaperDetect.Header" xml:space="preserve">
+    <value>স্ট্রিম শনাক্ত করা</value>
+  </data>
+  <data name="TitleStreamWallpaperVideoQuality" xml:space="preserve">
+    <value>ভিডিও কোয়ালিটি</value>
+  </data>
+  <data name="System.Text" xml:space="preserve">
+    <value>সিস্টেম</value>
+  </data>
+  <data name="TaskbarTheme.Header" xml:space="preserve">
+    <value>টাস্কবার থিম</value>
+  </data>
+  <data name="TitleTileSize" xml:space="preserve">
+    <value>টাইল এর সাইজ</value>
+  </data>
+  <data name="TitleUIMode" xml:space="preserve">
+    <value>ব্যবহারকারী ইন্টারফেস</value>
+  </data>
+  <data name="TitleUpdates" xml:space="preserve">
+    <value>আপডেট</value>
+  </data>
+  <data name="TitleVideo" xml:space="preserve">
+    <value>ভিডিও</value>
+  </data>
+  <data name="VideoHardwareDecode.Header" xml:space="preserve">
+    <value>জিপিইউ ডিকোড</value>
+  </data>
+  <data name="TitleWallpaper.Content" xml:space="preserve">
+    <value>ওয়ালপেপার</value>
+  </data>
+  <data name="TitleCustomise.Content" xml:space="preserve">
+    <value>কাসটোমাইজ করুন</value>
+  </data>
+  <data name="WallpaperDir.Header" xml:space="preserve">
+    <value>ওয়ালপেপার অবস্থান</value>
+  </data>
+  <data name="WallpaperDirMoveExisting.Content" xml:space="preserve">
+    <value>বিদ্যমান ওয়ালপেপারগুলিকে নতুন ফোল্ডারে নিয়ে যান</value>
+  </data>
+  <data name="WallpaperFit.Header" xml:space="preserve">
+    <value>একটি ফিট বেছে নিন</value>
+  </data>
+  <data name="WallpaperInput.Header" xml:space="preserve">
+    <value>ওয়ালপেপার এর ইনপুট</value>
+  </data>
+  <data name="WallpaperLayout.Header" xml:space="preserve">
+    <value>স্থাপন পদ্ধতি</value>
+  </data>
+  <data name="WallpaperPlaybackGroup.Text" xml:space="preserve">
+    <value>ওয়ালপেপার প্লেব্যাক</value>
+  </data>
+  <data name="TitleWarning" xml:space="preserve">
+    <value>সাবধান</value>
+  </data>
+  <data name="WebBrowser.Header" xml:space="preserve">
+    <value>ওয়েব ব্রাউজার</value>
+  </data>
+  <data name="WebBrowserDiskCache.Header" xml:space="preserve">
+    <value>ডিস্ক ক্যাশ</value>
+  </data>
+  <data name="TitleWebBrowserEngine" xml:space="preserve">
+    <value>ইঞ্জিন</value>
+  </data>
+  <data name="TitleWebpageLoad" xml:space="preserve">
+    <value>ওয়েবপেজ লোড করুন</value>
+  </data>
+  <data name="FastUI.Description" xml:space="preserve">
+    <value>ব্যবহারকারী ইন্টার্ফেস চলমান রাখুন দ্রুত স্টার্টআপের জন্য</value>
+  </data>
+  <data name="FastUI.Header" xml:space="preserve">
+    <value>দ্রুত স্টার্টআপ</value>
+  </data>
+  <data name="WallpaperDirGroup.Text" xml:space="preserve">
+    <value>ফাইল</value>
+  </data>
+  <data name="AppThemeDark.Content" xml:space="preserve">
+    <value>অন্ধকার</value>
+  </data>
+  <data name="AppThemeLight.Content" xml:space="preserve">
+    <value>উজ্জ্বল</value>
+  </data>
+  <data name="AppThemeSystem.Content" xml:space="preserve">
+    <value>সিস্টেম</value>
+  </data>
+  <data name="WindowsSettingsColor.Content" xml:space="preserve">
+    <value>উইন্ডোজ কালার সেটিংস</value>
+  </data>
+  <data name="LaptopWallpaperPlaybackGroup.Text" xml:space="preserve">
+    <value>ল্যাপ্টপ</value>
+  </data>
+  <data name="DeveloperGroup.Text" xml:space="preserve">
+    <value>ডেভেলপার</value>
+  </data>
+  <data name="AppearanceBehaviour.Text" xml:space="preserve">
+    <value>চেহারা এবং আচরণ</value>
+  </data>
+  <data name="ActiveWallpapers.Label" xml:space="preserve">
+    <value>অ্যাক্টিভ ওয়ালপেপার(গুলি)</value>
+  </data>
+  <data name="TitleGallery" xml:space="preserve">
+    <value>গ্যালারি</value>
+  </data>
+  <data name="AboutMe.Text" xml:space="preserve">
+    <value>হ্যালো, আমি ড্যানি জন, যিনি রকসড্যানিস্টার নামেও পরিচিত; আমি লাইভলি নামক একটি বিনামূল্যে এবং ওপেন-সোর্স (FOSS) ওয়ালপেপার অ্যাপ্লিকেশন তৈরি করেছি; আমার কাজটি দেখার জন্য ধন্যবাদ.</value>
+  </data>
+  <data name="LicenseLink.Content" xml:space="preserve">
+    <value>সফটওয়্যার লাইসেন্স</value>
+  </data>
+  <data name="AttributionLink.Content" xml:space="preserve">
+    <value>থার্ড পার্টি সফটওয়্যার নোটিশ</value>
+  </data>
+  <data name="PrivacyPolicyLink.Content" xml:space="preserve">
+    <value>তথ্য সংগ্রহ নীতি</value>
+  </data>
+  <data name="AddWallpaperDrop.Text" xml:space="preserve">
+    <value>ওয়ালপেপার যোগ করুন</value>
+  </data>
+  <data name="ComingSoon.Text" xml:space="preserve">
+    <value>শীঘ্রই আসছে</value>
+  </data>
+  <data name="AboutMenu.Text" xml:space="preserve">
+    <value>সম্পর্কে</value>
+  </data>
+  <data name="SourceWebsite.Text" xml:space="preserve">
+    <value>ওয়েবসাইট</value>
+  </data>
+  <data name="TextOpen.Content" xml:space="preserve">
+    <value>খুলুন</value>
+  </data>
+  <data name="TextSave.Content" xml:space="preserve">
+    <value>সেভ করুন</value>
+  </data>
+  <data name="UIMode.Description" xml:space="preserve">
+    <value>ব্যবহারকারী ইন্টারফেস ইফেক্টস এবং এইনিমেশনগুলি</value>
+  </data>
+  <data name="UIMode.Header" xml:space="preserve">
+    <value>ব্যবহারকারী ইন্টারফেস</value>
+  </data>
+  <data name="UIModeLite.Content" xml:space="preserve">
+    <value>হালকা</value>
+  </data>
+  <data name="UIModeNormal.Content" xml:space="preserve">
+    <value>স্বাভাবিক</value>
+  </data>
+  <data name="Screensaver.Description" xml:space="preserve">
+    <value>ওয়ালপেপার যেভাবে এপ্লাই করা হবে সংযুক্ত ডিস্প্লে ডিভাইসগুলিতে </value>
+  </data>
+  <data name="Screensaver.Header" xml:space="preserve">
+    <value>স্ক্রিনসেভার ধরণ</value>
+  </data>
+  <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
+    <value>কাস্টম</value>
+  </data>
+  <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
+    <value>ওয়ালপেপার প্রতিফলিত করুন</value>
+  </data>
+  <data name="ScreensaverPlugin.Title" xml:space="preserve">
+    <value>প্লাগইন প্রয়োজন</value>
+  </data>
+  <data name="ScreensaverPluginMessage.Text" xml:space="preserve">
+    <value>স্ক্রিনসেভার চালানোর জন্য একবার সেটআপ করা প্রয়োজন</value>
+  </data>
+  <data name="WallpaperLayoutScreenPicker.Content" xml:space="preserve">
+    <value>সর্বদা স্ক্রিন বেছে নিন ওয়ালপেপার বাছাই এর সময়ে</value>
+  </data>
+  <data name="GalleryAccount.Text" xml:space="preserve">
+    <value>অ্যাকাউন্ট</value>
+  </data>
+  <data name="GalleryAccountDelete.Content" xml:space="preserve">
+    <value>অ্যাকাউন্ট মুছে ফেলুন</value>
+  </data>
+  <data name="GalleryAccountExport.Content" xml:space="preserve">
+    <value>তথ্য এক্সপোর্ট করুন</value>
+  </data>
+  <data name="GalleryAccountLogin.Content" xml:space="preserve">
+    <value>লগ ইন</value>
+  </data>
+  <data name="GalleryAccountLogout.Content" xml:space="preserve">
+    <value>লগ আউট</value>
+  </data>
+  <data name="GalleryPageCollection.Content" xml:space="preserve">
+    <value>সংগ্রহ</value>
+  </data>
+  <data name="GalleryPageHome.Content" xml:space="preserve">
+    <value>হোম</value>
+  </data>
+  <data name="GalleryPageManage.Content" xml:space="preserve">
+    <value>ম্যানেজ</value>
+  </data>
+  <data name="GalleryPageProfile.Content" xml:space="preserve">
+    <value>প্রোফাইল</value>
+  </data>
+  <data name="GalleryPleaseLogin.Text" xml:space="preserve">
+    <value>চালিয়ে যেতে দয়া করে লগ ইন করুন</value>
+  </data>
+  <data name="GalleryWelcomeMessage.Text" xml:space="preserve">
+    <value>হ্যালো</value>
+  </data>
+  <data name="RestoreWallpaper.Text" xml:space="preserve">
+    <value>আপনার অ্যাকাউন্টে আমরা এই ওয়ালপেপারগুলি পেয়েছি</value>
+  </data>
+  <data name="TextDownloadNow.Content" xml:space="preserve">
+    <value>ডাউনলোড করুন</value>
+  </data>
+  <data name="TextMaybeLater.Content" xml:space="preserve">
+    <value>পরে</value>
+  </data>
+  <data name="TextSelectAll.Content" xml:space="preserve">
+    <value>সব নির্বাচন করুন</value>
+  </data>
+  <data name="TextSelectNone.Content" xml:space="preserve">
+    <value>সব অনির্বাচন করুন</value>
+  </data>
+  <data name="TitleWelcomeback.Text" xml:space="preserve">
+    <value>আবারও স্বাগতম</value>
+  </data>
+  <data name="ReportWallpaper.Header" xml:space="preserve">
+    <value>কারণসমূহ</value>
+  </data>
+  <data name="ReportWallpaperCopyright.Content" xml:space="preserve">
+    <value>কপিরাইট লঙ্ঘন</value>
+  </data>
+  <data name="ReportWallpaperMisleading.Content" xml:space="preserve">
+    <value>বিভ্রান্তিকর তথ্য</value>
+  </data>
+  <data name="ReportWallpaperOther.Content" xml:space="preserve">
+    <value>অন্যান্য</value>
+  </data>
+  <data name="ReportWallpaperSpam.Content" xml:space="preserve">
+    <value>স্প্যাম</value>
+  </data>
+  <data name="ReportWallpaperViolence.Content" xml:space="preserve">
+    <value>উলঙ্গতা অথবা সহিংসতা</value>
+  </data>
+  <data name="TextAdditionalNotes.Text" xml:space="preserve">
+    <value>অতিরিক্ত নোট</value>
+  </data>
+  <data name="TextReportWallpaper.Text" xml:space="preserve">
+    <value>রিপোর্ট করুন</value>
+  </data>
+  <data name="TitleReportWallpaper.Text" xml:space="preserve">
+    <value>ওয়ালপেপার রিপোর্ট করুন</value>
+  </data>
+  <data name="Send.Content" xml:space="preserve">
+    <value>পাঠান</value>
+  </data>
+  <data name="GalleryAccountDeleteConfirm.Text" xml:space="preserve">
+    <value>অনুগ্রহ করে এই কাজটি নিশ্চিত করুন, কারণ এটি আর পূর্বাবস্থায় ফেরানো যাবে না</value>
+  </data>
+  <data name="GalleryAccountDeleteFail.Text" xml:space="preserve">
+    <value>অ্যাকাউন্ট মুছে ফেলা যায়নি, অনুগ্রহ করে পরে আবার চেষ্টা করুন</value>
+  </data>
+  <data name="TextConfirmCancel.Text" xml:space="preserve">
+    <value>আপনি কি এটি বাতিল করতে চান?</value>
+  </data>
+  <data name="TextWait.Text" xml:space="preserve">
+    <value>অপেক্ষা করুন</value>
+  </data>
+  <data name="TitleDownloadProgress.Text" xml:space="preserve">
+    <value>ডাউনলোড চলছে</value>
+  </data>
+  <data name="TextContributors.Text" xml:space="preserve">
+    <value>অবদানকারী</value>
+  </data>
+  <data name="TextShare.Text" xml:space="preserve">
+    <value>শেয়ার</value>
+  </data>
+  <data name="TitleShareWallpaper.Text" xml:space="preserve">
+    <value>ওয়ালপেপার শেয়ার করুন</value>
+  </data>
+  <data name="ExportWallpaperGallery.Text" xml:space="preserve">
+    <value>গ্যালারিতে আপলোড</value>
+  </data>
+  <data name="ExportWallpaperLink.Text" xml:space="preserve">
+    <value>লিংক কপি করুন</value>
+  </data>
+  <data name="TextCustomiseWallpaper" xml:space="preserve">
+    <value>কাস্টোমাইজ করুন ওয়ালপেপার</value>
+  </data>
+  <data name="TextCloseWallpapers" xml:space="preserve">
+    <value>ওয়ালপেপার বন্ধ করুন</value>
+  </data>
+  <data name="TitleChooseApplication.Text" xml:space="preserve">
+    <value>অ্যাপ্লিকেশন নির্বাচন করুন</value>
+  </data>
+  <data name="WallpaperInstallSize.Text" xml:space="preserve">
+    <value>সাইজ</value>
+  </data>
+  <data name="PluginNotFound.Message" xml:space="preserve">
+    <value>অনুগ্রহ করে প্রয়োজনীয় প্লাগইনটি ইনস্টল করুন</value>
+  </data>
+  <data name="PluginNotFound.Title" xml:space="preserve">
+    <value>প্লাগইন পাওয়া যায় নি</value>
+  </data>
+  <data name="UpdateCompleted.Text" xml:space="preserve">
+    <value>আপডেট করা শেষ</value>
+  </data>
+  <data name="UpdateWhatsNew.Text" xml:space="preserve">
+    <value>নতুন কি আছে দেখুন</value>
+  </data>
+  <data name="AppThemeColor.Header" xml:space="preserve">
+    <value>রঙ</value>
+  </data>
+  <data name="DescriptionDefault.Text" xml:space="preserve">
+    <value>সিস্টেম এর পূর্ব-নির্ধারিত থিম ব্যবহার করুন</value>
+  </data>
+  <data name="DescriptionDynamicTheme.Text" xml:space="preserve">
+    <value>ওয়ালপেপারের সাথে খাপ খাওয়ান</value>
+  </data>
+  <data name="TextDefault.Text" xml:space="preserve">
+    <value>পূর্ব-নির্ধারিত</value>
+  </data>
+  <data name="TextDynamicTheme.Text" xml:space="preserve">
+    <value>ডায়নামিক</value>
+  </data>
+  <data name="Theme.Label" xml:space="preserve">
+    <value>থিম</value>
+  </data>
+  <data name="IconsHidden.Message" xml:space="preserve">
+    <value>দুর্ঘটনাবশত নির্বাচন রোধ করতে ডেস্কটপ আইকনগুলো বর্তমানে লুকানো আছে</value>
+  </data>
+  <data name="IconsHidden.Title" xml:space="preserve">
+    <value>ডেস্কটপ আইকন</value>
+  </data>
+  <data name="TextEndOfItems.Text" xml:space="preserve">
+    <value>আপাতত এই পর্যন্তই..</value>
+  </data>
+  <data name="DevelopmentOnHold.Message" xml:space="preserve">
+    <value>এই ফিচার এর ডেভেলপমেন্ট স্থগিত আছে</value>
+  </data>
+  <data name="WallpaperPluginGroup.Text" xml:space="preserve">
+    <value>প্লাগইনসমূহ</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Description" xml:space="preserve">
+    <value>একটি ডায়নামিক ওয়ালপেপার তৈরি করুন</value>
+  </data>
+  <data name="AddWallpaperAdvanced.Header" xml:space="preserve">
+    <value>অ্যাডভান্সড</value>
+  </data>
+  <data name="DescriptionDepthApprox.Content" xml:space="preserve">
+    <value>গভীরতা অনুমান করা হচ্ছে...</value>
+  </data>
+  <data name="DescriptionDepthWallpaperItem.Content" xml:space="preserve">
+    <value>এ আই দিয়ে ছবিকে 3D তে রূপান্তর করুন</value>
+  </data>
+  <data name="TextContinue.Content" xml:space="preserve">
+    <value>এগিয়ে যান</value>
+  </data>
+  <data name="TitleCreateWallpaperOpenItem.Description" xml:space="preserve">
+    <value>একটি সাধারণ ওয়ালপেপার তৈরি করুন</value>
+  </data>
+  <data name="TitleDepthWallpaper.Content" xml:space="preserve">
+    <value>এআই ডেপ্থ ওয়ালপেপার</value>
+  </data>
+  <data name="TitleDepthWallpaperItem.Content" xml:space="preserve">
+    <value>ডেপ্থ ওয়ালপেপার</value>
+  </data>
+  <data name="DescriptionDepthWallpaperTemplate.Content" xml:space="preserve">
+    <value>এআই দিয়ে তৈরি ডেপ্থ ওয়ালপেপার</value>
+  </data>
+  <data name="TitleCreateWallpaper.Content" xml:space="preserve">
+    <value>ওয়ালপেপার তৈরি করুন</value>
+  </data>
+  <data name="RunningAsAdminWarning.Message" xml:space="preserve">
+    <value>অ্যাডমিনিস্ট্রেটর মোডে চালানো হলে কিছু সুবিধা কাজ নাও করতে পারে</value>
+  </data>
+  <data name="DescriptionDownloadRequired.Text" xml:space="preserve">
+    <value>এই সুবিধাটি ব্যবহার করতে কিছু ফাইল নামাতে হবে</value>
+  </data>
+  <data name="TitleDownloadRequired.Text" xml:space="preserve">
+    <value>ডাউনলোড প্রয়োজন</value>
+  </data>
+  <data name="TitleDownload.Content" xml:space="preserve">
+    <value>ডাউনলোড করুন</value>
+  </data>
+  <data name="TextBecomePatreonMember.Content" xml:space="preserve">
+    <value>পেট্রিয়ন সাপোর্টার হন</value>
+  </data>
+  <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
+    <value>এই প্রজেক্টটি সমর্থন করার জন্য সকল সদস্যকে ধন্যবাদ.</value>
+  </data>
+  <data name="TitlePatreon.Text" xml:space="preserve">
+    <value>পেট্রিয়ন সাপোর্টারসমূহ</value>
+  </data>
+  <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
+    <value>স্ক্রিনসেভার বেছে নিন</value>
+  </data>
+  <data name="WebViewRequired.Message" xml:space="preserve">
+    <value>এই পৃষ্ঠাটি দেখার জন্য Microsoft WebView2 প্রয়োজন</value>
+  </data>
+  <data name="WebViewRequired.Title" xml:space="preserve">
+    <value>প্লাগইন প্রয়োজন</value>
+  </data>
+  <data name="AppMusicExclusion.Description" xml:space="preserve">
+    <value>অ্যাপগুলো নির্বাচন করুন যেগুলোর মিউজিক বিবরণ প্রদর্শিত হবে না</value>
+  </data>
+  <data name="AppMusicExclusion.Header" xml:space="preserve">
+    <value>বাদ দেয়া অ্যাপ</value>
+  </data>
+  <data name="RestartCommand.Content" xml:space="preserve">
+    <value>পুনরায় চালু করুন</value>
+  </data>
+  <data name="WallpaperMusicGroup.Text" xml:space="preserve">
+    <value>মিউজিক</value>
+  </data>
+  <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
+    <value>সেটিংসগুলো কার্যকর করতে ওয়ালপেপার পুনরায় চালু করা প্রয়োজন</value>
+  </data>
+  <data name="LanguageSettingsItemSystemDefault.Content" xml:space="preserve">
+    <value>সিস্টেমের মতোই</value>
+  </data>
+  <data name="InfoSettingsRestartRequest.Message" xml:space="preserve">
+    <value>সেটিংস প্রয়োগ করতে অ্যাপটি পুনরায় চালু করুন</value>
+  </data>
+  <data name="ScreensaverLockOnResume.Header" xml:space="preserve">
+    <value>পুনরায় শুরুতে লগইন স্ক্রিন দেখান</value>
+  </data>
+  <data name="ScreensaverFadeIn.Header" xml:space="preserve">
+    <value>শুরুর আগে কালো রঙে মিলিয়ে যান</value>
+  </data>
+  <data name="VideoLetWindowsManageColor.Header" xml:space="preserve">
+    <value>রঙ পরিচালনা উইন্ডোজকে করতে দিন</value>
+  </data>
+  <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
+    <value>উইন্ডজ সেটিংস</value>
+  </data>
+  <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
+    <value>প্রজেক্টের কাঠামো কি নিশ্চিত করবেন?</value>
+  </data>
+  <data name="DescriptionConfirmFileConvertion.Text" xml:space="preserve">
+    <value>এই ফাইল ফরম্যাটটি সরাসরি সমর্থিত নয়। ব্যবহারের আগে এটি রূপান্তরিত হবে। আপনি কি চালিয়ে যেতে চান?</value>
+  </data>
+  <data name="ScreensaverDialogSettings.Header" xml:space="preserve">
+    <value>সেটিংস সমূহ</value>
+  </data>
+  <data name="DisplayAudioPauseRule.Header" xml:space="preserve">
+    <value>আউটপুট</value>
+  </data>
+  <data name="DisplayAudioPauseRule.Description" xml:space="preserve">
+    <value>আপনার স্ক্রিনগুলোতে ওয়ালপেপারের অডিও কীভাবে বাজবে তা নিয়ন্ত্রণ করুন</value>
+  </data>
+  <data name="VisualizerAudioDevice.Description" xml:space="preserve">
+    <value>শব্দ ভিজ্যুয়ালাইজ করার জন্য যে প্লেব্যাক ডিভাইসটি ব্যবহার হবে তা নির্বাচন করুন</value>
+  </data>
+  <data name="VisualizerAudioDevice.Header" xml:space="preserve">
+    <value>অডিও ডিভাইস</value>
+  </data>
+  <data name="SwitchReleaseBranchBeta.Description" xml:space="preserve">
+    <value>সাধারণ রিলিজের আগেই নতুন ফিচার পান এবং তা পরীক্ষা করতে সাহায্য করুন। এই সংস্করণগুলো অস্থিতিশীল হতে পারে।</value>
+  </data>
+  <data name="SwitchReleaseBranchBeta.Header" xml:space="preserve">
+    <value>পরীক্ষামূলক বিটা সংস্করণে অংশ নিন</value>
+  </data>
+  <data name="SwitchReleaseBranchStable.Description" xml:space="preserve">
+    <value>নির্ভরযোগ্য আপডেট পেতে স্থিতিশীল পাবলিক সংস্করণে ফিরে আসুন</value>
+  </data>
+  <data name="SwitchReleaseBranchStable.Header" xml:space="preserve">
+    <value>স্থিতিশীল সংস্করণে ফিরে যান</value>
+  </data>
+  <data name="RestartWallpaperAfterLockscreen.Header" xml:space="preserve">
+    <value>লক স্ক্রিন থেকে ফিরে এলে ওয়ালপেপার পুনরায় চালু করুন</value>
+  </data>
+</root>

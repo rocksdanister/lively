@@ -54,6 +54,7 @@ namespace Lively.Common
             new LanguageModel("slovenčina", "sk-SK"), // Slovak (Slovakia)
             new LanguageModel("Gaeilge", "ga-IE"), // Irish
             new LanguageModel("Română", "ro-RO"), // Romanian
+            new LanguageModel("বাংলা", "bn-BD"), // Bengali
         ];
 
         public static ReadOnlyCollection<LanguageModel> SupportedLanguages => Array.AsReadOnly(supportedLanguages);
