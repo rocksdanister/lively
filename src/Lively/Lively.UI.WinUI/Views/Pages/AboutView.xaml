@@ -18,53 +18,16 @@
     <Grid>
         <ScrollViewer>
             <StackPanel Margin="5,0,10,5">
-                <StackPanel
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Uid="AboutMe"
-                        Width="375"
-                        Margin="5,25,5,5"
-                        Style="{ThemeResource BodyTextBlockStyle}"
-                        TextWrapping="WrapWholeWords" />
-                    <PersonPicture
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
-                </StackPanel>
-                <CommandBar HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
-                    <AppBarButton Command="{Binding OpenPersonalWebsiteCommand}" ToolTipService.ToolTip="https://rocksdanister.com">
-                        <AppBarButton.Icon>
-                            <FontIcon Height="25" Glyph="&#xEA8C;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <AppBarButton Command="{Binding OpenGithubCommand}" ToolTipService.ToolTip="https://github.com/rocksdanister">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE907;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <AppBarButton Command="{Binding OpenTwitterCommand}" ToolTipService.ToolTip="https://twitter.com/rocksdanister">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE909;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <!--<AppBarButton Click="RedditButton_Click" ToolTipService.ToolTip="https://reddit.com/u/rocksdanister">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE908;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>-->
-                    <AppBarButton Command="{Binding OpenYoutubeCommand}" ToolTipService.ToolTip="https://www.youtube.com/channel/UClep84ofxC41H8-R9UfNPSQ">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90a;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <AppBarButton Command="{Binding OpenEmailCommand}" ToolTipService.ToolTip="awoo.git@gmail.com">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE906;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                </CommandBar>
+                <HyperlinkButton
+                    Width="100"
+                    Height="100"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    NavigateUri="https://livelywallpaper.net"
+                    ToolTipService.ToolTip="https://livelywallpaper.net">
+                    <Image Source="ms-appx:///Assets/StoreLogo.scale-400.png" />
+                </HyperlinkButton>
 
                 <StackPanel
                     x:Name="contributorPanel"
@@ -82,6 +45,9 @@
                         Margin="5"
                         HorizontalAlignment="Center"
                         Orientation="Horizontal">
+                        <HyperlinkButton NavigateUri="https://github.com/rocksdanister" ToolTipService.ToolTip="Rocksdanister">
+                            <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/rocksdanister" />
+                        </HyperlinkButton>
                         <HyperlinkButton NavigateUri="https://github.com/roxxel" ToolTipService.ToolTip="Roxxel">
                             <PersonPicture Width="35" ProfilePicture="https://avatars.githubusercontent.com/roxxel" />
                         </HyperlinkButton>
@@ -101,7 +67,7 @@
                 </StackPanel>
 
                 <StackPanel Margin="0,5,5,0">
-                    <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://rocksdanister.github.io/lively/attribution/" />
+                    <HyperlinkButton x:Uid="AttributionLink" NavigateUri="https://livelywallpaper.net/attribution/" />
                     <HyperlinkButton x:Uid="LicenseLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/LICENSE" />
                     <HyperlinkButton x:Uid="PrivacyPolicyLink" NavigateUri="https://github.com/rocksdanister/lively/blob/core-separation/PRIVACY.md" />
                 </StackPanel>

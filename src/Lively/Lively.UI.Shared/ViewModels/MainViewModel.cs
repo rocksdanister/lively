@@ -284,12 +284,6 @@ namespace Lively.UI.Shared.ViewModels
         }
 
         [RelayCommand]
-        private async Task OpenPatreon()
-        {
-            await dialogService.ShowPatreonSupportersDialogAsync();
-        }
-
-        [RelayCommand]
         private async Task OpenAppTheme()
         {
             await dialogService.ShowThemeDialogAsync();

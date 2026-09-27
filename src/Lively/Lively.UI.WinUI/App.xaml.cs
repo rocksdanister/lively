@@ -160,7 +160,6 @@ namespace Lively.UI.WinUI
                 // Transient
                 .AddTransient<AboutViewModel>()
                 .AddTransient<CustomiseWallpaperViewModel>()
-                .AddTransient<PatreonSupportersViewModel>()
                 .AddTransient<AddWallpaperViewModel>()
                 .AddTransient<ControlPanelViewModel>()
                 .AddTransient<ScreensaverLayoutViewModel>()

@@ -208,17 +208,6 @@
                             </FontIcon>
                         </AppBarButton.Icon>
                     </AppBarButton>
-                    <!--  Patreon  -->
-                    <AppBarButton
-                        Name="coffeeBtn"
-                        MaxWidth="50"
-                        Command="{Binding OpenPatreonCommand}"
-                        LabelPosition="Collapsed"
-                        ToolTipService.ToolTip="Patreon">
-                        <AppBarButton.Icon>
-                            <FontIcon FontFamily="{StaticResource CustomIconFonts}" Glyph="&#xE90b;" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
                     <AppBarSeparator />
                     <!--  Gallery Authorized  -->
                     <!--  Visibility="{Binding IsLoggedIn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}"  -->

@@ -34,7 +34,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryAboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LibraryViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PatreonSupportersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\AppThemeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\FindMoreAppsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Settings\SettingsGeneralViewModel.cs" />

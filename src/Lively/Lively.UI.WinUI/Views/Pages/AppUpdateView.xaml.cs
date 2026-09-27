@@ -68,8 +68,8 @@ namespace Lively.UI.WinUI.Views.Pages
                 var param = $"?source=app&theme={pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
 
                 var url = viewModel.IsBetaBuild ?
-                    $"https://www.rocksdanister.com/lively-webpage/changelog/{param}" :
-                    $"https://www.rocksdanister.com/lively/changelog/{param}";
+                    $"https://www.livelywallpaper.net/changelog/{param}" :
+                    $"https://www.livelywallpaper.net/changelog/{param}";
                 WebView.Source = LinkUtil.SanitizeUrl(url);
 
                 WebView.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;

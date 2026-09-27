@@ -25,7 +25,6 @@ namespace Lively.Common.Services
         Task<bool> ShowConfirmationDialogAsync(string message);
         Task<string> ShowTextInputDialogAsync(string title, string placeholderText);
         Task ShowThemeDialogAsync();
-        Task ShowPatreonSupportersDialogAsync();
         Task ShowWaitDialogAsync(object content, int seconds);
         Task ShowShareWallpaperDialogAsync(LibraryModel obj);
         Task ShowAboutWallpaperDialogAsync(LibraryModel obj);
