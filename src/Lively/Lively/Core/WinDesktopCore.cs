@@ -42,6 +42,10 @@ namespace Lively.Core
         public IntPtr DesktopWorkerW => workerW;
         private bool disposedValue;
         private bool isRaisedDesktopWithLayeredShellView;
+        /// <summary>
+        /// Set wallpaper as child of WorkerW.
+        /// </summary>
+        private readonly bool isWorkerWParent;
         private readonly List<WallpaperLayoutModel> wallpapersDisconnected = [];
 
         private int prevExplorerPid = GetTaskbarExplorerPid();
@@ -96,6 +100,9 @@ namespace Lively.Core
 
             if (SystemParameters.HighContrast)
                 Logger.Warn("Highcontrast mode detected, some functionalities may not work properly.");
+
+            // Set user preference for wallpaper layering.
+            isWorkerWParent = userSettings.Settings.IsWorkerWParent;
 
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
             this.displayManager.DisplayUpdated += DisplaySettingsChanged_Hwnd;
@@ -246,7 +253,7 @@ namespace Lively.Core
 
             // Should we verify the thread of new workerW and re-attach the hook?
             Logger.Error("WorkerW destroyed.");
-            if (isRaisedDesktopWithLayeredShellView)
+            if (isRaisedDesktopWithLayeredShellView && !isWorkerWParent)
             {
                 SetupDesktopLayer();
 
@@ -1036,7 +1043,7 @@ namespace Lively.Core
             }
             else
             {
-                if (isRaisedDesktopWithLayeredShellView)
+                if (isRaisedDesktopWithLayeredShellView && !isWorkerWParent)
                 {
                     WindowUtil.SetWindowStyle(hwnd, NativeMethods.WindowStyles.WS_CHILD);
                     // Adds WS_EX_LAYERED if required.
@@ -1070,7 +1077,7 @@ namespace Lively.Core
 
         private void EnsureWorkerWZOrder()
         {
-            if (!isRaisedDesktopWithLayeredShellView)
+            if (!isRaisedDesktopWithLayeredShellView || isWorkerWParent)
                 return;
 
             if (WindowUtil.GetLastChildWindow(progman) != workerW)

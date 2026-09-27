@@ -140,6 +140,7 @@ namespace Lively.Models
         public DisplayAudioMode DisplayAudioOutput { get; set; }
         public DisplayMonitor SelectedAudioOutputDisplay { get; set; }
         public bool IsRestartAfterLockscreen { get; set; }
+        public bool IsWorkerWParent { get; set; }
 
         public SettingsModel()
         {
@@ -229,6 +230,7 @@ namespace Lively.Models
             VisualizerAudioDeviceId = string.Empty;
             DisplayAudioOutput = DisplayAudioMode.all;
             IsRestartAfterLockscreen = false;
+            IsWorkerWParent = false;
         }
     }
 }
