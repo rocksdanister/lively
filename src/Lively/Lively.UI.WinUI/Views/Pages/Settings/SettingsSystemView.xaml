@@ -19,7 +19,7 @@
         <ScrollViewer>
             <StackPanel Margin="10,30,10,5" Spacing="{StaticResource SettingGroupControlSpacing}">
                 <!--  Appearance and Behaviour  -->
-                <StackPanel>
+                <StackPanel Visibility="{Binding IsTaskbarThemeSupported, Converter={StaticResource VisibilityConverter}, Mode=OneTime}">
                     <TextBlock
                         x:Uid="AppearanceBehaviour"
                         Margin="0,0,0,10"

@@ -49,6 +49,8 @@ namespace Lively.UI.Shared.ViewModels
 
         public bool IsBetaBuild => Constants.ApplicationType.IsTestBuild;
 
+        public bool IsTaskbarThemeSupported => Environment.OSVersion.Version < new Version(10, 0, 22621, 1343);
+
         private int _selectedTaskbarThemeIndex;
         public int SelectedTaskbarThemeIndex
         {
