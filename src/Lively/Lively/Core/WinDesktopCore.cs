@@ -53,7 +53,7 @@ namespace Lively.Core
 
         // Screensaver
         private readonly Timer screensaverIdleTimer = new();
-        private readonly uint screensaverIdleWaitTimeMin = 300000;
+        private readonly uint screensaverIdleCheckTime = 30000;
         private uint screensaverIdleWaitTime = 300000;
 
         private readonly IUserSettingsService userSettings;
@@ -106,7 +106,7 @@ namespace Lively.Core
             this.rawInput.MouseDownRaw += RawInput_MouseDownRaw;
             this.rawInput.MouseUpRaw += RawInput_MouseUpRaw;
             this.rawInput.KeyboardClickRaw += RawInput_KeyboardClickRaw;
-            screensaverIdleTimer.Elapsed += ScreensaverIdleTimer_Elapsed;
+            this.screensaverIdleTimer.Elapsed += ScreensaverIdleTimer_Elapsed;
 
             // Initialize desktop and update handles.
             SetupDesktopLayer();
@@ -132,7 +132,7 @@ namespace Lively.Core
             }
 
             // Screensaver
-            screensaverIdleTimer.Interval = screensaverIdleWaitTimeMin;
+            screensaverIdleTimer.Interval = screensaverIdleCheckTime;
             if (userSettings.Settings.ScreensaverIdleDelay != ScreensaverIdleTime.none)
                 StartScreensaverIdleTimer(userSettings.Settings.ScreensaverIdleDelay.ToMilliseconds());
         }
@@ -1317,22 +1317,28 @@ namespace Lively.Core
 
         private async void ScreensaverIdleTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            // Only start if input idle, non exclusive window and smtc media playback.
-            if (SystemIdleUtil.GetLastInputTime() >= screensaverIdleWaitTime
-                && !SystemIdleUtil.IsExclusiveFullScreenAppRunning()
-                && !await SystemIdleUtil.IsSmtcPlayingAsync())
+            try
             {
-                // Check active audio session for application not supporting smtc (games and older media players.)
-                if (!userSettings.Settings.ScreensaverAudioIdleCheck ||
-                    SystemIdleUtil.GetActiveAudioSessionPids().All(p => Wallpapers.Any(w => w.Pid != null && w.Pid == p)))
+                // Only start if input idle, non exclusive window and smtc media playback.
+                if (SystemIdleUtil.GetLastInputTime() >= screensaverIdleWaitTime
+                    && !SystemIdleUtil.IsExclusiveFullScreenAppRunning()
+                    && !await SystemIdleUtil.IsSmtcPlayingAsync())
                 {
-                    // All audio is from wallpapers.
-                    await screensaver.StartAsync(userSettings.Settings.ScreensaverFadeIn);
+                    // Check active audio session for application not supporting smtc (games and older media players.)
+                    if (!userSettings.Settings.ScreensaverAudioIdleCheck ||
+                        SystemIdleUtil.GetActiveAudioSessionPids().All(p => Wallpapers.Any(w => w.Pid != null && w.Pid == p)))
+                    {
+                        // All audio is from wallpapers.
+                        await screensaver.StartAsync(userSettings.Settings.ScreensaverFadeIn);
+                    }
+                    else
+                    {
+                        // Audio session active, skipping screensaver.
+                    }
                 }
-                else
-                {
-                    // Audio session active, skipping screensaver.
-                }
+            }
+            catch (Exception ex) {
+                Logger.Error(ex);
             }
         }
 
@@ -1359,6 +1365,7 @@ namespace Lively.Core
                 {
                     WallpaperChanged -= SetupDesktop_WallpaperChanged;
                     workerWHook?.Dispose();
+                    screensaverIdleTimer?.Dispose();
                     CloseAllWallpapers(false);
                     RefreshDesktop();
 

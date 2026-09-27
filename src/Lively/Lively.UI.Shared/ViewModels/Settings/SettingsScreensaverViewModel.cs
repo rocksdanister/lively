@@ -25,7 +25,9 @@ namespace Lively.UI.Shared.ViewModels
             SelectedScreensaverWaitIndex = (int)userSettings.Settings.ScreensaverIdleDelay;
             // Comply with 10.1.5 Software Distribution
             // Ref: https://learn.microsoft.com/en-us/windows/apps/publish/store-policies
-            IsScreensaverPluginNotify = !PackageUtil.IsRunningAsPackaged && !ScreensaverUtil.IsScreensaverSelected("Lively");
+            // Latest version has built-in screensaver idle check, do not prompt user.
+            IsScreensaverPluginNotify = false;
+            //IsScreensaverPluginNotify = !PackageUtil.IsRunningAsPackaged && !ScreensaverUtil.IsScreensaverSelected("Lively");
         }
 
         [ObservableProperty]
