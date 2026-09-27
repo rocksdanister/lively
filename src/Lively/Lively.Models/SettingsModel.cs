@@ -143,7 +143,7 @@ namespace Lively.Models
 
         public SettingsModel()
         {
-            SavedURL = "https://www.youtube.com/watch?v=aqz-KE-bpKQ";
+            SavedURL = "https://livelywallpaper.net/demo";
             ProcessMonitorAlgorithm = ProcessMonitorAlgorithm.grid;
             WallpaperArrangement = WallpaperArrangement.per;
             ScreensaverArragement = WallpaperArrangement.per;
