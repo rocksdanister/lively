@@ -81,8 +81,6 @@ Animated desktop wallpapers, bring your desktop to life!
 
 ##### [Installer (Windows 10 1903 or above)](https://github.com/rocksdanister/lively/releases/latest)
 
-Installer may give Smartscreen warning, [discussion.](https://github.com/rocksdanister/lively/issues/9)
-
 [Which version do I download?](https://github.com/rocksdanister/lively/wiki/Differences-Between-Distributions)
 
 ## Support
@@ -99,9 +97,6 @@ Help translate Lively to more languages, [learn more..](https://github.com/rocks
 
 #### Suggestions & Bug report
 Suggest new features or file bug reports to improve Lively, [learn more..](https://github.com/rocksdanister/lively/issues)
-
-#### Patreon
-Financially support Lively by become a patreon member and get your name listed in-app, [learn more..](https://patreon.com/rocksdanister)
 
 #### Spread the word
 Star this repository, leave a Microsoft store review or tell your friend.. any help is welcome :)
