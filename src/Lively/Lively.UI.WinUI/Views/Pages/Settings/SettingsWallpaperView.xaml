@@ -283,25 +283,6 @@
                         </animations:Implicit.HideAnimations>
                     </InfoBar>-->
 
-                    <controls:SettingsExpander
-                        x:Uid="StreamWallpaperVideoQuality"
-                        IsExpanded="False"
-                        Visibility="{Binding IsStreamSupported, Converter={StaticResource VisibilityConverter}, Mode=OneWay}">
-                        <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}" SelectedIndex="{Binding SelectedWallpaperStreamQualityIndex, Mode=TwoWay}">
-                            <ComboBoxItem>144p</ComboBoxItem>
-                            <ComboBoxItem>240p</ComboBoxItem>
-                            <ComboBoxItem>360p</ComboBoxItem>
-                            <ComboBoxItem>480p</ComboBoxItem>
-                            <ComboBoxItem>720p</ComboBoxItem>
-                            <ComboBoxItem>1080p</ComboBoxItem>
-                            <ComboBoxItem>1080p+</ComboBoxItem>
-                        </ComboBox>
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard x:Uid="StreamWallpaperDetect">
-                                <ToggleSwitch IsOn="{Binding DetectStreamWallpaper, Mode=TwoWay}" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
                 </StackPanel>
                 <!--  Music  -->
                 <StackPanel>

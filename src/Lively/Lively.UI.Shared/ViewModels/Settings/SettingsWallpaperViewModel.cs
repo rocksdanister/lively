@@ -65,8 +65,6 @@ namespace Lively.UI.Shared.ViewModels
             WebDebuggingPort = userSettings.Settings.WebDebugPort;
             IsWebDebuggingEnabled = !string.IsNullOrEmpty(WebDebuggingPort);
             CefDiskCache = userSettings.Settings.CefDiskCache;
-            SelectedWallpaperStreamQualityIndex = (int)userSettings.Settings.StreamQuality;
-            DetectStreamWallpaper = userSettings.Settings.AutoDetectOnlineStreams;
             // AudioDevices is populated only when IsShowAudioDevices is true for better UX.
         }
 
@@ -327,52 +325,6 @@ namespace Lively.UI.Shared.ViewModels
                     UpdateSettingsConfigFile();
                 }
                 SetProperty(ref _cefDiskCache, value);
-            }
-        }
-
-        public bool IsStreamSupported
-        {
-            get
-            {
-                try
-                {
-                    return File.Exists(Path.Combine(desktopCore.BaseDirectory, "plugins", "mpv", "youtube-dl.exe"));
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-        }
-
-        private int _selectedWallpaperStreamQualityIndex;
-        public int SelectedWallpaperStreamQualityIndex
-        {
-            get => _selectedWallpaperStreamQualityIndex;
-            set
-            {
-                if (userSettings.Settings.StreamQuality != (StreamQualitySuggestion)value)
-                {
-                    userSettings.Settings.StreamQuality = (StreamQualitySuggestion)value;
-                    UpdateSettingsConfigFile();
-                    _ = WallpaperRestart([WallpaperType.videostream]);
-                }
-                SetProperty(ref _selectedWallpaperStreamQualityIndex, value);
-            }
-        }
-
-        private bool _detectStreamWallpaper;
-        public bool DetectStreamWallpaper
-        {
-            get => _detectStreamWallpaper;
-            set
-            {
-                if (userSettings.Settings.AutoDetectOnlineStreams != value)
-                {
-                    userSettings.Settings.AutoDetectOnlineStreams = value;
-                    UpdateSettingsConfigFile();
-                }
-                SetProperty(ref _detectStreamWallpaper, value);
             }
         }
 

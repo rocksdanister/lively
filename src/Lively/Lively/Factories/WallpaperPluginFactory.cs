@@ -168,7 +168,7 @@ namespace Lively.Factories
                           userSettings.Settings.WallpaperWaitTime);
                     }
                 case WallpaperType.videostream:
-                    if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "mpv", "youtube-dl.exe")))
+                    if (userSettings.Settings.IsVideoPlayerForStreams)
                     {
                         return new VideoMpvPlayer(model.FilePath,
                             model,
@@ -176,8 +176,7 @@ namespace Lively.Factories
                             lpFactory.CreateLivelyPropertyFolder(model, display, arrangement, userSettings),
                             userSettings.Settings.VideoPlayerHwAccel,
                             isWindowed: isWindowed,
-                            userSettings.Settings.VideoTargetColorSpaceMode,
-                            userSettings.Settings.StreamQuality);
+                            userSettings.Settings.VideoTargetColorSpaceMode);
                     }
                     else
                     {

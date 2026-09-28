@@ -75,6 +75,7 @@ namespace Lively.Models
         public bool WallpaperDirMoveExistingWallpaperNewDir { get; set; }
         public bool SysTrayIcon { get; set; }
         public bool AutoDetectOnlineStreams { get; set; }
+        public bool IsVideoPlayerForStreams { get; set; }
         public bool ExtractStreamMetaData { get; set; }
         /// <summary>
         /// Cefsharp debug port.
@@ -196,6 +197,7 @@ namespace Lively.Models
             SysTrayIcon = true;
             WebDebugPort = string.Empty;
             AutoDetectOnlineStreams = true;
+            IsVideoPlayerForStreams = false;
             ExtractStreamMetaData = true;
             WallpaperBundleVersion = -1;
             ThemeBundleVersion = -1;

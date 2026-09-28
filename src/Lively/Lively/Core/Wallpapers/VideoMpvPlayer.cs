@@ -77,8 +77,7 @@ namespace Lively.Core.Wallpapers
             string livelyPropertyPath,
             bool isHwAccel = true,
             bool isWindowed = false,
-            TargetColorspaceHintMode colorSpaceMode = TargetColorspaceHintMode.target,
-            StreamQualitySuggestion streamQuality = StreamQualitySuggestion.Highest)
+            TargetColorspaceHintMode colorSpaceMode = TargetColorspaceHintMode.target)
         {
             LivelyPropertyCopyPath = livelyPropertyPath;
 
@@ -127,7 +126,7 @@ namespace Lively.Core.Wallpapers
             // Avoid global config file %APPDATA%\mpv\mpv.conf
             cmdArgs.Append(configDir is not null ? "--config-dir=" + "\"" + configDir + "\" " : "--no-config ");
             // File or online video stream path
-            cmdArgs.Append(model.LivelyInfo.Type == WallpaperType.videostream ? GetYtDlMpvArg(streamQuality, path) : "\"" + path + "\"");
+            cmdArgs.Append("\"" + path + "\"");
 
             this.process = new Process()
             {
@@ -568,21 +567,6 @@ namespace Lively.Core.Wallpapers
                 1 => new WallpaperPluginException("Error initializing mpv. This is also returned if unknown options are passed to mpv."),
                 2 or 3 => new WallpaperFileException("The file passed to mpv couldn't be played."),
                 _ => new InvalidOperationException(Properties.Resources.LivelyExceptionGeneral),
-            };
-        }
-
-        private static string GetYtDlMpvArg(StreamQualitySuggestion qualitySuggestion, string link)
-        {
-            return link + qualitySuggestion switch
-            {
-                StreamQualitySuggestion.Lowest => " --ytdl-format=bestvideo[height<=144]+bestaudio/best",
-                StreamQualitySuggestion.Low => " --ytdl-format=bestvideo[height<=240]+bestaudio/best",
-                StreamQualitySuggestion.LowMedium => " --ytdl-format=bestvideo[height<=360]+bestaudio/best",
-                StreamQualitySuggestion.Medium => " --ytdl-format=bestvideo[height<=480]+bestaudio/best",
-                StreamQualitySuggestion.MediumHigh => " --ytdl-format=bestvideo[height<=720]+bestaudio/best",
-                StreamQualitySuggestion.High => " --ytdl-format=bestvideo[height<=1080]+bestaudio/best",
-                StreamQualitySuggestion.Highest => " --ytdl-format=bestvideo+bestaudio/best",
-                _ => string.Empty,
             };
         }
 
