@@ -655,7 +655,7 @@ Semua Proses: Lebih berat, mengimbas semua proses untuk menentukan tingkah laku 
     <value>Tetapkan main semula ketika sesi Remote Desktop sedang berjalan</value>
   </data>
   <data name="ScreensaverWaitTime.Header" xml:space="preserve">
-    <value>Setelah jangka masa tidak aktif berlalu gunakan wallpaper kini sebagai screensaver.</value>
+    <value>Setelah jangka masa tidak aktif berlalu gunakan wallpaper sekarang sebagai screensaver</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Jika link strim video yang disokong terjumpa,gunakan pemain video (sebaliknya muatkan laman web).</value>

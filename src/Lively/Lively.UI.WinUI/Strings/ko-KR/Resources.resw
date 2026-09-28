@@ -655,7 +655,7 @@ Windows 7의 경우 - '최적 모양으로 조정' 체크 &amp; 적용.
     <value>원격 데스크톱 세션을 실행할 때 재생을 변경합니다.</value>
   </data>
   <data name="ScreensaverWaitTime.Header" xml:space="preserve">
-    <value>선택한 비활성 시간이 지나면 현재 배경화면을 화면 보호기로 사용합니다.</value>
+    <value>비활성 기간이 지나면 현재 배경화면을 화면 보호기로 사용합니다</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>지원되는 비디오 스트림 링크가 감지되면 웹페이지를 불러오는 대신 비디오 플레이어를 사용합니다.</value>

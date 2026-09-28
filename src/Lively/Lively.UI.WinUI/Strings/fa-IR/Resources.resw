@@ -275,7 +275,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>Lively برای پخش کاغذ دیواری باید در پس زمینه اجرا شود</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>روشن شدن با ویندوز</value>
+    <value>اجرا شدن همزمان با ویندوز</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>افزودن</value>
@@ -446,7 +446,7 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>هیج</value>
   </data>
   <data name="TextPerformancePause.Content" xml:space="preserve">
-    <value>توقف</value>
+    <value>مکث</value>
   </data>
   <data name="TextPicture" xml:space="preserve">
     <value>عکس</value>

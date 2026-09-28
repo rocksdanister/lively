@@ -578,7 +578,7 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Skerm</value>
   </data>
   <data name="WallpaperLayoutSpan.Text" xml:space="preserve">
-    <value>Span</value>
+    <value>juanilations</value>
   </data>
   <data name="WallpaperType.Text" xml:space="preserve">
     <value>Tik</value>
@@ -987,10 +987,10 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Tipe skermbewaarder</value>
   </data>
   <data name="ScreensaverModeDifferentWallpaper.Text" xml:space="preserve">
-    <value>Custom</value>
+    <value>srdtfygijokp</value>
   </data>
   <data name="ScreensaverModeSameWallpaper.Text" xml:space="preserve">
-    <value>Mirror Wallpaper</value>
+    <value>Spieëlmuurpapier</value>
   </data>
   <data name="ScreensaverPlugin.Title" xml:space="preserve">
     <value>Inprop vereis</value>
@@ -1212,13 +1212,13 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Laai af</value>
   </data>
   <data name="TextBecomePatreonMember.Content" xml:space="preserve">
-    <value>Become a Patreon supporter</value>
+    <value>Word 'n Patreon-ondersteuner</value>
   </data>
   <data name="TextPatreonMembersThankYou.Text" xml:space="preserve">
-    <value>Thanks to all the members who support this project.</value>
+    <value>Dankie aan al die lede wat hierdie projek ondersteun.</value>
   </data>
   <data name="TitlePatreon.Text" xml:space="preserve">
-    <value>Patreon Supporters</value>
+    <value>Patreon-ondersteuners</value>
   </data>
   <data name="SelectScreensaverCustomMode.Text" xml:space="preserve">
     <value>စခရင်ဆေဗာကို ရွေးပါ</value>
@@ -1230,19 +1230,19 @@ As dit steeds nie werk nie, maak toe en begin Lively weer / herbegin vensters.
     <value>Inprop vereis</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Kies apps om uit te sluit van die vertoning van musiekbesonderhede</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>App-uitsluiting</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
     <value>Restart</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Musiek</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>N Herbegin van die muurpapier is nodig sodat die instellings in werking kan tree</value>
   </data>
   <data name="LanguageSettingsItemSystemDefault.Content" xml:space="preserve">
     <value>Same as System</value>

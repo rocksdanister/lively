@@ -1248,7 +1248,7 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
     <value>Sistemlə eyni</value>
   </data>
   <data name="InfoSettingsRestartRequest.Message" xml:space="preserve">
-    <value>Please restart application for settings to take effect.</value>
+    <value>Ayarların qüvvəyə minməsi üçün proqramı yenidən başladın.</value>
   </data>
   <data name="ScreensaverLockOnResume.Header" xml:space="preserve">
     <value>Davam edərkən, giriş ekranını göstər</value>
@@ -1263,10 +1263,10 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
     <value>Windows Parametrləri</value>
   </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
-    <value>Confirm project structure?</value>
+    <value>Layihə sturukturu təsdiqlənsin?</value>
   </data>
   <data name="DescriptionConfirmFileConvertion.Text" xml:space="preserve">
-    <value>This file format isn’t supported directly. It will be converted before use. Do you want to continue?</value>
+    <value>Bu fayl formatı birbaşa dəstəklənmir. İstifadədən öncə çevriləcəkdir. Davam etmək istəyirsiniz?</value>
   </data>
   <data name="ScreensaverDialogSettings.Header" xml:space="preserve">
     <value>Ayarlar</value>
@@ -1275,22 +1275,22 @@ Windows 7 təzəlikcə qurulubsa - Ən yaxşı görünüş üçün ayarlar və T
     <value>Çıxış</value>
   </data>
   <data name="DisplayAudioPauseRule.Description" xml:space="preserve">
-    <value>Control how wallpaper audio plays across your screens</value>
+    <value>Divar kağızı səsinin ekranlarınız arasında necə oxudulacağını idarə edin</value>
   </data>
   <data name="VisualizerAudioDevice.Description" xml:space="preserve">
-    <value>Select the playback device used for visualizing sound</value>
+    <value>Səsin vizuallaşdırılması üçün oxutma cihazını seçin</value>
   </data>
   <data name="VisualizerAudioDevice.Header" xml:space="preserve">
     <value>Səs qurğusu</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Description" xml:space="preserve">
-    <value>Get early features and help test them before public release. These builds may be unstable.</value>
+    <value>Erkən özəllikləri əldə edin və ictimai buraxılışdan əvvəl onları test etməyə yardım edin. Bu versiyalar qeyri-stabil ola bilər.</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Header" xml:space="preserve">
     <value>Beta buraxılışına qoşul</value>
   </data>
   <data name="SwitchReleaseBranchStable.Description" xml:space="preserve">
-    <value>Return to the regular public release for the most reliable updates.</value>
+    <value>Ən etibarlı güncəlləmələr üçün düzgün ictimai buraxılışa qayıdın.</value>
   </data>
   <data name="SwitchReleaseBranchStable.Header" xml:space="preserve">
     <value>Sabit buraxılışa çevir</value>

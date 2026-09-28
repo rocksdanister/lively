@@ -1254,7 +1254,7 @@ Ako još ne radi, ugasi i upali Lively opet/restartuj windows.
     <value>Let Windows manage colors</value>
   </data>
   <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
-    <value>Windows Settings</value>
+    <value>Configuracion windows</value>
   </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
     <value>Confirm project structure?</value>

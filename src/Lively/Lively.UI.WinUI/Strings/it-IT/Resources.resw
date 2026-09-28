@@ -653,7 +653,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Cambia riproduzione quando si esegue una sessione Desktop remoto</value>
   </data>
   <data name="ScreensaverWaitTime.Header" xml:space="preserve">
-    <value>Dopo il tempo di inattività selezionato usa lo sfondo corrente come salvaschermo</value>
+    <value>Dopo il tempo d'inattività selezionato usa lo sfondo corrente come salvaschermo</value>
   </data>
   <data name="StreamWallpaperDetect.Description" xml:space="preserve">
     <value>Se viene rilevato un collegamento al flusso video supportato, utilizzare il lettore video invece di caricare la pagina web</value>
@@ -1229,7 +1229,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Per visualizzare questo contenuto è necessario Microsoft WebView2</value>
   </data>
   <data name="WebViewRequired.Title" xml:space="preserve">
-    <value>Plugin obbligatorio</value>
+    <value>Plugin richiesto</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
     <value>Seleziona le app da escludere dalla visualizzazione dei dettagli musicali</value>
@@ -1274,7 +1274,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Impostazioni</value>
   </data>
   <data name="DisplayAudioPauseRule.Header" xml:space="preserve">
-    <value>Output</value>
+    <value>Uscita</value>
   </data>
   <data name="DisplayAudioPauseRule.Description" xml:space="preserve">
     <value>Controlla come l'audio dello sfondo viene riprodotto attraverso gli schermi</value>
@@ -1286,7 +1286,7 @@ Quando sei pronto, vai a: http://localhost:portnumber per accedere al portale de
     <value>Dispositivi audio</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Description" xml:space="preserve">
-    <value>Ottieni funzionalità in anteprima e aiuta a testarle prima del rilascio pubblico. Queste build potrebbero essere instabili.</value>
+    <value>Ottieni le prime funzioni e aiuta a testarle prima del rilascio pubblico. Queste versioni potrebbero essere instabili.</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Header" xml:space="preserve">
     <value>Unisciti alla versione Beta</value>

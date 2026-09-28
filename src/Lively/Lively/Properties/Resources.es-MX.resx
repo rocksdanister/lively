@@ -124,7 +124,7 @@
     <value>Nivel de volumen de todos los fondos.</value>
   </data>
   <data name="Audio.Header" xml:space="preserve">
-    <value>Volumen General</value>
+    <value>Volumen</value>
   </data>
   <data name="AudioGroup.Text" xml:space="preserve">
     <value>Sonido</value>
@@ -138,7 +138,7 @@
   <data name="DescExplorerCrash" xml:space="preserve">
     <value>Lively ha encontrado un error fatal.
 
-¡El Explorador de Windows se ha reiniciado dos veces en los últimos 30 segundos! Esto puede ser un conflicto entre Lively y otro software de personalización de escritorio o Windows. Para evitar más errores, todos los fondos de pantalla son terminados.</value>
+¡El Explorador de Windows se ha reiniciado dos veces en los últimos 30 segundos! Esto puede ser por algún conflicto entre Lively y otro programa de personalización del escritorio o Windows. Para evitar mas inconvenientes, todos los fondos de pantalla han sido cerrados.</value>
   </data>
   <data name="DescIncompatibleTaskbarTheme" xml:space="preserve">
     <value>Se encontró un programa incompatible, tema de la barra de tareas desactivado</value>
@@ -147,11 +147,11 @@
     <value>Sitio web oficial de Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantallas puede ser usado como protector de pantalla.
+    <value>La mayoría de pantallas modernas LCD y LED no sufren de quemado de pantalla, y por esa razón cualquier fondo de pantalla puede ser usado como salvapantallas.
 
-Para pantallas OLED, Plasma o CRT que son susceptibles ha quemado y retención de imagen es recomendado el uso de protectores de pantalla con movimiento continuo, y que tenga un tema relativamente oscuro que ayuden a mitigar el quemado de la pantalla, pero la eficacia de este método no ha sido comprobado y no puede ser garantizado.
+Para pantallas OLED, Plasma o CRT, que son susceptibles al quemado y retención de imagen, es recomendado el uso de salvapantallas con movimiento continuo, y que tenga un tema relativamente oscuro que se supone que puede mitigar este efecto, pero este método no ha sido comprobado y no se puede garantizar su eficacia.
 
-El objetivo principal del protector de pantalla en Lively es ofrecer más posibilidades para personalizar tu PC. Usa el salva pantallas para proteger contra el quemado de pantalla bajo tu propio riesgo.</value>
+El objetivo principal del salva pantallas en Lively es ofrecer más posibilidades para personalizar tu PC. Usa salvapantallas como protección contra el quemado de pantalla bajo tu propio riesgo!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Informar de un problema con la aplicación</value>
@@ -172,22 +172,24 @@ El objetivo principal del protector de pantalla en Lively es ofrecer más posibi
     <value>¿Estás seguro de que quieres eliminar este fondo de pantalla de la biblioteca?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
-    <value>Simplemente arrastra y suelta archivos en la Biblioteca</value>
+    <value>Simplemente arrastra y suelta los archivos aquí</value>
   </data>
   <data name="DescriptionExternalAppWarning" xml:space="preserve">
-    <value>Estás abriendo una aplicación externa como fondo de pantalla. Las aplicaciones maliciosas pueden contener malwares, virus.. y dañar tu sistema. Solo continua si esta aplicación proviene de una fuente confiable.</value>
+    <value>Estás abriendo una aplicación externa como fondo de pantalla. 
+Las aplicaciones maliciosas pueden contener malware, virus... y dañar tu sistema. 
+Continúa únicamente si esta aplicación proviene de una fuente confiable.</value>
   </data>
   <data name="MinimizedTray.Text" xml:space="preserve">
-    <value>Lively se minimiza en la bandeja del sistema, haz clic derecho en el icono de lively para continuar.</value>
+    <value>Libelo se minimiza en la bandeja del sistema, haz clic derecho en el icono de libelo</value>
   </data>
   <data name="DescriptionPleaseRestartLively" xml:space="preserve">
-    <value>Por favor reinicia Lively para que las configuraciones tengan efecto.</value>
+    <value>Por favor reinicie Lively para que las configuraciones tengan efecto</value>
   </data>
   <data name="DescriptionPleaseStop" xml:space="preserve">
     <value>Porfavor detente antes de continuar</value>
   </data>
   <data name="DescriptionRecordStart" xml:space="preserve">
-    <value>Pulsa para empezar a grabar.</value>
+    <value>Presione para empezar a grabar</value>
   </data>
   <data name="DescriptionRestoringWallpaper" xml:space="preserve">
     <value>Restaurando fondo(s) de pantalla anterior(es), por favor espera...</value>
@@ -202,20 +204,20 @@ El objetivo principal del protector de pantalla en Lively es ofrecer más posibi
     <value>Ingresa el enlace de un sitio web para cargarlo, puedes utilizar enlaces de shadertoy.com</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Este asistente te ayudará a comenzar a configurar Lively.</value>
+    <value>Este asistente te ayudará a comenzar a configurar Libelo</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
-    <value>Tu versión de Windows N/KN requiere la descarga de códecs adicionales para soportar la reproducción de vídeos como fondos de pantalla</value>
+    <value>Tu versión de Windows N/KN requerirá la descarga de codecs adicionales para respaldar la reproducción de vídeos como fondos de pantalla</value>
   </data>
   <data name="DescSupperDev" xml:space="preserve">
-    <value>Apoya al desarrollador comprandole un café</value>
+    <value>Muestra tu apoyo comprándole un café al desarrollador</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Estás a punto de cambiar a la versión beta (desarrollador) de Lively.
-¡Las actualizaciones serán frecuentes y pueden contener errores!</value>
+    <value>Estas a punto de cambiar a una versión beta (en desarrollo) de Lively.
+Las actualizaciones serán frecuentes. ¡Y pueden llegar a tener errores!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilidad del icono en la bandeja del sistema; Lively seguirá ejecutándose con el icono oculto</value>
+    <value>Visibilidad del ícono de la bandeja del sistema, Lively continuará corriendo con el ícono escondido</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
     <value>Icono de la bandeja del sistema</value>
@@ -234,14 +236,14 @@ https://github.com/rocksdanister/lively/releases</value>
     <value>Archivo de fondo de pantalla dañado, intenta descargándolo nuevamente</value>
   </data>
   <data name="LivelyExceptionGeneral" xml:space="preserve">
-    <value>¡Ups! Parece que algo salió mal :(
-Para enteder mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
-Visita el siguiente enlace con instrucciones sobre como compartir el archivo de registro:
+    <value>Vaya... parece que algo salió mal:(
+Para entender mejor este error y solucionar el problema, comparte el archivo de registro con el desarrollador.
+Visita el siguiente enlace con instrucciones para compartir el archivo de registro:
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionHighContrastMode" xml:space="preserve">
     <value>¡Lively no puede funcionar correctamente con el modo de alto contraste de Windows activado!
-Deshabilita el modo de alto contraste e intente nuevamente.</value>
+Deshabilite el modo de alto contraste e intente nuevamente.</value>
   </data>
   <data name="LivelyExceptionMediaPlayback" xml:space="preserve">
     <value>El reproducto de contenido ha fallado :(
@@ -252,30 +254,30 @@ Visita el siguiente enlace con instrucciones sobre como compartir el archivo de 
 https://github.com/rocksdanister/lively/wiki</value>
   </data>
   <data name="LivelyExceptionNotLivelyZip" xml:space="preserve">
-    <value>No es un archivo de fondo de Lively.</value>
+    <value>No es un archivo válido</value>
   </data>
   <data name="LivelyExceptionSafeModeStart" xml:space="preserve">
-    <value>Lively no se cerró correctamente, iniciando en modo seguro.
-¿Deseas restaurar los fondos de pantalla que estaban ejecutandose anteriormente?</value>
+    <value>Lively no se cerró correctamente, se iniciará en modo seguro.
+¿Desea restaurar los fondos de pantalla que estaban ejecutando anteriormente?</value>
   </data>
   <data name="LivelyExceptionWorkerWSetupFail" xml:space="preserve">
-    <value>Debes aplicar algunas configuraciones para que Lively funcione:
+    <value>Parece que debes aplicar algunas configuraciones para que Lively funcione:
 1. En el navegador de archivos da clic derecho en "Este Equipo"
 2. Selecciona Propiedades
 3. Selecciona Configuración avanzada del sistema
 4. En la pestaña Rendimiento, selecciona Configuración
-5. Habilita animar los elementos y controles de las ventanas
-6. Aplica los cambios
+5. Habilita la opción animar los elementos y controles de las ventanas
+6. Aplica los cambios y presiona  "Aceptar" para cerrar la ventana
 
 Si Windows 7 se acaba de configurar: ajusta para obtener la mejor apariencia y aplica los cambios.
 Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
-(No funciona en algunas versiones insider de Windows 10)</value>
+(No funciona en algunas versiones de Windows 10 Insider)</value>
   </data>
   <data name="Startup.Description" xml:space="preserve">
-    <value>Lively necesita ejecutarse en segundo plano para reproducir el fondo de pantalla.</value>
+    <value>Lively necesita ejecutarse en segundo plano para la reproducción del fondo de pantalla</value>
   </data>
   <data name="Startup.Header" xml:space="preserve">
-    <value>Iniciar con Windows</value>
+    <value>Comenzar con Windows</value>
   </data>
   <data name="TextAdd" xml:space="preserve">
     <value>Agregar</value>
@@ -314,7 +316,7 @@ Si aún no funciona, cierra e inicia Lively nuevamente o reinicia Windows.
     <value>¡Completado!</value>
   </data>
   <data name="ControlPanel.Subtitle" xml:space="preserve">
-    <value>Haz click aquí para administrar tus fondos de pantalla.</value>
+    <value>Haz clic aquí para administrar fondos de pantalla</value>
   </data>
   <data name="TextConvertVideo" xml:space="preserve">
     <value>Convertir a Video</value>

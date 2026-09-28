@@ -1233,72 +1233,72 @@ Az Edge a Windows 10 beépített WebView-ja (Lehetővé teszi, hogy webes tartal
     <value>Beépülő modul szükséges</value>
   </data>
   <data name="AppMusicExclusion.Description" xml:space="preserve">
-    <value>Select apps to exclude from showing music details</value>
+    <value>Alkalmazások kizárása a zenerészletek megjelenítésében</value>
   </data>
   <data name="AppMusicExclusion.Header" xml:space="preserve">
-    <value>App exclusion</value>
+    <value>Alkalmazás kizárás</value>
   </data>
   <data name="RestartCommand.Content" xml:space="preserve">
-    <value>Restart</value>
+    <value>Újraindítás</value>
   </data>
   <data name="WallpaperMusicGroup.Text" xml:space="preserve">
-    <value>Music</value>
+    <value>Zene</value>
   </data>
   <data name="WallpaperRestartRequiredNotify.Message" xml:space="preserve">
-    <value>Wallpaper restart is required for the settings to take effect</value>
+    <value>Háttérkép újraindítási szükséges a beállítások érvénybe lépéséhez</value>
   </data>
   <data name="LanguageSettingsItemSystemDefault.Content" xml:space="preserve">
-    <value>Same as System</value>
+    <value>Rendszerrel megegyező</value>
   </data>
   <data name="InfoSettingsRestartRequest.Message" xml:space="preserve">
-    <value>Please restart application for settings to take effect.</value>
+    <value>Kérlek indítsd újra a programot a beállítások érvénybe lépéséhez.</value>
   </data>
   <data name="ScreensaverLockOnResume.Header" xml:space="preserve">
     <value>Számítógép zárolása</value>
   </data>
   <data name="ScreensaverFadeIn.Header" xml:space="preserve">
-    <value>Fade to black before start</value>
+    <value>Elsötétedés indítás előtt</value>
   </data>
   <data name="VideoLetWindowsManageColor.Header" xml:space="preserve">
-    <value>Let Windows manage colors</value>
+    <value>Windows kezelje a színeket</value>
   </data>
   <data name="ScreensaverWindowsSettings.Header" xml:space="preserve">
-    <value>Windows Settings</value>
+    <value>Windows beállítások</value>
   </data>
   <data name="DescriptionConfirmProjectDirectory.Text" xml:space="preserve">
-    <value>Confirm project structure?</value>
+    <value>Jóváhagyja a projekt szerkezetét?</value>
   </data>
   <data name="DescriptionConfirmFileConvertion.Text" xml:space="preserve">
-    <value>This file format isn’t supported directly. It will be converted before use. Do you want to continue?</value>
+    <value>Ez a fájlformátum közvetlenül nem támogatott. Használat előtt át lesz alakítva. Szeretné folytatni?</value>
   </data>
   <data name="ScreensaverDialogSettings.Header" xml:space="preserve">
     <value>Beállítások</value>
   </data>
   <data name="DisplayAudioPauseRule.Header" xml:space="preserve">
-    <value>Output</value>
+    <value>Kimenet</value>
   </data>
   <data name="DisplayAudioPauseRule.Description" xml:space="preserve">
-    <value>Control how wallpaper audio plays across your screens</value>
+    <value>Állítsd be hogy játszódjon le az audio több kijelző között</value>
   </data>
   <data name="VisualizerAudioDevice.Description" xml:space="preserve">
-    <value>Select the playback device used for visualizing sound</value>
+    <value>Válasszon hangeszközt a hangok vizualizálásához</value>
   </data>
   <data name="VisualizerAudioDevice.Header" xml:space="preserve">
-    <value>Audio device</value>
+    <value>Hangeszköz</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Description" xml:space="preserve">
-    <value>Get early features and help test them before public release. These builds may be unstable.</value>
+    <value>Kapj kísérleti funkciókat és segíts tesztelni a stabil verzió kiadása előtt. Ezek a verziók instabilak lehetnek.</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Header" xml:space="preserve">
-    <value>Join the Beta release</value>
+    <value>Csatlakozz a béta kiadáshoz</value>
   </data>
   <data name="SwitchReleaseBranchStable.Description" xml:space="preserve">
-    <value>Return to the regular public release for the most reliable updates.</value>
+    <value>Visszaváltás stabil kiadásra, a legmegbízhatóbb frissítésekért.</value>
   </data>
   <data name="SwitchReleaseBranchStable.Header" xml:space="preserve">
-    <value>Switch to Stable release</value>
+    <value>Stabil kiadásra váltás</value>
   </data>
   <data name="RestartWallpaperAfterLockscreen.Header" xml:space="preserve">
-    <value>Restart wallpaper when returning from lock screen</value>
+    <value>Háttérkép újraindítása a záróképenyőből való visszatéréskor</value>
   </data>
 </root>

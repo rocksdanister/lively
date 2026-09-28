@@ -1279,7 +1279,7 @@ O Edge é a webview embutida do Windows 10.</value>
     <value>Saída</value>
   </data>
   <data name="DisplayAudioPauseRule.Description" xml:space="preserve">
-    <value>Controle como o áudio do plano de fundo é reproduzido nas telas</value>
+    <value>Controle como o áudio do papel de parede é reproduzido em seus monitores</value>
   </data>
   <data name="VisualizerAudioDevice.Description" xml:space="preserve">
     <value>Selecione o dispositivo de reprodução usado para visualizar o som</value>

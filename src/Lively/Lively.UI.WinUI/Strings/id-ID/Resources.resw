@@ -147,11 +147,11 @@ Windows Explorer memulai ulang dua kali dalam 30 detik terakhir! Ini mungkin ter
     <value>Halaman web resmi Lively Wallpaper</value>
   </data>
   <data name="DescOledScreensaverNotice" xml:space="preserve">
-    <value>Sebagian besar layar LCD dan LED modern tidak mengalami masalah efek burn-in, maka dari itu wallpaper apapun dapat digunakan sebagai scrensaver.
+    <value>Kebanyakan layar LCD dan LED modern tidak bermasalah dari efek burn-in, maka wallpaper apapun bisa menjadi screensaver.
 
-Untuk layar OLED, Plasma atau CRT yang rentan terhadap burn-in, disarankan untuk menggunakan wallpaper dengan gerakan teratur dan tema gelap secara keseluruhan yang seharusnya dapat mengurangi efek burn-in, namun fitur ini belum teruji dan efektivitasnya belum terjamin.
+Untuk layar OLED, Plasma atau CRT yang rentan terhadap burn-in, disarankan menggunakan wallpaper dengan gerakan teratur dan tema yang dominan gelap untuk mengurangi efek burn-in, namun fitur ini belum diuji dan efektivitasnya belum terjamin.
 
-Tujuan utama dari lively screensaver adalah untuk menambahkan lapisan lain pada kustomisasi di komputer Anda, gunakanlah screensaver sebagai perlindungan terhadap burn-in dengan risiko ditanggung Anda sendiri!</value>
+Tujuan utama Lively adalah agar dapat lebih mem-personalisasi komputer Anda, risiko burn-in ditanggung sendiri!</value>
   </data>
   <data name="ReportBug.Description" xml:space="preserve">
     <value>Laporkan masalah dengan aplikasi</value>
@@ -169,7 +169,7 @@ Tujuan utama dari lively screensaver adalah untuk menambahkan lapisan lain pada 
     <value>Apakah Anda yakin ingin menghapus wallpaper ini secara permanen dari penyimpanan?</value>
   </data>
   <data name="DescriptionDeleteConfirmationLibrary" xml:space="preserve">
-    <value>Apakah Anda yakin ingin menghapus wallpaper ini secara permanen dari perpustakaan?</value>
+    <value>Apakah Anda yakin ingin menghapus wallpaper ini secara permanen dari Library?</value>
   </data>
   <data name="DragDropFile.Text" xml:space="preserve">
     <value>Cukup seret dan letakkan berkas ke sini</value>
@@ -204,7 +204,7 @@ Lanjutkan hanya jika aplikasi ini berasal dari sumber tepercaya.</value>
     <value>Masukkan URL halaman web untuk dimuat, tautan shader dari shadertoy.com dapat digunakan.</value>
   </data>
   <data name="DescriptionWelcomeWizard" xml:space="preserve">
-    <value>Panduan ini akan membantu Anda memulai pengaturan Animasi</value>
+    <value>Panduan ini akan membantu Anda memulai pengaturan Lively</value>
   </data>
   <data name="DescriptionWindowsNCodecInstall" xml:space="preserve">
     <value>Versi Windows N/KN milikmu perlu mendownload codec tambahan untuk mendukung pemutaran video di wallpaper</value>
@@ -213,14 +213,14 @@ Lanjutkan hanya jika aplikasi ini berasal dari sumber tepercaya.</value>
     <value>Bantu developer dengan membelikan kopi</value>
   </data>
   <data name="DescSwitchBranchBetaWarning" xml:space="preserve">
-    <value>Anda akan mengubah ke versi beta (pengembang) Lively.
+    <value>Anda akan mengubah ke Lively versi beta (pengembang).
 Pembaruan akan sering dilakukan dan mungkin memiliki bug!</value>
   </data>
   <data name="HideSysTray.Description" xml:space="preserve">
-    <value>Visibilitas ikon System tray, lively akan terus berjalan dengan ikon tersembunyi</value>
+    <value>Visibilitas ikon system-tray, Lively akan terus berjalan dengan ikon tersembunyi</value>
   </data>
   <data name="HideSysTray.Header" xml:space="preserve">
-    <value>Ikon System tray</value>
+    <value>Ikon system-tray</value>
   </data>
   <data name="Language.Description" xml:space="preserve">
     <value>Lively akan dimulai ulang untuk menerapkan bahasa baru.</value>
@@ -1287,13 +1287,13 @@ Semua: Jeda wallpaper untuk semua layar jika ada aplikasi fullscreen/sedang difo
     <value>Perangkat audio</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Description" xml:space="preserve">
-    <value>Get early features and help test them before public release. These builds may be unstable.</value>
+    <value>Dapatkan fitur awal dan bantuan tes ke mereka sebelum rilis publik. Build ini mungkin tidak stabil.</value>
   </data>
   <data name="SwitchReleaseBranchBeta.Header" xml:space="preserve">
     <value>Ikut versi Beta</value>
   </data>
   <data name="SwitchReleaseBranchStable.Description" xml:space="preserve">
-    <value>Return to the regular public release for the most reliable updates.</value>
+    <value>Kembali ke rilis publik reguler untuk pembaruan yang paling andal.</value>
   </data>
   <data name="SwitchReleaseBranchStable.Header" xml:space="preserve">
     <value>Pindah ke versi Stabil</value>

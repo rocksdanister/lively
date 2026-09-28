@@ -1296,6 +1296,6 @@ https://github.com/rocksdanister/lively/wiki</value>
     <value>切換到穩定版本</value>
   </data>
   <data name="RestartWallpaperAfterLockscreen.Header" xml:space="preserve">
-    <value>Restart wallpaper when returning from lock screen</value>
+    <value>從鎖定畫面返回後重新啟動桌布</value>
   </data>
 </root>
