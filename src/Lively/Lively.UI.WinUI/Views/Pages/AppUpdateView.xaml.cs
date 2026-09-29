@@ -94,11 +94,16 @@ namespace Lively.UI.WinUI.Views.Pages
 
         private void WebView_NavigationStarting(WebView2 sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationStartingEventArgs args)
         {
+
             // Stay in page
-            if (args.IsRedirected)
-                args.Cancel = true;
-            else
-                WebViewProgress.Visibility = Visibility.Visible;
+            // livelywallpaper.net is a redirect, allow for now.
+            //if (args.IsRedirected)
+            //{
+            //    args.Cancel = true;
+            //    return;
+            //}
+
+            WebViewProgress.Visibility = Visibility.Visible;
         }
 
         private void WebView_NavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
