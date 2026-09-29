@@ -68,7 +68,7 @@ namespace Lively.UI.WinUI.Views.Pages
                 var param = $"?source=app&theme={pageTheme}&colorLight={accentColorLight1}&colorDark={accentColorDark1}";
 
                 var url = viewModel.IsBetaBuild ?
-                    $"https://www.livelywallpaper.net/changelog/{param}" :
+                    $"https://www.livelywallpaper.net/changelog/beta.html{param}" :
                     $"https://www.livelywallpaper.net/changelog/{param}";
                 WebView.Source = LinkUtil.SanitizeUrl(url);
 
