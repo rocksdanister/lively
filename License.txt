@@ -1,4 +1,5 @@
-For shader license see the corresponding file.
+CC0 - Synthwave canyon by mrange
+https://www.shadertoy.com/view/slcXW8
 
 Icons by Font Awesome licensed under CC BY 4.0
 https://github.com/FortAwesome/Font-Awesome
@@ -8,17 +9,3 @@ https://fonts.google.com/noto/specimen/Noto+Sans?query=Noto+Sans
 
 Accordian image gallery by Stefan C licensed under MIT
 https://codepen.io/stefcharle/pen/Gydvbx
-
-Stock images:
-
-Mountain Surrounded With Fog by Stephan Seeber from Pexels
-https://www.pexels.com/photo/mountain-surrounded-with-fog-1772973/
-
-Road Between Pine Trees by Veeterzy from Pexels
-https://www.pexels.com/photo/road-between-pine-trees-39811/
-
-Scenic View of Landscape Against Sky by Nikolai Ulltang from Pexels
-https://www.pexels.com/photo/scenic-view-of-landscape-against-sky-325139/
-
-Icy Pine Trees photography by Stephan Seeber from Pexels
-https://www.pexels.com/photo/icy-pine-trees-1110504/

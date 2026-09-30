@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Lively Wallpaper by rocksdanister</title>
@@ -121,31 +121,10 @@
           </div>
           <!-- <img src="assets/app.webp" class="ui-app-img" draggable="false" /> -->
           <ul id="wallpapers" class="wallpapers">
-            <li id="rain" class="library">
-              <img
-                alt="rain wallpaper"
-                src="assets/rain_preview.webp"
-                style="outline: 2.5px solid #a425a0"
-                width="600"
-                height="400"
-                draggable="false"
-              />
-              <div>Rain</div>
-            </li>
-
-            <li id="snow" class="library">
-              <img alt="snow wallpaper" src="assets/snow_preview.webp" width="600" height="400" draggable="false" />
-              <div>Snow</div>
-            </li>
-
-            <li id="clouds" class="library">
-              <img alt="cloud wallpaper" src="assets/clouds_preview.webp" width="600" height="400" draggable="false" />
-              <div>Clouds</div>
-            </li>
-
             <li id="synthwave" class="library">
               <img
                 alt="synthwave wallpaper"
+                style="outline: 2.5px solid #a425a0"
                 src="assets/synthwave_preview.webp"
                 width="600"
                 height="400"
@@ -194,136 +173,7 @@
               </div>
             </div>
 
-            <div id="ui-app-customise-controls-rain">
-              <p class="slider-label">Intensity</p>
-              <input
-                autocomplete="off"
-                style="background-size: 40% 100%"
-                type="range"
-                min="0"
-                max="1"
-                value="0.4"
-                step="0.01"
-                oninput="setProperty('u_intensity',this.value)"
-              />
-              <p class="slider-label">Size</p>
-              <input
-                autocomplete="off"
-                style="background-size: 13% 100%"
-                type="range"
-                min="0.1"
-                max="3"
-                value="0.39"
-                step="0.01"
-                oninput="setProperty('u_zoom',3 - this.value)"
-              />
-              <p class="slider-label">Speed</p>
-              <input
-                autocomplete="off"
-                style="background-size: 2.5% 100%"
-                type="range"
-                min="0"
-                max="10"
-                value="0.25"
-                step="0.01"
-                oninput="setProperty('u_speed',this.value)"
-              />
-              <br />
-              <div class="dropdown">
-                <button class="dropbtn">Change background</button>
-                <div class="dropdown-content">
-                  <a onclick="setTexture('u_tex0', 'media/rain_mountain.webp')">Moutain.jpg</a>
-                  <a onclick="setTexture('u_tex0', 'media/rain_forest.webp')">Forest.jpg</a>
-                  <a onclick="openFilePicker()">Custom</a>
-                </div>
-              </div>
-              <!-- <button class="fluent-button" onclick="openFilePicker()">Change background</button> -->
-              <!-- <div>
-                <input
-                  autocomplete="off"
-                  type="checkbox"
-                  unchecked
-                  onchange="setProperty('u_lightning',this.checked ? true : false)"
-                />
-                <label class="checkbox-label">Lightning</label>
-              </div> -->
-              <div>
-                <input
-                  autocomplete="off"
-                  type="checkbox"
-                  checked
-                  onchange="setProperty('u_post_processing',this.checked ? true : false)"
-                />
-                <label class="checkbox-label">Post processing</label>
-              </div>
-            </div>
-
-            <div id="ui-app-customise-controls-snow" style="display: none">
-              <!-- <p class="slider-label">Layers</p>
-              <input
-                autocomplete="off"
-                style="background-size: 25% 100%"
-                type="range"
-                min="0"
-                max="200"
-                value="50"
-                step="1"
-                oninput="setProperty('u_layers',this.value)"
-              /> -->
-              <p class="slider-label">Depth</p>
-              <input
-                autocomplete="off"
-                style="background-size: 50% 100%"
-                type="range"
-                min="0"
-                max="2"
-                value="1.0"
-                step="0.01"
-                oninput="setProperty('u_depth',this.value)"
-              />
-              <p class="slider-label">Width</p>
-              <input
-                autocomplete="off"
-                style="background-size: 15% 100%"
-                type="range"
-                min="0"
-                max="2"
-                value="0.3"
-                step="0.01"
-                oninput="setProperty('u_width',this.value)"
-              />
-              <p class="slider-label">Speed</p>
-              <input
-                autocomplete="off"
-                style="background-size: 30% 100%"
-                type="range"
-                min="0"
-                max="2"
-                value="0.6"
-                step="0.01"
-                oninput="setProperty('u_speed',this.value)"
-              />
-              <br />
-              <div class="dropdown">
-                <button class="dropbtn">Change background</button>
-                <div class="dropdown-content">
-                  <a onclick="setTexture('u_tex0', 'media/snow_tree.webp')">Trees.jpg</a>
-                  <a onclick="setTexture('u_tex0', 'media/snow_landscape.webp')">Landscape.jpg</a>
-                  <a onclick="openFilePicker()">Custom</a>
-                </div>
-              </div>
-              <div>
-                <input
-                  autocomplete="off"
-                  type="checkbox"
-                  checked
-                  onchange="setProperty('u_post_processing',this.checked ? true : false)"
-                />
-                <label class="checkbox-label">Post processing</label>
-              </div>
-            </div>
-
-            <div id="ui-app-customise-controls-synthwave" style="display: none">
+            <div id="ui-app-customise-controls-synthwave">
               <p class="slider-label">Draw</p>
               <input
                 autocomplete="off"
@@ -333,7 +183,7 @@
                 max="2"
                 value="1.0"
                 step="0.01"
-                oninput="setProperty('u_draw',this.value)"
+                oninput="setProperty('u_draw', this.value)"
               />
               <p class="slider-label">Plane</p>
               <input
@@ -344,7 +194,7 @@
                 max="1"
                 value="0.7"
                 step="0.01"
-                oninput="setProperty('u_plane',this.value)"
+                oninput="setProperty('u_plane', this.value)"
               />
               <p class="slider-label">Sun</p>
               <input
@@ -355,7 +205,7 @@
                 max="1"
                 value="0.5"
                 step="0.01"
-                oninput="setProperty('u_sun',this.value)"
+                oninput="setProperty('u_sun', this.value)"
               />
               <br />
               <div>
@@ -363,60 +213,9 @@
                   autocomplete="off"
                   type="checkbox"
                   unchecked
-                  onchange="setProperty('u_crt_effect',this.checked ? true : false)"
+                  onchange="setProperty('u_crt_effect', this.checked ? true : false)"
                 />
                 <label class="checkbox-label">CRT</label>
-              </div>
-            </div>
-
-            <div id="ui-app-customise-controls-clouds" style="display: none">
-              <p class="slider-label">Scale</p>
-              <input
-                autocomplete="off"
-                style="background-size: 30.5% 100%"
-                type="range"
-                min="0"
-                max="2"
-                value="0.61"
-                step="0.01"
-                oninput="setProperty('u_scale',this.value)"
-              />
-              <p class="slider-label">Speed</p>
-              <input
-                autocomplete="off"
-                style="background-size: 5% 100%"
-                type="range"
-                min="0.0"
-                max="5"
-                value="0.25"
-                step="0.01"
-                oninput="setProperty('u_speed',this.value)"
-              />
-              <br />
-              <p class="slider-label">Density Color</p>
-              <input
-                autocomplete="off"
-                type="color"
-                class="colorpicker"
-                oninput="setProperty('u_color1',this.value)"
-                value="#87b0b7"
-              />
-              <p class="slider-label">Fog Color</p>
-              <input
-                autocomplete="off"
-                type="color"
-                class="colorpicker"
-                oninput="setProperty('u_fog_color',this.value)"
-                value="#0F1C1C"
-              />
-              <div>
-                <input
-                  autocomplete="off"
-                  type="checkbox"
-                  checked
-                  onchange="setProperty('u_fog',this.checked ? true : false)"
-                />
-                <label class="checkbox-label">Fog</label>
               </div>
             </div>
           </div>
@@ -481,12 +280,12 @@
       <h2>Ready to get started?</h2>
       <div class="download-options">
         <!-- <ms-store-badge
-            productid="9NTM2QC6QWS7"
-            size="large"
-            theme="dark"
-            animation="on"
-            window-mode="popup"
-          ></ms-store-badge> -->
+          productid="9NTM2QC6QWS7"
+          size="large"
+          theme="dark"
+          animation="on"
+          window-mode="popup"
+        ></ms-store-badge> -->
         <div class="download-button-wrapper">
           <a class="download-button">
             <div
@@ -494,7 +293,7 @@
               id="ms-store"
               href="ms-windows-store://pdp/?productid=9NTM2QC6QWS7&mode=mini"
               data-target="_self"
-              onclick="window.open(this.attributes.href.value,this.dataset.target).focus()"
+              onclick="window.open(this.attributes.href.value, this.dataset.target).focus()"
             >
               <img
                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSI4IDggMjAgMjAiIGZpbGw9Im5vbmUiPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsaXAtcGF0aD0idXJsKCNjbGlwMF85NzZfMTg4NikiPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDFfOTc2XzE4ODYpIj4KPHBhdGggZD0iTTguMjgxMjUgMTFDOC4yODEyNSAxMC41ODU4IDguNjE3MDQgMTAuMjUgOS4wMzEyNSAxMC4yNUgyNC45Njg3QzI1LjM4MyAxMC4yNSAyNS43MTg4IDEwLjU4NTggMjUuNzE4OCAxMVYyMi4zNDM4QzI1LjcxODggMjQuMDUyNCAyNC4zMzM2IDI1LjQzNzUgMjIuNjI1IDI1LjQzNzVIMTEuMzc1QzkuNjY2MzcgMjUuNDM3NSA4LjI4MTI1IDI0LjA1MjQgOC4yODEyNSAyMi4zNDM4VjExWiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzk3Nl8xODg2KSIvPgo8bWFzayBpZD0ibWFzazBfOTc2XzE4ODYiIHN0eWxlPSJtYXNrLXR5cGU6YWxwaGEiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjgiIHk9IjEwIiB3aWR0aD0iMTgiIGhlaWdodD0iMTYiPgo8cGF0aCBkPSJNOC4yODEyNSAxMUM4LjI4MTI1IDEwLjU4NTggOC42MTcwNCAxMC4yNSA5LjAzMTI1IDEwLjI1SDI0Ljk2ODdDMjUuMzgzIDEwLjI1IDI1LjcxODggMTAuNTg1OCAyNS43MTg4IDExVjIyLjM0MzhDMjUuNzE4OCAyNC4wNTI0IDI0LjMzMzYgMjUuNDM3NSAyMi42MjUgMjUuNDM3NUgxMS4zNzVDOS42NjYzNyAyNS40Mzc1IDguMjgxMjUgMjQuMDUyNCA4LjI4MTI1IDIyLjM0MzhWMTFaIiBmaWxsPSJ1cmwoI3BhaW50MV9saW5lYXJfOTc2XzE4ODYpIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF85NzZfMTg4NikiPgo8ZyBmaWx0ZXI9InVybCgjZmlsdGVyMF9kZF85NzZfMTg4NikiPgo8cGF0aCBkPSJNMTIuNzgxMiAxMC44MTI1VjguNTYyNUgyMS4yMTg3VjEwLjgxMjUiIHN0cm9rZT0idXJsKCNwYWludDJfbGluZWFyXzk3Nl8xODg2KSIgc3Ryb2tlLXdpZHRoPSIxLjEyNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjwvZz4KPC9nPgo8ZyBmaWx0ZXI9InVybCgjZmlsdGVyMV9kZF85NzZfMTg4NikiPgo8cGF0aCBkPSJNMTYuNzE5IDE0LjE4NzVIMTMuMzQ0VjE3LjU2MjVIMTYuNzE5VjE0LjE4NzVaIiBmaWxsPSIjRjI1MDIyIi8+CjxwYXRoIGQ9Ik0yMC42NTYyIDE0LjE4NzVIMTcuMjgxMlYxNy41NjI1SDIwLjY1NjJWMTQuMTg3NVoiIGZpbGw9IiM3RkJBMDAiLz4KPHBhdGggZD0iTTIwLjY1NjIgMTguMTI1SDE3LjI4MTJWMjEuNUgyMC42NTYyVjE4LjEyNVoiIGZpbGw9IiNGRkI5MDAiLz4KPHBhdGggZD0iTTE2LjcxODggMTguMTI1SDEzLjM0MzhWMjEuNUgxNi43MTg4VjE4LjEyNVoiIGZpbGw9IiMwMEE0RUYiLz4KPC9nPgo8cGF0aCBkPSJNMTIuNzgxMiAxMC44MTI1VjkuMTI1QzEyLjc4MTIgOC44MTQzNCAxMy4wMzMxIDguNTYyNSAxMy4zNDM4IDguNTYyNUgyMC42NTYzQzIwLjk2NjkgOC41NjI1IDIxLjIxODggOC44MTQzNCAyMS4yMTg4IDkuMTI1VjEwLjgxMjUiIHN0cm9rZT0idXJsKCNwYWludDNfbGluZWFyXzk3Nl8xODg2KSIgc3Ryb2tlLXdpZHRoPSIxLjEyNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxyZWN0IHg9IjEzLjM0MzgiIHk9IjgiIHdpZHRoPSI3LjMxMjUiIGhlaWdodD0iMS4xMjUiIGZpbGw9InVybCgjcGFpbnQ0X2xpbmVhcl85NzZfMTg4NikiLz4KPG1hc2sgaWQ9Im1hc2sxXzk3Nl8xODg2IiBzdHlsZT0ibWFzay10eXBlOmFscGhhIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSIxMyIgeT0iOCIgd2lkdGg9IjgiIGhlaWdodD0iMiI+CjxyZWN0IHg9IjEzLjM0MzgiIHk9IjgiIHdpZHRoPSI3LjMxMjUiIGhlaWdodD0iMS4xMjUiIGZpbGw9InVybCgjcGFpbnQ1X2xpbmVhcl85NzZfMTg4NikiLz4KPC9tYXNrPgo8ZyBtYXNrPSJ1cmwoI21hc2sxXzk3Nl8xODg2KSI+CjxnIGZpbHRlcj0idXJsKCNmaWx0ZXIyX2RkXzk3Nl8xODg2KSI+CjxyZWN0IHg9IjExLjcxODkiIHk9IjguNTYyNzQiIHdpZHRoPSIxLjYyNSIgaGVpZ2h0PSIyLjgxMjUiIGZpbGw9IiNDNEM0QzQiLz4KPC9nPgo8L2c+CjwvZz4KPC9nPgo8ZGVmcz4KPGZpbHRlciBpZD0iZmlsdGVyMF9kZF85NzZfMTg4NiIgeD0iMTEuMDkzOCIgeT0iNy4yNSIgd2lkdGg9IjExLjgxMjUiIGhlaWdodD0iNS42MjUiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMC4xODc1Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuMTg3NSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfOTc2XzE4ODYiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMC4zNzUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41NjI1Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjIgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93Xzk3Nl8xODg2IiByZXN1bHQ9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPGZpbHRlciBpZD0iZmlsdGVyMV9kZF85NzZfMTg4NiIgeD0iMTIuMjE4OCIgeT0iMTMuNDM3NSIgd2lkdGg9IjkuNTYyNSIgaGVpZ2h0PSI5LjU2MjUiIGZpbHRlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY29sb3ItaW50ZXJwb2xhdGlvbi1maWx0ZXJzPSJzUkdCIj4KPGZlRmxvb2QgZmxvb2Qtb3BhY2l0eT0iMCIgcmVzdWx0PSJCYWNrZ3JvdW5kSW1hZ2VGaXgiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMC4xODc1Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuMTg3NSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAwIDEgMCAwIDAgMC42IDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfOTc2XzE4ODYiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iMC4zNzUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41NjI1Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDEgMCAwIDAgMCAxIDAgMCAwIDAgMSAwIDAgMCAwLjYgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93Xzk3Nl8xODg2IiByZXN1bHQ9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPGZpbHRlciBpZD0iZmlsdGVyMl9kZF85NzZfMTg4NiIgeD0iMTAuNTkzOSIgeT0iNi42ODc1IiB3aWR0aD0iMTIuODEyNCIgaGVpZ2h0PSI1LjA2Mjc0IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9Ii0wLjc1Ii8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjAuMTg3NSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfOTc2XzE4ODYiLz4KPGZlQ29sb3JNYXRyaXggaW49IlNvdXJjZUFscGhhIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMTI3IDAiIHJlc3VsdD0iaGFyZEFscGhhIi8+CjxmZU9mZnNldCBkeT0iLTAuNzUiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMC41NjI1Ii8+CjxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwLjIgMCIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93Xzk3Nl8xODg2IiByZXN1bHQ9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIvPgo8ZmVCbGVuZCBtb2RlPSJub3JtYWwiIGluPSJTb3VyY2VHcmFwaGljIiBpbjI9ImVmZmVjdDJfZHJvcFNoYWRvd185NzZfMTg4NiIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzk3Nl8xODg2IiB4MT0iMTIuMjQ0MyIgeTE9IjguMDA2MzkiIHgyPSIxNS45MDM5IiB5Mj0iMjQuODEzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBvZmZzZXQ9IjAuMjcwODMzIiBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNERkRGREYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDFfbGluZWFyXzk3Nl8xODg2IiB4MT0iMTciIHkxPSIxMC4yNSIgeDI9IjIwLjM1MTQiIHkyPSIyNS45NjI0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwMDc4RDQiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTE0QThCIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhcl85NzZfMTg4NiIgeDE9IjE3IiB5MT0iOC41NjI1IiB4Mj0iMTcuMTU4MyIgeTI9IjEwLjk4NTgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzI4QUZFQSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDc4RDQiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDNfbGluZWFyXzk3Nl8xODg2IiB4MT0iMTciIHkxPSI4LjU2MjUiIHgyPSIxNy4xNTgzIiB5Mj0iMTAuOTg1OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMzBEQUZGIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwOTRENCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50NF9saW5lYXJfOTc2XzE4ODYiIHgxPSIxNi41OTM4IiB5MT0iOCIgeDI9IjE2LjU5MzciIHkyPSI5LjEyNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMjJCQ0ZGIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwODhGMCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50NV9saW5lYXJfOTc2XzE4ODYiIHgxPSIxNi41OTM4IiB5MT0iOCIgeDI9IjE2LjU5MzciIHkyPSI5LjEyNSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMjhBRkVBIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNDQ0JGNCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzk3Nl8xODg2Ij4KPHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOCA4KSIvPgo8L2NsaXBQYXRoPgo8Y2xpcFBhdGggaWQ9ImNsaXAxXzk3Nl8xODg2Ij4KPHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiBmaWxsPSJ3aGl0ZSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOCA4KSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPg=="
@@ -524,8 +323,8 @@
       </div>
       <div>
         <a
-          href="https://rocksdanister.com/lively/changelog"
-          title="https://www.rocksdanister.com/lively/changelog"
+          href="https://livelywallpaper.net/changelog"
+          title="https://livelywallpaper.net/changelog"
           target="_blank"
           >See what's new..</a
         >
@@ -533,15 +332,11 @@
     </div>
 
     <div id="footer">
-      <div>
-        <img alt="github profile" src="https://avatars.githubusercontent.com/rocksdanister" class="avatar" />
-        <h4>Dani John</h4>
-        <a href="mailto: awoo.git@gmail.com">awoo.git@gmail.com</a>
-        <br />
-        <a href="https://www.rocksdanister.com/" target="_blank">rocksdanister.com</a>
-      </div>
       <div id="footer-attribution">
-        <a>Rocksdanister | <a href="https://github.com/rocksdanister/lively-webpage" target="_blank">Attribution</a></a>
+        <a
+          >
+          <a href="https://github.com/rocksdanister/lively/tree/gh-pages" target="_blank">Attribution</a></a
+        >
       </div>
     </div>
   </body>
@@ -553,13 +348,4 @@
   <script src="js/controls.js"></script>
   <script src="js/script.js"></script>
   <script src="js/index.js"></script>
-  <script>
-    if (window.location.href.indexOf("https://www.rocksdanister.com/lively/") > -1) {
-      let script = document.createElement("script");
-      script.setAttribute("src", "//gc.zgo.at/count.js");
-      script.setAttribute("data-goatcounter", "https://rocksdanister.goatcounter.com/count");
-      script.setAttribute("async", "");
-      document.body.appendChild(script);
-    }
-  </script>
 </html>

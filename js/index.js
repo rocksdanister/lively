@@ -18,18 +18,6 @@ ul.onclick = function (event) {
   //update customise controls
   $("*[id*=ui-app-customise-controls-]").css("display", "none");
   switch (img.parentElement.id) {
-    case "rain":
-      setScene("rain");
-      $("#ui-app-customise-controls-rain").css("display", "inline");
-      break;
-    case "clouds":
-      setScene("clouds");
-      $("#ui-app-customise-controls-clouds").css("display", "inline");
-      break;
-    case "snow":
-      setScene("snow");
-      $("#ui-app-customise-controls-snow").css("display", "inline");
-      break;
     case "synthwave":
       setScene("synthwave");
       $("#ui-app-customise-controls-synthwave").css("display", "inline");
